@@ -4,9 +4,10 @@ abstract  class EasyUITableAction extends BaseAction
 {
     abstract protected function GetTableName();
     
-    public function Validator()
+    public function Validator($obj)
     {
         $this->LogWarn("the validator is empty ");
+        return SUCCESS;
     }
     private function  GetObj()
     {
@@ -53,6 +54,8 @@ abstract  class EasyUITableAction extends BaseAction
     }
     public function Show()
     {
+        $this->LogInfo("show");
+        
         $obj = $this->GetObj();
         
         $tableName = $this->GetTableName();
@@ -68,10 +71,19 @@ abstract  class EasyUITableAction extends BaseAction
     }
     public function Create()
     {
-
+        $this->LogInfo("create");
+        
         $tableName = $this->GetTableName();
+        
         $obj = $this->GetObj();
-        $this->Validator($obj);
+        $result = $this->Validator($obj);
+        if(SUCCESS != $result)
+        {
+            $this->errorCode = $result;
+            $this->LogErr("validator failed when create ".$tableName.",the error is "+$result);
+            return $this->ReturnJson();
+        }    
+        
         $db = M($tableName);
         $result = $db->add($obj);
 	        if(false == $result)
@@ -85,9 +97,17 @@ abstract  class EasyUITableAction extends BaseAction
     
     public function Modify()
     {
-        $obj = $this->GetObj();
+        $this->LogInfo("modify");
         
+        $obj = $this->GetObj();
         $tableName = $this->GetTableName();
+        $result = $this->Validator($obj);
+        if(SUCCESS != $result)
+        {
+            $this->errorCode = $result;
+            $this->LogErr("validator failed when create ".$tableName.",the error is "+$result);
+            return $this->ReturnJson();
+        }    
         
         $db = M($tableName);
         $result = $db->save($obj);
@@ -101,6 +121,7 @@ abstract  class EasyUITableAction extends BaseAction
     
     public function Delete()
     {
+        $this->LogInfo("delete");
         $obj = $this->GetObj();
         
         $tableName = $this->GetTableName();
