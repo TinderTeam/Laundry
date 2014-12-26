@@ -51,7 +51,21 @@ abstract  class EasyUITableAction extends BaseAction
     {
         
     }
-    
+    public function Show()
+    {
+        $obj = $this->GetObj();
+        
+        $tableName = $this->GetTableName();
+        $db = M($tableName);
+ 
+        $result = $db->find($obj);
+        if(false == $result)
+        {
+            $this->LogErr("delete data failed.the table is " + $tableName);
+        	$this->errorCode = DB_GET_ERROR;
+        }
+        return $this->ReturnJson($result);
+    }
     public function Create()
     {
 
@@ -60,7 +74,7 @@ abstract  class EasyUITableAction extends BaseAction
         $this->Validator($obj);
         $db = M($tableName);
         $result = $db->add($obj);
-        if(false == $result)
+	        if(false == $result)
         {
             $this->LogErr("create data failed.the table is " + $tableName);
             $this->errorCode = DB_CREATE_ERROR;
