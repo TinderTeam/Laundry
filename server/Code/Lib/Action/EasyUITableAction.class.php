@@ -4,6 +4,10 @@ abstract  class EasyUITableAction extends BaseAction
 {
     abstract protected function GetTableName();
     
+    public function Validator()
+    {
+        $this->LogWarn("the validator is empty ");
+    }
     private function  GetObj()
     {
         $Req = $this->GetReqObj();
@@ -53,6 +57,7 @@ abstract  class EasyUITableAction extends BaseAction
 
         $tableName = $this->GetTableName();
         $obj = $this->GetObj();
+        $this->Validator($obj);
         $db = M($tableName);
         $result = $db->add($obj);
         if(false == $result)
