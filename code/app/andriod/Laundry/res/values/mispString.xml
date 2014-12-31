@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">快客洗涤</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="tabbar_home">首页</string>
+    <string name="tabbar_cart">购物车</string>
+    <string name="tabbar_news">最新咨询</string>
+    <string name="tabbar_user">个人中心</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+</resources>

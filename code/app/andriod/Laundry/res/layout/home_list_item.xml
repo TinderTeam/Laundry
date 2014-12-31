@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/home_list_item_all"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="20dp"
+    android:paddingTop="10dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp" >
+
+        <ImageView
+            android:id="@+id/home_list_item_img"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:src="@drawable/load_image_failed" />
+
+        <TextView
+            android:id="@+id/home_list_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/home_list_item_img"
+            android:text="标题"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/home_list_item_curPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/home_list_item_img"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/home_list_item_img"
+            android:text="TextView"
+            android:textColor="@color/themecolor" />
+
+        <TextView
+            android:id="@+id/home_list_item_oldPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/home_list_item_curPrice"
+            android:layout_alignBottom="@+id/home_list_item_curPrice"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/home_list_item_curPrice"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/home_list_item_desp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/home_list_item_img"
+            android:text="TextView" />
+
+    </RelativeLayout>
+
+</LinearLayout>

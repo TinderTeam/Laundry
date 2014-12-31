@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="tabbar_default">菜单</string>
+    <string name="home_food">餐饮美食</string>
+    <string name="home_car">汽车服务</string>
+    <string name="home_photo">摄影写真</string>
+    <string name="home_education">教育培训</string>
+    <string name="home_entertainment">休闲娱乐</string>
+    <string name="home_hotel">酒店旅游</string>
+    <string name="home_beauty">都市丽人</string>
+    <string name="home_service">生活服务</string>
+    <string name="title_activity_user_info">UserInfoActivity</string>
+    <string name="title_activity_product_search">ProductSearchActivity</string>
+
+</resources>

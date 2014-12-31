@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="white">#FFFFFF</color><!--白色 -->
+	<color name="black">#000000</color><!-- 黑色 -->
+	<color name="ivory">#FFFFF0</color><!--象牙色 -->
+	<color name="lightyellow">#FFFFE0</color><!--亮黄色 -->
+	<color name="yellow">#FFFF00</color><!--黄色 -->
+	<color name="tabbarback">#E9EAED</color>
+	<!-- <color name="themecolor">#FC9C38</color> 主题橘色 -->
+	<color name="themecolor">#FF643F</color> <!-- 橘红色 -->
+	
+	<color name="presscolor">#D25000</color><!-- button按下颜色 -->
+	<color name="disablcolor">#FF8400</color><!-- button禁用颜色 -->
+	
+	<color name="backcolor">#E7E6E3</color>  <!-- 背景墙纸颜色 -->
+	<color name="focuscolor">#0378FF</color> <!-- nav 选中字体颜色 -->
+	</resources>

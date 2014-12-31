@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/top_head_height" >
+
+            <Button
+                android:id="@+id/product_search_back"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:drawableLeft="@drawable/detail_back"
+                android:drawablePadding="5dp"
+                android:focusableInTouchMode="true"
+                android:text="返回"
+                android:textColor="@color/themecolor"
+                android:textSize="20sp" />
+
+            <SearchView
+                android:id="@+id/searchView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/Button01" >
+            </SearchView>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:background="@color/backcolor" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <RadioGroup
+            android:id="@+id/product_serch_radio_group"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/backcolor"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/product_serch_radio_type"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/item_backgroud"
+                android:button="@null"
+                android:drawableRight="@drawable/arrow_drop"
+                android:gravity="center_vertical|right"
+                android:paddingRight="30dp"
+                android:text="全部分类"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/product_serch_radio_area"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/item_backgroud"
+                android:button="@null"
+                android:drawableRight="@drawable/arrow_drop"
+                android:gravity="center_vertical|right"
+                android:paddingRight="30dp"
+                android:text="全部商家"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/View01"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:background="@color/backcolor" />
+
+    <ListView
+        android:id="@+id/product_search_list"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+    </ListView>
+
+</LinearLayout>

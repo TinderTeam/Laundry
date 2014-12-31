@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/home_radio_group"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/home_radio_new"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/nav_btn"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="最新特惠"
+            android:textColor="@drawable/nav_text_color" />
+
+        <RadioButton
+            android:id="@+id/home_radio_type"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/nav_btn"
+            android:button="@null"
+            android:gravity="center"
+            android:text="分类推荐"
+            android:textColor="@drawable/nav_text_color" />
+
+        <RadioButton
+            android:id="@+id/home_radio_all"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/nav_btn"
+            android:button="@null"
+            android:gravity="center"
+            android:text="热门推荐"
+            android:textColor="@drawable/nav_text_color" />
+    </RadioGroup>
+
+</LinearLayout>
