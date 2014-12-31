@@ -1,0 +1,745 @@
+[ 2014-12-28T13:38:24+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-28T13:38:24+08:00 ] ERR: request is {"type":"WEB","obj":{"user_name":"admin","password":"1234"}}
+[ 2014-12-28T13:38:24+08:00 ] INFO: login success, the user name is admin
+[ 2014-12-28T13:38:24+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-28T13:38:24+08:00 ] ERR: response is {"errorCode":0,"errorMsg":0}
+[ 2014-12-28T13:38:24+08:00 ] 0.0.0.0 /Laundry/index.php/Index/login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001954s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002011s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\xampps\htdocs\Laundry\MISP\Lib\Action\IndexAction.class.php 第 16 行.
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001986s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000644s ]
+SQL: SELECT `password` FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000469s ]
+
+[ 2014-12-28T13:38:24+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002014s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002074s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002317s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001137s ]
+NOTIC: [8] Undefined index:  id D:\xampps\htdocs\Laundry\MISP\Lib\Action\IndexAction.class.php 第 47 行.
+
+[ 2014-12-28T13:38:24+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002556s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002708s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002690s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001193s ]
+NOTIC: [8] Undefined index:  id D:\xampps\htdocs\Laundry\MISP\Lib\Action\IndexAction.class.php 第 47 行.
+
+[ 2014-12-28T13:40:53+08:00 ] WARN: Array
+[ 2014-12-28T13:40:53+08:00 ] INFO: [{"id":null,"text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":null}}]
+[ 2014-12-28T13:40:53+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002243s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002339s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002510s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.002241s ]
+NOTIC: [8] Undefined index:  id D:\xampps\htdocs\Laundry\MISP\Lib\Action\IndexAction.class.php 第 48 行.
+
+[ 2014-12-28T13:40:54+08:00 ] WARN: Array
+[ 2014-12-28T13:40:54+08:00 ] INFO: [{"id":null,"text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":null}}]
+[ 2014-12-28T13:40:54+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002238s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002306s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002004s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000783s ]
+NOTIC: [8] Undefined index:  id D:\xampps\htdocs\Laundry\MISP\Lib\Action\IndexAction.class.php 第 48 行.
+
+[ 2014-12-28T13:42:16+08:00 ] WARN: Array
+[ 2014-12-28T13:42:16+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":null}}]
+[ 2014-12-28T13:42:16+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001964s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002023s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002531s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000812s ]
+
+[ 2014-12-28T13:42:16+08:00 ] WARN: Array
+[ 2014-12-28T13:42:16+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":null}}]
+[ 2014-12-28T13:42:16+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002011s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002080s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002581s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000687s ]
+
+[ 2014-12-28T13:43:48+08:00 ] WARN: Array
+[ 2014-12-28T13:43:48+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T13:43:48+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002130s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002204s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.004563s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001664s ]
+
+[ 2014-12-28T13:43:48+08:00 ] WARN: Array
+[ 2014-12-28T13:43:48+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T13:43:48+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002298s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002389s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002514s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001400s ]
+
+[ 2014-12-28T13:46:21+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-28T13:46:21+08:00 ] ERR: request is {"type":"WEB","obj":{"user_name":"admin","password":"1234"}}
+[ 2014-12-28T13:46:21+08:00 ] INFO: login success, the user name is admin
+[ 2014-12-28T13:46:21+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-28T13:46:21+08:00 ] ERR: response is {"errorCode":0,"errorMsg":0}
+[ 2014-12-28T13:46:21+08:00 ] 0.0.0.0 /Laundry/index.php/Index/login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001988s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002050s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\xampps\htdocs\Laundry\MISP\Lib\Action\IndexAction.class.php 第 16 行.
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001632s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000374s ]
+SQL: SELECT `password` FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000310s ]
+
+[ 2014-12-28T13:46:21+08:00 ] WARN: Array
+[ 2014-12-28T13:46:21+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T13:46:21+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002280s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002355s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.003530s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000684s ]
+
+[ 2014-12-28T13:46:21+08:00 ] WARN: Array
+[ 2014-12-28T13:46:21+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T13:46:21+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002011s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002076s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002269s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000686s ]
+
+[ 2014-12-28T13:52:16+08:00 ] WARN: Array
+[ 2014-12-28T13:52:16+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T13:52:23+08:00 ] WARN: Array
+[ 2014-12-28T13:52:23+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:29:10+08:00 ] WARN: Array
+[ 2014-12-28T16:29:10+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:34:52+08:00 ] WARN: Array
+[ 2014-12-28T16:34:52+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:35:02+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-28T16:35:02+08:00 ] ERR: request is {"type":"WEB","obj":{"user_name":"admin","password":"1234"}}
+[ 2014-12-28T16:35:02+08:00 ] INFO: login success, the user name is admin
+[ 2014-12-28T16:35:02+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-28T16:35:02+08:00 ] ERR: response is {"errorCode":0,"errorMsg":0}
+[ 2014-12-28T16:35:02+08:00 ] 0.0.0.0 /Laundry/index.php/Index/login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001963s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002038s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\xampps\htdocs\Laundry\MISP\Lib\Action\IndexAction.class.php 第 16 行.
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001626s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000530s ]
+SQL: SELECT `password` FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000248s ]
+
+[ 2014-12-28T16:35:02+08:00 ] WARN: Array
+[ 2014-12-28T16:35:02+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:35:02+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.004044s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004161s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.003497s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.003227s ]
+
+[ 2014-12-28T16:35:03+08:00 ] WARN: Array
+[ 2014-12-28T16:35:03+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:35:03+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002739s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002820s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002659s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001520s ]
+
+[ 2014-12-28T16:35:03+08:00 ] WARN: Array
+[ 2014-12-28T16:35:03+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:35:03+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002349s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002425s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001659s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000360s ]
+
+[ 2014-12-28T16:35:48+08:00 ] WARN: Array
+[ 2014-12-28T16:35:48+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:35:50+08:00 ] WARN: Array
+[ 2014-12-28T16:35:50+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:41:39+08:00 ] WARN: Array
+[ 2014-12-28T16:41:39+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:41:53+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-28T16:41:53+08:00 ] ERR: request is {"type":"WEB","obj":{"user_name":"admin","password":"1234"}}
+[ 2014-12-28T16:41:53+08:00 ] INFO: login success, the user name is admin
+[ 2014-12-28T16:41:53+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-28T16:41:53+08:00 ] ERR: response is {"errorCode":0,"errorMsg":0}
+[ 2014-12-28T16:41:53+08:00 ] 0.0.0.0 /Laundry/index.php/Index/login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001966s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002023s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\xampps\htdocs\Laundry\MISP\Lib\Action\IndexAction.class.php 第 16 行.
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001521s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000663s ]
+SQL: SELECT `password` FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000393s ]
+
+[ 2014-12-28T16:41:53+08:00 ] WARN: Array
+[ 2014-12-28T16:41:53+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:41:53+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002085s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002153s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002286s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001352s ]
+
+[ 2014-12-28T16:41:53+08:00 ] WARN: Array
+[ 2014-12-28T16:41:53+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:41:53+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002103s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002176s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002046s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001001s ]
+
+[ 2014-12-28T16:41:53+08:00 ] WARN: Array
+[ 2014-12-28T16:41:53+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":null}}]
+[ 2014-12-28T16:41:53+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002226s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002312s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001908s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000803s ]
+
+[ 2014-12-28T17:14:49+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/savedata.html
+ERR: 非法操作:savedata
+
+[ 2014-12-28T17:14:56+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/savedata.html
+ERR: 非法操作:savedata
+
+[ 2014-12-28T17:15:07+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T17:15:07+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T17:15:07+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T17:15:07+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T17:15:07+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001999s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002071s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001956s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.001190s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000638s ]
+
+[ 2014-12-28T17:18:16+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-28T17:18:16+08:00 ] ERR: request is {"type":"WEB","obj":{"user_name":"admin","password":"1234"}}
+[ 2014-12-28T17:18:16+08:00 ] INFO: login success, the user name is admin
+[ 2014-12-28T17:18:16+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-28T17:18:16+08:00 ] ERR: response is {"errorCode":0,"errorMsg":0}
+[ 2014-12-28T17:18:16+08:00 ] 0.0.0.0 /Laundry/index.php/Index/login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001952s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002007s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\xampps\htdocs\Laundry\MISP\Lib\Action\IndexAction.class.php 第 16 行.
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001597s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000502s ]
+SQL: SELECT `password` FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000443s ]
+
+[ 2014-12-28T17:18:16+08:00 ] WARN: Array
+[ 2014-12-28T17:18:16+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T17:18:16+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003075s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003174s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002548s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001464s ]
+
+[ 2014-12-28T17:18:16+08:00 ] WARN: Array
+[ 2014-12-28T17:18:16+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T17:18:16+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002052s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002117s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001668s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000465s ]
+
+[ 2014-12-28T17:18:18+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/saveData.html?_=1419758296447
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002095s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002169s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.017406s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017506s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001934s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001923s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001994s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002254s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008318s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002136s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002212s ]
+
+[ 2014-12-28T17:18:20+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T17:18:20+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T17:18:20+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T17:18:20+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T17:18:20+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001920s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001974s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001248s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000288s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000221s ]
+
+[ 2014-12-28T17:22:43+08:00 ] WARN: Array
+[ 2014-12-28T17:22:43+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T17:22:43+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001990s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002050s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001895s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000577s ]
+
+[ 2014-12-28T17:27:49+08:00 ] WARN: Array
+[ 2014-12-28T17:27:49+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T17:27:49+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002166s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002248s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001892s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000795s ]
+
+[ 2014-12-28T17:27:49+08:00 ] WARN: Array
+[ 2014-12-28T17:27:49+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T17:27:49+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002170s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002265s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001776s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000424s ]
+
+[ 2014-12-28T17:27:51+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/saveData.html?_=1419758869640
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002370s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002553s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.017252s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017374s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002476s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002418s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002357s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001993s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.009565s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002337s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002402s ]
+
+[ 2014-12-28T17:27:53+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T17:27:53+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T17:27:53+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T17:27:53+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T17:27:53+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001965s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002022s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001432s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000382s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000453s ]
+
+[ 2014-12-28T17:37:18+08:00 ] WARN: Array
+[ 2014-12-28T17:37:18+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T17:37:18+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003661s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003756s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001932s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001210s ]
+
+[ 2014-12-28T17:37:18+08:00 ] WARN: Array
+[ 2014-12-28T17:37:18+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T17:37:18+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003179s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003300s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001870s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000741s ]
+
+[ 2014-12-28T17:37:21+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T17:37:21+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T17:37:21+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T17:37:22+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T17:37:22+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002208s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002290s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001629s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000282s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000192s ]
+
+[ 2014-12-28T17:59:21+08:00 ] WARN: Array
+[ 2014-12-28T17:59:21+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T17:59:21+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002814s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002896s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001879s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000525s ]
+
+[ 2014-12-28T17:59:21+08:00 ] WARN: Array
+[ 2014-12-28T17:59:21+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T17:59:21+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002036s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002115s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001720s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000355s ]
+
+[ 2014-12-28T18:02:44+08:00 ] WARN: Array
+[ 2014-12-28T18:02:44+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:02:44+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001989s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002056s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002645s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001783s ]
+
+[ 2014-12-28T18:02:44+08:00 ] WARN: Array
+[ 2014-12-28T18:02:44+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:02:44+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002146s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002256s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002490s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001200s ]
+
+[ 2014-12-28T18:02:47+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:02:47+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:02:47+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:02:47+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:02:47+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002054s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002126s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001443s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000356s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000274s ]
+
+[ 2014-12-28T18:14:46+08:00 ] WARN: Array
+[ 2014-12-28T18:14:46+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:14:46+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002103s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002175s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002483s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000768s ]
+
+[ 2014-12-28T18:14:46+08:00 ] 0.0.0.0 /Laundry/index.php/Index/tree_data1.json
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002411s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002497s ]
+ERR: 非法操作:tree_data1.json
+
+[ 2014-12-28T18:14:46+08:00 ] WARN: Array
+[ 2014-12-28T18:14:46+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:14:46+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002945s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003062s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001869s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000530s ]
+
+[ 2014-12-28T18:15:55+08:00 ] WARN: Array
+[ 2014-12-28T18:15:55+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:15:55+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002232s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002294s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001911s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001078s ]
+
+[ 2014-12-28T18:15:55+08:00 ] 0.0.0.0 /Laundry/index.php/Index/tree_data1.json
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002951s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003049s ]
+ERR: 非法操作:tree_data1.json
+
+[ 2014-12-28T18:15:55+08:00 ] WARN: Array
+[ 2014-12-28T18:15:55+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:15:55+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002263s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002334s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001855s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000912s ]
+
+[ 2014-12-28T18:16:00+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:16:00+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:16:00+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:16:00+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:16:00+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002110s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002171s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001587s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000322s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000160s ]
+
+[ 2014-12-28T18:16:44+08:00 ] WARN: Array
+[ 2014-12-28T18:16:44+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:16:44+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002110s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002176s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001871s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000628s ]
+
+[ 2014-12-28T18:16:44+08:00 ] 0.0.0.0 /Laundry/index.php/Index/tree_data1.json
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003202s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003295s ]
+ERR: 非法操作:tree_data1.json
+
+[ 2014-12-28T18:16:44+08:00 ] WARN: Array
+[ 2014-12-28T18:16:44+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:16:44+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002036s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002107s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002401s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000616s ]
+
+[ 2014-12-28T18:16:53+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:16:53+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:16:53+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:16:53+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:16:53+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002068s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002141s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001509s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000461s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000144s ]
+
+[ 2014-12-28T18:17:15+08:00 ] WARN: Array
+[ 2014-12-28T18:17:15+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:17:15+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002673s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002747s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001418s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000484s ]
+
+[ 2014-12-28T18:17:15+08:00 ] 0.0.0.0 /Laundry/index.php/Index/tree_data1.json
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002642s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002714s ]
+ERR: 非法操作:tree_data1.json
+
+[ 2014-12-28T18:17:15+08:00 ] WARN: Array
+[ 2014-12-28T18:17:15+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:17:15+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002139s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002211s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001987s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000645s ]
+
+[ 2014-12-28T18:17:24+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:17:24+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:17:24+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:17:24+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:17:24+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002057s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002125s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001724s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000445s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000354s ]
+
+[ 2014-12-28T18:19:23+08:00 ] WARN: Array
+[ 2014-12-28T18:19:23+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:19:23+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003347s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003424s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002197s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001088s ]
+
+[ 2014-12-28T18:19:23+08:00 ] 0.0.0.0 /Laundry/index.php/Index/tree_data1.json
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002387s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002469s ]
+ERR: 非法操作:tree_data1.json
+
+[ 2014-12-28T18:19:24+08:00 ] WARN: Array
+[ 2014-12-28T18:19:24+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:19:24+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002149s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002224s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001835s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000578s ]
+
+[ 2014-12-28T18:19:29+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:19:29+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:19:29+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:19:29+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:19:29+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002127s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.005023s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.002221s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.001237s ]
+
+[ 2014-12-28T18:19:59+08:00 ] WARN: Array
+[ 2014-12-28T18:19:59+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:19:59+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002434s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002507s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002006s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000572s ]
+
+[ 2014-12-28T18:19:59+08:00 ] 0.0.0.0 /Laundry/index.php/Index/tree_data1.json
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002354s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002426s ]
+ERR: 非法操作:tree_data1.json
+
+[ 2014-12-28T18:19:59+08:00 ] WARN: Array
+[ 2014-12-28T18:19:59+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:19:59+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002071s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002144s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002218s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001050s ]
+
+[ 2014-12-28T18:20:05+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:20:05+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:20:05+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:20:05+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:20:05+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002050s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002114s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001973s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000563s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000388s ]
+
+[ 2014-12-28T18:20:40+08:00 ] WARN: Array
+[ 2014-12-28T18:20:40+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:20:40+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002087s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002161s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002410s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001133s ]
+
+[ 2014-12-28T18:20:40+08:00 ] WARN: Array
+[ 2014-12-28T18:20:40+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:20:40+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002951s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003041s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002283s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001607s ]
+
+[ 2014-12-28T18:20:43+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:20:43+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:20:43+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:20:43+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:20:43+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002455s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002524s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001664s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000556s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000647s ]
+
+[ 2014-12-28T18:26:46+08:00 ] WARN: Array
+[ 2014-12-28T18:26:46+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:26:46+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002615s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002700s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001940s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001240s ]
+
+[ 2014-12-28T18:26:46+08:00 ] WARN: Array
+[ 2014-12-28T18:26:46+08:00 ] INFO: [{"id":"1","text":"UserManage","attributes":{"url":"__APP__\/UserManage\/saveData.html"}}]
+[ 2014-12-28T18:26:46+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002049s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002119s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001312s ]
+
+[ 2014-12-28T18:26:49+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:26:49+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:26:49+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:26:49+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:26:49+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002316s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002382s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001886s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000516s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000571s ]
+
+[ 2014-12-28T18:47:54+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:47:54+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:47:54+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:47:54+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:47:54+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002046s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002107s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.002066s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000657s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000154s ]
+
+[ 2014-12-28T18:50:46+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:50:46+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:50:46+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:50:46+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:50:46+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002038s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002100s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.002130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000929s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000252s ]
+
+[ 2014-12-28T18:51:42+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:51:42+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:51:42+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:51:42+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:51:42+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002385s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002464s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001941s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000832s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000173s ]
+
+[ 2014-12-28T18:52:14+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-28T18:52:14+08:00 ] INFO: query the table system_user count is 1
+[ 2014-12-28T18:52:14+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage
+[ 2014-12-28T18:52:14+08:00 ] ERR: response is {"total":"1","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":0}
+[ 2014-12-28T18:52:14+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002010s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002066s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001683s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000493s ]
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000227s ]
+

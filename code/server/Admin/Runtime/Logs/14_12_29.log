@@ -1,0 +1,1059 @@
+[ 2014-12-29T19:31:27+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productManage.html
+ERR: 无法加载模块:ProductManage
+
+[ 2014-12-29T19:43:04+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T19:43:04+08:00 ] WARN: the page size is empty
+[ 2014-12-29T19:43:04+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T19:43:04+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T19:43:04+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T19:43:04+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T19:43:04+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002461s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002539s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001709s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000438s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000455s ]
+
+[ 2014-12-29T19:44:23+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T19:44:23+08:00 ] WARN: the page size is empty
+[ 2014-12-29T19:44:23+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T19:44:23+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T19:44:23+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T19:44:23+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T19:44:23+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001959s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002017s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001537s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000199s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000320s ]
+
+[ 2014-12-29T19:51:50+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T19:51:50+08:00 ] WARN: the page size is empty
+[ 2014-12-29T19:51:50+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T19:51:50+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T19:51:50+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T19:51:50+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T19:51:50+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002212s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002287s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.002001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000989s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.001502s ]
+
+[ 2014-12-29T19:54:05+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T19:54:05+08:00 ] WARN: the page size is empty
+[ 2014-12-29T19:54:05+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T19:54:05+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T19:54:05+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T19:54:05+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T19:54:05+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002204s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002277s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001748s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000379s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000137s ]
+
+[ 2014-12-29T20:00:02+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:00:02+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:00:02+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:00:02+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:00:02+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:00:02+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:00:02+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003239s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003371s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.002115s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000385s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000310s ]
+
+[ 2014-12-29T20:00:03+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419854401890
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001981s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002047s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015263s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015383s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001856s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001860s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001766s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001904s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007532s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002085s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002140s ]
+
+[ 2014-12-29T20:10:19+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:10:19+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:10:19+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:10:19+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:10:19+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:10:19+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:10:19+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002808s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002887s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001865s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000590s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000797s ]
+
+[ 2014-12-29T20:10:20+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855019301
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002003s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002059s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015212s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015305s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001902s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001820s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001736s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001887s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007486s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002032s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002082s ]
+
+[ 2014-12-29T20:10:48+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:10:48+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:10:48+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:10:48+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:10:48+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:10:48+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:10:48+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002047s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002115s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001666s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000502s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000480s ]
+
+[ 2014-12-29T20:10:49+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855048126
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001966s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002026s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016064s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016156s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001827s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001820s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001738s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001884s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007408s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002041s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002090s ]
+
+[ 2014-12-29T20:11:00+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:11:00+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:11:00+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:11:00+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:11:00+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:11:00+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:11:00+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002010s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002077s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001451s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000252s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000353s ]
+
+[ 2014-12-29T20:11:01+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855060533
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001990s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002053s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015572s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015664s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001869s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002013s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001854s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001943s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007858s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002282s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002343s ]
+
+[ 2014-12-29T20:11:47+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:11:47+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:11:47+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:11:47+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:11:47+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:11:47+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:11:47+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002097s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002185s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001457s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000728s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000225s ]
+
+[ 2014-12-29T20:11:47+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855106922
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001996s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002061s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016844s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016962s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001832s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001824s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001743s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001906s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007447s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002041s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002090s ]
+
+[ 2014-12-29T20:19:58+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:19:58+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:19:58+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:19:58+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:19:58+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:19:58+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:19:58+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002013s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002070s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001357s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000300s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000430s ]
+
+[ 2014-12-29T20:19:59+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855598382
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002204s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002330s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015983s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016078s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001918s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001913s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001832s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001978s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007786s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002105s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002154s ]
+
+[ 2014-12-29T20:20:16+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:20:16+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:20:16+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:20:16+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:20:16+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:20:16+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:20:16+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001983s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002042s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001507s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000480s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000277s ]
+
+[ 2014-12-29T20:20:17+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855616602
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001965s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002025s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015524s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015609s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001962s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001853s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001954s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001911s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007848s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002035s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002084s ]
+
+[ 2014-12-29T20:24:07+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855616603
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001988s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002049s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.014946s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015024s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001817s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001810s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001726s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001880s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007372s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002041s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002090s ]
+
+[ 2014-12-29T20:26:13+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855616604
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001989s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002052s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015380s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015468s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002115s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001844s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001791s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001909s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007802s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002060s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002109s ]
+
+[ 2014-12-29T20:26:58+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855616605
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002826s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002901s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.020168s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020282s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002821s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002871s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002814s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002753s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011461s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002889s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002951s ]
+
+[ 2014-12-29T20:28:41+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855616606
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002144s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002238s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015156s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015242s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001837s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001822s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001732s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001890s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007418s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002040s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002089s ]
+
+[ 2014-12-29T20:29:04+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855616607
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002101s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002166s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015118s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001853s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001803s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001672s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001829s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007291s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001911s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001958s ]
+
+[ 2014-12-29T20:29:12+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855616608
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001967s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002025s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015744s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015835s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001860s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001827s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001752s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001900s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007479s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002181s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002233s ]
+
+[ 2014-12-29T20:29:21+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855616609
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002233s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002302s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015092s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015178s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001749s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001697s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001661s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001832s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007073s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002106s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002159s ]
+
+[ 2014-12-29T20:29:30+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419855616610
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001960s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002020s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015133s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015220s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001844s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001820s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001742s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001895s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007448s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002024s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002075s ]
+
+[ 2014-12-29T20:29:54+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:29:54+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:29:54+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:29:54+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:29:54+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:29:54+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:29:54+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002062s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002124s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001553s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000456s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000448s ]
+
+[ 2014-12-29T20:29:54+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419856193865
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001982s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002041s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015587s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015676s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002068s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001896s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001773s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001900s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007783s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002117s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002177s ]
+
+[ 2014-12-29T20:30:04+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:30:04+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:30:04+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:30:04+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:30:04+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:30:04+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:30:04+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002116s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002213s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001575s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000432s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000466s ]
+
+[ 2014-12-29T20:30:05+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419856204251
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002108s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002186s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015348s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015443s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001883s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001822s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001720s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001879s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007444s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002023s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002070s ]
+
+[ 2014-12-29T20:32:53+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419856204252
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001975s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002036s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015751s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015873s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002124s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001941s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001764s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001898s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007892s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002108s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002200s ]
+
+[ 2014-12-29T20:33:50+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419856204253
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001951s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002007s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015871s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015954s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001787s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001827s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001761s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001942s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007454s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002028s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002077s ]
+
+[ 2014-12-29T20:35:02+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419856204254
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001957s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002015s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015447s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015537s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001818s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002291s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002519s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002762s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.009585s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003263s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003334s ]
+
+[ 2014-12-29T20:36:57+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:36:57+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:36:57+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:36:57+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:36:57+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:36:57+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:36:57+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001988s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002045s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001539s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000220s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000749s ]
+
+[ 2014-12-29T20:36:58+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419856617559
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001993s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002054s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015353s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015438s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001845s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001820s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001753s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001892s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007450s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002159s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002214s ]
+
+[ 2014-12-29T20:42:06+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419856617560
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002020s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002087s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.017064s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017171s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001914s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002402s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001936s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001948s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008371s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002052s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002103s ]
+
+[ 2014-12-29T20:42:11+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:42:11+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:42:11+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:42:11+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:42:11+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:42:11+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:42:11+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002315s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002402s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001750s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000870s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.001048s ]
+
+[ 2014-12-29T20:42:13+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419856931722
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002009s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002068s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015509s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015595s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002060s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001867s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001768s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001890s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007737s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002072s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002122s ]
+
+[ 2014-12-29T20:42:19+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419856931723
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002243s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002306s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016204s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016319s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001830s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001880s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001734s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007460s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002029s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002077s ]
+
+[ 2014-12-29T20:51:18+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419856931724
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002060s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.019767s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019959s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002419s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002866s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001805s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001930s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.009344s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002101s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002157s ]
+
+[ 2014-12-29T20:51:22+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T20:51:22+08:00 ] WARN: the page size is empty
+[ 2014-12-29T20:51:22+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T20:51:22+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T20:51:22+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T20:51:22+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T20:51:22+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003977s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004088s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.003121s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.001790s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000764s ]
+
+[ 2014-12-29T20:51:23+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419857482504
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001966s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002026s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016197s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016290s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001782s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001726s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001674s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001805s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007122s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001954s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2014-12-29T21:07:47+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T21:07:47+08:00 ] WARN: the page size is empty
+[ 2014-12-29T21:07:47+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T21:07:47+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T21:07:47+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T21:07:47+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T21:07:47+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001969s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002031s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001882s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000812s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000932s ]
+
+[ 2014-12-29T21:07:48+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419858467092
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001954s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002012s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016856s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016947s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001847s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002615s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002487s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002733s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.009857s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002929s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002995s ]
+
+[ 2014-12-29T21:13:22+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T21:13:22+08:00 ] WARN: the page size is empty
+[ 2014-12-29T21:13:22+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T21:13:22+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T21:13:22+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T21:13:22+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T21:13:22+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002113s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002182s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001732s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000930s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000279s ]
+
+[ 2014-12-29T21:13:23+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419858801975
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002007s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002083s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.018563s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018668s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001832s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001840s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001751s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001893s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007465s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002074s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002125s ]
+
+[ 2014-12-29T21:23:53+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419858801976
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002043s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002103s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016767s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016864s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001932s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001854s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001745s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001897s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007574s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002142s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002194s ]
+
+[ 2014-12-29T21:31:14+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419858801977
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002392s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002471s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015429s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015509s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001813s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002515s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002436s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002532s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.009472s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002712s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002774s ]
+
+[ 2014-12-29T21:33:50+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T21:33:50+08:00 ] WARN: the page size is empty
+[ 2014-12-29T21:33:50+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T21:33:50+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T21:33:50+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T21:33:50+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T21:33:50+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002736s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002808s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.002011s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000624s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000639s ]
+
+[ 2014-12-29T21:33:51+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419860030127
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001987s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002049s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015350s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015433s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001803s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001951s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001765s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001966s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007638s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002086s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002147s ]
+
+[ 2014-12-29T21:35:03+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419860030128
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001966s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002025s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016854s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016970s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001852s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001918s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001813s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002181s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007930s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002783s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002847s ]
+
+[ 2014-12-29T21:35:08+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T21:35:08+08:00 ] WARN: the page size is empty
+[ 2014-12-29T21:35:08+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T21:35:08+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T21:35:08+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T21:35:08+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T21:35:08+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001959s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002017s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001840s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.001174s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000939s ]
+
+[ 2014-12-29T21:35:08+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419860107726
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001973s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002031s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016155s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016263s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002108s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001807s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001724s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001882s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007663s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002058s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002111s ]
+
+[ 2014-12-29T21:35:40+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419860107727
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001996s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002053s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015384s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015470s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001741s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001830s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001715s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001874s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007296s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002016s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002064s ]
+
+[ 2014-12-29T21:36:18+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419860107728
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001967s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002021s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015622s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015711s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001811s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001838s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001727s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001947s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007464s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002027s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002077s ]
+
+[ 2014-12-29T21:39:35+08:00 ] WARN: the crrent page is empty
+[ 2014-12-29T21:39:35+08:00 ] WARN: the page size is empty
+[ 2014-12-29T21:39:35+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-29T21:39:35+08:00 ] INFO: query the table product count is 1
+[ 2014-12-29T21:39:35+08:00 ] ERR: the url is /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+[ 2014-12-29T21:39:35+08:00 ] ERR: response is {"total":"1","rows":[{"product_id":"1","product_name":"\u65b0\u4ea7\u54c11","type_id":null,"describe":null,"original_price":null,"price":null,"img":null,"product_status":null,"update_time":null,"end_time":null,"detail_info":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-29T21:39:35+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001962s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002032s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.001679s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `product` LIMIT 1   [ RunTime:0.000880s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `product` LIMIT 0,10   [ RunTime:0.000499s ]
+
+[ 2014-12-29T21:39:36+08:00 ] 0.0.0.0 /Laundry/laundry.php/ProductManage/productInfo.html?_=1419860375410
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002018s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002076s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 174 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\xampps\htdocs\Laundry\ThinkPHP\Lib\Core\View.class.php 第 175 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.017344s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017438s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.003081s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002516s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002499s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002825s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011126s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003107s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003208s ]
+

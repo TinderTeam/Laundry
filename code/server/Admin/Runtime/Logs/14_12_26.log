@@ -1,0 +1,197 @@
+[ 2014-12-26T15:28:23+08:00 ] 0.0.0.0 /Laundry/index.php/Index/savaData?_=1419578901472
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002214s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002295s ]
+ERR: 非法操作:savaData
+
+[ 2014-12-26T15:28:57+08:00 ] 0.0.0.0 /Laundry/index.php/Index/savaData?_=1419578901473
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003211s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003312s ]
+ERR: 非法操作:savaData
+
+[ 2014-12-26T15:30:15+08:00 ] 0.0.0.0 /Laundry/index.php/Index/savaData?_=1419579009613
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002056s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002123s ]
+ERR: 非法操作:savaData
+
+[ 2014-12-26T16:24:02+08:00 ] 0.0.0.0 /Laundry/index.php/Index/savaData?_=1419582074871
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003131s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003226s ]
+ERR: 非法操作:savaData
+
+[ 2014-12-26T16:24:14+08:00 ] 0.0.0.0 /Laundry/index.php/Index/savaData?_=1419582074872
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002086s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002170s ]
+ERR: 非法操作:savaData
+
+[ 2014-12-26T16:25:30+08:00 ] 0.0.0.0 /Laundry/index.php/Index/savaData.html?_=1419582329097
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002710s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002789s ]
+ERR: 模板不存在[./Code/Tpl/Index/savaData.html]
+
+[ 2014-12-26T16:25:52+08:00 ] 0.0.0.0 /Laundry/index.php/Index/savaData?_=1419582351569
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002705s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002788s ]
+ERR: 模板不存在[./Code/Tpl/Index/savaData.html]
+
+[ 2014-12-26T16:26:31+08:00 ] 0.0.0.0 /Laundry/Index.PHP/savaData
+ERR: 无法加载模块:savaData
+
+[ 2014-12-26T16:26:54+08:00 ] 0.0.0.0 /Laundry/Index.php/Index/savaData
+ERR: 模板不存在[./Code/Tpl/Index/savaData.html]
+
+[ 2014-12-26T16:28:01+08:00 ] 0.0.0.0 /Laundry/Index.php/Index/savaData
+ERR: 非法操作:savaData
+
+[ 2014-12-26T16:28:06+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-26T16:28:06+08:00 ] INFO: query the table user count is 6
+[ 2014-12-26T16:28:06+08:00 ] ERR: the url is /Laundry/Index.php/Index/LoadPage
+[ 2014-12-26T16:28:06+08:00 ] ERR: response is {"total":"6","rows":[{"user_id":"0","password":"123456","username":"admin","role":"ADMIN"},{"user_id":"81","password":"123123","username":"user1","role":"CUSTOMER"},{"user_id":"82","password":"123456","username":"user2","role":"CUSTOMER"},{"user_id":"83","password":"123456","username":"user3","role":"CUSTOMER"},{"user_id":"84","password":"123456","username":"user4","role":"CUSTOMER"},{"user_id":"85","password":"123456","username":"seller1","role":"SELLER"}],"errorCode":0,"errorMsg":[]}
+[ 2014-12-26T16:28:06+08:00 ] 0.0.0.0 /Laundry/Index.php/Index/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001923s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001979s ]
+SQL: SHOW COLUMNS FROM `t_user` [ RunTime:0.001905s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_user` LIMIT 1   [ RunTime:0.000961s ]
+SQL: SELECT * FROM `t_user` LIMIT 0,10   [ RunTime:0.000494s ]
+NOTIC: [8] Undefined variable: errorCode D:\xampps\htdocs\Laundry\Code\Lib\Action\BaseAction.class.php 第 73 行.
+
+[ 2014-12-26T16:28:21+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-26T16:28:21+08:00 ] INFO: query the table user count is 6
+[ 2014-12-26T16:28:21+08:00 ] ERR: the url is /Laundry/Index.php/Index/LoadPage
+[ 2014-12-26T16:28:21+08:00 ] ERR: response is {"total":"6","rows":[{"user_id":"0","password":"123456","username":"admin","role":"ADMIN"},{"user_id":"81","password":"123123","username":"user1","role":"CUSTOMER"},{"user_id":"82","password":"123456","username":"user2","role":"CUSTOMER"},{"user_id":"83","password":"123456","username":"user3","role":"CUSTOMER"},{"user_id":"84","password":"123456","username":"user4","role":"CUSTOMER"},{"user_id":"85","password":"123456","username":"seller1","role":"SELLER"}],"errorCode":0,"errorMsg":[]}
+[ 2014-12-26T16:28:21+08:00 ] 0.0.0.0 /Laundry/Index.php/Index/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001932s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001987s ]
+SQL: SHOW COLUMNS FROM `t_user` [ RunTime:0.001461s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_user` LIMIT 1   [ RunTime:0.000483s ]
+SQL: SELECT * FROM `t_user` LIMIT 0,10   [ RunTime:0.000511s ]
+NOTIC: [8] Undefined variable: errorCode D:\xampps\htdocs\Laundry\Code\Lib\Action\BaseAction.class.php 第 73 行.
+
+[ 2014-12-26T16:28:35+08:00 ] 0.0.0.0 /Laundry/index.php/Index/saveData.html?_=1419582514319
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002906s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003004s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015902s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016064s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002711s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002703s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002599s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002774s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011038s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003020s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003093s ]
+
+[ 2014-12-26T16:28:36+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-26T16:28:36+08:00 ] INFO: query the table user count is 6
+[ 2014-12-26T16:28:36+08:00 ] ERR: the url is /Laundry/index.php/Index/LoadPage
+[ 2014-12-26T16:28:36+08:00 ] ERR: response is {"total":"6","rows":[{"user_id":"0","password":"123456","username":"admin","role":"ADMIN"},{"user_id":"81","password":"123123","username":"user1","role":"CUSTOMER"},{"user_id":"82","password":"123456","username":"user2","role":"CUSTOMER"},{"user_id":"83","password":"123456","username":"user3","role":"CUSTOMER"},{"user_id":"84","password":"123456","username":"user4","role":"CUSTOMER"},{"user_id":"85","password":"123456","username":"seller1","role":"SELLER"}],"errorCode":0,"errorMsg":[]}
+[ 2014-12-26T16:28:36+08:00 ] 0.0.0.0 /Laundry/index.php/Index/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002019s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002098s ]
+SQL: SHOW COLUMNS FROM `t_user` [ RunTime:0.001719s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_user` LIMIT 1   [ RunTime:0.000772s ]
+SQL: SELECT * FROM `t_user` LIMIT 0,10   [ RunTime:0.000156s ]
+NOTIC: [8] Undefined variable: errorCode D:\xampps\htdocs\Laundry\Code\Lib\Action\BaseAction.class.php 第 73 行.
+
+[ 2014-12-26T16:32:15+08:00 ] 0.0.0.0 /Laundry/index.php/Index/saveData.html?_=1419582734573
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002007s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002073s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016180s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016286s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001880s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001887s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001767s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002639s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008377s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003006s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003085s ]
+
+[ 2014-12-26T16:32:17+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-26T16:32:17+08:00 ] INFO: query the table user count is 6
+[ 2014-12-26T16:32:17+08:00 ] ERR: the url is /Laundry/index.php/Index/LoadPage
+[ 2014-12-26T16:32:17+08:00 ] ERR: response is {"total":"6","rows":[{"user_id":"0","password":"123456","username":"admin","role":"ADMIN"},{"user_id":"81","password":"123123","username":"user1","role":"CUSTOMER"},{"user_id":"82","password":"123456","username":"user2","role":"CUSTOMER"},{"user_id":"83","password":"123456","username":"user3","role":"CUSTOMER"},{"user_id":"84","password":"123456","username":"user4","role":"CUSTOMER"},{"user_id":"85","password":"123456","username":"seller1","role":"SELLER"}],"errorCode":0,"errorMsg":[]}
+[ 2014-12-26T16:32:17+08:00 ] 0.0.0.0 /Laundry/index.php/Index/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001948s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002006s ]
+SQL: SHOW COLUMNS FROM `t_user` [ RunTime:0.001700s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_user` LIMIT 1   [ RunTime:0.000479s ]
+SQL: SELECT * FROM `t_user` LIMIT 0,10   [ RunTime:0.000469s ]
+NOTIC: [8] Undefined variable: errorCode D:\xampps\htdocs\Laundry\Code\Lib\Action\BaseAction.class.php 第 73 行.
+
+[ 2014-12-26T16:32:21+08:00 ] 0.0.0.0 /Laundry/index.php/Index/saveData.html?_=1419582734574
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003352s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003433s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016163s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016279s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001879s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002322s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002553s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002776s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.009762s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002976s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003051s ]
+
+[ 2014-12-26T16:32:22+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-26T16:32:22+08:00 ] INFO: query the table user count is 6
+[ 2014-12-26T16:32:22+08:00 ] ERR: the url is /Laundry/index.php/Index/LoadPage
+[ 2014-12-26T16:32:22+08:00 ] ERR: response is {"total":"6","rows":[{"user_id":"0","password":"123456","username":"admin","role":"ADMIN"},{"user_id":"81","password":"123123","username":"user1","role":"CUSTOMER"},{"user_id":"82","password":"123456","username":"user2","role":"CUSTOMER"},{"user_id":"83","password":"123456","username":"user3","role":"CUSTOMER"},{"user_id":"84","password":"123456","username":"user4","role":"CUSTOMER"},{"user_id":"85","password":"123456","username":"seller1","role":"SELLER"}],"errorCode":0,"errorMsg":[]}
+[ 2014-12-26T16:32:22+08:00 ] 0.0.0.0 /Laundry/index.php/Index/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001968s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002023s ]
+SQL: SHOW COLUMNS FROM `t_user` [ RunTime:0.001337s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_user` LIMIT 1   [ RunTime:0.000270s ]
+SQL: SELECT * FROM `t_user` LIMIT 0,10   [ RunTime:0.000191s ]
+NOTIC: [8] Undefined variable: errorCode D:\xampps\htdocs\Laundry\Code\Lib\Action\BaseAction.class.php 第 73 行.
+
+[ 2014-12-26T16:43:43+08:00 ] 0.0.0.0 /Laundry/index.php/Index/saveData.html?_=1419583421709
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002542s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002633s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016855s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016979s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001911s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001925s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001901s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001940s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007873s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003095s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003174s ]
+
+[ 2014-12-26T16:43:44+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-26T16:43:44+08:00 ] INFO: query the table user count is 6
+[ 2014-12-26T16:43:44+08:00 ] ERR: the url is /Laundry/index.php/Index/LoadPage
+[ 2014-12-26T16:43:44+08:00 ] ERR: response is {"total":"6","rows":[{"user_id":"0","password":"123456","username":"admin","role":"ADMIN"},{"user_id":"81","password":"123123","username":"user1","role":"CUSTOMER"},{"user_id":"82","password":"123456","username":"user2","role":"CUSTOMER"},{"user_id":"83","password":"123456","username":"user3","role":"CUSTOMER"},{"user_id":"84","password":"123456","username":"user4","role":"CUSTOMER"},{"user_id":"85","password":"123456","username":"seller1","role":"SELLER"}],"errorCode":0,"errorMsg":[]}
+[ 2014-12-26T16:43:44+08:00 ] 0.0.0.0 /Laundry/index.php/Index/LoadPage
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002646s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002703s ]
+SQL: SHOW COLUMNS FROM `t_user` [ RunTime:0.001326s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_user` LIMIT 1   [ RunTime:0.000221s ]
+SQL: SELECT * FROM `t_user` LIMIT 0,10   [ RunTime:0.000202s ]
+NOTIC: [8] Undefined variable: errorCode D:\xampps\htdocs\Laundry\Code\Lib\Action\BaseAction.class.php 第 73 行.
+

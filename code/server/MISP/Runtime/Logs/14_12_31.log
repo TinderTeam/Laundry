@@ -1,0 +1,368 @@
+[ 2014-12-31T10:02:34+08:00 ] INFO: the url is /Laundry/index.php/Index/login
+[ 2014-12-31T10:02:34+08:00 ] INFO: request is {"type":"WEB","obj":{"user_name":"admin","password":"1234"}}
+[ 2014-12-31T10:02:34+08:00 ] INFO: login success, the user name is admin
+[ 2014-12-31T10:02:34+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-31T10:02:34+08:00 ] ERR: response is {"errorCode":0,"errorMsg":false}
+[ 2014-12-31T10:02:34+08:00 ] 0.0.0.0 /Laundry/index.php/Index/login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001970s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002028s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\xampps\htdocs\Laundry\MISP\Lib\Action\IndexAction.class.php 第 16 行.
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.002132s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000463s ]
+SQL: SELECT `password` FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000471s ]
+
+[ 2014-12-31T10:02:34+08:00 ] WARN: Array
+[ 2014-12-31T10:02:35+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:02:35+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002441s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002523s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002005s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000361s ]
+
+[ 2014-12-31T10:02:35+08:00 ] WARN: Array
+[ 2014-12-31T10:02:35+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:02:35+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002068s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002139s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001822s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000433s ]
+
+[ 2014-12-31T10:05:03+08:00 ] WARN: Array
+[ 2014-12-31T10:05:03+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:05:03+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002097s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002176s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001930s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000454s ]
+
+[ 2014-12-31T10:05:03+08:00 ] WARN: Array
+[ 2014-12-31T10:05:03+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:05:03+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001973s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002031s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001499s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000283s ]
+
+[ 2014-12-31T10:16:45+08:00 ] WARN: Array
+[ 2014-12-31T10:16:45+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:16:45+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002049s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002116s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001859s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000536s ]
+
+[ 2014-12-31T10:16:45+08:00 ] WARN: Array
+[ 2014-12-31T10:16:45+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:16:45+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002255s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002326s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001445s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000219s ]
+
+[ 2014-12-31T10:18:18+08:00 ] WARN: Array
+[ 2014-12-31T10:18:18+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:18:18+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002104s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002174s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002400s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001513s ]
+
+[ 2014-12-31T10:18:18+08:00 ] WARN: Array
+[ 2014-12-31T10:18:18+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:18:18+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003548s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003637s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002016s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000652s ]
+
+[ 2014-12-31T10:19:31+08:00 ] WARN: Array
+[ 2014-12-31T10:19:31+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:19:31+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002083s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002151s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002605s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000540s ]
+
+[ 2014-12-31T10:19:31+08:00 ] WARN: Array
+[ 2014-12-31T10:19:31+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:19:31+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002097s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.004057s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000954s ]
+
+[ 2014-12-31T10:33:37+08:00 ] WARN: Array
+[ 2014-12-31T10:33:37+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:33:37+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002082s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002156s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001925s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000481s ]
+
+[ 2014-12-31T10:33:37+08:00 ] WARN: Array
+[ 2014-12-31T10:33:37+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:33:37+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002069s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002130s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001732s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001923s ]
+
+[ 2014-12-31T10:35:21+08:00 ] WARN: Array
+[ 2014-12-31T10:35:21+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:35:21+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002071s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002136s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001958s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000901s ]
+
+[ 2014-12-31T10:35:21+08:00 ] WARN: Array
+[ 2014-12-31T10:35:21+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:35:21+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002163s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002225s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001799s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000737s ]
+
+[ 2014-12-31T10:38:44+08:00 ] WARN: Array
+[ 2014-12-31T10:38:44+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:38:44+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001989s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002058s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002149s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000473s ]
+
+[ 2014-12-31T10:38:44+08:00 ] WARN: Array
+[ 2014-12-31T10:38:44+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:38:44+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003580s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003670s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001971s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001129s ]
+
+[ 2014-12-31T10:40:20+08:00 ] INFO: the url is /Laundry/index.php/Index/login
+[ 2014-12-31T10:40:20+08:00 ] INFO: request is {"type":"WEB","obj":{"user_name":"admin","password":"1234"}}
+[ 2014-12-31T10:40:20+08:00 ] INFO: login success, the user name is admin
+[ 2014-12-31T10:40:20+08:00 ] ERR: the url is /Laundry/index.php/Index/login
+[ 2014-12-31T10:40:20+08:00 ] ERR: response is {"errorCode":0,"errorMsg":false}
+[ 2014-12-31T10:40:20+08:00 ] 0.0.0.0 /Laundry/index.php/Index/login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001967s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002025s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\xampps\htdocs\Laundry\MISP\Lib\Action\IndexAction.class.php 第 16 行.
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001590s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000358s ]
+SQL: SELECT `password` FROM `misp_system_user` WHERE ( `user_name` = 'admin' ) LIMIT 1   [ RunTime:0.000130s ]
+
+[ 2014-12-31T10:40:20+08:00 ] WARN: Array
+[ 2014-12-31T10:40:20+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:40:20+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002045s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002129s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001579s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000249s ]
+
+[ 2014-12-31T10:40:20+08:00 ] WARN: Array
+[ 2014-12-31T10:40:20+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:40:20+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002004s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002068s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001840s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000762s ]
+
+[ 2014-12-31T10:43:22+08:00 ] WARN: Array
+[ 2014-12-31T10:43:22+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:43:22+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002770s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002842s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001547s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000623s ]
+
+[ 2014-12-31T10:43:22+08:00 ] WARN: Array
+[ 2014-12-31T10:43:22+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:43:22+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002014s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002072s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002070s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000628s ]
+
+[ 2014-12-31T10:44:26+08:00 ] WARN: Array
+[ 2014-12-31T10:44:26+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:44:26+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002013s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002086s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002687s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000666s ]
+
+[ 2014-12-31T10:44:26+08:00 ] WARN: Array
+[ 2014-12-31T10:44:26+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:44:26+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001981s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002045s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002351s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001073s ]
+
+[ 2014-12-31T10:51:10+08:00 ] WARN: Array
+[ 2014-12-31T10:51:10+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:51:10+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002066s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002128s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001920s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000453s ]
+
+[ 2014-12-31T10:51:10+08:00 ] WARN: Array
+[ 2014-12-31T10:51:10+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T10:51:10+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003452s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003536s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002129s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000742s ]
+
+[ 2014-12-31T11:20:53+08:00 ] WARN: Array
+[ 2014-12-31T11:20:53+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T11:20:53+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002042s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002105s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002835s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000565s ]
+
+[ 2014-12-31T11:20:53+08:00 ] WARN: Array
+[ 2014-12-31T11:20:53+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T11:20:53+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002024s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002086s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002075s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000697s ]
+
+[ 2014-12-31T11:20:54+08:00 ] WARN: the crrent page is empty
+[ 2014-12-31T11:20:54+08:00 ] WARN: the page size is empty
+[ 2014-12-31T11:20:54+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-31T11:20:54+08:00 ] INFO: query the table  count is 9
+[ 2014-12-31T11:20:54+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage?page=1&rows=10
+[ 2014-12-31T11:20:54+08:00 ] ERR: response is {"total":"9","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"3","user_name":"user1","nickname":null,"password":"123456","role_id":null,"status":null,"reg_date":null},{"user_id":"8","user_name":"user1","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"11","user_name":"user1","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"17","user_name":"user2","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"19","user_name":"user1","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"20","user_name":"user1","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"28","user_name":"user11","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"30","user_name":"\u6d4b\u8bd5\u7528\u6237","nickname":null,"password":"1","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-31T11:20:54+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002903s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002997s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001507s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.000476s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000347s ]
+NOTIC: [8] Undefined variable: tableName D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 158 行.
+
+[ 2014-12-31T11:21:32+08:00 ] WARN: Array
+[ 2014-12-31T11:21:32+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T11:21:32+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002387s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002468s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001987s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000593s ]
+
+[ 2014-12-31T11:21:32+08:00 ] WARN: Array
+[ 2014-12-31T11:21:32+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T11:21:32+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002814s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002899s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001740s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000422s ]
+
+[ 2014-12-31T11:37:18+08:00 ] WARN: Array
+[ 2014-12-31T11:37:18+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T11:37:18+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001975s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002036s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002973s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000576s ]
+
+[ 2014-12-31T11:37:18+08:00 ] WARN: Array
+[ 2014-12-31T11:37:18+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T11:37:18+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002858s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002941s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001933s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000687s ]
+
+[ 2014-12-31T11:45:33+08:00 ] WARN: Array
+[ 2014-12-31T11:45:33+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T11:45:33+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002221s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002309s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001703s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000560s ]
+
+[ 2014-12-31T11:45:33+08:00 ] WARN: Array
+[ 2014-12-31T11:45:33+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T11:45:33+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002009s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002071s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.001420s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000288s ]
+
+[ 2014-12-31T11:49:01+08:00 ] WARN: Array
+[ 2014-12-31T11:49:01+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T11:49:01+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003432s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003560s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002031s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.000580s ]
+
+[ 2014-12-31T11:49:01+08:00 ] WARN: Array
+[ 2014-12-31T11:49:01+08:00 ] INFO: [{"id":"1","text":"\u7528\u6237\u7ba1\u7406","attributes":{"url":"index.php\/UserManage\/userManage.html"}},{"id":"2","text":"\u4ea7\u54c1\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}},{"id":"3","text":"\u4f1a\u5458\u7ba1\u7406","attributes":{"url":null}},{"id":"4","text":"\u8ba2\u5355\u7ba1\u7406","attributes":{"url":"laundry.php\/ProductManage\/productManage.html"}}]
+[ 2014-12-31T11:49:01+08:00 ] 0.0.0.0 /Laundry/index.php/Index/getMenuTree
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002071s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002133s ]
+SQL: SHOW COLUMNS FROM `misp_menu` [ RunTime:0.002206s ]
+SQL: SELECT * FROM `misp_menu`  [ RunTime:0.001080s ]
+
+[ 2014-12-31T11:49:16+08:00 ] WARN: the crrent page is empty
+[ 2014-12-31T11:49:16+08:00 ] WARN: the page size is empty
+[ 2014-12-31T11:49:16+08:00 ] INFO: the current page is 0,the page size is 10
+[ 2014-12-31T11:49:16+08:00 ] INFO: query the table  count is 9
+[ 2014-12-31T11:49:16+08:00 ] ERR: the url is /Laundry/index.php/UserManage/LoadPage?page=1&rows=10
+[ 2014-12-31T11:49:16+08:00 ] ERR: response is {"total":"9","rows":[{"user_id":"1","user_name":"admin","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"3","user_name":"user1","nickname":null,"password":"123456","role_id":null,"status":null,"reg_date":null},{"user_id":"8","user_name":"user1","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"11","user_name":"user1","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"17","user_name":"user2","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"19","user_name":"user1","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"20","user_name":"user1","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"28","user_name":"user11","nickname":null,"password":"1234","role_id":null,"status":null,"reg_date":null},{"user_id":"30","user_name":"\u6d4b\u8bd5\u7528\u6237","nickname":null,"password":"1","role_id":null,"status":null,"reg_date":null}],"errorCode":0,"errorMsg":false}
+[ 2014-12-31T11:49:16+08:00 ] 0.0.0.0 /Laundry/index.php/UserManage/LoadPage?page=1&rows=10
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002171s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002254s ]
+SQL: SHOW COLUMNS FROM `misp_system_user` [ RunTime:0.001538s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `misp_system_user` LIMIT 1   [ RunTime:0.001023s ]
+NOTIC: [8] Undefined index:  page D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 32 行.
+NOTIC: [8] Undefined index:  rows D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 41 行.
+SQL: SELECT * FROM `misp_system_user` LIMIT 0,10   [ RunTime:0.000536s ]
+NOTIC: [8] Undefined variable: tableName D:\xampps\htdocs\Laundry\MISP\Lib\Action\EasyUITableAction.class.php 第 158 行.
+
