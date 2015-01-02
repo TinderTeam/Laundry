@@ -18,7 +18,7 @@ public class UserFragment extends BaseFragment implements OnClickListener
 	@Override
 	public void initRes()
 	{
-		this.fragmentRes.setImage(R.drawable.tabbar_news_icon);
+		this.fragmentRes.setImage(R.drawable.tab_icon_user);
 		this.fragmentRes.setName(R.string.tabbar_user);
 		this.fragmentRes.setFragmentView(R.layout.news_fragment);
  

@@ -8,6 +8,7 @@
         android:id="@+id/home_radio_group"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
+        android:background="@color/white"
         android:orientation="horizontal" >
     </RadioGroup>
 

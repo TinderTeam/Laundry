@@ -14,7 +14,7 @@ public class MyCartFragment extends MispListFragment<ProductJson>
 	@Override
 	public void initRes()
 	{
-		this.fragmentRes.setImage(R.drawable.tabbar_news_icon);
+		this.fragmentRes.setImage(R.drawable.tab_icon_cart);
 		this.fragmentRes.setName(R.string.tabbar_cart);
 		this.fragmentRes.setFragmentView(R.layout.news_fragment);
  

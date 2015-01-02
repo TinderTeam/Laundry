@@ -9,6 +9,7 @@ import java.util.Map;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
@@ -70,7 +72,7 @@ public class HomeFragment extends MispDistinctListFragment implements OnItemClic
 	@Override
 	public void initRes()
 	{ 
-		this.fragmentRes.setImage(R.drawable.tabbar_home_icon);
+		this.fragmentRes.setImage(R.drawable.tab_icon_home);
 		this.fragmentRes.setName(R.string.tabbar_home);
 		this.fragmentRes.setFragmentView(R.layout.home_fragment);
  
@@ -343,18 +345,25 @@ public class HomeFragment extends MispDistinctListFragment implements OnItemClic
 		case ITEM_TYPE_TAB:
 		{
 			List<ProductTypeJson> typeList = (List<ProductTypeJson>) item.getContent();
-
+			log.info("typeList"+typeList);
 			if(null == convertView)
 			{
 				convertView  = inflater.inflate(R.layout.home_list_item_radio, null);
 				view = convertView;
 				 int flag=0;
+				 //LayoutParams gParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 50);
 				RadioGroup group = (RadioGroup) view.findViewById(R.id.home_radio_group);
+				//group.setLayoutParams(gParams);
 				//group.setOnCheckedChangeListener(this);
 				for(ProductTypeJson type : typeList)
 				{
 					RadioButton  typeRadio =new RadioButton(this.getActivity());
-					LayoutParams params = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT,1);
+					//LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT,1);
+					//LayoutParams params = new LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+					typeRadio.setGravity(Gravity.CENTER);
+					LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT, (float)1.0);
+					//RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w, h);
+					
 					typeRadio.setText(type.getType_name());
 					typeRadio.setTextColor(getResources().getColorStateList(R.drawable.nav_text_color));
 					typeRadio.setTextSize(getResources().getDimension(R.dimen.content_font_size_sm));
