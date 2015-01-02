@@ -11,14 +11,14 @@ import cn.fuego.laundry.webservice.up.model.GetProductTypeReq;
 import cn.fuego.laundry.webservice.up.model.GetProductTypeRsp;
 
 
-@Path("/Buy")
+@Path("/laundry.php/ProductManage")
 @Produces("application/json")  
 @Consumes("application/json")  
 public interface ProductManageRest
 {
 	//APP获取推荐产品列表
 	@POST
-	@Path("/RecommendProduct_rest")
+	@Path("/LoadPage")
 	GetProductListRsp getRecommendProductList(GetProductListReq req);
 	
 	//APP获取最新特惠产品列表

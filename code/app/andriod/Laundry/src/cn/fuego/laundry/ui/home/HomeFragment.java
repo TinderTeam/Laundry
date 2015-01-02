@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
@@ -34,7 +35,7 @@ import cn.fuego.misp.ui.list.MispDistinctListFragment;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 import cn.fuego.misp.ui.util.LoadImageUtil;
 
-public class HomeFragment extends MispDistinctListFragment implements OnItemClickListener
+public class HomeFragment extends MispDistinctListFragment implements OnItemClickListener,OnCheckedChangeListener
 {
 	private FuegoLog log = FuegoLog.getLog(getClass());
     //定义数组来存放按钮图片  
@@ -107,8 +108,7 @@ public class HomeFragment extends MispDistinctListFragment implements OnItemClic
 		proItem.setLayoutType(ITEM_TYPE_PRODUCT);
 		ProductJson json = new ProductJson();
 		json.setPrice((float)2.2);
-		json.setDscr("aaaaa");
-		proItem.setContent(json);
+ 		proItem.setContent(json);
 		itemList.add(proItem); 
 		itemList.add(proItem); 
 
@@ -343,7 +343,7 @@ public class HomeFragment extends MispDistinctListFragment implements OnItemClic
 		case ITEM_TYPE_TAB:
 		{
 			List<ProductTypeJson> typeList = (List<ProductTypeJson>) item.getContent();
-			log.info("typeList"+typeList);
+
 			if(null == convertView)
 			{
 				convertView  = inflater.inflate(R.layout.home_list_item_radio, null);
@@ -413,7 +413,7 @@ public class HomeFragment extends MispDistinctListFragment implements OnItemClic
 			
 			ProductJson product = (ProductJson) item.getContent();
 		    TextView titleView = (TextView) convertView.findViewById(R.id.home_list_item_title);
-	        titleView.setText(product.getName());
+	        titleView.setText(product.getProduct_name());
 	        
 	        TextView curPrice = (TextView) convertView.findViewById(R.id.home_list_item_curPrice);
 	        curPrice.setText(String.valueOf(product.getPrice()));
@@ -421,11 +421,11 @@ public class HomeFragment extends MispDistinctListFragment implements OnItemClic
 	        oldPrice.setText(String.valueOf(product.getOriginal_price()));
 
 	        TextView desp = (TextView) convertView.findViewById(R.id.home_list_item_desp);
-	        desp.setText(String.valueOf(product.getDscr()));
+	        desp.setText(String.valueOf(product.getDescribe()));
 
 	        ImageView imageView = (ImageView) convertView.findViewById(R.id.home_list_item_img);
 	 
-	        loadImageUtil.loadImage(imageView, DataConvertUtil.getAbsUrl(product.getImgsrc()));
+	        loadImageUtil.loadImage(imageView, DataConvertUtil.getAbsUrl(product.getImg()));
 	        
 	        break;
 		
@@ -446,6 +446,15 @@ public class HomeFragment extends MispDistinctListFragment implements OnItemClic
 		}
 		
 
+	}
+	@Override
+	public void onCheckedChanged(RadioGroup group, int checkedId)
+	{
+		
+		int radioButtonId = group.getCheckedRadioButtonId();
+	 
+		
+		
 	}
 
 

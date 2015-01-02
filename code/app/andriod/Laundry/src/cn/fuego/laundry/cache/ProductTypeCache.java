@@ -101,7 +101,11 @@ public class ProductTypeCache
 		List<ProductTypeJson>  rootTypeList = new ArrayList<ProductTypeJson>();
 		for(ProductTypeJson json : typeList)
 		{
-			rootTypeList.add(json);
+			if(json.getFather_id() == 0)
+			{
+				rootTypeList.add(json);
+
+			}
 		}
 		return rootTypeList;
 	}
