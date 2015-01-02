@@ -6,8 +6,8 @@
 	<color name="lightyellow">#FFFFE0</color><!--亮黄色 -->
 	<color name="yellow">#FFFF00</color><!--黄色 -->
 	<color name="tabbarback">#E9EAED</color>
-	<!-- <color name="themecolor">#FC9C38</color> 主题橘色 -->
-	<color name="themecolor">#FF643F</color> <!-- 橘红色 -->
+
+	<color name="themecolor">#48B805</color> <!--主题 鲜绿色 （72,184,5）-->
 	
 	<color name="presscolor">#D25000</color><!-- button按下颜色 -->
 	<color name="disablcolor">#FF8400</color><!-- button禁用颜色 -->

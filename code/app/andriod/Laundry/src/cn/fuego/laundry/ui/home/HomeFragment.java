@@ -12,13 +12,14 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
@@ -33,7 +34,7 @@ import cn.fuego.misp.ui.list.MispDistinctListFragment;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 import cn.fuego.misp.ui.util.LoadImageUtil;
 
-public class HomeFragment extends MispDistinctListFragment implements OnItemClickListener,OnCheckedChangeListener
+public class HomeFragment extends MispDistinctListFragment implements OnItemClickListener
 {
 	private FuegoLog log = FuegoLog.getLog(getClass());
     //定义数组来存放按钮图片  
@@ -342,25 +343,33 @@ public class HomeFragment extends MispDistinctListFragment implements OnItemClic
 		case ITEM_TYPE_TAB:
 		{
 			List<ProductTypeJson> typeList = (List<ProductTypeJson>) item.getContent();
-
+			log.info("typeList"+typeList);
 			if(null == convertView)
 			{
 				convertView  = inflater.inflate(R.layout.home_list_item_radio, null);
 				view = convertView;
-				 
+				 int flag=0;
 				RadioGroup group = (RadioGroup) view.findViewById(R.id.home_radio_group);
-				group.setOnCheckedChangeListener(this);
+				//group.setOnCheckedChangeListener(this);
 				for(ProductTypeJson type : typeList)
 				{
 					RadioButton  typeRadio =new RadioButton(this.getActivity());
+					LayoutParams params = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT,1);
 					typeRadio.setText(type.getType_name());
+					typeRadio.setTextColor(getResources().getColorStateList(R.drawable.nav_text_color));
+					typeRadio.setTextSize(getResources().getDimension(R.dimen.content_font_size_sm));
 					typeRadio.setBackgroundResource(R.drawable.nav_btn);
-					typeRadio.setButtonDrawable(null);
-					
- 
+					typeRadio.setButtonDrawable(getResources().getDrawable(android.R.color.transparent));//   android:button="@null"
 					typeRadio.setId(type.getType_id());
+					typeRadio.setLayoutParams(params);
+					if(flag==0)
+					{
+						typeRadio.setChecked(true);
+					}
 					group.addView(typeRadio);
+					flag++;
 				}
+
 				convertView.setTag(view);
 
 			}
@@ -437,53 +446,6 @@ public class HomeFragment extends MispDistinctListFragment implements OnItemClic
 		}
 		
 
-	}
-	@Override
-	public void onCheckedChanged(RadioGroup group, int checkedId)
-	{
-		
-		int radioButtonId = group.getCheckedRadioButtonId();
-		if (radioButtonId == R.id.home_radio_all)
-		{   
-			tabID = 2;
-			if(ValidatorUtil.isEmpty(this.allProductData))
-			{
-				loadSendList();	
-			}
-			else
-			{
-				update(this.allProductData);	
-			}
-			
-		}
-		else if (radioButtonId == R.id.home_radio_type)
-		{
-			tabID = 1;
-			if(ValidatorUtil.isEmpty(this.typeProductData))
-			{
-				loadSendList();	
-			} 
-			else
-			{
-				update(this.typeProductData);	
-			}
-		}		
-		else 
-		{
-			tabID = 0;
-			if(ValidatorUtil.isEmpty(this.newProductData))
-			{
-				loadSendList();	
-			}
-			else
-			{
-				update(this.newProductData);	
-			}
-			
-		}
-
-		
-		
 	}
 
 
