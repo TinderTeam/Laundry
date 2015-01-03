@@ -8,12 +8,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/white"
         android:orientation="vertical" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/top_head_height" >
+            android:layout_height="@dimen/top_head_height"
+            android:background="@color/themecolor" >
 
             <Button
                 android:id="@+id/user_register_back"
@@ -36,73 +38,103 @@
                 android:layout_centerVertical="true"
                 android:text="用户注册"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="25sp" />
-
         </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp" >
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingLeft="10dp" >
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/login_input" />
+        <EditText
+            android:id="@+id/EditText01"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:autoText="false"
+            android:background="@null"
+            android:capitalize="none"
+            android:ems="11"
+            android:gravity="left|center_vertical"
+            android:hint="请输入您的手机号码"
+            android:inputType="phone"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/content_font_size_sm" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingLeft="10dp" >
 
         <EditText
             android:id="@+id/user_register_email"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/imageView2"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/imageView2"
-            android:layout_marginTop="38dp"
+            android:layout_height="match_parent"
             android:autoText="false"
             android:background="@null"
             android:capitalize="none"
-            android:ems="10"
-            android:gravity="fill_horizontal"
-            android:hint="请输入真实的邮箱"
+            android:ems="11"
+            android:gravity="left|center_vertical"
+            android:hint="请输入验证码"
+            android:inputType="number"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:selectAllOnFocus="false"
             android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceMedium" >
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/content_font_size_sm" />
 
-            <requestFocus />
-        </EditText>
-
-        <EditText
-            android:id="@+id/user_register_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/imageView2"
-            android:layout_alignRight="@+id/imageView2"
-            android:layout_below="@+id/user_register_email"
-            android:layout_marginTop="22dp"
-            android:autoText="false"
-            android:background="@null"
-            android:capitalize="none"
-            android:ems="10"
-            android:gravity="fill_horizontal"
-            android:hint="请输入6~12位密码"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:selectAllOnFocus="false"
-            android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/user_register_email"
+            android:background="@color/focuscolor"
+            android:text="获取验证码"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <EditText
+            android:id="@+id/user_register_password"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:capitalize="none"
+            android:ems="12"
+            android:hint="请输入登录密码"
+            android:password="true"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black"
+            android:textSize="@dimen/content_font_size_sm" >
+
+            <requestFocus />
+        </EditText>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="20dp"
         android:paddingBottom="10dp"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
