@@ -65,7 +65,7 @@
                 android:paddingTop="10dp" >
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/user_btn_to_login"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"

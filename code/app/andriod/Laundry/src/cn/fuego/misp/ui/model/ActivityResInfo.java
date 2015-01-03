@@ -6,6 +6,7 @@ public class ActivityResInfo
 	private int name;
 	
 	private int avtivityView;
+	private int backBtn;
 
 	public int getName()
 	{
@@ -25,6 +26,16 @@ public class ActivityResInfo
 	public void setAvtivityView(int avtivityView)
 	{
 		this.avtivityView = avtivityView;
+	}
+
+	public int getBackBtn()
+	{
+		return backBtn;
+	}
+
+	public void setBackBtn(int backBtn)
+	{
+		this.backBtn = backBtn;
 	}
 
  

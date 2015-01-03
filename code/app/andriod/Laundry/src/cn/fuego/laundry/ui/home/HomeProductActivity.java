@@ -1,5 +1,6 @@
 package cn.fuego.laundry.ui.home;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,12 +10,15 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.webservice.up.model.GetProductListReq;
+import cn.fuego.laundry.webservice.up.model.GetProductListRsp;
 import cn.fuego.laundry.webservice.up.model.base.ProductJson;
+import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.ui.list.MispListActivity;
 
 public class HomeProductActivity extends MispListActivity<ProductJson> implements  OnCheckedChangeListener
 {
-	private Map<Integer,List<ProductJson>>  productList = new HashMap<Integer, List<ProductJson>>();
+	private Map<Integer,List<ProductJson>>  productMap = new HashMap<Integer, List<ProductJson>>();
 
 	private int selectType = 0;
 
@@ -39,15 +43,34 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 	@Override
 	public void loadSendList()
 	{
-		// TODO Auto-generated method stub
+		if(productMap.isEmpty())
+		{
+			GetProductListReq req = new GetProductListReq();
+			WebServiceContext.getInstance().getProductManageRest(this).getAllProductList(req);
+		}
 		
 	}
 
 	@Override
 	public List<ProductJson> loadListRecv(Object obj)
 	{
-		
-		return this.productList.get(selectType);
+		GetProductListRsp rsp = (GetProductListRsp) obj;
+		refreshCache(rsp.getProductList());
+		return this.productMap.get(selectType);
+	}
+	
+	private void refreshCache(List<ProductJson> productList)
+	{
+		for(ProductJson json : productList)
+		{	
+			List<ProductJson> tempList = this.productMap.get(json.getType_id());
+			if(null == tempList)
+			{
+				tempList = new ArrayList<ProductJson>();
+				productMap.put(json.getType_id(), tempList);
+			}
+			tempList.add(json);
+		}
 	}
 
 	@Override
@@ -72,6 +95,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
  
 			
 		}
+		refreshList(this.productMap.get(this.selectType));
 		
 	}
 	

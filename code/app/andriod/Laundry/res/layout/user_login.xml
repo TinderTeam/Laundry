@@ -42,7 +42,7 @@
                 android:textSize="25sp" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/user_login_to_register"
                 style="@null"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
         android:paddingLeft="10dp" >
 
         <EditText
-            android:id="@+id/EditText01"
+            android:id="@+id/user_login_name"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:autoText="false"
@@ -93,7 +93,7 @@
         android:paddingLeft="10dp" >
 
         <EditText
-            android:id="@+id/EditText02"
+            android:id="@+id/user_login_password"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:autoText="false"
@@ -119,7 +119,7 @@
         android:paddingLeft="10dp" >
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/user_login_find_password"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_alignParentLeft="true"
@@ -144,7 +144,7 @@
         android:paddingTop="10dp" >
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/user_login_submit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"

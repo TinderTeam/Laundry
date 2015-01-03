@@ -6,7 +6,5 @@ import cn.fuego.misp.ui.model.ActivityResInfo;
 public abstract class MispBaseListActivity<E> extends MispHttpActivtiy
 {
  
-	public ActivityResInfo activityRes = new ActivityResInfo();
 
-	public abstract void initRes();
 }

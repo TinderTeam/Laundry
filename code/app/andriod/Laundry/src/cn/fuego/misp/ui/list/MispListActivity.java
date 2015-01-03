@@ -51,6 +51,16 @@ MispListViewInteface,OnItemClickListener
 	
 
 	public abstract void loadSendList();
+	
+	public void refreshList(List<E> newDataList)
+	{
+		this.dataList.clear();
+		if(!ValidatorUtil.isEmpty(newDataList))
+		{
+			this.dataList.addAll(newDataList);
+		}
+		this.adapter.notifyDataSetChanged();
+	}
 
 
 

@@ -10,6 +10,8 @@ import cn.fuego.laundry.webservice.up.model.LoginReq;
 import cn.fuego.laundry.webservice.up.model.LoginRsp;
 import cn.fuego.laundry.webservice.up.model.SendVerifyCodeReq;
 import cn.fuego.laundry.webservice.up.model.SendVerifyCodeRsp;
+import cn.fuego.laundry.webservice.up.model.UserRegisterReq;
+import cn.fuego.laundry.webservice.up.model.UserRegisterRsp;
 import cn.fuego.misp.webservice.up.model.base.ModifyPwdReq;
 import cn.fuego.misp.webservice.up.model.base.ModifyPwdRsp;
 
@@ -47,7 +49,9 @@ public interface UserManageRest
 	@Path("/modifyPswd_rest")
 	SendVerifyCodeRsp sendVerifyCode(SendVerifyCodeReq req);
 	
-
+	@POST
+	@Path("/modifyPswd_rest")
+	UserRegisterRsp register(UserRegisterReq req);
  
  
 }

@@ -45,6 +45,12 @@ public class MISPErrorMessageConst
 	public static final int OPERATE_PROHIBITED = 13; //无权操作
 	
 	public static final int ERROR_QUREY_FAILED = 14;
+	
+	public static final int ERROR_PHONE_INVALID = 15;
+	public static final int ERROR_VERIFY_CODE_INVALID = 16;
+	
+	public static final int ERROR_PASSWORD_IS_EMPTY = 16;
+
 	public static String getMessageByErrorCode(int errorCode)
 	{
 		return MispMessageReader.getInstance().getPropertyByName(String.valueOf(errorCode));

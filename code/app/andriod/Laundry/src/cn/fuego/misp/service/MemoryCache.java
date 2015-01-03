@@ -1,34 +1,31 @@
 package cn.fuego.misp.service;
 
+import cn.fuego.common.util.validate.ValidatorUtil;
+
 
 
 public class MemoryCache
 {
 	private static String token;
 
-	private static String curCity = "广州";
-	
+ 	
 	private static String version = "0.1";
 	private static String serverIp = "120.24.217.173";
 	private static String serverPort= "9000";
-	
-	
-	 
  
-	 
-	public static String getCurCity()
-	{
-		return curCity;
-	}
-
-	public static void setCurCity(String curCity)
-	{
-		MemoryCache.curCity = curCity;
-	}
 
 	public static String getToken()
 	{
 		return token;
+	}
+	
+	public static boolean isLogined()
+	{
+		if(ValidatorUtil.isEmpty(token))
+		{
+			return false;
+		}
+		return true;
 	}
 
 	public static void setToken(String token)

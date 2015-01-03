@@ -16,6 +16,8 @@ public class OrderJson implements Serializable
 	private int delivery_info_id;
 	private int handler_id;
 	private String operater_name;
+	private float totalPrice;
+	private float totalCount;
 	public String getOrder_id()
 	{
 		return order_id;
@@ -104,7 +106,23 @@ public class OrderJson implements Serializable
 	{
 		this.operater_name = operater_name;
 	}
-	
+	public float getTotalPrice()
+	{
+		return totalPrice;
+	}
+	public void setTotalPrice(float totalPrice)
+	{
+		this.totalPrice = totalPrice;
+	}
+	public float getTotalCount()
+	{
+		return totalCount;
+	}
+	public void setTotalCount(float totalCount)
+	{
+		this.totalCount = totalCount;
+	}
+ 
 
 
 

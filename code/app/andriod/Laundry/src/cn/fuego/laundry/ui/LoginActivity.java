@@ -16,6 +16,7 @@ import cn.fuego.laundry.R;
 import cn.fuego.laundry.constant.SharedPreferenceConst;
 import cn.fuego.laundry.ui.base.BaseActivtiy;
 import cn.fuego.laundry.ui.base.ExitApplication;
+import cn.fuego.laundry.ui.user.UserRegisterActivity;
 import cn.fuego.laundry.webservice.up.model.LoginReq;
 import cn.fuego.laundry.webservice.up.model.LoginRsp;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
@@ -23,41 +24,42 @@ import cn.fuego.misp.constant.ClientTypeEnum;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
 
-public class LoginActivity extends BaseActivtiy
+public class LoginActivity extends BaseActivtiy implements OnClickListener
 {
 	private FuegoLog log = FuegoLog.getLog(getClass());
 	private Button loginBtn;
     private EditText textName,textPwd;
     private String 	userName,password;
     private ProgressDialog proDialog;
+	private int[] buttonIDList = new int[]{R.id.user_login_submit,R.id.user_login_find_password,R.id.user_login_to_register};
 
+
+	@Override
+	public void initRes()
+	{
+		activityRes.setAvtivityView(R.layout.user_login);
+		
+	}
+	
     @Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login);
+ 
 		ExitApplication.getInstance().addActivity(this);
 		
-		textName = (EditText) findViewById(R.id.txt_username);
-		textPwd =(EditText) findViewById(R.id.txt_password);
-		loginBtn = (Button)findViewById(R.id.login_btn);
-		loginBtn.setOnClickListener(loginClick);
+		textName = (EditText) findViewById(R.id.user_login_name);
+		textPwd =(EditText) findViewById(R.id.user_login_password);
+		for(int id : buttonIDList)
+		{
+			Button button = (Button) findViewById(id);
+			button.setOnClickListener(this);
+		}
+		
        
 		
 	}
-	private OnClickListener loginClick = new OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-            
-			proDialog =ProgressDialog.show(LoginActivity.this, "请稍等", "登录信息验证中……");
-			checkLogin();
-			
-
-		}
-
-
-	};
+ 
 	private void checkLogin()
 	{
 
@@ -119,4 +121,44 @@ public class LoginActivity extends BaseActivtiy
 		 return tm.getDeviceId();
 	}
 
+	@Override
+	public void onClick(View v)
+	{
+		
+		if(v.getId() == R.id.user_btn_to_login)
+		{
+			
+		}
+
+		switch(v.getId())
+		{
+			case R.id.user_login_submit:
+			{
+				proDialog =ProgressDialog.show(LoginActivity.this, "请稍等", "登录信息验证中……");
+				checkLogin();
+			}
+			break;
+			case R.id.user_login_find_password:
+			{
+				Intent i = new Intent();
+				i.setClass(this, UserRegisterActivity.class);
+		        this.startActivity(i);
+
+			}
+			break;
+			case R.id.user_login_to_register:
+			{
+				Intent i = new Intent();
+				i.setClass(this, UserRegisterActivity.class);
+		        this.startActivity(i);
+			}
+			break;
+			
+		}
+
+		
+	}
+
+	
+ 
 }

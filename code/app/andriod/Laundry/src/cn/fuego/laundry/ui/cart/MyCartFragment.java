@@ -1,24 +1,27 @@
 package cn.fuego.laundry.ui.cart;
 
+import java.io.Serializable;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
+import cn.fuego.laundry.ui.order.OrderActivity;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.misp.ui.list.MispListFragment;
 
-public class MyCartFragment extends MispListFragment<OrderDetailJson>
+public class MyCartFragment extends MispListFragment<OrderDetailJson> implements OnClickListener
 {
-	private OrderJson order;
-	private int totalCnt;
-	private float sum;
-
+	private OrderJson order = new OrderJson();
+ 
 	@Override
 	public void initRes()
 	{
@@ -35,17 +38,20 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		json.setQuantity(1);
 		this.dataList.add(json);
 	}
-	
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
-		 View rootView = super.onCreateView(inflater, container, savedInstanceState);
-		 super.adapterForScrollView();
-
-		 return rootView;
+		View rootView = super.onCreateView(inflater, container, savedInstanceState);
+		Button submitButton = (Button) rootView.findViewById(R.id.chart_submit);
+		submitButton.setOnClickListener(this);
+		super.adapterForScrollView();
+		
+		return rootView;
 	}
+
+
 
 
 	@Override
@@ -73,6 +79,18 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 	public List<OrderDetailJson> loadListRecv(Object obj)
 	{
 		return null;
+	}
+
+
+	@Override
+	public void onClick(View v)
+	{
+	 
+		Intent intent = new Intent(this.getActivity(),OrderActivity.class);
+ 
+		this.startActivity(intent);
+
+		
 	}
 
 

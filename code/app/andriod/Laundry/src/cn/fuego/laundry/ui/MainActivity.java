@@ -30,6 +30,14 @@ public class MainActivity extends BaseActivtiy
 	
 	public static boolean isForeground = false;
 
+
+	@Override
+	public void initRes()
+	{
+		this.activityRes.setAvtivityView(R.layout.main_welcome);
+		
+	}
+ 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,7 +48,7 @@ public class MainActivity extends BaseActivtiy
 		
 		//initial image load
 		init();
-		setContentView(R.layout.main_welcome);
+	 
 	 
 		
 		Intent intent = new Intent();
@@ -102,7 +110,7 @@ public class MainActivity extends BaseActivtiy
 		.displayer(new FadeInBitmapDisplayer(100))//是否图片加载好后渐入的动画时间  
 		.build();//构建完成  
 	}
- 
+
 
 		
 }
