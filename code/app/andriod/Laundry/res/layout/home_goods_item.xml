@@ -14,29 +14,29 @@
         android:paddingRight="10dp" >
 
         <ImageView
-            android:id="@+id/home_list_item_img"
+            android:id="@+id/product_list_item_img"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:scaleType="fitXY"
             android:src="@drawable/load_image_failed" />
 
         <TextView
-            android:id="@+id/home_list_item_title"
+            android:id="@+id/product_list_item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@+id/home_list_item_img"
+            android:layout_toRightOf="@+id/product_list_item_img"
             android:text="衣物名称"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/home_list_item_curPrice"
+            android:id="@+id/product_list_item_curPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/home_list_item_img"
+            android:layout_alignBottom="@+id/product_list_item_img"
             android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@+id/home_list_item_img"
+            android:layout_toRightOf="@+id/product_list_item_img"
             android:text="TextView"
             android:textColor="@color/themecolor" />
 
@@ -44,8 +44,8 @@
             android:id="@+id/checkBox1"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_alignBottom="@+id/home_list_item_curPrice"
-            android:layout_alignRight="@+id/home_list_item_title"
+            android:layout_alignBottom="@+id/product_list_item_curPrice"
+            android:layout_alignRight="@+id/product_list_item_name"
             android:background="@drawable/checkbox_btn"
             android:button="@null" />
 

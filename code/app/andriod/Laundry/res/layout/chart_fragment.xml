@@ -1,17 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/backcolor"
-    android:gravity="top"
-    android:orientation="vertical"
-    tools:context="cn.fuego.smart.home.ui.MainActivity" >
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/top_head_height"
+        android:layout_marginBottom="20dp"
         android:background="@color/themecolor" >
+
+        <Button
+            android:id="@+id/user_register_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/detail_back"
+            android:drawablePadding="5dp"
+            android:focusableInTouchMode="true"
+            android:text="返回"
+            android:textColor="@color/themecolor"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView1"
@@ -21,53 +32,79 @@
             android:layout_centerVertical="true"
             android:text="洗衣篮"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white" />
-
+            android:textColor="@color/white"
+            android:textSize="25sp" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.21"
+        android:layout_weight="1"
         android:orientation="vertical" >
 
         <ListView
-            android:id="@+id/char_list"
+            android:id="@+id/chart_list"
             android:layout_width="match_parent"
-            android:layout_height="310dp" >
+            android:layout_height="wrap_content" >
         </ListView>
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/RelativeLayout01"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="right"
-        android:orientation="vertical" >
+        android:layout_gravity="right"
+        android:orientation="horizontal"
+        android:padding="10dp" >
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/chart_tatolCnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="TextViewggg" />
-    </RelativeLayout>
+            android:text="3"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"
+            android:textSize="@dimen/content_font_size" />
+
+        <TextView
+            android:id="@+id/chart_tatolPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="件物品，总计："
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"
+            android:textSize="@dimen/content_font_size" />
+
+        <TextView
+            android:id="@+id/chart_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="￥466.00"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/focuscolor"
+            android:textSize="@dimen/content_font_size" />
+    </LinearLayout>
+ 
 
     <RelativeLayout
-        android:id="@+id/RelativeLayout02"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp" >
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Button" />
+            android:id="@+id/user_mark_manage_addbtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/common_btn"
+            android:text="下一步"
+            android:textColor="@color/white"
+            android:textSize="@dimen/content_font_size" />
     </RelativeLayout>
 
 </LinearLayout>

@@ -1,41 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/home_list_item_all"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:paddingBottom="20dp"
-    android:paddingTop="10dp" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/chart_product_name"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/home_list_item_img"
-        android:text="标题"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/black" />
+        android:layout_height="50dp"
+        android:background="@color/white" >
 
-    <TextView
-        android:id="@+id/chart_product_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/chart_product_amount"
-        android:layout_alignTop="@+id/chart_product_name"
-        android:text="TextView" />
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:background="@null"
+            android:src="@drawable/item_del_icon_normal" />
 
-    <EditText
-        android:id="@+id/chart_product_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/chart_product_price"
-        android:ems="10"
-        android:inputType="numberSigned" >
+        <EditText
+            android:id="@+id/chart_list_item_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/imageButton1"
+            android:ems="2"
+            android:inputType="number"
+            android:text="1" >
 
-        <requestFocus />
-    </EditText>
+            <requestFocus />
+        </EditText>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/chart_list_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="价格"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/chart_list_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/chart_list_item_price"
+            android:layout_alignBottom="@+id/chart_list_item_price"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16dp"
+            android:text="衣物名称"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+</LinearLayout>

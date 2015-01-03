@@ -23,7 +23,7 @@ MispListViewInteface,OnItemClickListener
 
  
 
-	private List<E> dataList = new ArrayList<E>();
+	protected List<E> dataList = new ArrayList<E>();
 
 	private MispListAdapter<E> adapter;
 

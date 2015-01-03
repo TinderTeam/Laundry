@@ -93,7 +93,7 @@
             android:textSize="@dimen/content_font_size_sm" />
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/user_register_btn_verifyCode"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
@@ -141,7 +141,7 @@
         android:paddingTop="10dp" >
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/user_register_btn_submit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"

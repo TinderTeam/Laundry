@@ -8,6 +8,8 @@ import javax.ws.rs.Produces;
 
 import cn.fuego.laundry.webservice.up.model.LoginReq;
 import cn.fuego.laundry.webservice.up.model.LoginRsp;
+import cn.fuego.laundry.webservice.up.model.SendVerifyCodeReq;
+import cn.fuego.laundry.webservice.up.model.SendVerifyCodeRsp;
 import cn.fuego.misp.webservice.up.model.base.ModifyPwdReq;
 import cn.fuego.misp.webservice.up.model.base.ModifyPwdRsp;
 
@@ -40,6 +42,10 @@ public interface UserManageRest
 	@POST
 	@Path("/modifyPswd_rest")
     ModifyPwdRsp modifyPassword(ModifyPwdReq req);
+	
+	@POST
+	@Path("/modifyPswd_rest")
+	SendVerifyCodeRsp sendVerifyCode(SendVerifyCodeReq req);
 	
 
  
