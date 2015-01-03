@@ -2,7 +2,10 @@ package cn.fuego.laundry.ui.cart;
 
 import java.util.List;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
@@ -33,6 +36,17 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		this.dataList.add(json);
 	}
 	
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState)
+	{
+		 View rootView = super.onCreateView(inflater, container, savedInstanceState);
+		 super.adapterForScrollView();
+
+		 return rootView;
+	}
+
 
 	@Override
 	public void loadSendList()
