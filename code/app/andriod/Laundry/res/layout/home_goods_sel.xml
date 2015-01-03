@@ -49,7 +49,8 @@
             <ScrollView
                 android:id="@+id/scrollView1"
                 android:layout_width="100dp"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:background="@color/white" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -66,6 +67,7 @@
                             android:id="@+id/home_radio_new"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
+                            android:layout_marginBottom="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/nav_btn"
                             android:button="@null"
@@ -78,6 +80,7 @@
                             android:id="@+id/RadioButton06"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
+                            android:layout_marginBottom="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/nav_btn"
                             android:button="@null"
@@ -89,6 +92,7 @@
                             android:id="@+id/RadioButton05"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
+                            android:layout_marginBottom="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/nav_btn"
                             android:button="@null"
@@ -100,6 +104,7 @@
                             android:id="@+id/RadioButton04"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
+                            android:layout_marginBottom="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/nav_btn"
                             android:button="@null"
@@ -111,6 +116,7 @@
                             android:id="@+id/RadioButton03"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
+                            android:layout_marginBottom="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/nav_btn"
                             android:button="@null"
@@ -122,6 +128,7 @@
                             android:id="@+id/RadioButton02"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
+                            android:layout_marginBottom="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/nav_btn"
                             android:button="@null"
@@ -133,12 +140,14 @@
                             android:id="@+id/RadioButton01"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
+                            android:layout_marginBottom="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/nav_btn"
                             android:button="@null"
                             android:gravity="center"
                             android:text="箱包鞋类（奢侈品除外）"
                             android:textColor="@drawable/nav_text_color" />
+
                     </RadioGroup>
                 </LinearLayout>
             </ScrollView>
@@ -146,19 +155,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:orientation="vertical" >
 
                 <ListView
                     android:id="@+id/listView1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content"
+                    android:divider="@color/backcolor"
+                    android:dividerHeight="1dp" >
+
                 </ListView>
             </LinearLayout>
         </LinearLayout>
 
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:background="@color/themecolor" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:alpha="0.8"
+            android:background="@color/white"
             android:paddingBottom="10dp"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"

@@ -114,6 +114,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/white"
         android:paddingLeft="10dp" >
 

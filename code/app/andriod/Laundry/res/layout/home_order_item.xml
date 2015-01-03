@@ -16,6 +16,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
+            android:layout_toLeftOf="@+id/TextView01"
             android:text="衣物名称"
             android:textColor="@color/black" />
 
