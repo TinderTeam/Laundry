@@ -20,7 +20,6 @@ abstract  class EasyUITableAction extends BaseAction
     {
     	$Req = $this->GetReqObj();
     	$obj = $Req->obj;
-    	
     	return $this->objectToArray($obj);
     }
     protected function GetTableCondition()

@@ -16,7 +16,6 @@ class ProductManageAction extends EasyUITableAction
 	{
 		$db = LaundryDaoContext::ViewProduct();		
         $this->LoadPageTable($db,$this->GetTableCondition());
-		
 	}
 
 	/* (non-PHPdoc)

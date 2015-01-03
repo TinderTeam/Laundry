@@ -14,6 +14,14 @@ class LaundryDaoContext
 	{
 		return M('product_type');
 	}
+	static function Customer()
+	{
+		return M('customer');
+	}
+	static function ViewCustomer()
+	{
+		return M('view_customer');
+	}
 }
 
 ?>
