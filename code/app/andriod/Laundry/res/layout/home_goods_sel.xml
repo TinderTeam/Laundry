@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backcolor"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_head_height"
+        android:background="@color/themecolor" >
+
+        <Button
+            android:id="@+id/user_register_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/detail_back"
+            android:drawablePadding="5dp"
+            android:focusableInTouchMode="true"
+            android:text="返回"
+            android:textColor="@color/themecolor"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="添加待洗物品"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/backcolor" >
+
+            <ScrollView
+                android:id="@+id/scrollView1"
+                android:layout_width="100dp"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <RadioGroup
+                        android:id="@+id/home_radio_group"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <RadioButton
+                            android:id="@+id/home_radio_new"
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/nav_btn"
+                            android:button="@null"
+                            android:checked="true"
+                            android:gravity="center"
+                            android:text="居家类"
+                            android:textColor="@drawable/nav_text_color" />
+
+                        <RadioButton
+                            android:id="@+id/RadioButton06"
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/nav_btn"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="皮毛服饰类"
+                            android:textColor="@drawable/nav_text_color" />
+
+                        <RadioButton
+                            android:id="@+id/RadioButton05"
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/nav_btn"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="汽车配饰类"
+                            android:textColor="@drawable/nav_text_color" />
+
+                        <RadioButton
+                            android:id="@+id/RadioButton04"
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/nav_btn"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="上装类"
+                            android:textColor="@drawable/nav_text_color" />
+
+                        <RadioButton
+                            android:id="@+id/RadioButton03"
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/nav_btn"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="奢侈品护理及其他类"
+                            android:textColor="@drawable/nav_text_color" />
+
+                        <RadioButton
+                            android:id="@+id/RadioButton02"
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/nav_btn"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="下装类"
+                            android:textColor="@drawable/nav_text_color" />
+
+                        <RadioButton
+                            android:id="@+id/RadioButton01"
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/nav_btn"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="箱包鞋类（奢侈品除外）"
+                            android:textColor="@drawable/nav_text_color" />
+                    </RadioGroup>
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <ListView
+                    android:id="@+id/listView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+                </ListView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingTop="10dp" >
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/common_btn"
+                android:focusableInTouchMode="true"
+                android:text="洗衣篮"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
