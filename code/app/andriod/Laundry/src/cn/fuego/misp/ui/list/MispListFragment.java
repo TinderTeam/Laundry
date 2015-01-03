@@ -26,7 +26,7 @@ public abstract class MispListFragment<E> extends MispBaseListFragment<E> implem
 	public static final String SELECT_ITEM = "SELECT_ITEM";
  
 
-	private List<E> dataList = new ArrayList<E>();
+	protected List<E> dataList = new ArrayList<E>();
 
 	private MispListAdapter<E> adapter;
 
