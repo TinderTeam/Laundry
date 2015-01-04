@@ -30,8 +30,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        
-         android:theme="@style/DefualtTheme.Light">
+        android:theme="@android:style/Theme.Black.NoTitleBar"
+       
+         >
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/app_name" >

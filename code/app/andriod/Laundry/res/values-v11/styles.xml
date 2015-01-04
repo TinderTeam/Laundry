@@ -8,8 +8,5 @@
         <!-- API 11 theme customizations can go here. -->
     </style>
 
-    <style name="DefualtTheme.Light" parent="android:Theme.Light.NoTitleBar">
-    </style>
-
 
 </resources>

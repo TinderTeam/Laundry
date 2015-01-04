@@ -16,15 +16,11 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
-import android.widget.Toast;
 import antistatic.spinnerwheel.AbstractWheel;
 import antistatic.spinnerwheel.OnWheelChangedListener;
-import antistatic.spinnerwheel.OnWheelClickedListener;
-import antistatic.spinnerwheel.OnWheelScrollListener;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
@@ -38,7 +34,6 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 	private OrderJson order = new OrderJson();
 	private PopupWindow popupWindow=null;  
 	private View view;  
-	private Context ctx;
 	private EditText amountView;
 	private  String curNum="1";
 	@Override
@@ -66,7 +61,6 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 		Button submitButton = (Button) rootView.findViewById(R.id.chart_submit);
 		submitButton.setOnClickListener(this);
 		super.adapterForScrollView();
-		ctx=this.getActivity();
 		return rootView;
 	}
 

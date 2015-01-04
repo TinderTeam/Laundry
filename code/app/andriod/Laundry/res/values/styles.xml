@@ -30,9 +30,5 @@
  
     </style> 
 
-    <style name="WheelDemoTheme.Light" parent="android:Theme.Light">
-    </style>
-    <style name="WheelDemoTheme" parent="android:Theme">
-    </style>
 
 </resources>
