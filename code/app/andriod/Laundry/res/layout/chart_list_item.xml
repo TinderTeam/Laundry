@@ -9,16 +9,6 @@
         android:layout_height="50dp"
         android:background="@color/white" >
 
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-            android:background="@null"
-            android:src="@drawable/item_del_icon_normal" />
-
         <TextView
             android:id="@+id/chart_list_item_price"
             android:layout_width="wrap_content"
@@ -26,7 +16,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="价格"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="@dimen/content_font_size" />
 
         <TextView
             android:id="@+id/chart_list_item_name"
@@ -37,14 +28,16 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="16dp"
             android:text="衣物名称"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="@dimen/content_font_size" />
 
         <EditText
             android:id="@+id/chart_list_item_quantity"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageButton1"
-            android:layout_marginLeft="16dp"
+            android:layout_height="25dp"
+            android:layout_alignBaseline="@+id/chart_list_item_price"
+            android:layout_alignBottom="@+id/chart_list_item_price"
+            android:layout_marginLeft="17dp"
             android:layout_toRightOf="@+id/chart_list_item_price"
             android:background="@drawable/edittext_sel"
             android:ems="2"
@@ -52,10 +45,16 @@
             android:inputType="number"
             android:text="1"
             android:textColor="@color/black"
-            android:textSize="@dimen/head_font_size_sm" >
+            android:textSize="@dimen/content_font_size" />
 
-            <requestFocus />
-        </EditText>
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/btn_del_img" />
 
     </RelativeLayout>
 

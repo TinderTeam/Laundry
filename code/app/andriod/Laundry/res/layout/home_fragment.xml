@@ -17,7 +17,8 @@
             android:layout_centerVertical="true"
             android:text="快客洗涤"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white" />
+            android:textColor="@color/white" 
+            android:textSize="@dimen/head_font_size_sm"/>
     </RelativeLayout>
 
     <ScrollView
@@ -71,7 +72,7 @@
                 android:orientation="horizontal" >
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical" >
@@ -135,29 +136,10 @@
                             android:textColor="@color/white"
                             android:textSize="@dimen/content_font_size" />
                     </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_weight="1"
-                        android:padding="10dp" >
-
-                        <Button
-                            android:id="@+id/button2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentTop="true"
-                            android:background="@drawable/common_btn"
-                            android:focusableInTouchMode="true"
-                            android:text="一键下单"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
-                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical" >
@@ -240,27 +222,55 @@
                             android:text="箱包鞋类（奢侈品除外）"
                             android:textColor="@color/white"
                             android:textSize="@dimen/content_font_size" />
-                    </RelativeLayout>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_weight="1"
-                        android:padding="10dp" >
-
-                        <Button
-                            android:id="@+id/Button08"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentTop="true"
-                            android:background="@drawable/common_btn"
-                            android:focusableInTouchMode="true"
-                            android:text="客服电话"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
                     </RelativeLayout>
                 </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:padding="10dp" >
+
+                    <Button
+                        android:id="@+id/Button08"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/common_btn"
+                        android:focusableInTouchMode="true"
+                        android:text="客服电话"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:padding="10dp" >
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/btn_green"
+                        android:focusableInTouchMode="true"
+                        android:text="一键下单"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
             </LinearLayout>
 
         </LinearLayout>

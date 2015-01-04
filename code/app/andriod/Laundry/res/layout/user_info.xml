@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/white"
+        android:background="@color/themecolor"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -23,7 +23,7 @@
                 android:layout_centerVertical="true"
                 android:text="个人资料"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20dp" />
 
             <Button
@@ -36,7 +36,7 @@
                 android:drawablePadding="5dp"
                 android:focusableInTouchMode="true"
                 android:text="返回"
-                android:textColor="@color/themecolor"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
         </RelativeLayout>
     </LinearLayout>

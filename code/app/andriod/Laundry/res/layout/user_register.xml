@@ -27,8 +27,8 @@
                 android:drawablePadding="5dp"
                 android:focusableInTouchMode="true"
                 android:text="返回"
-                android:textColor="@color/themecolor"
-                android:textSize="20sp" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/content_font_size" />
 
             <TextView
                 android:id="@+id/textView1"
@@ -39,7 +39,7 @@
                 android:text="用户注册"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="@dimen/head_font_size_sm" />
         </RelativeLayout>
     </LinearLayout>
 
