@@ -11,7 +11,7 @@
         android:background="@color/themecolor" >
 
         <Button
-            android:id="@+id/user_register_back"
+            android:id="@+id/product_back"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_marginLeft="10dp"
@@ -58,13 +58,13 @@
                     android:orientation="vertical" >
 
                     <RadioGroup
-                        android:id="@+id/home_radio_group"
+                        android:id="@+id/product_radio_group"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical" >
 
                         <RadioButton
-                            android:id="@+id/home_radio_new"
+                            android:id="@+id/product_radio1"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
                             android:layout_marginBottom="1dp"
@@ -77,7 +77,7 @@
                             android:textColor="@drawable/nav_text_color" />
 
                         <RadioButton
-                            android:id="@+id/RadioButton06"
+                            android:id="@+id/product_radio2"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
                             android:layout_marginBottom="1dp"
@@ -89,7 +89,7 @@
                             android:textColor="@drawable/nav_text_color" />
 
                         <RadioButton
-                            android:id="@+id/RadioButton05"
+                            android:id="@+id/product_radio3"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
                             android:layout_marginBottom="1dp"
@@ -101,7 +101,7 @@
                             android:textColor="@drawable/nav_text_color" />
 
                         <RadioButton
-                            android:id="@+id/RadioButton04"
+                            android:id="@+id/product_radio4"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
                             android:layout_marginBottom="1dp"
@@ -113,7 +113,7 @@
                             android:textColor="@drawable/nav_text_color" />
 
                         <RadioButton
-                            android:id="@+id/RadioButton03"
+                            android:id="@+id/product_radio5"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
                             android:layout_marginBottom="1dp"
@@ -125,7 +125,7 @@
                             android:textColor="@drawable/nav_text_color" />
 
                         <RadioButton
-                            android:id="@+id/RadioButton02"
+                            android:id="@+id/product_radio6"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
                             android:layout_marginBottom="1dp"
@@ -137,7 +137,7 @@
                             android:textColor="@drawable/nav_text_color" />
 
                         <RadioButton
-                            android:id="@+id/RadioButton01"
+                            android:id="@+id/product_radio7"
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
                             android:layout_marginBottom="1dp"
@@ -186,7 +186,7 @@
             android:paddingTop="10dp" >
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/product_btn_to_cart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"

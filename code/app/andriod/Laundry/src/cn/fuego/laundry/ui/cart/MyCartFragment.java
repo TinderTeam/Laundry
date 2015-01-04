@@ -85,12 +85,10 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 	@Override
 	public void onClick(View v)
 	{
-	 
 		Intent intent = new Intent(this.getActivity(),OrderActivity.class);
  
 		this.startActivity(intent);
 
-		
 	}
 
 

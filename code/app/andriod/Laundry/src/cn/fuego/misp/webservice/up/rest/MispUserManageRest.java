@@ -1,4 +1,4 @@
-package cn.fuego.laundry.webservice.up.rest;
+package cn.fuego.misp.webservice.up.rest;
 
 
 import javax.ws.rs.Consumes;
@@ -25,33 +25,34 @@ import cn.fuego.misp.webservice.up.model.base.ModifyPwdRsp;
 *
  */
 
-@Path("/Index")
+@Path("/index.php/UserManage")
 @Produces("application/json")  
 @Consumes("application/json")  
-public interface UserManageRest
+public interface MispUserManageRest
 {
 	//APP登录验证
 	@POST
-	@Path("/login_rest")
+	@Path("/Login")
 	LoginRsp login(LoginReq req);
 	
 	//APP退出
 	@POST
-	@Path("/logout_rest")
+	@Path("/Logout")
 	LoginRsp logout(LoginReq req);
 	
 	//APP修改密码
 	@POST
-	@Path("/modifyPswd_rest")
+	@Path("/ModifyPassword")
     ModifyPwdRsp modifyPassword(ModifyPwdReq req);
-	
-	@POST
-	@Path("/modifyPswd_rest")
-	SendVerifyCodeRsp sendVerifyCode(SendVerifyCodeReq req);
 	
 	@POST
 	@Path("/modifyPswd_rest")
 	UserRegisterRsp register(UserRegisterReq req);
  
+	@POST
+	@Path("/modifyPswd_rest")
+	SendVerifyCodeRsp sendVerifyCode(SendVerifyCodeReq req);
+	
+
  
 }

@@ -33,9 +33,7 @@ MispListViewInteface,OnItemClickListener
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		this.initRes();
-		
-		setContentView(this.activityRes.getAvtivityView());
+ 
 		//ListView user_info_list = (ListView) findViewById(R.id.user_info_list);
 		//ArrayList<HashMap<String,Object>> datasource = new ArrayList<HashMap<String,Object>>();
 		//String[] data={"昵称","user1",};

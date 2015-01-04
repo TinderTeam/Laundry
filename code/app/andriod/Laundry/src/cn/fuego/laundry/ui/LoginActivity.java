@@ -68,14 +68,13 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 		password = textPwd.getText().toString().trim();
 		LoginReq req = new LoginReq();
 		req.setPassword(password);
-		req.setUsername(userName);
+		req.setUser_name(userName);
 		req.setClientType(ClientTypeEnum.ANDRIOD_CLIENT.getStrValue());
 		req.setClientVersion(MemoryCache.getVersion());
-		req.setDevToken(getDeviceID());
-
+ 
 		try
 		{
-			WebServiceContext.getInstance().getUserManageRest(this).login(req);
+			WebServiceContext.getInstance().getCustomerManageRest(this).login(req);
  
 		}
 		catch(Exception e)

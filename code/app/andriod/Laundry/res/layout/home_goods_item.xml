@@ -41,7 +41,7 @@
             android:textColor="@color/themecolor" />
 
         <CheckBox
-            android:id="@+id/checkBox1"
+            android:id="@+id/product_list_item_check_btn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignBottom="@+id/product_list_item_curPrice"

@@ -15,8 +15,10 @@ import cn.fuego.misp.service.MemoryCache;
  */
 public class BaseJsonReq implements Serializable
 {
-	protected String token = MemoryCache.getToken();
-
+ 	protected String token = MemoryCache.getToken();
+	protected String clientType;		//
+	protected String clientVersion;	//
+	
 	public String getToken()
 	{
 		return token;
@@ -27,11 +29,26 @@ public class BaseJsonReq implements Serializable
 		this.token = token;
 	}
 
-	@Override
-	public String toString()
+	public String getClientType()
 	{
-		return "BaseJsonReq [token=" + token + "]";
+		return clientType;
 	}
+
+	public void setClientType(String clientType)
+	{
+		this.clientType = clientType;
+	}
+
+	public String getClientVersion()
+	{
+		return clientVersion;
+	}
+
+	public void setClientVersion(String clientVersion)
+	{
+		this.clientVersion = clientVersion;
+	}
+
  
 
 }

@@ -19,25 +19,25 @@ package cn.fuego.misp.webservice.up.model.base;
 public class ModifyPwdReq extends BaseJsonReq
 {
 	 
-	private String username;		//用户名
-	private String oldPwd;			//原密码
+	private String user_name;		//用户名
+	private String pwdOld;			//原密码
 	private String pwdNew;			//新密码
-	
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getOldPwd()
+	public String getUser_name()
 	{
-		return oldPwd;
+		return user_name;
 	}
-	public void setOldPwd(String oldPwd)
+	public void setUser_name(String user_name)
 	{
-		this.oldPwd = oldPwd;
+		this.user_name = user_name;
 	}
- 
+	public String getPwdOld()
+	{
+		return pwdOld;
+	}
+	public void setPwdOld(String pwdOld)
+	{
+		this.pwdOld = pwdOld;
+	}
 	public String getPwdNew()
 	{
 		return pwdNew;
@@ -46,13 +46,7 @@ public class ModifyPwdReq extends BaseJsonReq
 	{
 		this.pwdNew = pwdNew;
 	}
-	@Override
-	public String toString() {
-		return "ModifyPwdReq [username=" + username + ", oldPwd=" + oldPwd
-				+ ", pwdNew=" + pwdNew + "]";
-	}
-	
- 
+	 
 	
 
 }

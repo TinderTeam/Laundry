@@ -8,17 +8,16 @@ import cn.fuego.misp.webservice.up.model.base.BaseJsonRsp;
 
 public class GetProductListRsp extends BaseJsonRsp
 {
-	private List<ProductJson> productList = new ArrayList<ProductJson>();
+	private List<ProductJson> obj = new ArrayList<ProductJson>();
 
-	public List<ProductJson> getProductList() {
-		return productList;
+	public List<ProductJson> getObj()
+	{
+		return obj;
 	}
 
-	public void setProductList(List<ProductJson> productList) {
-		this.productList = productList;
+	public void setObj(List<ProductJson> obj)
+	{
+		this.obj = obj;
 	}
-
  
-	
-
 }

@@ -40,13 +40,16 @@ import cn.fuego.misp.ui.util.LoadImageUtil;
 public class HomeFragment extends BaseFragment implements OnClickListener
 {
 	private FuegoLog log = FuegoLog.getLog(getClass());
+	
+	public static final String SELECT_TYPE = "selectType";
  
  
     
 	private LoadImageUtil loadImageUtil = LoadImageUtil.getInstance();
 	
-	private int[] buttonID = new int[]{R.id.Button01,R.id.Button02,R.id.Button03,R.id.Button04};
+	private int[] buttonID = new int[]{R.id.Button01,R.id.Button02,R.id.Button03,R.id.Button04,R.id.Button05,R.id.Button06,R.id.Button07,R.id.Button08};
 	
+	private Map<Integer,Integer> btnTypeMap = new HashMap<Integer, Integer>();
  
 
 	@Override
@@ -55,7 +58,15 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		this.fragmentRes.setImage(R.drawable.tab_icon_home);
 		this.fragmentRes.setName(R.string.tabbar_home);
 		this.fragmentRes.setFragmentView(R.layout.home_fragment);
- 
+		
+		btnTypeMap.put(R.id.Button01, 1);
+		btnTypeMap.put(R.id.Button02, 2);
+		btnTypeMap.put(R.id.Button03, 3);
+		btnTypeMap.put(R.id.Button04, 4);
+		btnTypeMap.put(R.id.Button05, 5);
+		btnTypeMap.put(R.id.Button06, 6);
+		btnTypeMap.put(R.id.Button06, 7);
+
  	}
  
 	 
@@ -120,7 +131,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 	public void onClick(View v)
 	{
  		Intent intent = new Intent(this.getActivity(),HomeProductActivity.class);
- 
+		intent.putExtra(SELECT_TYPE, btnTypeMap.get(v.getId()));
 		this.startActivity(intent);
 		
 	}
