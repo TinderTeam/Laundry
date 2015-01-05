@@ -1,6 +1,7 @@
 package cn.fuego.misp.ui.base;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,6 +22,8 @@ public abstract class MispBaseActivtiy extends Activity
 		initRes();
 		// TODO Auto-generated method stub
  		super.onCreate(savedInstanceState);
+ 		//÷ÿ‘ÿ£¨Ω˚÷πÀ˘”–activity ˙∆¡
+ 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(activityRes.getAvtivityView());
 		View button = findViewById(activityRes.getBackBtn());
 		if(null != button)

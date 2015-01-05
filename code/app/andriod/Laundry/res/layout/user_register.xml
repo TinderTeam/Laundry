@@ -7,14 +7,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/head_height"
         android:layout_marginBottom="20dp"
         android:background="@color/white"
         android:orientation="vertical" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/top_head_height"
+            android:layout_height="match_parent"
             android:background="@color/themecolor" >
 
             <Button
@@ -51,8 +51,10 @@
 
         <EditText
             android:id="@+id/user_register_txt_phoneNum"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
             android:autoText="false"
             android:background="@null"
             android:capitalize="none"
@@ -62,7 +64,6 @@
             android:inputType="phone"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:selectAllOnFocus="false"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="@dimen/content_font_size_sm" />
@@ -74,33 +75,39 @@
         android:background="@color/white"
         android:paddingLeft="10dp" >
 
-        <EditText
-            android:id="@+id/user_register_txt_verify_code"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:autoText="false"
-            android:background="@null"
-            android:capitalize="none"
-            android:ems="11"
-            android:gravity="left|center_vertical"
-            android:hint="请输入验证码"
-            android:inputType="number"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:selectAllOnFocus="false"
-            android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="@dimen/content_font_size_sm" />
-
-        <Button
-            android:id="@+id/user_register_btn_verifyCode"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/user_register_txt_verify_code"
-            android:background="@color/focuscolor"
-            android:text="获取验证码"
-            android:textColor="@color/white" />
+            android:layout_height="match_parent" >
+
+            <EditText
+                android:id="@+id/user_register_txt_verify_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:autoText="false"
+                android:background="@null"
+                android:capitalize="none"
+                android:ems="11"
+                android:gravity="left|center_vertical"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:selectAllOnFocus="false"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/content_font_size_sm" />
+
+            <Button
+                android:id="@+id/user_register_btn_verifyCode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/focuscolor"
+                android:text="获取验证码"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -110,11 +117,11 @@
         android:layout_marginTop="20dp"
         android:background="@color/white"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp" >
+        android:paddingRight="30dp" >
 
         <EditText
             android:id="@+id/user_register_txt_password"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
             android:capitalize="none"
@@ -133,17 +140,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:paddingTop="10dp" >
+        android:padding="30dp" >
 
         <Button
             android:id="@+id/user_register_btn_submit"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/common_btn"

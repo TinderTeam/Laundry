@@ -52,6 +52,9 @@ public class UserRegisterActivity extends MispHttpActivtiy implements
  
 		verifyCodeBtn = (Button) findViewById(R.id.user_register_btn_verifyCode);
 		phoneNumView = (TextView) findViewById(R.id.user_register_txt_phoneNum);
+		//默认聚焦
+		phoneNumView.requestFocus();
+		phoneNumView.requestFocusFromTouch();
 		verifyCodeView = (TextView) findViewById(R.id.user_register_txt_verify_code);
 		passwordView = (TextView) findViewById(R.id.user_register_txt_password);
 

@@ -6,6 +6,8 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -19,8 +21,17 @@ public abstract class BaseActivtiy extends MispHttpActivtiy implements HttpListe
 
 	private Context contextDialog ;
 
- 
-	
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		//重载，禁止所有activity竖屏
+		super.onCreate(savedInstanceState);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+	}
+
+
+
 	public void exitDialog(Context context) { 
 		contextDialog = context;
         AlertDialog.Builder builder = new Builder(contextDialog);   

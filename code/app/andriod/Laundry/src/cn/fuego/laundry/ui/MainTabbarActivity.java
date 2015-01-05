@@ -58,8 +58,7 @@ public class MainTabbarActivity extends FragmentActivity
         //实例化TabHost对象，得到TabHost  
         mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);  
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);   
-        mTabHost.setBackgroundColor(getResources().getColor(R.color.tabbarback)); 
-        //mTabHost.setBackgroundColor(R.drawable.tabbar_background);
+        mTabHost.setBackgroundResource(R.drawable.tabbar_background);
         //得到fragment的个数  
  
                       
