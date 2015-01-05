@@ -13,7 +13,6 @@ import cn.fuego.laundry.R;
 import cn.fuego.laundry.ui.base.ExitApplication;
 import cn.fuego.laundry.ui.cart.MyCartFragment;
 import cn.fuego.laundry.ui.home.HomeFragment;
-import cn.fuego.laundry.ui.more.MoreFragment;
 import cn.fuego.laundry.ui.user.UserFragment;
 import cn.fuego.misp.ui.base.MispBaseFragment;
 import cn.fuego.misp.ui.model.FragmentResInfo;
@@ -29,6 +28,7 @@ public class MainTabbarActivity extends FragmentActivity
 {
 	FuegoLog log = FuegoLog.getLog(MainTabbarActivity.class);
 
+	public static String SELECTED_TAB = "selected_tab";
     //定义FragmentTabHost对象  
     private FragmentTabHost mTabHost;  
           
@@ -36,8 +36,19 @@ public class MainTabbarActivity extends FragmentActivity
     private LayoutInflater layoutInflater;  
               
     //定义数组来存放Fragment界面  
-    private Class fragmentArray[] = {HomeFragment.class,MyCartFragment.class,UserFragment.class,MoreFragment.class};  
+    private Class fragmentArray[] = {HomeFragment.class,MyCartFragment.class,UserFragment.class};  
           
+    private int getIndexByClass(Class clazz)
+    {
+    	for(int i=0;i<fragmentArray.length;i++)
+    	{
+    		if(clazz == fragmentArray[i])
+    		{
+    			return i;
+    		}
+    	}
+    	return 0;
+    }
  
           
     public void onCreate(Bundle savedInstanceState) {  
@@ -46,6 +57,10 @@ public class MainTabbarActivity extends FragmentActivity
         ExitApplication.getInstance().addActivity(this);
 
         initView();  
+        Class clazz = (Class) this.getIntent().getSerializableExtra(SELECTED_TAB);
+        int index = this.getIndexByClass(clazz);
+        log.info("select tab is " + index);
+        this.mTabHost.setCurrentTab(index);
     }  
            
     /** 
@@ -58,9 +73,8 @@ public class MainTabbarActivity extends FragmentActivity
         //实例化TabHost对象，得到TabHost  
         mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);  
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);   
-        // mTabHost.setBackgroundColor(getResources().getColor(R.color.tabbarback)); 
-       // mTabHost.setBackgroundColor(R.drawable.tabbar_background);
-        mTabHost.setBackgroundResource(R.drawable.tabbar_background);
+       mTabHost.setBackgroundColor(getResources().getColor(R.color.tabbarback)); 
+        //mTabHost.setBackgroundColor(R.drawable.tabbar_background);
         //得到fragment的个数  
  
                       

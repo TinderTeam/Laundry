@@ -53,6 +53,11 @@ public abstract class MispListFragment<E> extends MispBaseListFragment<E> implem
 
 	}
 	
+	public void repaint()
+	{
+		this.adapter.notifyDataSetChanged();
+	}
+	
 	public void adapterForScrollView()
 	{
     	ListAdapter listAdapter = listView.getAdapter();   
@@ -62,18 +67,18 @@ public abstract class MispListFragment<E> extends MispBaseListFragment<E> implem
    
         int totalHeight = 0;   
         for (int i = 0, len = listAdapter.getCount(); i < len; i++) {   
-            // listAdapter.getCount()·µ»ØÊý¾ÝÏîµÄÊýÄ¿   
+            // listAdapter.getCount()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿   
             View listItem = listAdapter.getView(i, null, listView);   
-            // ¼ÆËã×ÓÏîView µÄ¿í¸ß   
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½View ï¿½Ä¿ï¿½ï¿½   
             listItem.measure(0, 0);    
-            // Í³¼ÆËùÓÐ×ÓÏîµÄ×Ü¸ß¶È   
+            // Í³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¸ß¶ï¿½   
             totalHeight += listItem.getMeasuredHeight();    
         }   
    
         ViewGroup.LayoutParams params = listView.getLayoutParams();   
         params.height = totalHeight+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));   
-        // listView.getDividerHeight()»ñÈ¡×ÓÏî¼ä·Ö¸ô·ûÕ¼ÓÃµÄ¸ß¶È   
-        // params.height×îºóµÃµ½Õû¸öListViewÍêÕûÏÔÊ¾ÐèÒªµÄ¸ß¶È   
+        // listView.getDividerHeight()ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Õ¼ï¿½ÃµÄ¸ß¶ï¿½   
+        // params.heightï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ListViewï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Òªï¿½Ä¸ß¶ï¿½   
         listView.setLayoutParams(params);  
 	}
 

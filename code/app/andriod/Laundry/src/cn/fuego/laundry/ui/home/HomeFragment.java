@@ -43,10 +43,6 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 	
 	public static final String SELECT_TYPE = "selectType";
  
- 
-    
-	private LoadImageUtil loadImageUtil = LoadImageUtil.getInstance();
-	
 	private int[] buttonID = new int[]{R.id.Button01,R.id.Button02,R.id.Button03,R.id.Button04,R.id.Button05,R.id.Button06,R.id.Button07,R.id.Button08};
 	
 	private Map<Integer,Integer> btnTypeMap = new HashMap<Integer, Integer>();

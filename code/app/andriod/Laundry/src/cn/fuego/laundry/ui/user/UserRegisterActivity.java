@@ -12,14 +12,14 @@ import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
-import cn.fuego.laundry.webservice.up.model.SendVerifyCodeReq;
-import cn.fuego.laundry.webservice.up.model.SendVerifyCodeRsp;
-import cn.fuego.laundry.webservice.up.model.UserRegisterReq;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.base.MispHttpActivtiy;
+import cn.fuego.misp.webservice.up.model.SendVerifyCodeReq;
+import cn.fuego.misp.webservice.up.model.SendVerifyCodeRsp;
+import cn.fuego.misp.webservice.up.model.UserRegisterReq;
 
 public class UserRegisterActivity extends MispHttpActivtiy implements
 		OnClickListener
@@ -132,6 +132,7 @@ public class UserRegisterActivity extends MispHttpActivtiy implements
 			return;
 		}
 		SendVerifyCodeReq req = new SendVerifyCodeReq();
+		req.setPhone_num(phoneNum);
 		WebServiceContext.getInstance().getUserManageRest(new MispHttpHandler()
 		{
 			@Override
@@ -140,7 +141,7 @@ public class UserRegisterActivity extends MispHttpActivtiy implements
 				if (message.isSuccess())
 				{
 					SendVerifyCodeRsp rsp  = (SendVerifyCodeRsp) message.getMessage().obj;
-					verifyCode = rsp.getVerifyCode();
+					verifyCode = rsp.getObj();
 					startVerifyTimer();
 
 				} else

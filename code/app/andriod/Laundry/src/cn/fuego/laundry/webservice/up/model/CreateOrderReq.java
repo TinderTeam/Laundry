@@ -1,5 +1,6 @@
 package cn.fuego.laundry.webservice.up.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.fuego.laundry.webservice.up.model.base.DeliveryInfoJson;
@@ -9,9 +10,9 @@ import cn.fuego.misp.webservice.up.model.base.BaseJsonReq;
 
 public class CreateOrderReq extends BaseJsonReq
 {
-	private OrderJson order;
-	private List<OrderDetailJson> orderDetailList;
-	private DeliveryInfoJson deliveryInfo;
+	private OrderJson order = new OrderJson();
+	private List<OrderDetailJson> orderDetailList = new ArrayList<OrderDetailJson>();
+	private DeliveryInfoJson deliveryInfo = new DeliveryInfoJson();
 	public OrderJson getOrder()
 	{
 		return order;

@@ -6,6 +6,6 @@ public class DataConvertUtil
 {
 	public static String getAbsUrl(String url)
 	{
-		return  MemoryCache.getHostUrl() + "/copydp/Public/uploads/img/" +url;
+		return  MemoryCache.getHostUrl() + "/Laundry/Public/Fuego/uploads/" +url;
 	}
 }

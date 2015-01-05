@@ -16,7 +16,7 @@ public class WebServiceContext
 
 	private static WebServiceContext instance;
 
-	public static String hostURL = MemoryCache.getHostUrl()+"/laundry";
+	public static String hostURL = MemoryCache.getHostUrl()+"/Laundry";
 	
 	private WebServiceContext()
 	{

@@ -3,6 +3,8 @@ package cn.fuego.laundry.webservice.up.model.base;
 import java.io.Serializable;
 import java.util.Date;
 
+import cn.fuego.laundry.constant.PayOptionEnum;
+
 public class OrderJson implements Serializable
 {
 	private String order_id;
@@ -11,13 +13,15 @@ public class OrderJson implements Serializable
 	private Date create_time;
 	private Date confirm_time;
 	private Date end_time;
-	private String pay_option;
+	private String pay_option = PayOptionEnum.OFFLINE_PAY.getStrValue();
 	private String order_status;
 	private int delivery_info_id;
 	private int handler_id;
 	private String operater_name;
-	private float totalPrice;
-	private float totalCount;
+	private String order_type;
+	private String order_note;
+	private float total_price;
+	private float total_count;
 	public String getOrder_id()
 	{
 		return order_id;
@@ -106,21 +110,38 @@ public class OrderJson implements Serializable
 	{
 		this.operater_name = operater_name;
 	}
-	public float getTotalPrice()
+ 
+	public float getTotal_price()
 	{
-		return totalPrice;
+		return total_price;
 	}
-	public void setTotalPrice(float totalPrice)
+	public void setTotal_price(float total_price)
 	{
-		this.totalPrice = totalPrice;
+		this.total_price = total_price;
 	}
-	public float getTotalCount()
+	public float getTotal_count()
 	{
-		return totalCount;
+		return total_count;
 	}
-	public void setTotalCount(float totalCount)
+	public void setTotal_count(float total_count)
 	{
-		this.totalCount = totalCount;
+		this.total_count = total_count;
+	}
+	public String getOrder_type()
+	{
+		return order_type;
+	}
+	public void setOrder_type(String order_type)
+	{
+		this.order_type = order_type;
+	}
+	public String getOrder_note()
+	{
+		return order_note;
+	}
+	public void setOrder_note(String order_note)
+	{
+		this.order_note = order_note;
 	}
  
 

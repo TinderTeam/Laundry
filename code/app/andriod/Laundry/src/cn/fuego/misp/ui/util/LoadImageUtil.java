@@ -24,7 +24,7 @@ public class LoadImageUtil
 	
 	private boolean isAllCache = true;
 	
-	private boolean isLoad = false;
+	private boolean isLoad = true;
 	
 	private  LoadImageUtil()
 	{

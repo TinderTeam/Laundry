@@ -57,9 +57,12 @@ MispListViewInteface,OnItemClickListener
 		{
 			this.dataList.addAll(newDataList);
 		}
+		repaint();
+	}
+	public void repaint()
+	{
 		this.adapter.notifyDataSetChanged();
 	}
-
 
 
 	@Override

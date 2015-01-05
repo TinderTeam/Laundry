@@ -1,6 +1,5 @@
 package cn.fuego.laundry.ui.home;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,18 +10,24 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.cart.CartProduct;
+import cn.fuego.laundry.ui.order.OrderActivity;
+import cn.fuego.laundry.ui.util.DataConvertUtil;
+import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.GetProductListReq;
 import cn.fuego.laundry.webservice.up.model.GetProductListRsp;
 import cn.fuego.laundry.webservice.up.model.base.ProductJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.ui.list.MispListActivity;
+import cn.fuego.misp.ui.util.LoadImageUtil;
 
-public class HomeProductActivity extends MispListActivity<ProductJson> implements  OnCheckedChangeListener
+public class HomeProductActivity extends MispListActivity<ProductJson> implements  OnCheckedChangeListener, OnClickListener
 {
  
 	private int selectType = 1;
@@ -48,31 +53,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 		btnTypeMap.put(R.id.product_radio5, 5);
 		btnTypeMap.put(R.id.product_radio6, 6);
 		btnTypeMap.put(R.id.product_radio7, 7);
-		
-		ProductJson json = new ProductJson();
-		json.setProduct_name("上衣");
-		json.setPrice((float)1.1);
-		dataList.clear();
-		dataList.add(json);
-		
-		ProductJson json1 = new ProductJson();
-		json1.setProduct_id(1);
-		json.setProduct_name("上衣");
-		json.setPrice((float)1.1);
-		dataList.add(json1);
-		
-		ProductJson json2 = new ProductJson();
-		json2.setProduct_id(2);
-		json.setProduct_name("上衣");
-		json.setPrice((float)1.1);
-		dataList.add(json2);
-		
-		ProductJson json3 = new ProductJson();
-		json3.setProduct_id(4);
-		json.setProduct_name("上衣");
-		json.setPrice((float)1.1);
-		dataList.add(json3);
-
+ 
 		
 	} 
 	
@@ -85,13 +66,13 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 		RadioGroup radioGroup =  (RadioGroup) findViewById(R.id.product_radio_group);
 		radioGroup.setOnCheckedChangeListener(this);
 		cartButton = (Button) findViewById(R.id.product_btn_to_cart);
-
+ 		cartButton.setOnClickListener(this);
 		updateCount();
 	}
 	
 	public void updateCount()
 	{
-		cartButton.setText("洗衣篮（"+CartProduct.getInstance().getSelectProductList().size()+")");
+		cartButton.setText("洗衣篮（"+CartProduct.getInstance().getSelectProductList().size()+"）");
 	
 	}
 
@@ -118,6 +99,10 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
  	@Override
 	public View getListItemView(View view, ProductJson item)
 	{
+        ImageView imageView = (ImageView) view.findViewById(R.id.product_list_item_img);
+   	 
+        LoadImageUtil.getInstance().loadImage(imageView, DataConvertUtil.getAbsUrl(item.getImg()));
+        
 		TextView nameView = (TextView) view.findViewById(R.id.product_list_item_name);
 		nameView.setText(item.getProduct_name());
 		
@@ -125,6 +110,10 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 		priceView.setText(String.valueOf(item.getPrice()));
 		final CheckBox check = (CheckBox) view.findViewById(R.id.product_list_item_check_btn);
 		final int nowProductID = item.getProduct_id();
+        if(CartProduct.getInstance().getSelectProductList().contains(new Integer(nowProductID)))
+        {
+            check.setChecked(true);  
+        }
 		check.setOnClickListener(new OnClickListener()
 		{     
             @Override  
@@ -156,7 +145,16 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 		
 	}
 
+	@Override
+	public void onClick(View v)
+	{
  
+		Intent intent = new Intent(this,MainTabbarActivity.class);
+		intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarActivity.class);
+		this.startActivity(intent);
+
+		
+	}
 	
 
 

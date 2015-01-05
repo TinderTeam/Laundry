@@ -18,7 +18,7 @@ package cn.fuego.misp.constant;
 public enum ClientTypeEnum 
 {
 	WEB_CLIENT(0,"WEB"),
-	ANDRIOD_CLIENT(3,"ANDRIOD"),
+	ANDRIOD_CLIENT(3,"ANDROID"),
 	IOS_CLIENT(4,"IOS");
 	private int intValue;
 	private String strValue;

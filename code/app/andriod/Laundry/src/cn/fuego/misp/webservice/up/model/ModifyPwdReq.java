@@ -6,7 +6,9 @@
 * @date 2014-11-4 下午11:07:00 
 * @version V1.0   
 */ 
-package cn.fuego.misp.webservice.up.model.base;
+package cn.fuego.misp.webservice.up.model;
+
+import cn.fuego.misp.webservice.up.model.base.BaseJsonReq;
 
 
  /** 

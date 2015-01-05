@@ -8,12 +8,12 @@ import javax.ws.rs.Produces;
 
 import cn.fuego.laundry.webservice.up.model.LoginReq;
 import cn.fuego.laundry.webservice.up.model.LoginRsp;
-import cn.fuego.laundry.webservice.up.model.SendVerifyCodeReq;
-import cn.fuego.laundry.webservice.up.model.SendVerifyCodeRsp;
-import cn.fuego.laundry.webservice.up.model.UserRegisterReq;
-import cn.fuego.laundry.webservice.up.model.UserRegisterRsp;
-import cn.fuego.misp.webservice.up.model.base.ModifyPwdReq;
-import cn.fuego.misp.webservice.up.model.base.ModifyPwdRsp;
+import cn.fuego.misp.webservice.up.model.ModifyPwdReq;
+import cn.fuego.misp.webservice.up.model.ModifyPwdRsp;
+import cn.fuego.misp.webservice.up.model.SendVerifyCodeReq;
+import cn.fuego.misp.webservice.up.model.SendVerifyCodeRsp;
+import cn.fuego.misp.webservice.up.model.UserRegisterReq;
+import cn.fuego.misp.webservice.up.model.UserRegisterRsp;
 
 
 /**
@@ -46,11 +46,11 @@ public interface MispUserManageRest
     ModifyPwdRsp modifyPassword(ModifyPwdReq req);
 	
 	@POST
-	@Path("/modifyPswd_rest")
+	@Path("/Register")
 	UserRegisterRsp register(UserRegisterReq req);
  
 	@POST
-	@Path("/modifyPswd_rest")
+	@Path("/SendVerifyCode")
 	SendVerifyCodeRsp sendVerifyCode(SendVerifyCodeReq req);
 	
 

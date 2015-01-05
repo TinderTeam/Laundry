@@ -35,16 +35,13 @@ public abstract class MispDistinctListActivity extends MispBaseListActivity<Comm
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		this.initRes();
- 
-		
-		setContentView(this.activityRes.getAvtivityView());
+	 
 		
 		adapter = new MispListAdapter<CommonItemMeta>(this,this,this.listViewRes,this.dataList);
-		ListView productView = (ListView) findViewById(this.listViewRes.getListView());
+		ListView listView = (ListView) findViewById(this.listViewRes.getListView());
 ;
-		productView.setAdapter(adapter);
-		productView.setOnItemClickListener(this);
+		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(this);
 		loadSendList();
 
 	}

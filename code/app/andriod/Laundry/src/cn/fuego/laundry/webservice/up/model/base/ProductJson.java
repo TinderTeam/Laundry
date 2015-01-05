@@ -10,12 +10,18 @@ public class ProductJson implements Serializable
 	private int type_id;
 	private int seller_id;
 	private String describe;
+	private String price_type;
+
 	private float price;
 	private float original_price;
 	private String img;
 	private String product_status;
 	private Date update_time;
 	private Date end_time;
+	private String detail_info;
+	private String type_name;
+	private int parent_type_id;
+
 	public int getProduct_id()
 	{
 		return product_id;
@@ -104,7 +110,39 @@ public class ProductJson implements Serializable
 	{
 		this.end_time = end_time;
 	}
-	
+	public String getDetail_info()
+	{
+		return detail_info;
+	}
+	public void setDetail_info(String detail_info)
+	{
+		this.detail_info = detail_info;
+	}
+	public String getType_name()
+	{
+		return type_name;
+	}
+	public void setType_name(String type_name)
+	{
+		this.type_name = type_name;
+	}
+	public int getParent_type_id()
+	{
+		return parent_type_id;
+	}
+	public void setParent_type_id(int parent_type_id)
+	{
+		this.parent_type_id = parent_type_id;
+	}
+	public String getPrice_type()
+	{
+		return price_type;
+	}
+	public void setPrice_type(String price_type)
+	{
+		this.price_type = price_type;
+	}
+ 
 	
 
 

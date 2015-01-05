@@ -1,5 +1,6 @@
 package cn.fuego.laundry.webservice.up.model.base;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  * @author jun
  *
  */
-public class DeliveryInfoJson
+public class DeliveryInfoJson implements Serializable
 {
 	private int delivery_info_id;
 	private int user_id;
