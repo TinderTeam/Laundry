@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.ListItemTypeConst;
+import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.ui.list.MispDistinctListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 
@@ -48,7 +50,7 @@ public class UserInfoActivity extends MispDistinctListActivity implements OnClic
 	public int getItemTypeCount()
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return 5;
 	}
 
 	@Override
@@ -70,6 +72,7 @@ public class UserInfoActivity extends MispDistinctListActivity implements OnClic
 		CommonItemMeta meta1 = new CommonItemMeta();
 		meta1.setTitle("头像");
 		meta1.setLayoutType(ListItemTypeConst.IMG_CONTENT);
+		meta1.setContent(AppCache.getInstance().getCustomer());
  		list.add(meta1);
 		
 		CommonItemMeta meta2 = new CommonItemMeta();
@@ -175,13 +178,7 @@ public class UserInfoActivity extends MispDistinctListActivity implements OnClic
 		 
 		return view;
 	}
-
-	@Override
-	public int getListItemType(CommonItemMeta item)
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
+ 
  
 
 

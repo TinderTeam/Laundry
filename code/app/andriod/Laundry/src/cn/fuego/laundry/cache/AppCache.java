@@ -2,11 +2,13 @@ package cn.fuego.laundry.cache;
 
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
+import cn.fuego.misp.webservice.up.model.base.UserJson;
 
 public class AppCache
 {
 	private FuegoLog log = FuegoLog.getLog(getClass());
 
+	private UserJson user;
 	private  CustomerJson customer;
 	private static AppCache instance;
 	
@@ -34,6 +36,17 @@ public class AppCache
 	{
 		this.customer = customer;
 	}
+
+	public UserJson getUser()
+	{
+		return user;
+	}
+
+	public void setUser(UserJson user)
+	{
+		this.user = user;
+	}
+	
 	
 	 
 }

@@ -11,8 +11,8 @@ import cn.fuego.laundry.webservice.up.model.base.ProductJson;
 
 public class CartProduct
 {
-	private List<Integer> selectProductList = new ArrayList<Integer>();
-	
+ 	
+	private List<OrderDetailJson> orderDetailList = new ArrayList<OrderDetailJson>();
 	private static CartProduct instance;
 	private CartProduct()
 	{
@@ -29,15 +29,47 @@ public class CartProduct
 		
 	}
 
-	public List<Integer> getSelectProductList()
+ 
+	public int getSelectProduct()
 	{
-		return selectProductList;
+		return orderDetailList.size();
+	}
+	
+	public boolean containsSelected(int productID)
+	{
+		for(OrderDetailJson e : orderDetailList)
+		{
+			if(e.getProduct_id() == productID)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void removeSelected(int productID)
+	{
+		for(OrderDetailJson e : orderDetailList)
+		{
+			if(e.getProduct_id() == productID)
+			{
+				orderDetailList.remove(e);
+				return;
+			}
+		}
+	}
+	
+	public void addSelected(int productID)
+	{
+		OrderDetailJson detail = new OrderDetailJson();
+		ProductJson product = getProductByID(productID);
+		detail.setProduct_id(productID);
+		detail.setProduct_name(product.getProduct_name());
+		detail.setProduct_price(product.getPrice());
+		orderDetailList.add(detail);
 	}
 
-	public void setSelectProductList(List<Integer> selectProductList)
-	{
-		this.selectProductList = selectProductList;
-	}
+ 
 	
 	private Map<Integer,List<ProductJson>>  productMap = new HashMap<Integer, List<ProductJson>>();
 	
@@ -67,17 +99,28 @@ public class CartProduct
 	
 	public List<OrderDetailJson> getOrderDetailList()
 	{
-		List<OrderDetailJson> orderDetailList = new ArrayList<OrderDetailJson>();
-		for(Integer e :selectProductList)
-		{
-			OrderDetailJson detail = new OrderDetailJson();
-			ProductJson product = getProductByID(e);
-			detail.setProduct_id(e);
-			detail.setProduct_name(product.getProduct_name());
-			detail.setProduct_price(product.getPrice());
-			orderDetailList.add(detail);
-		}
+		 
 		return orderDetailList;
+	}
+	
+	public int getTotalCount()
+	{
+		int totalCnt = 0;
+ 		for(OrderDetailJson e : this.orderDetailList)
+		{
+ 			totalCnt += e.getQuantity();
+		}
+		return totalCnt;
+	}
+	
+	public float getTotalPrice()
+	{
+ 		float totalPrice = 0;
+		for(OrderDetailJson e : this.orderDetailList)
+		{
+			totalPrice += e.getProduct_price() * e.getQuantity();
+ 		}
+		return totalPrice;
 	}
 	
 	private ProductJson getProductByID(int id)

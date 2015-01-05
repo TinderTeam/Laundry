@@ -13,9 +13,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.SharedPreferenceConst;
 import cn.fuego.laundry.ui.base.BaseActivtiy;
 import cn.fuego.laundry.ui.base.ExitApplication;
+import cn.fuego.laundry.ui.cart.MyCartFragment;
+import cn.fuego.laundry.ui.user.UserFragment;
 import cn.fuego.laundry.ui.user.UserRegisterActivity;
 import cn.fuego.laundry.webservice.up.model.LoginReq;
 import cn.fuego.laundry.webservice.up.model.LoginRsp;
@@ -38,6 +41,8 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 	public void initRes()
 	{
 		activityRes.setAvtivityView(R.layout.user_login);
+		this.activityRes.setBackBtn(R.id.user_login_back);
+
 		
 	}
 	
@@ -67,14 +72,14 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 		// password =textPwd.getText().toString();
 		password = textPwd.getText().toString().trim();
 		LoginReq req = new LoginReq();
-		req.setPassword(password);
-		req.setUser_name(userName);
+		req.getObj().setPassword(password);
+		req.getObj().setUser_name(userName);
 		req.setClientType(ClientTypeEnum.ANDRIOD_CLIENT.getStrValue());
 		req.setClientVersion(MemoryCache.getVersion());
  
 		try
 		{
-			WebServiceContext.getInstance().getCustomerManageRest(this).login(req);
+			WebServiceContext.getInstance().getUserManageRest(this).login(req);
  
 		}
 		catch(Exception e)
@@ -96,12 +101,13 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 			SharedPreferences userInfo = getSharedPreferences(SharedPreferenceConst.UESR_INFO, Context.MODE_PRIVATE);
 			userInfo.edit().putString(SharedPreferenceConst.NAME, userName).commit();
 			userInfo.edit().putString(SharedPreferenceConst.PASSWORD, password).commit();
-
-			Intent intent = new Intent();
-			intent.setClass(LoginActivity.this, MainActivity.class);
-			startActivity(intent);
 			MemoryCache.setToken(rsp.getToken());
-			      
+			AppCache.getInstance().setUser(rsp.getUser());
+		      
+			Intent intent = new Intent(this,MainTabbarActivity.class);
+			intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(UserFragment.class));
+			this.startActivity(intent);
+
 			LoginActivity.this.finish();
 
 		}

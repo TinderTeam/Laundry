@@ -3,19 +3,18 @@ package cn.fuego.laundry.ui.order;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
-import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.ListItemTypeConst;
+import cn.fuego.laundry.ui.cart.MyCartFragment;
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
-import cn.fuego.laundry.webservice.up.model.base.DeliveryInfoJson;
-import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
-import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.misp.ui.list.MispDistinctListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 
@@ -31,8 +30,10 @@ public class OrderActivity extends MispDistinctListActivity
 		this.activityRes.setBackBtn(R.id.order_info_back);
 		this.listViewRes.setListView(R.id.order_info_list);
 		Intent intent = this.getIntent();
-		orderReq = (CreateOrderReq) intent.getSerializableExtra("order_info");
- 		
+		orderReq = (CreateOrderReq) intent.getSerializableExtra(MyCartFragment.ORDER_INFO);
+		
+		this.dataList.clear();
+		this.dataList.addAll(getBtnData());
 	}
  
 	@Override
@@ -40,9 +41,7 @@ public class OrderActivity extends MispDistinctListActivity
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
-		this.dataList.clear();
-		this.dataList.addAll(getBtnData());
+
 	}
 
 
@@ -56,25 +55,25 @@ public class OrderActivity extends MispDistinctListActivity
 		
 		CommonItemMeta meta2 = new CommonItemMeta();
 		meta2.setTitle("取衣地址");
-		meta2.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
+		meta2.setLayoutType(ListItemTypeConst.EDIT_TEXT);
 		meta2.setContent(orderReq.getDeliveryInfo().getTake_addr());
 		list.add(meta2);
 		
 		CommonItemMeta meta3 = new CommonItemMeta();
 		meta3.setTitle("取衣时间");
-		meta3.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
+		meta3.setLayoutType(ListItemTypeConst.EDIT_TEXT);
 		meta3.setContent("");
 		list.add(meta3);
 		
 		CommonItemMeta meta4 = new CommonItemMeta();
 		meta4.setTitle("联系人");
-		meta4.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
+		meta4.setLayoutType(ListItemTypeConst.EDIT_TEXT);
 		meta4.setContent(orderReq.getDeliveryInfo().getCustomer_name());
 		list.add(meta4);
 		
 		CommonItemMeta meta5 = new CommonItemMeta();
 		meta5.setTitle("联系电话");
-		meta5.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
+		meta5.setLayoutType(ListItemTypeConst.EDIT_TEXT);
 		meta5.setContent(orderReq.getDeliveryInfo().getPhone());
 		list.add(meta5);
   
@@ -86,7 +85,7 @@ public class OrderActivity extends MispDistinctListActivity
 		
 		CommonItemMeta meta7 = new CommonItemMeta();
 		meta7.setTitle("付款方式");
-		meta7.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
+		meta7.setLayoutType(ListItemTypeConst.EDIT_TEXT);
 		meta7.setContent(orderReq.getOrder().getPay_option());
 		list.add(meta7);
 		
@@ -95,10 +94,7 @@ public class OrderActivity extends MispDistinctListActivity
 		meta8.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
 		meta8.setContent(orderReq.getOrder().getOrder_note());
 		list.add(meta8);
- 
-		
-		
- 
+
 		
 		return list;
 	}
@@ -151,6 +147,16 @@ public class OrderActivity extends MispDistinctListActivity
 			}
 			
 			break;
+		case ListItemTypeConst.EDIT_TEXT:
+			{
+				view = inflater.inflate(R.layout.list_item_texttype, null);
+				TextView title_view = (TextView) view.findViewById(R.id.item_texttype_name);
+				TextView content_view = (TextView) view.findViewById(R.id.item_texttype_text);
+				title_view.setText(title);
+				content_view.setText( String.valueOf(item.getContent()));
+			}
+			
+		break;	
 		case ListItemTypeConst.DEFAULT_CONTENT:
 			{
 				view = inflater.inflate(R.layout.list_item_btntype, null);
@@ -168,11 +174,34 @@ public class OrderActivity extends MispDistinctListActivity
 		return view;
 	}
 
+	
+	
+	
 	@Override
-	public int getListItemType(CommonItemMeta item)
+	public void onItemClick(CommonItemMeta item)
 	{
-		// TODO Auto-generated method stub
-		return item.getLayoutType();
+		 switch(item.getLayoutType())
+		 {
+		 case ListItemTypeConst.EDIT_TEXT:
+			 {
+				 showAddr();
+			 }
+			 break;
+		
+	     default:
+	         break;
+		 
+		 }
+	}
+
+	public void showAddr()
+	{
+		AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle("请输入").setIcon(
+			     android.R.drawable.ic_dialog_info);
+		builder.setView(new EditText(this));
+		builder.setPositiveButton("确定", null);
+		builder.setNegativeButton("取消", null);
+		builder.show();
 	}
 
 

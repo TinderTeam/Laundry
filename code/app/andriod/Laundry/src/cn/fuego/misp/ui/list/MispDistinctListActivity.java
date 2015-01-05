@@ -57,14 +57,13 @@ public abstract class MispDistinctListActivity extends MispBaseListActivity<Comm
 	
 
 	@Override
-	public int getItemViewType(Object item)
+	final public int getItemViewType(Object item)
 	{
 		return getListItemType((CommonItemMeta)item);
 	}
 	
  
-	public abstract int getListItemType(CommonItemMeta item);
-	@Override
+ 	@Override
 	public View getView(LayoutInflater inflater,View convertView, ViewGroup parent, Object item)
 	{
  
@@ -93,17 +92,28 @@ public abstract class MispDistinctListActivity extends MispBaseListActivity<Comm
 			this.showMessage(message);
 		}
 	}
-
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id)
+ 
+	
+	public void onItemClick(CommonItemMeta item)
 	{
 
-		CommonItemMeta item = this.adapter.getItem(position);
 		Intent intent = new Intent(this,this.listViewRes.getClickActivityClass());
 		intent.putExtra(ListViewResInfo.SELECT_ITEM, (Serializable) item);
 
 		this.startActivity(intent);
+	}
+	@Override
+	final public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id)
+	{
+		CommonItemMeta item = this.adapter.getItem(position);
+		onItemClick(item);
+	}
+	
 
+ 	public int getListItemType(CommonItemMeta item)
+	{
+		// TODO Auto-generated method stub
+		return item.getLayoutType();
 	}
 }

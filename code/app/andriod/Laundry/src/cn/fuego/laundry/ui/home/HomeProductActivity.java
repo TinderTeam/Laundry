@@ -16,7 +16,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.ui.MainTabbarActivity;
+import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.cart.CartProduct;
+import cn.fuego.laundry.ui.cart.MyCartFragment;
 import cn.fuego.laundry.ui.order.OrderActivity;
 import cn.fuego.laundry.ui.util.DataConvertUtil;
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
@@ -72,7 +74,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 	
 	public void updateCount()
 	{
-		cartButton.setText("洗衣篮（"+CartProduct.getInstance().getSelectProductList().size()+"）");
+		cartButton.setText("洗衣篮（"+CartProduct.getInstance().getTotalCount()+"）");
 	
 	}
 
@@ -110,7 +112,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 		priceView.setText(String.valueOf(item.getPrice()));
 		final CheckBox check = (CheckBox) view.findViewById(R.id.product_list_item_check_btn);
 		final int nowProductID = item.getProduct_id();
-        if(CartProduct.getInstance().getSelectProductList().contains(new Integer(nowProductID)))
+        if(CartProduct.getInstance().containsSelected(nowProductID))
         {
             check.setChecked(true);  
         }
@@ -119,14 +121,14 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
             @Override  
             public void onClick(View v) 
             {  
-                if(CartProduct.getInstance().getSelectProductList().contains(new Integer(nowProductID)))
+                if(CartProduct.getInstance().containsSelected(nowProductID))
                 {
-                	CartProduct.getInstance().getSelectProductList().remove(new Integer(nowProductID));
+                	CartProduct.getInstance().removeSelected(nowProductID);
                     check.setChecked(false);  
                 }  
                 else
                 {  
-                	CartProduct.getInstance().getSelectProductList().add(nowProductID);
+                	CartProduct.getInstance().addSelected(nowProductID);
                     check.setChecked(true);  
                 }  
                 updateCount();
@@ -150,7 +152,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 	{
  
 		Intent intent = new Intent(this,MainTabbarActivity.class);
-		intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarActivity.class);
+		intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(MyCartFragment.class));
 		this.startActivity(intent);
 
 		

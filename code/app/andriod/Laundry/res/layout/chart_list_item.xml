@@ -48,7 +48,7 @@
             android:textSize="@dimen/content_font_size" />
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/char_list_item_btn_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

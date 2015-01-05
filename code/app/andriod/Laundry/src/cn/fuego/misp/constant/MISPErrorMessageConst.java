@@ -49,7 +49,7 @@ public class MISPErrorMessageConst
 	public static final int ERROR_PHONE_INVALID = 15;
 	public static final int ERROR_VERIFY_CODE_INVALID = 16;
 	
-	public static final int ERROR_PASSWORD_IS_EMPTY = 16;
+	public static final int ERROR_PASSWORD_IS_EMPTY = 17;
 
 	public static String getMessageByErrorCode(int errorCode)
 	{

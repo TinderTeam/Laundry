@@ -14,7 +14,7 @@ public class OrderDetailJson implements Serializable
 	private String product_name;
 	private float product_price
 ;
-	private int quantity
+	private int quantity = 1;
 ;
 	public int getOrder_detail_id()
 	{

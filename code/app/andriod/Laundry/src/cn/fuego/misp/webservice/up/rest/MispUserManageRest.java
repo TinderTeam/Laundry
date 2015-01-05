@@ -25,32 +25,32 @@ import cn.fuego.misp.webservice.up.model.UserRegisterRsp;
 *
  */
 
-@Path("/index.php/UserManage")
+@Path("/index.php")
 @Produces("application/json")  
 @Consumes("application/json")  
 public interface MispUserManageRest
 {
 	//APP登录验证
 	@POST
-	@Path("/Login")
+	@Path("/Index/Login")
 	LoginRsp login(LoginReq req);
 	
 	//APP退出
 	@POST
-	@Path("/Logout")
+	@Path("/Index/Logout")
 	LoginRsp logout(LoginReq req);
 	
 	//APP修改密码
 	@POST
-	@Path("/ModifyPassword")
+	@Path("/Index/ModifyPassword")
     ModifyPwdRsp modifyPassword(ModifyPwdReq req);
 	
 	@POST
-	@Path("/Register")
+	@Path("/Index/Register")
 	UserRegisterRsp register(UserRegisterReq req);
  
 	@POST
-	@Path("/SendVerifyCode")
+	@Path("/UserManage/SendVerifyCode")
 	SendVerifyCodeRsp sendVerifyCode(SendVerifyCodeReq req);
 	
 

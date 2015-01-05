@@ -20,7 +20,9 @@ public class ListItemTypeConst
 
 	public static final int DEFAULT_CONTENT= 0 ; // 默认btn，无文字内容显示
 	public static final int TEXT_CONTENT= 1 ; // btn带文字信息
-	public static final int IMG_CONTENT= 2 ; // btn带图片信息
-	public static final int NULL_CONTENT= 3 ; //无内容，作为分割区域定义
+	public static final int EDIT_TEXT= 2 ; // btn带文字信息
+
+	public static final int IMG_CONTENT= 3 ; // btn带图片信息
+	public static final int NULL_CONTENT= 4 ; //无内容，作为分割区域定义
 	
 }

@@ -19,7 +19,7 @@ public class UserJson
 {
 	private int user_id;
 	private String password;
-	private String username;
+	private String user_name;
 	private String role;
 	public int getUser_id()
 	{
@@ -37,13 +37,14 @@ public class UserJson
 	{
 		this.password = password;
 	}
-	public String getUsername()
+ 
+	public String getUser_name()
 	{
-		return username;
+		return user_name;
 	}
-	public void setUsername(String username)
+	public void setUser_name(String user_name)
 	{
-		this.username = username;
+		this.user_name = user_name;
 	}
 	public String getRole()
 	{

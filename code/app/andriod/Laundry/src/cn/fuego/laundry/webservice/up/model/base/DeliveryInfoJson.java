@@ -13,7 +13,7 @@ public class DeliveryInfoJson implements Serializable
 	private int delivery_info_id;
 	private int user_id;
 	private String delivery_addr;
-	private int take_addr;
+	private String take_addr;
 	private Date delivery_time;
 	private Date take_time;
 	private String customer_name;   
@@ -42,11 +42,12 @@ public class DeliveryInfoJson implements Serializable
 	{
 		this.delivery_addr = delivery_addr;
 	}
-	public int getTake_addr()
+ 
+	public String getTake_addr()
 	{
 		return take_addr;
 	}
-	public void setTake_addr(int take_addr)
+	public void setTake_addr(String take_addr)
 	{
 		this.take_addr = take_addr;
 	}

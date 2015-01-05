@@ -1,6 +1,7 @@
 package cn.fuego.laundry.webservice.up.model;
 
 import cn.fuego.misp.webservice.up.model.base.BaseJsonReq;
+import cn.fuego.misp.webservice.up.model.base.UserJson;
 
 
 /**
@@ -13,24 +14,18 @@ import cn.fuego.misp.webservice.up.model.base.BaseJsonReq;
  */
 public class LoginReq extends BaseJsonReq
 {
-	private String user_name;		//用户名
-	private String password;		//密码
-	public String getUser_name()
+	private UserJson obj = new UserJson();
+
+	public UserJson getObj()
 	{
-		return user_name;
+		return obj;
 	}
-	public void setUser_name(String user_name)
+
+	public void setObj(UserJson obj)
 	{
-		this.user_name = user_name;
+		this.obj = obj;
 	}
-	public String getPassword()
-	{
-		return password;
-	}
-	public void setPassword(String password)
-	{
-		this.password = password;
-	}
+ 
 	
 	
  

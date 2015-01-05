@@ -45,7 +45,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 	private View view;  
  
 	private  int  curNum= 1;
-	private static final String ORDER_INFO = "order_info";
+	public static final String ORDER_INFO = "order_info";
 	@Override
 	public void initRes()
 	{
@@ -57,12 +57,11 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 		listViewRes.setListItemView(R.layout.chart_list_item);
 		listViewRes.setClickActivityClass(HomeProductActivity.class);
 		
-		this.dataList.clear();
-		List<OrderDetailJson> selectList = CartProduct.getInstance().getOrderDetailList();
-		if(!ValidatorUtil.isEmpty(selectList))
-		{
-			this.dataList.addAll(selectList);
-		}
+		this.dataList =  CartProduct.getInstance().getOrderDetailList();
+ 
+		this.order.setTotal_count(CartProduct.getInstance().getTotalCount());
+		this.order.setTotal_price(CartProduct.getInstance().getTotalPrice());
+
 	}
 
 	@Override
@@ -76,8 +75,11 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 		totalCountView = (TextView) rootView.findViewById(R.id.chart_total_count);
 
 		Button submitButton = (Button) rootView.findViewById(R.id.chart_submit);
+		
 		submitButton.setOnClickListener(this);
 		super.adapterForScrollView();
+		
+		refreshView();
  
 		return rootView;
 	}
@@ -118,21 +120,29 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 
 			}
 		});
+		
+		 Button  deleteBtn = (Button) view.findViewById(R.id.char_list_item_btn_delete);
 
+		 deleteBtn.setOnClickListener(new OnClickListener()
+			{
+				
+				@Override
+				public void onClick(View v)
+				{
+
+					CartProduct.getInstance().removeSelected(item.getProduct_id());
+					refreshView();
+
+				}
+			});
 		return view;
 	}
 	
 	private void refreshView()
 	{
-		int totalCnt = 0;
-		float totalPrice = 0;
-		for(OrderDetailJson e : this.dataList)
-		{
-			totalPrice += e.getProduct_price() * e.getQuantity();
-			totalCnt += e.getQuantity();
-		}
-		this.totalCountView.setText(String.valueOf(totalCnt));
-		this.totalPriceView.setText(String.valueOf(totalPrice));
+ 
+		this.totalCountView.setText(String.valueOf(this.order.getTotal_count()));
+		this.totalPriceView.setText(String.valueOf(this.order.getTotal_price()));
 		repaint();
 	}
 
@@ -206,6 +216,8 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 			public void onClick(View v)
 			{
 				orderDetail.setQuantity(curNum);
+				order.setTotal_count(CartProduct.getInstance().getTotalCount());
+				order.setTotal_price(CartProduct.getInstance().getTotalPrice());
 				refreshView();
 				popupWindow.dismiss();
 				

@@ -19,9 +19,9 @@ public class OrderJson implements Serializable
 	private int handler_id;
 	private String operater_name;
 	private String order_type;
-	private String order_note;
+	private String order_note ="";
 	private float total_price;
-	private float total_count;
+	private int total_count;
 	public String getOrder_id()
 	{
 		return order_id;
@@ -119,11 +119,12 @@ public class OrderJson implements Serializable
 	{
 		this.total_price = total_price;
 	}
-	public float getTotal_count()
+ 
+	public int getTotal_count()
 	{
 		return total_count;
 	}
-	public void setTotal_count(float total_count)
+	public void setTotal_count(int total_count)
 	{
 		this.total_count = total_count;
 	}

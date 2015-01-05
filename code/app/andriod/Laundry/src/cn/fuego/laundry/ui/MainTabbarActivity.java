@@ -34,22 +34,7 @@ public class MainTabbarActivity extends FragmentActivity
           
     //定义一个布局  
     private LayoutInflater layoutInflater;  
-              
-    //定义数组来存放Fragment界面  
-    private Class fragmentArray[] = {HomeFragment.class,MyCartFragment.class,UserFragment.class};  
-          
-    private int getIndexByClass(Class clazz)
-    {
-    	for(int i=0;i<fragmentArray.length;i++)
-    	{
-    		if(clazz == fragmentArray[i])
-    		{
-    			return i;
-    		}
-    	}
-    	return 0;
-    }
- 
+  
           
     public void onCreate(Bundle savedInstanceState) {  
         super.onCreate(savedInstanceState);  
@@ -57,8 +42,8 @@ public class MainTabbarActivity extends FragmentActivity
         ExitApplication.getInstance().addActivity(this);
 
         initView();  
-        Class clazz = (Class) this.getIntent().getSerializableExtra(SELECTED_TAB);
-        int index = this.getIndexByClass(clazz);
+        int index =  this.getIntent().getIntExtra(SELECTED_TAB, 0);
+      
         log.info("select tab is " + index);
         this.mTabHost.setCurrentTab(index);
     }  
@@ -73,20 +58,20 @@ public class MainTabbarActivity extends FragmentActivity
         //实例化TabHost对象，得到TabHost  
         mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);  
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);   
-       mTabHost.setBackgroundColor(getResources().getColor(R.color.tabbarback)); 
+        mTabHost.setBackgroundColor(getResources().getColor(R.color.tabbarback)); 
         //mTabHost.setBackgroundColor(R.drawable.tabbar_background);
         //得到fragment的个数  
  
                       
-        for(int i = 0; i < fragmentArray.length; i++)
+        for(int i = 0; i < MainTabbarInfo.getFragments().length; i++)
         {    
-        	FragmentResInfo resource = getResource( fragmentArray[i]);
+        	FragmentResInfo resource = getResource( MainTabbarInfo.getFragments()[i]);
         	
             //为每一个Tab按钮设置图标、文字和内容  
         	String str = getString(resource.getName());
             TabSpec tabSpec = mTabHost.newTabSpec(str).setIndicator(getTabItemView(resource));  
             //将Tab按钮添加进Tab选项卡中  
-            mTabHost.addTab(tabSpec, fragmentArray[i], null);  
+            mTabHost.addTab(tabSpec, MainTabbarInfo.getFragments()[i], null);  
             //设置Tab按钮的背景 
             mTabHost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.tabbar_background); 
         }  
