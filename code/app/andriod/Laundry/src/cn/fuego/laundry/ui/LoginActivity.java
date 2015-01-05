@@ -36,6 +36,7 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
     private ProgressDialog proDialog;
 	private int[] buttonIDList = new int[]{R.id.user_login_submit,R.id.user_login_find_password,R.id.user_login_to_register};
 
+	public static String JUMP_SOURCE = "jump_source";
 
 	@Override
 	public void initRes()
@@ -60,6 +61,7 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 			Button button = (Button) findViewById(id);
 			button.setOnClickListener(this);
 		}
+		
 		
        
 		
@@ -104,11 +106,13 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 			MemoryCache.setToken(rsp.getToken());
 			AppCache.getInstance().setUser(rsp.getUser());
 		      
+			Class clazz = (Class) this.getIntent().getSerializableExtra(JUMP_SOURCE);
+			
 			Intent intent = new Intent(this,MainTabbarActivity.class);
-			intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(UserFragment.class));
+			intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(clazz));
 			this.startActivity(intent);
 
-			LoginActivity.this.finish();
+			this.finish();
 
 		}
 		else
@@ -139,7 +143,7 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 		{
 			case R.id.user_login_submit:
 			{
-				proDialog =ProgressDialog.show(LoginActivity.this, "请稍等", "登录信息验证中……");
+				proDialog =ProgressDialog.show(this, "请稍等", "登录信息验证中……");
 				checkLogin();
 			}
 			break;

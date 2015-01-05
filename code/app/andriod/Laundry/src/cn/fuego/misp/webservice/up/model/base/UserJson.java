@@ -8,6 +8,8 @@
 */ 
 package cn.fuego.misp.webservice.up.model.base;
 
+import java.util.Date;
+
  /** 
  * @ClassName: UserJson 
  * @Description: TODO
@@ -20,7 +22,8 @@ public class UserJson
 	private int user_id;
 	private String password;
 	private String user_name;
-	private String role;
+	private int role_id;
+	private Date reg_date;
 	public int getUser_id()
 	{
 		return user_id;
@@ -37,7 +40,6 @@ public class UserJson
 	{
 		this.password = password;
 	}
- 
 	public String getUser_name()
 	{
 		return user_name;
@@ -46,15 +48,23 @@ public class UserJson
 	{
 		this.user_name = user_name;
 	}
-	public String getRole()
+	public int getRole_id()
 	{
-		return role;
+		return role_id;
 	}
-	public void setRole(String role)
+	public void setRole_id(int role_id)
 	{
-		this.role = role;
+		this.role_id = role_id;
 	}
- 
+	public Date getReg_date()
+	{
+		return reg_date;
+	}
+	public void setReg_date(Date reg_date)
+	{
+		this.reg_date = reg_date;
+	}
+	
  
 	
 }

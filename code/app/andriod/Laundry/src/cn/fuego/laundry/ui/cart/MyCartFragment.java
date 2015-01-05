@@ -12,31 +12,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
-import android.widget.Toast;
 import antistatic.spinnerwheel.AbstractWheel;
 import antistatic.spinnerwheel.OnWheelChangedListener;
-import antistatic.spinnerwheel.OnWheelClickedListener;
-import antistatic.spinnerwheel.OnWheelScrollListener;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
-import cn.fuego.common.util.validate.ValidatorUtil;
+import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
 import cn.fuego.laundry.ui.order.OrderActivity;
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
+import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.ui.list.MispListFragment;
 
 public class MyCartFragment extends MispListFragment<OrderDetailJson> implements OnClickListener
 {
+	private FuegoLog log = FuegoLog.getLog(MyCartFragment.class);
+	
 	private OrderJson order = new OrderJson();
 	private PopupWindow popupWindow=null;  
 	
@@ -156,13 +155,24 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 	@Override
 	public void onClick(View v)
 	{
-	 
-		CreateOrderReq req = new CreateOrderReq();
-		req.setOrderDetailList(this.dataList);
-		req.setOrder(this.order);
-		Intent intent = new Intent(this.getActivity(),OrderActivity.class);
-		intent.putExtra(ORDER_INFO, req);
+		Intent intent;
+		if(MemoryCache.isLogined())
+		{
+			CreateOrderReq req = new CreateOrderReq();
+			req.setOrderDetailList(this.dataList);
+			req.setOrder(this.order);
+			intent = new Intent(this.getActivity(),OrderActivity.class);
+			intent.putExtra(ORDER_INFO, req);
+		}
+		else
+		{
+			intent = new Intent(this.getActivity(),LoginActivity.class);
+			intent.putExtra(LoginActivity.JUMP_SOURCE, this.getClass());
+
+			log.warn("have not login when create order");
+		}
 		this.startActivity(intent);
+
 
 		
 	}

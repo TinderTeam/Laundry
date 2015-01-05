@@ -21,9 +21,8 @@ import cn.fuego.misp.webservice.up.model.base.UserJson;
  */
 public class LoginRsp extends BaseJsonRsp
 {
-	private UserJson user;
-	private CustomerJson customer;
-	private String token;
+	private UserJson user = new UserJson();
+ 	private String token;
 	private List<MenuJson> menuList = new ArrayList<MenuJson>();
 	private List<ButtonJson> buttonList = new ArrayList<ButtonJson>();
 	public UserJson getUser()
@@ -59,12 +58,6 @@ public class LoginRsp extends BaseJsonRsp
 		this.buttonList = buttonList;
 	}
 	
-	public CustomerJson getCustomer() {
-		return customer;
-	}
-	public void setCustomer(CustomerJson customer) {
-		this.customer = customer;
-	}
  
  
 

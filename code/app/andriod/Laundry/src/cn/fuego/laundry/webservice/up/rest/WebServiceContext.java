@@ -67,6 +67,15 @@ public class WebServiceContext
 
 		return rest;
 	}
+	
+	 
+		public OrderManageRest getOrderManageRest(HttpListener handler)
+		{
+	 
+			OrderManageRest rest = MispProxyFactory.create( hostURL,OrderManageRest.class, getHttpClient(),handler);
+
+			return rest;
+		}
  
 
 }

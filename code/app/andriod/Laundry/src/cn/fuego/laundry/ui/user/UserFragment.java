@@ -7,21 +7,26 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.ui.LoginActivity;
+import cn.fuego.laundry.ui.MainTabbarActivity;
+import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.base.BaseFragment;
+import cn.fuego.laundry.ui.order.OrderListActivity;
+import cn.fuego.laundry.webservice.up.model.LoginReq;
+import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
+import cn.fuego.misp.webservice.up.model.base.UserJson;
 
 public class UserFragment extends BaseFragment implements OnClickListener
 {
 
 	private int[] buttonIDList = new int[]{R.id.user_btn_to_login};
 	
-	private int[] userInfoButtonList = new int[]{R.id.user_to_user_info};
+	private int[] userInfoButtonList = new int[]{R.id.user_to_user_info,R.id.user_to_order,R.id.user_btn_logout};
 
 	
 	@Override
@@ -77,22 +82,34 @@ public class UserFragment extends BaseFragment implements OnClickListener
 	@Override
 	public void onClick(View v)
 	{
-		Intent i = new Intent();
+		Intent intent = new Intent();
 		
 		switch(v.getId())
 		{
 		case R.id.user_btn_to_login:
-			i.setClass(this.getActivity(), LoginActivity.class);
+			intent.setClass(this.getActivity(), LoginActivity.class);
+			intent.putExtra(LoginActivity.JUMP_SOURCE, this.getClass());
 		 
 			break;
 		case R.id.user_to_user_info:
-			i.setClass(this.getActivity(), UserInfoActivity.class);
+			intent.setClass(this.getActivity(), UserInfoActivity.class);
 			break;
 		case R.id.user_to_order:
+			intent.setClass(this.getActivity(), OrderListActivity.class);
 			break;
-		
+		case R.id.user_btn_logout:
+			
+			LoginReq req = new LoginReq();
+			req.setObj(AppCache.getInstance().getUser());
+			WebServiceContext.getInstance().getUserManageRest(this).logout(req);
+			MemoryCache.setToken(null);
+			AppCache.getInstance().clear();
+			intent.setClass(this.getActivity(), MainTabbarActivity.class);
+
+			intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(UserFragment.class));
+			
 		}
-		this.startActivity(i);
+		this.startActivity(intent);
 
  
 

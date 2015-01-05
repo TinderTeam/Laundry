@@ -26,6 +26,13 @@ public class AppCache
 		return instance;
 		
 	}
+	
+	public void clear()
+	{
+		user = null;
+		customer = null;
+				
+	}
 
 	public CustomerJson getCustomer()
 	{

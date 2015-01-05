@@ -47,6 +47,11 @@ public class MainTabbarActivity extends FragmentActivity
         log.info("select tab is " + index);
         this.mTabHost.setCurrentTab(index);
     }  
+    
+    public void setDisplayTab(Class clazz)
+    {
+    	this.mTabHost.setCurrentTab(MainTabbarInfo.getIndexByClass(clazz));
+    }
            
     /** 
      * 初始化组件 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+ 
+
+            <Button xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:drawableLeft="@drawable/detail_back"
+                android:drawablePadding="5dp"
+                android:focusableInTouchMode="true"
+                android:text="返回"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+ 
