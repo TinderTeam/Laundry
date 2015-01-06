@@ -22,7 +22,7 @@ public abstract class MispBaseActivtiy extends Activity
 		initRes();
 		// TODO Auto-generated method stub
  		super.onCreate(savedInstanceState);
- 		//ÖØÔØ£¬½ûÖ¹ËùÓĞactivityÊúÆÁ
+ 		//é‡è½½ï¼Œç¦æ­¢æ‰€æœ‰activityç«–å±
  		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(activityRes.getAvtivityView());
 		View button = findViewById(activityRes.getBackBtn());

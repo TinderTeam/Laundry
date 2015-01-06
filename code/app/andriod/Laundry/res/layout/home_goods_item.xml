@@ -13,13 +13,6 @@
         android:padding="10dp"
         android:paddingRight="10dp" >
 
-        <ImageView
-            android:id="@+id/product_list_item_img"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/load_image_failed" />
-
         <TextView
             android:id="@+id/product_list_item_name"
             android:layout_width="match_parent"
@@ -38,7 +31,8 @@
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/product_list_item_img"
             android:text="TextView"
-            android:textColor="@color/themecolor" />
+            android:textColor="@color/themecolor"
+            android:textSize="@dimen/content_font_size" />
 
         <CheckBox
             android:id="@+id/product_list_item_check_btn"
@@ -46,8 +40,20 @@
             android:layout_height="30dp"
             android:layout_alignBottom="@+id/product_list_item_curPrice"
             android:layout_alignRight="@+id/product_list_item_name"
+            android:layout_marginRight="10dp"
             android:background="@drawable/checkbox_btn"
             android:button="@null" />
+
+        <ImageView
+            android:id="@+id/product_list_item_img"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/product_list_item_name"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/load_image_failed" />
 
     </RelativeLayout>
 

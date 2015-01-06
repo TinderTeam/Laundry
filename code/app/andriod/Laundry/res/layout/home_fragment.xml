@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
-    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,9 +29,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,42 +48,43 @@
 			            android:layout_gravity="top"/>    
 			           
 			    </android.support.v4.view.ViewPager>  
-				   <RelativeLayout    
-			        android:layout_width="fill_parent"    
-			        android:layout_height="wrap_content"   
-			        android:orientation="vertical" >    
-			    
-			        <LinearLayout    
-			            android:id="@+id/home_ad_image_group"    
-			            android:layout_width="fill_parent"    
-			            android:layout_height="wrap_content"    
-			            android:layout_alignParentBottom="true"   
-			            android:layout_marginBottom="30dp"    
-			            android:gravity="center_horizontal"    
-			            android:orientation="horizontal" >    
-			        </LinearLayout>    
-                     </RelativeLayout>
+	   <RelativeLayout    
+        android:layout_width="fill_parent"    
+        android:layout_height="wrap_content"   
+        android:orientation="vertical" >    
+    
+        <LinearLayout    
+            android:id="@+id/home_ad_image_group"    
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content"    
+            android:layout_alignParentBottom="true"   
+            android:layout_marginBottom="30dp"    
+            android:gravity="center_horizontal"    
+            android:orientation="horizontal" >    
+        </LinearLayout>    
+    </RelativeLayout>
     
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal" >
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:orientation="vertical" >
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="10dp" >
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1" >
 
                         <Button
                             android:id="@+id/Button06"
@@ -99,11 +100,9 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="10dp" >
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1" >
 
                         <Button
                             android:id="@+id/Button05"
@@ -120,10 +119,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="10dp" >
+                        android:layout_weight="1" >
 
                         <Button
                             android:id="@+id/Button02"
@@ -140,17 +136,16 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
                     android:layout_weight="1"
                     android:orientation="vertical" >
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="10dp" >
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1" >
 
                         <Button
                             android:id="@+id/Button04"
@@ -166,31 +161,9 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="10dp" >
-
-                        <Button
-                            android:id="@+id/Button03"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/index_btn3"
-                            android:gravity="center_vertical|left"
-                            android:paddingLeft="20dp"
-                            android:text="奢侈品护理及其他类"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/content_font_size" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="10dp" >
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1" >
 
                         <Button
                             android:id="@+id/Button01"
@@ -206,17 +179,14 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="10dp" >
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" >
 
                         <Button
                             android:id="@+id/Button07"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/index_btn3"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/index_btn2"
                             android:gravity="center_vertical|left"
                             android:paddingLeft="20dp"
                             android:text="箱包鞋类（奢侈品除外）"
@@ -227,11 +197,38 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="2dp" >
+
+                <Button
+                    android:id="@+id/Button03"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/index_btn3"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="20dp"
+                    android:text="奢侈品护理及其他类"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/content_font_size" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/themecolor" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp" >
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp" >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -251,7 +248,6 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/content_font_size" />
                 </RelativeLayout>
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

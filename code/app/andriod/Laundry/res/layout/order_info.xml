@@ -7,8 +7,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/white"
+        android:layout_height="@dimen/head_height"
+        android:background="@color/themecolor"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -23,8 +23,8 @@
                 android:layout_centerVertical="true"
                 android:text="订单"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/head_font_size_sm" />
 
             <Button
                 android:id="@+id/order_info_back"
@@ -36,7 +36,7 @@
                 android:drawablePadding="5dp"
                 android:focusableInTouchMode="true"
                 android:text="返回"
-                android:textColor="@color/themecolor"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
         </RelativeLayout>
     </LinearLayout>
