@@ -197,10 +197,12 @@
                 android:layout_centerVertical="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/common_btn"
-                android:focusableInTouchMode="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:text="洗衣篮"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
+
         </RelativeLayout>
 
     </LinearLayout>

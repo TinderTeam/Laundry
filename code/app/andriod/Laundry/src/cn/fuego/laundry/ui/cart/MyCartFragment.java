@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,11 +40,10 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 	
 	private OrderJson order = new OrderJson();
 	private PopupWindow popupWindow=null;  
-	
+	private Window window;
 	private TextView totalPriceView;
 	private TextView totalCountView;
 	private View view;  
- 
 	private  int  curNum= 1;
 	public static final String ORDER_INFO = "order_info";
 	@Override
@@ -68,7 +69,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 			Bundle savedInstanceState)
 	{
 		View rootView = super.onCreateView(inflater, container, savedInstanceState);
-		
+		window=this.getActivity().getWindow();
 		totalPriceView = (TextView) rootView.findViewById(R.id.chart_total_price);
 		
 		totalCountView = (TextView) rootView.findViewById(R.id.chart_total_count);
@@ -191,18 +192,20 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
             title.setText(orderDetail.getProduct_name());
             sure_btn = (Button) view.findViewById(R.id.pop_window_sure_btn);
             popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            // 使其聚集  
+            popupWindow.setFocusable(true);  
+            //点击外部消失
+            popupWindow.setOutsideTouchable(true);  
+            ColorDrawable dw = new ColorDrawable(0x90000000);  
+            popupWindow.setBackgroundDrawable(dw);
 
-        }  
-  
-        // 使其聚集  
-        popupWindow.setFocusable(true);  
- 
-        popupWindow.setOutsideTouchable(true);  
 
- 
-        ColorDrawable dw = new ColorDrawable(0xb0000000);  
-        popupWindow.setBackgroundDrawable(dw);
- 
+        } 
+        //设置背景变暗
+        WindowManager.LayoutParams lp=window.getAttributes();
+        lp.alpha = 0.4f;
+        this.getActivity().getWindow().setAttributes(lp); 
+        
 		final AbstractWheel num = (AbstractWheel)view.findViewById(R.id.chart_list_item_num);
 		NumericWheelAdapter numAdapter = new NumericWheelAdapter(this.getActivity(), 1, 20);
 		num.setViewAdapter(numAdapter);
@@ -235,15 +238,23 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 		});
 
         popupWindow.showAtLocation(parent, Gravity.BOTTOM, 0, 0);//在屏幕居中，无偏移
-        //监听popwindow消失事件，并对radioGroup清零
-        popupWindow.setOnDismissListener(new OnDismissListener()
-		{		
+        class  DismissListener implements OnDismissListener
+        {
+
 			@Override
 			public void onDismiss()
 			{
-				popupWindow=null;
+				WindowManager.LayoutParams lp=window.getAttributes();
+			    lp.alpha = 1f;
+			    window.setAttributes(lp);
+			    popupWindow=null;
 			}
-		});
+        	
+        };
+        DismissListener disListener = new DismissListener();
+		//监听popwindow消失事件，并对radioGroup清零
+        popupWindow.setOnDismissListener(disListener);
+
 
     } 
 
