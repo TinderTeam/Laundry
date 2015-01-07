@@ -64,7 +64,7 @@
         	var json = formToJson('#loginForm');
         	$.ajax({
 				type:"post",
-				url:"__APP__/Index/login",
+				url:"__APP__/Index/Login",
 				data:json,
 				dataType:"json",
 				success:function(rsp){
@@ -75,7 +75,8 @@
 						fuegoAlert(rsp.errorMsg);
 					}
 				},
-	        	error:function(){
+	        	error:function(error){
+	        		fuegoAlert(objToJson(error));
 	        		fuegoAlert("当前ajax操作出错！");
 				}
 			});

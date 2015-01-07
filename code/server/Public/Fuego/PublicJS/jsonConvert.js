@@ -15,14 +15,17 @@ $.fn.serializeObject = function()
    return o;    
 }; 
 function objToJson(obj){
-	
 	var type = "WEB";
-	var data = {"type":type,"obj":obj};
+	var data = {"clientType":type,"obj":obj};
 	var json = JSON.stringify(data);
 	return json;
 }
 function formToJson(formID){
 	var JSONObj = $(formID).serializeObject();
     return objToJson(JSONObj);
- 
+}
+function buildRequest(formID){
+	var JSONObj = $(formID).serializeObject();
+	JSONObj['clientType']="WEB";
+	return JSON.stringify(JSONObj);
 }

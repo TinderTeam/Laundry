@@ -1,8 +1,11 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
-import("MISP.Model.MispDaoContext");
-import("MISP.Constant.MispErrorCode");
-
+//import("MISP.Model.MispDaoContext");
+//import("MISP.Constant.MispErrorCode");
+//import("MISP.Constant.UserRoleEnum");
+//import("MISP.Constant.ClientTypeEnum");
+//import("MISP.Model.MispServiceContext");
+require_once './Public/PHPInclude/IncludeMisp.php';
 class BaseAction extends Action 
 {
      protected $errorCode = MispErrorCode::SUCCESS ;
@@ -42,7 +45,7 @@ class BaseAction extends Action
 	 	$json = $this->GetReqJson();
 	 	$obj = json_decode($json);
 	 
-	 	return $obj->type;
+	 	return $obj->clientType;
 	 }
 	 public function GetCommonData()
 	 {
@@ -72,8 +75,15 @@ class BaseAction extends Action
 	        $returnArray = $data; 
 	     }
  	     $returnArray['errorCode'] = $this->errorCode;
- 	     $returnArray['errorMsg'] = $this->GetErrorMsg;
-	     
+ 	     $clientType = $this->GetReqType();
+ 	     if($clientType == ClientTypeEnum::WEB)
+ 	     {
+ 	     	$returnArray['errorMsg'] = $this->GetErrorMsg();
+ 	     }
+ 	     else 
+ 	     {
+ 	     	$returnArray['errorMsg'] = null;
+ 	     }
 	     $json = json_encode($returnArray);
 	     
 	     $this->LogErr('the url is '.$_SERVER["REQUEST_URI"] );
@@ -85,7 +95,8 @@ class BaseAction extends Action
 	 
 	 public  function  GetErrorMsg()
 	 {
-	     return $this->errorCode;
+	 	$ini_array = parse_ini_file("./MISP/Lang/MispErrorMessage.ini");
+	    return $ini_array[$this->errorCode];
 	 }
 	 
 	 function objectToArray($array) {

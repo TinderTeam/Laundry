@@ -61,24 +61,31 @@ abstract  class EasyUITableAction extends BaseAction
     }
     public function Show()
     {
-        $this->LogInfo("OK");
         $db = $this->GetModel();
-        $this->LogInfo("OK");
         $this->ShowModel($db);
     }
-    public function ShowModel($model)
+    public function ShowModel($model,$condition=null)
     {
     	$this->LogInfo("show");
-    	
+    	$this->LogInfo($condition['user_id']);
     	$obj = $this->GetObj();
-
-    	$result = $model->find($obj);
+		$this->LogErr($obj);
+		if($condition == null)
+		{
+			$result = $model->find($obj);
+		}
+		else 
+		{
+			$result = $model->where($condition)->find();
+		}
+    	
     	if(false == $result)
     	{
-    		$this->LogErr("delete data failed.the table is ".$model->tableName);
-    		$this->errorCode = DB_GET_ERROR;
+    		$this->LogErr("show data failed.the table is ".$model->tableName);
+    		$this->errorCode = MispErrorCode::DB_GET_ERROR;
     	}
-    	$this->ReturnJson($result);
+    	$data['obj'] = $result;
+    	$this->ReturnJson($data);
     }
     public function Create()
     {
@@ -99,7 +106,7 @@ abstract  class EasyUITableAction extends BaseAction
 	    if(false == $result)
         {
             $this->LogErr("create data failed.the table is ".$db—>tableName);
-            $this->errorCode = DB_CREATE_ERROR;
+            $this->errorCode = MispErrorCode::DB_CREATE_ERROR;
         }
         $this->ReturnJson();
         
@@ -126,7 +133,7 @@ abstract  class EasyUITableAction extends BaseAction
         if(false == $result)
         {
             $this->LogErr("modify data failed.the table is ".$db->tableName);
-        	$this->errorCode = DB_MODIFY_ERROR;
+        	$this->errorCode = MispErrorCode::DB_MODIFY_ERROR;
         }
         $this->ReturnJson();
     }
@@ -144,24 +151,34 @@ abstract  class EasyUITableAction extends BaseAction
         if(false == $result)
         {
             $this->LogErr("delete data failed.the table is ".$db->tableName);
-        	$this->errorCode = DB_DELETE_ERROR;
+        	$this->errorCode = MispErrorCode::DB_DELETE_ERROR;
         }
         $this->ReturnJson();
     }
     
     public function LoadPageTable($model,$condition)
     {
-        $count = $model->where($condition)->count();
-        $page = $this->GetPage();
-        $rows = $model->where($condition)->limit($page['currentPage'],$page['pageSize'])->select();
-        $this->LogInfo("query the table ".$tableName." count is ".$count);
-        $data['total'] = $count;
-        $data['rows'] = $rows;
-        if(false == $rows)
-        {
-            $this->errorCode = DB_GET_ERROR;
-        }
-        $this->ReturnJson($data);
+    	$ReqType = $this->GetReqType();
+    	if(($ReqType == ClientTypeEnum::IOS)||($ReqType == ClientTypeEnum::ANDROID))
+    	{
+    		$productList = $model->where($condition)->select();
+    		$data['obj'] = $productList;
+    		$this->ReturnJson($data);
+    	}
+    	else 
+    	{
+    		$count = $model->where($condition)->count();
+    		$page = $this->GetPage();
+    		$rows = $model->where($condition)->limit($page['currentPage'],$page['pageSize'])->select();
+    		$this->LogInfo("query the table ".$model->tableName." count is ".$count);
+    		$data['total'] = $count;
+    		$data['rows'] = $rows;
+    		if(false == $rows)
+    		{
+    			$this->errorCode = MispErrorCode::DB_GET_ERROR;
+    		}
+    		$this->ReturnJson($data);
+    	}
     }
     
 }

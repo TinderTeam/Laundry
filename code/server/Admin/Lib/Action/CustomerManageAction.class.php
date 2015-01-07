@@ -1,6 +1,6 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
-require 'IncludeLaundry.php';
+require_once './Public/PHPInclude/IncludeLaundry.php';
 class CustomerManageAction extends EasyUITableAction 
 {
 	/* (non-PHPdoc)
@@ -10,56 +10,79 @@ class CustomerManageAction extends EasyUITableAction
 	{
 		return LaundryDaoContext::Customer();
 	}
-	
+
+	//会员新增
 	/* (non-PHPdoc)
-	 * @see EasyUITableAction::LoadPage()
+	 * @see EasyUITableAction::Create()
 	 */
-	public function LoadPage()
+	public function Create()
 	{
-		$db = LaundryDaoContext::ViewCustomer();
-		$this->LoadPageTable($db,$this->GetTableCondition());
-	}
-	
-	public function CustomerRegister()
-	{
-		$this->LogInfo("customer register ...");
+		$this->LogInfo("customer create ...");
+		$Req = $this->GetReqObj();
+		$obj = $Req->obj;
+		
 		$systemUserDao = MispDaoContext::SystemUser();
-        $customerDao = $this->GetModel();
-        $obj = $this->GetObj();
+		$customerDao = $this->GetModel();
         $condition['user_name'] = $obj->user_name;
         $userID = $systemUserDao->where($condition)->getField('user_id');
         if($userID!=''){
-        	$this->errorCode = USER_EXISTED;
-        	$this->ReturnJson();
+        	$this->LogWarn("Create customer failed, user_name is exist.");
+            $this->errorCode = MispErrorCode::USER_EXISTED;
+            $this->ReturnJson();
             return;
         }
-        $userData['user_name'] = $obj->user_name;
-        $userData['password'] = $obj->password;
-        $userData['nickname'] = $obj->nickname;
-        $userData['role_id'] = CUSTOMER;
-        $userData['status'] = TOAPPROVE;
-        $userData['reg_date'] = date('Y-m-d H:i:s',time());
-        $result = $systemUserDao->add($userData);	//$result获取到的是新创建对象的ID
+        $user['user_name'] = $obj->user_name;
+        $user['password'] = '888888';
+        $user['role_id'] = UserRoleEnum::CUSTOMER;
+        $user['reg_date'] = date('Y-m-d H:i:s',time());
+        $result = $systemUserDao->add($user);	//$result获取到的是新创建对象的ID
         if(false == $result)
         {
         	$this->LogErr("create systemUser failed");
-        	$this->errorCode = DB_CREATE_ERROR;
+        	$this->errorCode = MispErrorCode::DB_CREATE_ERROR;
+        	$this->ReturnJson();
         	return;
         }
-        $customerID = $systemUserDao->where($condition)->getField('user_id');
-        $customerData['user_id'] = $customerID;
-        $customerData['customer_name'] = $obj->customer_name;
-        $customerData['phone'] = $obj->phone;
-        $customerData['addr'] = $obj->addr;
-        $customerData['birthday'] = $obj->birthday;
-        $customerData['score'] = 0;
-        $customerResult = $customerDao->add($customerData);	//$result获取到的是新创建对象的ID
+        $customer['user_id'] = $result;
+        $customer['user_name'] = $obj->user_name;
+        $customer['customer_name'] = $obj->customer_name;
+        $customer['nickname'] = $obj->nickname;
+        $customer['phone'] = $obj->user_name;
+        $customer['birthday'] = $obj->birthday;
+        $customer['addr'] = $obj->addr;
+        $customer['score'] = 0;
+        $customerResult = $customerDao->add($customer);	//$result获取到的是新创建对象的ID
         if(false == $customerResult)
         {
         	$this->LogErr("create customer failed");
-        	$this->errorCode = DB_CREATE_ERROR;
-        }       
-        return;
+        	$this->errorCode = MispErrorCode::DB_CREATE_ERROR;
+        }     
+        $this->ReturnJson();
+	}
+	/* (non-PHPdoc)
+	 * @see EasyUITableAction::Delete()
+	 */
+	public function Delete()
+	{
+		$this->LogInfo("customer delete ...");
+		$Req = $this->GetReqObj();
+		$obj = $Req->obj;
+		
+		$customerDao = $this->GetModel();
+        $result = $customerDao->delete($obj);
+        if(false == $result)
+        {
+            $this->LogErr("delete data failed.the table is customer");
+        	$this->errorCode = DB_DELETE_ERROR;
+        }
+        $userDao = MispDaoContext::SystemUser();
+        $result = $userDao->delete($obj);
+        if(false == $result)
+        {
+        	$this->LogErr("delete data failed.the table is system_user");
+        	$this->errorCode = DB_DELETE_ERROR;
+        }
+        $this->ReturnJson();
 	}
 
 }

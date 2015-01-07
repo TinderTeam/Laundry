@@ -46,7 +46,7 @@ function onModify(type){
 	{	
 		//打开产品编辑窗口
 		$('#customerModify').dialog({
-		    title: '产品信息',
+		    title: '会员信息',
 		    width: 600,
 		    height: 240,
 		    closed: false,
@@ -56,17 +56,16 @@ function onModify(type){
 		});
 		if(type == "Modify")
 		{
-			var json = objToJson(row.product_id);
+			var json = objToJson(row.user_id);
 			$.ajax({
 				type:"post",
-				url:"__APP__/ProductManage/Show",
+				url:"__APP__/CustomerManage/Show",
 				data:json,
 				dataType:"json",
 				success:function(rsp){
 					if(isSuccess(rsp)){
-						$('#productForm').form('load',rsp);
-						//加载图片
-						$("#img0").attr('src', '__PUBLIC__/Fuego/Uploads/'+$("#img").val());
+						$('#customerForm').form('load',rsp.obj);
+						$('#user_name').textbox('readonly');
 					}
 					else{
 						fuegoAlert(rsp.errorMsg);
@@ -80,7 +79,7 @@ function onModify(type){
 	}	
 }
 function onDelete(){
-	var row = $('#productGrid').datagrid('getSelected');
+	var row = $('#customerGrid').datagrid('getSelected');
 	if(!row)
 	{
 		fuegoAlert("请选择一条记录");
@@ -89,16 +88,16 @@ function onDelete(){
 	{
 		$.messager.confirm('确认提示', '确认删除该条记录？', function (r) {
 			if(r){
-				var json = objToJson(row.product_id);
+				var json = objToJson(row.user_id);
 				$.ajax({
 					type:"post",
-					url:"__APP__/ProductManage/Delete",
+					url:"__APP__/CustomerManage/Delete",
 					data:json,
 					dataType:"json",
 					success:function(rsp){
 						if(isSuccess(rsp)){
 							//重新加载datagrid数据
-							$("#productGrid").datagrid('reload');
+							$("#customerGrid").datagrid('reload');
 						}
 						else{
 							fuegoAlert(rsp.errorMsg);

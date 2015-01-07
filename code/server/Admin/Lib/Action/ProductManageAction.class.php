@@ -1,6 +1,6 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
-require 'IncludeLaundry.php';
+require_once './Public/PHPInclude/IncludeLaundry.php';
 
 class ProductManageAction extends EasyUITableAction 
 {
@@ -15,7 +15,7 @@ class ProductManageAction extends EasyUITableAction
 	public function LoadPage()
 	{
 		$db = LaundryDaoContext::ViewProduct();		
-        $this->LoadPageTable($db,$this->GetTableCondition());
+        $this->LoadPageTable($db,$this->GetTableCondition()); 
 	}
 
 	/* (non-PHPdoc)
@@ -62,7 +62,6 @@ class ProductManageAction extends EasyUITableAction
 	 */
 	public function Modify()
 	{
-		$this->LogInfo("OK");
 		//导入图片上传类
 		import("ORG.Net.UploadFile");
 		//实例化上传类
@@ -102,21 +101,16 @@ class ProductManageAction extends EasyUITableAction
 	public function getProductTypeList()
 	{
 		$productTypeDao = LaundryDaoContext::ProductType();
-		$condition['parent_id']= ROOTTYPE;
-		$parentTypeList = $productTypeDao->where($condition)->select();
-		$this->LogInfo(json_encode($parentTypeList));
+		//$condition['parent_id']= ROOTTYPE;
+		$productTypeList = $productTypeDao->select();
+		//$this->LogInfo(json_encode($parentTypeList));
 		$comboxTypeList = array();
-		foreach($parentTypeList as $parentType)
+		foreach($productTypeList as $productType)
 		{
-			$IDcondition['parent_id']=$parentType['type_id'];
-			$typeList = $productTypeDao->where($IDcondition)->select();
-			foreach($typeList as $type)
-			{
-				$combox['type_id'] = $type['type_id'];
-				$combox['type_name'] = $type['type_name'];
-				$combox['parent_name'] = $parentType['type_name'];
-				array_push($comboxTypeList,$combox);	
-			}
+			$combox['type_id'] = $productType['type_id'];
+			$combox['type_name'] = $productType['type_name'];
+			$combox['parent_name'] = $productType['type_name'];
+			array_push($comboxTypeList,$combox);	
 		}
 		$this->LogInfo(json_encode($comboxTypeList));
 		echo json_encode($comboxTypeList);

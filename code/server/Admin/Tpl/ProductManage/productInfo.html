@@ -14,7 +14,7 @@
 	    				<input class="easyui-textbox" type="text" name="product_name" data-options="required:true"></input>
 	   				</td>
 	   				<td style="display:none">
-	   					<input name="product_id" class="easyui-textbox" type="text" ></input>
+	   					<input id="product_id" name="product_id" class="easyui-textbox" type="text" ></input>
 	   				</td>
 	    		</tr>
 	    		<tr>
@@ -33,7 +33,7 @@
 	    			<td>
 	    				<input class="easyui-combobox" name="type_id" style="width:100%"
 							   data-options="url: '__APP__/ProductManage/getProductTypeList',method: 'get',
-								valueField:'type_id',textField:'type_name',groupField:'parent_name'">
+								valueField:'type_id',textField:'type_name'">
 					</td>
 	    		</tr>
 	    	</table>

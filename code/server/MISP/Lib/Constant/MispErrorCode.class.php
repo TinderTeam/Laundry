@@ -18,14 +18,14 @@ class MispErrorCode
 	const DB_DELETE_ERROR = 13; 			//数据库删除失败
 	const DB_MODIFY_ERROR = 14; 			//数据库更新失败
 	const DB_GET_ERROR = 15; 				//数据库获取失败
-	
 	const NO_IMG = 16;						//上传图片为空
-	
+	const ERROR_SESSION_INVALID = 17;		//session失效
+
 	const USER_UNCHECKED = 10000;           //用户未审核
 	const USER_APPROVAL_REFUSED = 10001;    //用户审核未通过
 	const CODE_IS_INVALID = 10002;          //激活码已失效
-	const ACTIVITY_ORDER_DUPLICATE = 10003; //活动重复参与
-	const ACTIVITY_ORDER_MAXIMUM = 10004;   //活动订单已达上限
+	const SEND_MESSAGE_FAILED = 10003;		//发送验证码失败
+	
 }
 
 ?>

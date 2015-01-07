@@ -58,7 +58,7 @@ function onModify(type){
 				dataType:"json",
 				success:function(rsp){
 					if(isSuccess(rsp)){
-						$('#userForm').form('load',rsp);
+						$('#userForm').form('load',rsp.obj);
 					}
 					else{
 						fuegoAlert(rsp.errorMsg);

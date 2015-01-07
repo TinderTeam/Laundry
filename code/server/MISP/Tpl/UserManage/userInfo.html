@@ -9,24 +9,25 @@
     		<tr>
     			<td>用户名:</td>
     			<td>
-    				<input class="easyui-textbox" type="text" name="user_name" data-options="required:true"></input>
+    				<input id="user_name" name="user_name" class="easyui-validatebox easyui-textbox" type="text"  data-options="required:true"></input>
    				</td>
    				<td style="display:none">
-   					<input id="user_id" class="easyui-textbox" type="text" name="user_id"></input>
+   					<input id="user_id" name="user_id" class="easyui-textbox" type="text"></input>
    				</td>
     		</tr>
     		<tr>
     			<td>密码:</td>
-    			<td><input class="easyui-textbox" type="text" name="password" data-options="required:true"></input></td>
+    			<td><input id="password" name="password" class="easyui-textbox easyui-validatebox" type="password" required="required" validType="length[6,20]"></input></td>
     		</tr>
     	</table>
     </form>
     <div style="text-align:center;padding:5px">
-    	<a class="easyui-linkbutton" onclick="submitForm()">Submit</a>
-    	<a class="easyui-linkbutton" onclick="$('#userModify').dialog('close')">Close</a>
+    	<a class="easyui-linkbutton" onclick="submitForm()">提交</a>
+    	<a class="easyui-linkbutton" onclick="$('#userModify').dialog('close')">关闭</a>
     </div>
 <script type="text/javascript">
 function submitForm() {
+	if($("#userForm").form('validate') == false) return;
 	var json = formToJson('#userForm');
 	 var submitUrl = "__APP__/UserManage/Create";
 	 if("" != $("#user_id").val())

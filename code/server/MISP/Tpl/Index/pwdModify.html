@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+    <form id="pwdForm" method="post">
+    	<table cellpadding="5">
+    		<tr>
+    			<td>请输入原密码:</td>
+    			<td>
+    				<input class="easyui-textbox" type="text" name="pwdOld" data-options="required:true"></input>
+   				</td>
+    		</tr>
+    		<tr>
+    			<td>请输入新密码:</td>
+    			<td><input id="pwdNew" name="pwdNew" class="easyui-textbox" type="password"  data-options="required:true"></input></td>
+    		</tr>
+    		<tr>
+    			<td>请再次输入新密码:</td>
+    			<td><input id="pwdNewDup" name="pwdNewDup" class="easyui-textbox easyui-validatebox" type="password" required="required" validType="equals['#pwdNew']"></input></td>
+    		</tr>
+    	</table>
+    </form>
+    <div style="text-align:center;padding:5px">
+    	<a class="easyui-linkbutton" onclick="submitForm()">提交</a>
+    	<a class="easyui-linkbutton" onclick="$('#pwdManage').dialog('close')">关闭</a>
+    </div>
+<script type="text/javascript">
+//验证两次输入密码是否一致
+$.extend($.fn.validatebox.defaults.rules, {
+    equals: {
+		validator: function(value,param){
+			return value == $(param[0]).val();
+		},
+		message: '两次输入密码不一致'
+    }
+});
+function submitForm() {
+	if($("#pwdForm").form('validate') == false) return;
+	var json = buildRequest("#pwdForm");
+	 var submitUrl = "__APP__/UserManage/Create";
+	$.ajax({
+		type:"post",
+		url: "__APP__/Index/ModifyPassword",
+		data:json,
+		dataType:"json",
+		success:function(rsp){
+			if(isSuccess(rsp)){
+				$.messager.confirm('确认提示', '修改成功！', function (r) {
+					if(r){
+						window.location.href="__APP__/Index/index";
+					}
+				});
+			}
+			else{
+				fuegoAlert(rsp.errorMsg);
+			}
+		},
+    	error:function(){
+    		fuegoAlert("当前ajax操作出错！");
+		}
+	});
+}
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 ﻿# Host: 127.0.0.1  (Version: 5.1.70-community)
-# Date: 2015-01-03 21:30:15
+# Date: 2015-01-07 22:23:49
 # Generator: MySQL-Front 5.3  (Build 2.42)
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -14,6 +14,10 @@
 /*!40014 SET UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=0 */;
+
+DROP DATABASE IF EXISTS `misp`;
+CREATE DATABASE `misp` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `misp`;
 
 #
 # Source for table "misp_menu"
@@ -36,7 +40,7 @@ CREATE TABLE `misp_menu` (
 # Data for table "misp_menu"
 #
 
-INSERT INTO `misp_menu` VALUES (1,'UserManage','用户管理',NULL,NULL,NULL,'index.php/UserManage/userManage.html',NULL),(2,'ProductManage','产品管理',NULL,NULL,NULL,'laundry.php/ProductManage/productManage.html',NULL),(3,'CustomerManage','会员管理',NULL,NULL,NULL,'laundry.php/CustomerManage/customerManage.html',NULL),(4,'OrderManage','订单管理',NULL,NULL,NULL,'laundry.php/ProductManage/productManage.html',NULL);
+INSERT INTO `misp_menu` VALUES (1,'UserManage','用户管理',NULL,NULL,NULL,'index.php/UserManage/userManage.html',NULL),(2,'ProductManage','产品管理',NULL,NULL,NULL,'laundry.php/ProductManage/productManage.html',NULL),(3,'CustomerManage','会员管理',NULL,NULL,NULL,'laundry.php/CustomerManage/customerManage.html',NULL),(4,'OrderManage','订单管理',NULL,NULL,NULL,'laundry.php/OrderManage/orderManage.html',NULL);
 
 #
 # Source for table "misp_operate_log"
@@ -108,13 +112,13 @@ CREATE TABLE `misp_system_role` (
   `role_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "misp_system_role"
 #
 
-INSERT INTO `misp_system_role` VALUES (1,'ADMIN');
+INSERT INTO `misp_system_role` VALUES (1,'ADMIN'),(2,'CUSTOMER');
 
 #
 # Source for table "misp_system_user"
@@ -124,19 +128,17 @@ DROP TABLE IF EXISTS `misp_system_user`;
 CREATE TABLE `misp_system_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(50) DEFAULT NULL,
-  `nickname` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `role_id` int(11) DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL,
   `reg_date` datetime DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "misp_system_user"
 #
 
-INSERT INTO `misp_system_user` VALUES (1,'admin',NULL,'1234',NULL,NULL,NULL),(3,'user1',NULL,'123456',NULL,NULL,NULL),(8,'user1',NULL,'1234',NULL,NULL,NULL),(11,'user1',NULL,'1234',NULL,NULL,NULL),(17,'user2',NULL,'1234',NULL,NULL,NULL),(19,'user1',NULL,'1234',NULL,NULL,NULL),(20,'user1',NULL,'1234',NULL,NULL,NULL),(28,'user11',NULL,'1234',NULL,NULL,NULL),(30,'测试用户',NULL,'1',NULL,NULL,NULL),(31,'customer',NULL,'1234',1,NULL,NULL);
+INSERT INTO `misp_system_user` VALUES (1,'admin','123456',1,NULL),(50,'nidni','888888',2,'2015-01-05 11:20:32'),(51,'123445646','888888',2,'2015-01-05 15:38:12'),(62,'1234566666','888888',2,'2015-01-07 18:43:38'),(63,'18603036649','123456',2,'2015-01-07 19:34:47');
 
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
