@@ -4,6 +4,30 @@
 .icon-add{
 	background:url('icons/edit_add.png') no-repeat center center;
 }
+.icon-detail{
+	background:url('icons/detail.png') no-repeat center center;
+}
+.icon-task_go{
+	background:url('icons/task_go.png') no-repeat center center;
+}
+.icon-user{
+	background:url('icons/user.png') no-repeat center center;
+}
+.icon-group{
+	background:url('icons/group.png') no-repeat center center;
+}
+.icon-product{
+	background:url('icons/product.png') no-repeat center center;
+}
+.icon-order{
+	background:url('icons/order.png') no-repeat center center;
+}
+.icon-logout{
+	background:url('icons/logout.png') no-repeat center center;
+}
+.icon-key{
+	background:url('icons/key.png') no-repeat center center;
+}
 .icon-edit{
 	background:url('icons/pencil.png') no-repeat center center;
 }

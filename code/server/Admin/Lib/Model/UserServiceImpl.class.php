@@ -32,10 +32,11 @@ class UserServiceImpl implements MispUserService
 	    	FuegoLog::getLog()->LogWarn("Web login failed");
 	    	return MispErrorCode::USERNAME_OR_PASSWORD_WRONG;
 	    }
+	    $user['password'] = "";
 	    session_start();
 	    $time=30*60;
 	    setcookie(session_name(),session_id(),time()+$time,"/");
-	    $_SESSION['user_name']= $user['user_name'];
+	    $_SESSION['user'] = $user;
 	    FuegoLog::getLog()->LogInfo("Web login success, the user name is ".$user['user_name']);
 	    return MispErrorCode::SUCCESS;
 	}

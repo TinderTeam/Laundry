@@ -1,10 +1,5 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
-//import("MISP.Model.MispDaoContext");
-//import("MISP.Constant.MispErrorCode");
-//import("MISP.Constant.UserRoleEnum");
-//import("MISP.Constant.ClientTypeEnum");
-//import("MISP.Model.MispServiceContext");
 require_once './Public/PHPInclude/IncludeMisp.php';
 class BaseAction extends Action 
 {
@@ -86,8 +81,8 @@ class BaseAction extends Action
  	     }
 	     $json = json_encode($returnArray);
 	     
-	     $this->LogErr('the url is '.$_SERVER["REQUEST_URI"] );
-	     $this->LogErr('response is '.$json);
+	     $this->LogInfo('the url is '.$_SERVER["REQUEST_URI"] );
+	     $this->LogInfo('response is '.$json);
 	     header('Content-Type:application/json;charset=utf-8');
 	     echo $json;
 	     exit;

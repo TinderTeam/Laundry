@@ -12,6 +12,14 @@ class MispDaoContext
 	{
 		return M('menu',MispDaoContext::PREFIX,MispDaoContext::MISPDB);
 	}
+	static function Company()
+	{
+		return M('company',MispDaoContext::PREFIX,MispDaoContext::MISPDB);
+	}
+	static function ClientVersion()
+	{
+		return M('client_version',MispDaoContext::PREFIX,MispDaoContext::MISPDB);
+	}
 }
 
 ?>

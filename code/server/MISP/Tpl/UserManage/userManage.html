@@ -6,18 +6,27 @@
 	<include file="./Public/Fuego/PublicPage/fuegoRes.html"/>
 </head>
 <body>
-	<div style="margin:20px 0;"></div>
 	<div id="toolbar" style="padding:5px;height:auto">
-		<a class="easyui-linkbutton" iconCls="icon-add" onclick="onModify('Create')">增加</a>
-		<a class="easyui-linkbutton" iconCls="icon-edit" onclick="onModify('Modify')">编辑</a>
-		<a class="easyui-linkbutton" iconCls="icon-remove" onclick="onDelete()">删除</a>
-		<input class="easyui-datebox" style="width:80px">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+		<table style="width:100%;">
+        	<tr>
+            	<td style="width:17%;">
+					<a class="easyui-linkbutton" iconCls="icon-add" onclick="onModify('Create')">增加</a>
+					<a class="easyui-linkbutton" iconCls="icon-edit" onclick="onModify('Modify')">编辑</a>
+					<a class="easyui-linkbutton" iconCls="icon-remove" onclick="onDelete()">删除</a>
+				</td>
+				<td>
+					<form id="searchForm" method="post">
+					<input name="user_name" class="easyui-textbox" data-options="prompt:'请输入用户名'" style="width:120px">
+					<a class="easyui-linkbutton" iconCls="icon-search" onclick="onSearch()">搜索</a>
+					</form>
+				</td>
+			</tr>
+		</table>
 	</div>
 	<div class="easyui-layout"data-options="fit:true">
-	<table id="userGrid" class="easyui-datagrid" title="Basic DataGrid" style="width:100%;height:95%"
+	<table id="userGrid" class="easyui-datagrid" style="width:100%;height:100%"
 			data-options="rownumbers:true,pagination:true,pageList:[10,20,30],singleSelect:true,
-			url:'__APP__/UserManage/LoadPage',method:'get',toolbar:'#toolbar'">
+			url:'__APP__/UserManage/LoadPage',method:'post',queryParams:'',toolbar:'#toolbar'">
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
@@ -30,6 +39,12 @@
 	</div>
 	<div id="userModify"></div>
 <script type="text/javascript">
+function onSearch(){
+	var json = buildRequest('#searchForm');
+	var param = {"data" : json};
+	$('#userGrid').datagrid('load', param);
+	
+}
 function onModify(type){
 	var row = $('#userGrid').datagrid('getSelected');
 	if((type == "Modify")&&(!row))

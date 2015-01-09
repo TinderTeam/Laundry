@@ -10,7 +10,35 @@ class CustomerManageAction extends EasyUITableAction
 	{
 		return LaundryDaoContext::Customer();
 	}
-
+	/* (non-PHPdoc)
+	 * @see EasyUITableAction::LoadPage()
+	 */
+	public function LoadPage()
+	{
+		//删除自动转义增加的\
+		$PostStr = stripslashes($_POST['data']);
+		$req = json_decode($PostStr);
+		if("" != $req->user_id)
+		{
+			$keyID = '%'.$req->user_id.'%';
+			$searchFilter['user_id'] = array('like',$keyID);
+		}
+		if("" != $req->user_name)
+		{
+			$keyUser = '%'.$req->user_name.'%';
+			$searchFilter['user_name'] = array('like',$keyUser);
+		}
+		if("" != $req->customer_name)
+		{
+			$keyName = '%'.$req->customer_name.'%';
+			$searchFilter['customer_name'] = array('like',$keyName);
+		}
+		if(0 != $_SESSION['user']['company_id'])
+		{
+			$searchFilter['company_id'] = $_SESSION['user']['company_id'];
+		}
+		$this->LoadPageTable($this->GetModel(),$searchFilter);
+	}
 	//会员新增
 	/* (non-PHPdoc)
 	 * @see EasyUITableAction::Create()
@@ -20,10 +48,10 @@ class CustomerManageAction extends EasyUITableAction
 		$this->LogInfo("customer create ...");
 		$Req = $this->GetReqObj();
 		$obj = $Req->obj;
-		
+		//创建用户信息
 		$systemUserDao = MispDaoContext::SystemUser();
-		$customerDao = $this->GetModel();
         $condition['user_name'] = $obj->user_name;
+        $condition['company_id'] = $_SESSION['user']['company_id'];
         $userID = $systemUserDao->where($condition)->getField('user_id');
         if($userID!=''){
         	$this->LogWarn("Create customer failed, user_name is exist.");
@@ -35,14 +63,19 @@ class CustomerManageAction extends EasyUITableAction
         $user['password'] = '888888';
         $user['role_id'] = UserRoleEnum::CUSTOMER;
         $user['reg_date'] = date('Y-m-d H:i:s',time());
-        $result = $systemUserDao->add($user);	//$result获取到的是新创建对象的ID
-        if(false == $result)
-        {
-        	$this->LogErr("create systemUser failed");
-        	$this->errorCode = MispErrorCode::DB_CREATE_ERROR;
-        	$this->ReturnJson();
-        	return;
-        }
+        $user['company_id'] = $_SESSION['user']['company_id'];
+		try
+    	{
+    		$result = MispCommonService::Create($systemUserDao, $user);
+    	}
+    	catch(FuegoException $e)
+    	{
+    		$this->errorCode = $e->getCode();
+    		$this->ReturnJson();
+    		return;
+    	}
+		//创建会员信息
+    	$customerDao = $this->GetModel();
         $customer['user_id'] = $result;
         $customer['user_name'] = $obj->user_name;
         $customer['customer_name'] = $obj->customer_name;
@@ -51,12 +84,15 @@ class CustomerManageAction extends EasyUITableAction
         $customer['birthday'] = $obj->birthday;
         $customer['addr'] = $obj->addr;
         $customer['score'] = 0;
-        $customerResult = $customerDao->add($customer);	//$result获取到的是新创建对象的ID
-        if(false == $customerResult)
+        $customer['company_id'] = $_SESSION['user']['company_id'];
+        try
         {
-        	$this->LogErr("create customer failed");
-        	$this->errorCode = MispErrorCode::DB_CREATE_ERROR;
-        }     
+        	$result = MispCommonService::Create($customerDao, $customer);
+        }
+        catch(FuegoException $e)
+        {
+        	$this->errorCode = $e->getCode();
+        }   
         $this->ReturnJson();
 	}
 	/* (non-PHPdoc)
@@ -66,21 +102,28 @@ class CustomerManageAction extends EasyUITableAction
 	{
 		$this->LogInfo("customer delete ...");
 		$Req = $this->GetReqObj();
-		$obj = $Req->obj;
-		
+		$objID = $Req->obj;
+		//删除会员信息
 		$customerDao = $this->GetModel();
-        $result = $customerDao->delete($obj);
-        if(false == $result)
-        {
-            $this->LogErr("delete data failed.the table is customer");
-        	$this->errorCode = DB_DELETE_ERROR;
-        }
+		try
+		{
+			$result = MispCommonService::Delete($customerDao, $objID);
+		}
+		catch(FuegoException $e)
+		{
+			$this->errorCode = $e->getCode();
+			$this->ReturnJson();
+			return;
+		}
+		//删除用户信息
         $userDao = MispDaoContext::SystemUser();
-        $result = $userDao->delete($obj);
-        if(false == $result)
+        try
         {
-        	$this->LogErr("delete data failed.the table is system_user");
-        	$this->errorCode = DB_DELETE_ERROR;
+        	$result = MispCommonService::Delete($userDao, $objID);
+        }
+        catch(FuegoException $e)
+        {
+        	$this->errorCode = $e->getCode();
         }
         $this->ReturnJson();
 	}

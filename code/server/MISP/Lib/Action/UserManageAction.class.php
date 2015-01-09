@@ -1,6 +1,5 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
-//import("MISP.Util.ShortMessage");
 class UserManageAction extends EasyUITableAction 
 {
 	/* (non-PHPdoc)
@@ -12,14 +11,25 @@ class UserManageAction extends EasyUITableAction
 	}
 	
 	/* (non-PHPdoc)
-	 * @see EasyUITableAction::GetTableCondition()
+	 * @see EasyUITableAction::LoadPage()
 	 */
-	protected function GetTableCondition()
+	public function LoadPage()
 	{
-		$condition['role_id'] = UserRoleEnum::ADMIN;
-		return $condition;
+		//删除自动转义增加的\
+		$PostStr = stripslashes($_POST['data']);
+		$req = json_decode($PostStr);
+		if("" != $req->user_name)
+		{
+			$keyword = '%'.$req->user_name.'%';
+			$searchFilter['user_name'] = array('like',$keyword);
+		}
+		$searchFilter['role_id'] = UserRoleEnum::ADMIN;
+		if(0 != $_SESSION['user']['company_id'])
+		{
+			$searchFilter['company_id'] = $_SESSION['user']['company_id'];
+		}
+		$this->LoadPageTable($this->GetModel(),$searchFilter);
 	}
-	
 	/* 新增管理员
 	 * (non-PHPdoc)
 	 * @see EasyUITableAction::Create()
@@ -42,6 +52,7 @@ class UserManageAction extends EasyUITableAction
         $user['password'] = $req->password;
         $user['role_id'] = UserRoleEnum::ADMIN;
         $user['reg_date'] = date('Y-m-d H:i:s',time());
+        $user['company_id'] = $_SESSION['user']['company_id'];
         $result = $systemUserDao->add($user);	//$result获取到的是新创建对象的ID
         if(false == $result)
         {

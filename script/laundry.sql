@@ -1,5 +1,5 @@
 ﻿# Host: 127.0.0.1  (Version: 5.1.70-community)
-# Date: 2015-01-07 22:23:40
+# Date: 2015-01-09 23:00:31
 # Generator: MySQL-Front 5.3  (Build 2.42)
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -48,20 +48,21 @@ CREATE TABLE `customer` (
   `customer_name` varchar(50) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `addr` varchar(255) DEFAULT NULL,
-  `birthday` varchar(20) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
   `score` int(11) DEFAULT NULL,
   `level` varchar(20) DEFAULT NULL,
   `nickname` varchar(50) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   `user_name` varchar(20) DEFAULT NULL,
+  `company_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "customer"
 #
 
-INSERT INTO `customer` VALUES (45,'真实姓名','','家庭住址','2009-01-03',0,NULL,'昵称',NULL,NULL),(46,'','','','',0,NULL,NULL,NULL,NULL),(47,'','','','',0,NULL,NULL,NULL,NULL),(50,'','nidni','','',0,NULL,'',NULL,NULL),(51,'','1234','','',0,NULL,'333',NULL,NULL),(54,'孚思科技','13920142014','深圳市龙华新区工业路192号','2013-11-20',0,NULL,'Fuego2014',NULL,NULL),(55,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(56,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(61,'测试用户','18603036649','深圳市龙华新区工业路192号','2013-11-20',0,NULL,'昵称',NULL,'18603036649'),(62,'我是真实姓名','1234566666','家庭地址','',0,NULL,'我是昵称',NULL,'1234566666'),(63,NULL,'18603036649','未设置',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `customer` VALUES (61,'测试用户','18603036649','深圳市龙华新区工业路192号','1990-08-23',0,NULL,'昵称',NULL,'18603036649',1),(63,NULL,'18603036649','未设置','1988-08-08',NULL,NULL,NULL,NULL,NULL,1),(79,'士大夫','13322887744','士大夫士大夫是的复古宫廷','2015-01-09',0,NULL,'ask大家',NULL,'13322887744',NULL),(80,'与人品','13366623344','士大夫岁的法国','1990-02-23',0,NULL,'失联客机',NULL,'13366623344',1),(81,'斯蒂芬','18988889999','稍等帮您弄好','1990-05-24',0,NULL,'卢卡斯吉多',NULL,'18988889999',1);
 
 #
 # Source for table "delivery_info"
@@ -113,6 +114,7 @@ CREATE TABLE `order` (
   `take_time` varchar(100) DEFAULT NULL,
   `customer_name` varchar(20) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
+  `company_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=123475 DEFAULT CHARSET=utf8;
 
@@ -120,7 +122,7 @@ CREATE TABLE `order` (
 # Data for table "order"
 #
 
-INSERT INTO `order` VALUES (123469,NULL,0,NULL,NULL,NULL,'送衣付款',NULL,0,NULL,'正常下单',24.00,2,'','93050107122351',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(123470,NULL,0,NULL,NULL,NULL,'送衣付款',NULL,0,NULL,'正常下单',24.00,2,'','17220107123019',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(123471,NULL,0,NULL,NULL,NULL,'送衣付款',NULL,0,NULL,'正常下单',24.00,2,'','1501071238183829',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(123472,NULL,0,NULL,NULL,NULL,'送衣付款',NULL,0,NULL,'正常下单',24.00,2,'','1501071241278033',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(123473,NULL,0,NULL,NULL,NULL,'送衣付款',NULL,0,NULL,'正常下单',50.00,2,'','1501071243516865',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(123474,NULL,0,NULL,NULL,NULL,'送衣付款',NULL,0,NULL,'正常下单',50.00,2,'','1501071837187468',NULL,NULL,NULL,NULL,NULL,NULL,'61');
+INSERT INTO `order` VALUES (123469,NULL,0,NULL,NULL,NULL,'送衣付款','已完成',0,NULL,'正常下单',24.00,2,'','93050107122351',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(123470,NULL,0,NULL,NULL,NULL,'送衣付款','已完成',0,NULL,'正常下单',24.00,2,'','17220107123019',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(123471,NULL,0,NULL,NULL,NULL,'送衣付款','已完成',0,NULL,'正常下单',24.00,2,'','1501071238183829',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(123472,NULL,0,NULL,NULL,NULL,'送衣付款','已下单',0,NULL,'正常下单',24.00,2,'','1501071241278033',NULL,NULL,NULL,NULL,NULL,NULL,NULL,2),(123473,NULL,0,NULL,NULL,NULL,'送衣付款',NULL,0,NULL,'正常下单',50.00,2,'','1501071243516865',NULL,NULL,NULL,NULL,NULL,NULL,NULL,2),(123474,NULL,0,NULL,NULL,NULL,'送衣付款',NULL,0,NULL,'正常下单',50.00,2,'','1501071837187468',NULL,NULL,NULL,NULL,NULL,NULL,'61',2);
 
 #
 # Source for table "order_detail"
@@ -160,7 +162,7 @@ CREATE TABLE `product` (
   `product_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(50) DEFAULT NULL,
   `type_id` int(11) DEFAULT NULL,
-  `seller_id` int(11) DEFAULT NULL,
+  `company_id` int(11) DEFAULT NULL,
   `describe` varchar(255) DEFAULT NULL,
   `original_price` float(5,2) DEFAULT NULL,
   `price` float(5,2) DEFAULT NULL,
@@ -171,13 +173,13 @@ CREATE TABLE `product` (
   `detail_info` varchar(2000) DEFAULT NULL,
   `price_type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "product"
 #
 
-INSERT INTO `product` VALUES (30,'棉衣/羽绒服（短）',1,NULL,'',NULL,25.00,'54a90d904b50d.png',NULL,NULL,NULL,NULL,NULL),(31,'大衣（短）',1,NULL,'',NULL,25.00,'54a90dcff2f19.png',NULL,NULL,NULL,NULL,NULL),(32,'风衣',1,NULL,'',NULL,30.00,'54a90dee1307c.png',NULL,NULL,NULL,NULL,NULL),(33,'连衣裙',1,NULL,'',NULL,20.00,'54a90e0839edc.png',NULL,NULL,NULL,NULL,NULL),(34,'冲风衣',1,NULL,'',NULL,25.00,'54a90e6143fae.png',NULL,NULL,NULL,NULL,NULL),(35,'运动衣/卫衣',1,NULL,'',NULL,20.00,'54a90e8593aca.png',NULL,NULL,NULL,NULL,NULL),(36,'夹克',1,NULL,'',NULL,20.00,'54a90ea14f332.png',NULL,NULL,NULL,NULL,NULL),(37,'西裤',2,NULL,'',NULL,12.00,'54a90edc18cbc.png',NULL,NULL,NULL,NULL,NULL),(38,'休闲裤',2,NULL,'',NULL,12.00,'54a90eeee4685.png',NULL,NULL,NULL,NULL,NULL),(39,'牛仔裤',2,NULL,'',NULL,10.00,'54a90f02de82a.png',NULL,NULL,NULL,NULL,NULL),(40,'中裤',2,NULL,'',NULL,10.00,'54a90f1551f2a.png',NULL,NULL,NULL,NULL,NULL),(41,'睡裤',2,NULL,'',NULL,12.00,'54a90f3f673f6.png',NULL,NULL,NULL,NULL,NULL),(42,'沙滩裤',2,NULL,'',NULL,10.00,'54a90f8b6308c.png',NULL,NULL,NULL,NULL,NULL),(43,'铅笔裤',2,NULL,'',NULL,12.00,'54a90fa3c4cb1.png',NULL,NULL,NULL,NULL,NULL),(44,'床罩（薄）',3,NULL,'',NULL,10.00,'54a91003022cd.png',NULL,NULL,NULL,NULL,NULL),(45,'床罩（厚）',3,NULL,'',NULL,20.00,'54a91019c4a66.png',NULL,NULL,NULL,NULL,NULL),(46,'床单（薄）',3,NULL,'',NULL,10.00,'54a9103461011.png',NULL,NULL,NULL,NULL,NULL),(47,'床单（厚）',3,NULL,'',NULL,20.00,'54a9104424196.png',NULL,NULL,NULL,NULL,NULL),(48,'枕套（一对）',3,NULL,'',NULL,8.00,'54a9108472a27.png',NULL,NULL,NULL,NULL,NULL),(49,'地毯/平方',3,NULL,'',NULL,30.00,'54a9109b14a2a.png',NULL,NULL,NULL,NULL,NULL),(50,'挂毯/平方',3,NULL,'',NULL,28.00,'54a910b6be833.png',NULL,NULL,NULL,NULL,NULL),(51,'黑色皮大衣（短）',4,NULL,'',NULL,100.00,'54a910f556e59.png',NULL,NULL,NULL,NULL,NULL),(52,'黑色皮大衣（中）',4,NULL,'',NULL,150.00,'54a9110b0896b.png',NULL,NULL,NULL,NULL,NULL),(53,'黑色皮大衣（长）',4,NULL,'',NULL,200.00,'54a9111cdbab3.png',NULL,NULL,NULL,NULL,NULL),(54,'彩色皮大衣（短）',4,NULL,'',NULL,100.00,'54a9114004ab3.png',NULL,NULL,NULL,NULL,NULL),(55,'彩色皮大衣（中）',4,NULL,'',NULL,150.00,'54a911534f1c6.png',NULL,NULL,NULL,NULL,NULL),(56,'彩色皮大衣（长）',4,NULL,'',NULL,200.00,'54a9116297c2a.png',NULL,NULL,NULL,NULL,NULL),(57,'皮风衣',4,NULL,'',NULL,150.00,'54a9117508947.png',NULL,NULL,NULL,NULL,NULL),(58,'汽车坐垫（羊毛垫/长毛）',5,NULL,'',NULL,280.00,'54a911bcc1686.png',NULL,NULL,NULL,NULL,NULL),(59,'汽车坐垫（养生坐垫）',5,NULL,'',NULL,160.00,'54a911d43efd3.png',NULL,NULL,NULL,NULL,NULL),(60,'汽车坐垫（羊毛垫/平毛）',5,NULL,'',NULL,240.00,'54a911fc1e1f4.png',NULL,NULL,NULL,NULL,NULL),(61,'汽车坐垫（羊毛垫/短毛）',5,NULL,'',NULL,260.00,'54a9122e06f9c.png',NULL,NULL,NULL,NULL,NULL),(62,'汽车坐垫（珠子垫）',5,NULL,'',NULL,360.00,'54a9125487533.png',NULL,NULL,NULL,NULL,NULL),(63,'汽车坐垫（冰丝/亚麻）',5,NULL,'',NULL,100.00,'54a91276a7a53.png',NULL,NULL,NULL,NULL,NULL),(64,'运动鞋',6,NULL,'',NULL,20.00,'54a9129f4f3dc.png',NULL,NULL,NULL,NULL,NULL),(65,'雪地鞋',6,NULL,'',NULL,30.00,'54a912c09448f.png',NULL,NULL,NULL,NULL,NULL),(66,'户外鞋',6,NULL,'',NULL,20.00,'54a912cfbbdaa.png',NULL,NULL,NULL,NULL,NULL),(67,'单肩包',6,NULL,'',NULL,30.00,'54a912e2c427a.png',NULL,NULL,NULL,NULL,NULL),(68,'双肩包',6,NULL,'',NULL,40.00,'54a912f98ca01.png',NULL,NULL,NULL,NULL,NULL),(69,'钱包',6,NULL,'',NULL,30.00,'54a9133636ee0.png',NULL,NULL,NULL,NULL,NULL),(70,'卡包',6,NULL,'',NULL,20.00,'54a91345e358c.png',NULL,NULL,NULL,NULL,NULL),(71,'奢侈品护理',7,NULL,'',NULL,0.00,'54a9159a6c3eb.png',NULL,NULL,NULL,NULL,NULL),(72,'衣服染色',7,NULL,'',NULL,0.00,'54a915b147447.png',NULL,NULL,NULL,NULL,NULL),(73,'皮衣改色',7,NULL,'',NULL,0.00,'54a915c1f2831.png',NULL,NULL,NULL,NULL,NULL),(74,'皮衣救治',7,NULL,'',NULL,0.00,'54a915d4d7102.png',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `product` VALUES (30,'棉衣/羽绒服（短）',1,1,'',NULL,25.00,'54a90d904b50d.png',NULL,NULL,NULL,NULL,NULL),(31,'大衣（短）',1,1,'',NULL,25.00,'54a90dcff2f19.png',NULL,NULL,NULL,NULL,NULL),(32,'风衣',1,1,'',NULL,30.00,'54a90dee1307c.png',NULL,NULL,NULL,NULL,NULL),(33,'连衣裙',1,1,'',NULL,20.00,'54a90e0839edc.png',NULL,NULL,NULL,NULL,NULL),(34,'冲风衣',1,1,'',NULL,25.00,'54a90e6143fae.png',NULL,NULL,NULL,NULL,NULL),(35,'运动衣/卫衣',1,1,'',NULL,20.00,'54a90e8593aca.png',NULL,NULL,NULL,NULL,NULL),(36,'夹克',1,1,'',NULL,20.00,'54a90ea14f332.png',NULL,NULL,NULL,NULL,NULL),(37,'西裤',2,1,'',NULL,12.00,'54a90edc18cbc.png',NULL,NULL,NULL,NULL,NULL),(38,'休闲裤',2,1,'',NULL,12.00,'54a90eeee4685.png',NULL,NULL,NULL,NULL,NULL),(39,'牛仔裤',2,1,'',NULL,10.00,'54a90f02de82a.png',NULL,NULL,NULL,NULL,NULL),(40,'中裤',2,1,'',NULL,10.00,'54a90f1551f2a.png',NULL,NULL,NULL,NULL,NULL),(41,'睡裤',2,1,'',NULL,12.00,'54a90f3f673f6.png',NULL,NULL,NULL,NULL,NULL),(42,'沙滩裤',2,1,'',NULL,10.00,'54a90f8b6308c.png',NULL,NULL,NULL,NULL,NULL),(43,'铅笔裤',2,1,'',NULL,12.00,'54a90fa3c4cb1.png',NULL,NULL,NULL,NULL,NULL),(44,'床罩（薄）',3,1,'',NULL,10.00,'54a91003022cd.png',NULL,NULL,NULL,NULL,NULL),(45,'床罩（厚）',3,1,'',NULL,20.00,'54a91019c4a66.png',NULL,NULL,NULL,NULL,NULL),(46,'床单（薄）',3,1,'',NULL,10.00,'54a9103461011.png',NULL,NULL,NULL,NULL,NULL),(47,'床单（厚）',3,1,'',NULL,20.00,'54a9104424196.png',NULL,NULL,NULL,NULL,NULL),(48,'枕套（一对）',3,1,'',NULL,8.00,'54a9108472a27.png',NULL,NULL,NULL,NULL,NULL),(49,'地毯/平方',3,1,'',NULL,30.00,'54a9109b14a2a.png',NULL,NULL,NULL,NULL,NULL),(50,'挂毯/平方',3,1,'',NULL,28.00,'54a910b6be833.png',NULL,NULL,NULL,NULL,NULL),(51,'黑色皮大衣（短）',4,1,'',NULL,100.00,'54a910f556e59.png',NULL,NULL,NULL,NULL,NULL),(52,'黑色皮大衣（中）',4,1,'',NULL,150.00,'54a9110b0896b.png',NULL,NULL,NULL,NULL,NULL),(53,'黑色皮大衣（长）',4,1,'',NULL,200.00,'54a9111cdbab3.png',NULL,NULL,NULL,NULL,NULL),(54,'彩色皮大衣（短）',4,1,'',NULL,100.00,'54a9114004ab3.png',NULL,NULL,NULL,NULL,NULL),(55,'彩色皮大衣（中）',4,1,'',NULL,150.00,'54a911534f1c6.png',NULL,NULL,NULL,NULL,NULL),(56,'彩色皮大衣（长）',4,1,'',NULL,200.00,'54a9116297c2a.png',NULL,NULL,NULL,NULL,NULL),(57,'皮风衣',4,1,'',NULL,150.00,'54a9117508947.png',NULL,NULL,NULL,NULL,NULL),(58,'汽车坐垫（羊毛垫/长毛）',5,1,'',NULL,280.00,'54a911bcc1686.png',NULL,NULL,NULL,NULL,NULL),(59,'汽车坐垫（养生坐垫）',5,1,'',NULL,160.00,'54a911d43efd3.png',NULL,NULL,NULL,NULL,NULL),(60,'汽车坐垫（羊毛垫/平毛）',5,1,'',NULL,240.00,'54a911fc1e1f4.png',NULL,NULL,NULL,NULL,NULL),(61,'汽车坐垫（羊毛垫/短毛）',5,1,'',NULL,260.00,'54a9122e06f9c.png',NULL,NULL,NULL,NULL,NULL),(62,'汽车坐垫（珠子垫）',5,1,'',NULL,360.00,'54a9125487533.png',NULL,NULL,NULL,NULL,NULL),(63,'汽车坐垫（冰丝/亚麻）',5,1,'',NULL,100.00,'54a91276a7a53.png',NULL,NULL,NULL,NULL,NULL),(64,'运动鞋',6,1,'',NULL,20.00,'54a9129f4f3dc.png',NULL,NULL,NULL,NULL,NULL),(65,'雪地鞋',6,1,'',NULL,30.00,'54a912c09448f.png',NULL,NULL,NULL,NULL,NULL),(66,'户外鞋',6,1,'',NULL,20.00,'54a912cfbbdaa.png',NULL,NULL,NULL,NULL,NULL),(67,'单肩包',6,1,'',NULL,30.00,'54a912e2c427a.png',NULL,NULL,NULL,NULL,NULL),(68,'双肩包',6,1,'',NULL,40.00,'54a912f98ca01.png',NULL,NULL,NULL,NULL,NULL),(69,'钱包',6,1,'',NULL,30.00,'54a9133636ee0.png',NULL,NULL,NULL,NULL,NULL),(70,'卡包',6,1,'',NULL,20.00,'54a91345e358c.png',NULL,NULL,NULL,NULL,NULL),(71,'奢侈品护理',7,1,'',NULL,0.00,'54a9159a6c3eb.png',NULL,NULL,NULL,NULL,NULL),(72,'衣服染色',7,1,'',NULL,0.00,'54a915b147447.png',NULL,NULL,NULL,NULL,NULL),(73,'皮衣改色',7,1,'',NULL,0.00,'54a915c1f2831.png',NULL,NULL,NULL,NULL,NULL),(74,'皮衣救治',7,1,'',NULL,0.00,'54a915d4d7102.png',NULL,NULL,NULL,NULL,NULL),(75,'新测试产品',3,NULL,'',NULL,122.22,'54af85497963b.png',NULL,NULL,NULL,NULL,NULL);
 
 #
 # Source for table "product_cart"
@@ -207,7 +209,7 @@ CREATE TABLE `product_type` (
   `type_name` varchar(50) DEFAULT NULL,
   `parent_type_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5002 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "product_type"
@@ -216,20 +218,12 @@ CREATE TABLE `product_type` (
 INSERT INTO `product_type` VALUES (1,'上装类',0),(2,'下装类',0),(3,'居家类',0),(4,'毛皮服饰类',0),(5,'汽车配饰类',0),(6,'箱包鞋类',0),(7,'奢侈品及其他类',0);
 
 #
-# Source for view "view_customer"
-#
-
-DROP VIEW IF EXISTS `view_customer`;
-CREATE VIEW `view_customer` AS 
-  select `laundry`.`customer`.`user_id` AS `user_id`,`laundry`.`customer`.`customer_name` AS `customer_name`,`laundry`.`customer`.`phone` AS `phone`,`laundry`.`customer`.`addr` AS `addr`,`laundry`.`customer`.`birthday` AS `birthday`,`laundry`.`customer`.`score` AS `score`,`laundry`.`customer`.`level` AS `level`,`laundry`.`customer`.`nickname` AS `nickname`,`laundry`.`customer`.`status` AS `status`,`misp`.`misp_system_user`.`user_name` AS `user_name`,`misp`.`misp_system_user`.`password` AS `password`,`misp`.`misp_system_user`.`role_id` AS `role_id`,`misp`.`misp_system_user`.`reg_date` AS `reg_date` from (`laundry`.`customer` join `misp`.`misp_system_user` on((`laundry`.`customer`.`user_id` = `misp`.`misp_system_user`.`user_id`)));
-
-#
 # Source for view "view_product"
 #
 
 DROP VIEW IF EXISTS `view_product`;
 CREATE VIEW `view_product` AS 
-  select `laundry`.`product`.`product_id` AS `product_id`,`laundry`.`product`.`product_name` AS `product_name`,`laundry`.`product`.`type_id` AS `type_id`,`laundry`.`product`.`describe` AS `describe`,`laundry`.`product`.`original_price` AS `original_price`,`laundry`.`product`.`price` AS `price`,`laundry`.`product`.`img` AS `img`,`laundry`.`product`.`product_status` AS `product_status`,`laundry`.`product`.`update_time` AS `update_time`,`laundry`.`product`.`end_time` AS `end_time`,`laundry`.`product`.`detail_info` AS `detail_info`,`laundry`.`product`.`price_type` AS `price_type`,`laundry`.`product_type`.`type_name` AS `type_name`,`laundry`.`product_type`.`parent_type_id` AS `parent_type_id` from (`laundry`.`product` join `laundry`.`product_type` on((`laundry`.`product`.`type_id` = `laundry`.`product_type`.`type_id`)));
+  select `laundry`.`product`.`product_id` AS `product_id`,`laundry`.`product`.`product_name` AS `product_name`,`laundry`.`product`.`type_id` AS `type_id`,`laundry`.`product`.`company_id` AS `company_id`,`laundry`.`product`.`describe` AS `describe`,`laundry`.`product`.`original_price` AS `original_price`,`laundry`.`product`.`price` AS `price`,`laundry`.`product`.`img` AS `img`,`laundry`.`product`.`product_status` AS `product_status`,`laundry`.`product`.`update_time` AS `update_time`,`laundry`.`product`.`end_time` AS `end_time`,`laundry`.`product`.`detail_info` AS `detail_info`,`laundry`.`product`.`price_type` AS `price_type`,`laundry`.`product_type`.`type_name` AS `type_name`,`laundry`.`product_type`.`parent_type_id` AS `parent_type_id` from (`laundry`.`product` join `laundry`.`product_type` on((`laundry`.`product`.`type_id` = `laundry`.`product_type`.`type_id`)));
 
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

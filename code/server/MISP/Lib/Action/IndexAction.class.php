@@ -88,9 +88,7 @@ class IndexAction extends BaseAction
 	    		$data['token'] = DataCreateUtil::GetUUID();
     		}	
     	}
-    	$this->ReturnJson($data);
-
-    	   	
+    	$this->ReturnJson($data);   	
     }
     //退出系统
     public function Logout()
@@ -147,6 +145,7 @@ class IndexAction extends BaseAction
     	{
     		$tree['id'] = $menu['menu_id'];
     		$tree['text'] = $menu['value'];
+    		$tree['iconCls'] = $menu['icon'];
     		$tree['attributes']['url'] = $menu['url'];
     		array_push($treeList,$tree);
     	}

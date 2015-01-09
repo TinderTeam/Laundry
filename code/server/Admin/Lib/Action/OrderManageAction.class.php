@@ -8,13 +8,36 @@ class OrderManageAction extends EasyUITableAction
 	{
 		return LaundryDaoContext::Order();
 	}
+	//加载订单详情中的产品列表
+	public function LoadOrderDetailPage()
+	{
+		$req = $this->GetReqObj();
+		$condition['order_id'] = $req->obj;
+		$orderDetailDao = LaundryDaoContext::OrderDetail();
+		$this->LoadPageTable($orderDetailDao,$condition);
+	}
+	//更新订单状态
+	public function UpdateOrder()
+	{
+		$req = $this->GetReqObj();
+		$orderIDList = $req->obj;
+		$this->LogInfo($orderIDList);
+		$map['order_id']=array('in',$orderIDList);
+		$orderDao = $this->GetModel();
+		$result = $orderDao->where($map)->setField('order_status',OrderEnum::OrderComplete);
+		if(false == $result)
+		{
+			$this->LogErr("update order status failed.");
+			$this->errorCode = MispErrorCode::DB_MODIFY_ERROR;
+		}
+		$this->ReturnJson();
+	}
 	/*APP下单
 	 *  (non-PHPdoc)
 	 * @see EasyUITableAction::Create()
 	 */
 	public function Create()
 	{
-		$this->LogInfo("Ok");
 		$req = $this->GetReqObj();
 		//创建订单
 		$order = $req->order;
@@ -26,7 +49,8 @@ class OrderManageAction extends EasyUITableAction
 			$orderData['order_code'] = date('ymdHis',time()).rand(1000,9999);
 		}
 		while($orderDao->where('order_code='.$orderData['order_code'])->count());
-
+		$orderData['create_time'] = date('Y-m-d H:i:s',time());
+		$orderData['order_status'] = OrderEnum::OrderSubmit;
 		$result = $orderDao->add($orderData);	//$result获取到的是新创建对象的ID
 		if(false == $result)
 		{
@@ -35,23 +59,28 @@ class OrderManageAction extends EasyUITableAction
 			$this->ReturnJson();
 			return;
 		}
-		//创建订单详情
-		$orderDetailDao = LaundryDaoContext::OrderDetail();
-		$orderDetailList = $req->orderDetailList;
-		for($i=0;$i<count($orderDetailList);$i++)
+		if($orderData['order_type'] == OrderEnum::NormalOrder)
 		{
-			$orderDetailList[$i] = $this->objectToArray($orderDetailList[$i]);
-			$orderDetailList[$i]['order_id'] = $result;
+			//创建订单详情
+			$orderDetailDao = LaundryDaoContext::OrderDetail();
+			$orderDetailList = $req->orderDetailList;
+			for($i=0;$i<count($orderDetailList);$i++)
+			{
+				$orderDetailList[$i] = $this->objectToArray($orderDetailList[$i]);
+				$orderDetailList[$i]['order_id'] = $result;
+			}
+			$detailResult = $orderDetailDao->addAll($orderDetailList);	//$result获取到的是新创建对象的ID
+			if(false == $detailResult)
+			{
+				$this->LogErr("create order detail failed.");
+				$this->errorCode = MispErrorCode::DB_CREATE_ERROR;
+			}
 		}
-		$detailResult = $orderDetailDao->addAll($orderDetailList);	//$result获取到的是新创建对象的ID
-		if(false == $detailResult)
-		{
-			$this->LogErr("create order detail failed.");
-			$this->errorCode = MispErrorCode::DB_CREATE_ERROR;
-		}
+		
 		$this->ReturnJson();
 	}
-	/* (non-PHPdoc)
+	/* 删除订单
+	 * (non-PHPdoc)
 	 * @see EasyUITableAction::Delete()
 	 */
 	public function Delete()

@@ -8,7 +8,6 @@ class ProductManageAction extends EasyUITableAction
 	{
 		return LaundryDaoContext::Product();
 	}
-	
 	/* (non-PHPdoc)
 	 * @see EasyUITableAction::LoadPage()
 	 */
@@ -47,7 +46,8 @@ class ProductManageAction extends EasyUITableAction
 		$data['price'] = $_POST['price'];
 		$data['describe'] = $_POST['describe'];
 		$data['type_id'] = $_POST['type_id'];
-		$data['img'] = $info[0]['savename'];
+		$data['company_id'] = $_SESSION['user']['company_id'];
+ 		$data['img'] = $info[0]['savename'];
 		$result = $productDao->add($data);
 		if(false == $result)
 		{

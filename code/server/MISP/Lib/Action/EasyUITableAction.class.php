@@ -24,7 +24,11 @@ abstract  class EasyUITableAction extends BaseAction
     }
     protected function GetTableCondition()
     {
-        return null;
+    	if(0 != $_SESSION['user']['company_id'])
+    	{
+    		$condition['company_id'] = $_SESSION['user']['company_id'];
+    	}
+    	return $condition;
     }
     private function GetPage()
     {
@@ -64,60 +68,61 @@ abstract  class EasyUITableAction extends BaseAction
         $db = $this->GetModel();
         $this->ShowModel($db);
     }
-    public function ShowModel($model,$condition=null)
+    public function ShowModel($model)
     {
     	$this->LogInfo("show");
-    	$this->LogInfo($condition['user_id']);
-    	$obj = $this->GetObj();
-		$this->LogErr($obj);
-		if($condition == null)
-		{
-			$result = $model->find($obj);
-		}
-		else 
-		{
-			$result = $model->where($condition)->find();
-		}
-    	
-    	if(false == $result)
+    	$objID = $this->GetObj();
+    	try
     	{
-    		$this->LogErr("show data failed.the table is ".$model->tableName);
-    		$this->errorCode = MispErrorCode::DB_GET_ERROR;
+    		$object = MispCommonService::GetUniRecord($model, $objID);
     	}
-    	$data['obj'] = $result;
+    	catch(FuegoException $e)
+    	{
+    		$this->errorCode = $e->getCode();
+    		$this->ReturnJson();
+    		return;
+    	}
+    	$data['obj'] = $object;
     	$this->ReturnJson($data);
     }
     public function Create()
     {
+    	$db = $this->GetModel();
+    	$this->CreateModel($db);
+    }
+    public function CreateModel($model)
+    {
         $this->LogInfo("create");
-        $db = $this->GetModel();
         $obj = $this->GetObj();
         $result = $this->Validator($obj);
         if(SUCCESS != $result)
         {
             $this->errorCode = $result;
-            $this->LogErr("validator failed when create ".$db—>tableName);
+            $this->LogErr("validator failed when create ".$model—>tableName);
             $this->LogErr("the error is ".$result);
             $this->ReturnJson();
             return;
         }
-        $data = $this->objectToArray($obj);
-        $result = $db->add($data);	//$result获取到的是新创建对象的ID
-	    if(false == $result)
+        $object = $this->objectToArray($obj);
+        try
         {
-            $this->LogErr("create data failed.the table is ".$db—>tableName);
-            $this->errorCode = MispErrorCode::DB_CREATE_ERROR;
+        	$result = MispCommonService::Create($model, $object);
         }
-        $this->ReturnJson();
-        
+        catch(FuegoException $e)
+        {
+        	$this->errorCode = $e->getCode();
+        }
+        $this->ReturnJson();  
     }
-    
     public function Modify()
     {
+    	$db = $this->GetModel();
+    	$this->ModifyModel($db);
+    }
+    public function ModifyModel($model)
+    {
         $this->LogInfo("modify");
-        
         $obj = $this->GetObj();
-        $db = $this->GetModel();
         $result = $this->Validator($obj);
         if(SUCCESS != $result)
         {
@@ -127,31 +132,33 @@ abstract  class EasyUITableAction extends BaseAction
             $this->ReturnJson();
             return;
         }    
-        
-        $data = $this->objectToArray($obj);
-        $result = $db->save($data);
-        if(false == $result)
+        $object = $this->objectToArray($obj);
+        try
         {
-            $this->LogErr("modify data failed.the table is ".$db->tableName);
-        	$this->errorCode = MispErrorCode::DB_MODIFY_ERROR;
+        	$result = MispCommonService::Modify($model, $object);
+        }
+        catch(FuegoException $e)
+        {
+        	$this->errorCode = $e->getCode();
         }
         $this->ReturnJson();
     }
-    
     public function Delete()
     {
+    	$db = $this->GetModel();
+    	$this->DeleteModel($db);
+    }
+    public function DeleteModel($model)
+    {
         $this->LogInfo("delete");
-        $obj = $this->GetObj();
-        
- 
-        $db = $this->GetModel();
- 
-        $result = $db->delete($obj);
-    
-        if(false == $result)
+        $objID = $this->GetObj();
+        try
         {
-            $this->LogErr("delete data failed.the table is ".$db->tableName);
-        	$this->errorCode = MispErrorCode::DB_DELETE_ERROR;
+        	$result = MispCommonService::Delete($model, $objID);
+        }
+        catch(FuegoException $e)
+        {
+        	$this->errorCode = $e->getCode();
         }
         $this->ReturnJson();
     }
@@ -169,11 +176,12 @@ abstract  class EasyUITableAction extends BaseAction
     	{
     		$count = $model->where($condition)->count();
     		$page = $this->GetPage();
-    		$rows = $model->where($condition)->limit($page['currentPage'],$page['pageSize'])->select();
+    		$index = $page['currentPage']*$page['pageSize'];
+    		$rows = $model->where($condition)->limit($index,$page['pageSize'])->select();
     		$this->LogInfo("query the table ".$model->tableName." count is ".$count);
     		$data['total'] = $count;
     		$data['rows'] = $rows;
-    		if(false == $rows)
+    		if(false === $rows)
     		{
     			$this->errorCode = MispErrorCode::DB_GET_ERROR;
     		}

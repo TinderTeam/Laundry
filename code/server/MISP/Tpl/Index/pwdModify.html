@@ -39,7 +39,6 @@ $.extend($.fn.validatebox.defaults.rules, {
 function submitForm() {
 	if($("#pwdForm").form('validate') == false) return;
 	var json = buildRequest("#pwdForm");
-	 var submitUrl = "__APP__/UserManage/Create";
 	$.ajax({
 		type:"post",
 		url: "__APP__/Index/ModifyPassword",

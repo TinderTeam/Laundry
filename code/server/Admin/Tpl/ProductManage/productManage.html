@@ -6,7 +6,6 @@
 	<include file="./Public/Fuego/PublicPage/fuegoRes.html"/>
 </head>
 <body>
-	<div style="margin:20px 0;"></div>
 	<div id="toolbar" style="padding:5px;height:auto">
 		<a class="easyui-linkbutton" iconCls="icon-add" onclick="onModify('Create')">增加</a>
 		<a class="easyui-linkbutton" iconCls="icon-edit" onclick="onModify('Modify')">编辑</a>
@@ -15,7 +14,7 @@
 		<a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
 	</div>
 	<div class="easyui-layout"data-options="fit:true">
-	<table id="productGrid" class="easyui-datagrid" title="产品管理" style="width:100%;height:95%"
+	<table id="productGrid" class="easyui-datagrid" style="width:100%;height:100%"
 			data-options="checkOnSelect:true,rownumbers:true,pagination:true,pageList:[10,20,30],singleSelect:true,
 			url:'__APP__/ProductManage/LoadPage',method:'get',toolbar:'#toolbar'">
 		<thead>

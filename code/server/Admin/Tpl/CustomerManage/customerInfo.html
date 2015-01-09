@@ -22,7 +22,7 @@
     			<td>真实姓名:</td>
     			<td><input class="easyui-textbox" type="text" name="customer_name"></input></td>
     			<td>生日:</td>
-    			<td><input class="easyui-textbox" type="text" name="birthday"></input></td>
+    			<td><input id="birthday" class="easyui-datebox" value="1990-01-01" type="text" name="birthday"></input></td>
     		</tr>
     		<tr>
     			<td>家庭住址:</td>
@@ -36,6 +36,25 @@
     	<a class="easyui-linkbutton" onclick="$('#customerModify').dialog('close')">Close</a>
     </div>
 <script type="text/javascript">
+//设置日期格式
+$('#birthday').datebox({
+    formatter: function(date)
+    {
+    	var year = date.getFullYear();
+    	var month = date.getMonth()+1;
+    	var day = date.getDate();
+    	if(month < 10)
+   		{
+   			month = '0'+month;
+   		}
+    	if(day < 10)
+    	{
+    		day　= '0'+　day;
+    	}
+    	return year+'-'+month+'-'+day;
+    },
+    parser: function(date){ return new Date(Date.parse(date.replace(/-/g,"/")));}
+});
 function submitForm() {
 	var json = formToJson('#customerForm');
 	 var submitUrl = "__APP__/CustomerManage/Create";

@@ -22,17 +22,19 @@
    </style>
 </head>
 <body class="easyui-layout">
-	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">
-        <div class="logo">快客洗涤</div>
-        <div class="topNav">	
-            <a href="javascript:pwdModify()">修改密码</a> |            
-            <a href="javascript:Exit()">退出</a>
+	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA">
+        <div>
+        	<a><img src="__PUBLIC__/Fuego/img/logo.png"></a>
+        </div>
+        <div class="topNav">
+        	<a class="easyui-linkbutton" plain="true" iconCls="icon-key" onclick="pwdModify()">修改密码</a>|           
+            <a class="easyui-linkbutton" plain="true" iconCls="icon-logout" onclick="Exit()">退出</a>
 			<a>&nbsp&nbsp</a>
         </div>
         <div id="pwdManage"></div>
 	</div>
-	<div data-options="region:'west',split:true,title:'系统管理'" style="width:250px;padding:10px;">
-		<div class="easyui-panel" style="padding:5px">
+	<div data-options="region:'west',split:true,title:'系统管理'" style="width:250px;">
+		<div data-options="fit:true" class="easyui-panel" style="padding:5px">
 			<ul id="menuTree" class="easyui-tree" data-options="url:'__APP__/Index/GetMenuTree',method:'get',animate:true,lines:true"></ul>
 		</div>
 	</div>

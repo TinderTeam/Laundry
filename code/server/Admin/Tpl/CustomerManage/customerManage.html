@@ -6,28 +6,49 @@
 	<include file="./Public/Fuego/PublicPage/fuegoRes.html"/>
 </head>
 <body>
-	<div style="margin:20px 0;"></div>
+	<fieldset style="width:100%;border:solid 1px #aaa;margin-top:5px;margin-bottom:5px;position:relative;">
+        <legend>信息查询</legend>
+            <form id="searchForm" method="post">
+                <table>
+                    <tr>
+                    	<td style="width:60px;">会员编号:</td>
+		    			<td style="width:170px;">
+		    				<input name="user_id" class="easyui-textbox" type="text"></input>
+		   				</td>
+		   				<td style="width:60px;">会员账号:</td>
+		    			<td style="width:170px;">
+		    				<input name="user_name" class="easyui-textbox" type="text"></input>
+		   				</td>
+		   				<td style="width:60px;">会员姓名:</td>
+		    			<td style="width:170px;">
+		    				<input name="customer_name" class="easyui-textbox" type="text"></input>
+		   				</td>
+		   				<td >
+		   				<a class="easyui-linkbutton" iconCls="icon-search" onclick="onSearch()">搜索</a>
+		   				</td>  
+                    </tr>
+                </table>
+            </form>
+    </fieldset>
 	<div id="toolbar" style="padding:5px;height:auto">
 		<a class="easyui-linkbutton" iconCls="icon-add" onclick="onModify('Create')">增加</a>
 		<a class="easyui-linkbutton" iconCls="icon-edit" onclick="onModify('Modify')">编辑</a>
 		<a class="easyui-linkbutton" iconCls="icon-remove" onclick="onDelete()">删除</a>
-		<input class="easyui-datebox" style="width:80px">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
 	</div>
 	<div class="easyui-layout"data-options="fit:true">
-	<table id="customerGrid" class="easyui-datagrid" title="会员管理" style="width:100%;height:95%"
+	<table id="customerGrid" class="easyui-datagrid" style="width:100%;height:89%"
 			data-options="checkOnSelect:true,rownumbers:true,pagination:true,pageList:[10,20,30],singleSelect:true,
-			url:'__APP__/CustomerManage/LoadPage',method:'get',toolbar:'#toolbar'">
+			url:'__APP__/CustomerManage/LoadPage',method:'post',queryParams:'',toolbar:'#toolbar'">
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
 				<th data-options="field:'user_id',width:80">会员编号</th>
-				<th data-options="field:'user_name',width:80">登录名称</th>
-				<th data-options="field:'nickname',width:80">昵称</th>
+				<th data-options="field:'user_name',width:120">会员账号</th>
+				<th data-options="field:'nickname',width:120">昵称</th>
 				<th data-options="field:'customer_name',width:80">姓名</th>
-				<th data-options="field:'phone',width:80">电话</th>
-				<th data-options="field:'addr',width:80">住址</th>
-				<th data-options="field:'brithday',width:80">生日</th>
+				<th data-options="field:'phone',width:120">电话</th>
+				<th data-options="field:'addr',width:240">住址</th>
+				<th data-options="field:'birthday',width:100">生日</th>
 				<th data-options="field:'score',width:80">积分</th>
 				<!--  <th data-options="field:'level',width:80">会员级别</th>-->
 			</tr>
@@ -36,6 +57,12 @@
 	</div>
 	<div id="customerModify"></div>
 <script type="text/javascript">
+function onSearch(){
+	var json = buildRequest('#searchForm');
+	var param = {"data" : json};
+	$('#customerGrid').datagrid('load', param);
+	
+}
 function onModify(type){
 	var row = $('#customerGrid').datagrid('getSelected');
 	if((type == "Modify")&&(!row))
@@ -96,8 +123,11 @@ function onDelete(){
 					dataType:"json",
 					success:function(rsp){
 						if(isSuccess(rsp)){
-							//重新加载datagrid数据
-							$("#customerGrid").datagrid('reload');
+							//解决最后一条记录无法删除BUG
+							 var rowIndex = $('#customerGrid').datagrid('getRowIndex', row);
+					         $('#customerGrid').datagrid('deleteRow', rowIndex);
+					       //重新加载datagrid数据
+							 $("#customerGrid").datagrid('reload');
 						}
 						else{
 							fuegoAlert(rsp.errorMsg);
