@@ -8,21 +8,34 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.ListItemTypeConst;
 import cn.fuego.laundry.ui.cart.MyCartFragment;
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
+import cn.fuego.laundry.webservice.up.model.base.DeliveryInfoJson;
+import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.service.http.MispHttpHandler;
+import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.list.MispDistinctListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 
-public class OrderActivity extends MispDistinctListActivity
+public class OrderActivity extends MispDistinctListActivity implements OnClickListener
 {
-	
+	private FuegoLog log = FuegoLog.getLog(getClass());
+	public static final String ORDER_INFO = "order_info";
+
 	private CreateOrderReq orderReq;
  
+
+	
+	
 	@Override
 	public void initRes()
 	{
@@ -30,7 +43,14 @@ public class OrderActivity extends MispDistinctListActivity
 		this.activityRes.setBackBtn(R.id.order_info_back);
 		this.listViewRes.setListView(R.id.order_info_list);
 		Intent intent = this.getIntent();
-		orderReq = (CreateOrderReq) intent.getSerializableExtra(MyCartFragment.ORDER_INFO);
+		orderReq = (CreateOrderReq) intent.getSerializableExtra(OrderActivity.ORDER_INFO);
+		
+		orderReq.getOrder().setPhone(AppCache.getInstance().getDefuatDelivery().getPhone());
+		orderReq.getOrder().setCustomer_name(AppCache.getInstance().getDefuatDelivery().getCustomer_name());
+		orderReq.getOrder().setTake_addr(AppCache.getInstance().getDefuatDelivery().getTake_addr());
+		orderReq.getOrder().setTake_time(AppCache.getInstance().getDefuatDelivery().getTake_time());
+		orderReq.getOrder().setDelivery_addr(AppCache.getInstance().getDefuatDelivery().getDelivery_addr());
+		orderReq.getOrder().setDelivery_time(AppCache.getInstance().getDefuatDelivery().getDelivery_time());
 		
 		this.dataList.clear();
 		this.dataList.addAll(getBtnData());
@@ -41,6 +61,8 @@ public class OrderActivity extends MispDistinctListActivity
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		Button button = (Button)findViewById(R.id.order_info_btn_submit);
+		button.setOnClickListener(this);
 
 	}
 
@@ -56,7 +78,7 @@ public class OrderActivity extends MispDistinctListActivity
 		CommonItemMeta meta2 = new CommonItemMeta();
 		meta2.setTitle("取衣地址");
 		meta2.setLayoutType(ListItemTypeConst.EDIT_TEXT);
-		meta2.setContent(orderReq.getDeliveryInfo().getTake_addr());
+		meta2.setContent(orderReq.getOrder().getTake_addr());
 		list.add(meta2);
 		
 		CommonItemMeta meta3 = new CommonItemMeta();
@@ -68,13 +90,13 @@ public class OrderActivity extends MispDistinctListActivity
 		CommonItemMeta meta4 = new CommonItemMeta();
 		meta4.setTitle("联系人");
 		meta4.setLayoutType(ListItemTypeConst.EDIT_TEXT);
-		meta4.setContent(orderReq.getDeliveryInfo().getCustomer_name());
+		meta4.setContent(orderReq.getOrder().getCustomer_name());
 		list.add(meta4);
 		
 		CommonItemMeta meta5 = new CommonItemMeta();
 		meta5.setTitle("联系电话");
 		meta5.setLayoutType(ListItemTypeConst.EDIT_TEXT);
-		meta5.setContent(orderReq.getDeliveryInfo().getPhone());
+		meta5.setContent(orderReq.getOrder().getPhone());
 		list.add(meta5);
   
 		CommonItemMeta meta6 = new CommonItemMeta();
@@ -202,6 +224,38 @@ public class OrderActivity extends MispDistinctListActivity
 		builder.setPositiveButton("确定", null);
 		builder.setNegativeButton("取消", null);
 		builder.show();
+	}
+
+	@Override
+	public void onClick(View v)
+	{
+		
+		WebServiceContext.getInstance().getOrderManageRest(new MispHttpHandler()
+		{
+
+			@Override
+			public void handle(MispHttpMessage message)
+			{
+				 if(message.isSuccess())
+				 {
+					 jumpToOrderList();
+				 }
+				 else
+				 {
+					 log.error("create order failed");
+
+				 }
+				 showMessage(message);
+			}
+			
+		}).create(orderReq);
+	}
+	
+	private void jumpToOrderList()
+	{
+		Intent i = new Intent();
+		i.setClass(this, OrderListActivity.class);
+        startActivity(i);
 	}
 
 

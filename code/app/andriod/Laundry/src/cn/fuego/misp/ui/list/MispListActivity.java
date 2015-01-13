@@ -15,6 +15,7 @@ import android.widget.ListView;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.misp.service.http.MispHttpMessage;
+import cn.fuego.misp.ui.base.MispGridView;
 
 public abstract class MispListActivity<E> extends MispBaseListActivity<E> implements
 MispListViewInteface,OnItemClickListener
@@ -23,11 +24,29 @@ MispListViewInteface,OnItemClickListener
 
  
 
-	protected List<E> dataList = new ArrayList<E>();
+	private List<E> dataList = new ArrayList<E>();
 
 	private MispListAdapter<E> adapter;
 
 	protected ListViewResInfo listViewRes = new ListViewResInfo();
+	
+	
+	
+
+	public List<E> getDataList()
+	{
+		return dataList;
+	}
+
+
+	public void setDataList(List<E> dataList)
+	{
+		if(null != dataList)
+		{
+			this.dataList = dataList;
+		}
+	}
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -39,10 +58,25 @@ MispListViewInteface,OnItemClickListener
 		//String[] data={"昵称","user1",};
 		
 		adapter = new MispListAdapter<E>(this, this,this.listViewRes,this.dataList);
-		ListView productView = (ListView) findViewById(this.listViewRes.getListView());
-;
-		productView.setAdapter(adapter);
-		productView.setOnItemClickListener(this);
+		switch(this.listViewRes.getListType())
+		{
+			case ListViewResInfo.VIEW_TYPE_LIST:
+			{
+				ListView listView = (ListView) findViewById(this.listViewRes.getListView());
+				listView.setAdapter(adapter);
+				listView.setOnItemClickListener(this);
+				break;
+			}
+		
+			case ListViewResInfo.VIEW_TYPE_GRID:
+			{
+				MispGridView listView = (MispGridView) findViewById(this.listViewRes.getListView());
+				listView.setAdapter(adapter);
+				listView.setOnItemClickListener(this);
+				break;
+	
+			}
+		}
 		loadSendList();
 
 	}
@@ -113,15 +147,21 @@ MispListViewInteface,OnItemClickListener
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
+	final public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id)
 	{
 
 		E item = this.adapter.getItem(position);
+		onItemListClick(parent,view,id,item);
+
+	}
+	
+	public void onItemListClick(AdapterView<?> parent, View view,long id, E item)
+	{
+		
 		Intent intent = new Intent(this,this.listViewRes.getClickActivityClass());
 		intent.putExtra(ListViewResInfo.SELECT_ITEM, (Serializable) item);
 
 		this.startActivity(intent);
-
 	}
 }

@@ -24,7 +24,9 @@ import antistatic.spinnerwheel.AbstractWheel;
 import antistatic.spinnerwheel.OnWheelChangedListener;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 import cn.fuego.common.log.FuegoLog;
+import cn.fuego.common.util.format.DateUtil;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
 import cn.fuego.laundry.ui.order.OrderActivity;
@@ -45,8 +47,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 	private TextView totalCountView;
 	private View view;  
 	private  int  curNum= 1;
-	public static final String ORDER_INFO = "order_info";
-	@Override
+ 	@Override
 	public void initRes()
 	{
 		this.fragmentRes.setImage(R.drawable.tab_icon_cart);
@@ -57,10 +58,11 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 		listViewRes.setListItemView(R.layout.chart_list_item);
 		listViewRes.setClickActivityClass(HomeProductActivity.class);
 		
-		this.dataList =  CartProduct.getInstance().getOrderDetailList();
+		this.setDataList(CartProduct.getInstance().getOrderDetailList());  
  
 		this.order.setTotal_count(CartProduct.getInstance().getTotalCount());
 		this.order.setTotal_price(CartProduct.getInstance().getTotalPrice());
+ 
 
 	}
 
@@ -160,10 +162,14 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 		if(MemoryCache.isLogined())
 		{
 			CreateOrderReq req = new CreateOrderReq();
-			req.setOrderDetailList(this.dataList);
+			req.setOrderDetailList(this.getDataList());
 			req.setOrder(this.order);
+			req.getOrder().setUser_id(AppCache.getInstance().getUser().getUser_id());
+			req.getOrder().setUser_name(AppCache.getInstance().getUser().getUser_name());
+			
+
 			intent = new Intent(this.getActivity(),OrderActivity.class);
-			intent.putExtra(ORDER_INFO, req);
+			intent.putExtra(OrderActivity.ORDER_INFO, req);
 		}
 		else
 		{

@@ -5,7 +5,9 @@ import java.util.Date;
 
 public class ProductJson implements Serializable
 {
+	
 	private int product_id;
+	private int company_id;
 	private String product_name;
 	private int type_id;
 	private int seller_id;
@@ -22,6 +24,15 @@ public class ProductJson implements Serializable
 	private String type_name;
 	private int parent_type_id;
 
+	
+	public int getCompany_id()
+	{
+		return company_id;
+	}
+	public void setCompany_id(int company_id)
+	{
+		this.company_id = company_id;
+	}
 	public int getProduct_id()
 	{
 		return product_id;

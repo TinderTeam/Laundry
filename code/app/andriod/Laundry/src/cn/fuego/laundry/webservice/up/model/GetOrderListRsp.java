@@ -3,9 +3,9 @@ package cn.fuego.laundry.webservice.up.model;
 import java.util.List;
 
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
-import cn.fuego.misp.webservice.up.model.base.BaseJsonReq;
+import cn.fuego.misp.webservice.up.model.base.BaseJsonRsp;
 
-public class GetOrderListRsp extends BaseJsonReq
+public class GetOrderListRsp extends BaseJsonRsp
 {
 	private List<OrderJson> obj;
 

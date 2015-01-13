@@ -20,7 +20,6 @@
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/product_list_item_img"
             android:text="衣物名称"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black" />
 
         <TextView

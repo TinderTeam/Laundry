@@ -31,6 +31,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Black.NoTitleBar"
+        android:name="cn.fuego.laundry.ui.LaundryApp"
        
          >
         <activity
@@ -73,7 +74,10 @@
             android:label="@string/app_name" >
         </activity>
  
-        
+        <activity
+            android:name=".ui.upgrade.UpgradeActivity"
+            android:label="@string/app_name" >
+        </activity>
         
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

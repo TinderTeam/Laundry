@@ -4,7 +4,7 @@
     <item   
 
         android:state_selected="true"
-        	android:drawable="@drawable/tabbar_unselected" 
+        	android:drawable="@drawable/tabbar_selected" 
          />  
     <item   android:state_selected="false"
         	android:drawable="@drawable/tabbar_unselected" 

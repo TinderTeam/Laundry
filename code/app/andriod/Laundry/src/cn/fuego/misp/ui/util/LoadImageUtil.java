@@ -40,6 +40,7 @@ public class LoadImageUtil
 		return instance;
 	}
 	
+ 
 	public void loadImage(final ImageView imageView, final String urlString)
 	{
 		if(!isLoad)

@@ -24,7 +24,7 @@ public abstract class MispDistinctListFragment extends MispBaseListFragment<Comm
 
  
 
-	protected List<CommonItemMeta> dataList = new ArrayList<CommonItemMeta>();
+	private List<CommonItemMeta> dataList = new ArrayList<CommonItemMeta>();
 
 	private MispListAdapter<CommonItemMeta> adapter;
 
@@ -50,6 +50,24 @@ public abstract class MispDistinctListFragment extends MispBaseListFragment<Comm
 	}
  
 	
+	
+
+	public List<CommonItemMeta> getDataList()
+	{
+		return dataList;
+	}
+
+
+
+
+	public void setDataList(List<CommonItemMeta> dataList)
+	{
+		if(null != dataList)
+		this.dataList = dataList;
+	}
+
+
+
 
 	public abstract void loadSendList();
 

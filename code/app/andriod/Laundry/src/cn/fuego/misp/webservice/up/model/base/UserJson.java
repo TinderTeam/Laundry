@@ -23,11 +23,13 @@ public class UserJson
 	private String password;
 	private String user_name;
 	private int role_id;
-	private Date reg_date;
+	private int company_id;
+	private String reg_date;
 	public int getUser_id()
 	{
 		return user_id;
 	}
+	
 	public void setUser_id(int user_id)
 	{
 		this.user_id = user_id;
@@ -36,6 +38,17 @@ public class UserJson
 	{
 		return password;
 	}
+	
+	public int getCompany_id()
+	{
+		return company_id;
+	}
+
+	public void setCompany_id(int company_id)
+	{
+		this.company_id = company_id;
+	}
+
 	public void setPassword(String password)
 	{
 		this.password = password;
@@ -56,15 +69,15 @@ public class UserJson
 	{
 		this.role_id = role_id;
 	}
-	public Date getReg_date()
+	public String getReg_date()
 	{
 		return reg_date;
 	}
-	public void setReg_date(Date reg_date)
+	public void setReg_date(String reg_date)
 	{
 		this.reg_date = reg_date;
 	}
-	
+ 
  
 	
 }

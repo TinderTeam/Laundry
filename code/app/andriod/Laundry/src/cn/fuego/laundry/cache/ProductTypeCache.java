@@ -38,35 +38,21 @@ public class ProductTypeCache
 		type.setType_id(typeID);
 		type.setType_name(name);
 		type.setFather_id(fatherID);
+		type.setType_img("product_type_"+typeID);
 		return type;
 	}
 	private void initType()
 	{
  
-		typeList.add(getType(0,1,"衣物类"));
-		typeList.add(getType(0,2,"居家用品"));
-		typeList.add(getType(0,3,"鞋类清洗"));
-		typeList.add(getType(0,4,"奢侈品洗护"));
-		
-		typeList.add(getType(1,5,"上装"));
-		typeList.add(getType(1,6,"裤类"));
-		typeList.add(getType(1,7,"裙类及配饰"));
-		
-		typeList.add(getType(2,8,"床上用品"));
-		typeList.add(getType(2,9,"沙发套"));
-		typeList.add(getType(2,10,"窗帘清洗"));
-		typeList.add(getType(2,11,"地毯垫类"));
-		
-		typeList.add(getType(3,12,"低于脚踝以下尺寸"));
-		typeList.add(getType(3,13,"脚踝至膝盖之间"));
-		typeList.add(getType(3,14,"过膝盖以上尺寸"));
-		
-		typeList.add(getType(4,15,"钱包"));
-		typeList.add(getType(4,16,"卡包"));
-		typeList.add(getType(4,17,"男女包"));
-		typeList.add(getType(4,18,"旅行包"));
- 
- 
+		typeList.add(getType(0,1,"上装类"));
+		typeList.add(getType(0,2,"下装类"));
+		typeList.add(getType(0,3,"毛皮服饰类"));
+		typeList.add(getType(0,4,"箱包鞋类"));
+		typeList.add(getType(0,5,"奢侈品牌类"));
+		typeList.add(getType(0,6,"居家类"));
+		typeList.add(getType(0,7,"汽车配饰类"));
+		typeList.add(getType(0,8,"染色/改色/救治"));
+
  
 	}
 	

@@ -2,6 +2,7 @@ package cn.fuego.misp.webservice.up.model.base;
 
 import java.io.Serializable;
 
+import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.misp.constant.ClientTypeEnum;
 import cn.fuego.misp.service.MemoryCache;
 
@@ -17,39 +18,44 @@ import cn.fuego.misp.service.MemoryCache;
 public class BaseJsonReq implements Serializable
 {
  	protected String token = MemoryCache.getToken();
+ 	protected int app_id = AppCache.getInstance().getCompany_id();
 	protected String clientType = ClientTypeEnum.ANDRIOD_CLIENT.getStrValue();		//
-	protected String clientVersion;	//
-	
+	protected int clientVersion = AppCache.getInstance().getVersionCode();	//
 	public String getToken()
 	{
 		return token;
 	}
-
 	public void setToken(String token)
 	{
 		this.token = token;
 	}
-
+	public int getApp_id()
+	{
+		return app_id;
+	}
+	public void setApp_id(int app_id)
+	{
+		this.app_id = app_id;
+	}
+ 
+ 
 	public String getClientType()
 	{
 		return clientType;
 	}
-
 	public void setClientType(String clientType)
 	{
 		this.clientType = clientType;
 	}
-
-	public String getClientVersion()
+	public int getClientVersion()
 	{
 		return clientVersion;
 	}
-
-	public void setClientVersion(String clientVersion)
+	public void setClientVersion(int clientVersion)
 	{
 		this.clientVersion = clientVersion;
 	}
-
+ 
  
 
 }

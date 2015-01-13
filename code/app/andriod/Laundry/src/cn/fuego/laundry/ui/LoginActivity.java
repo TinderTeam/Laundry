@@ -20,12 +20,12 @@ import cn.fuego.laundry.ui.base.ExitApplication;
 import cn.fuego.laundry.ui.cart.MyCartFragment;
 import cn.fuego.laundry.ui.user.UserFragment;
 import cn.fuego.laundry.ui.user.UserRegisterActivity;
-import cn.fuego.laundry.webservice.up.model.LoginReq;
-import cn.fuego.laundry.webservice.up.model.LoginRsp;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.constant.ClientTypeEnum;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
+import cn.fuego.misp.webservice.up.model.LoginReq;
+import cn.fuego.misp.webservice.up.model.LoginRsp;
 
 public class LoginActivity extends BaseActivtiy implements OnClickListener
 {
@@ -76,9 +76,7 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 		LoginReq req = new LoginReq();
 		req.getObj().setPassword(password);
 		req.getObj().setUser_name(userName);
-		req.setClientType(ClientTypeEnum.ANDRIOD_CLIENT.getStrValue());
-		req.setClientVersion(MemoryCache.getVersion());
- 
+   
 		try
 		{
 			WebServiceContext.getInstance().getUserManageRest(this).login(req);

@@ -9,13 +9,28 @@ import java.util.Date;
  */
 public class CustomerJson
 {
+	
 	private int user_id;
+	private int company_id;
+	private String user_name;
 	private String customer_name;
 	private String phone;
 	private String addr;
 	private String birthday;
 	private int score;  //车牌号
 	private String level;
+	private String nickname;
+	private String status;
+
+	
+	public int getCompany_id()
+	{
+		return company_id;
+	}
+	public void setCompany_id(int company_id)
+	{
+		this.company_id = company_id;
+	}
 	public int getUser_id()
 	{
 		return user_id;
@@ -71,6 +86,30 @@ public class CustomerJson
 	public void setLevel(String level)
 	{
 		this.level = level;
+	}
+	public String getUser_name()
+	{
+		return user_name;
+	}
+	public void setUser_name(String user_name)
+	{
+		this.user_name = user_name;
+	}
+	public String getNickname()
+	{
+		return nickname;
+	}
+	public void setNickname(String nickname)
+	{
+		this.nickname = nickname;
+	}
+	public String getStatus()
+	{
+		return status;
+	}
+	public void setStatus(String status)
+	{
+		this.status = status;
 	}
 	
 	

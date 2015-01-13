@@ -46,129 +46,26 @@
             android:layout_weight="0.2"
             android:background="@color/backcolor" >
 
-            <ScrollView
-                android:id="@+id/scrollView1"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:background="@color/ivory" >
+        
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/disablcolor"
-                    android:orientation="vertical" >
-
-                    <RadioGroup
-                        android:id="@+id/product_radio_group"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/disablcolor"
-                        android:orientation="vertical" >
-
-                        <RadioButton
-                            android:id="@+id/product_radio1"
-                            android:layout_width="fill_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/nav_btn"
-                            android:button="@null"
-                            android:checked="true"
-                            android:gravity="center"
-                            android:text="居家类"
-                            android:textColor="@drawable/nav_text_color" />
-
-                        <RadioButton
-                            android:id="@+id/product_radio2"
-                            android:layout_width="fill_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/nav_btn"
-                            android:button="@null"
-                            android:gravity="center"
-                            android:text="皮毛服饰类"
-                            android:textColor="@drawable/nav_text_color" />
-
-                        <RadioButton
-                            android:id="@+id/product_radio3"
-                            android:layout_width="fill_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/nav_btn"
-                            android:button="@null"
-                            android:gravity="center"
-                            android:text="汽车配饰类"
-                            android:textColor="@drawable/nav_text_color" />
-
-                        <RadioButton
-                            android:id="@+id/product_radio4"
-                            android:layout_width="fill_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/nav_btn"
-                            android:button="@null"
-                            android:gravity="center"
-                            android:text="上装类"
-                            android:textColor="@drawable/nav_text_color" />
-
-                        <RadioButton
-                            android:id="@+id/product_radio5"
-                            android:layout_width="fill_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/nav_btn"
-                            android:button="@null"
-                            android:gravity="center"
-                            android:text="奢侈品护理及其他类"
-                            android:textColor="@drawable/nav_text_color" />
-
-                        <RadioButton
-                            android:id="@+id/product_radio6"
-                            android:layout_width="fill_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/nav_btn"
-                            android:button="@null"
-                            android:gravity="center"
-                            android:text="下装类"
-                            android:textColor="@drawable/nav_text_color" />
-
-                        <RadioButton
-                            android:id="@+id/product_radio7"
-                            android:layout_width="fill_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/nav_btn"
-                            android:button="@null"
-                            android:gravity="center"
-                            android:text="箱包鞋类（奢侈品除外）"
-                            android:textColor="@drawable/nav_text_color" />
-
-                    </RadioGroup>
-                </LinearLayout>
-            </ScrollView>
-
-            <LinearLayout
+           <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:orientation="vertical" >
+                android:layout_height="wrap_content"
+   
+                android:background="@color/themecolor">
 
-                <ListView
-                    android:id="@+id/product_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:divider="@color/backcolor"
-                    android:dividerHeight="1dp" >
-
-                </ListView>
+           <cn.fuego.misp.ui.base.MispGridView
+		        android:id="@+id/product_gridview"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:gravity="center"
+		        android:horizontalSpacing="10dp"
+		        android:numColumns="2"
+		        android:paddingLeft="10dp"
+		        android:paddingRight="10dp"
+		        android:verticalSpacing="10dp" />
+                
             </LinearLayout>
         </LinearLayout>
 

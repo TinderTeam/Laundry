@@ -6,19 +6,18 @@
 
     <ImageView
         android:id="@+id/grid_item_img"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentTop="true"
-        android:src="@drawable/home_entertainment" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/grid_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/grid_item_img"
         android:layout_below="@+id/grid_item_img"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="休闲娱乐" />
 

@@ -15,10 +15,10 @@ import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.base.BaseFragment;
 import cn.fuego.laundry.ui.order.OrderListActivity;
-import cn.fuego.laundry.webservice.up.model.LoginReq;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
+import cn.fuego.misp.webservice.up.model.LoginReq;
 import cn.fuego.misp.webservice.up.model.base.UserJson;
 
 public class UserFragment extends BaseFragment implements OnClickListener

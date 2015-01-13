@@ -1,4 +1,4 @@
-package cn.fuego.laundry.webservice.up.model;
+package cn.fuego.misp.webservice.up.model;
 
 import java.util.ArrayList;
 import java.util.List;

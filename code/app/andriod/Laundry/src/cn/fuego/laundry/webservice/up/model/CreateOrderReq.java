@@ -12,8 +12,7 @@ public class CreateOrderReq extends BaseJsonReq
 {
 	private OrderJson order = new OrderJson();
 	private List<OrderDetailJson> orderDetailList = new ArrayList<OrderDetailJson>();
-	private DeliveryInfoJson deliveryInfo = new DeliveryInfoJson();
-	public OrderJson getOrder()
+ 	public OrderJson getOrder()
 	{
 		return order;
 	}
@@ -29,15 +28,7 @@ public class CreateOrderReq extends BaseJsonReq
 	{
 		this.orderDetailList = orderDetailList;
 	}
-	public DeliveryInfoJson getDeliveryInfo()
-	{
-		return deliveryInfo;
-	}
-	public void setDeliveryInfo(DeliveryInfoJson deliveryInfo)
-	{
-		this.deliveryInfo = deliveryInfo;
-	}
-	
+ 
 	
 	
 

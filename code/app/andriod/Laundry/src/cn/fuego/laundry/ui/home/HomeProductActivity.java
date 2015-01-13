@@ -19,13 +19,12 @@ import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.ui.cart.MyCartFragment;
-import cn.fuego.laundry.ui.order.OrderActivity;
-import cn.fuego.laundry.ui.util.DataConvertUtil;
-import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.GetProductListReq;
 import cn.fuego.laundry.webservice.up.model.GetProductListRsp;
 import cn.fuego.laundry.webservice.up.model.base.ProductJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.service.MemoryCache;
+import cn.fuego.misp.ui.list.ListViewResInfo;
 import cn.fuego.misp.ui.list.MispListActivity;
 import cn.fuego.misp.ui.util.LoadImageUtil;
 
@@ -42,31 +41,22 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 	{
 		this.activityRes.setAvtivityView(R.layout.home_goods_sel);
 		this.activityRes.setBackBtn(R.id.product_back);
-		this.listViewRes.setListView(R.id.product_list);
+		
+		this.listViewRes.setListType(ListViewResInfo.VIEW_TYPE_GRID);
+		this.listViewRes.setListView(R.id.product_gridview);
 		this.listViewRes.setListItemView(R.layout.home_goods_item);
 		
 		Intent intent = this.getIntent();
 		selectType = intent.getIntExtra(HomeFragment.SELECT_TYPE,selectType);
-		
-		btnTypeMap.put(R.id.product_radio1, 1);
-		btnTypeMap.put(R.id.product_radio2, 2);
-		btnTypeMap.put(R.id.product_radio3, 3);
-		btnTypeMap.put(R.id.product_radio4, 4);
-		btnTypeMap.put(R.id.product_radio5, 5);
-		btnTypeMap.put(R.id.product_radio6, 6);
-		btnTypeMap.put(R.id.product_radio7, 7);
  
-		
 	} 
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		RadioGroup radioGroup =  (RadioGroup) findViewById(R.id.product_radio_group);
-		radioGroup.setOnCheckedChangeListener(this);
+		
 		cartButton = (Button) findViewById(R.id.product_btn_to_cart);
  		cartButton.setOnClickListener(this);
 		updateCount();
@@ -78,7 +68,6 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 	
 	}
 
-
 	@Override
 	public void loadSendList()
 	{
@@ -86,6 +75,14 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 		{
 			GetProductListReq req = new GetProductListReq();
 			WebServiceContext.getInstance().getProductManageRest(this).getAllProductList(req);
+		}
+		else
+		{
+			List<ProductJson> productList = CartProduct.getInstance().getProductMap().get(selectType);
+			if(null != productList)
+			{
+				this.getDataList().addAll(productList );
+			}
 		}
 		
 	}
@@ -103,7 +100,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 	{
         ImageView imageView = (ImageView) view.findViewById(R.id.product_list_item_img);
    	 
-        LoadImageUtil.getInstance().loadImage(imageView, DataConvertUtil.getAbsUrl(item.getImg()));
+        LoadImageUtil.getInstance().loadImage(imageView,MemoryCache.getImageUrl()+item.getImg());
         
 		TextView nameView = (TextView) view.findViewById(R.id.product_list_item_name);
 		nameView.setText(item.getProduct_name());

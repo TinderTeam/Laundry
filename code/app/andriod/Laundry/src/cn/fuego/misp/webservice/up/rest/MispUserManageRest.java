@@ -6,8 +6,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-import cn.fuego.laundry.webservice.up.model.LoginReq;
-import cn.fuego.laundry.webservice.up.model.LoginRsp;
+import cn.fuego.misp.webservice.up.model.LoginReq;
+import cn.fuego.misp.webservice.up.model.LoginRsp;
 import cn.fuego.misp.webservice.up.model.ModifyPwdReq;
 import cn.fuego.misp.webservice.up.model.ModifyPwdRsp;
 import cn.fuego.misp.webservice.up.model.SendVerifyCodeReq;

@@ -8,6 +8,7 @@ import cn.fuego.common.log.FuegoLog;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.HttpListener;
 import cn.fuego.misp.service.http.MispProxyFactory;
+import cn.fuego.misp.webservice.up.rest.MispSystemManageRest;
 import cn.fuego.misp.webservice.up.rest.MispUserManageRest;
 
 public class WebServiceContext
@@ -16,7 +17,7 @@ public class WebServiceContext
 
 	private static WebServiceContext instance;
 
-	public static String hostURL = MemoryCache.getHostUrl()+"/Laundry";
+	public static String hostURL = MemoryCache.getWebContextUrl();
 	
 	private WebServiceContext()
 	{
@@ -43,7 +44,14 @@ public class WebServiceContext
 		return httpClient;
 
 	}
+	public MispSystemManageRest getSystemManageRest(HttpListener handler)
+	{
+ 
+		MispSystemManageRest rest = MispProxyFactory.create( hostURL,MispSystemManageRest.class, getHttpClient(),handler);
 
+		return rest;
+	}	
+	
 	public MispUserManageRest getUserManageRest(HttpListener handler)
 	{
  
@@ -69,6 +77,14 @@ public class WebServiceContext
 	}
 	
 	 
+	public ADManageRest getADManageRest(HttpListener handler)
+	{
+	 
+			ADManageRest rest = MispProxyFactory.create( hostURL,ADManageRest.class, getHttpClient(),handler);
+
+			return rest;
+		}
+
 		public OrderManageRest getOrderManageRest(HttpListener handler)
 		{
 	 

@@ -21,14 +21,8 @@ public abstract class BaseActivtiy extends MispHttpActivtiy implements HttpListe
 
 	private Context contextDialog ;
 
+ 
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		//重载，禁止所有activity竖屏
-		super.onCreate(savedInstanceState);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-	}
 
 
 

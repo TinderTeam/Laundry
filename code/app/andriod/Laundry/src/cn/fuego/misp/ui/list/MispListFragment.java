@@ -27,12 +27,27 @@ public abstract class MispListFragment<E> extends MispBaseListFragment<E> implem
 	public static final String SELECT_ITEM = "SELECT_ITEM";
  
 
-	protected List<E> dataList = new ArrayList<E>();
+	private List<E> dataList = new ArrayList<E>();
 
 	private MispListAdapter<E> adapter;
 
 	private ListView listView;
 	protected ListViewResInfo listViewRes = new ListViewResInfo();
+
+	
+	
+	public List<E> getDataList()
+	{
+		return dataList;
+	}
+
+	public void setDataList(List<E> dataList)
+	{
+		if(null != dataList)
+		{
+			this.dataList = dataList;
+		}
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -129,17 +144,25 @@ public abstract class MispListFragment<E> extends MispBaseListFragment<E> implem
 		}
 	}
 
+ 
+	
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
+	final public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id)
 	{
 
 		E item = this.adapter.getItem(position);
+		onItemListClick(parent,view,id,item);
+
+	}
+	
+	public void onItemListClick(AdapterView<?> parent, View view,long id, E item)
+	{
+		
 		Intent intent = new Intent(this.getActivity(),this.listViewRes.getClickActivityClass());
-		intent.putExtra(SELECT_ITEM, (Serializable) item);
+		intent.putExtra(ListViewResInfo.SELECT_ITEM, (Serializable) item);
 
 		this.startActivity(intent);
-
 	}
  
 }

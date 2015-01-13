@@ -8,8 +8,8 @@ import javax.ws.rs.Produces;
 
 import cn.fuego.laundry.webservice.up.model.GetCustomerReq;
 import cn.fuego.laundry.webservice.up.model.GetCustomerRsp;
-import cn.fuego.laundry.webservice.up.model.LoginReq;
-import cn.fuego.laundry.webservice.up.model.LoginRsp;
+import cn.fuego.misp.webservice.up.model.LoginReq;
+import cn.fuego.misp.webservice.up.model.LoginRsp;
 
 
 /**
@@ -38,7 +38,7 @@ public interface CustomerManageRest
 	
 	@POST
 	@Path("/Show")
-	GetCustomerRsp getCustomer(GetCustomerReq req);
+	GetCustomerRsp getCustomerInfo(GetCustomerReq req);
  
  
 }

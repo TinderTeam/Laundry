@@ -7,6 +7,7 @@ public class UserRegisterReq extends BaseJsonReq
 {
 	private String user_name;
 	private String password;
+	private String addr = "未设置";
 	public String getUser_name()
 	{
 		return user_name;
@@ -22,6 +23,14 @@ public class UserRegisterReq extends BaseJsonReq
 	public void setPassword(String password)
 	{
 		this.password = password;
+	}
+	public String getAddr()
+	{
+		return addr;
+	}
+	public void setAddr(String addr)
+	{
+		this.addr = addr;
 	}
 	
 	

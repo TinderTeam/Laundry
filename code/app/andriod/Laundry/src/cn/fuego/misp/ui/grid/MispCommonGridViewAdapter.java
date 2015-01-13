@@ -6,10 +6,9 @@
 * @date 2014-12-22 下午2:30:46 
 * @version V1.0   
 */ 
-package cn.fuego.laundry.ui.home;
+package cn.fuego.misp.ui.grid;
 
 import java.util.List;
-import java.util.Map;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,6 +18,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
+import cn.fuego.misp.ui.model.MispGridDataModel;
 
 /** 
  * @ClassName: GridViewAdapter 
@@ -27,13 +27,13 @@ import cn.fuego.laundry.R;
  * @date 2014-12-22 下午2:30:46 
  *  
  */
-public class GridViewAdapter extends BaseAdapter
+public class MispCommonGridViewAdapter extends BaseAdapter
 {
 
 	private Context mContext;
-	private List<Map<String, Object>> mList;
+	private List<MispGridDataModel> mList;
 
-	public GridViewAdapter(Context mContext,List<Map<String, Object>> mList)
+	public MispCommonGridViewAdapter(Context mContext,List<MispGridDataModel> mList)
 	{
 		super();
 		this.mContext = mContext;
@@ -73,8 +73,8 @@ public class GridViewAdapter extends BaseAdapter
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent)
 	{
-		String title= mList.get(position).get("ItemText").toString();
-		String imgID= mList.get(position).get("ItemImage").toString();
+		MispGridDataModel gridData = mList.get(position);
+ 
 		if (convertView == null)
 		{
 
@@ -82,9 +82,9 @@ public class GridViewAdapter extends BaseAdapter
 			//holder.button = (Button) convertView.findViewById(R.id.gridview_item_button);
 			TextView title_view = (TextView) convertView.findViewById(R.id.grid_item_title);
 			ImageView img = (ImageView) convertView.findViewById(R.id.grid_item_img);
-			title_view.setText(title);
+			title_view.setText(gridData.getName());
 			//String title=mylist.get(position).get("data");
-			img.setImageResource(Integer.valueOf(imgID));
+			img.setImageResource(gridData.getImage());
 
 		} 
 

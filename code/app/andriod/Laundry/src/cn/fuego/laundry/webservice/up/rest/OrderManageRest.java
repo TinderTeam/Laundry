@@ -10,6 +10,7 @@ import cn.fuego.laundry.webservice.up.model.CreateOrderRsp;
 import cn.fuego.laundry.webservice.up.model.GetOrderListReq;
 import cn.fuego.laundry.webservice.up.model.GetOrderListRsp;
 import cn.fuego.laundry.webservice.up.model.OperateOrderReq;
+import cn.fuego.laundry.webservice.up.model.OperateOrderRsp;
 
 @Path("/laundry.php/OrderManage")
 @Produces("application/json")  
@@ -24,14 +25,20 @@ public interface OrderManageRest
 	CreateOrderRsp create(CreateOrderReq req);
 	
 	@POST
+	
+	@Path("/Modify")
+	CreateOrderRsp modify(CreateOrderReq req);
+	
+	
+	@POST
 	@Path("/OrderDetail")
 	CreateOrderReq show(OperateOrderReq req);
 	
 	@POST
 	@Path("/Cancel")
-	CreateOrderRsp cancel(OperateOrderReq req);
+	OperateOrderRsp cancel(OperateOrderReq req);
 	
 	@POST
 	@Path("/Delete")
-	CreateOrderRsp delete(OperateOrderReq req);
+	OperateOrderRsp delete(OperateOrderReq req);
 }

@@ -5,6 +5,7 @@ public class ProductTypeJson
 	private int type_id;
 	private String type_name;
 	private int father_id;
+	private String type_img;
 	public int getType_id() {
 		return type_id;
 	}
@@ -28,5 +29,15 @@ public class ProductTypeJson
 		return "ProductTypeJson [type_id=" + type_id + ", type_name="
 				+ type_name + ", father_id=" + father_id + "]";
 	}
+	public String getType_img()
+	{
+		return type_img;
+	}
+	public void setType_img(String type_img)
+	{
+		this.type_img = type_img;
+	}
+	
+	
 	
 }

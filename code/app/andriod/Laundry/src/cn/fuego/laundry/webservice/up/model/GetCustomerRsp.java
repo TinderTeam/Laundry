@@ -1,9 +1,10 @@
 package cn.fuego.laundry.webservice.up.model;
 
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
-import cn.fuego.misp.webservice.up.model.base.BaseJsonReq;
+import cn.fuego.misp.webservice.up.model.base.BaseJsonRsp;
 
-public class GetCustomerRsp extends BaseJsonReq
+
+public class GetCustomerRsp extends BaseJsonRsp
 {
 	private CustomerJson obj;
 

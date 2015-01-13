@@ -25,251 +25,105 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:layout_weight="0.4" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="fill_parent"
+            android:orientation="vertical" 
+             android:background="@color/greencolor"
+            >
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
-                  <android.support.v4.view.ViewPager  
+                android:orientation="vertical"
+                android:background="@color/lightyellow" >
+                <android.support.v4.view.ViewPager  
 			        android:id="@+id/home_ad_image"  
-			        android:layout_width="wrap_content"  
-			        android:layout_height="150dp"  
-			        android:layout_gravity="center" >  
-			                
-			        <android.support.v4.view.PagerTabStrip    
-			            android:id="@+id/home_ad_image_tab"    
-			            android:layout_width="wrap_content"    
-			            android:layout_height="wrap_content"    
-			            android:layout_gravity="top"/>    
-			           
+			        android:layout_width="match_parent"  
+			        android:layout_height="200dp"  
+			        android:layout_gravity="center"
+			      
+			        android:background="@color/white"
+			        android:flipInterval="30"
+                      android:persistentDrawingCache="animation" >  
 			    </android.support.v4.view.ViewPager>  
-	   <RelativeLayout    
-        android:layout_width="fill_parent"    
-        android:layout_height="wrap_content"   
-        android:orientation="vertical" >    
-    
-        <LinearLayout    
-            android:id="@+id/home_ad_image_group"    
-            android:layout_width="fill_parent"    
-            android:layout_height="wrap_content"    
-            android:layout_alignParentBottom="true"   
-            android:layout_marginBottom="30dp"    
-            android:gravity="center_horizontal"    
-            android:orientation="horizontal" >    
-        </LinearLayout>    
-    </RelativeLayout>
+					<RelativeLayout    
+				        android:layout_width="fill_parent"    
+				        android:layout_height="wrap_content"   
+				        android:orientation="vertical" >    
+				    
+				        <LinearLayout    
+				            android:id="@+id/home_ad_image_group"    
+				            android:layout_width="fill_parent"    
+				            android:layout_height="wrap_content"    
+				            android:layout_alignParentBottom="true"   
+				            android:layout_marginBottom="30dp"    
+				            android:gravity="center_horizontal"    
+				            android:orientation="horizontal" >    
+				        </LinearLayout>    
+				    </RelativeLayout>
     
             </LinearLayout>
-            <LinearLayout
+           <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp" >
+   
+                android:background="@color/themecolor">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_weight="1" >
-
-                        <Button
-                            android:id="@+id/Button06"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/index_btn1"
-                            android:gravity="center_vertical|right"
-                            android:paddingRight="20dp"
-                            android:text="居家类"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/content_font_size" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:layout_weight="1" >
-
-                        <Button
-                            android:id="@+id/Button05"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/index_btn1"
-                            android:gravity="center_vertical|right"
-                            android:paddingRight="20dp"
-                            android:text="皮毛服饰类"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/content_font_size" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_weight="1" >
-
-                        <Button
-                            android:id="@+id/Button02"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/index_btn1"
-                            android:gravity="center_vertical|right"
-                            android:paddingRight="20dp"
-                            android:text="汽车配饰类"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/content_font_size" />
-                    </RelativeLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="1dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:layout_weight="1" >
-
-                        <Button
-                            android:id="@+id/Button04"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/index_btn3"
-                            android:gravity="center_vertical|left"
-                            android:paddingLeft="20dp"
-                            android:text="上装类"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/content_font_size" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:layout_weight="1" >
-
-                        <Button
-                            android:id="@+id/Button01"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/index_btn3"
-                            android:gravity="center_vertical|left"
-                            android:paddingLeft="20dp"
-                            android:text="下装类"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/content_font_size" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" >
-
-                        <Button
-                            android:id="@+id/Button07"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/index_btn2"
-                            android:gravity="center_vertical|left"
-                            android:paddingLeft="20dp"
-                            android:text="箱包鞋类（奢侈品除外）"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/content_font_size" />
-
-                    </RelativeLayout>
-                </LinearLayout>
+           <cn.fuego.misp.ui.base.MispGridView
+		        android:id="@+id/home_gridview"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:gravity="center"
+		        android:horizontalSpacing="10dp"
+		        android:numColumns="4"
+		        android:paddingLeft="10dp"
+		        android:paddingRight="10dp"
+		        android:verticalSpacing="10dp" />
+                
             </LinearLayout>
-
-            <RelativeLayout
+              <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="2dp" >
+ >
 
                 <Button
-                    android:id="@+id/Button03"
+                    android:id="@+id/home_btn_join_invest"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/index_btn3"
-                    android:focusableInTouchMode="true"
-                    android:gravity="center_vertical|left"
-                    android:paddingLeft="20dp"
-                    android:text="奢侈品护理及其他类"
-                    android:textColor="@color/white"
+                    android:background="@drawable/home_join_invest"
                     android:textSize="@dimen/content_font_size" />
-            </RelativeLayout>
-
-            <View
-                android:id="@+id/view1"
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/themecolor" />
-
+                
+                
+            </LinearLayout>
+             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/home_btn_service_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_service_phone"
+                    android:textSize="@dimen/content_font_size" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="10dp" >
+                android:layout_height="wrap_content">
 
-                <RelativeLayout
+                <Button
+                    android:id="@+id/home_btn_direct_order"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp" >
-
-                    <Button
-                        android:id="@+id/Button08"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:background="@drawable/common_btn"
-                        android:focusableInTouchMode="true"
-                        android:text="客服电话"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/content_font_size" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp" >
-
-                    <Button
-                        android:id="@+id/button2"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:background="@drawable/btn_green"
-                        android:focusableInTouchMode="true"
-                        android:text="一键下单"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-                </RelativeLayout>
-
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_direct_order"
+                    android:textSize="@dimen/content_font_size" />
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
+        
+
+
 
 </LinearLayout>
