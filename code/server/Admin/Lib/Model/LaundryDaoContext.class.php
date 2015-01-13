@@ -19,10 +19,6 @@ class LaundryDaoContext
 	{
 		return M('customer',NULL,LaundryDaoContext::LAUNDRYDB);
 	}
-	static function ViewCustomer()
-	{
-		return M('view_customer',NULL,LaundryDaoContext::LAUNDRYDB);
-	}
 	static function Order()
 	{
 		return M('order',NULL,LaundryDaoContext::LAUNDRYDB);
@@ -31,9 +27,13 @@ class LaundryDaoContext
 	{
 		return M('order_detail',NULL,LaundryDaoContext::LAUNDRYDB);
 	}
-	static function ViewOrder()
+	static function advertisement()
 	{
-		return M('view_order',NULL,LaundryDaoContext::LAUNDRYDB);
+		return M('advertisement',NULL,LaundryDaoContext::LAUNDRYDB);
+	}
+	static function administrators()
+	{
+		return M('administrators',NULL,LaundryDaoContext::LAUNDRYDB);
 	}
 }
 

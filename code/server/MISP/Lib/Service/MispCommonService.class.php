@@ -17,6 +17,19 @@ class MispCommonService
 		return $result;
 		
 	}
+	static function CreateList($model,$objList)
+	{
+		$errorCode = MispErrorCode::SUCCESS;
+		$result = $model->addAll($objList);			//$result获取到的是新创建对象的ID
+		if(false == $result)
+		{
+			FuegoLog::getLog()->LogErr("create data failed.the table is ".$model—>tableName);
+			$errorCode = MispErrorCode::DB_CREATE_ERROR;
+			throw new FuegoException(null,$errorCode);
+		}
+		return $result;
+	
+	}
 	static function Modify($model,$object)
 	{
 		$errorCode = MispErrorCode::SUCCESS;
@@ -41,17 +54,10 @@ class MispCommonService
 		}
 		return $errorCode;
 	}
-	static function Delete($model,$objID,$condition=null)
+	static function Delete($model,$condition)
 	{
 		$errorCode = MispErrorCode::SUCCESS;
-		if($condition == null)
-		{
-			$result = $model->delete($objID);
-		}
-		else
-		{
-			$result = $model->where($condition)->delete();
-		}
+		$result = $model->where($condition)->delete();
 		if(false == $result)
 		{
 			FuegoLog::getLog()->LogErr("delete data failed.the table is ".$model->tableName);
@@ -62,12 +68,8 @@ class MispCommonService
 	}
 	static function GetAll($model,$condition)
 	{
-	
-	}
-	static function GetUniRecord($model,$objID)
-	{
 		$errorCode = MispErrorCode::SUCCESS;
-		$result = $model->find($objID);
+		$result = $model->where($condition)->select();
 		if(false == $result)
 		{
 			FuegoLog::getLog()->LogErr("get data failed.the table is ".$model->tableName);
@@ -76,6 +78,19 @@ class MispCommonService
 		}
 		return $result;
 	}
+	static function GetUniRecord($model,$condition)
+	{
+		$errorCode = MispErrorCode::SUCCESS;
+		$result = $model->where($condition)->find();
+		if(false == $result)
+		{
+			FuegoLog::getLog()->LogErr("get data failed.the table is ".$model->tableName);
+			$errorCode = MispErrorCode::DB_GET_ERROR;
+			throw new FuegoException(null,$errorCode);
+		}
+		return $result;
+	}
+	
 }
 
 ?>

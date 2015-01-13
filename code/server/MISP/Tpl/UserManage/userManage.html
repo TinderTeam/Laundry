@@ -42,6 +42,7 @@
 function onSearch(){
 	var json = buildRequest('#searchForm');
 	var param = {"data" : json};
+	$('#userGrid').datagrid('loadData', { total: 0, rows: [] });
 	$('#userGrid').datagrid('load', param);
 	
 }

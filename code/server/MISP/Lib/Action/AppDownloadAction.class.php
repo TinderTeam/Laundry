@@ -3,10 +3,7 @@
 
 class AppDownloadAction extends Action 
 {
-	public function kuaikexidi_android()
-	{
-		
-	}
+
 	public function kuaikexidi_IOS()
 	{
 		

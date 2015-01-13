@@ -13,11 +13,14 @@ class UserServiceImpl implements MispUserService
 		$customer['user_id'] = $user['user_id'];
 		$customer['phone'] = $user['user_name'];
 		$customer['addr'] = $customerInfo['addr'];
-		$customerResult = $customerDao->add($customer);	//$result获取到的是新创建对象的ID
-		if(false == $customerResult)
+		$customer['company_id'] = $user['company_id'];
+		try
 		{
-			FuegoLog::getLog()->LogInfo("create customer failed");
-			$errorCode = MispErrorCode::DB_CREATE_ERROR;
+			$result = MispCommonService::Create($customerDao, $customer);
+		}
+		catch(FuegoException $e)
+		{
+			$errorCode = $e->getCode();
 		}
 		return $errorCode;
 	}
@@ -55,9 +58,53 @@ class UserServiceImpl implements MispUserService
 	    FuegoLog::getLog()->LogInfo("customer login success, the user name is ".$user['user_name']);
 		return MispErrorCode::SUCCESS;
 	}
-
-
-	 
+	/* (non-PHPdoc)
+	 * @see MispUserService::ModifyPassword()
+	 */
+	public function ModifyPassword($condition, $req)
+	{
+		$errorCode = MispErrorCode::SUCCESS;
+		$userDao= MispDaoContext::SystemUser();
+    	$orginalUser = $userDao->where($condition)->find();
+    	$orginalPwd = $orginalUser['password'];
+    	FuegoLog::getLog()->LogWarn("OK".$orginalPwd);
+    	FuegoLog::getLog()->LogWarn("OK".$req->pwdOld);
+    	if($orginalPwd != $req->pwdOld)
+    	{
+    		FuegoLog::getLog()->LogWarn("Modify password failed,pwdOld is wrong.");
+    		$errorCode = MispErrorCode::ERROR_OLD_PASSWORD_WORD;
+    		return $errorCode;
+    	}
+    	$orginalUser['password'] = $req->pwdNew;
+    	try
+    	{
+    		$result = MispCommonService::Modify($userDao, $orginalUser);
+    	}
+    	catch(FuegoException $e)
+    	{
+    		$errorCode = $e->getCode();
+    	}
+    	return $errorCode;
+		
+	}
+	/* (non-PHPdoc)
+	 * @see MispUserService::CreatAdmin()
+	 */
+	public function CreateAdmin($admin)
+	{
+		$errorCode = MispErrorCode::SUCCESS;
+		FuegoLog::getLog()->LogInfo("Create admin");
+		$adminDao = LaundryDaoContext::administrators();
+		try
+        {
+        	$result = MispCommonService::Create($adminDao, $admin);
+        }
+        catch(FuegoException $e)
+        {
+        	$errorCode = $e->getCode();
+        }
+        return $errorCode;
+	} 
 }
 
 ?>

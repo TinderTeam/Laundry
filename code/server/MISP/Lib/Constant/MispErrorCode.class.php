@@ -25,6 +25,8 @@ class MispErrorCode
 	const USER_APPROVAL_REFUSED = 10001;    //用户审核未通过
 	const CODE_IS_INVALID = 10002;          //激活码已失效
 	const SEND_MESSAGE_FAILED = 10003;		//发送验证码失败
+	const COMPANY_EXISTED = 1004;			//公司已存在
+	const CANT_DELETE_YOURSELF = 1005;		//不能删除自己
 	
 }
 

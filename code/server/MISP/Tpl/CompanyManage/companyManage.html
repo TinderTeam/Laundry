@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>公司管理</title>
+	<include file="./Public/Fuego/PublicPage/fuegoRes.html"/>
+</head>
+<body>
+	<div id="toolbar" style="padding:5px;height:auto">
+		<table style="width:100%;">
+        	<tr>
+            	<td style="width:17%;">
+					<a class="easyui-linkbutton" iconCls="icon-add" onclick="onModify('Create')">增加</a>
+					<a class="easyui-linkbutton" iconCls="icon-edit" onclick="onModify('Modify')">编辑</a>
+					<a class="easyui-linkbutton" iconCls="icon-remove" onclick="onDelete()">删除</a>
+				</td>
+				<td>
+					<form id="searchForm" method="post">
+					<input name="user_name" class="easyui-textbox" data-options="prompt:'请输入用户名'" style="width:120px">
+					<a class="easyui-linkbutton" iconCls="icon-search" onclick="onSearch()">搜索</a>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="easyui-layout"data-options="fit:true">
+	<table id="companyGrid" class="easyui-datagrid" style="width:100%;height:100%"
+			data-options="rownumbers:true,pagination:true,pageList:[10,20,30],singleSelect:true,
+			url:'__APP__/CompanyManage/LoadPage',method:'post',queryParams:'',toolbar:'#toolbar'">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'company_id',width:80">公司编号</th>
+				<th data-options="field:'company_name',width:80">公司名称</th>
+				<th data-options="field:'company_web_site',width:80">公司网址</th>
+				<th data-options="field:'company_addr',width:80">公司地址</th>
+				<th data-options="field:'company_desp',width:80">公司描述</th>
+				<th data-options="field:'service_phone',width:80">客服电话</th>
+			</tr>
+		</thead>
+	</table>
+	</div>
+	<div id="companyModify"></div>
+<script type="text/javascript">
+function onSearch(){
+	var json = buildRequest('#searchForm');
+	var param = {"data" : json};
+	$('#companyGrid').datagrid('loadData', { total: 0, rows: [] });
+	$('#companyGrid').datagrid('load', param);
+	
+}
+function onModify(type){
+	var row = $('#companyGrid').datagrid('getSelected');
+	if((type == "Modify")&&(!row))
+	{
+		fuegoAlert("请选择一条记录");
+	}
+	else
+	{	
+		//打开用户编辑窗口
+		$('#companyModify').dialog({
+		    title: '用户信息',
+		    width: 490,
+		    height: 260,
+		    closed: false,
+		    cache: false,
+		    href: '__APP__/CompanyManage/companyInfo.html',
+		    modal: true
+		});
+		if(type == "Modify")
+		{
+			var json = objToJson(row.user_id);
+			$.ajax({
+				type:"post",
+				url:"__APP__/CompanyManage/Show",
+				data:json,
+				dataType:"json",
+				success:function(rsp){
+					if(isSuccess(rsp)){
+						$('#companyForm').form('load',rsp.obj);
+					}
+					else{
+						fuegoAlert(rsp.errorMsg);
+					}
+				},
+	        	error:function(){
+	        		fuegoAlert("当前ajax操作出错！");
+				}
+			});
+		}
+	}	
+}
+function onDelete(){
+	var row = $('#companyGrid').datagrid('getSelected');
+	if(!row)
+	{
+		fuegoAlert("请选择一条记录");
+	}
+	else
+	{
+		$.messager.confirm('确认提示', '确认删除该条记录？', function (r) {
+			if(r){
+				var json = objToJson(row.user_id);
+				$.ajax({
+					type:"post",
+					url:"__APP__/CompanyManage/Delete",
+					data:json,
+					dataType:"json",
+					success:function(rsp){
+						if(isSuccess(rsp)){
+							//解决最后一条记录无法删除BUG
+							 var rowIndex = $('#companyGrid').datagrid('getRowIndex', row);
+					         $('#companyGrid').datagrid('deleteRow', rowIndex);
+						}
+						else{
+							fuegoAlert(rsp.errorMsg);
+						}
+					},
+		        	error:function(){
+		        		fuegoAlert("当前ajax操作出错！");
+					}
+				});
+			}
+		});
+	}	
+}
+</script>
+</body>
+</html>

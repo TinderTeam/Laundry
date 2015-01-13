@@ -6,17 +6,41 @@
 	<include file="./Public/Fuego/PublicPage/fuegoRes.html"/>
 </head>
 <body>
+	<fieldset style="width:100%;border:solid 1px #aaa;margin-top:5px;margin-bottom:5px;position:relative;">
+        <legend>信息查询</legend>
+            <form id="searchForm" method="post">
+                <table>
+                    <tr>
+                    	<td style="width:60px;">产品编号:</td>
+		    			<td style="width:170px;">
+		    				<input name="product_id" class="easyui-textbox" type="text"></input>
+		   				</td>
+		   				<td style="width:60px;">产品名称:</td>
+		    			<td style="width:170px;">
+		    				<input name="product_name" class="easyui-textbox" type="text"></input>
+		   				</td>
+		   				<td style="width:60px;">产品类型:</td>
+		    			<td style="width:170px;">
+		    				<input class="easyui-combobox" name="type_id" style="width:80%"
+							   data-options="url: '__APP__/ProductManage/getProductTypeList',method: 'get',
+								valueField:'type_id',textField:'type_name'">
+		   				</td>
+		   				<td >
+		   				<a class="easyui-linkbutton" iconCls="icon-search" onclick="onSearch()">搜索</a>
+		   				</td>  
+                    </tr>
+                </table>
+            </form>
+    </fieldset>
 	<div id="toolbar" style="padding:5px;height:auto">
 		<a class="easyui-linkbutton" iconCls="icon-add" onclick="onModify('Create')">增加</a>
 		<a class="easyui-linkbutton" iconCls="icon-edit" onclick="onModify('Modify')">编辑</a>
 		<a class="easyui-linkbutton" iconCls="icon-remove" onclick="onDelete()">删除</a>
-		<input class="easyui-datebox" style="width:80px">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
 	</div>
 	<div class="easyui-layout"data-options="fit:true">
-	<table id="productGrid" class="easyui-datagrid" style="width:100%;height:100%"
+	<table id="productGrid" class="easyui-datagrid" style="width:100%;height:89%"
 			data-options="checkOnSelect:true,rownumbers:true,pagination:true,pageList:[10,20,30],singleSelect:true,
-			url:'__APP__/ProductManage/LoadPage',method:'get',toolbar:'#toolbar'">
+			url:'__APP__/ProductManage/LoadPage',method:'post',queryParams:'',toolbar:'#toolbar'">
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
@@ -35,8 +59,14 @@
 		</thead>
 	</table>
 	</div>
-	<div id="productModify"></div>
+	<div id="productModify" style="padding-left:15px;padding-top:10px;"></div>
 <script type="text/javascript">
+function onSearch(){
+	var json = buildRequest('#searchForm');
+	var param = {"data" : json};
+	$('#productGrid').datagrid('loadData', { total: 0, rows: [] });
+	$('#productGrid').datagrid('load', param);
+}
 function onModify(type){
 	var row = $('#productGrid').datagrid('getSelected');
 	if((type == "Modify")&&(!row))
@@ -48,8 +78,8 @@ function onModify(type){
 		//打开产品编辑窗口
 		$('#productModify').dialog({
 		    title: '产品信息',
-		    width: 600,
-		    height: 240,
+		    width: 520,
+		    height: 280,
 		    closed: false,
 		    cache: false,
 		    href: '__APP__/ProductManage/productInfo.html',
@@ -98,8 +128,11 @@ function onDelete(){
 					dataType:"json",
 					success:function(rsp){
 						if(isSuccess(rsp)){
+							//解决最后一条记录无法删除BUG
+							 var rowIndex = $('#"productGrid"').datagrid('getRowIndex', row);
+					         $('#"productGrid"').datagrid('deleteRow', rowIndex);
 							//重新加载datagrid数据
-							$("#productGrid").datagrid('reload');
+							//$("#productGrid").datagrid('reload');
 						}
 						else{
 							fuegoAlert(rsp.errorMsg);

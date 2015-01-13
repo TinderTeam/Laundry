@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 </head>
 <body>
-<div >
     <form id="productForm" name="productForm" action="__APP__/ProductManage/Create" method="post" enctype="multipart/form-data">
     	<div style="width:50%;float:left" >
 	    	<table cellpadding="5">
@@ -46,11 +45,12 @@
 			</div>
 			<input name="img[]" type="file" id="up0" />
     	</div>
+    	
     </form>
-    </div>
-    <div style="text-align:center;padding:5px">
-    	<a class="easyui-linkbutton" onclick="submitForm()">Submit</a>
-    	<a class="easyui-linkbutton" onclick="$('#productModify').dialog('close')">Close</a>
+    <div colspan="2" style="text-align:center;padding:5px">
+    	<a class="easyui-linkbutton" iconCls="icon-ok" style="width:60px;" onclick="submitForm()">提交</a>
+    	<a>&nbsp&nbsp&nbsp&nbsp</a>
+    	<a class="easyui-linkbutton" iconCls="icon-cancel" style="width:60px;" onclick="$('#productModify').dialog('close')">关闭</a>
     </div>
 <script type="text/javascript">
 $(function () {

@@ -8,18 +8,7 @@ class IndexAction extends BaseAction
     {
 		$this->display();
     }
-    //展示登录首页
-    public function SessionValidate()
-    {
-    	if($_SESSION['user_name'] == "")
-    	{
-    		$this->LogWarn("no user login.");
-    		$this->errorCode = MispErrorCode::ERROR_SESSION_INVALID;
-    		$this->ReturnJson();
-    		return;
-    	}
-    	$this->ReturnJson();
-    }
+
     //APP会员注册
     public function Register()
     {
@@ -28,6 +17,7 @@ class IndexAction extends BaseAction
     	
     	$systemUserDao = MispDaoContext::SystemUser();
     	$condition['user_name'] = $Req->user_name;
+    	$condition['company_id'] = $Req->app_id;
     	$userID = $systemUserDao->where($condition)->getField('user_id');
     	if($userID!=''){
     		$this->LogWarn("Create customer failed, user_name is exist.");
@@ -39,11 +29,14 @@ class IndexAction extends BaseAction
     	$user['password'] = $Req->password;
     	$user['role_id'] = UserRoleEnum::CUSTOMER;
     	$user['reg_date'] = date('Y-m-d H:i:s',time());
-    	$result = $systemUserDao->add($user);	//$result获取到的是新创建对象的ID
-    	if(false == $result)
+    	$user['company_id'] = $Req->app_id;
+    	try
     	{
-    		$this->LogErr("create systemUser failed");
-    		$this->errorCode = MispErrorCode::DB_CREATE_ERROR;
+    		$result = MispCommonService::Create($systemUserDao, $user);
+    	}
+    	catch(FuegoException $e)
+    	{
+    		$this->errorCode = $e->getCode();
     		$this->ReturnJson();
     		return;
     	}
@@ -55,10 +48,15 @@ class IndexAction extends BaseAction
     //WEB/APP登录验证
     public function Login()
     {
-    	$req = $this->GetCommonData();
-    	$reqType = $this->GetReqType();
+    	$Req = $this->GetReqObj();
+    	$reqType = $Req->clientType;
+    	$req = $Req->obj;
     	$userDao= MispDaoContext::SystemUser();
     	$condition['user_name']=$req->user_name;
+    	if(($reqType == ClientTypeEnum::IOS)||($reqType == ClientTypeEnum::ANDROID))
+    	{
+    		$condition['company_id'] = $Req->app_id;
+    	}
     	$userCount = $userDao->where($condition)->count();
     	if($userCount==0)		//用户不存在
     	{
@@ -77,16 +75,17 @@ class IndexAction extends BaseAction
     	$data = null;
     	if($reqType == ClientTypeEnum::WEB)
     	{
+    		
     		$this->errorCode = MispServiceContext::UserManage()->WebLogin($orignalUser);
     	}
-    	else 
+    	else
     	{
     		$this->errorCode = MispServiceContext::UserManage()->AppLogin($orignalUser);
     		if($this->errorCode == MispErrorCode::SUCCESS)
     		{
     			$data['user'] = $orignalUser;
-	    		$data['token'] = DataCreateUtil::GetUUID();
-    		}	
+    			$data['token'] = DataCreateUtil::GetUUID();
+    		}
     	}
     	$this->ReturnJson($data);   	
     }
@@ -101,38 +100,29 @@ class IndexAction extends BaseAction
     {
     	$req = $this->GetReqObj();
     	$reqType = $req->clientType;
+    	if(($reqType == ClientTypeEnum::IOS)||($reqType == ClientTypeEnum::ANDROID))
+    	{
+    		$condition['company_id'] = $req->app_id;
+    		$condition['user_name'] = $req->user_name;
+    		$this->errorCode = MispServiceContext::UserManage()->ModifyPassword($condition,$req);
+    	}
     	if($reqType == "WEB")
     	{
-    		$this->LogErr($_SESSION['user_name']);
-    		if($_SESSION['user_name'] == "")
+    		if($_SESSION['user']['user_name'] == "")
     		{
     			$this->LogWarn("Modify password failed,no user login.");
     			$this->errorCode = MispErrorCode::ERROR_SESSION_INVALID;
     			$this->ReturnJson();
     			return;
     		}
-    		$condition['user_name'] = $_SESSION['user_name'];
-    		$userDao= MispDaoContext::SystemUser();
-    		$orginalPwd = $userDao->where($condition)->getField('password');
-    		if($orginalPwd != $req->pwdOld)
+    		$condition['user_name'] = $_SESSION['user']['user_name'];
+    		$this->errorCode = MispServiceContext::UserManage()->ModifyPassword($condition,$req);
+    		if($this->errorCode == MispErrorCode::SUCCESS)
     		{
-    			$this->LogWarn("Modify password failed,pwdOld is wrong.");
-    			$this->errorCode = MispErrorCode::ERROR_OLD_PASSWORD_WORD;
-    			$this->ReturnJson();
-    			return;
+    			session_destroy();
     		}
-    		$data['password'] = $req->pwdNew;
-    		$result=$userDao->where($condition)->save($data);
-    		if(false == $result)
-    		{
-    			$this->LogErr("Modify password failed,database wrong");
-    			$this->errorCode = MispErrorCode::DB_MODIFY_ERROR;
-    			$this->ReturnJson();
-    			return;
-    		}
-    		session_destroy();
-    		$this->ReturnJson();
     	}
+    	$this->ReturnJson();
     }
     //WEB加载菜单列表
     public function GetMenuTree()

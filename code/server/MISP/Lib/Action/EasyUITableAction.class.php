@@ -61,6 +61,22 @@ abstract  class EasyUITableAction extends BaseAction
     
     public  function LoadAll()
     {
+    	$this->LogInfo("LoadALL");
+    	$Req = $this->GetReqObj();
+    	$condition['company_id'] = $Req->app_id;
+        $db = $this->GetModel();
+        try
+        {
+        	$objectList = MispCommonService::GetAll($db,$condition);
+        }
+        catch(FuegoException $e)
+        {
+        	$this->errorCode = $e->getCode();
+        	$this->ReturnJson();
+        	return;
+        }
+        $data['obj'] = $objectList;
+        $this->ReturnJson($data);
         
     }
     public function Show()
@@ -72,9 +88,10 @@ abstract  class EasyUITableAction extends BaseAction
     {
     	$this->LogInfo("show");
     	$objID = $this->GetObj();
+    	$condition[$model->getPk()] = $objID;
     	try
     	{
-    		$object = MispCommonService::GetUniRecord($model, $objID);
+    		$object = MispCommonService::GetUniRecord($model, $condition);
     	}
     	catch(FuegoException $e)
     	{
@@ -151,10 +168,10 @@ abstract  class EasyUITableAction extends BaseAction
     public function DeleteModel($model)
     {
         $this->LogInfo("delete");
-        $objID = $this->GetObj();
+        $condition[$model->getPk()] = $this->GetObj();
         try
         {
-        	$result = MispCommonService::Delete($model, $objID);
+        	$result = MispCommonService::Delete($model, $condition);
         }
         catch(FuegoException $e)
         {

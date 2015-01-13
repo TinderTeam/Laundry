@@ -37,6 +37,7 @@ class CustomerManageAction extends EasyUITableAction
 		{
 			$searchFilter['company_id'] = $_SESSION['user']['company_id'];
 		}
+		$this->LogErr(json_encode($searchFilter));
 		$this->LoadPageTable($this->GetModel(),$searchFilter);
 	}
 	//会员新增
@@ -102,12 +103,12 @@ class CustomerManageAction extends EasyUITableAction
 	{
 		$this->LogInfo("customer delete ...");
 		$Req = $this->GetReqObj();
-		$objID = $Req->obj;
 		//删除会员信息
 		$customerDao = $this->GetModel();
+		$customerCondition[$customerDao->getPk()] = $Req->obj;
 		try
 		{
-			$result = MispCommonService::Delete($customerDao, $objID);
+			$result = MispCommonService::Delete($customerDao, $customerCondition);
 		}
 		catch(FuegoException $e)
 		{
@@ -117,9 +118,10 @@ class CustomerManageAction extends EasyUITableAction
 		}
 		//删除用户信息
         $userDao = MispDaoContext::SystemUser();
+        $userCondition[$userDao->getPk()] = $Req->obj;
         try
         {
-        	$result = MispCommonService::Delete($userDao, $objID);
+        	$result = MispCommonService::Delete($userDao, $userCondition);
         }
         catch(FuegoException $e)
         {

@@ -17,13 +17,17 @@ class ClientVersionManageAction extends EasyUITableAction
 		$condition['company_id'] = $req->app_id;
 		$condition['version_status'] = VersionStatusEnum::LATEST_VERSION;
 		$ClientVersionDao = $this->GetModel();
-		$result = $ClientVersionDao->where($condition)->find();
-		if(false == $result)
+		try
 		{
-			$this->LogErr("GetLatestVersion failed.");
-			$this->errorCode = MispErrorCode::DB_GET_ERROR;
+			$object = MispCommonService::GetUniRecord($ClientVersionDao, $condition);
 		}
-		$data['obj'] = $result;
+		catch(FuegoException $e)
+		{
+			$this->errorCode = $e->getCode();
+			$this->ReturnJson();
+			return;
+		}
+		$data['obj'] = $object;
     	$this->ReturnJson($data);
 	} 
 }

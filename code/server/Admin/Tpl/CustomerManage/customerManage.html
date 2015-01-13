@@ -55,11 +55,12 @@
 		</thead>
 	</table>
 	</div>
-	<div id="customerModify"></div>
+	<div id="customerModify" style="padding-left:15px;padding-top:10px;"></div>
 <script type="text/javascript">
 function onSearch(){
 	var json = buildRequest('#searchForm');
 	var param = {"data" : json};
+	$('#customerGrid').datagrid('loadData', { total: 0, rows: [] });
 	$('#customerGrid').datagrid('load', param);
 	
 }
@@ -74,8 +75,8 @@ function onModify(type){
 		//打开产品编辑窗口
 		$('#customerModify').dialog({
 		    title: '会员信息',
-		    width: 600,
-		    height: 240,
+		    width: 480,
+		    height: 220,
 		    closed: false,
 		    cache: false,
 		    href: '__APP__/CustomerManage/customerInfo.html',
@@ -126,8 +127,8 @@ function onDelete(){
 							//解决最后一条记录无法删除BUG
 							 var rowIndex = $('#customerGrid').datagrid('getRowIndex', row);
 					         $('#customerGrid').datagrid('deleteRow', rowIndex);
-					       //重新加载datagrid数据
-							 $("#customerGrid").datagrid('reload');
+					        //重新加载datagrid数据
+							//$("#customerGrid").datagrid('reload');
 						}
 						else{
 							fuegoAlert(rsp.errorMsg);

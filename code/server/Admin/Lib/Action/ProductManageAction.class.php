@@ -13,8 +13,29 @@ class ProductManageAction extends EasyUITableAction
 	 */
 	public function LoadPage()
 	{
-		$db = LaundryDaoContext::ViewProduct();		
-        $this->LoadPageTable($db,$this->GetTableCondition()); 
+		//删除自动转义增加的\
+		$PostStr = stripslashes($_POST['data']);
+		$req = json_decode($PostStr);
+		if("" != $req->product_id)
+		{
+			$keyID = '%'.$req->product_id.'%';
+			$searchFilter['product_id'] = array('like',$keyID);
+		}
+		if("" != $req->product_name)
+		{
+			$keyName = '%'.$req->product_name.'%';
+			$searchFilter['product_name'] = array('like',$keyName);
+		}
+		if("" != $req->type_id)
+		{
+			$searchFilter['type_id'] = $req->type_id;
+		}
+		if(0 != $_SESSION['user']['company_id'])
+		{
+			$searchFilter['company_id'] = $_SESSION['user']['company_id'];
+		}
+		$viewProductDao = LaundryDaoContext::ViewProduct();
+		$this->LoadPageTable($viewProductDao,$searchFilter);
 	}
 
 	/* (non-PHPdoc)
@@ -48,12 +69,14 @@ class ProductManageAction extends EasyUITableAction
 		$data['type_id'] = $_POST['type_id'];
 		$data['company_id'] = $_SESSION['user']['company_id'];
  		$data['img'] = $info[0]['savename'];
-		$result = $productDao->add($data);
-		if(false == $result)
-		{
-			$this->LogErr("create data failed.the table is product");
-			$this->errorCode = DB_CREATE_ERROR;
-		}
+ 		try
+ 		{
+ 			$result = MispCommonService::Create($productDao, $data);
+ 		}
+ 		catch(FuegoException $e)
+ 		{
+ 			$this->errorCode = $e->getCode();
+ 		}
 		return $this->ReturnJson();
 	}
 	
@@ -88,11 +111,13 @@ class ProductManageAction extends EasyUITableAction
 		if($info[0]['savename']!=""){
 			$data['img'] = $info[0]['savename'];
 		}
-		$result = $productDao->where($condition)->save($data);
-		if(false == $result)
+		try
 		{
-			$this->LogErr("Modify data failed.the table is product");
-			$this->errorCode = DB_MODIFY_ERROR;
+			$result = MispCommonService::Modify($productDao, $condition);
+		}
+		catch(FuegoException $e)
+		{
+			$this->errorCode = $e->getCode();
 		}
 		return $this->ReturnJson();
 	}
@@ -104,12 +129,14 @@ class ProductManageAction extends EasyUITableAction
 		//$condition['parent_id']= ROOTTYPE;
 		$productTypeList = $productTypeDao->select();
 		//$this->LogInfo(json_encode($parentTypeList));
+		$comboxDefault = array('type_id'=>'','type_name'=>'请选择...');
 		$comboxTypeList = array();
+		array_push($comboxTypeList, $comboxDefault);
 		foreach($productTypeList as $productType)
 		{
 			$combox['type_id'] = $productType['type_id'];
 			$combox['type_name'] = $productType['type_name'];
-			$combox['parent_name'] = $productType['type_name'];
+			//$combox['parent_name'] = $productType['type_name'];
 			array_push($comboxTypeList,$combox);	
 		}
 		$this->LogInfo(json_encode($comboxTypeList));

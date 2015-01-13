@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+    <form id="companyForm" method="post">
+    	<table cellpadding="5">
+    		<tr>
+    			<td>公司名称:</td>
+    			<td>
+    				<input id="company_name" name="company_name" class="easyui-textbox" type="text"></input>
+   				</td>
+   				<td>管理员账号:</td>
+    			<td>
+    				<input id="user_name" name="user_name" class="easyui-validatebox easyui-textbox" type="text"  data-options="required:true"></input>
+   				</td>
+   				<td style="display:none">
+   					<input id="company_id" name="company_id" class="easyui-textbox" type="text"></input>
+   				</td>
+    		</tr>
+    		<tr>
+    			<td>公司网址:</td>
+    			<td>
+    				<input name="company_web_site" class="easyui-textbox" type="text"></input>
+   				</td>
+   				<td>客服电话:</td>
+    			<td>
+    				<input name="service_phone" class="easyui-textbox" type="text"></input>
+   				</td>
+    		</tr>
+    		<tr>
+	   			<td>公司地址:</td>
+	   			<td colspan="4"><input name="company_addr" class="easyui-textbox" style="width:390px;height:40px" type="text" data-options="multiline:true"></input></td>
+	   		</tr>
+	   		<tr>
+	   			<td>公司简介:</td>
+	   			<td colspan="4"><input name="company_desp" class="easyui-textbox" style="width:390px;height:40px" type="text" data-options="multiline:true"></input></td>
+	   		</tr>
+    	</table>
+    </form>
+    <div style="text-align:center;padding:5px">
+    	<a class="easyui-linkbutton" iconCls="icon-ok" style="width:60px;" onclick="submitForm()">提交</a>
+    	<a>&nbsp&nbsp&nbsp&nbsp</a>
+    	<a class="easyui-linkbutton" iconCls="icon-cancel" style="width:60px;" onclick="$('#companyModify').dialog('close')">关闭</a>
+    </div>
+<script type="text/javascript">
+function submitForm() {
+	if($("#companyForm").form('validate') == false) return;
+	var json = formToJson('#companyForm');
+	 var submitUrl = "__APP__/CompanyManage/Create";
+	 if("" != $("#company_id").val())
+	 {
+		 submitUrl = "__APP__/CompanyManage/Modify";
+	 }
+	$.ajax({
+		type:"post",
+		url: submitUrl,
+		data:json,
+		dataType:"json",
+		success:function(rsp){
+			if(isSuccess(rsp)){
+				//关闭当前对话框
+				$('#companyModify').dialog('close');
+				//重新加载datagrid数据
+				$("#companyGrid").datagrid('reload'); 
+			}
+			else{
+				fuegoAlert(rsp.errorMsg);
+			}
+		},
+    	error:function(){
+    		fuegoAlert("当前ajax操作出错！");
+		}
+	});
+}
+</script>
+</body>
+</html>

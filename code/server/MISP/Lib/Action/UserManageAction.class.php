@@ -7,7 +7,7 @@ class UserManageAction extends EasyUITableAction
 	 */
 	protected function GetModel()
 	{
-		return MispDaoContext::SystemUser();	
+		return LaundryDaoContext::administrator();	
 	}
 	
 	/* (non-PHPdoc)
@@ -23,7 +23,7 @@ class UserManageAction extends EasyUITableAction
 			$keyword = '%'.$req->user_name.'%';
 			$searchFilter['user_name'] = array('like',$keyword);
 		}
-		$searchFilter['role_id'] = UserRoleEnum::ADMIN;
+		//$searchFilter['role_id'] = UserRoleEnum::ADMIN;
 		if(0 != $_SESSION['user']['company_id'])
 		{
 			$searchFilter['company_id'] = $_SESSION['user']['company_id'];
@@ -37,7 +37,7 @@ class UserManageAction extends EasyUITableAction
 	public function Create()
 	{
 		$this->LogInfo("create user...");
-        $systemUserDao = $this->GetModel();
+        $systemUserDao = MispDaoContext::SystemUser();
         $req = $this->GetCommonData();
 
         $condition['user_name'] = $req->user_name;
@@ -53,11 +53,27 @@ class UserManageAction extends EasyUITableAction
         $user['role_id'] = UserRoleEnum::ADMIN;
         $user['reg_date'] = date('Y-m-d H:i:s',time());
         $user['company_id'] = $_SESSION['user']['company_id'];
-        $result = $systemUserDao->add($user);	//$result获取到的是新创建对象的ID
-        if(false == $result)
+        try
         {
-        	$this->LogErr("create User failed");
-        	$this->errorCode = MispErrorCode::DB_CREATE_ERROR;
+        	$result = MispCommonService::Create($systemUserDao, $user);
+        }
+        catch(FuegoException $e)
+        {
+        	$this->errorCode = $e->getCode();
+        	$this->ReturnJson();
+        	return;
+        }
+        $adminDao = $this->GetModel();
+        $admin['user_id'] = $result;
+        $admin['user_name'] = $req->user_name;
+        $admin['company_id'] = $_SESSION['user']['company_id'];
+        try
+        {
+        	$result = MispCommonService::Create($adminDao, $user);
+        }
+        catch(FuegoException $e)
+        {
+        	$this->errorCode = $e->getCode();
         }
         $this->ReturnJson();
 	}

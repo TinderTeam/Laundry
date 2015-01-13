@@ -31,30 +31,12 @@
     	</table>
     </form>
     </div>
-    <div style="text-align:center;padding:5px">
-    	<a class="easyui-linkbutton" onclick="submitForm()">Submit</a>
-    	<a class="easyui-linkbutton" onclick="$('#customerModify').dialog('close')">Close</a>
+    <div style="text-align:center;padding:5px;margin-top:10px">
+    	<a class="easyui-linkbutton" iconCls="icon-ok" style="width:60px;" onclick="submitForm()">提交</a>
+    	<a>&nbsp&nbsp&nbsp&nbsp</a>
+    	<a class="easyui-linkbutton" iconCls="icon-cancel" style="width:60px;" onclick="$('#customerModify').dialog('close')">关闭</a>
     </div>
 <script type="text/javascript">
-//设置日期格式
-$('#birthday').datebox({
-    formatter: function(date)
-    {
-    	var year = date.getFullYear();
-    	var month = date.getMonth()+1;
-    	var day = date.getDate();
-    	if(month < 10)
-   		{
-   			month = '0'+month;
-   		}
-    	if(day < 10)
-    	{
-    		day　= '0'+　day;
-    	}
-    	return year+'-'+month+'-'+day;
-    },
-    parser: function(date){ return new Date(Date.parse(date.replace(/-/g,"/")));}
-});
 function submitForm() {
 	var json = formToJson('#customerForm');
 	 var submitUrl = "__APP__/CustomerManage/Create";
