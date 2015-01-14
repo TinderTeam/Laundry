@@ -1,804 +1,684 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>027B1062FF46A8B12B174FC1</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>14469E5A1A65F9DC00515685</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>14469E651A65F9DC00515685</string>
-				<string>14469E641A65F9DC00515685</string>
-				<string>9857409EB5DF0CB10D3FAFF4</string>
-				<string>AEADF1BE1820F012637853C3</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E5B1A65F9DC00515685</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastUpgradeCheck</key>
-				<string>0610</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>FUEGO</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>14469E621A65F9DC00515685</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>6.1.1</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>14469E5E1A65F9DC00515685</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>14469E5A1A65F9DC00515685</string>
-			<key>productRefGroup</key>
-			<string>14469E641A65F9DC00515685</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>14469E621A65F9DC00515685</string>
-			</array>
-		</dict>
-		<key>14469E5E1A65F9DC00515685</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>14469E871A65F9DC00515685</string>
-				<string>14469E881A65F9DC00515685</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>14469E5F1A65F9DC00515685</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>14469E691A65F9DC00515685</string>
-				<string>14469E9A1A65FAA900515685</string>
-				<string>14469E961A65FA8500515685</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>14469E601A65F9DC00515685</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>E569705F7F110B016F064A8F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>14469E611A65F9DC00515685</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>14469E751A65F9DC00515685</string>
-				<string>14469E7A1A65F9DC00515685</string>
-				<string>14469E771A65F9DC00515685</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>14469E621A65F9DC00515685</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>14469E891A65F9DC00515685</string>
-			<key>buildPhases</key>
-			<array>
-				<string>E59BBCC7D14C48844923EE1A</string>
-				<string>14469E5F1A65F9DC00515685</string>
-				<string>14469E601A65F9DC00515685</string>
-				<string>14469E611A65F9DC00515685</string>
-				<string>BAB70CF0E8FCF8CAE5593446</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Laundry</string>
-			<key>productName</key>
-			<string>Laundry</string>
-			<key>productReference</key>
-			<string>14469E631A65F9DC00515685</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>14469E631A65F9DC00515685</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Laundry.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>14469E641A65F9DC00515685</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>14469E631A65F9DC00515685</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E651A65F9DC00515685</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>14469E971A65FAA900515685</string>
-				<string>14469E8F1A65FA5A00515685</string>
-				<string>14469E901A65FA5A00515685</string>
-				<string>14469E911A65FA5A00515685</string>
-				<string>14469E921A65FA5A00515685</string>
-				<string>14469E931A65FA5A00515685</string>
-				<string>14469E731A65F9DC00515685</string>
-				<string>14469E761A65F9DC00515685</string>
-				<string>14469E781A65F9DC00515685</string>
-				<string>14469E661A65F9DC00515685</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Laundry</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E661A65F9DC00515685</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>14469E671A65F9DC00515685</string>
-				<string>14469E681A65F9DC00515685</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E671A65F9DC00515685</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E681A65F9DC00515685</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E691A65F9DC00515685</key>
-		<dict>
-			<key>fileRef</key>
-			<string>14469E681A65F9DC00515685</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>14469E731A65F9DC00515685</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>14469E741A65F9DC00515685</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E741A65F9DC00515685</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E751A65F9DC00515685</key>
-		<dict>
-			<key>fileRef</key>
-			<string>14469E731A65F9DC00515685</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>14469E761A65F9DC00515685</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E771A65F9DC00515685</key>
-		<dict>
-			<key>fileRef</key>
-			<string>14469E761A65F9DC00515685</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>14469E781A65F9DC00515685</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>14469E791A65F9DC00515685</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>LaunchScreen.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E791A65F9DC00515685</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/LaunchScreen.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E7A1A65F9DC00515685</key>
-		<dict>
-			<key>fileRef</key>
-			<string>14469E781A65F9DC00515685</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>14469E871A65F9DC00515685</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.1</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>14469E881A65F9DC00515685</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.1</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>14469E891A65F9DC00515685</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>14469E8A1A65F9DC00515685</string>
-				<string>14469E8B1A65F9DC00515685</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>14469E8A1A65F9DC00515685</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>37D466024D554E110EE6D485</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Laundry/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>14469E8B1A65F9DC00515685</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>8D324F9EA567674ADBDC5E80</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Laundry/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>14469E8F1A65FA5A00515685</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>14469E941A65FA8500515685</string>
-				<string>14469E951A65FA8500515685</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>AppDelegate</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E901A65FA5A00515685</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Common</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E911A65FA5A00515685</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>ThirdLib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E921A65FA5A00515685</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>UI</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E931A65FA5A00515685</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>WebService</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E941A65FA8500515685</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E951A65FA8500515685</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E961A65FA8500515685</key>
-		<dict>
-			<key>fileRef</key>
-			<string>14469E951A65FA8500515685</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>14469E971A65FAA900515685</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>14469E981A65FAA900515685</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>DB</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E981A65FAA900515685</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>14469E991A65FAA900515685</string>
-			</array>
-			<key>currentVersion</key>
-			<string>14469E991A65FAA900515685</string>
-			<key>isa</key>
-			<string>XCVersionGroup</string>
-			<key>path</key>
-			<string>Laundry.xcdatamodeld</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-			<key>versionGroupType</key>
-			<string>wrapper.xcdatamodel</string>
-		</dict>
-		<key>14469E991A65FAA900515685</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.xcdatamodel</string>
-			<key>path</key>
-			<string>Laundry.xcdatamodel</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14469E9A1A65FAA900515685</key>
-		<dict>
-			<key>fileRef</key>
-			<string>14469E981A65FAA900515685</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>37D466024D554E110EE6D485</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8D324F9EA567674ADBDC5E80</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9857409EB5DF0CB10D3FAFF4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>37D466024D554E110EE6D485</string>
-				<string>8D324F9EA567674ADBDC5E80</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AEADF1BE1820F012637853C3</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>027B1062FF46A8B12B174FC1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BAB70CF0E8FCF8CAE5593446</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>E569705F7F110B016F064A8F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>027B1062FF46A8B12B174FC1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E59BBCC7D14C48844923EE1A</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>14469E5B1A65F9DC00515685</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		144350131A663EA2002BB228 /* FETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350121A663EA2002BB228 /* FETableViewController.m */; };
+		144350161A663EC1002BB228 /* FEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350151A663EC1002BB228 /* FEViewController.m */; };
+		144350191A663FA0002BB228 /* FENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350181A663FA0002BB228 /* FENavigationController.m */; };
+		1443501C1A66404B002BB228 /* FETableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1443501B1A66404B002BB228 /* FETableView.m */; };
+		1443501F1A664074002BB228 /* FEHomePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1443501E1A664074002BB228 /* FEHomePageVC.m */; };
+		144350221A66408A002BB228 /* FEBasketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350211A66408A002BB228 /* FEBasketVC.m */; };
+		144350251A6640D3002BB228 /* FEMeShouldSigninVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350241A6640D3002BB228 /* FEMeShouldSigninVC.m */; };
+		144350281A6640EC002BB228 /* FESettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350271A6640EC002BB228 /* FESettingVC.m */; };
+		1443506A1A6652A6002BB228 /* NSDate+Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350531A6652A6002BB228 /* NSDate+Formatter.m */; };
+		1443506B1A6652A6002BB228 /* NSString+Attribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350551A6652A6002BB228 /* NSString+Attribute.m */; };
+		1443506C1A6652A6002BB228 /* NSString+DateFromNow.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350571A6652A6002BB228 /* NSString+DateFromNow.m */; };
+		1443506D1A6652A6002BB228 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350591A6652A6002BB228 /* NSString+MD5.m */; };
+		1443506E1A6652A6002BB228 /* NSString+Number.m in Sources */ = {isa = PBXBuildFile; fileRef = 1443505B1A6652A6002BB228 /* NSString+Number.m */; };
+		1443506F1A6652A6002BB228 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 1443505D1A6652A6002BB228 /* NSString+UUID.m */; };
+		144350701A6652A6002BB228 /* NSString+Verify.m in Sources */ = {isa = PBXBuildFile; fileRef = 1443505F1A6652A6002BB228 /* NSString+Verify.m */; };
+		144350711A6652A6002BB228 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350611A6652A6002BB228 /* UIColor+Hex.m */; };
+		144350721A6652A6002BB228 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350631A6652A6002BB228 /* UIColor+Theme.m */; };
+		144350731A6652A6002BB228 /* UIFont+AppFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350651A6652A6002BB228 /* UIFont+AppFont.m */; };
+		144350741A6652A6002BB228 /* UIImage+LogN.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350671A6652A6002BB228 /* UIImage+LogN.m */; };
+		144350751A6652A6002BB228 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350691A6652A6002BB228 /* UIImage+Resize.m */; };
+		14469E691A65F9DC00515685 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14469E681A65F9DC00515685 /* main.m */; };
+		14469E751A65F9DC00515685 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14469E731A65F9DC00515685 /* Main.storyboard */; };
+		14469E771A65F9DC00515685 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14469E761A65F9DC00515685 /* Images.xcassets */; };
+		14469E7A1A65F9DC00515685 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14469E781A65F9DC00515685 /* LaunchScreen.xib */; };
+		14469E961A65FA8500515685 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14469E951A65FA8500515685 /* AppDelegate.m */; };
+		14469E9A1A65FAA900515685 /* Laundry.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14469E981A65FAA900515685 /* Laundry.xcdatamodeld */; };
+		14469EA01A6612BB00515685 /* FECommonTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14469E9F1A6612BB00515685 /* FECommonTabbarController.m */; };
+		14FF4A1A1A66936000DECA7B /* FESelectCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */; };
+		14FF4A1D1A66950D00DECA7B /* FELaundryWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A1C1A66950D00DECA7B /* FELaundryWebService.m */; };
+		14FF4A281A66962400DECA7B /* NSString+Attribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A251A66962400DECA7B /* NSString+Attribute.m */; };
+		14FF4A291A66962400DECA7B /* SSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A271A66962400DECA7B /* SSObject.m */; };
+		14FF4A2D1A6696A200DECA7B /* FEBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A2C1A6696A200DECA7B /* FEBaseRequest.m */; };
+		14FF4A301A6696B300DECA7B /* FEBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A2F1A6696B300DECA7B /* FEBaseResponse.m */; };
+		14FF4A351A66A02D00DECA7B /* FEGetCompanyRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A341A66A02D00DECA7B /* FEGetCompanyRequest.m */; };
+		14FF4A381A66A45800DECA7B /* FEGetCompanyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A371A66A45800DECA7B /* FEGetCompanyResponse.m */; };
+		14FF4A3B1A66A48C00DECA7B /* FECompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A3A1A66A48C00DECA7B /* FECompany.m */; };
+		14FF4A411A66A6D500DECA7B /* FEGetADRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A401A66A6D500DECA7B /* FEGetADRequest.m */; };
+		14FF4A441A66A72200DECA7B /* FEGetADResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A431A66A72200DECA7B /* FEGetADResponse.m */; };
+		14FF4A471A66A79300DECA7B /* FEAD.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A461A66A79300DECA7B /* FEAD.m */; };
+		E569705F7F110B016F064A8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 027B1062FF46A8B12B174FC1 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		027B1062FF46A8B12B174FC1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		144350111A663EA2002BB228 /* FETableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FETableViewController.h; sourceTree = "<group>"; };
+		144350121A663EA2002BB228 /* FETableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FETableViewController.m; sourceTree = "<group>"; };
+		144350141A663EC1002BB228 /* FEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEViewController.h; sourceTree = "<group>"; };
+		144350151A663EC1002BB228 /* FEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEViewController.m; sourceTree = "<group>"; };
+		144350171A663FA0002BB228 /* FENavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FENavigationController.h; sourceTree = "<group>"; };
+		144350181A663FA0002BB228 /* FENavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FENavigationController.m; sourceTree = "<group>"; };
+		1443501A1A66404B002BB228 /* FETableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FETableView.h; sourceTree = "<group>"; };
+		1443501B1A66404B002BB228 /* FETableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FETableView.m; sourceTree = "<group>"; };
+		1443501D1A664074002BB228 /* FEHomePageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEHomePageVC.h; sourceTree = "<group>"; };
+		1443501E1A664074002BB228 /* FEHomePageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEHomePageVC.m; sourceTree = "<group>"; };
+		144350201A66408A002BB228 /* FEBasketVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEBasketVC.h; sourceTree = "<group>"; };
+		144350211A66408A002BB228 /* FEBasketVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEBasketVC.m; sourceTree = "<group>"; };
+		144350231A6640D3002BB228 /* FEMeShouldSigninVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMeShouldSigninVC.h; sourceTree = "<group>"; };
+		144350241A6640D3002BB228 /* FEMeShouldSigninVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMeShouldSigninVC.m; sourceTree = "<group>"; };
+		144350261A6640EC002BB228 /* FESettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESettingVC.h; sourceTree = "<group>"; };
+		144350271A6640EC002BB228 /* FESettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESettingVC.m; sourceTree = "<group>"; };
+		144350291A6642E3002BB228 /* FELaundryConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FELaundryConfig.h; sourceTree = "<group>"; };
+		1443502A1A664301002BB228 /* FELaundryDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FELaundryDefine.h; sourceTree = "<group>"; };
+		1443502B1A66433F002BB228 /* Laundry-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Laundry-Prefix.pch"; sourceTree = "<group>"; };
+		144350521A6652A6002BB228 /* NSDate+Formatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatter.h"; sourceTree = "<group>"; };
+		144350531A6652A6002BB228 /* NSDate+Formatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatter.m"; sourceTree = "<group>"; };
+		144350541A6652A6002BB228 /* NSString+Attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Attribute.h"; sourceTree = "<group>"; };
+		144350551A6652A6002BB228 /* NSString+Attribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Attribute.m"; sourceTree = "<group>"; };
+		144350561A6652A6002BB228 /* NSString+DateFromNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DateFromNow.h"; sourceTree = "<group>"; };
+		144350571A6652A6002BB228 /* NSString+DateFromNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DateFromNow.m"; sourceTree = "<group>"; };
+		144350581A6652A6002BB228 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		144350591A6652A6002BB228 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		1443505A1A6652A6002BB228 /* NSString+Number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Number.h"; sourceTree = "<group>"; };
+		1443505B1A6652A6002BB228 /* NSString+Number.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Number.m"; sourceTree = "<group>"; };
+		1443505C1A6652A6002BB228 /* NSString+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUID.h"; sourceTree = "<group>"; };
+		1443505D1A6652A6002BB228 /* NSString+UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UUID.m"; sourceTree = "<group>"; };
+		1443505E1A6652A6002BB228 /* NSString+Verify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Verify.h"; sourceTree = "<group>"; };
+		1443505F1A6652A6002BB228 /* NSString+Verify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Verify.m"; sourceTree = "<group>"; };
+		144350601A6652A6002BB228 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		144350611A6652A6002BB228 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		144350621A6652A6002BB228 /* UIColor+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Theme.h"; sourceTree = "<group>"; };
+		144350631A6652A6002BB228 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
+		144350641A6652A6002BB228 /* UIFont+AppFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+AppFont.h"; sourceTree = "<group>"; };
+		144350651A6652A6002BB228 /* UIFont+AppFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+AppFont.m"; sourceTree = "<group>"; };
+		144350661A6652A6002BB228 /* UIImage+LogN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LogN.h"; sourceTree = "<group>"; };
+		144350671A6652A6002BB228 /* UIImage+LogN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LogN.m"; sourceTree = "<group>"; };
+		144350681A6652A6002BB228 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		144350691A6652A6002BB228 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		14469E631A65F9DC00515685 /* Laundry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laundry.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14469E671A65F9DC00515685 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14469E681A65F9DC00515685 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		14469E741A65F9DC00515685 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		14469E761A65F9DC00515685 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		14469E791A65F9DC00515685 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		14469E941A65FA8500515685 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		14469E951A65FA8500515685 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		14469E991A65FAA900515685 /* Laundry.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Laundry.xcdatamodel; sourceTree = "<group>"; };
+		14469E9E1A6612BB00515685 /* FECommonTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FECommonTabbarController.h; sourceTree = "<group>"; };
+		14469E9F1A6612BB00515685 /* FECommonTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FECommonTabbarController.m; sourceTree = "<group>"; };
+		14FF4A181A66936000DECA7B /* FESelectCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESelectCategoryVC.h; sourceTree = "<group>"; };
+		14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESelectCategoryVC.m; sourceTree = "<group>"; };
+		14FF4A1B1A66950D00DECA7B /* FELaundryWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FELaundryWebService.h; sourceTree = "<group>"; };
+		14FF4A1C1A66950D00DECA7B /* FELaundryWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FELaundryWebService.m; sourceTree = "<group>"; };
+		14FF4A241A66962400DECA7B /* NSString+Attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Attribute.h"; sourceTree = "<group>"; };
+		14FF4A251A66962400DECA7B /* NSString+Attribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Attribute.m"; sourceTree = "<group>"; };
+		14FF4A261A66962400DECA7B /* SSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSObject.h; sourceTree = "<group>"; };
+		14FF4A271A66962400DECA7B /* SSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSObject.m; sourceTree = "<group>"; };
+		14FF4A2B1A6696A200DECA7B /* FEBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEBaseRequest.h; sourceTree = "<group>"; };
+		14FF4A2C1A6696A200DECA7B /* FEBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEBaseRequest.m; sourceTree = "<group>"; };
+		14FF4A2E1A6696B300DECA7B /* FEBaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEBaseResponse.h; sourceTree = "<group>"; };
+		14FF4A2F1A6696B300DECA7B /* FEBaseResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEBaseResponse.m; sourceTree = "<group>"; };
+		14FF4A321A66995000DECA7B /* FEWebServiceDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWebServiceDefine.h; sourceTree = "<group>"; };
+		14FF4A331A66A02D00DECA7B /* FEGetCompanyRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEGetCompanyRequest.h; sourceTree = "<group>"; };
+		14FF4A341A66A02D00DECA7B /* FEGetCompanyRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEGetCompanyRequest.m; sourceTree = "<group>"; };
+		14FF4A361A66A45800DECA7B /* FEGetCompanyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEGetCompanyResponse.h; sourceTree = "<group>"; };
+		14FF4A371A66A45800DECA7B /* FEGetCompanyResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEGetCompanyResponse.m; sourceTree = "<group>"; };
+		14FF4A391A66A48C00DECA7B /* FECompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FECompany.h; sourceTree = "<group>"; };
+		14FF4A3A1A66A48C00DECA7B /* FECompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FECompany.m; sourceTree = "<group>"; };
+		14FF4A3F1A66A6D500DECA7B /* FEGetADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEGetADRequest.h; sourceTree = "<group>"; };
+		14FF4A401A66A6D500DECA7B /* FEGetADRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEGetADRequest.m; sourceTree = "<group>"; };
+		14FF4A421A66A72200DECA7B /* FEGetADResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEGetADResponse.h; sourceTree = "<group>"; };
+		14FF4A431A66A72200DECA7B /* FEGetADResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEGetADResponse.m; sourceTree = "<group>"; };
+		14FF4A451A66A79300DECA7B /* FEAD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEAD.h; sourceTree = "<group>"; };
+		14FF4A461A66A79300DECA7B /* FEAD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEAD.m; sourceTree = "<group>"; };
+		37D466024D554E110EE6D485 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8D324F9EA567674ADBDC5E80 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14469E601A65F9DC00515685 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E569705F7F110B016F064A8F /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1443500D1A663E21002BB228 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				1443501D1A664074002BB228 /* FEHomePageVC.h */,
+				1443501E1A664074002BB228 /* FEHomePageVC.m */,
+				14FF4A181A66936000DECA7B /* FESelectCategoryVC.h */,
+				14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */,
+			);
+			name = HomePage;
+			sourceTree = "<group>";
+		};
+		1443500E1A663E31002BB228 /* Basket */ = {
+			isa = PBXGroup;
+			children = (
+				144350201A66408A002BB228 /* FEBasketVC.h */,
+				144350211A66408A002BB228 /* FEBasketVC.m */,
+			);
+			name = Basket;
+			sourceTree = "<group>";
+		};
+		1443500F1A663E61002BB228 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				144350231A6640D3002BB228 /* FEMeShouldSigninVC.h */,
+				144350241A6640D3002BB228 /* FEMeShouldSigninVC.m */,
+			);
+			name = Me;
+			sourceTree = "<group>";
+		};
+		144350101A663E7B002BB228 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				144350261A6640EC002BB228 /* FESettingVC.h */,
+				144350271A6640EC002BB228 /* FESettingVC.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		144350511A6652A6002BB228 /* Categorys */ = {
+			isa = PBXGroup;
+			children = (
+				144350521A6652A6002BB228 /* NSDate+Formatter.h */,
+				144350531A6652A6002BB228 /* NSDate+Formatter.m */,
+				144350541A6652A6002BB228 /* NSString+Attribute.h */,
+				144350551A6652A6002BB228 /* NSString+Attribute.m */,
+				144350561A6652A6002BB228 /* NSString+DateFromNow.h */,
+				144350571A6652A6002BB228 /* NSString+DateFromNow.m */,
+				144350581A6652A6002BB228 /* NSString+MD5.h */,
+				144350591A6652A6002BB228 /* NSString+MD5.m */,
+				1443505A1A6652A6002BB228 /* NSString+Number.h */,
+				1443505B1A6652A6002BB228 /* NSString+Number.m */,
+				1443505C1A6652A6002BB228 /* NSString+UUID.h */,
+				1443505D1A6652A6002BB228 /* NSString+UUID.m */,
+				1443505E1A6652A6002BB228 /* NSString+Verify.h */,
+				1443505F1A6652A6002BB228 /* NSString+Verify.m */,
+				144350601A6652A6002BB228 /* UIColor+Hex.h */,
+				144350611A6652A6002BB228 /* UIColor+Hex.m */,
+				144350621A6652A6002BB228 /* UIColor+Theme.h */,
+				144350631A6652A6002BB228 /* UIColor+Theme.m */,
+				144350641A6652A6002BB228 /* UIFont+AppFont.h */,
+				144350651A6652A6002BB228 /* UIFont+AppFont.m */,
+				144350661A6652A6002BB228 /* UIImage+LogN.h */,
+				144350671A6652A6002BB228 /* UIImage+LogN.m */,
+				144350681A6652A6002BB228 /* UIImage+Resize.h */,
+				144350691A6652A6002BB228 /* UIImage+Resize.m */,
+			);
+			path = Categorys;
+			sourceTree = "<group>";
+		};
+		14469E5A1A65F9DC00515685 = {
+			isa = PBXGroup;
+			children = (
+				14469E651A65F9DC00515685 /* Laundry */,
+				14469E641A65F9DC00515685 /* Products */,
+				9857409EB5DF0CB10D3FAFF4 /* Pods */,
+				AEADF1BE1820F012637853C3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		14469E641A65F9DC00515685 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14469E631A65F9DC00515685 /* Laundry.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14469E651A65F9DC00515685 /* Laundry */ = {
+			isa = PBXGroup;
+			children = (
+				144350511A6652A6002BB228 /* Categorys */,
+				14469E971A65FAA900515685 /* DB */,
+				14469E8F1A65FA5A00515685 /* AppDelegate */,
+				14469E901A65FA5A00515685 /* Common */,
+				14469E911A65FA5A00515685 /* ThirdLib */,
+				14469E921A65FA5A00515685 /* UI */,
+				14469E931A65FA5A00515685 /* WebService */,
+				14469E731A65F9DC00515685 /* Main.storyboard */,
+				14469E761A65F9DC00515685 /* Images.xcassets */,
+				14469E781A65F9DC00515685 /* LaunchScreen.xib */,
+				14469E661A65F9DC00515685 /* Supporting Files */,
+			);
+			path = Laundry;
+			sourceTree = "<group>";
+		};
+		14469E661A65F9DC00515685 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				14469E671A65F9DC00515685 /* Info.plist */,
+				14469E681A65F9DC00515685 /* main.m */,
+				1443502B1A66433F002BB228 /* Laundry-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14469E8F1A65FA5A00515685 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				14469E941A65FA8500515685 /* AppDelegate.h */,
+				14469E951A65FA8500515685 /* AppDelegate.m */,
+				144350291A6642E3002BB228 /* FELaundryConfig.h */,
+				1443502A1A664301002BB228 /* FELaundryDefine.h */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		14469E901A65FA5A00515685 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1443501A1A66404B002BB228 /* FETableView.h */,
+				1443501B1A66404B002BB228 /* FETableView.m */,
+				14469E9E1A6612BB00515685 /* FECommonTabbarController.h */,
+				14469E9F1A6612BB00515685 /* FECommonTabbarController.m */,
+				144350111A663EA2002BB228 /* FETableViewController.h */,
+				144350121A663EA2002BB228 /* FETableViewController.m */,
+				144350141A663EC1002BB228 /* FEViewController.h */,
+				144350151A663EC1002BB228 /* FEViewController.m */,
+				144350171A663FA0002BB228 /* FENavigationController.h */,
+				144350181A663FA0002BB228 /* FENavigationController.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		14469E911A65FA5A00515685 /* ThirdLib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdLib;
+			sourceTree = "<group>";
+		};
+		14469E921A65FA5A00515685 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				144350101A663E7B002BB228 /* Setting */,
+				1443500F1A663E61002BB228 /* Me */,
+				1443500E1A663E31002BB228 /* Basket */,
+				1443500D1A663E21002BB228 /* HomePage */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		14469E931A65FA5A00515685 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				14FF4A311A66992300DECA7B /* Param */,
+				14FF4A2A1A66964200DECA7B /* Model */,
+				14FF4A1B1A66950D00DECA7B /* FELaundryWebService.h */,
+				14FF4A1C1A66950D00DECA7B /* FELaundryWebService.m */,
+				14FF4A321A66995000DECA7B /* FEWebServiceDefine.h */,
+				14FF4A2E1A6696B300DECA7B /* FEBaseResponse.h */,
+				14FF4A2F1A6696B300DECA7B /* FEBaseResponse.m */,
+				14FF4A2B1A6696A200DECA7B /* FEBaseRequest.h */,
+				14FF4A2C1A6696A200DECA7B /* FEBaseRequest.m */,
+				14FF4A261A66962400DECA7B /* SSObject.h */,
+				14FF4A271A66962400DECA7B /* SSObject.m */,
+				14FF4A241A66962400DECA7B /* NSString+Attribute.h */,
+				14FF4A251A66962400DECA7B /* NSString+Attribute.m */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		14469E971A65FAA900515685 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				14469E981A65FAA900515685 /* Laundry.xcdatamodeld */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		14FF4A2A1A66964200DECA7B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14FF4A391A66A48C00DECA7B /* FECompany.h */,
+				14FF4A3A1A66A48C00DECA7B /* FECompany.m */,
+				14FF4A451A66A79300DECA7B /* FEAD.h */,
+				14FF4A461A66A79300DECA7B /* FEAD.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		14FF4A311A66992300DECA7B /* Param */ = {
+			isa = PBXGroup;
+			children = (
+				14FF4A331A66A02D00DECA7B /* FEGetCompanyRequest.h */,
+				14FF4A341A66A02D00DECA7B /* FEGetCompanyRequest.m */,
+				14FF4A361A66A45800DECA7B /* FEGetCompanyResponse.h */,
+				14FF4A371A66A45800DECA7B /* FEGetCompanyResponse.m */,
+				14FF4A3F1A66A6D500DECA7B /* FEGetADRequest.h */,
+				14FF4A401A66A6D500DECA7B /* FEGetADRequest.m */,
+				14FF4A421A66A72200DECA7B /* FEGetADResponse.h */,
+				14FF4A431A66A72200DECA7B /* FEGetADResponse.m */,
+			);
+			path = Param;
+			sourceTree = "<group>";
+		};
+		9857409EB5DF0CB10D3FAFF4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37D466024D554E110EE6D485 /* Pods.debug.xcconfig */,
+				8D324F9EA567674ADBDC5E80 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AEADF1BE1820F012637853C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				027B1062FF46A8B12B174FC1 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14469E621A65F9DC00515685 /* Laundry */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14469E891A65F9DC00515685 /* Build configuration list for PBXNativeTarget "Laundry" */;
+			buildPhases = (
+				E59BBCC7D14C48844923EE1A /* Check Pods Manifest.lock */,
+				14469E5F1A65F9DC00515685 /* Sources */,
+				14469E601A65F9DC00515685 /* Frameworks */,
+				14469E611A65F9DC00515685 /* Resources */,
+				BAB70CF0E8FCF8CAE5593446 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Laundry;
+			productName = Laundry;
+			productReference = 14469E631A65F9DC00515685 /* Laundry.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14469E5B1A65F9DC00515685 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = FUEGO;
+				TargetAttributes = {
+					14469E621A65F9DC00515685 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 14469E5E1A65F9DC00515685 /* Build configuration list for PBXProject "Laundry" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 14469E5A1A65F9DC00515685;
+			productRefGroup = 14469E641A65F9DC00515685 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14469E621A65F9DC00515685 /* Laundry */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14469E611A65F9DC00515685 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14469E751A65F9DC00515685 /* Main.storyboard in Resources */,
+				14469E7A1A65F9DC00515685 /* LaunchScreen.xib in Resources */,
+				14469E771A65F9DC00515685 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BAB70CF0E8FCF8CAE5593446 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E59BBCC7D14C48844923EE1A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14469E5F1A65F9DC00515685 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14469E691A65F9DC00515685 /* main.m in Sources */,
+				14FF4A471A66A79300DECA7B /* FEAD.m in Sources */,
+				144350711A6652A6002BB228 /* UIColor+Hex.m in Sources */,
+				14FF4A381A66A45800DECA7B /* FEGetCompanyResponse.m in Sources */,
+				14FF4A1A1A66936000DECA7B /* FESelectCategoryVC.m in Sources */,
+				144350221A66408A002BB228 /* FEBasketVC.m in Sources */,
+				1443506D1A6652A6002BB228 /* NSString+MD5.m in Sources */,
+				144350281A6640EC002BB228 /* FESettingVC.m in Sources */,
+				1443506F1A6652A6002BB228 /* NSString+UUID.m in Sources */,
+				144350741A6652A6002BB228 /* UIImage+LogN.m in Sources */,
+				14FF4A281A66962400DECA7B /* NSString+Attribute.m in Sources */,
+				14469EA01A6612BB00515685 /* FECommonTabbarController.m in Sources */,
+				1443506E1A6652A6002BB228 /* NSString+Number.m in Sources */,
+				14FF4A351A66A02D00DECA7B /* FEGetCompanyRequest.m in Sources */,
+				144350721A6652A6002BB228 /* UIColor+Theme.m in Sources */,
+				14FF4A441A66A72200DECA7B /* FEGetADResponse.m in Sources */,
+				1443506B1A6652A6002BB228 /* NSString+Attribute.m in Sources */,
+				14469E9A1A65FAA900515685 /* Laundry.xcdatamodeld in Sources */,
+				144350731A6652A6002BB228 /* UIFont+AppFont.m in Sources */,
+				1443501F1A664074002BB228 /* FEHomePageVC.m in Sources */,
+				14FF4A1D1A66950D00DECA7B /* FELaundryWebService.m in Sources */,
+				14469E961A65FA8500515685 /* AppDelegate.m in Sources */,
+				14FF4A301A6696B300DECA7B /* FEBaseResponse.m in Sources */,
+				14FF4A291A66962400DECA7B /* SSObject.m in Sources */,
+				14FF4A3B1A66A48C00DECA7B /* FECompany.m in Sources */,
+				144350131A663EA2002BB228 /* FETableViewController.m in Sources */,
+				14FF4A2D1A6696A200DECA7B /* FEBaseRequest.m in Sources */,
+				1443506A1A6652A6002BB228 /* NSDate+Formatter.m in Sources */,
+				14FF4A411A66A6D500DECA7B /* FEGetADRequest.m in Sources */,
+				144350751A6652A6002BB228 /* UIImage+Resize.m in Sources */,
+				144350251A6640D3002BB228 /* FEMeShouldSigninVC.m in Sources */,
+				144350161A663EC1002BB228 /* FEViewController.m in Sources */,
+				144350701A6652A6002BB228 /* NSString+Verify.m in Sources */,
+				1443506C1A6652A6002BB228 /* NSString+DateFromNow.m in Sources */,
+				1443501C1A66404B002BB228 /* FETableView.m in Sources */,
+				144350191A663FA0002BB228 /* FENavigationController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		14469E731A65F9DC00515685 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14469E741A65F9DC00515685 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		14469E781A65F9DC00515685 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14469E791A65F9DC00515685 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		14469E871A65F9DC00515685 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		14469E881A65F9DC00515685 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		14469E8A1A65F9DC00515685 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37D466024D554E110EE6D485 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Laundry/Laundry-Prefix.pch";
+				INFOPLIST_FILE = Laundry/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		14469E8B1A65F9DC00515685 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D324F9EA567674ADBDC5E80 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Laundry/Laundry-Prefix.pch";
+				INFOPLIST_FILE = Laundry/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14469E5E1A65F9DC00515685 /* Build configuration list for PBXProject "Laundry" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14469E871A65F9DC00515685 /* Debug */,
+				14469E881A65F9DC00515685 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14469E891A65F9DC00515685 /* Build configuration list for PBXNativeTarget "Laundry" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14469E8A1A65F9DC00515685 /* Debug */,
+				14469E8B1A65F9DC00515685 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		14469E981A65FAA900515685 /* Laundry.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				14469E991A65FAA900515685 /* Laundry.xcdatamodel */,
+			);
+			currentVersion = 14469E991A65FAA900515685 /* Laundry.xcdatamodel */;
+			path = Laundry.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 14469E5B1A65F9DC00515685 /* Project object */;
+}

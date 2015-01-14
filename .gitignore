@@ -32,3 +32,6 @@ code/app/andriod/library/.settings/
 *.class
 
 code/app/andriod/library/bin/
+
+
+code/app/andriod/library/bin/classes/
