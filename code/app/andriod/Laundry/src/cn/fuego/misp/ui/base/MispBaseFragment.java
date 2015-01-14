@@ -1,5 +1,7 @@
 package cn.fuego.misp.ui.base;
 
+import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
@@ -49,15 +51,32 @@ public abstract class MispBaseFragment extends Fragment implements HttpListener
  	    
 	    return width;
 	}
-	public int getScreenHeight()
+	public int getActivityHeight()
 	{
 		DisplayMetrics metric = new DisplayMetrics();
 	    this.getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
  	    int height = metric.heightPixels;
-	    
+ 	    height = height-getStatusHeight(this.getActivity());
 	    return height;
 	}
-	
+	public int getStatusHeight(Activity activity){
+        int statusHeight = 0;
+        Rect localRect = new Rect();
+        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+        statusHeight = localRect.top;
+        if (0 == statusHeight){
+            Class<?> localClass;
+            try {
+                localClass = Class.forName("com.android.internal.R$dimen");
+                Object localObject = localClass.newInstance();
+                int i5 = Integer.parseInt(localClass.getField("status_bar_height").get(localObject).toString());
+                statusHeight = activity.getResources().getDimensionPixelSize(i5);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }  
+        }
+        return statusHeight;
+    }
 	public int getImageIdByName(String name)
 	{
 		

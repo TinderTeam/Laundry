@@ -25,6 +25,10 @@ public class AppCache
 	
 	private String versionNname;
 	private int versionCode;
+	
+
+	
+	
  
 
 	public CompanyJson getCompany()
@@ -174,6 +178,8 @@ public class AppCache
 		}
 		return info;
 	}
+	
+
 	
 	 
 }

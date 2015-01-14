@@ -54,13 +54,6 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 	private ViewGroup group;
 	private ViewPager viewPager;
 	
-    //定义数组来存放按钮图片  
-    private int mImageViewArray[] = {R.drawable.home_food,R.drawable.home_car,R.drawable.home_photo,R.drawable.home_education,
-                                     R.drawable.home_entertainment,R.drawable.home_hotel,R.drawable.home_beauty,R.drawable.home_service};  
-          
-    //Tab选项卡的文字  
-    private int mTextviewArray[] = {R.string.tabbar_home, R.string.tabbar_home,R.string.tabbar_home,R.string.tabbar_home,
-    								R.string.tabbar_home,R.string.tabbar_home,R.string.tabbar_home,R.string.tabbar_home}; 
  
 	@Override
 	public void initRes()
@@ -88,20 +81,35 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		 for(int id : buttonID)
 		 {
 			Button button =  (Button) rootView.findViewById(id);
+			button.getLayoutParams().height = (int)(this.getScreenWidth()*UIDimenConstant.HOME_BTN_L_W_RATIO);
 			button.setOnClickListener(this);
 		 }
 		 loadAdd();
 		 initGridView(rootView);
+ 
+		 View gridViewLayout = rootView.findViewById(R.id.home_gridview_layout);
 		 
-		
+		 int gridHeight = (int)(this.getActivityHeight() - getResources().getDisplayMetrics().density*(UIDimenConstant.TITLE_HEIGHT_DP+UIDimenConstant.TAB_BAR_HEIGHT_DP) - (this.getScreenWidth()*(UIDimenConstant.AD_L_W_RATIO+3*UIDimenConstant.HOME_BTN_L_W_RATIO)));
+		 if(gridHeight <getResources().getDisplayMetrics().density*50)
+		 {
+			 gridViewLayout.getLayoutParams().height = gridHeight;
+		 }
+		 else
+		 {
+			 gridViewLayout.getLayoutParams().height = gridHeight;
+		 }
+		 
+		 
 		return rootView;
 	}
 	
 	private void initGridView(View view)
 	{
+	 
 		List<MispGridDataModel> mList = gridInitData();
 		final MispCommonGridViewAdapter gridViewAdapter = new MispCommonGridViewAdapter(getActivity(), mList);
 		MispGridView gridView = (MispGridView) view.findViewById(R.id.home_gridview);
+		//gridView.getLayoutParams().height = (int) (this.getScreenWidth()-50-50 - this.getScreenWidth()*(UIDimenConstant.HOME_BTN_L_W_RATIO+UIDimenConstant.AD_L_W_RATIO));
 		gridView.setOnItemClickListener(new OnItemClickListener()
 		{
 
@@ -118,7 +126,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 			}
 			
 		});
-		gridView.setAdapter(gridViewAdapter);
+		gridView.setAdapter(gridViewAdapter); 
 	}
 	
 	private List<MispGridDataModel> gridInitData()

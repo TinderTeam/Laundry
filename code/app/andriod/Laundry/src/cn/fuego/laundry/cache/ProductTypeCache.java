@@ -51,7 +51,7 @@ public class ProductTypeCache
 		typeList.add(getType(0,5,"奢侈品牌类"));
 		typeList.add(getType(0,6,"居家类"));
 		typeList.add(getType(0,7,"汽车配饰类"));
-		typeList.add(getType(0,8,"染色/改色/救治"));
+		typeList.add(getType(0,8,"染色/救治"));
 
  
 	}

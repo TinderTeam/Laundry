@@ -10,6 +10,7 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.ui.base.ExitApplication;
 import cn.fuego.laundry.ui.cart.MyCartFragment;
 import cn.fuego.laundry.ui.home.HomeFragment;
@@ -46,6 +47,7 @@ public class MainTabbarActivity extends FragmentActivity
       
         log.info("select tab is " + index);
         this.mTabHost.setCurrentTab(index);
+ 
     }  
     
     public void setDisplayTab(Class clazz)
@@ -59,7 +61,7 @@ public class MainTabbarActivity extends FragmentActivity
     private void initView(){  
         //实例化布局对象  
         layoutInflater = LayoutInflater.from(this);  
-                      
+
         //实例化TabHost对象，得到TabHost  
         mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);  
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);   
@@ -78,6 +80,7 @@ public class MainTabbarActivity extends FragmentActivity
             mTabHost.addTab(tabSpec, MainTabbarInfo.getFragments()[i], null);  
             //设置Tab按钮的背景 
             mTabHost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.tabbar_background); 
+            //mTabHost.getTabWidget().getChildAt(i).getLayoutParams().height = (int) (getResources().getDisplayMetrics().density*R.dimen.tabbar_image_size);
         }  
     }  
     

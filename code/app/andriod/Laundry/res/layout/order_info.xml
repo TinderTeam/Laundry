@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/head_height"
+        android:layout_height="@dimen/top_head_height"
         android:background="@color/themecolor"
         android:orientation="vertical" >
 

@@ -26,10 +26,6 @@ import cn.fuego.misp.webservice.up.model.LoginRsp;
 @Consumes("application/json")  
 public interface CustomerManageRest
 {
-	//APP登录验证
-	@POST
-	@Path("/Login")
-	LoginRsp login(LoginReq req);
 	
 	@POST
 	@Path("/Modify")

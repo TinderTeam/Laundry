@@ -62,7 +62,7 @@ public class ImagePagerAdapter extends PagerAdapter implements OnPageChangeListe
           for(int i=0; i<imageUrlList.size(); i++)
           {  
               ImageView imageView = new ImageView(context);  
-              imageView.setLayoutParams(new LayoutParams(2,2));  
+              imageView.setLayoutParams(new LayoutParams(4,4));  
               tips.add(imageView);  
               if(i == 0){  
                   tips.get(i).setBackgroundResource(R.drawable.image_selected);  
@@ -73,7 +73,7 @@ public class ImagePagerAdapter extends PagerAdapter implements OnPageChangeListe
               LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT,    
                       LayoutParams.WRAP_CONTENT));  
               layoutParams.leftMargin = 5;  
-              layoutParams.rightMargin = 5;  
+            //  layoutParams.rightMargin = 5;  
               group.addView(imageView, layoutParams);  
           }  
    
