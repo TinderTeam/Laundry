@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SZw-sc-2yi">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--Item 2-->
+        <scene sceneID="Xfz-7A-Wdc">
+            <objects>
+                <viewController id="Jq5-ww-Mjl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="luc-Jl-e58"/>
+                        <viewControllerLayoutGuide type="bottom" id="qCi-Ue-Mbt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fkr-Gv-2qV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="YoN-g7-EE7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n7l-B4-ZOf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="814" y="351"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="8lQ-Os-psU">
+            <objects>
+                <viewController id="5cz-Lk-jpQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vfS-vP-0oE"/>
+                        <viewControllerLayoutGuide type="bottom" id="S6q-ro-BVC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vd1-13-s9E">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="S30-L9-z7A"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fVZ-e9-lRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="814" y="-311"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ZOm-al-y7D">
+            <objects>
+                <tabBarController id="SZw-sc-2yi" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="b75-Nf-Oow">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="5cz-Lk-jpQ" kind="relationship" relationship="viewControllers" id="65W-3G-1hk"/>
+                        <segue destination="Jq5-ww-Mjl" kind="relationship" relationship="viewControllers" id="fie-kM-cyg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MXK-ti-a7W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6" y="21"/>
+        </scene>
+    </scenes>
+</document>
