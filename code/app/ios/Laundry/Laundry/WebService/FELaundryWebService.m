@@ -34,6 +34,7 @@
 
 -(AFHTTPRequestOperation *)request:(id)rdata responseClass:(Class)cl response:(void(^)(NSError *error, id response))block{
     return [self POST:[rdata method] parameters:[rdata dictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"response %@",responseObject);
         id rsp = [[cl alloc] initWithResponse:responseObject];
         [self showerrorResponse:rsp];
         block(NULL,rsp);

@@ -15,4 +15,11 @@
 
 #define kImageURL(_A)           [@"http://120.24.217.173:9000/Laundry/Public/Fuego/uploads/" stringByAppendingString:_A]
 
+//login user
+#define kLoginUserKey           @"user"
+
+#define kLoginUser              kUserDefaultsObjectForKey(kLoginUserKey)
+
+#define kNotificationUserDidLogin           @"notificationUserDidLogin"
+
 #endif

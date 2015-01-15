@@ -10,4 +10,6 @@
 
 @interface FESelectCategoryVC : FEViewController
 
+@property (nonatomic, strong) NSNumber *fatherID;
+
 @end

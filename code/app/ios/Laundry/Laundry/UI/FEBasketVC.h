@@ -8,6 +8,10 @@
 
 #import "FETableViewController.h"
 
+
 @interface FEBasketVC : FETableViewController
+
+//-(void)appendProduct:(NSArray *)products;
+-(void)shoulRefresh;
 
 @end

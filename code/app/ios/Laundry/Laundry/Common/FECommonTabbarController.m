@@ -7,6 +7,8 @@
 //
 
 #import "FECommonTabbarController.h"
+#import "UIImage+LogN.h"
+#import "UIImage+Resize.h"
 
 @interface FECommonTabbarController ()
 
@@ -17,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tabBar.backgroundImage = [[UIImage imageFromColor:kThemeColor] imageScaledToSize:CGSizeMake(self.view.bounds.size.width, 49)];//[[UIImage imageNamed:@"tabbar_background"] imageScaledToSize:CGSizeMake(self.view.bounds.size.width, 49)];
+//    self.tabBar.tintColor = [UIColor colorWithHex:0x009cff];
 }
 
 - (void)didReceiveMemoryWarning {

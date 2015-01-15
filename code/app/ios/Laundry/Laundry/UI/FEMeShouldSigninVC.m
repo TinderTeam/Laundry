@@ -18,6 +18,8 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.title = kString(@"个人中心");
+        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"个人中心") image:[UIImage imageNamed:@"tab_icon_user_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_user_pressed"]];
+        self.tabBarItem = tabitem;
     }
     return self;
 }
@@ -25,6 +27,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    if (kLoginUser) {
+//        self.navigationController.topViewController
+//    }
 }
 
 - (void)didReceiveMemoryWarning {

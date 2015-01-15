@@ -7,10 +7,19 @@
 //
 
 #import "FESelectCategoryVC.h"
+#import "FEGetProductTypeReques.h"
+#import "FEGetProductTypeResponse.h"
+#import "FELaundryWebService.h"
+#import "FEDataCache.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "FEBasketVC.h"
+#import "FEDataCache.h"
 
 @interface FESelectCategoryVC ()<UICollectionViewDataSource, UICollisionBehaviorDelegate, UICollectionViewDelegateFlowLayout>
 @property (strong, nonatomic) IBOutlet UICollectionView *categoryCollectionView;
-
+@property (strong, nonatomic) IBOutlet UIButton *goBasket;
+@property (strong, nonatomic) NSArray *productList;
+@property (strong, nonatomic) NSMutableArray *selectProduct;
 @end
 
 @implementation FESelectCategoryVC
@@ -19,9 +28,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = kString(@"添加待洗物品");
-//    self.categoryCollectionView
-    
+    self.view.backgroundColor = kThemeColor;
+    self.selectProduct = [NSMutableArray new];
+    [self refreshButton];
+
+    __weak typeof(self) weakself = self;
+    [[FEDataCache sharedInstance] getProductForID:self.fatherID block:^(NSArray *list) {
+        weakself.productList = list;
+        NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF in %@",list];
+        [weakself.selectProduct addObjectsFromArray:[[FEDataCache sharedInstance].selectProducts filteredArrayUsingPredicate:pre]];
+        [weakself.categoryCollectionView reloadData];
+    }];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -30,13 +49,56 @@
 
 #pragma mark - UICollectionDataSource
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-
+    
+    FEProduct *product = self.productList[indexPath.row];
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"categoryItemCell" forIndexPath:indexPath];
+    UILabel *label = (UILabel *)[cell viewWithTag:1];
+    label.text = product.product_name;
+    
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:2];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:kImageURL(product.img)]];
+    
+    UIImageView *checkImageView = (UIImageView *)[cell viewWithTag:3];
+    if ([self.selectProduct containsObject:self.productList[indexPath.row]]) {
+        checkImageView.image = [UIImage imageNamed:@"checkbox_on"];
+    }else{
+        checkImageView.image = [UIImage imageNamed:@"checkbox_off"];
+    }
+    
     return cell;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 5;
+    return self.productList.count;
+}
+
+#pragma mark - UICollectionViewDelegate
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self.selectProduct containsObject:self.productList[indexPath.row]]) {
+        [self.selectProduct removeObject:self.productList[indexPath.row]];
+        [[FEDataCache sharedInstance] removeSelectProduct:self.productList[indexPath.row]];
+    }else{
+        [self.selectProduct addObject:self.productList[indexPath.row]];
+        [[FEDataCache sharedInstance] addSelectProduct:self.productList[indexPath.row]];
+    }
+    [self.categoryCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+    [self refreshButton];
+}
+
+-(void)refreshButton{
+    
+    [self.goBasket setTitle:[NSString stringWithFormat:@"%@（%ld）",kString(@"洗衣篮"),[FEDataCache sharedInstance].selectProducts.count] forState:UIControlStateNormal];
+}
+
+- (IBAction)goBasket:(id)sender {
+
+    UIViewController *controller = [[[self.tabBarController viewControllers] objectAtIndex:1] topViewController];
+    if ([controller isKindOfClass:[FEBasketVC class]]) {
+        
+        [((FEBasketVC *)controller) shoulRefresh];
+        [self.tabBarController setSelectedIndex:1];
+        [self.navigationController popViewControllerAnimated:NO];
+    }
 }
 
 /*

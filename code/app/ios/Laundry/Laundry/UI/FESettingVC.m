@@ -18,6 +18,8 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.title = kString(@"更多");
+        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"更多") image:[UIImage imageNamed:@"tab_icon_more_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_more_pressed"]];
+        self.tabBarItem = tabitem;
     }
     return self;
 }

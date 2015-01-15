@@ -61,16 +61,12 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     
     for (NSString *name in property) {
-        
-//        if ([name isEqualToString:@"method"]) {
-//            break;
-//        }
-        
         id item = [self valueForKey:name];
         if ([item isKindOfClass:[NSString class]] || [item isKindOfClass:[NSNumber class]] || [item isKindOfClass:[NSDictionary class]] || [item isKindOfClass:[NSArray class]]) {
             dic[name] = item;
+        }else if([item isKindOfClass:[SSObject class]]){
+            dic[name] = [item dictionary];
         }
-        
     }
     return dic;
 }

@@ -20,7 +20,7 @@
 #define __METHOD_Logout             @"index.php/Index/Logout"
 #define __METHOD_ModifyPassword     @"index.php/Index/ModifyPassword"
 #define __METHOD_Register           @"index.php/Index/Register"
-#define __METHOD_SendVerifyCode     @"index.php/Index/SendVerifyCode"
+#define __METHOD_SendVerifyCode     @"index.php/UserManage/SendVerifyCode"
 
 //AD manager
 #define __METHOD_GetAD             @"laundry.php/ADManage/LoadAll"
