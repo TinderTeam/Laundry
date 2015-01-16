@@ -107,6 +107,14 @@
     self.totalProduct.text = [NSString stringWithFormat:@"%ld件物品,共计:",totalNumber];
     self.totalPriceLabel.text = [NSString stringWithFormat:@"%.2f",totalPrice];
 }
+- (IBAction)nextAction:(id)sender {
+    
+    if (kLoginUser) {
+        [self performSegueWithIdentifier:@"orderSubmitSegue" sender:nil];
+    }else{
+        [self performSegueWithIdentifier:@"signinSegue" sender:nil];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -68,6 +68,13 @@
     [_selectedProuductCount setObject:number forKey:product.product_id];
 }
 
+-(void)clearSelectProduct{
+    for (id item in self.selectProducts) {
+        [self removeSelectProduct:item];
+    }
+}
+
+
 -(NSNumber *)productNumber:(FEProduct *)product{
     return [_selectedProuductCount objectForKey:product.product_id];
 }

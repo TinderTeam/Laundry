@@ -17,8 +17,11 @@
 
 -(void)addSelectProduct:(FEProduct *)product;
 -(void)removeSelectProduct:(FEProduct *)product;
+-(void)clearSelectProduct;
 
 -(void)setProduct:(FEProduct *)product number:(NSNumber *)number;
 -(NSNumber *)productNumber:(FEProduct *)product;
+
+
 
 @end

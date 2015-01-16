@@ -9,5 +9,6 @@
 #import "FETableViewController.h"
 
 @interface FEProfileVC : FETableViewController
+-(void)automaticToOrder;
 
 @end

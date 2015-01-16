@@ -15,7 +15,7 @@
     if (self) {
         _token = @(0);
         _app_id = @(1);
-        _clientType = @"4";
+        _clientType = @"IOS";
         _clientVersion = kAppVersion;
         _method = method;
     }

@@ -63,7 +63,19 @@
     for (NSString *name in property) {
         id item = [self valueForKey:name];
         if ([item isKindOfClass:[NSString class]] || [item isKindOfClass:[NSNumber class]] || [item isKindOfClass:[NSDictionary class]] || [item isKindOfClass:[NSArray class]]) {
-            dic[name] = item;
+            if ([item isKindOfClass:[NSArray class]]) {
+                NSMutableArray *marray = [NSMutableArray new];
+                for (id aitem in item) {
+                    if ([aitem isKindOfClass:[SSObject class]]) {
+                        [marray addObject:[aitem dictionary]];
+                    }else{
+                        [marray addObject:aitem];
+                    }
+                }
+                dic[name] = marray;
+            }else{
+                dic[name] = item;
+            }
         }else if([item isKindOfClass:[SSObject class]]){
             dic[name] = [item dictionary];
         }

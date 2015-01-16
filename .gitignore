@@ -35,3 +35,10 @@ code/app/andriod/library/bin/
 
 
 code/app/andriod/library/bin/classes/
+
+code/app/andriod/library/bin/classes/antistatic/spinnerwheel/AbstractWheel$SavedState.class
+
+
+code/app/andriod/library/bin/classes/antistatic/spinnerwheel/WheelHorizontalView.class
+
+code/app/andriod/library/bin/classes/antistatic/spinnerwheel/WheelVerticalView.class

@@ -47,7 +47,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FEOrder *order = self.orderList[indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderItemCell" forIndexPath:indexPath];
-    cell.textLabel.text = order.order_id.stringValue;
+    cell.textLabel.text = order.order_code;
     return cell;
 }
 

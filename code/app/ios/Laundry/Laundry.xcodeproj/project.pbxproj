@@ -15,6 +15,10 @@
 		1418A1A61A68122800886FDA /* FEVerifyCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1A51A68122800886FDA /* FEVerifyCodeRequest.m */; };
 		1418A1A91A68125400886FDA /* FEVerifyCodeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1A81A68125400886FDA /* FEVerifyCodeResponse.m */; };
 		1418A1AC1A6817C200886FDA /* FERegistResquest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1AB1A6817C200886FDA /* FERegistResquest.m */; };
+		1418A1AF1A68A2DA00886FDA /* FEOrderCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1AE1A68A2DA00886FDA /* FEOrderCreateRequest.m */; };
+		1418A1B21A68A2F600886FDA /* FEOrderCreateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1B11A68A2F600886FDA /* FEOrderCreateResponse.m */; };
+		1418A1B51A68A32F00886FDA /* FEOrderDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1B41A68A32F00886FDA /* FEOrderDetail.m */; };
+		1418A1B81A68B7BF00886FDA /* FECustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1B71A68B7BF00886FDA /* FECustomSegue.m */; };
 		144350131A663EA2002BB228 /* FETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350121A663EA2002BB228 /* FETableViewController.m */; };
 		144350161A663EC1002BB228 /* FEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350151A663EC1002BB228 /* FEViewController.m */; };
 		144350191A663FA0002BB228 /* FENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350181A663FA0002BB228 /* FENavigationController.m */; };
@@ -93,6 +97,14 @@
 		1418A1A81A68125400886FDA /* FEVerifyCodeResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEVerifyCodeResponse.m; sourceTree = "<group>"; };
 		1418A1AA1A6817C200886FDA /* FERegistResquest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FERegistResquest.h; sourceTree = "<group>"; };
 		1418A1AB1A6817C200886FDA /* FERegistResquest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FERegistResquest.m; sourceTree = "<group>"; };
+		1418A1AD1A68A2DA00886FDA /* FEOrderCreateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOrderCreateRequest.h; sourceTree = "<group>"; };
+		1418A1AE1A68A2DA00886FDA /* FEOrderCreateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderCreateRequest.m; sourceTree = "<group>"; };
+		1418A1B01A68A2F600886FDA /* FEOrderCreateResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOrderCreateResponse.h; sourceTree = "<group>"; };
+		1418A1B11A68A2F600886FDA /* FEOrderCreateResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderCreateResponse.m; sourceTree = "<group>"; };
+		1418A1B31A68A32F00886FDA /* FEOrderDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOrderDetail.h; sourceTree = "<group>"; };
+		1418A1B41A68A32F00886FDA /* FEOrderDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderDetail.m; sourceTree = "<group>"; };
+		1418A1B61A68B7BF00886FDA /* FECustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FECustomSegue.h; sourceTree = "<group>"; };
+		1418A1B71A68B7BF00886FDA /* FECustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FECustomSegue.m; sourceTree = "<group>"; };
 		144350111A663EA2002BB228 /* FETableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FETableViewController.h; sourceTree = "<group>"; };
 		144350121A663EA2002BB228 /* FETableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FETableViewController.m; sourceTree = "<group>"; };
 		144350141A663EC1002BB228 /* FEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEViewController.h; sourceTree = "<group>"; };
@@ -382,6 +394,8 @@
 				144350151A663EC1002BB228 /* FEViewController.m */,
 				144350171A663FA0002BB228 /* FENavigationController.h */,
 				144350181A663FA0002BB228 /* FENavigationController.m */,
+				1418A1B61A68B7BF00886FDA /* FECustomSegue.h */,
+				1418A1B71A68B7BF00886FDA /* FECustomSegue.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -447,6 +461,8 @@
 				14FF4A891A67ED4300DECA7B /* FEUser.m */,
 				1418A1A11A680B3900886FDA /* FEOrder.h */,
 				1418A1A21A680B3900886FDA /* FEOrder.m */,
+				1418A1B31A68A32F00886FDA /* FEOrderDetail.h */,
+				1418A1B41A68A32F00886FDA /* FEOrderDetail.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -486,6 +502,10 @@
 				1418A1A81A68125400886FDA /* FEVerifyCodeResponse.m */,
 				1418A1AA1A6817C200886FDA /* FERegistResquest.h */,
 				1418A1AB1A6817C200886FDA /* FERegistResquest.m */,
+				1418A1AD1A68A2DA00886FDA /* FEOrderCreateRequest.h */,
+				1418A1AE1A68A2DA00886FDA /* FEOrderCreateRequest.m */,
+				1418A1B01A68A2F600886FDA /* FEOrderCreateResponse.h */,
+				1418A1B11A68A2F600886FDA /* FEOrderCreateResponse.m */,
 			);
 			path = Param;
 			sourceTree = "<group>";
@@ -649,10 +669,12 @@
 				14FF4A8A1A67ED4300DECA7B /* FEUser.m in Sources */,
 				14FF4A5F1A675C4300DECA7B /* FEGetProductTypeResponse.m in Sources */,
 				1443506B1A6652A6002BB228 /* NSString+Attribute.m in Sources */,
+				1418A1B21A68A2F600886FDA /* FEOrderCreateResponse.m in Sources */,
 				14FF4A6F1A67738000DECA7B /* FEGetProductResponse.m in Sources */,
 				14FF4A751A67928800DECA7B /* FEBasketItemCell.m in Sources */,
 				14FF4A681A6765EE00DECA7B /* FEGetProductRequest.m in Sources */,
 				14469E9A1A65FAA900515685 /* Laundry.xcdatamodeld in Sources */,
+				1418A1B81A68B7BF00886FDA /* FECustomSegue.m in Sources */,
 				144350731A6652A6002BB228 /* UIFont+AppFont.m in Sources */,
 				1443501F1A664074002BB228 /* FEHomePageVC.m in Sources */,
 				1418A1A91A68125400886FDA /* FEVerifyCodeResponse.m in Sources */,
@@ -660,6 +682,7 @@
 				14FF4A651A67646D00DECA7B /* FEProduct.m in Sources */,
 				14469E961A65FA8500515685 /* AppDelegate.m in Sources */,
 				14FF4A901A67F79500DECA7B /* FEProfileVC.m in Sources */,
+				1418A1B51A68A32F00886FDA /* FEOrderDetail.m in Sources */,
 				14FF4A301A6696B300DECA7B /* FEBaseResponse.m in Sources */,
 				14FF4A811A67E69100DECA7B /* FERegistVC.m in Sources */,
 				14FF4A781A67AC2100DECA7B /* FEPickerView.m in Sources */,
@@ -677,6 +700,7 @@
 				144350251A6640D3002BB228 /* FEMeShouldSigninVC.m in Sources */,
 				14FF4A7B1A67BE6C00DECA7B /* FEOrderSubmitVC.m in Sources */,
 				144350161A663EC1002BB228 /* FEViewController.m in Sources */,
+				1418A1AF1A68A2DA00886FDA /* FEOrderCreateRequest.m in Sources */,
 				144350701A6652A6002BB228 /* NSString+Verify.m in Sources */,
 				1418A1A01A680B0300886FDA /* FEOrderListResponse.m in Sources */,
 				1418A1AC1A6817C200886FDA /* FERegistResquest.m in Sources */,
@@ -789,10 +813,12 @@
 			baseConfigurationReference = 37D466024D554E110EE6D485 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Sun (2P4V8NVH4U)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Laundry/Laundry-Prefix.pch";
 				INFOPLIST_FILE = Laundry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d41dffaf-8eff-45d6-8458-8616f922f63f";
 			};
 			name = Debug;
 		};
@@ -801,10 +827,12 @@
 			baseConfigurationReference = 8D324F9EA567674ADBDC5E80 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Sun (2P4V8NVH4U)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Laundry/Laundry-Prefix.pch";
 				INFOPLIST_FILE = Laundry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d41dffaf-8eff-45d6-8458-8616f922f63f";
 			};
 			name = Release;
 		};

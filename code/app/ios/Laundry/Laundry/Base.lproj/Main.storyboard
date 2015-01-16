@@ -723,7 +723,7 @@
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <segue destination="nFQ-yK-CaC" kind="show" id="eaY-bk-xIV"/>
+                                        <action selector="nextAction:" destination="yra-GA-tw0" eventType="touchUpInside" id="L90-Vh-QKH"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg8-fN-7Qv">
@@ -827,6 +827,8 @@
                     <connections>
                         <outlet property="totalPriceLabel" destination="n8s-gC-faX" id="fqo-Yn-cpp"/>
                         <outlet property="totalProduct" destination="eg8-fN-7Qv" id="Rds-hY-hlW"/>
+                        <segue destination="iXJ-X0-J2d" kind="presentation" identifier="signinSegue" id="5jw-CL-GwX"/>
+                        <segue destination="nFQ-yK-CaC" kind="show" identifier="orderSubmitSegue" id="XiY-pl-Myd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezv-ff-d8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -860,6 +862,9 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="submitOrder:" destination="nFQ-yK-CaC" eventType="touchUpInside" id="QOa-fj-zpR"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1124,7 +1129,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="R4V-qT-k61" kind="show" id="IPI-RC-iWF"/>
+                                            <segue destination="R4V-qT-k61" kind="custom" identifier="orderListSegue" customClass="FECustomSegue" id="IPI-RC-iWF"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Tnb-cR-sma" imageView="Pb7-BK-yyZ" style="IBUITableViewCellStyleDefault" id="EMU-DZ-H6d">
@@ -1240,4 +1245,7 @@
         <image name="my_setting" width="25" height="25"/>
         <image name="personal_bkg" width="360" height="187"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="5jw-CL-GwX"/>
+    </inferredMetricsTieBreakers>
 </document>

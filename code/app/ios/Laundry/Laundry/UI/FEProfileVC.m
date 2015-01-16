@@ -9,6 +9,7 @@
 #import "FEProfileVC.h"
 #import "FELaundryWebService.h"
 #import "FESignoutRequest.h"
+#import "FECustomSegue.h"
 
 @interface FEProfileVC ()
 @property (strong, nonatomic) IBOutlet UIView *headerView;
@@ -46,6 +47,17 @@
     [super viewWillAppear:animated];
     if (kLoginUser) {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
+    }
+}
+
+-(void)automaticToOrder{
+    [self performSegueWithIdentifier:@"orderListSegue" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"orderListSegue"] && sender == self) {
+//        segue.
+        ((FECustomSegue *)segue).animation = NO;
     }
 }
 

@@ -13,7 +13,7 @@
 -(id)initWithResponse:(id)response{
     self = [super initWithResponse:response];
     if (self) {
-        _obj = [self getListFromObject:response[@"rows"] class:[FEOrder class]];
+        _obj = [self getListFromObject:response[@"obj"] class:[FEOrder class]];
     }
     return self;
 }
