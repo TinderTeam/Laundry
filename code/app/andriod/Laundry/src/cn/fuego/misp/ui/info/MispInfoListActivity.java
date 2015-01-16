@@ -66,7 +66,7 @@ public class MispInfoListActivity extends MispDistinctListActivity
 		{
 		case ListItemTypeConst.IMG_CONTENT:
 			{
-				view = inflater.inflate(R.layout.list_item_imgtype, null);
+				view = inflater.inflate(R.layout.misp_list_item_imgtype, null);
 				TextView title_view = (TextView) view.findViewById(R.id.item_imgtype_name);
 				ImageView img = (ImageView) view.findViewById(R.id.item_imgtype_img);
 				title_view.setText(title);
@@ -75,7 +75,7 @@ public class MispInfoListActivity extends MispDistinctListActivity
 			break;
 		case ListItemTypeConst.TEXT_CONTENT:
 			{
-				view = inflater.inflate(R.layout.list_item_texttype, null);
+				view = inflater.inflate(R.layout.misp_list_item_texttype, null);
 				TextView title_view = (TextView) view.findViewById(R.id.item_texttype_name);
 				TextView content_view = (TextView) view.findViewById(R.id.item_texttype_text);
 				title_view.setText(title);
@@ -85,7 +85,7 @@ public class MispInfoListActivity extends MispDistinctListActivity
 			break;
 		case ListItemTypeConst.DEFAULT_CONTENT:
 			{
-				view = inflater.inflate(R.layout.list_item_btntype, null);
+				view = inflater.inflate(R.layout.misp_list_item_btntype, null);
 				TextView title_view = (TextView) view.findViewById(R.id.item_btntype_name);
 				title_view.setText(title);
 			}
@@ -93,14 +93,14 @@ public class MispInfoListActivity extends MispDistinctListActivity
 			break;
 		case ListItemTypeConst.BUTTON_ITEM:
 			{
-				view = inflater.inflate(R.layout.list_item_btntype, null);
+				view = inflater.inflate(R.layout.misp_list_item_btntype, null);
 				TextView title_view = (TextView) view.findViewById(R.id.item_btntype_name);
 				title_view.setText(title);
 			}
 			break;
 		case ListItemTypeConst.NULL_CONTENT:
 		   {
-			view = inflater.inflate(R.layout.list_item_divider, null);
+			view = inflater.inflate(R.layout.misp_list_item_divider, null);
 		   }
 		   break;
 	    default:

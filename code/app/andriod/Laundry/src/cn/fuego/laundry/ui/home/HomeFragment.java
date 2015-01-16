@@ -35,8 +35,10 @@ import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.base.MispGridView;
-import cn.fuego.misp.ui.grid.MispCommonGridViewAdapter;
+import cn.fuego.misp.ui.common.MispImageActivity;
+import cn.fuego.misp.ui.grid.MispGridViewAdapter;
 import cn.fuego.misp.ui.model.CommonItemMeta;
+import cn.fuego.misp.ui.model.ImageDisplayInfo;
 import cn.fuego.misp.ui.model.MispGridDataModel;
 import cn.fuego.misp.webservice.up.model.base.CompanyJson;
 
@@ -107,7 +109,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 	{
 	 
 		List<MispGridDataModel> mList = gridInitData();
-		final MispCommonGridViewAdapter gridViewAdapter = new MispCommonGridViewAdapter(getActivity(), mList);
+		final MispGridViewAdapter gridViewAdapter = new MispGridViewAdapter(getActivity(), mList);
 		MispGridView gridView = (MispGridView) view.findViewById(R.id.home_gridview);
 		//gridView.getLayoutParams().height = (int) (this.getScreenWidth()-50-50 - this.getScreenWidth()*(UIDimenConstant.HOME_BTN_L_W_RATIO+UIDimenConstant.AD_L_W_RATIO));
 		gridView.setOnItemClickListener(new OnItemClickListener()
@@ -218,8 +220,9 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		}
 		else
 		{
-			intent = new Intent(this.getActivity(),HomeProductActivity.class);
-			intent.putExtra(SELECT_TYPE, btnTypeMap.get(v.getId()));
+			intent = new Intent(this.getActivity(),MispImageActivity.class);
+			ImageDisplayInfo imageInfo = new ImageDisplayInfo();
+			intent.putExtra(MispImageActivity.JUMP_DATA, imageInfo);
 			this.startActivity(intent);
 
 		}

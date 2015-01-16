@@ -29,7 +29,7 @@ public class MoreFragment extends MispListFragment<AttributeJson>
 		this.fragmentRes.setName(R.string.tabbar_more);
 		this.fragmentRes.setFragmentView(R.layout.more_fragment);
 		this.listViewRes.setListView(R.id.more_list);
-		this.listViewRes.setListItemView(R.layout.list_item_btntype);
+		this.listViewRes.setListItemView(R.layout.misp_list_item_btntype);
 		this.listViewRes.setClickActivityClass(UpgradeActivity.class);
 		
 		initData();

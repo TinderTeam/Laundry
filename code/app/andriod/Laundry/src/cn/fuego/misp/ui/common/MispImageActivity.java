@@ -19,10 +19,14 @@ import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.list.MispDistinctListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
+import cn.fuego.misp.ui.model.ImageDisplayInfo;
+import cn.fuego.misp.ui.util.LoadImageUtil;
 
 public class MispImageActivity extends BaseActivtiy
 {
 
+	public static String JUMP_DATA = "jumpData";
+	private ImageDisplayInfo imageInfo;
 	@Override
 	public void handle(MispHttpMessage message)
 	{
@@ -33,10 +37,23 @@ public class MispImageActivity extends BaseActivtiy
 	@Override
 	public void initRes()
 	{
-		this.activityRes.setName("修改密码");
-		this.activityRes.setAvtivityView(R.layout.user_info_edit);
+		imageInfo = (ImageDisplayInfo) this.getIntent().getSerializableExtra(JUMP_DATA);
+		this.activityRes.setName(imageInfo.getTilteName());
+		this.activityRes.setAvtivityView(R.layout.misp_image_display);
 		
 	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		ImageView image = (ImageView)findViewById(R.id.misp_common_image);
+		
+		LoadImageUtil.getInstance().loadImage(image, imageInfo.getUrl());
+	}
+	
+	
  
 
 

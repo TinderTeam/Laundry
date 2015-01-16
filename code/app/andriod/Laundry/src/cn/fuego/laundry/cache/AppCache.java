@@ -170,7 +170,7 @@ public class AppCache
 		{
 			info.setPhone(AppCache.getInstance().getCustomer().getPhone());
 			info.setTake_addr(AppCache.getInstance().getCustomer().getAddr());
-			info.setCustomer_name((AppCache.getInstance().getCustomer().getCustomer_name()));
+			info.setContact_name((AppCache.getInstance().getCustomer().getCustomer_name()));
 		}
 		else
 		{

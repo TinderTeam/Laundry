@@ -48,6 +48,10 @@ public interface MispUserManageRest
 	@POST
 	@Path("/Index/Register")
 	UserRegisterRsp register(UserRegisterReq req);
+	
+	@POST
+	@Path("/Index/ResetPassword")
+	UserRegisterRsp resetPassword(UserRegisterReq req);
  
 	@POST
 	@Path("/UserManage/SendVerifyCode")

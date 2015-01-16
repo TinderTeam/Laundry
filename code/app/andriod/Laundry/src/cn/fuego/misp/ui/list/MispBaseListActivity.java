@@ -93,7 +93,11 @@ public abstract class MispBaseListActivity<E> extends MispHttpActivtiy implement
 	}
 	public void repaint()
 	{
-		this.adapter.notifyDataSetChanged();
+		if(null != adapter)
+		{
+			this.adapter.notifyDataSetChanged();
+
+		}
 	}
 
 

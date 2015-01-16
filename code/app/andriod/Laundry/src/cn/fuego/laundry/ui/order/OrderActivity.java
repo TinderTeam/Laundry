@@ -21,6 +21,7 @@ import cn.fuego.laundry.constant.ListItemTypeConst;
 import cn.fuego.laundry.ui.cart.MyCartFragment;
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.base.DeliveryInfoJson;
+import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
@@ -41,7 +42,7 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 	public void initRes()
 	{
 		this.activityRes.setAvtivityView(R.layout.order_info);
-		this.activityRes.setBackBtn(R.id.order_info_back);
+		this.activityRes.setName("提交订单");
 		this.activityRes.getButtonIDList().add(R.id.order_info_btn_submit);
 		
 		this.listViewRes.setListView(R.id.order_info_list);
@@ -49,64 +50,39 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 		orderReq = (CreateOrderReq) intent.getSerializableExtra(OrderActivity.ORDER_INFO);
 		
 		orderReq.getOrder().setPhone(AppCache.getInstance().getDefuatDelivery().getPhone());
-		orderReq.getOrder().setCustomer_name(AppCache.getInstance().getDefuatDelivery().getCustomer_name());
+		orderReq.getOrder().setContact_name(AppCache.getInstance().getDefuatDelivery().getContact_name());
 		orderReq.getOrder().setTake_addr(AppCache.getInstance().getDefuatDelivery().getTake_addr());
 		orderReq.getOrder().setTake_time(AppCache.getInstance().getDefuatDelivery().getTake_time());
 		orderReq.getOrder().setDelivery_addr(AppCache.getInstance().getDefuatDelivery().getDelivery_addr());
 		orderReq.getOrder().setDelivery_time(AppCache.getInstance().getDefuatDelivery().getDelivery_time());
 		
 		this.getDataList().clear();
-		this.getDataList().addAll(getBtnData());
+		this.getDataList().addAll(getBtnData(orderReq.getOrder()));
 	}
  
-	private List<CommonItemMeta> getBtnData()
+	private List<CommonItemMeta> getBtnData(OrderJson order)
 	{
-		// 生成数据源
-		List<CommonItemMeta> list = new ArrayList<CommonItemMeta>();
-		// 每个Map结构为一条数据，key与Adapter中定义的String数组中定义的一一对应。
-	 
-		
-		CommonItemMeta meta2 = new CommonItemMeta();
-		meta2.setTitle("取衣地址");
-		meta2.setLayoutType(ListItemTypeConst.EDIT_TEXT);
-		meta2.setContent(orderReq.getOrder().getTake_addr());
-		list.add(meta2);
-		
-		CommonItemMeta meta3 = new CommonItemMeta();
-		meta3.setTitle("送回地址");
-		meta3.setLayoutType(ListItemTypeConst.EDIT_TEXT);
-		meta3.setContent("");
-		list.add(meta3);
-		
-		CommonItemMeta meta4 = new CommonItemMeta();
-		meta4.setTitle("联系人");
-		meta4.setLayoutType(ListItemTypeConst.EDIT_TEXT);
-		meta4.setContent(orderReq.getOrder().getCustomer_name());
-		list.add(meta4);
-		
-		CommonItemMeta meta5 = new CommonItemMeta();
-		meta5.setTitle("联系电话");
-		meta5.setLayoutType(ListItemTypeConst.EDIT_TEXT);
-		meta5.setContent(orderReq.getOrder().getPhone());
-		list.add(meta5);
-  
-		CommonItemMeta meta6 = new CommonItemMeta();
-		meta6.setTitle("总价");
-		meta6.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
-		meta6.setContent(orderReq.getOrder().getTotal_price());
-		list.add(meta6);
-		
-		CommonItemMeta meta7 = new CommonItemMeta();
-		meta7.setTitle("付款方式");
-		meta7.setLayoutType(ListItemTypeConst.EDIT_TEXT);
-		meta7.setContent(orderReq.getOrder().getPay_option());
-		list.add(meta7);
-		
-		CommonItemMeta meta8 = new CommonItemMeta();
-		meta8.setTitle("您的要求");
-		meta8.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
-		meta8.setContent(orderReq.getOrder().getOrder_note());
-		list.add(meta8);
+		 
+			List<CommonItemMeta> list = new ArrayList<CommonItemMeta>();
+			
+			if(null != order)
+			{
+				list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "取衣地址", order.getTake_addr()));
+
+				list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "送回地址", order.getDelivery_addr()));
+				
+				list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "联系人", order.getContact_name()));
+				list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "联系电话", order.getPhone()));
+				
+				
+				list.add(new CommonItemMeta(ListItemTypeConst.NULL_CONTENT, null, null));
+
+		 
+				
+				list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "总价", order.getTotal_price()));
+				list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "付款方式", order.getPay_option()));
+				list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "您的要求", order.getOrder_note()));
+			}
 
 		
 		return list;
@@ -116,7 +92,7 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 	public int getItemTypeCount()
 	{
 		// TODO Auto-generated method stub
-		return 4;
+		return 6;
 	}
 
 	@Override
@@ -143,7 +119,7 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 		{
 		case ListItemTypeConst.IMG_CONTENT:
 			{
-				view = inflater.inflate(R.layout.list_item_imgtype, null);
+				view = inflater.inflate(R.layout.misp_list_item_imgtype, null);
 				TextView title_view = (TextView) view.findViewById(R.id.item_imgtype_name);
 				ImageView img = (ImageView) view.findViewById(R.id.item_imgtype_img);
 				title_view.setText(title);
@@ -152,7 +128,7 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 			break;
 		case ListItemTypeConst.TEXT_CONTENT:
 			{
-				view = inflater.inflate(R.layout.list_item_texttype, null);
+				view = inflater.inflate(R.layout.misp_list_item_texttype, null);
 				TextView title_view = (TextView) view.findViewById(R.id.item_texttype_name);
 				TextView content_view = (TextView) view.findViewById(R.id.item_texttype_text);
 				title_view.setText(title);
@@ -162,7 +138,7 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 			break;
 		case ListItemTypeConst.EDIT_TEXT:
 			{
-				view = inflater.inflate(R.layout.list_item_texttype, null);
+				view = inflater.inflate(R.layout.misp_list_item_texttype, null);
 				TextView title_view = (TextView) view.findViewById(R.id.item_texttype_name);
 				TextView content_view = (TextView) view.findViewById(R.id.item_texttype_text);
 				title_view.setText(title);
@@ -172,7 +148,7 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 		break;	
 		case ListItemTypeConst.DEFAULT_CONTENT:
 			{
-				view = inflater.inflate(R.layout.list_item_btntype, null);
+				view = inflater.inflate(R.layout.misp_list_item_btntype, null);
 				TextView title_view = (TextView) view.findViewById(R.id.item_btntype_name);
 				title_view.setText(title);
 			}
@@ -180,7 +156,7 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 			break;
 		case ListItemTypeConst.NULL_CONTENT:
 			{
-				view = inflater.inflate(R.layout.list_item_divider, null);
+				view = inflater.inflate(R.layout.misp_list_item_divider, null);
 			}
 			
 		}

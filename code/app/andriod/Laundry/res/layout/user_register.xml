@@ -5,42 +5,10 @@
     android:background="@color/backcolor"
     android:orientation="vertical" >
 
-    <LinearLayout
+       <include
         android:layout_width="match_parent"
-        android:layout_height="@dimen/top_head_height"
-        android:layout_marginBottom="20dp"
-        android:background="@color/white"
-        android:orientation="vertical" >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/themecolor" >
-
-            <Button
-                android:id="@+id/user_register_back"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="10dp"
-                android:background="@null"
-                android:drawableLeft="@drawable/detail_back"
-                android:drawablePadding="5dp"
-                android:text="返回"
-                android:textColor="@color/white"
-                android:textSize="@dimen/content_font_size" />
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="用户注册"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/white"
-                android:textSize="@dimen/head_font_size_sm" />
-        </RelativeLayout>
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        layout="@layout/misp_tilte_with_back_layout" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -150,8 +118,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/common_btn"
-            android:focusableInTouchMode="true"
-            android:text="注  册"
+            android:text="提  交"
             android:textColor="@color/white"
             android:textSize="20sp" />
 

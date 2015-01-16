@@ -9,18 +9,21 @@ import cn.fuego.misp.webservice.up.model.base.BaseJsonReq;
 
 public class OperateOrderReq extends BaseJsonReq
 {
-	private String order_id;
+	private int obj; //order id
 
-	public String getOrder_id()
+	public int getObj()
 	{
-		return order_id;
+		return obj;
 	}
 
-	public void setOrder_id(String order_id)
+	public void setObj(int obj)
 	{
-		this.order_id = order_id;
+		this.obj = obj;
 	}
-	
+
+ 
+
+ 
 	
 
 }

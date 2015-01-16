@@ -6,7 +6,6 @@ import java.util.TimerTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
@@ -21,14 +20,11 @@ import cn.fuego.misp.webservice.up.model.SendVerifyCodeReq;
 import cn.fuego.misp.webservice.up.model.SendVerifyCodeRsp;
 import cn.fuego.misp.webservice.up.model.UserRegisterReq;
 
-public class UserRegisterActivity extends MispHttpActivtiy implements
-		OnClickListener
+public class UserRegisterActivity extends MispHttpActivtiy  
 {
 
 	private FuegoLog log = FuegoLog.getLog(getClass());
-	private int[] buttonIDList = new int[]
-	{ R.id.user_register_btn_submit, R.id.user_register_btn_verifyCode };
-
+ 
 	private String verifyCode;// 验证码
 	private Timer timer;// 计时器
 	private Button verifyCodeBtn;
@@ -36,12 +32,27 @@ public class UserRegisterActivity extends MispHttpActivtiy implements
 	private TextView phoneNumView;
 	private TextView passwordView;
 	private int validTime = 60;
+	
+	public static final String OPERTATE_NAME = "operate";
+	public static final int REGISTER = 0;
+	public static final int FIND_PWD = 1;
+	private  int operate = 0;
 
 	@Override
 	public void initRes()
 	{
+		operate = this.getIntent().getIntExtra(OPERTATE_NAME, 0);
+		if(operate == REGISTER)
+		{
+			this.activityRes.setName("用户注册");
+		}
+		else
+		{
+			this.activityRes.setName("重置密码");
+		}
 		this.activityRes.setAvtivityView(R.layout.user_register);
-		this.activityRes.setBackBtn(R.id.user_register_back);
+		this.activityRes.getButtonIDList().add(R.id.user_register_btn_verifyCode);
+		this.activityRes.getButtonIDList().add(R.id.user_register_btn_submit);
 		
 	}
 	
@@ -59,25 +70,19 @@ public class UserRegisterActivity extends MispHttpActivtiy implements
 		passwordView = (TextView) findViewById(R.id.user_register_txt_password);
 
 		
-		for (int id : buttonIDList)
-		{
-			Button button = (Button) findViewById(id);
-			button.setOnClickListener(this);
-		}
+ 
 	}
 
 	@Override
 	public void handle(MispHttpMessage message)
 	{
+		this.showMessage(message);
+
 		if (message.isSuccess())
 		{
-			this.showMessage("注册成功");
+			this.finish();
  
-		} else
-		{
-			log.error("query product failed");
-			this.showMessage(message);
-		}
+		}  
 
 	}
 
@@ -116,7 +121,14 @@ public class UserRegisterActivity extends MispHttpActivtiy implements
 			UserRegisterReq req = new UserRegisterReq();
 			req.setUser_name(phoneNum);
 			req.setPassword(password);
-			WebServiceContext.getInstance().getUserManageRest(this).register(req);
+			if(REGISTER == operate)
+			{
+				WebServiceContext.getInstance().getUserManageRest(this).register(req);
+			}
+			else
+			{
+				WebServiceContext.getInstance().getUserManageRest(this).resetPassword(req);
+			}
 		}
 			break;
 		default:

@@ -18,6 +18,7 @@ public class ProductJson implements Serializable
 	private float original_price;
 	private String img;
 	private String product_status;
+	
 	private Date update_time;
 	private Date end_time;
 	private String detail_info;

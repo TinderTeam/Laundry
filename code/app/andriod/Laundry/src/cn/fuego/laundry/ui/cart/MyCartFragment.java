@@ -103,7 +103,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 		nameView.setText(item.getProduct_name());
 		
 		TextView priceView = (TextView) view.findViewById(R.id.chart_list_item_price);
-		priceView.setText(String.valueOf(item.getProduct_price()));
+		priceView.setText(String.valueOf(item.getCurrent_price()));
 		
 		 EditText  amountView = (EditText) view.findViewById(R.id.chart_list_item_quantity);
 		//强制关闭软键盘

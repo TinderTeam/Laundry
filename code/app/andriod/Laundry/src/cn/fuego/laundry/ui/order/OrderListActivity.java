@@ -4,7 +4,6 @@ import java.util.List;
 
 import android.view.View;
 import android.widget.TextView;
-import cn.fuego.common.util.format.DateUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.webservice.up.model.GetOrderListReq;
@@ -20,10 +19,10 @@ public class OrderListActivity extends MispListActivity<OrderJson>
 	public void initRes()
 	{
 		this.activityRes.setAvtivityView(R.layout.my_order);
-		this.activityRes.setBackBtn(R.id.back_button);
-		this.listViewRes.setListView(R.id.order_list);
+		this.activityRes.setName("我的订单");
+ 		this.listViewRes.setListView(R.id.order_list);
 		this.listViewRes.setListItemView(R.layout.order_list_item);
-		this.listViewRes.setClickActivityClass(OrderActivity.class);
+		this.listViewRes.setClickActivityClass(OrderDetailActivity.class);
 		
 	}
 

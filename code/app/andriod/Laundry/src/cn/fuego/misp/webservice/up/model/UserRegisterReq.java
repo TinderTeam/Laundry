@@ -7,6 +7,7 @@ public class UserRegisterReq extends BaseJsonReq
 {
 	private String user_name;
 	private String password;
+	private String verifyCode;
 	private String addr = "未设置";
 	public String getUser_name()
 	{

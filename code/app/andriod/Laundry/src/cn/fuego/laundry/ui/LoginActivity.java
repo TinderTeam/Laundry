@@ -148,6 +148,7 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 			case R.id.user_login_find_password:
 			{
 				Intent i = new Intent();
+				i.putExtra(UserRegisterActivity.OPERTATE_NAME, UserRegisterActivity.FIND_PWD);
 				i.setClass(this, UserRegisterActivity.class);
 		        this.startActivity(i);
 
@@ -156,6 +157,8 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 			case R.id.user_login_to_register:
 			{
 				Intent i = new Intent();
+				i.putExtra(UserRegisterActivity.OPERTATE_NAME, UserRegisterActivity.REGISTER);
+
 				i.setClass(this, UserRegisterActivity.class);
 		        this.startActivity(i);
 			}

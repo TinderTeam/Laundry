@@ -7,6 +7,8 @@ import javax.ws.rs.Produces;
 
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.CreateOrderRsp;
+import cn.fuego.laundry.webservice.up.model.GetOrderDetailReq;
+import cn.fuego.laundry.webservice.up.model.GetOrderDetailRsp;
 import cn.fuego.laundry.webservice.up.model.GetOrderListReq;
 import cn.fuego.laundry.webservice.up.model.GetOrderListRsp;
 import cn.fuego.laundry.webservice.up.model.OperateOrderReq;
@@ -31,8 +33,8 @@ public interface OrderManageRest
 	
 	
 	@POST
-	@Path("/OrderDetail")
-	CreateOrderReq show(OperateOrderReq req);
+	@Path("/LoadOrderDetailPage")
+	GetOrderDetailRsp getOrderDetailList(GetOrderDetailReq req);
 	
 	@POST
 	@Path("/Cancel")

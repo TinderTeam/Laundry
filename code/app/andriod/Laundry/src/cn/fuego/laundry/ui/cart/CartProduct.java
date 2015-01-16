@@ -65,7 +65,7 @@ public class CartProduct
 		ProductJson product = getProductByID(productID);
 		detail.setProduct_id(productID);
 		detail.setProduct_name(product.getProduct_name());
-		detail.setProduct_price(product.getPrice());
+		detail.setCurrent_price(product.getPrice());
 		orderDetailList.add(detail);
 	}
 
@@ -118,7 +118,7 @@ public class CartProduct
  		float totalPrice = 0;
 		for(OrderDetailJson e : this.orderDetailList)
 		{
-			totalPrice += e.getProduct_price() * e.getQuantity();
+			totalPrice += e.getCurrent_price() * e.getQuantity();
  		}
 		return totalPrice;
 	}

@@ -27,13 +27,13 @@ import cn.fuego.misp.ui.model.MispGridDataModel;
  * @date 2014-12-22 下午2:30:46 
  *  
  */
-public class MispCommonGridViewAdapter extends BaseAdapter
+public class MispGridViewAdapter extends BaseAdapter
 {
 
 	private Context mContext;
 	private List<MispGridDataModel> mList;
 
-	public MispCommonGridViewAdapter(Context mContext,List<MispGridDataModel> mList)
+	public MispGridViewAdapter(Context mContext,List<MispGridDataModel> mList)
 	{
 		super();
 		this.mContext = mContext;
