@@ -8,12 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
@@ -30,6 +33,7 @@ import cn.fuego.misp.ui.util.LoadImageUtil;
 
 public class HomeProductActivity extends MispListActivity<ProductJson> implements  OnCheckedChangeListener, OnClickListener
 {
+	private FuegoLog log = FuegoLog.getLog(HomeProductActivity.class);
  
 	private int selectType = 1;
 	private Map<Integer,Integer> btnTypeMap = new HashMap<Integer, Integer>();
@@ -56,7 +60,8 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
+ 
+
 		cartButton = (Button) findViewById(R.id.product_btn_to_cart);
  		cartButton.setOnClickListener(this);
 		updateCount();
@@ -102,39 +107,46 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
    	 
         LoadImageUtil.getInstance().loadImage(imageView,MemoryCache.getImageUrl()+item.getImg());
         
+		TextView priceView = (TextView) view.findViewById(R.id.product_list_item_curPrice);
+
 		TextView nameView = (TextView) view.findViewById(R.id.product_list_item_name);
 		nameView.setText(item.getProduct_name());
 		
-		TextView priceView = (TextView) view.findViewById(R.id.product_list_item_curPrice);
 		priceView.setText(String.valueOf(item.getPrice()));
-		final CheckBox check = (CheckBox) view.findViewById(R.id.product_list_item_check_btn);
+		ImageView check = (ImageView) view.findViewById(R.id.product_list_item_check_img);
 		final int nowProductID = item.getProduct_id();
         if(CartProduct.getInstance().containsSelected(nowProductID))
         {
-            check.setChecked(true);  
+        	check.setImageResource(R.drawable.checkbox_on);
         }
-		check.setOnClickListener(new OnClickListener()
-		{     
-            @Override  
-            public void onClick(View v) 
-            {  
-                if(CartProduct.getInstance().containsSelected(nowProductID))
-                {
-                	CartProduct.getInstance().removeSelected(nowProductID);
-                    check.setChecked(false);  
-                }  
-                else
-                {  
-                	CartProduct.getInstance().addSelected(nowProductID);
-                    check.setChecked(true);  
-                }  
-                updateCount();
-            }     
-        });   
+		 
  
 		return view;
 	}
+ 	
+ 	
  
+	@Override
+	public void onItemListClick(AdapterView<?> parent, View view, long id,
+			ProductJson item)
+	{
+		ImageView check = (ImageView) view.findViewById(R.id.product_list_item_check_img);
+		// TODO Auto-generated method stub
+		//super.onItemListClick(parent, view, id, item);
+        if(CartProduct.getInstance().containsSelected(item.getProduct_id()))
+        {
+        	CartProduct.getInstance().removeSelected(item.getProduct_id());
+        	check.setImageResource(R.drawable.checkbox_off);
+        }  
+        else
+        {  
+        	CartProduct.getInstance().addSelected(item.getProduct_id());
+        	check.setImageResource(R.drawable.checkbox_on);
+        }  
+        updateCount();
+	}
+
+
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId)
 	{

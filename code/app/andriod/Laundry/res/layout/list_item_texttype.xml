@@ -7,39 +7,24 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/white" >
+        android:background="@color/white"
+        android:padding="@dimen/list_item_margin" >
  
         <TextView
             android:id="@+id/item_texttype_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:text="昵  称"
-
-            android:textColor="@color/black" />
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/item_texttype_name"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/forward_sm" />
+             />
 
         <TextView
             android:id="@+id/item_texttype_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="50dp"
-            android:layout_toLeftOf="@+id/imageView1"
-            android:layout_toRightOf="@+id/item_texttype_name"
-            android:gravity="right"
-            android:singleLine="true"
-            android:text="TextView" />
-
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" >
+            
+        </TextView>
+ 
     </RelativeLayout>
 
 

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -41,6 +42,8 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 	{
 		this.activityRes.setAvtivityView(R.layout.order_info);
 		this.activityRes.setBackBtn(R.id.order_info_back);
+		this.activityRes.getButtonIDList().add(R.id.order_info_btn_submit);
+		
 		this.listViewRes.setListView(R.id.order_info_list);
 		Intent intent = this.getIntent();
 		orderReq = (CreateOrderReq) intent.getSerializableExtra(OrderActivity.ORDER_INFO);
@@ -52,22 +55,10 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 		orderReq.getOrder().setDelivery_addr(AppCache.getInstance().getDefuatDelivery().getDelivery_addr());
 		orderReq.getOrder().setDelivery_time(AppCache.getInstance().getDefuatDelivery().getDelivery_time());
 		
-		this.dataList.clear();
-		this.dataList.addAll(getBtnData());
+		this.getDataList().clear();
+		this.getDataList().addAll(getBtnData());
 	}
  
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		Button button = (Button)findViewById(R.id.order_info_btn_submit);
-		button.setOnClickListener(this);
-
-	}
-
-
-
 	private List<CommonItemMeta> getBtnData()
 	{
 		// 生成数据源
@@ -82,7 +73,7 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 		list.add(meta2);
 		
 		CommonItemMeta meta3 = new CommonItemMeta();
-		meta3.setTitle("取衣时间");
+		meta3.setTitle("送回地址");
 		meta3.setLayoutType(ListItemTypeConst.EDIT_TEXT);
 		meta3.setContent("");
 		list.add(meta3);
@@ -112,7 +103,7 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 		list.add(meta7);
 		
 		CommonItemMeta meta8 = new CommonItemMeta();
-		meta8.setTitle("备注");
+		meta8.setTitle("您的要求");
 		meta8.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
 		meta8.setContent(orderReq.getOrder().getOrder_note());
 		list.add(meta8);
@@ -199,8 +190,10 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 	
 	
 	
+	 
 	@Override
-	public void onItemClick(CommonItemMeta item)
+	public void onItemListClick(AdapterView<?> parent, View view, long id,
+			CommonItemMeta item)
 	{
 		 switch(item.getLayoutType())
 		 {
@@ -215,6 +208,7 @@ public class OrderActivity extends MispDistinctListActivity implements OnClickLi
 		 
 		 }
 	}
+ 
 
 	public void showAddr()
 	{

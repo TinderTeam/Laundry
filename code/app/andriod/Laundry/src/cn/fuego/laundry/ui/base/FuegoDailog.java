@@ -12,5 +12,7 @@ public class FuegoDailog
 		                .setPositiveButton("确定", null) 
 		                .show();  
 	}
+	
+	
 
 }

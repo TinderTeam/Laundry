@@ -102,7 +102,7 @@ public class MispHttpClientInvoker extends Thread
 		} catch (Exception e)
 		{
 			log.error("call http failed.",e);
-			msg.getMessage().what = MISPErrorMessageConst.NET_FAIL;
+			msg.getMessage().what = MISPErrorMessageConst.ERROR_NET_FAIL;
 		}
 		handler.sendMessage(msg);
 		

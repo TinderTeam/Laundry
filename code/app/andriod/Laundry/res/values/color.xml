@@ -18,6 +18,9 @@
 	
 	<color name="focuscolor">#FF643F</color> <!-- 选中字体颜色 ，橘红色（255,100,63）-->
 	<color name="darkfocuscolor">#a54123</color> <!-- 深橘红色（165,65,35）--> 
-	<color name="selectedcolor">#F6AB00</color> 
+	<color name="selectedcolor">#F6AB00</color>
+	
+    <color name="grid_back_color">#F0F0F0</color>
+	
 	
 	</resources>

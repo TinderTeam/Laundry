@@ -5,41 +5,10 @@
     android:background="@color/backcolor"
     android:orientation="vertical" >
 
-    <LinearLayout
+     <include
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/themecolor"
-        android:orientation="vertical" >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="个人资料"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
-
-            <Button
-                android:id="@+id/user_info_back"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="10dp"
-                android:background="@null"
-                android:drawableLeft="@drawable/detail_back"
-                android:drawablePadding="5dp"
-                android:focusableInTouchMode="true"
-                android:text="返回"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </RelativeLayout>
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        layout="@layout/misp_tilte_with_back_layout" />
 
     <ScrollView
         android:id="@+id/scrollView1"

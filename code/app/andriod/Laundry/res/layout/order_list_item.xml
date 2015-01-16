@@ -5,43 +5,97 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical"
-    android:paddingBottom="20dp"
-    android:paddingTop="10dp" >
+    android:padding="@dimen/list_item_margin" >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="20dp" >
- 
+        android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/order_list_item_id"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black" />
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/order_list_item_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/themecolor" />
-       <TextView
-            android:id="@+id/order_list_item_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"/>
- 
-       
-        <TextView
-            android:id="@+id/order_list_item_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
- 
+            <TextView
+                android:id="@+id/order_list_item_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已完成"
+                android:textColor="@color/black" />
 
- 
+        </LinearLayout>
 
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="订单号："
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/order_list_item_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1000000000000001"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="总价：￥"
+                android:textColor="@color/themecolor" />
+            <TextView
+                android:id="@+id/order_list_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.1"
+                android:textColor="@color/themecolor" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/order_list_item_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="2014-02-10 12:00:00"
+                android:textSize="@dimen/content_font_size_sm" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

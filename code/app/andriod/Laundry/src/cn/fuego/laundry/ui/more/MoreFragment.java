@@ -31,13 +31,26 @@ public class MoreFragment extends MispListFragment<AttributeJson>
 		this.listViewRes.setListView(R.id.more_list);
 		this.listViewRes.setListItemView(R.layout.list_item_btntype);
 		this.listViewRes.setClickActivityClass(UpgradeActivity.class);
-		this.getDataList().clear();
-		AttributeJson json = new AttributeJson();
-		json.setAttrKey("更新");
-		json.setAttrValue("点击");
-		this.getDataList().add(json);
+		
+		initData();
 		
 
+ 	}
+	private void initData()
+	{
+		this.getDataList().clear();
+		AttributeJson json1 = new AttributeJson();
+		json1.setAttrKey("快客介绍");
+		json1.setAttrValue("点击");
+		this.getDataList().add(json1);
+		AttributeJson json2= new AttributeJson();
+		json2.setAttrKey("加入我们");
+		json2.setAttrValue("点击");
+		this.getDataList().add(json2);
+		AttributeJson json3 = new AttributeJson();
+		json3.setAttrKey("版本更新");
+		json3.setAttrValue("点击");
+		this.getDataList().add(json3);
  	}
 
 	@Override

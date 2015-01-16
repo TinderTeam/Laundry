@@ -8,6 +8,24 @@
     <string name="tabbar_cart">洗衣篮</string>
     <string name="tabbar_more">更多</string>
     <string name="tabbar_user">个人中心</string>
+    
+    <string name="misp_back">返回</string>
+    <string name="misp_save">保存</string>
+    <string name="misp_title">标题</string>
+    <string name="misp_confirm">确定</string>
+    <string name="misp_cancel">确定</string>
+    <string name="misp_modify">修改</string>
+    <string name="misp_delete">删除</string>
+    <string name="misp_create">新增</string>
+    
+    <string name="misp_old_password">原始密码</string>
+    <string name="misp_new_password">新密码</string>
+    <string name="misp_confirm_password">确认密码</string>
+    
+    <string name="misp_rmb_unit">￥:</string>
+     
     <string name="title_activity_login">LoginActivity</string>
 
 </resources>
+ 
+ 

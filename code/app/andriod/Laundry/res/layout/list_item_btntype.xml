@@ -16,8 +16,8 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:text="修改密码"
-             android:textColor="@color/black" />
+    
+            android:textColor="@color/black" />
 
         <ImageView
             android:id="@+id/imageView1"

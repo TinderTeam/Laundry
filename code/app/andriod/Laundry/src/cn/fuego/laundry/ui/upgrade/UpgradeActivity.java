@@ -190,7 +190,7 @@ public class UpgradeActivity extends MispBaseActivtiy
 				{
 					log.error("update failed",e);
 					Message message = new Message();
-					message.obj = MISPErrorMessageConst.ERROR_VERSION_FAILED;
+					message.obj = MISPErrorMessageConst.ERROR_UPDATE_VERSION_FAILED;
 					handler.sendMessage(message);
 					//showMessage(MISPErrorMessageConst.ERROR_VERSION_FAILED);
 				}  

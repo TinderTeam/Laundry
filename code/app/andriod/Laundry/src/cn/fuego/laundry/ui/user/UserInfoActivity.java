@@ -3,182 +3,101 @@ package cn.fuego.laundry.ui.user;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import cn.fuego.laundry.R;
+import android.widget.AdapterView;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.ListItemTypeConst;
-import cn.fuego.misp.service.MemoryCache;
-import cn.fuego.misp.ui.list.MispDistinctListActivity;
+import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
+import cn.fuego.misp.ui.common.MispModifyPwdActivity;
+import cn.fuego.misp.ui.info.MispInfoListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 
-public class UserInfoActivity extends MispDistinctListActivity implements OnClickListener
+public class UserInfoActivity extends MispInfoListActivity  
 {
 
+	private static String MODIFY_INFO = "修改信息";
+	private static String MODIFY_PASSWORD = "修改密码";
 
 	@Override
 	public void initRes()
 	{
-		this.activityRes.setAvtivityView(R.layout.user_info);
-		this.listViewRes.setListView(R.id.user_info_list);
-		this.dataList.clear();
-		this.dataList.addAll(getBtnData());
+		super.initRes();
+		this.activityRes.setName("我的资料");
+		this.getDataList().clear();
+		this.getDataList().addAll(getBtnData());
 
 	}
 	
-	@Override
-	public void loadSendList()
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<CommonItemMeta> loadListRecv(Object obj)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
  
-	@Override
-	public int getItemTypeCount()
-	{
-		// TODO Auto-generated method stub
-		return 5;
-	}
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		
-		Button back_btn=(Button)findViewById(R.id.user_info_back);
-		back_btn.setOnClickListener(this);
-		back_btn.setTag(1);
-	}
-
-	
 	private List<CommonItemMeta> getBtnData()
 	{
-		// 生成数据源
+		CustomerJson customer = AppCache.getInstance().getCustomer();
 		List<CommonItemMeta> list = new ArrayList<CommonItemMeta>();
-		// 每个Map结构为一条数据，key与Adapter中定义的String数组中定义的一一对应。
-		CommonItemMeta meta1 = new CommonItemMeta();
-		meta1.setTitle("头像");
-		meta1.setLayoutType(ListItemTypeConst.IMG_CONTENT);
-		meta1.setContent(AppCache.getInstance().getCustomer());
- 		list.add(meta1);
-		
-		CommonItemMeta meta2 = new CommonItemMeta();
-		meta2.setTitle("昵称");
-		meta2.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
-		meta2.setContent("user11");
-		list.add(meta2);
-		
-		CommonItemMeta meta3 = new CommonItemMeta();
-		meta3.setTitle("积分");
-		meta3.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
-		meta3.setContent("6分");
-		list.add(meta3);
-		
-		
-		
-		CommonItemMeta meta4 = new CommonItemMeta();
- 
-		meta4.setLayoutType(ListItemTypeConst.NULL_CONTENT);
-		list.add(meta4);
-		
-		CommonItemMeta meta5 = new CommonItemMeta();
 
-		meta5.setTitle("手机号");
-		meta5.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
-		meta5.setContent("18620783355");
-		list.add(meta5);
-		
-		
-		CommonItemMeta meta6 = new CommonItemMeta();
+		if(null != customer)
+		{
+			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "用户名", customer.getUser_name()));
+			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "会员卡号", customer.getCard_number()));
+			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "积分", customer.getScore()));
+			
+			list.add(new CommonItemMeta(ListItemTypeConst.NULL_CONTENT, null, null));
 
-		meta6.setTitle("邮箱");
-		meta6.setLayoutType(ListItemTypeConst.TEXT_CONTENT);
-		meta6.setContent("test@163.com");
-		
-		list.add(meta6);
-		
-		CommonItemMeta meta7 = new CommonItemMeta();
-		meta7.setTitle("修改密码");
-		meta7.setLayoutType(ListItemTypeConst.DEFAULT_CONTENT);
-		list.add(meta7);
+			list.add(new CommonItemMeta(ListItemTypeConst.BUTTON_ITEM, MODIFY_INFO, MODIFY_INFO));
+			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "真实姓名", customer.getCustomer_name()));
+			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "性别", customer.getCustomer_sex()));
+			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "出生年月", customer.getBirthday()));
+			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "手机号码", customer.getPhone()));
+			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "邮箱", customer.getCustomer_email()));
+
+			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "常用地址", customer.getAddr()));
+			
+			
+			list.add(new CommonItemMeta(ListItemTypeConst.NULL_CONTENT, null, null));
+			list.add(new CommonItemMeta(ListItemTypeConst.BUTTON_ITEM, MODIFY_PASSWORD, MODIFY_PASSWORD));
+
+
+		}
+	 
 		
 		return list;
 	}
 
-	@Override
-	public void onClick(View v)
-	{
-		int tag = (Integer) v.getTag();
-		switch(tag)
-		{
-		case 1: 
-			this.finish();
-				break;
-
-		default:break;
-		}
-		
-	}
-
-	@Override
-	public View getListItemView(LayoutInflater inflater, CommonItemMeta item)
-	{
- 		View view =null;
-		int type= item.getLayoutType();
-		String title= item.getTitle();
-		
-		switch(type)
-		{
-		case ListItemTypeConst.IMG_CONTENT:
-			{
-				view = inflater.inflate(R.layout.list_item_imgtype, null);
-				TextView title_view = (TextView) view.findViewById(R.id.item_imgtype_name);
-				ImageView img = (ImageView) view.findViewById(R.id.item_imgtype_img);
-				title_view.setText(title);
-			}
-			
-			break;
-		case ListItemTypeConst.TEXT_CONTENT:
-			{
-				view = inflater.inflate(R.layout.list_item_texttype, null);
-				TextView title_view = (TextView) view.findViewById(R.id.item_texttype_name);
-				TextView content_view = (TextView) view.findViewById(R.id.item_texttype_text);
-				title_view.setText(title);
-				content_view.setText( (String) item.getContent());
-			}
-			
-			break;
-		case ListItemTypeConst.DEFAULT_CONTENT:
-			{
-				view = inflater.inflate(R.layout.list_item_btntype, null);
-				TextView title_view = (TextView) view.findViewById(R.id.item_btntype_name);
-				title_view.setText(title);
-			}
-			
-			break;
-		case ListItemTypeConst.NULL_CONTENT:
-			{
-				view = inflater.inflate(R.layout.list_item_divider, null);
-			}
-			
-		}
-		 
-		return view;
-	}
  
+
+	
+ 	@Override
+	public void onItemListClick(AdapterView<?> parent, View view, long id,
+			CommonItemMeta item)
+	{
+		if(ListItemTypeConst.BUTTON_ITEM == item.getLayoutType())
+		{
+			String content = (String) item.getContent();
+			Intent intent = new Intent();
+			if(MODIFY_INFO.equals(content))
+			{
+				intent.setClass(this, UserEditActivity.class);
+			}
+			else if(MODIFY_PASSWORD.equals(content))
+			{
+				intent.setClass(this, MispModifyPwdActivity.class);
+			}
+			this.startActivityForResult(intent,1);
+		}
+	}
+
+ 
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		this.refreshList(this.getBtnData());
+		 
+	}
+	
+	 
  
 
 

@@ -44,29 +44,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:background="@color/backcolor" >
+            android:background="@color/grid_back_color" >
 
-        
+               <cn.fuego.misp.ui.base.MispGridView
+                   android:id="@+id/product_gridview"
+                   android:layout_width="match_parent"
+                   android:layout_height="81dp"
+                   android:gravity="center"
+                   android:horizontalSpacing="7dp"
+                   android:numColumns="2"
+                   android:verticalSpacing="5dp" >
 
-           <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-   
-                android:background="@color/themecolor">
-
-           <cn.fuego.misp.ui.base.MispGridView
-		        android:id="@+id/product_gridview"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_gravity="center"
-		        android:gravity="center"
-		        android:horizontalSpacing="10dp"
-		        android:numColumns="2"
-		        android:paddingLeft="10dp"
-		        android:paddingRight="10dp"
-		        android:verticalSpacing="10dp" />
+               </cn.fuego.misp.ui.base.MispGridView>
                 
-            </LinearLayout>
         </LinearLayout>
 
         <View
@@ -78,13 +68,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.7"
+            android:layout_weight="0.9"
             android:alpha="0.8"
             android:background="@color/white"
-            android:paddingBottom="10dp"
+ 
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
-            android:paddingTop="10dp" >
+            >
 
             <Button
                 android:id="@+id/product_btn_to_cart"
@@ -92,7 +82,7 @@
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="10dp"
+    
                 android:background="@drawable/common_btn"
                 android:focusable="false"
                 android:focusableInTouchMode="false"

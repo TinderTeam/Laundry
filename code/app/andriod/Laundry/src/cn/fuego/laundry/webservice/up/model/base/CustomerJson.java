@@ -1,5 +1,6 @@
 package cn.fuego.laundry.webservice.up.model.base;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,13 +8,18 @@ import java.util.Date;
  * @author jun
  *
  */
-public class CustomerJson
+public class CustomerJson implements Serializable,Cloneable
 {
 	
 	private int user_id;
 	private int company_id;
 	private String user_name;
 	private String customer_name;
+	private String customer_email;
+	private String card_number;
+	private String customer_sex;
+	private String customer_img;
+	
 	private String phone;
 	private String addr;
 	private String birthday;
@@ -110,6 +116,54 @@ public class CustomerJson
 	public void setStatus(String status)
 	{
 		this.status = status;
+	}
+	public String getCustomer_email()
+	{
+		return customer_email;
+	}
+	public void setCustomer_email(String customer_email)
+	{
+		this.customer_email = customer_email;
+	}
+	public String getCard_number()
+	{
+		return card_number;
+	}
+	public void setCard_number(String card_number)
+	{
+		this.card_number = card_number;
+	}
+	public String getCustomer_sex()
+	{
+		return customer_sex;
+	}
+	public void setCustomer_sex(String customer_sex)
+	{
+		this.customer_sex = customer_sex;
+	}
+	public String getCustomer_img()
+	{
+		return customer_img;
+	}
+	public void setCustomer_img(String customer_img)
+	{
+		this.customer_img = customer_img;
+	}
+	@Override
+	public CustomerJson clone()
+	{
+		CustomerJson p = null;
+		// TODO Auto-generated method stub
+		try
+		{
+			p =(CustomerJson) super.clone();
+		} catch (CloneNotSupportedException e)
+		{
+			// TODO Auto-generated catch block
+			p = new CustomerJson();
+			e.printStackTrace();
+		}
+		return p;
 	}
 	
 	

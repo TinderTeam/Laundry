@@ -49,7 +49,7 @@ public class MispHttpMessage
 			return rsp.getErrorCode();
 			
 		}
-		return MISPErrorMessageConst.NET_FAIL;
+		return MISPErrorMessageConst.ERROR_NET_FAIL;
 	}
 	
 

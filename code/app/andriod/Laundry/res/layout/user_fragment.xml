@@ -22,14 +22,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/default_head" />
 
-        <Button
-            android:id="@+id/user_to_user_info"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="27dp"
-            android:background="@drawable/forwad" />
+ 
 
         <TextView
             android:id="@+id/user_user_name"
@@ -96,7 +89,7 @@
             android:src="@drawable/my_setting" />
 
         <Button
-            android:id="@+id/user_btn_setting"
+            android:id="@+id/user_to_user_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -106,7 +99,7 @@
             android:background="@null"
             android:drawableRight="@drawable/forward_sm"
             android:gravity="center_vertical|center_horizontal|left"
-            android:text="设置"
+            android:text="我的资料"
             android:textColor="@color/black"
             android:textSize="20sp" />
     </RelativeLayout>

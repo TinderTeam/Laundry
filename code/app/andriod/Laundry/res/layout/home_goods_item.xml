@@ -3,57 +3,94 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:orientation="vertical"
-    android:paddingRight="10dp" >
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/white"
-        android:padding="10dp"
-        android:paddingRight="10dp" >
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/product_list_item_name"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@+id/product_list_item_img"
-            android:text="衣物名称"
-            android:textColor="@color/black" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="3"
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/product_list_item_curPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/product_list_item_img"
-            android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@+id/product_list_item_img"
-            android:text="TextView"
-            android:textColor="@color/themecolor"
-            android:textSize="@dimen/content_font_size" />
+            <ImageView
+                android:id="@+id/product_list_item_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:scaleType="fitXY"
+                android:src="@drawable/load_image_failed" />
 
-        <CheckBox
-            android:id="@+id/product_list_item_check_btn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignBottom="@+id/product_list_item_curPrice"
-            android:layout_alignRight="@+id/product_list_item_name"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/checkbox_btn"
-            android:button="@null" />
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/product_list_item_img"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignTop="@+id/product_list_item_name"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/load_image_failed" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:orientation="vertical" >
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/product_list_item_check_img"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="right"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/checkbox_off" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/product_list_item_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/themecolor"
+                    android:textSize="@dimen/content_font_size_sm" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right" >
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/misp_rmb_unit"
+                    android:textColor="@color/themecolor"
+                    android:textSize="@dimen/content_font_size_sm" />
+
+                <TextView
+                    android:id="@+id/product_list_item_curPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/themecolor"
+                    android:textSize="@dimen/content_font_size_sm" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
