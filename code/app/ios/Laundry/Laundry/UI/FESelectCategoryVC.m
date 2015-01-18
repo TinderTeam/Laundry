@@ -62,8 +62,11 @@
     if ([self.selectProduct containsObject:self.productList[indexPath.row]]) {
         checkImageView.image = [UIImage imageNamed:@"checkbox_on"];
     }else{
-        checkImageView.image = [UIImage imageNamed:@"checkbox_off"];
+        checkImageView.image = nil;//[UIImage imageNamed:@"checkbox_off"];
     }
+    
+    UILabel *priceLabel = (UILabel *)[cell viewWithTag:4];
+    priceLabel.text = [NSString stringWithFormat:@"￥%@",product.price];
     
     return cell;
 }
@@ -87,7 +90,7 @@
 
 -(void)refreshButton{
     
-    [self.goBasket setTitle:[NSString stringWithFormat:@"%@（%ld）",kString(@"洗衣篮"),[FEDataCache sharedInstance].selectProducts.count] forState:UIControlStateNormal];
+    [self.goBasket setTitle:[NSString stringWithFormat:@"%@（%ld）",kString(@"洗衣篮"),(long)[FEDataCache sharedInstance].selectProducts.count] forState:UIControlStateNormal];
 }
 
 - (IBAction)goBasket:(id)sender {

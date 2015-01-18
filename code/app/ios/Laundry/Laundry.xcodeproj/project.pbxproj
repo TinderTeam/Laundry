@@ -46,6 +46,8 @@
 		14469E961A65FA8500515685 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14469E951A65FA8500515685 /* AppDelegate.m */; };
 		14469E9A1A65FAA900515685 /* Laundry.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14469E981A65FAA900515685 /* Laundry.xcdatamodeld */; };
 		14469EA01A6612BB00515685 /* FECommonTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14469E9F1A6612BB00515685 /* FECommonTabbarController.m */; };
+		14DD64A91A6BBB040074D9CA /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DD64A81A6BBB040074D9CA /* CustomIOS7AlertView.m */; };
+		14DD64AC1A6BBB3C0074D9CA /* FEInputAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DD64AB1A6BBB3C0074D9CA /* FEInputAlertView.m */; };
 		14FF4A1A1A66936000DECA7B /* FESelectCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */; };
 		14FF4A1D1A66950D00DECA7B /* FELaundryWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A1C1A66950D00DECA7B /* FELaundryWebService.m */; };
 		14FF4A281A66962400DECA7B /* NSString+Attribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A251A66962400DECA7B /* NSString+Attribute.m */; };
@@ -159,6 +161,10 @@
 		14469E991A65FAA900515685 /* Laundry.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Laundry.xcdatamodel; sourceTree = "<group>"; };
 		14469E9E1A6612BB00515685 /* FECommonTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FECommonTabbarController.h; sourceTree = "<group>"; };
 		14469E9F1A6612BB00515685 /* FECommonTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FECommonTabbarController.m; sourceTree = "<group>"; };
+		14DD64A71A6BBB040074D9CA /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
+		14DD64A81A6BBB040074D9CA /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
+		14DD64AA1A6BBB3C0074D9CA /* FEInputAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEInputAlertView.h; sourceTree = "<group>"; };
+		14DD64AB1A6BBB3C0074D9CA /* FEInputAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEInputAlertView.m; sourceTree = "<group>"; };
 		14FF4A181A66936000DECA7B /* FESelectCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESelectCategoryVC.h; sourceTree = "<group>"; };
 		14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESelectCategoryVC.m; sourceTree = "<group>"; };
 		14FF4A1B1A66950D00DECA7B /* FELaundryWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FELaundryWebService.h; sourceTree = "<group>"; };
@@ -396,6 +402,8 @@
 				144350181A663FA0002BB228 /* FENavigationController.m */,
 				1418A1B61A68B7BF00886FDA /* FECustomSegue.h */,
 				1418A1B71A68B7BF00886FDA /* FECustomSegue.m */,
+				14DD64AA1A6BBB3C0074D9CA /* FEInputAlertView.h */,
+				14DD64AB1A6BBB3C0074D9CA /* FEInputAlertView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -403,6 +411,7 @@
 		14469E911A65FA5A00515685 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				14DD64A61A6BBAFA0074D9CA /* AlertView */,
 			);
 			path = ThirdLib;
 			sourceTree = "<group>";
@@ -444,6 +453,15 @@
 				14469E981A65FAA900515685 /* Laundry.xcdatamodeld */,
 			);
 			path = DB;
+			sourceTree = "<group>";
+		};
+		14DD64A61A6BBAFA0074D9CA /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				14DD64A71A6BBB040074D9CA /* CustomIOS7AlertView.h */,
+				14DD64A81A6BBB040074D9CA /* CustomIOS7AlertView.m */,
+			);
+			path = AlertView;
 			sourceTree = "<group>";
 		};
 		14FF4A2A1A66964200DECA7B /* Model */ = {
@@ -644,6 +662,7 @@
 				14469E691A65F9DC00515685 /* main.m in Sources */,
 				14FF4A471A66A79300DECA7B /* FEAD.m in Sources */,
 				144350711A6652A6002BB228 /* UIColor+Hex.m in Sources */,
+				14DD64AC1A6BBB3C0074D9CA /* FEInputAlertView.m in Sources */,
 				14FF4A6C1A67671400DECA7B /* FEDataCache.m in Sources */,
 				14FF4A871A67ECE900DECA7B /* FESigninRequest.m in Sources */,
 				14FF4A381A66A45800DECA7B /* FEGetCompanyResponse.m in Sources */,
@@ -653,6 +672,7 @@
 				1443506D1A6652A6002BB228 /* NSString+MD5.m in Sources */,
 				144350281A6640EC002BB228 /* FESettingVC.m in Sources */,
 				1443506F1A6652A6002BB228 /* NSString+UUID.m in Sources */,
+				14DD64A91A6BBB040074D9CA /* CustomIOS7AlertView.m in Sources */,
 				1418A1971A68046600886FDA /* FESignoutRequest.m in Sources */,
 				144350741A6652A6002BB228 /* UIImage+LogN.m in Sources */,
 				14FF4A281A66962400DECA7B /* NSString+Attribute.m in Sources */,
@@ -749,7 +769,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Sun (2P4V8NVH4U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chao Sun (2P4V8NVH4U)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -769,6 +790,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "d41dffaf-8eff-45d6-8458-8616f922f63f";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -790,7 +812,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -803,6 +826,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "d91f238e-2c2d-41bd-8c3d-6a2f3f094b2c";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -827,12 +851,13 @@
 			baseConfigurationReference = 8D324F9EA567674ADBDC5E80 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Sun (2P4V8NVH4U)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Laundry/Laundry-Prefix.pch";
 				INFOPLIST_FILE = Laundry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d41dffaf-8eff-45d6-8458-8616f922f63f";
+				PROVISIONING_PROFILE = "d91f238e-2c2d-41bd-8c3d-6a2f3f094b2c";
 			};
 			name = Release;
 		};

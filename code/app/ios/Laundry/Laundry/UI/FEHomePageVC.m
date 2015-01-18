@@ -73,11 +73,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = kThemeColor;
+    [self initUI];
     [self request];
     [self requestAD];
-    self.pageIndicate.currentPageIndicatorTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image_selected"]];
-    self.pageIndicate.pageIndicatorTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image_unselected"]];
+    
+    
 }
 
 -(void)request{
@@ -109,7 +109,11 @@
 }
 
 -(void)initUI{
+    self.view.backgroundColor = kThemeColor;
+    self.pageIndicate.currentPageIndicatorTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image_selected"]];
+    self.pageIndicate.pageIndicatorTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image_unselected"]];
     self.pageIndicate.numberOfPages = 0;
+    
 }
 
 #pragma mark - UIStoryboardSegue

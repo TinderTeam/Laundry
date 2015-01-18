@@ -75,7 +75,7 @@
 
 -(void)updateTime{
     
-    [self.getCodeButton setTitle:[NSString stringWithFormat:@"%ld's",_totalTime] forState:UIControlStateDisabled];
+    [self.getCodeButton setTitle:[NSString stringWithFormat:@"%ld's",(long)_totalTime] forState:UIControlStateDisabled];
     _totalTime--;
     if (_totalTime == 0) {
         self.getCodeButton.enabled = YES;

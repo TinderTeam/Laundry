@@ -104,7 +104,7 @@
         totalNumber += number;
         totalPrice += product.price.floatValue * number;
     }
-    self.totalProduct.text = [NSString stringWithFormat:@"%ld件物品,共计:",totalNumber];
+    self.totalProduct.text = [NSString stringWithFormat:@"%ld件物品,共计:",(long)totalNumber];
     self.totalPriceLabel.text = [NSString stringWithFormat:@"%.2f",totalPrice];
 }
 - (IBAction)nextAction:(id)sender {
