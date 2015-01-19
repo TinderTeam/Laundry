@@ -104,6 +104,18 @@
     }
 }
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    CGFloat height = [UIScreen mainScreen].bounds.size.height;
+    if (height == 667) {
+        return UIEdgeInsetsMake(20, 20, 20, 20);
+    }else if(height == 736){
+        return UIEdgeInsetsMake(25, 25, 25, 25);
+    }else{
+        return UIEdgeInsetsMake(10, 10, 10, 10);
+    }
+}
+
 /*
 #pragma mark - Navigation
 

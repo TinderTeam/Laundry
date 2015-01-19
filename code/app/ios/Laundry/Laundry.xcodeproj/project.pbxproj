@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1403EEE41A6C9F1A00B6DF64 /* FEModifyInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1403EEE31A6C9F1A00B6DF64 /* FEModifyInfoVC.m */; };
+		1403EEE71A6CA36000B6DF64 /* FEOrderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1403EEE61A6CA36000B6DF64 /* FEOrderInfo.m */; };
+		1403EEEA1A6CBF6200B6DF64 /* FEGetCurrentCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1403EEE91A6CBF6200B6DF64 /* FEGetCurrentCity.m */; };
 		1418A1971A68046600886FDA /* FESignoutRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1961A68046600886FDA /* FESignoutRequest.m */; };
 		1418A19A1A6809A100886FDA /* FEMyOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1991A6809A100886FDA /* FEMyOrderVC.m */; };
 		1418A19D1A680A4C00886FDA /* FEOrderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A19C1A680A4C00886FDA /* FEOrderRequest.m */; };
@@ -83,6 +86,12 @@
 
 /* Begin PBXFileReference section */
 		027B1062FF46A8B12B174FC1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1403EEE21A6C9F1A00B6DF64 /* FEModifyInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEModifyInfoVC.h; sourceTree = "<group>"; };
+		1403EEE31A6C9F1A00B6DF64 /* FEModifyInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEModifyInfoVC.m; sourceTree = "<group>"; };
+		1403EEE51A6CA36000B6DF64 /* FEOrderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOrderInfo.h; sourceTree = "<group>"; };
+		1403EEE61A6CA36000B6DF64 /* FEOrderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderInfo.m; sourceTree = "<group>"; };
+		1403EEE81A6CBF6200B6DF64 /* FEGetCurrentCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEGetCurrentCity.h; sourceTree = "<group>"; };
+		1403EEE91A6CBF6200B6DF64 /* FEGetCurrentCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEGetCurrentCity.m; sourceTree = "<group>"; };
 		1418A1951A68046600886FDA /* FESignoutRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESignoutRequest.h; sourceTree = "<group>"; };
 		1418A1961A68046600886FDA /* FESignoutRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESignoutRequest.m; sourceTree = "<group>"; };
 		1418A1981A6809A100886FDA /* FEMyOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMyOrderVC.h; sourceTree = "<group>"; };
@@ -264,6 +273,10 @@
 				14FF4A771A67AC2100DECA7B /* FEPickerView.m */,
 				14FF4A791A67BE6C00DECA7B /* FEOrderSubmitVC.h */,
 				14FF4A7A1A67BE6C00DECA7B /* FEOrderSubmitVC.m */,
+				1403EEE21A6C9F1A00B6DF64 /* FEModifyInfoVC.h */,
+				1403EEE31A6C9F1A00B6DF64 /* FEModifyInfoVC.m */,
+				1403EEE51A6CA36000B6DF64 /* FEOrderInfo.h */,
+				1403EEE61A6CA36000B6DF64 /* FEOrderInfo.m */,
 			);
 			name = Basket;
 			sourceTree = "<group>";
@@ -388,6 +401,8 @@
 		14469E901A65FA5A00515685 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1403EEE81A6CBF6200B6DF64 /* FEGetCurrentCity.h */,
+				1403EEE91A6CBF6200B6DF64 /* FEGetCurrentCity.m */,
 				14FF4A701A67899200DECA7B /* FEButton.h */,
 				14FF4A711A67899200DECA7B /* FEButton.m */,
 				1443501A1A66404B002BB228 /* FETableView.h */,
@@ -672,11 +687,13 @@
 				1443506D1A6652A6002BB228 /* NSString+MD5.m in Sources */,
 				144350281A6640EC002BB228 /* FESettingVC.m in Sources */,
 				1443506F1A6652A6002BB228 /* NSString+UUID.m in Sources */,
+				1403EEE71A6CA36000B6DF64 /* FEOrderInfo.m in Sources */,
 				14DD64A91A6BBB040074D9CA /* CustomIOS7AlertView.m in Sources */,
 				1418A1971A68046600886FDA /* FESignoutRequest.m in Sources */,
 				144350741A6652A6002BB228 /* UIImage+LogN.m in Sources */,
 				14FF4A281A66962400DECA7B /* NSString+Attribute.m in Sources */,
 				1418A1A31A680B3900886FDA /* FEOrder.m in Sources */,
+				1403EEEA1A6CBF6200B6DF64 /* FEGetCurrentCity.m in Sources */,
 				14469EA01A6612BB00515685 /* FECommonTabbarController.m in Sources */,
 				1443506E1A6652A6002BB228 /* NSString+Number.m in Sources */,
 				14FF4A351A66A02D00DECA7B /* FEGetCompanyRequest.m in Sources */,
@@ -719,6 +736,7 @@
 				144350751A6652A6002BB228 /* UIImage+Resize.m in Sources */,
 				144350251A6640D3002BB228 /* FEMeShouldSigninVC.m in Sources */,
 				14FF4A7B1A67BE6C00DECA7B /* FEOrderSubmitVC.m in Sources */,
+				1403EEE41A6C9F1A00B6DF64 /* FEModifyInfoVC.m in Sources */,
 				144350161A663EC1002BB228 /* FEViewController.m in Sources */,
 				1418A1AF1A68A2DA00886FDA /* FEOrderCreateRequest.m in Sources */,
 				144350701A6652A6002BB228 /* NSString+Verify.m in Sources */,
