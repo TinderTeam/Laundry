@@ -40,7 +40,7 @@
     self.title = kString(@"订单");
     _oinfo = [FEOrderInfo new];
     FEUser *user = [[FEUser alloc] initWithDictionary:kLoginUser];
-    _oinfo.contactPhone = user.user_name;
+    _oinfo.phone = user.user_name;
     
     self.totalPrice = 0;
     self.totalNumber = 0;
@@ -67,10 +67,10 @@
 
 -(void)refreshUI{
     self.payTypeLabel.text = kString(@"送衣付款");
-    self.phoneLabel.text = self.oinfo.contactPhone;
-    self.contactLabel.text = self.oinfo.contact;
-    self.getAdressLabel.text = self.oinfo.takeAddress;
-    self.backAddress.text = self.oinfo.backAddress;
+    self.phoneLabel.text = self.oinfo.phone;
+    self.contactLabel.text = self.oinfo.contact_name;
+    self.getAdressLabel.text = self.oinfo.take_addr;
+    self.backAddress.text = self.oinfo.delivery_addr;
     self.totalValueLabel.text = [NSString stringWithFormat:@"%.2f",self.totalPrice];
 }
 
@@ -92,7 +92,12 @@
     }
     
     FEUser *user = [[FEUser alloc] initWithDictionary:kLoginUser];
-    FEOrder *order = [[FEOrder alloc] initWithDictionary:@{@"user_id":user.user_id,@"total_price":@(self.totalPrice),@"total_count":@(self.totalNumber)}];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.oinfo.dictionary];
+    [dic setObject:user.user_id forKey:@"user_id"];
+    [dic setObject:@(self.totalPrice) forKey:@"total_price"];
+    [dic setObject:@(self.totalNumber) forKey:@"total_count"];
+    
+    FEOrder *order = [[FEOrder alloc] initWithDictionary:dic];
     [[FELaundryWebService sharedInstance] request:[[FEOrderCreateRequest alloc] initWithOrder:order orderDetails:marray] responseClass:[FEBaseResponse class] response:^(NSError *error, id response) {
         FEBaseResponse *rsp = response;
         if (!error && rsp.errorCode.integerValue == 0) {
@@ -103,6 +108,8 @@
     }];
     
 }
+
+
 
 -(void)toOrder{
     UIViewController *controller = [[[self.tabBarController viewControllers] objectAtIndex:2] topViewController];

@@ -11,6 +11,8 @@
 #import "FEOrderRequest.h"
 #import "FEOrderListResponse.h"
 #import "FEUser.h"
+#import "FEOrderDetail.h"
+#import "FEOrderDetailVC.h"
 
 @interface FEMyOrderVC ()
 @property (nonatomic, strong) NSArray *orderList;
@@ -43,11 +45,28 @@
     }];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([sender isKindOfClass:[UITableViewCell class]]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        FEOrder *order = self.orderList[indexPath.row];
+        FEOrderDetailVC *vc = segue.destinationViewController;
+        vc.order = order;
+    }
+}
+
 #pragma mark - UITableViewDataSource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FEOrder *order = self.orderList[indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderItemCell" forIndexPath:indexPath];
-    cell.textLabel.text = order.order_code;
+    UILabel *statusLabel = (UILabel *)[cell viewWithTag:1];
+    UILabel *priceLabel = (UILabel *)[cell viewWithTag:2];
+    UILabel *orderIDLabel = (UILabel *)[cell viewWithTag:3];
+    UILabel *orderTimeLabel = (UILabel *)[cell viewWithTag:4];
+    statusLabel.text = order.order_status;
+    
+    priceLabel.text = [NSString stringWithFormat:@"%@ %.2f",kString(@"总价: "),order.total_price.floatValue];
+    orderIDLabel.text = order.order_code;
+    orderTimeLabel.text = order.create_time;
     return cell;
 }
 

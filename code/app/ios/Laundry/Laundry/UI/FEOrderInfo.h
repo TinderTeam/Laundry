@@ -6,11 +6,13 @@
 //  Copyright (c) 2015年 FUEGO. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "SSObject.h"
 
-@interface FEOrderInfo : NSObject
-@property (nonatomic, strong) NSString *takeAddress;
-@property (nonatomic, strong) NSString *backAddress;
-@property (nonatomic, strong) NSString *contact;
-@property (nonatomic, strong) NSString *contactPhone;
+@interface FEOrderInfo :SSObject
+@property (nonatomic, strong) NSString *delivery_addr;
+@property (nonatomic, strong) NSString *take_addr;
+@property (nonatomic, strong) NSString *delivery_time;
+@property (nonatomic, strong) NSString *take_time;
+@property (nonatomic, strong) NSString *contact_name;
+@property (nonatomic, strong) NSString *phone;
 @end

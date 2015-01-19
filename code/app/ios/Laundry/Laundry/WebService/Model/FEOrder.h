@@ -28,5 +28,12 @@
 @property (nonatomic, strong, readonly) NSNumber *total_price;
 @property (nonatomic, strong, readonly) NSNumber *total_count;
 
+@property (nonatomic, strong, readonly) NSString *delivery_addr;
+@property (nonatomic, strong, readonly) NSString *take_addr;
+@property (nonatomic, strong, readonly) NSString *delivery_time;
+@property (nonatomic, strong, readonly) NSString *take_time;
+@property (nonatomic, strong, readonly) NSString *contact_name;
+@property (nonatomic, strong, readonly) NSString *phone;
+
 
 @end

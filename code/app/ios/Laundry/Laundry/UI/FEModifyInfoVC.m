@@ -23,10 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.takeAddress.text = self.orderInfo.takeAddress;
-    self.backAddress.text = self.orderInfo.backAddress;
-    self.contact.text = self.orderInfo.contact;
-    self.contactPhone.text = self.orderInfo.contactPhone;
+    self.takeAddress.text = self.orderInfo.take_addr;
+    self.backAddress.text = self.orderInfo.delivery_addr;
+    self.contact.text = self.orderInfo.contact_name;
+    self.contactPhone.text = self.orderInfo.phone;
 }
 - (IBAction)defaultTakeAddress:(id)sender {
     
@@ -55,10 +55,10 @@
     }];
 }
 - (IBAction)saveInfo:(id)sender {
-    self.orderInfo.takeAddress = self.takeAddress.text;
-    self.orderInfo.backAddress = self.backAddress.text;
-    self.orderInfo.contact = self.contact.text;
-    self.orderInfo.contactPhone = self.contactPhone.text;
+    self.orderInfo.take_addr = self.takeAddress.text;
+    self.orderInfo.delivery_addr = self.backAddress.text;
+    self.orderInfo.contact_name = self.contact.text;
+    self.orderInfo.phone = self.contactPhone.text;
     [self.navigationController popViewControllerAnimated:YES];
 }
 

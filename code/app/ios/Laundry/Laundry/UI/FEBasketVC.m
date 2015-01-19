@@ -40,6 +40,11 @@
     [self refreshUI];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self refreshUI];
+}
+
 -(void)shoulRefresh{
     [self.tableView reloadData];
     [self refreshUI];

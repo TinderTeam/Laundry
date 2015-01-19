@@ -9,5 +9,17 @@
 #import "FEOrderInfo.h"
 
 @implementation FEOrderInfo
+-(id)init{
+    self = [super init];
+    if (self) {
+        _delivery_addr = @"";
+        _take_addr = @"";
+        _delivery_time = @"";
+        _take_time = @"";
+        _contact_name = @"";
+        _phone = @"";
+    }
+    return self;
+}
 
 @end
