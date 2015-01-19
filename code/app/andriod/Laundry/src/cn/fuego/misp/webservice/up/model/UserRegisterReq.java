@@ -33,6 +33,14 @@ public class UserRegisterReq extends BaseJsonReq
 	{
 		this.addr = addr;
 	}
+	public String getVerifyCode()
+	{
+		return verifyCode;
+	}
+	public void setVerifyCode(String verifyCode)
+	{
+		this.verifyCode = verifyCode;
+	}
 	
 	
 	

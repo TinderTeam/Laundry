@@ -114,6 +114,17 @@ public class ProductTypeCache
 	{
 		return typeList;
 	}
+	
+	public List<String> getTypeNameList()
+	{
+		List<String> typeStrList = new ArrayList<String>();
+		for(ProductTypeJson typeJson : typeList)
+		{
+			typeStrList.add(typeJson.getType_name());
+			
+		}
+		return typeStrList;
+	}
 
 	public  void setTypeList(List<ProductTypeJson> typeList)
 	{
@@ -125,6 +136,18 @@ public class ProductTypeCache
 		for(ProductTypeJson json : typeList)
 		{
 			if(json.getType_id() == typeID)
+			{
+				return json;
+			}
+		}
+		return null;
+	}
+	
+	public ProductTypeJson getTypeByName(String typeName)
+	{
+		for(ProductTypeJson json : typeList)
+		{
+			if(json.getType_name().equals(typeName))
 			{
 				return json;
 			}

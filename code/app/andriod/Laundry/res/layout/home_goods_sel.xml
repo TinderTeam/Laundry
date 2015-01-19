@@ -5,35 +5,70 @@
     android:background="@color/backcolor"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/top_head_height"
-        android:background="@color/themecolor" >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/tabbar_height"
+    android:background="@color/themecolor"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/title_margin" >
 
-        <Button
-            android:id="@+id/product_back"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="10dp"
-            android:background="@null"
-            android:drawableLeft="@drawable/detail_back"
-            android:drawablePadding="5dp"
-            android:focusableInTouchMode="true"
-            android:text="返回"
-            android:textColor="@color/white"
-            android:textSize="@dimen/content_font_size" />
-
-        <TextView
-            android:id="@+id/textView1"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="添加待洗物品"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white"
-            android:textSize="@dimen/head_font_size_sm" />
-    </RelativeLayout>
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/misp_title_back"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:drawableLeft="@drawable/detail_back"
+                android:text="@string/misp_back"
+                android:textColor="@color/theme_text_color"
+                android:textSize="@dimen/top_head_btn_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2.5"
+            android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/misp_title_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/list_item_margin"
+                        android:text=""
+                        android:textColor="@color/theme_text_color"
+                        android:textSize="@dimen/top_head_title_font_size" />
+
+         </LinearLayout>     
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:layout_weight="1"
+           android:gravity="center"
+           android:orientation="vertical" >
+ 
+            <Button
+                android:id="@+id/misp_title_save"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="@null" 
+                android:text="@string/misp_type"
+                android:textColor="@color/theme_text_color"
+                android:textSize="@dimen/top_head_btn_size"
+              />
+
+        </LinearLayout>   
+    </LinearLayout>
    
     <LinearLayout
         android:layout_width="match_parent"

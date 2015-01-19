@@ -6,6 +6,8 @@ public class ImageDisplayInfo implements Serializable
 {
 	private String tilteName;
 	private String url;
+	
+
 	public String getTilteName()
 	{
 		return tilteName;

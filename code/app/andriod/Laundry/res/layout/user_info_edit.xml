@@ -139,6 +139,12 @@
                     android:ems="10"
                     android:inputType="textMultiLine" />
 
+                <Button
+                    android:id="@+id/user_set_location_addr_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location_addr" />
+
             </LinearLayout>
 
         </LinearLayout>

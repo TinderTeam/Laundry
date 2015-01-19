@@ -18,6 +18,7 @@ import cn.fuego.misp.service.MISPException;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.base.MispHttpFragment;
 import cn.fuego.misp.ui.model.FragmentResInfo;
+import cn.fuego.misp.ui.model.ListViewResInfo;
 
 public abstract class MispMultiListFragment<E> extends MispBaseListFragment<E> implements
 OnItemClickListener
@@ -128,16 +129,5 @@ OnItemClickListener
 		}
 	}
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id)
-	{
-
-		Object item = this.adapterList.get(currentIndex).getItem(position);
-		Intent intent = new Intent(this.getActivity(), listViewRes.get(currentIndex).getClickActivityClass());
-		intent.putExtra(SELECT_ITEM, (Serializable) item);
-
-		this.startActivity(intent);
-
-	}
+ 
 }

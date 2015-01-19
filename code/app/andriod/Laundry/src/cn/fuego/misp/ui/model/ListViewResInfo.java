@@ -1,4 +1,4 @@
-package cn.fuego.misp.ui.list;
+package cn.fuego.misp.ui.model;
 
 public class ListViewResInfo
 {

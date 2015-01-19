@@ -62,16 +62,17 @@
         android:layout_height="50dp"
         android:layout_marginBottom="1dp"
         android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:paddingLeft="10dp" >
 
         <EditText
             android:id="@+id/user_login_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:autoText="false"
             android:background="@null"
             android:capitalize="none"
-            android:ems="11"
             android:gravity="left|center_vertical"
             android:hint="登录手机号"
             android:inputType="phone"
@@ -91,24 +92,23 @@
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
         android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:paddingLeft="10dp" >
 
         <EditText
             android:id="@+id/user_login_password"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:autoText="false"
+
             android:background="@null"
-            android:capitalize="none"
-            android:ems="11"
+
             android:gravity="left|center_vertical"
             android:hint="登录密码"
-            android:inputType="phone"
+            android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:selectAllOnFocus="false"
-            android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+
             android:textSize="@dimen/content_font_size_sm" />
     </RelativeLayout>
 

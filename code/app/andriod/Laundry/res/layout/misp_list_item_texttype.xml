@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/item_backgroud"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -14,14 +15,18 @@
             android:id="@+id/item_texttype_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             />
+            android:textColor="@color/content_text_color"
+            android:textColorHint="@android:color/black" />
 
         <TextView
             android:id="@+id/item_texttype_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" >
+            android:layout_centerVertical="true"
+            android:text=""
+            android:textColor="@color/content_text_color"
+            android:textColorHint="@android:color/black" >
             
         </TextView>
  

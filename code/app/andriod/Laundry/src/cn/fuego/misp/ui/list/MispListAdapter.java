@@ -2,6 +2,8 @@ package cn.fuego.misp.ui.list;
 
 import java.util.List;
 
+import cn.fuego.misp.ui.model.ListViewResInfo;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

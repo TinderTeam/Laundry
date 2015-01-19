@@ -1,101 +1,89 @@
 package cn.fuego.laundry.ui.more;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.TextView;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.ui.upgrade.UpgradeActivity;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
-import cn.fuego.misp.ui.list.ListViewResInfo;
-import cn.fuego.misp.ui.list.MispListFragment;
+import cn.fuego.misp.ui.common.MispImageActivity;
+import cn.fuego.misp.ui.info.MispInfoListFragment;
+import cn.fuego.misp.ui.model.CommonItemMeta;
+import cn.fuego.misp.ui.model.ImageDisplayInfo;
+import cn.fuego.misp.ui.util.LoadImageUtil;
 import cn.fuego.misp.webservice.up.model.GetClientVersionReq;
 import cn.fuego.misp.webservice.up.model.GetClientVersionRsp;
-import cn.fuego.misp.webservice.up.model.base.AttributeJson;
 
-public class MoreFragment extends MispListFragment<AttributeJson> 
+public class MoreFragment extends MispInfoListFragment
 {
+
+	private static String JOIN_US= "加入我们";
+	private static String UPDATE_VERSION= "版本更新";
+	private static String APP_INFO= "快客介绍";
 
 	
 	@Override
 	public void initRes()
 	{
-		this.fragmentRes.setImage(R.drawable.tab_icon_more);
+		super.initRes();
+ 		this.fragmentRes.setImage(R.drawable.tab_icon_more);
 		this.fragmentRes.setName(R.string.tabbar_more);
-		this.fragmentRes.setFragmentView(R.layout.more_fragment);
-		this.listViewRes.setListView(R.id.more_list);
-		this.listViewRes.setListItemView(R.layout.misp_list_item_btntype);
-		this.listViewRes.setClickActivityClass(UpgradeActivity.class);
 		
-		initData();
-		
-
- 	}
-	private void initData()
-	{
 		this.getDataList().clear();
-		AttributeJson json1 = new AttributeJson();
-		json1.setAttrKey("快客介绍");
-		json1.setAttrValue("点击");
-		this.getDataList().add(json1);
-		AttributeJson json2= new AttributeJson();
-		json2.setAttrKey("加入我们");
-		json2.setAttrValue("点击");
-		this.getDataList().add(json2);
-		AttributeJson json3 = new AttributeJson();
-		json3.setAttrKey("版本更新");
-		json3.setAttrValue("点击");
-		this.getDataList().add(json3);
+		this.getDataList().addAll(getMetaData());
+ 
+ 	}
+	
+	
+	private List<CommonItemMeta> getMetaData()
+	{
+		List<CommonItemMeta> metaList = new ArrayList<CommonItemMeta>();
+		this.getDataList().clear();
+		
+		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, APP_INFO ,"点击"));
+		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, JOIN_US ,"点击"));
+		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, UPDATE_VERSION,"点击"));
+ 
+
+		return metaList;
  	}
 
-	@Override
-	public void handle(MispHttpMessage message)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void loadSendList()
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public View getListItemView(View view, AttributeJson item)
-	{
-		TextView name = (TextView) view.findViewById(R.id.item_btntype_name);
-		name.setText(item.getAttrKey());
  
-		return view;
-	}
-
-
-
-	@Override
-	public List<AttributeJson> loadListRecv(Object obj)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public void onItemListClick(AdapterView<?> parent, View view, long id,
-			AttributeJson item)
+			CommonItemMeta item)
 	{
-		updateVersion();
+		if(UPDATE_VERSION.equals(item.getTitle()))
+		{
+			updateVersion();
+
+		}
+		else if(JOIN_US.equals(item.getTitle()))
+		{ 		
+			Intent intent =  new Intent(this.getActivity(),MispImageActivity.class);
+			ImageDisplayInfo imageInfo = new ImageDisplayInfo();
+			imageInfo.setTilteName(item.getTitle());
+			imageInfo.setUrl(LoadImageUtil.getInstance().getLocalUrl(R.drawable.home_join_info));
+			intent.putExtra(MispImageActivity.JUMP_DATA, imageInfo);
+			this.startActivity(intent);
+		}
+		else
+		{
+			Intent intent =  new Intent(this.getActivity(),MispImageActivity.class);
+			ImageDisplayInfo imageInfo = new ImageDisplayInfo();
+			imageInfo.setTilteName(item.getTitle());
+			imageInfo.setUrl(LoadImageUtil.getInstance().getLocalUrl(R.drawable.home_join_info));
+			intent.putExtra(MispImageActivity.JUMP_DATA, imageInfo);
+			this.startActivity(intent);
+		}
 	}
-	
 	private void updateVersion()
 	{
 		GetClientVersionReq req = new GetClientVersionReq();

@@ -6,10 +6,13 @@
 	<color name="lightyellow">#FFFFE0</color><!--亮黄色 -->
 	<color name="yellow">#FFFF00</color><!--黄色 -->
 	<color name="tabbarback">#143844</color>
-	<color name="theme_text_color">#FFFFFF</color>
 	<color name="backcolor">#E7E6E3</color>  <!-- 背景墙纸颜色 -->
 	<!-- <color name="themecolor">#48B805</color> 主题 鲜绿色 （72,184,5） -->
 	<color name="themecolor">#143844</color> <!-- 主题 橘黄色，与icon保持一致（246,171,0） -->
+	<color name="theme_text_color">#FFFFFF</color>
+	<color name="content_text_color">#000000</color>
+	
+	
 	<color name="presscolor">#af7b05</color><!-- button按下颜色 ,对应主题橘黄色，颜色加深-->
 	<color name="disablcolor">#c4cedc</color><!-- button禁用颜色（196,206,220） -->
 	

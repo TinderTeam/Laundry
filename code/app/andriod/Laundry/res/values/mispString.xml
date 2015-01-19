@@ -12,8 +12,12 @@
     <string name="misp_back">返回</string>
     <string name="misp_save">保存</string>
     <string name="misp_title">标题</string>
+    <string name="misp_submit">提交</string>
+    
+    <string name="misp_type">分类</string>
+    
     <string name="misp_confirm">确定</string>
-    <string name="misp_cancel">确定</string>
+    <string name="misp_cancel">取消</string>
     <string name="misp_modify">修改</string>
     <string name="misp_delete">删除</string>
     <string name="misp_create">新增</string>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backcolor"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/misp_tilte_with_save_layout" />
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true" >
+
+ 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height_size"
+                    android:gravity="center_vertical"
+                    android:text="@string/deliver_take_addr"
+                    android:textColor="@color/content_text_color"
+                    android:textSize="@dimen/content_font_size" />
+
+                <EditText
+                    android:id="@+id/deliver_take_addr_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height_size"
+                    android:ems="10" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/delivery_set_default_take_addr_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/item_height_size"
+                        android:layout_weight="1"
+                        android:text="@string/default_addr" />
+
+                    <Button
+                        android:id="@+id/delivery_set_location_take_addr_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/item_height_size"
+                        android:layout_weight="1"
+                        android:text="@string/location_addr" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height_size"
+                    android:gravity="center_vertical"
+                    android:text="@string/deliver_delivery_addr"
+                    android:textColor="@color/content_text_color"
+                    android:textSize="@dimen/content_font_size" />
+
+                <EditText
+                    android:id="@+id/deliver_delivery_addr_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height_size"
+                    android:ems="10" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/delivery_set_default_delivery_addr_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/item_height_size"
+                        android:layout_weight="1"
+                        android:text="@string/default_addr" />
+
+                    <Button
+                        android:id="@+id/delivery_set_location_delivery_addr_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/item_height_size"
+                        android:layout_weight="1"
+                        android:text="@string/location_addr" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                
+                <TextView
+                    android:id="@+id/textVew2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height_size"
+                    android:gravity="center_vertical"
+                    android:text="@string/deliver_contact"
+                    android:textColor="@color/content_text_color"
+                    android:textSize="@dimen/content_font_size" />
+
+                <EditText
+                    android:id="@+id/deliver_contact_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height_size"
+                    android:ems="10" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height_size"
+                    android:gravity="center_vertical"
+                    android:text="@string/deliver_contact_phone"
+                    android:textColor="@color/content_text_color"
+                    android:textSize="@dimen/content_font_size" />
+
+                <EditText
+                    android:id="@+id/deliver_contact_phone_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height_size"
+                    android:ems="10"
+                    android:inputType="number" />
+            </LinearLayout>
+
+           
+
+        </LinearLayout>
+ 
+ 
+    </ScrollView>
+
+</LinearLayout>

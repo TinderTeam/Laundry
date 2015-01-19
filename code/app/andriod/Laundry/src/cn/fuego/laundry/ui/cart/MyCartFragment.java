@@ -24,13 +24,11 @@ import antistatic.spinnerwheel.AbstractWheel;
 import antistatic.spinnerwheel.OnWheelChangedListener;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 import cn.fuego.common.log.FuegoLog;
-import cn.fuego.common.util.format.DateUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
 import cn.fuego.laundry.ui.order.OrderActivity;
-import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.misp.service.MemoryCache;
@@ -40,7 +38,6 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 {
 	private FuegoLog log = FuegoLog.getLog(MyCartFragment.class);
 	
-	private OrderJson order = new OrderJson();
 	private PopupWindow popupWindow=null;  
 	private Window window;
 	private TextView totalPriceView;
@@ -58,12 +55,8 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 		listViewRes.setListItemView(R.layout.chart_list_item);
 		listViewRes.setClickActivityClass(HomeProductActivity.class);
 		
-		this.setDataList(CartProduct.getInstance().getOrderDetailList());  
- 
-		this.order.setTotal_count(CartProduct.getInstance().getTotalCount());
-		this.order.setTotal_price(CartProduct.getInstance().getTotalPrice());
- 
-
+		this.setDataList(CartProduct.getInstance().getOrderInfo().getOrderDetailList());  
+  
 	}
 
 	@Override
@@ -143,8 +136,8 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 	private void refreshView()
 	{
  
-		this.totalCountView.setText(String.valueOf(this.order.getTotal_count()));
-		this.totalPriceView.setText(String.valueOf(this.order.getTotal_price()));
+		this.totalCountView.setText(String.valueOf(CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count()));
+		this.totalPriceView.setText(String.valueOf(CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price()));
 		repaint();
 	}
 
@@ -161,15 +154,10 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 		Intent intent;
 		if(MemoryCache.isLogined())
 		{
-			CreateOrderReq req = new CreateOrderReq();
-			req.setOrderDetailList(this.getDataList());
-			req.setOrder(this.order);
-			req.getOrder().setUser_id(AppCache.getInstance().getUser().getUser_id());
-			req.getOrder().setUser_name(AppCache.getInstance().getUser().getUser_name());
-			
-
+ 
+			//set default delivery information
+ 
 			intent = new Intent(this.getActivity(),OrderActivity.class);
-			intent.putExtra(OrderActivity.ORDER_INFO, req);
 		}
 		else
 		{
@@ -235,8 +223,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 			public void onClick(View v)
 			{
 				orderDetail.setQuantity(curNum);
-				order.setTotal_count(CartProduct.getInstance().getTotalCount());
-				order.setTotal_price(CartProduct.getInstance().getTotalPrice());
+	 
 				refreshView();
 				popupWindow.dismiss();
 				

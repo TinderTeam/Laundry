@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -23,24 +26,29 @@ import cn.fuego.laundry.constant.OrderTypeEnum;
 import cn.fuego.laundry.constant.UIDimenConstant;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.base.BaseFragment;
-import cn.fuego.laundry.ui.base.FuegoDailog;
 import cn.fuego.laundry.ui.order.OrderActivity;
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.GetADReq;
 import cn.fuego.laundry.webservice.up.model.GetADRsp;
 import cn.fuego.laundry.webservice.up.model.base.AdvertisementJson;
-import cn.fuego.laundry.webservice.up.model.base.ProductJson;
 import cn.fuego.laundry.webservice.up.model.base.ProductTypeJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
+import cn.fuego.misp.tool.MispLocationListener;
 import cn.fuego.misp.ui.base.MispGridView;
 import cn.fuego.misp.ui.common.MispImageActivity;
 import cn.fuego.misp.ui.grid.MispGridViewAdapter;
-import cn.fuego.misp.ui.model.CommonItemMeta;
 import cn.fuego.misp.ui.model.ImageDisplayInfo;
 import cn.fuego.misp.ui.model.MispGridDataModel;
+import cn.fuego.misp.ui.util.LoadImageUtil;
 import cn.fuego.misp.webservice.up.model.base.CompanyJson;
+
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.location.LocationClientOption.LocationMode;
 
 public class HomeFragment extends BaseFragment implements OnClickListener
 {
@@ -50,13 +58,15 @@ public class HomeFragment extends BaseFragment implements OnClickListener
  
 	private int[] buttonID = new int[]{R.id.home_btn_join_invest,R.id.home_btn_service_phone,R.id.home_btn_direct_order};
 	
-	private Map<Integer,Integer> btnTypeMap = new HashMap<Integer, Integer>();
- 
+  
 
 	private ViewGroup group;
 	private ViewPager viewPager;
 	
  
+
+
+	
 	@Override
 	public void initRes()
 	{ 
@@ -75,6 +85,8 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 			Bundle savedInstanceState)
 	{
  
+
+		
 		
 		View rootView = inflater.inflate(R.layout.home_fragment, null);
 		 group = (ViewGroup)rootView.findViewById(R.id.home_ad_image_group);  
@@ -123,7 +135,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 				
 				MispGridDataModel data = (MispGridDataModel) gridViewAdapter.getItem(position);
 				ProductTypeJson type = (ProductTypeJson) data.getData();
-				intent.putExtra(SELECT_TYPE, type.getType_id());
+				intent.putExtra(SELECT_TYPE, type);
 				startActivity(intent);
 			}
 			
@@ -210,24 +222,53 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		}
 		else if(R.id.home_btn_service_phone == v.getId())
 		{
-			String content = "";
-			CompanyJson company = AppCache.getInstance().getCompany();
-			if(null != company)
-			{
-				content = company.getService_phone();
-			}
-			FuegoDailog.show(this.getActivity(), "客服电话",content );
+			servicePhone();
 		}
 		else
 		{
 			intent = new Intent(this.getActivity(),MispImageActivity.class);
 			ImageDisplayInfo imageInfo = new ImageDisplayInfo();
+			imageInfo.setTilteName("加入我们");
+			imageInfo.setUrl(LoadImageUtil.getInstance().getLocalUrl(R.drawable.home_join_info));
 			intent.putExtra(MispImageActivity.JUMP_DATA, imageInfo);
 			this.startActivity(intent);
 
 		}
 
 
+	}
+	
+	private void servicePhone()
+	{
+		CompanyJson companyJson =  AppCache.getInstance().getCompany();
+		if(null == companyJson)
+		{
+			AppCache.getInstance().loadCompany();
+			showMessage(MISPErrorMessageConst.ERROR_NET_FAIL);
+			return;
+		}
+		
+		final String content = companyJson.getService_phone();
+		 
+ 		new AlertDialog.Builder(this.getActivity())    
+        .setTitle("客服电话").setMessage(content) 
+                .setPositiveButton("拨打", new DialogInterface.OnClickListener()
+				{
+
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						 
+		                //用intent启动拨打电话  
+		                Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+content));  
+		                startActivity(intent); 
+						
+					}
+					
+					 
+				})
+                .setNegativeButton("取消", null)
+                .show();  
 	}
 
  

@@ -82,7 +82,7 @@ public class ImagePagerAdapter extends PagerAdapter implements OnPageChangeListe
          {  
              ImageView imageView = new ImageView(context);
              imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-             LoadImageUtil.getInstance().loadImage(imageView, url);
+             LoadImageUtil.getInstance().loadImage(imageView, url,LoadImageUtil.getInstance().largeImageSetting());
              imageList.add(imageView);
           }  
  

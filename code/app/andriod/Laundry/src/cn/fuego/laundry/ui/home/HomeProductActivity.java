@@ -1,23 +1,16 @@
 package cn.fuego.laundry.ui.home;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.ProductTypeCache;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.cart.CartProduct;
@@ -25,51 +18,59 @@ import cn.fuego.laundry.ui.cart.MyCartFragment;
 import cn.fuego.laundry.webservice.up.model.GetProductListReq;
 import cn.fuego.laundry.webservice.up.model.GetProductListRsp;
 import cn.fuego.laundry.webservice.up.model.base.ProductJson;
+import cn.fuego.laundry.webservice.up.model.base.ProductTypeJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.MemoryCache;
-import cn.fuego.misp.ui.list.ListViewResInfo;
 import cn.fuego.misp.ui.list.MispListActivity;
+import cn.fuego.misp.ui.model.ListViewResInfo;
+import cn.fuego.misp.ui.pop.MispPopListWindow;
+import cn.fuego.misp.ui.pop.MispPopWindowListener;
 import cn.fuego.misp.ui.util.LoadImageUtil;
 
-public class HomeProductActivity extends MispListActivity<ProductJson> implements  OnCheckedChangeListener, OnClickListener
+public class HomeProductActivity extends MispListActivity<ProductJson>    
 {
 	private FuegoLog log = FuegoLog.getLog(HomeProductActivity.class);
  
-	private int selectType = 1;
-	private Map<Integer,Integer> btnTypeMap = new HashMap<Integer, Integer>();
-	
-	private Button cartButton;
-
+	private ProductTypeJson selectType;
+ 	
+ 
 	@Override
 	public void initRes()
 	{
+		
+		Intent intent = this.getIntent();
+		selectType = (ProductTypeJson) intent.getSerializableExtra(HomeFragment.SELECT_TYPE);
+		
 		this.activityRes.setAvtivityView(R.layout.home_goods_sel);
-		this.activityRes.setBackBtn(R.id.product_back);
+		this.activityRes.setName("添加待洗物品•"+selectType.getType_name());
+		this.activityRes.getButtonIDList().add(R.id.misp_title_save);
+		this.activityRes.getButtonIDList().add(R.id.product_btn_to_cart);
+
 		
 		this.listViewRes.setListType(ListViewResInfo.VIEW_TYPE_GRID);
 		this.listViewRes.setListView(R.id.product_gridview);
 		this.listViewRes.setListItemView(R.layout.home_goods_item);
+
 		
-		Intent intent = this.getIntent();
-		selectType = intent.getIntExtra(HomeFragment.SELECT_TYPE,selectType);
+		 
+		this.setDataList(CartProduct.getInstance().getProductMap().get(selectType.getType_id()));
  
 	} 
 	
-	
+ 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
  
-
-		cartButton = (Button) findViewById(R.id.product_btn_to_cart);
- 		cartButton.setOnClickListener(this);
 		updateCount();
 	}
 	
 	public void updateCount()
 	{
-		cartButton.setText("洗衣篮（"+CartProduct.getInstance().getTotalCount()+"）");
+		this.getTitleView().setText("添加待洗物品•"+selectType.getType_name());
+		
+		this.getButtonByID(R.id.product_btn_to_cart).setText("洗衣篮（"+CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count()+"）");
 	
 	}
 
@@ -97,7 +98,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
 	{
 		GetProductListRsp rsp = (GetProductListRsp) obj;
 		CartProduct.getInstance().refreshProduct(rsp.getObj());
-		return CartProduct.getInstance().getProductMap().get(selectType);
+		return CartProduct.getInstance().getProductMap().get(selectType.getType_id());
 	}
 	
  	@Override
@@ -145,27 +146,57 @@ public class HomeProductActivity extends MispListActivity<ProductJson> implement
         }  
         updateCount();
 	}
-
-
-	@Override
-	public void onCheckedChanged(RadioGroup group, int checkedId)
-	{
-		int radioButtonId = group.getCheckedRadioButtonId();
-		this.selectType = this.btnTypeMap.get(radioButtonId);
-		refreshList(CartProduct.getInstance().getProductMap().get(this.selectType));
-		
-	}
+ 
 
 	@Override
 	public void onClick(View v)
 	{
  
-		Intent intent = new Intent(this,MainTabbarActivity.class);
-		intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(MyCartFragment.class));
-		this.startActivity(intent);
+		switch(v.getId())
+		{
+			case R.id.misp_title_save:
+			{
+				setSelectType(v);
+			}
+			break;
+			case R.id.product_btn_to_cart: 
+			{
+				Intent intent = new Intent(this,MainTabbarActivity.class);
+				intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(MyCartFragment.class));
+				this.startActivity(intent);
+				 
 
-		
+			}
+			break;
+		}
+
 	}
+	
+	private MispPopListWindow popWin = null;
+	public void setSelectType(View v)
+	{
+		MispPopWindowListener listener = new MispPopWindowListener()
+		{
+
+			@Override
+			public void onConfirmClick(String value)
+			{
+ 				selectType = ProductTypeCache.getInstance().getTypeByName(value);
+				refreshList(CartProduct.getInstance().getProductMap().get(selectType.getType_id()));
+
+ 			}
+			
+		};
+		
+		if(null == popWin)
+		{
+			popWin = new MispPopListWindow(this,listener,ProductTypeCache.getInstance().getTypeNameList());
+
+		}
+		
+		popWin.showWindow(v,this.selectType.getType_name());
+	}
+	
 	
 
 

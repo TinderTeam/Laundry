@@ -1,6 +1,7 @@
 package cn.fuego.laundry.cache;
 
 import cn.fuego.common.log.FuegoLog;
+import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.webservice.up.model.GetCustomerReq;
 import cn.fuego.laundry.webservice.up.model.GetCustomerRsp;
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
@@ -91,23 +92,23 @@ public class AppCache
 	{
 		return customer;
 	}
-
-	public void setCustomer(CustomerJson customer)
+	public void loadLoginInfo(CustomerJson customer)
 	{
 		this.customer = customer;
 	}
+	public void loadLoginInfo(UserJson user,CustomerJson customer)
+	{
+		this.user = user;
+		this.customer = customer;
+	}
 
+ 
 	public UserJson getUser()
 	{
 		return user;
 	}
 
-	public void setUser(UserJson user)
-	{
-		this.user = user;
-		loadCustomer(user);
-	}
-	
+ 
 	public void loadCompany()
 	{
 		GetCompanyReq req = new GetCompanyReq();
@@ -131,36 +132,7 @@ public class AppCache
 		}).getCompany(req);
 	}
 	
-	private void loadCustomer(UserJson user)
-	{
-		if(null == user)
-		{
-			log.error("the user is empty");
-			return;
-		}
-		GetCustomerReq req = new GetCustomerReq();
-		req.setObj(user.getUser_id());
-		
-		WebServiceContext.getInstance().getCustomerManageRest(new MispHttpHandler()
-		{
-
-			@Override
-			public void handle(MispHttpMessage message)
-			{
-				if(message.isSuccess())
-				{
-					GetCustomerRsp rsp = (GetCustomerRsp) message.getMessage().obj;
-					customer = rsp.getObj();
-				}
-				else
-				{
-					log.error("can not get the customer information");
-				}
-			}
-			
-			
-		}).getCustomerInfo(req);
-	}
+	
 	
 	public DeliveryInfoJson getDefuatDelivery()
 	{

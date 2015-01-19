@@ -10,6 +10,7 @@ import cn.fuego.laundry.webservice.up.model.ModifyCustomerReq;
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.http.MispHttpMessage;
+import cn.fuego.misp.tool.MispLocationService;
 
 public class UserEditActivity extends BaseActivtiy
 {
@@ -28,7 +29,7 @@ public class UserEditActivity extends BaseActivtiy
 		super.showMessage(message);
 		if(message.isSuccess())
 		{
-			AppCache.getInstance().setCustomer(customer);
+			AppCache.getInstance().loadLoginInfo(customer);
 			this.finish();
 			
 		}
@@ -42,6 +43,9 @@ public class UserEditActivity extends BaseActivtiy
 		this.activityRes.setName("用户信息修改");
 		this.activityRes.setAvtivityView(R.layout.user_info_edit);
 		this.activityRes.getButtonIDList().add(R.id.misp_title_save);
+		this.activityRes.getButtonIDList().add(R.id.user_set_location_addr_btn);
+
+		
 		
 		
 	}
@@ -79,18 +83,35 @@ public class UserEditActivity extends BaseActivtiy
 	@Override
 	public void onClick(View v)
 	{
-		ModifyCustomerReq req = new ModifyCustomerReq();
-		customer = AppCache.getInstance().getCustomer().clone();
-		
-		customer.setCustomer_sex(sex.getText().toString().trim());
-		customer.setCustomer_name(userName.getText().toString().trim());
-		customer.setCustomer_email(email.getText().toString().trim());
-		customer.setPhone(phone.getText().toString().trim());
-		customer.setBirthday(birthday.getText().toString().trim());
-		customer.setAddr(addr.getText().toString().trim());
-		req.setObj(customer);
-		
-	    WebServiceContext.getInstance().getCustomerManageRest(this).modify(req);
+		switch (v.getId())
+		{
+			case R.id.misp_title_save:
+			{
+				ModifyCustomerReq req = new ModifyCustomerReq();
+				customer = AppCache.getInstance().getCustomer().clone();
+				
+				customer.setCustomer_sex(sex.getText().toString().trim());
+				customer.setCustomer_name(userName.getText().toString().trim());
+				customer.setCustomer_email(email.getText().toString().trim());
+				customer.setPhone(phone.getText().toString().trim());
+				customer.setBirthday(birthday.getText().toString().trim());
+				customer.setAddr(addr.getText().toString().trim());
+				req.setObj(customer);
+				
+			    WebServiceContext.getInstance().getCustomerManageRest(this).modify(req);
+			}
+			
+			break;
+			case R.id.user_set_location_addr_btn:
+			{
+				MispLocationService.getInstance().setLocationAddr(getApplicationContext(), addr);
+			}
+				
+			break;
+		default:
+			break;
+		}
+
 	}
 	
  

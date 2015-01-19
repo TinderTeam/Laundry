@@ -22,7 +22,7 @@
                 android:layout_height="76dp"
                 android:layout_centerInParent="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/load_image_failed" />
+                android:src="@drawable/load_large_image_failed" />
 
         </RelativeLayout>
 

@@ -11,7 +11,7 @@ public class OrderDetailJson implements Serializable
  
 	
  
-    private int quantity;
+    private int quantity = 1;
 	private String product_name;
 	private String product_type;
 	private String product_describe;

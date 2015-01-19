@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backcolor"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/misp_tilte_with_save_layout" />
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true" >
+
+ 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                
+                <TextView
+                    android:id="@+id/textVew2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height_size"
+                    android:layout_marginLeft="@dimen/list_item_margin"
+                    android:gravity="center_vertical"
+                    android:text="@string/order_pay_option"
+                    android:textColor="@color/content_text_color"
+                    android:textSize="@dimen/content_font_size" />
+
+                <EditText
+                    android:id="@+id/order_pay_option_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height_size"
+                    android:ems="10" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_height_size"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/list_item_margin"
+                    android:gravity="center_vertical"
+                    android:text="@string/deliver_contact_phone"
+                    android:textColor="@color/content_text_color"
+                    android:textSize="@dimen/content_font_size" />
+
+		        <EditText
+		            android:id="@+id/order_note_text"
+		            android:layout_width="match_parent"
+		            android:layout_marginLeft="10dp"
+		            android:layout_height="wrap_content"
+		            android:lines="5"
+		            android:text=""
+		            android:textColor="@color/content_text_color" />
+ 
+            </LinearLayout>
+
+           
+
+        </LinearLayout>
+ 
+ 
+    </ScrollView>
+
+</LinearLayout>

@@ -1,6 +1,8 @@
 package cn.fuego.laundry.webservice.up.model.base;
 
-public class ProductTypeJson
+import java.io.Serializable;
+
+public class ProductTypeJson implements Serializable
 {
 	private int type_id;
 	private String type_name;

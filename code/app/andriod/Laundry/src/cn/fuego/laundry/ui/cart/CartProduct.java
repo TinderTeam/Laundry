@@ -6,17 +6,42 @@ import java.util.List;
 import java.util.Map;
 
 import cn.fuego.common.util.validate.ValidatorUtil;
+import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
+import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.model.base.ProductJson;
 
 public class CartProduct
 {
  	
-	private List<OrderDetailJson> orderDetailList = new ArrayList<OrderDetailJson>();
-	private static CartProduct instance;
+ 	private static CartProduct instance;
+	
+	private CreateOrderReq orderInfo = new CreateOrderReq();
+	
+	
+	public CreateOrderReq getOrderInfo()
+	{
+		orderInfo.getOrder().setTotal_count(getTotalCount());
+		orderInfo.getOrder().setTotal_price(getTotalPrice());
+		return orderInfo;
+	}
+
+ 
 	private CartProduct()
 	{
 		 
+	}
+	
+	public void setDefaultOrderInfo()
+	{
+		OrderJson order =  this.orderInfo.getOrder();
+		order.setUser_id(AppCache.getInstance().getUser().getUser_id());
+		order.setUser_name(AppCache.getInstance().getUser().getUser_name());
+		order.setTake_addr(AppCache.getInstance().getCustomer().getAddr());
+		order.setDelivery_addr(AppCache.getInstance().getCustomer().getAddr());
+		order.setContact_name(AppCache.getInstance().getCustomer().getCustomer_name());
+		order.setPhone(AppCache.getInstance().getCustomer().getPhone());
 	}
 	
 	public synchronized static CartProduct getInstance()
@@ -32,12 +57,12 @@ public class CartProduct
  
 	public int getSelectProduct()
 	{
-		return orderDetailList.size();
+		return orderInfo.getOrderDetailList().size();
 	}
 	
 	public boolean containsSelected(int productID)
 	{
-		for(OrderDetailJson e : orderDetailList)
+		for(OrderDetailJson e : orderInfo.getOrderDetailList())
 		{
 			if(e.getProduct_id() == productID)
 			{
@@ -49,11 +74,11 @@ public class CartProduct
 	
 	public void removeSelected(int productID)
 	{
-		for(OrderDetailJson e : orderDetailList)
+		for(OrderDetailJson e : orderInfo.getOrderDetailList())
 		{
 			if(e.getProduct_id() == productID)
 			{
-				orderDetailList.remove(e);
+				orderInfo.getOrderDetailList().remove(e);
 				return;
 			}
 		}
@@ -66,7 +91,7 @@ public class CartProduct
 		detail.setProduct_id(productID);
 		detail.setProduct_name(product.getProduct_name());
 		detail.setCurrent_price(product.getPrice());
-		orderDetailList.add(detail);
+		orderInfo.getOrderDetailList().add(detail);
 	}
 
  
@@ -97,26 +122,22 @@ public class CartProduct
 		}
 	}
 	
-	public List<OrderDetailJson> getOrderDetailList()
-	{
-		 
-		return orderDetailList;
-	}
+ 
 	
-	public int getTotalCount()
+	private int getTotalCount()
 	{
 		int totalCnt = 0;
- 		for(OrderDetailJson e : this.orderDetailList)
+ 		for(OrderDetailJson e : orderInfo.getOrderDetailList())
 		{
  			totalCnt += e.getQuantity();
 		}
 		return totalCnt;
 	}
 	
-	public float getTotalPrice()
+	private float getTotalPrice()
 	{
  		float totalPrice = 0;
-		for(OrderDetailJson e : this.orderDetailList)
+		for(OrderDetailJson e : orderInfo.getOrderDetailList())
 		{
 			totalPrice += e.getCurrent_price() * e.getQuantity();
  		}

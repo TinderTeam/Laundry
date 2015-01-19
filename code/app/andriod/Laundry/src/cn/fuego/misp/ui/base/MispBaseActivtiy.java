@@ -1,12 +1,15 @@
 package cn.fuego.misp.ui.base;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.Activity;
-import android.content.pm.ActivityInfo;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import cn.fuego.common.util.validate.ValidatorUtil;
@@ -17,6 +20,8 @@ import cn.fuego.misp.ui.model.ActivityResInfo;
 
 public abstract class MispBaseActivtiy extends Activity implements OnClickListener
 {
+	private Map<Integer,Button> buttonViewList = new HashMap<Integer,Button>();
+	private TextView titleView;
 	public void backOnClick()
 	{
 		this.finish();
@@ -56,7 +61,7 @@ public abstract class MispBaseActivtiy extends Activity implements OnClickListen
 		}
  
 		
-		TextView titleView = (TextView) findViewById(R.id.misp_title_name);
+		titleView = (TextView) findViewById(R.id.misp_title_name);
 		if(null != titleView)
 		{
 			titleView.setText(this.activityRes.getName());
@@ -65,14 +70,26 @@ public abstract class MispBaseActivtiy extends Activity implements OnClickListen
 		{
 			for(Integer id :this.activityRes.getButtonIDList() )
 			{
-				View btn =   findViewById(id);
+				Button btn =   (Button) findViewById(id);
 				if(null != btn)
 				{
 					btn.setOnClickListener(this);
+					buttonViewList.put(id, btn);
 				}
 			}
 		}
 
+	}
+	
+	
+	
+	public TextView getTitleView()
+	{
+		return titleView;
+	}
+	public Button getButtonByID(int id)
+	{
+		return this.buttonViewList.get(id);
 	}
 
 	public ActivityResInfo activityRes = new ActivityResInfo();

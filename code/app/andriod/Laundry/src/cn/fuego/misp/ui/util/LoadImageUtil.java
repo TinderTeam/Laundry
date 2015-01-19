@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
@@ -14,6 +15,12 @@ import android.util.Log;
 import android.widget.ImageView;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 public class LoadImageUtil
 {
@@ -26,9 +33,87 @@ public class LoadImageUtil
 	
 	private boolean isLoad = true;
 	
+	private boolean isLocalCache = true;
+	
 	private  LoadImageUtil()
 	{
 		
+	}
+	public String getLocalUrl(int id)
+	{
+		String imageUri = "drawable://" + id;
+		return imageUri;
+	}
+	public DisplayImageOptions getImageSetting(int loadingImage,int faileImage)
+	{
+		DisplayImageOptions options;  
+		options = new DisplayImageOptions.Builder()  
+		 .showImageOnLoading(loadingImage) //设置图片在下载期间显示的图片  
+		 .showImageForEmptyUri(faileImage)//设置图片Uri为空或是错误的时候显示的图片  
+		.showImageOnFail(R.drawable.ic_launcher)  //设置图片加载/解码过程中错误时候显示的图片
+		.cacheInMemory(true)//设置下载的图片是否缓存在内存中  
+		.cacheOnDisc(true)//设置下载的图片是否缓存在SD卡中  
+		.considerExifParams(true)  //是否考虑JPEG图像EXIF参数（旋转，翻转）
+		.imageScaleType(ImageScaleType.EXACTLY_STRETCHED)//设置图片以如何的编码方式显示  
+		.bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码类型//  
+		//.decodingOptions(android.graphics.BitmapFactory.Options decodingOptions)//设置图片的解码配置  
+		//.delayBeforeLoading(int delayInMillis)//int delayInMillis为你设置的下载前的延迟时间
+		//设置图片加入缓存前，对bitmap进行设置  
+		//.preProcessor(BitmapProcessor preProcessor)  
+		.resetViewBeforeLoading(true)//设置图片在下载前是否重置，复位  
+		.displayer(new RoundedBitmapDisplayer(20))//是否设置为圆角，弧度为多少  
+		.displayer(new FadeInBitmapDisplayer(100))//是否图片加载好后渐入的动画时间  
+		.build();//构建完成 
+		
+		return options;
+	}
+	
+	public DisplayImageOptions smallImageSetting()
+	{
+		DisplayImageOptions options;  
+		options = new DisplayImageOptions.Builder()  
+		 .showImageOnLoading(R.drawable.loading_small_image) //设置图片在下载期间显示的图片  
+		 .showImageForEmptyUri(R.drawable.load_small_image_fail)//设置图片Uri为空或是错误的时候显示的图片  
+		.showImageOnFail(R.drawable.ic_launcher)  //设置图片加载/解码过程中错误时候显示的图片
+		.cacheInMemory(true)//设置下载的图片是否缓存在内存中  
+		.cacheOnDisc(true)//设置下载的图片是否缓存在SD卡中  
+		.considerExifParams(true)  //是否考虑JPEG图像EXIF参数（旋转，翻转）
+		.imageScaleType(ImageScaleType.EXACTLY_STRETCHED)//设置图片以如何的编码方式显示  
+		.bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码类型//  
+		//.decodingOptions(android.graphics.BitmapFactory.Options decodingOptions)//设置图片的解码配置  
+		//.delayBeforeLoading(int delayInMillis)//int delayInMillis为你设置的下载前的延迟时间
+		//设置图片加入缓存前，对bitmap进行设置  
+		//.preProcessor(BitmapProcessor preProcessor)  
+		.resetViewBeforeLoading(true)//设置图片在下载前是否重置，复位  
+		.displayer(new RoundedBitmapDisplayer(20))//是否设置为圆角，弧度为多少  
+		.displayer(new FadeInBitmapDisplayer(100))//是否图片加载好后渐入的动画时间  
+		.build();//构建完成 
+		
+		return options;
+	}
+	
+	public DisplayImageOptions largeImageSetting()
+	{
+		DisplayImageOptions options;  
+		options = new DisplayImageOptions.Builder()  
+		 .showImageOnLoading(R.drawable.loading_large_image) //设置图片在下载期间显示的图片  
+		 .showImageForEmptyUri(R.drawable.load_large_image_failed)//设置图片Uri为空或是错误的时候显示的图片  
+		.showImageOnFail(R.drawable.ic_launcher)  //设置图片加载/解码过程中错误时候显示的图片
+		.cacheInMemory(true)//设置下载的图片是否缓存在内存中  
+		.cacheOnDisc(true)//设置下载的图片是否缓存在SD卡中  
+		.considerExifParams(true)  //是否考虑JPEG图像EXIF参数（旋转，翻转）
+		//.imageScaleType(ImageScaleType.EXACTLY_STRETCHED)//设置图片以如何的编码方式显示  
+		.bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码类型//  
+		//.decodingOptions(android.graphics.BitmapFactory.Options decodingOptions)//设置图片的解码配置  
+		//.delayBeforeLoading(int delayInMillis)//int delayInMillis为你设置的下载前的延迟时间
+		//设置图片加入缓存前，对bitmap进行设置  
+		//.preProcessor(BitmapProcessor preProcessor)  
+		.resetViewBeforeLoading(true)//设置图片在下载前是否重置，复位  
+		.displayer(new RoundedBitmapDisplayer(20))//是否设置为圆角，弧度为多少  
+		.displayer(new FadeInBitmapDisplayer(100))//是否图片加载好后渐入的动画时间  
+		.build();//构建完成 
+		
+		return options;
 	}
 	
 	public synchronized static LoadImageUtil getInstance()
@@ -40,12 +125,42 @@ public class LoadImageUtil
 		return instance;
 	}
 	
- 
+	
 	public void loadImage(final ImageView imageView, final String urlString)
+	{
+		if(isLocalCache)
+		{
+			ImageLoader.getInstance().displayImage(urlString, imageView,smallImageSetting());
+		}
+		else
+		{
+			loadWithMemoryCache(imageView, urlString);
+		}
+		
+	}
+	
+	public void loadImage(final ImageView imageView, final String urlString,DisplayImageOptions options)
+	{
+		if(isLocalCache)
+		{
+			ImageLoader.getInstance().displayImage(urlString, imageView,options);
+		}
+		else
+		{
+			loadWithMemoryCache(imageView, urlString);
+		}
+		
+	}
+	public void loadImage(final ImageView imageView, final int localImageId)
+	{
+		 
+	}
+	
+	private void loadWithMemoryCache(final ImageView imageView, final String urlString)
 	{
 		if(!isLoad)
 		{
-			imageView.setImageResource(R.drawable.load_image_failed);
+			imageView.setImageResource(R.drawable.load_large_image_failed);
 			return;
 		}
 		if (isAllCache && cache.containsKey(urlString))
@@ -55,7 +170,7 @@ public class LoadImageUtil
 		}
 
 		// Show a "Loading" image here
-		imageView.setImageResource(R.drawable.loading_image);
+		imageView.setImageResource(R.drawable.loading_large_image);
 
 		log.info("Image url:" + urlString);
 
@@ -88,7 +203,7 @@ public class LoadImageUtil
 							"Image download failed", e);
 					// Show a "download fail" image
 					drawable = imageView.getResources().getDrawable(
-							R.drawable.load_image_failed);
+							R.drawable.load_large_image_failed);
 				}
 
 				// Notify UI thread to show this image using Handler
@@ -98,6 +213,8 @@ public class LoadImageUtil
 		};
 		new Thread(runnable).start();
 	}
+	
+ 
 
 	private InputStream download(String urlString)
 			throws MalformedURLException, IOException

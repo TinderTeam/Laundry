@@ -8,7 +8,9 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+import cn.fuego.laundry.R;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.http.HttpListener;
 import cn.fuego.misp.service.http.MispHttpMessage;
@@ -21,8 +23,14 @@ public abstract class MispBaseFragment extends Fragment implements HttpListener
 			Bundle savedInstanceState)
 	{
 		this.initRes();
+		
+
 		View rootView = inflater.inflate(this.fragmentRes.getFragmentView(), null);
-  				
+		TextView titleView = (TextView) rootView.findViewById(R.id.misp_title_name);
+		if(null != titleView)
+		{
+			titleView.setText(this.fragmentRes.getName());
+		}
 		return rootView;
 	}
 	

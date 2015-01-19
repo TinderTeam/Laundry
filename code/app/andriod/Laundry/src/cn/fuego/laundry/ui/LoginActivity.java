@@ -12,20 +12,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import cn.fuego.common.log.FuegoLog;
+import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.SharedPreferenceConst;
 import cn.fuego.laundry.ui.base.BaseActivtiy;
 import cn.fuego.laundry.ui.base.ExitApplication;
+import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.ui.cart.MyCartFragment;
 import cn.fuego.laundry.ui.user.UserFragment;
 import cn.fuego.laundry.ui.user.UserRegisterActivity;
+import cn.fuego.laundry.webservice.up.model.GetCustomerReq;
+import cn.fuego.laundry.webservice.up.model.GetCustomerRsp;
+import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.constant.ClientTypeEnum;
+import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.MemoryCache;
+import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.webservice.up.model.LoginReq;
 import cn.fuego.misp.webservice.up.model.LoginRsp;
+import cn.fuego.misp.webservice.up.model.base.UserJson;
 
 public class LoginActivity extends BaseActivtiy implements OnClickListener
 {
@@ -98,19 +106,19 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 			LoginRsp rsp = (LoginRsp) message.getMessage().obj;
 
 			// 存放个人信息cookie
-			SharedPreferences userInfo = getSharedPreferences(SharedPreferenceConst.UESR_INFO, Context.MODE_PRIVATE);
-			userInfo.edit().putString(SharedPreferenceConst.NAME, userName).commit();
-			userInfo.edit().putString(SharedPreferenceConst.PASSWORD, password).commit();
-			MemoryCache.setToken(rsp.getToken());
-			AppCache.getInstance().setUser(rsp.getUser());
-		      
-			Class clazz = (Class) this.getIntent().getSerializableExtra(JUMP_SOURCE);
-			
-			Intent intent = new Intent(this,MainTabbarActivity.class);
-			intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(clazz));
-			this.startActivity(intent);
+//			SharedPreferences userInfo = getSharedPreferences(SharedPreferenceConst.UESR_INFO, Context.MODE_PRIVATE);
+//			userInfo.edit().putString(SharedPreferenceConst.NAME, userName).commit();
+//			userInfo.edit().putString(SharedPreferenceConst.PASSWORD, password).commit();
+//			
+			if(!ValidatorUtil.isEmpty(rsp.getToken()) && null != rsp.getUser())
+			{
+				loadCustomer(rsp.getToken(),rsp.getUser());
+			}
+			else
+			{
+				this.showMessage(MISPErrorMessageConst.ERROR_LOGIN_FAILED);
+			}
 
-			this.finish();
 
 		}
 		else
@@ -122,6 +130,67 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 
 	}
  
+
+	private void loadCustomer(final String token,final UserJson user)
+	{
+		if(null == user)
+		{
+			log.error("the user is empty");
+			return;
+		}
+		GetCustomerReq req = new GetCustomerReq();
+		req.setObj(user.getUser_id());
+		
+		WebServiceContext.getInstance().getCustomerManageRest(new MispHttpHandler()
+		{
+
+			@Override
+			public void handle(MispHttpMessage message)
+			{
+				if(message.isSuccess())
+				{
+					 
+					GetCustomerRsp rsp = (GetCustomerRsp) message.getMessage().obj;
+					if(null != rsp.getObj())
+					{
+	 					loginSuccess(token,user,rsp.getObj());
+
+					}
+					else
+					{
+						showMessage(MISPErrorMessageConst.ERROR_LOGIN_FAILED);
+					}
+
+				}
+				else
+				{
+					showMessage(message);
+					log.error("can not get the customer information");
+				}
+			}
+			
+			
+		}).getCustomerInfo(req);
+	}
+	
+	private void loginSuccess(String token,UserJson user,CustomerJson customer)
+	{
+		MemoryCache.setToken(token);
+		AppCache.getInstance().loadLoginInfo(user, customer);
+	 
+	      
+		Class clazz = (Class) this.getIntent().getSerializableExtra(JUMP_SOURCE);
+		
+		Intent intent = new Intent(this,MainTabbarActivity.class);
+		intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(clazz));
+		this.startActivity(intent);
+
+
+	    CartProduct.getInstance().setDefaultOrderInfo();
+	    
+		this.finish();
+	}
+	
 	public String getDeviceID()
 	{
 		TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);

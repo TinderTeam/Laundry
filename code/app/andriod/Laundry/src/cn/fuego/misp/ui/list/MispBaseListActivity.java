@@ -15,6 +15,7 @@ import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.base.MispGridView;
 import cn.fuego.misp.ui.base.MispHttpActivtiy;
+import cn.fuego.misp.ui.model.ListViewResInfo;
 
 public abstract class MispBaseListActivity<E> extends MispHttpActivtiy implements MispListViewInteface,OnItemClickListener
 {
@@ -75,6 +76,7 @@ public abstract class MispBaseListActivity<E> extends MispHttpActivtiy implement
 	
 			}
 		}
+		this.adapter.notifyDataSetChanged();
 		loadSendList();
 
 	}

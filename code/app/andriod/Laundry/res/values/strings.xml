@@ -8,7 +8,19 @@
     <string name="user_user_phone">手机号码</string>
     <string name="user_user_email">邮箱</string>
     <string name="user_user_addr">常用地址</string>
- 
+    
+    <string name="deliver_take_addr">取衣地址</string>
+    <string name="deliver_delivery_addr">送衣地址</string>
+    <string name="deliver_contact">联系人</string>
+    <string name="deliver_contact_phone">联系电话</string>
+      
+    <string name="order_pay_option">支付方式</string>
+    
+   <string name="order_note">您的要求</string>
+    
+    <string name="default_addr">默认地址</string>
+    <string name="location_addr">当前地址</string>
+    
     
     <string name="title_activity_user_info">UserInfoActivity</string>
     <string name="title_activity_product_search">ProductSearchActivity</string>

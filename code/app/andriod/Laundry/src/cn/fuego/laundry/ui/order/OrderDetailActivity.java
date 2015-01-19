@@ -6,8 +6,6 @@ import java.util.List;
 import android.content.Intent;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
-import cn.fuego.laundry.constant.ListItemTypeConst;
-import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.GetOrderDetailReq;
 import cn.fuego.laundry.webservice.up.model.GetOrderDetailRsp;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
@@ -16,8 +14,8 @@ import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.info.MispInfoListActivity;
-import cn.fuego.misp.ui.list.ListViewResInfo;
 import cn.fuego.misp.ui.model.CommonItemMeta;
+import cn.fuego.misp.ui.model.ListViewResInfo;
 
 public class OrderDetailActivity extends MispInfoListActivity
 {
@@ -43,21 +41,21 @@ public class OrderDetailActivity extends MispInfoListActivity
 		
 		if(null != order)
 		{
-			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "取衣地址", order.getTake_addr()));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "取衣地址", order.getTake_addr()));
 
-			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "送回地址", order.getDelivery_addr()));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "送回地址", order.getDelivery_addr()));
 			
-			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "联系人", order.getContact_name()));
-			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "联系电话", order.getPhone()));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "联系人", order.getContact_name()));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "联系电话", order.getPhone()));
 			
 			
-			list.add(new CommonItemMeta(ListItemTypeConst.NULL_CONTENT, null, null));
+			list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
 
 	 
 			
-			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "总价", order.getTotal_price()));
-			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "付款方式", order.getPay_option()));
-			list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, "您的要求", order.getOrder_note()));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "总价", order.getTotal_price()));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "付款方式", order.getPay_option()));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "您的要求", order.getOrder_note()));
 		}
 
 		return list;
@@ -70,7 +68,7 @@ public class OrderDetailActivity extends MispInfoListActivity
 		{
 			for(OrderDetailJson detail : orderDetailList)
 			{
-				list.add(new CommonItemMeta(ListItemTypeConst.TEXT_CONTENT, detail.getProduct_name(), detail.getCurrent_price()));
+				list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, detail.getProduct_name(), detail.getCurrent_price()));
 			}
 		}
 
@@ -111,7 +109,7 @@ public class OrderDetailActivity extends MispInfoListActivity
 	{
 		this.getDataList().clear();
 		this.getDataList().addAll(getBtnData(order));
-		this.getDataList().add(new CommonItemMeta(ListItemTypeConst.NULL_CONTENT, null, null));
+		this.getDataList().add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
 		
 		this.getDataList().addAll(getOrderDetailData(detaliList));
 
