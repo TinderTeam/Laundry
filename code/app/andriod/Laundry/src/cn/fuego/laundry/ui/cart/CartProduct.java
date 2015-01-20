@@ -33,6 +33,17 @@ public class CartProduct
 		 
 	}
 	
+	
+	public void clearCart()
+	{
+		this.orderInfo = new CreateOrderReq();
+	}
+	
+	public boolean isEmpty()
+	{
+		return orderInfo.getOrderDetailList().isEmpty();
+	}
+	
 	public void setDefaultOrderInfo()
 	{
 		OrderJson order =  this.orderInfo.getOrder();

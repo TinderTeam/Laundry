@@ -6,7 +6,7 @@
     
     
     <dimen name="top_head_height">50dp</dimen>
-    <dimen name="top_head_title_font_size">25dp</dimen>
+    <dimen name="top_head_title_font_size">22dp</dimen>
     <dimen name="top_head_btn_size">20dp</dimen>
     
     <dimen name="item_height_size">50dp</dimen>

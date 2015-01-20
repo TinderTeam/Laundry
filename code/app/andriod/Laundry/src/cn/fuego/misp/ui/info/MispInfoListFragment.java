@@ -52,7 +52,12 @@ public class MispInfoListFragment extends MispDistinctListFragment
 	}
  
 	 
- 
+	@Override
+	public void onClick(View v)
+	{
+	 
+		
+	}
 
 
 }

@@ -132,6 +132,11 @@ public class CommonItemMeta implements Serializable
 				view = inflater.inflate(R.layout.misp_list_item_btntype, null);
 				TextView title_view = (TextView) view.findViewById(R.id.item_btntype_name);
 				title_view.setText(title);
+				TextView valueView  = (TextView) view.findViewById(R.id.item_btntype_value);
+				if(null != this.getContent())
+				{
+					valueView.setText(String.valueOf(this.getContent()));
+				}
 			}
 			break;
 		case DIVIDER_ITEM:

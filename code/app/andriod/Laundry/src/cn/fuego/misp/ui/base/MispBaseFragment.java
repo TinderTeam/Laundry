@@ -1,5 +1,8 @@
 package cn.fuego.misp.ui.base;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -7,17 +10,24 @@ import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import cn.fuego.common.log.FuegoLog;
+import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
-import cn.fuego.misp.service.http.HttpListener;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.model.FragmentResInfo;
 
-public abstract class MispBaseFragment extends Fragment implements HttpListener 
+public abstract class MispBaseFragment extends Fragment implements OnClickListener 
 { 
+	private FuegoLog log = FuegoLog.getLog(MispBaseFragment.class);
+
+	private Map<Integer,Button> buttonViewList = new HashMap<Integer,Button>();
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
@@ -31,9 +41,31 @@ public abstract class MispBaseFragment extends Fragment implements HttpListener
 		{
 			titleView.setText(this.fragmentRes.getName());
 		}
+		
+ 
+		if(!ValidatorUtil.isEmpty(this.fragmentRes.getButtonIDList()))
+		{
+			for(Integer id :this.fragmentRes.getButtonIDList() )
+			{
+				Button btn =   (Button) rootView.findViewById(id);
+				if(null != btn)
+				{
+					btn.setOnClickListener(this);
+					buttonViewList.put(id, btn);
+				}
+				else
+				{
+					log.warn("the button id is not exist in the view, the id is "+id);
+				}
+			}
+		}
 		return rootView;
 	}
 	
+	public Button getButtonByID(int id)
+	{
+		return this.buttonViewList.get(id);
+	}
 	public void showMessage(int errorCode)
 	{
 		showMessage(MISPErrorMessageConst.getMessageByErrorCode(errorCode));
@@ -91,5 +123,14 @@ public abstract class MispBaseFragment extends Fragment implements HttpListener
 		int imgId = getResources().getIdentifier(name, "drawable",getActivity().getPackageName());//图片名字不要加后缀名
 		return imgId;
 	}
+
+	@Override
+	public void onClick(View v)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 
 }

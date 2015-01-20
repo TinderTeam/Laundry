@@ -32,6 +32,8 @@ public class ProductTypeCache
 		
 	}
 	
+	
+	
 	private ProductTypeJson getType(int fatherID,int typeID,String name)
 	{
 		ProductTypeJson type = new ProductTypeJson();

@@ -51,16 +51,19 @@ public abstract class MispBaseListFragment<E> extends MispHttpFragment implement
 			Bundle savedInstanceState)
 	{
 
-		this.initRes();
-		View rootView = inflater.inflate(this.fragmentRes.getFragmentView(), null);
+ 		View rootView = super.onCreateView(inflater, container, savedInstanceState);
+ 				
 
 		listView = (ListView) rootView.findViewById(this.listViewRes.getListView());
-
-		adapter = new MispListAdapter<E>(this.getActivity(), this,this.listViewRes,this.dataList);
-		listView.setAdapter(adapter);
-		listView.setOnItemClickListener(this);
-		loadSendList();
-
+		
+		if(null != listView)
+		{
+			adapter = new MispListAdapter<E>(this.getActivity(), this,this.listViewRes,this.dataList);
+			listView.setAdapter(adapter);
+			listView.setOnItemClickListener(this);
+			loadSendList();
+		}
+ 
 		return rootView;
 
 	}

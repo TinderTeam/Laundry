@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center_vertical"
         android:background="@color/white" >
 
         <TextView
@@ -25,6 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="false"
+            android:layout_centerVertical="true"
             android:gravity="right|center" >
 
             <TextView
@@ -32,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="点击修改" />
+                android:text="" />
 
             <ImageView
                 android:id="@+id/imageView1"

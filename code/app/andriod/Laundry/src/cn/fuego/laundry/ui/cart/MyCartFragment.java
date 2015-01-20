@@ -6,13 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -25,22 +26,20 @@ import antistatic.spinnerwheel.OnWheelChangedListener;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
-import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.ui.LoginActivity;
+import cn.fuego.laundry.ui.home.HomeFragment;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
 import cn.fuego.laundry.ui.order.OrderActivity;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
-import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.ui.list.MispListFragment;
 
-public class MyCartFragment extends MispListFragment<OrderDetailJson> implements OnClickListener
+public class MyCartFragment extends MispListFragment<OrderDetailJson>  
 {
 	private FuegoLog log = FuegoLog.getLog(MyCartFragment.class);
 	
 	private PopupWindow popupWindow=null;  
-	private Window window;
-	private TextView totalPriceView;
+ 	private TextView totalPriceView;
 	private TextView totalCountView;
 	private View view;  
 	private  int  curNum= 1;
@@ -49,13 +48,27 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 	{
 		this.fragmentRes.setImage(R.drawable.tab_icon_cart);
 		this.fragmentRes.setName(R.string.tabbar_cart);
-		this.fragmentRes.setFragmentView(R.layout.chart_fragment);
- 
-		listViewRes.setListView(R.id.chart_list);
-		listViewRes.setListItemView(R.layout.chart_list_item);
-		listViewRes.setClickActivityClass(HomeProductActivity.class);
 		
-		this.setDataList(CartProduct.getInstance().getOrderInfo().getOrderDetailList());  
+		if(CartProduct.getInstance().isEmpty())
+		{
+			this.fragmentRes.setFragmentView(R.layout.cart_fragment_default);
+			this.fragmentRes.getButtonIDList().add(R.id.cart_submit);
+
+		}
+		else
+		{
+			this.fragmentRes.setFragmentView(R.layout.cart_fragment);
+			 
+			listViewRes.setListView(R.id.chart_list);
+			listViewRes.setListItemView(R.layout.cart_list_item);
+			listViewRes.setClickActivityClass(HomeProductActivity.class);
+			
+			this.fragmentRes.getButtonIDList().add(R.id.cart_submit);
+			this.fragmentRes.getButtonIDList().add(R.id.cart_to_product);
+
+			this.setDataList(CartProduct.getInstance().getOrderInfo().getOrderDetailList());  
+		}
+
   
 	}
 
@@ -64,22 +77,21 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 			Bundle savedInstanceState)
 	{
 		View rootView = super.onCreateView(inflater, container, savedInstanceState);
-		window=this.getActivity().getWindow();
-		totalPriceView = (TextView) rootView.findViewById(R.id.chart_total_price);
 		
-		totalCountView = (TextView) rootView.findViewById(R.id.chart_total_count);
+		if(!CartProduct.getInstance().isEmpty())
+		{
+			totalPriceView = (TextView) rootView.findViewById(R.id.chart_total_price);
+			
+			totalCountView = (TextView) rootView.findViewById(R.id.chart_total_count);
+	 
+			refreshView();
+		}
 
-		Button submitButton = (Button) rootView.findViewById(R.id.chart_submit);
-		
-		submitButton.setOnClickListener(this);
-		super.adapterForScrollView();
-		
-		refreshView();
  
 		return rootView;
 	}
 
-
+ 
 
 
 	@Override
@@ -136,9 +148,22 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 	private void refreshView()
 	{
  
-		this.totalCountView.setText(String.valueOf(CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count()));
-		this.totalPriceView.setText(String.valueOf(CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price()));
-		repaint();
+		if(CartProduct.getInstance().isEmpty())
+		{
+ 
+			totalPriceView.setVisibility(View.INVISIBLE);
+			totalCountView.setVisibility(View.INVISIBLE);
+			this.getActivity().findViewById(R.id.cart_text).setVisibility(View.INVISIBLE);
+			this.getButtonByID(R.id.cart_submit).setVisibility(View.INVISIBLE);
+			repaint();
+
+		}
+		else
+		{
+			this.totalCountView.setText(String.valueOf(CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count()));
+			this.totalPriceView.setText(String.valueOf(CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price()));
+			repaint();
+		}
 	}
 
 	@Override
@@ -151,22 +176,40 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 	@Override
 	public void onClick(View v)
 	{
-		Intent intent;
-		if(MemoryCache.isLogined())
+		switch (v.getId())
 		{
- 
-			//set default delivery information
- 
-			intent = new Intent(this.getActivity(),OrderActivity.class);
-		}
-		else
-		{
-			intent = new Intent(this.getActivity(),LoginActivity.class);
-			intent.putExtra(LoginActivity.JUMP_SOURCE, this.getClass());
+			case R.id.cart_submit:
+			{
+				Intent intent;
+				if(MemoryCache.isLogined())
+				{
+		 
+					//set default delivery information
+		 
+					intent = new Intent(this.getActivity(),OrderActivity.class);
+				}
+				else
+				{
+					intent = new Intent(this.getActivity(),LoginActivity.class);
+					intent.putExtra(LoginActivity.JUMP_SOURCE, this.getClass());
+	
+					log.warn("have not login when create order");
+				}
+				this.startActivity(intent);
+			}
+				break;
+			case R.id.cart_to_product:
+			{
+                Intent intent = new Intent(getActivity(),HomeProductActivity.class);
+				
+  				startActivity(intent);
+			}
+			break;
 
-			log.warn("have not login when create order");
+		default:
+			break;
 		}
-		this.startActivity(intent);
+
 
 
 		
@@ -196,7 +239,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 
         } 
         //设置背景变暗
-        WindowManager.LayoutParams lp=window.getAttributes();
+        WindowManager.LayoutParams lp= getActivity().getWindow().getAttributes();
         lp.alpha = 0.4f;
         this.getActivity().getWindow().setAttributes(lp); 
         
@@ -237,9 +280,9 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson> implements
 			@Override
 			public void onDismiss()
 			{
-				WindowManager.LayoutParams lp=window.getAttributes();
+				WindowManager.LayoutParams lp=getActivity().getWindow().getAttributes();
 			    lp.alpha = 1f;
-			    window.setAttributes(lp);
+			    getActivity().getWindow().setAttributes(lp);
 			    popupWindow=null;
 			}
         	

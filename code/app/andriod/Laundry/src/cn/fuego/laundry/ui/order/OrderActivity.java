@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.ui.MainTabbarActivity;
+import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.cart.CartProduct;
+import cn.fuego.laundry.ui.home.HomeFragment;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.http.MispHttpHandler;
@@ -21,9 +25,9 @@ import cn.fuego.misp.ui.model.CommonItemMeta;
 public class OrderActivity extends MispInfoListActivity
 {
 	private FuegoLog log = FuegoLog.getLog(getClass());
-	public static final String ORDER_INFO = "配送信息";
+	public static final String ORDER_INFO = "订单信息";
   
-	private static final String EDIT_DELIVERY = "订单信息";
+	private static final String EDIT_DELIVERY = "配送信息";
 	
 	private static final String BTN_VALUE ="点击修改";
 
@@ -100,12 +104,14 @@ public class OrderActivity extends MispInfoListActivity
 		}
 		else if(CommonItemMeta.SUBMIT_BUTTON == item.getLayoutType())
 		{
+		     final ProgressDialog proDialog =ProgressDialog.show(this, "请稍等", "订单正在提交......");
 			WebServiceContext.getInstance().getOrderManageRest(new MispHttpHandler()
 			{
 
 				@Override
 				public void handle(MispHttpMessage message)
 				{
+					 proDialog.dismiss();
 					 if(message.isSuccess())
 					 {
 						 jumpToOrderList();
@@ -126,8 +132,11 @@ public class OrderActivity extends MispInfoListActivity
 	private void jumpToOrderList()
 	{
 		Intent i = new Intent();
-		i.setClass(this, OrderListActivity.class);
+		i.setClass(this, MainTabbarActivity.class);
+		i.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(HomeFragment.class));
         startActivity(i);
+        CartProduct.getInstance().clearCart();
+        this.finish();
 	}
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)

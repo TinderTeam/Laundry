@@ -1,5 +1,8 @@
 package cn.fuego.misp.ui.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 
@@ -9,6 +12,19 @@ public class FragmentResInfo
 	private int name;
 	
 	private int fragmentView;
+	
+	private List<Integer> buttonIDList = new ArrayList<Integer>();
+
+	
+	public List<Integer> getButtonIDList()
+	{
+		return buttonIDList;
+	}
+
+	public void setButtonIDList(List<Integer> buttonIDList)
+	{
+		this.buttonIDList = buttonIDList;
+	}
 
 	public int getImage()
 	{

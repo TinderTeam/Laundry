@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
@@ -20,6 +21,7 @@ import cn.fuego.misp.ui.model.ActivityResInfo;
 
 public abstract class MispBaseActivtiy extends Activity implements OnClickListener
 {
+	private FuegoLog log = FuegoLog.getLog(MispBaseActivtiy.class);
 	private Map<Integer,Button> buttonViewList = new HashMap<Integer,Button>();
 	private TextView titleView;
 	public void backOnClick()
@@ -75,6 +77,10 @@ public abstract class MispBaseActivtiy extends Activity implements OnClickListen
 				{
 					btn.setOnClickListener(this);
 					buttonViewList.put(id, btn);
+				}
+				else
+				{
+					log.warn("the button id is not exist in the view, the id is "+id);
 				}
 			}
 		}

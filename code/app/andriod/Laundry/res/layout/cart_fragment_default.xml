@@ -65,13 +65,13 @@
                 android:paddingTop="10dp" >
 
                 <Button
-                    android:id="@+id/cart_fragment_start_btn"
+                    android:id="@+id/cart_to_product"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:background="@drawable/common_btn"
-                    android:text="去下洗衣单"
+                    android:text="添加衣物"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
             </RelativeLayout>

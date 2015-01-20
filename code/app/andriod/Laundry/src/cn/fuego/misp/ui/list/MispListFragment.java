@@ -3,10 +3,9 @@ package cn.fuego.misp.ui.list;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView.OnItemClickListener;
 
-public abstract class MispListFragment<E> extends MispBaseListFragment<E> implements
-		OnItemClickListener
+public abstract class MispListFragment<E> extends MispBaseListFragment<E>  
+		 
 {
 	 
  

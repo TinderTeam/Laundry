@@ -31,7 +31,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 {
 	private FuegoLog log = FuegoLog.getLog(HomeProductActivity.class);
  
-	private ProductTypeJson selectType;
+	private ProductTypeJson selectType = ProductTypeCache.getInstance().getTypeList().get(0);
  	
  
 	@Override
@@ -39,10 +39,14 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 	{
 		
 		Intent intent = this.getIntent();
-		selectType = (ProductTypeJson) intent.getSerializableExtra(HomeFragment.SELECT_TYPE);
+		ProductTypeJson type = (ProductTypeJson) intent.getSerializableExtra(HomeFragment.SELECT_TYPE);
+		if(null != type)
+		{
+			selectType = type;
+		}
 		
 		this.activityRes.setAvtivityView(R.layout.home_goods_sel);
-		this.activityRes.setName("添加待洗物品•"+selectType.getType_name());
+		this.activityRes.setName("衣物•"+selectType.getType_name());
 		this.activityRes.getButtonIDList().add(R.id.misp_title_save);
 		this.activityRes.getButtonIDList().add(R.id.product_btn_to_cart);
 
@@ -68,7 +72,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 	
 	public void updateCount()
 	{
-		this.getTitleView().setText("添加待洗物品•"+selectType.getType_name());
+		this.getTitleView().setText("衣物•"+selectType.getType_name());
 		
 		this.getButtonByID(R.id.product_btn_to_cart).setText("洗衣篮（"+CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count()+"）");
 	
@@ -164,7 +168,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 				Intent intent = new Intent(this,MainTabbarActivity.class);
 				intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(MyCartFragment.class));
 				this.startActivity(intent);
-				 
+				this.finish();
 
 			}
 			break;
@@ -183,7 +187,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 			{
  				selectType = ProductTypeCache.getInstance().getTypeByName(value);
 				refreshList(CartProduct.getInstance().getProductMap().get(selectType.getType_id()));
-
+				 updateCount();
  			}
 			
 		};

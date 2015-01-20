@@ -185,5 +185,24 @@ public class ValidatorUtil
     public static boolean isIp(String ip) {  
         String regEx = "[1-9](\\d{1,2})?\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))";  
         return Pattern.matches(regEx, ip);  
-    }  
+    }
+    
+    /**
+     * 检验字符串是否是一个数字
+     * @return
+     */
+	public static boolean isInt(String num)
+	{
+		String regEx = "^[0-9]*$";  
+		return Pattern.matches(regEx, num);  
+	}
+	/**
+     * 检验字符串是否是一个浮点数
+     * @return
+     */
+	public static boolean isFloat(String num)
+	{
+		String regEx =  "^[+-]?([0-9]*\\.?[0-9]+|[0-9]+\\.?[0-9]*)([eE][+-]?[0-9]+)?$";
+		return Pattern.matches(regEx, num);  
+	}  
 }
