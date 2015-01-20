@@ -30,7 +30,7 @@
 #define __METHOD_OrderList              @"laundry.php/OrderManage/LoadPage"
 #define __METHOD_OrderCreate              @"laundry.php/OrderManage/Create"
 #define __METHOD_OrderModify         @"laundry.php/OrderManage/Modify"
-#define __METHOD_OrderDetail         @"laundry.php/OrderManage/OrderDetail"
+#define __METHOD_OrderDetail         @"laundry.php/OrderManage/LoadOrderDetailPage"
 #define __METHOD_OrederCancel         @"laundry.php/OrderManage/Cancel"
 #define __METHOD_OrderDelete         @"laundry.php/OrderManage/Delete"
 

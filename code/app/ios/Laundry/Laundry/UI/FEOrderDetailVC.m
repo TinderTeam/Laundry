@@ -14,6 +14,9 @@
 
 @interface FEOrderDetailVC ()
 
+@property (nonatomic, strong) NSMutableArray *orderDetail;
+
+
 @end
 
 @implementation FEOrderDetailVC
@@ -21,18 +24,57 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = kString(@"我的订单");
+    NSArray *orderArray = @[@{@"取衣地址":self.order.take_addr?self.order.take_addr:@""},@{@"送回地址":self.order.delivery_addr?self.order.delivery_addr:@""},@{@"联系人":self.order.contact_name?self.order.contact_name:@""},@{@"联系电话":self.order.phone?self.order.phone:@""}];
+    NSArray *orderPrice = @[@{@"总价":[NSString stringWithFormat:@"%.2f",self.order.total_price.floatValue]},@{@"付款方式":self.order.pay_option?self.order.pay_option:@""},@{@"备注":@""}];
+    
+    _orderDetail = [[NSMutableArray alloc] init];
+    [_orderDetail addObject:orderArray];
+    [_orderDetail addObject:orderPrice];
     [self requestOrderDetail];
+    
 }
 
 -(void)requestOrderDetail{
     FEOrderDetailRequest *rdata = [[FEOrderDetailRequest alloc] initWithOrderID:self.order.order_id];
-
+    __weak typeof(self) weakself = self;
     [[FELaundryWebService sharedInstance] request:rdata responseClass:[FEOrderDetailResponse class] response:^(NSError *error, id response) {
         FEOrderDetailResponse *rsp = response;
         if (!error && rsp.errorCode.integerValue == 0) {
-            
+            if (rsp.obj) {
+                [weakself.orderDetail addObject:rsp.obj];
+                [weakself.tableView reloadData];
+            }
         }
     }];
+}
+
+#pragma mark - UITableViewDataSource
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderInfoCell" forIndexPath:indexPath];
+    id item = self.orderDetail[indexPath.section][indexPath.row];
+    UILabel *title = (UILabel *)[cell viewWithTag:1];
+    UILabel *detail = (UILabel *)[cell viewWithTag:2];
+    if ([item isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *detailItem = item;
+        NSString *key = [detailItem.allKeys firstObject];
+        title.text = key;
+        detail.text = detailItem[key];
+    }else if ([item isKindOfClass:[FEOrderDetail class]]){
+        FEOrderDetail *detailItem = item;
+        title.text = detailItem.product_name;
+        detail.text = detailItem.current_price;
+    }
+    
+    return cell;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.orderDetail.count;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.orderDetail[section] count];
 }
 
 - (void)didReceiveMemoryWarning {

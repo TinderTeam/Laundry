@@ -14,4 +14,15 @@
 @property (nonatomic, strong, readonly) NSString *order_id;
 @property (nonatomic, strong) NSNumber *product_id;
 
+@property (nonatomic, strong) NSNumber *quantity;
+@property (nonatomic, strong, readonly) NSString *product_name;
+@property (nonatomic, strong, readonly) NSString *product_type;
+@property (nonatomic, strong, readonly) NSString *product_describe;
+@property (nonatomic, strong, readonly) NSString *current_price;
+@property (nonatomic, strong, readonly) NSString *original_price;
+@property (nonatomic, strong, readonly) NSString *product_img;
+@property (nonatomic, strong, readonly) NSString *product_status;
+@property (nonatomic, strong, readonly) NSString *product_update_time;
+@property (nonatomic, strong, readonly) NSString *product_limit_time;
+
 @end

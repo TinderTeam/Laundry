@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSArray *adList;
 @property (strong, nonatomic) NSArray *categoryList;
 @property (strong, nonatomic) NSArray *listData;
+@property (strong, nonatomic) FECompany *company;
 
 @end
 
@@ -62,9 +63,9 @@
         NSInvocation *inv2 = [self invocation:@selector(call:)];
         NSInvocation *inv3 = [self invocation:@selector(join:)];
         
-        self.listData = @[@{__KEY_PNG:@"home_direct_order",__KEY_ACTION:inv1},
+        self.listData = @[@{__KEY_PNG:@"home_join_invest",__KEY_ACTION:inv3},
                           @{__KEY_PNG:@"home_service_phone",__KEY_ACTION:inv2},
-                          @{__KEY_PNG:@"home_join_invest",__KEY_ACTION:inv3}];
+                          @{__KEY_PNG:@"home_direct_order",__KEY_ACTION:inv1}];
         
     }
     return self;
@@ -75,29 +76,54 @@
     // Do any additional setup after loading the view.
     [self initUI];
     [self request];
-    [self requestAD];
-    
-    
 }
 
 -(void)request{
-    [[FELaundryWebService sharedInstance] request:[[FEGetCompanyRequest alloc] initWithCid:@(1)] responseClass:[FEGetCompanyResponse class] response:^(NSError *error, id response) {
-        
-    }];
+    __weak typeof(self) weakself = self;
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_async(group, queue, ^{
+        dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+        [[FELaundryWebService sharedInstance] request:[[FEGetCompanyRequest alloc] initWithCid:@(1)] responseClass:[FEGetCompanyResponse class] response:^(NSError *error, id response) {
+            FEGetCompanyResponse *rsp = response;
+            if (!error && rsp.errorCode.integerValue == 0) {
+                weakself.company = rsp.obj;
+            }
+            dispatch_semaphore_signal(sem);
+        }];
+        dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
+    });
+    dispatch_group_async(group, queue, ^{
+        dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+        [[FELaundryWebService sharedInstance] request:[[FEGetADRequest alloc] init] responseClass:[FEGetADResponse class] response:^(NSError *error, id response) {
+            FEGetADResponse *rsp = response;
+            if (!error && rsp.errorCode.integerValue == 0) {
+                weakself.pageIndicate.numberOfPages = rsp.obj.count;
+                weakself.adList = rsp.obj;
+            }
+            dispatch_semaphore_signal(sem);
+        }];
+        dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
+    });
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        weakself.pageIndicate.numberOfPages = weakself.adList.count;
+        [weakself.adImageCollectionView reloadData];
+    });
+
 }
 
--(void)requestAD{
-    __weak typeof(self) weakself = self;
-    [[FELaundryWebService sharedInstance] request:[[FEGetADRequest alloc] init] responseClass:[FEGetADResponse class] response:^(NSError *error, id response) {
-        FEGetADResponse *rsp = response;
-        if (!error && rsp.errorCode.integerValue == 0) {
-            weakself.pageIndicate.numberOfPages = rsp.obj.count;
-            weakself.adList = rsp.obj;
-            [weakself.adImageCollectionView reloadData];
-        
-        }
-    }];
-}
+//-(void)requestAD{
+//    __weak typeof(self) weakself = self;
+//    [[FELaundryWebService sharedInstance] request:[[FEGetADRequest alloc] init] responseClass:[FEGetADResponse class] response:^(NSError *error, id response) {
+//        FEGetADResponse *rsp = response;
+//        if (!error && rsp.errorCode.integerValue == 0) {
+//            weakself.pageIndicate.numberOfPages = rsp.obj.count;
+//            weakself.adList = rsp.obj;
+//            [weakself.adImageCollectionView reloadData];
+//        
+//        }
+//    }];
+//}
 
 -(NSInvocation *)invocation:(SEL)selector{
     
@@ -131,7 +157,7 @@
         FEAD *ad = self.adList[indexPath.row];
         UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"adImageItemCell" forIndexPath:indexPath];
         UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:kImageURL(ad.ad_img)]];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:kImageURL(ad.ad_img)] placeholderImage:[UIImage imageNamed:@"loading_large_image"]];
         return cell;
     }else if(collectionView == self.functionCollectionView){
         UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"functionCategoryItemCell" forIndexPath:indexPath];
@@ -202,15 +228,17 @@
 }
 
 -(void)goOrder:(id)sender{
-    
+    [self.tabBarController setSelectedIndex:1];
 }
 
 -(void)call:(id)sender{
-    
+    if (self.company) {
+        kCall(self.company.service_phone);
+    }
 }
 
 -(void)join:(id)sender{
-    
+    [self performSegueWithIdentifier:@"joinSegue" sender:self];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,10 +10,12 @@
 #import "FELaundryWebService.h"
 #import "FESignoutRequest.h"
 #import "FECustomSegue.h"
+#import "FEUser.h"
 
 @interface FEProfileVC ()
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIView *shouldSigninView;
+@property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (strong, nonatomic) UIView *header;
 @property (strong, nonatomic) UIView *footer;
 
@@ -46,7 +48,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if (kLoginUser) {
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
+//        [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
 }
 
@@ -66,13 +68,16 @@
         self.tableView.scrollEnabled = YES;
         self.tableView.tableFooterView = [UIView new];
         self.tableView.tableHeaderView = self.headerView;
-        [self.navigationController setNavigationBarHidden:YES];
+//        [self.navigationController setNavigationBarHidden:YES];
+        FEUser *user = [[FEUser alloc] initWithDictionary:kLoginUser];
+        self.userNameLabel.text = user.user_name;
         [self.tableView reloadData];
     }else{
         self.tableView.tableHeaderView = nil;
         self.tableView.tableFooterView = self.shouldSigninView;
         self.tableView.scrollEnabled = NO;
-        [self.navigationController setNavigationBarHidden:NO];
+        self.userNameLabel.text = @"";
+//        [self.navigationController setNavigationBarHidden:NO];
         [self.tableView reloadData];
     }
 }

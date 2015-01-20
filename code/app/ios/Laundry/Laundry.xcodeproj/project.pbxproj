@@ -52,6 +52,8 @@
 		144716501A6D56AA003359FC /* FEOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1447164F1A6D56AA003359FC /* FEOrderDetailVC.m */; };
 		144716531A6D5798003359FC /* FEOrderDetailRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 144716521A6D5798003359FC /* FEOrderDetailRequest.m */; };
 		144716561A6D5A4E003359FC /* FEOrderDetailResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 144716551A6D5A4E003359FC /* FEOrderDetailResponse.m */; };
+		144716591A6E1C62003359FC /* FEOrderDeleteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 144716581A6E1C62003359FC /* FEOrderDeleteRequest.m */; };
+		1447165C1A6E1CFF003359FC /* FEOrderOperationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1447165B1A6E1CFF003359FC /* FEOrderOperationResponse.m */; };
 		14DD64A91A6BBB040074D9CA /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DD64A81A6BBB040074D9CA /* CustomIOS7AlertView.m */; };
 		14DD64AC1A6BBB3C0074D9CA /* FEInputAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DD64AB1A6BBB3C0074D9CA /* FEInputAlertView.m */; };
 		14FF4A1A1A66936000DECA7B /* FESelectCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */; };
@@ -179,6 +181,10 @@
 		144716521A6D5798003359FC /* FEOrderDetailRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderDetailRequest.m; sourceTree = "<group>"; };
 		144716541A6D5A4E003359FC /* FEOrderDetailResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOrderDetailResponse.h; sourceTree = "<group>"; };
 		144716551A6D5A4E003359FC /* FEOrderDetailResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderDetailResponse.m; sourceTree = "<group>"; };
+		144716571A6E1C62003359FC /* FEOrderDeleteRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOrderDeleteRequest.h; sourceTree = "<group>"; };
+		144716581A6E1C62003359FC /* FEOrderDeleteRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderDeleteRequest.m; sourceTree = "<group>"; };
+		1447165A1A6E1CFF003359FC /* FEOrderOperationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOrderOperationResponse.h; sourceTree = "<group>"; };
+		1447165B1A6E1CFF003359FC /* FEOrderOperationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderOperationResponse.m; sourceTree = "<group>"; };
 		14DD64A71A6BBB040074D9CA /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
 		14DD64A81A6BBB040074D9CA /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
 		14DD64AA1A6BBB3C0074D9CA /* FEInputAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEInputAlertView.h; sourceTree = "<group>"; };
@@ -554,6 +560,10 @@
 				144716521A6D5798003359FC /* FEOrderDetailRequest.m */,
 				144716541A6D5A4E003359FC /* FEOrderDetailResponse.h */,
 				144716551A6D5A4E003359FC /* FEOrderDetailResponse.m */,
+				144716571A6E1C62003359FC /* FEOrderDeleteRequest.h */,
+				144716581A6E1C62003359FC /* FEOrderDeleteRequest.m */,
+				1447165A1A6E1CFF003359FC /* FEOrderOperationResponse.h */,
+				1447165B1A6E1CFF003359FC /* FEOrderOperationResponse.m */,
 			);
 			path = Param;
 			sourceTree = "<group>";
@@ -689,6 +699,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1447165C1A6E1CFF003359FC /* FEOrderOperationResponse.m in Sources */,
 				14469E691A65F9DC00515685 /* main.m in Sources */,
 				14FF4A471A66A79300DECA7B /* FEAD.m in Sources */,
 				144350711A6652A6002BB228 /* UIColor+Hex.m in Sources */,
@@ -731,6 +742,7 @@
 				144716501A6D56AA003359FC /* FEOrderDetailVC.m in Sources */,
 				1443501F1A664074002BB228 /* FEHomePageVC.m in Sources */,
 				1418A1A91A68125400886FDA /* FEVerifyCodeResponse.m in Sources */,
+				144716591A6E1C62003359FC /* FEOrderDeleteRequest.m in Sources */,
 				14FF4A1D1A66950D00DECA7B /* FELaundryWebService.m in Sources */,
 				14FF4A651A67646D00DECA7B /* FEProduct.m in Sources */,
 				14469E961A65FA8500515685 /* AppDelegate.m in Sources */,

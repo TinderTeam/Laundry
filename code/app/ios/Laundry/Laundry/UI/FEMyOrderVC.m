@@ -13,9 +13,11 @@
 #import "FEUser.h"
 #import "FEOrderDetail.h"
 #import "FEOrderDetailVC.h"
+#import "FEOrderDeleteRequest.h"
+#import "FEOrderOperationResponse.h"
 
 @interface FEMyOrderVC ()
-@property (nonatomic, strong) NSArray *orderList;
+@property (nonatomic, strong) NSMutableArray *orderList;
 
 @end
 
@@ -25,6 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = kString(@"我的订单");
+    _orderList = [NSMutableArray new];
     [self requestOrder];
 }
 
@@ -39,7 +42,7 @@
     [[FELaundryWebService sharedInstance] request:[[FEOrderRequest alloc] initWithUserID:user.user_id] responseClass:[FEOrderListResponse class] response:^(NSError *error, id response) {
         FEOrderListResponse *rsp = response;
         if (!error && rsp.errorCode.integerValue == 0) {
-            weakself.orderList = rsp.obj;
+            [weakself.orderList addObjectsFromArray:rsp.obj];
             [weakself.tableView reloadData];
         }
     }];
@@ -72,6 +75,31 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.orderList.count;
+}
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        FEOrder *order = self.orderList[indexPath.row];
+        [self deleteOrder:order];
+    }
+}
+
+-(void)deleteOrder:(FEOrder *)order{
+    __weak typeof(self) weakself = self;
+    [[FELaundryWebService sharedInstance] request:[[FEOrderDeleteRequest alloc] initWithOrderID:order.order_id] responseClass:[FEOrderOperationResponse class] response:^(NSError *error, id response) {
+        FEOrderOperationResponse *rsp = response;
+        if (!error && rsp.errorCode.integerValue == 0) {
+            NSInteger index = [weakself.orderList indexOfObject:order];
+            if (index != NSNotFound) {
+                [weakself.orderList removeObject:order];
+                [weakself.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
