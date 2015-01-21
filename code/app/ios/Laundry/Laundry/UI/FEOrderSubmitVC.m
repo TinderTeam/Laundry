@@ -85,10 +85,31 @@
     NSMutableArray *marray = [NSMutableArray new];
     for (FEProduct *product in products) {
         NSInteger number = [[FEDataCache sharedInstance] productNumber:product].integerValue;
-        for (int i= 0; i < number; i++) {
-            FEOrderDetail *detail = [[FEOrderDetail alloc] initWithDictionary:@{@"product_id":product.product_id}];
-            [marray addObject:detail];
-        }
+//        for (int i= 0; i < number; i++) {
+        
+        //            @property (nonatomic, strong) NSNumber *quantity;
+        //            @property (nonatomic, strong, readonly) NSString *product_name;
+        //            @property (nonatomic, strong, readonly) NSString *product_type;
+        //            @property (nonatomic, strong, readonly) NSString *product_describe;
+        //            @property (nonatomic, strong, readonly) NSString *current_price;
+        //            @property (nonatomic, strong, readonly) NSString *original_price;
+        //            @property (nonatomic, strong, readonly) NSString *product_img;
+        //            @property (nonatomic, strong, readonly) NSString *product_status;
+        //            @property (nonatomic, strong, readonly) NSString *product_update_time;
+        //            @property (nonatomic, strong, readonly) NSString *product_limit_time;
+        
+        FEOrderDetail *detail = [[FEOrderDetail alloc] init];
+        detail.quantity = @(number);
+        detail.product_name = product.product_name;
+        detail.product_type = product.type_id.stringValue;
+        detail.current_price = product.price.stringValue;
+        detail.original_price = product.original_price.stringValue;
+        detail.product_img = product.img;
+        detail.product_status = product.product_status;
+        detail.product_update_time = product.update_time;
+        detail.product_limit_time = product.end_time;
+        [marray addObject:detail];
+
     }
     
     FEUser *user = [[FEUser alloc] initWithDictionary:kLoginUser];
@@ -96,6 +117,7 @@
     [dic setObject:user.user_id forKey:@"user_id"];
     [dic setObject:@(self.totalPrice) forKey:@"total_price"];
     [dic setObject:@(self.totalNumber) forKey:@"total_count"];
+    [dic setObject:@"正常下单" forKey:@"order_type"];
     
     FEOrder *order = [[FEOrder alloc] initWithDictionary:dic];
     [[FELaundryWebService sharedInstance] request:[[FEOrderCreateRequest alloc] initWithOrder:order orderDetails:marray] responseClass:[FEBaseResponse class] response:^(NSError *error, id response) {

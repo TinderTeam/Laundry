@@ -112,7 +112,7 @@
     }else if(height == 736){
         return UIEdgeInsetsMake(25, 25, 25, 25);
     }else{
-        return UIEdgeInsetsMake(10, 10, 10, 10);
+        return UIEdgeInsetsMake(5, 5, 5, 5);
     }
 }
 

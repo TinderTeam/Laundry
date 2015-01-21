@@ -6,7 +6,6 @@
 //  Copyright (c) 2015年 FUEGO. All rights reserved.
 //
 
-#define __SERVICE_BASE_URL @"http://120.24.217.173:80/Laundry"
 
 #import "FELaundryWebService.h"
 
@@ -24,6 +23,7 @@
 -(instancetype)initWithBaseURL:(NSURL *)url{
     self = [super initWithBaseURL:url];
     if (self) {
+        
 //        NSMutableSet *mset = [NSMutableSet setWithSet:self.responseSerializer.acceptableContentTypes];
 //        [mset addObject:@"text/html"];
 //        self.responseSerializer.acceptableContentTypes = mset;

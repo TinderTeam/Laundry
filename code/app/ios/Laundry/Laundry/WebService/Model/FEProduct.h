@@ -27,4 +27,5 @@
 @property (nonatomic, strong, readonly) NSString *type_name;
 @property (nonatomic, strong, readonly) NSNumber *parent_type_id;
 
+
 @end

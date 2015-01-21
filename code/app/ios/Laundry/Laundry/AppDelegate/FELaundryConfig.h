@@ -13,7 +13,13 @@
 
 #define kThemeColor             kColor(20, 56, 68, 1)
 
-#define kImageURL(_A)           [@"http://120.24.217.173:9000/Laundry/Public/Fuego/uploads/" stringByAppendingString:_A]
+#define kServerIP               @"120.24.217.173"
+#define kServerPort             @"80"
+#define kBasePath               @"/Laundry"
+#define kImagePath              @"/Public/Fuego/uploads/"
+
+#define kImageURL(_A)           [NSString stringWithFormat:@"http://%@:%@%@%@%@",kServerIP,kServerPort,kBasePath,kImagePath,_A]//[@"http://120.24.217.173:9000/Laundry/Public/Fuego/uploads/" stringByAppendingString:_A]
+#define __SERVICE_BASE_URL    [NSString stringWithFormat:@"http://%@:%@%@",kServerIP,kServerPort,kBasePath]//@"http://120.24.217.173:80/Laundry"
 
 //login user
 #define kLoginUserKey           @"user"
