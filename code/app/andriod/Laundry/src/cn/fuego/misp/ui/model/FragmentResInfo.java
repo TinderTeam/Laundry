@@ -10,7 +10,7 @@ public class FragmentResInfo
 {
 	private int image;
 	private int name;
-	
+	private int titleView;
 	private int fragmentView;
 	
 	private List<Integer> buttonIDList = new ArrayList<Integer>();
@@ -54,6 +54,16 @@ public class FragmentResInfo
 	public void setFragmentView(int fragmentView)
 	{
 		this.fragmentView = fragmentView;
+	}
+
+	public int getTitleView()
+	{
+		return titleView;
+	}
+
+	public void setTitleView(int titleView)
+	{
+		this.titleView = titleView;
 	}
  
   

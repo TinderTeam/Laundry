@@ -4,7 +4,7 @@ import java.util.List;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import cn.fuego.laundry.R;
+import cn.fuego.misp.constant.MispCommonIDName;
 import cn.fuego.misp.ui.list.MispDistinctListFragment;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 
@@ -15,8 +15,8 @@ public class MispInfoListFragment extends MispDistinctListFragment
 	@Override
 	public void initRes()
 	{
-		this.fragmentRes.setFragmentView(R.layout.misp_fragment_info_display);
-		this.listViewRes.setListView(R.id.misp_info_list);
+		this.fragmentRes.setFragmentView(MispCommonIDName.layout_misp_fragment_info_display);
+		this.listViewRes.setListView(MispCommonIDName.misp_info_list);
 		 
 	 
 

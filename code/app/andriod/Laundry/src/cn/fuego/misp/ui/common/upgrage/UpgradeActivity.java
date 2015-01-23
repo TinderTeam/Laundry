@@ -1,4 +1,4 @@
-package cn.fuego.laundry.ui.upgrade;
+package cn.fuego.misp.ui.common.upgrage;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,9 +22,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import cn.fuego.common.log.FuegoLog;
-import cn.fuego.laundry.R;
-import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
+import cn.fuego.misp.constant.MispCommonIDName;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.ui.base.MispBaseActivtiy;
 import cn.fuego.misp.webservice.up.model.base.ClientVersionJson;
@@ -51,9 +50,9 @@ public class UpgradeActivity extends MispBaseActivtiy
     private String mSavePath; 
 	public void initRes()
 	{
-		this.activityRes.setAvtivityView(R.layout.update_page);
-		this.activityRes.setName("版本名称");
-		this.activityRes.getButtonIDList().add(R.id.update_page_check_btn);
+		this.activityRes.setAvtivityView(MispCommonIDName.layout_misp_upgrage_page);
+		this.activityRes.setName("版本更新");
+		this.activityRes.getButtonIDList().add(MispCommonIDName.misp_upgrade_version_btn);
 		Intent intent = getIntent();
 		newVerInfo = (ClientVersionJson) intent.getSerializableExtra(CLIENT_INFO);
 		
@@ -67,15 +66,13 @@ public class UpgradeActivity extends MispBaseActivtiy
 	{
  
 		super.onCreate(savedInstanceState);
- 		
-        String appName= getResources().getString(R.string.app_name);
-		String versionName = AppCache.getInstance().getVersionNname();
-		StringBuffer sb = new StringBuffer(); 
-		sb.append(appName);
-		sb.append(" ");
-		sb.append(versionName);
-		TextView version_desp = (TextView) findViewById(R.id.upgrade_version_txt);
-		version_desp.setText(sb);
+ 
+		TextView version_desp = (TextView) findViewById(MispCommonIDName.misp_upgrade_old_version_txt);
+		version_desp.setText("当前版本：V"+MemoryCache.getVersionNname());
+		TextView newVersionView = (TextView) findViewById(MispCommonIDName.misp_upgrade_new_version_txt);
+		newVersionView.setText("最新版本："+newVerInfo.getVersion_name());
+		checkVersion();
+
  
 	}
 	@Override
@@ -84,8 +81,9 @@ public class UpgradeActivity extends MispBaseActivtiy
 	     switch (v.getId()) 
 	     {
 
-	        case R.id.update_page_check_btn:
-	        	checkVersion();
+	        case MispCommonIDName.misp_upgrade_version_btn:
+	        	interceptFlag=false;
+	            downFile(MemoryCache.getWebContextUrl()+newVerInfo.getApk_url());
 	            break;	
 	        default:
 	            break;
@@ -94,78 +92,20 @@ public class UpgradeActivity extends MispBaseActivtiy
 	}
 	private void checkVersion()
 	{
-        int vercode = AppCache.getInstance().getVersionCode();
-        if (null != newVerInfo && newVerInfo.getVersion_code() > vercode) {  
-            doNewVersionUpdate(); // 更新新版本  
-        } else {  
-            notNewVersionShow(); // 提示当前为最新版本  
+        int vercode = MemoryCache.getVersionCode();
+        if (null != newVerInfo && newVerInfo.getVersion_code() > vercode) 
+        {  
+        	log.info("there is a new version");
+        }
+        else
+        {  
+    		this.getButtonByID(MispCommonIDName.misp_upgrade_version_btn).setEnabled(false);
+    		this.getButtonByID(MispCommonIDName.misp_upgrade_version_btn).setText("当前是最新版本");
         }  
 	}
 
-
-	private void notNewVersionShow() {  
-	    int verCode = AppCache.getInstance().getVersionCode();
-	    String verName = AppCache.getInstance().getVersionNname();
-	    StringBuffer sb = new StringBuffer();  
-	    sb.append("当前版本:");  
-	    sb.append(verName);  
-	    sb.append(" Code:");  
-	    sb.append(verCode);  	
-	    sb.append(",\n已是最新版,无需更新!");  
-	    Dialog dialog = new AlertDialog.Builder(this).setTitle("软件更新")  
-	            .setMessage(sb.toString())// 设置内容  
-	            .setPositiveButton("确定",// 设置确定按钮  
-	                    new DialogInterface.OnClickListener() {  
-	                        @Override  
-	                        public void onClick(DialogInterface dialog,  
-	                                int which) {  
-	                            finish();  
-	                        }  
-	                    }).create();// 创建  
-	    // 显示对话框  
-	    dialog.show();  
-	}  
-	private void doNewVersionUpdate() 
-	{
-	    int verCode = AppCache.getInstance().getVersionCode();
-	    String verName = AppCache.getInstance().getVersionNname();
-	    StringBuffer sb = new StringBuffer();
-	    sb.append("当前版本:");
-	    sb.append(verName);
-	    sb.append(" Code:");
-	    sb.append(verCode);
-	    sb.append(", 发现新版本");
-	    sb.append(newVerInfo.getVersion_name());
-	    sb.append(" Code:");
-	    sb.append(newVerInfo.getVersion_code());
-	    sb.append(",是否更新?");
-	    Dialog dialog = new AlertDialog.Builder(UpgradeActivity.this)
-	            .setTitle("软件更新")
-	            .setMessage(sb.toString())
-	            // 设置内容
-	            .setPositiveButton("更新",// 设置确定按钮
-	                    new DialogInterface.OnClickListener() { 
-	 
-	                        @Override
-	                        public void onClick(DialogInterface dialog,
-	                                int which) {
-
-	                            downFile(MemoryCache.getWebContextUrl()+newVerInfo.getApk_url());
-	                        } 
-	 
-	                    })
-	            .setNegativeButton("暂不更新",
-	                    new DialogInterface.OnClickListener() { 
-	                        public void onClick(DialogInterface dialog,
-	                                int whichButton) {
-	                            // 点击"取消"按钮之后退出程序
-	                            finish();
-								dialog.dismiss();
-	                        }
-	                    }).create();//创建
-	    // 显示对话框        
-	    dialog.show();
-	}
+ 
+ 
 	//更新UI的handler  
 	private Handler mhandler = new Handler() 
 	{                          
@@ -181,20 +121,18 @@ public class UpgradeActivity extends MispBaseActivtiy
             	progress_txt.setText("下载进度："+String.valueOf(progressCount)+"%");
                 break;  
             case DOWNLOAD_OVER:    //安装   
-				downloadDialog.cancel();
-
-                down();           
+            	closeDialog();
+                startInstall();           
                 break; 
             case DOWNLOAD_ERROR:
-				downloadDialog.cancel();
+            	closeDialog();
 
-            	showMessage((Integer)MISPErrorMessageConst.ERROR_UPDATE_VERSION_FAILED);
+            	showMessage(MISPErrorMessageConst.ERROR_UPDATE_VERSION_FAILED);
             	break;
             case DOWNLOAD_CANCEL:
-				downloadDialog.cancel();
+            	closeDialog();
 
-            	showMessage((Integer)MISPErrorMessageConst.ERROR_UPDATE_VERSION_FAILED);
-            	break;
+             	break;
             default:  
                 break;  
             }  
@@ -202,15 +140,24 @@ public class UpgradeActivity extends MispBaseActivtiy
         }  
   
     } ;
+    private void closeDialog()
+    {
+    	if(null != downloadDialog)
+    	{
+    		downloadDialog.cancel();
+    	}
+		
+		downloadDialog = null;
+    }
 	void downFile(final String path)
 	{
-		android.app.AlertDialog.Builder builder = new AlertDialog.Builder(UpgradeActivity.this); 
+		android.app.AlertDialog.Builder builder = new AlertDialog.Builder(this); 
 		builder.setTitle("正在下载更新……");
-		LayoutInflater inflater = LayoutInflater.from(UpgradeActivity.this); 
-		View view = inflater.inflate(R.layout.upgrade_apk, null);
-		progress_txt = (TextView) view.findViewById(R.id.upgrade_count_txt);
+		LayoutInflater inflater = LayoutInflater.from(this); 
+		View view = inflater.inflate(MispCommonIDName.layout_misp_download_file, null);
+		progress_txt = (TextView) view.findViewById(MispCommonIDName.misp_upgrade_count_txt);
 		progress_txt.setText("下载进度：0%");
-		progressView = (ProgressBar) view.findViewById(R.id.uprade_progress_count);
+		progressView = (ProgressBar) view.findViewById(MispCommonIDName.misp_uprade_progress_count);
 		builder.setView(view);
 		builder.setNegativeButton("取消", new DialogInterface.OnClickListener()
 		{
@@ -224,6 +171,7 @@ public class UpgradeActivity extends MispBaseActivtiy
 			}
 		});
 		 downloadDialog = builder.create();  
+		 downloadDialog.setCanceledOnTouchOutside(false);
 	     downloadDialog.show(); 
 
 		// pBar.show();
@@ -319,19 +267,19 @@ public class UpgradeActivity extends MispBaseActivtiy
 
 	}
 
-	void down()
+	void startInstall()
 	{
 		mhandler.post(new Runnable()
 		{
 			public void run()
 			{
-				update();
+				install();
 			}
 		});
 
 	}
 
-	void update()
+	void install()
 	{
 
 		Intent intent = new Intent(Intent.ACTION_VIEW);

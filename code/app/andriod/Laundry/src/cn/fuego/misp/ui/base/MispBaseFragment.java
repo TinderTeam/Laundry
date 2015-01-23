@@ -17,8 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
-import cn.fuego.laundry.R;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
+import cn.fuego.misp.constant.MispCommonIDName;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.model.FragmentResInfo;
 
@@ -27,23 +27,20 @@ public abstract class MispBaseFragment extends Fragment implements OnClickListen
 	private FuegoLog log = FuegoLog.getLog(MispBaseFragment.class);
 
 	private Map<Integer,Button> buttonViewList = new HashMap<Integer,Button>();
+	
+	private TextView titleView;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
 		this.initRes();
-		
-
 		View rootView = inflater.inflate(this.fragmentRes.getFragmentView(), null);
-		TextView titleView = (TextView) rootView.findViewById(R.id.misp_title_name);
-		if(null != titleView)
-		{
-			titleView.setText(this.fragmentRes.getName());
-		}
 		
- 
-		if(!ValidatorUtil.isEmpty(this.fragmentRes.getButtonIDList()))
+		//初始化标题
+		initFragmentTitle(rootView);
+		
+				if(!ValidatorUtil.isEmpty(this.fragmentRes.getButtonIDList()))
 		{
 			for(Integer id :this.fragmentRes.getButtonIDList() )
 			{
@@ -61,11 +58,27 @@ public abstract class MispBaseFragment extends Fragment implements OnClickListen
 		}
 		return rootView;
 	}
-	
 	public Button getButtonByID(int id)
 	{
 		return this.buttonViewList.get(id);
 	}
+	private void initFragmentTitle(View rootView)
+	{
+		titleView = (TextView) rootView.findViewById(this.fragmentRes.getTitleView());	
+		if(titleView!=null)
+		{
+			titleView.setText(this.fragmentRes.getName());
+		}
+		else
+		{
+			 titleView = (TextView) rootView.findViewById(MispCommonIDName.misp_title_name);
+			if(null != titleView)
+			{
+				titleView.setText(this.fragmentRes.getName());
+			}
+		}
+	}
+
 	public void showMessage(int errorCode)
 	{
 		showMessage(MISPErrorMessageConst.getMessageByErrorCode(errorCode));
@@ -82,7 +95,6 @@ public abstract class MispBaseFragment extends Fragment implements OnClickListen
 	}
 	public FragmentResInfo fragmentRes = new FragmentResInfo();
 	public abstract void initRes();
-	
 	public int getScreenWidth()
 	{
 		DisplayMetrics metric = new DisplayMetrics();
@@ -130,7 +142,4 @@ public abstract class MispBaseFragment extends Fragment implements OnClickListen
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-
 }

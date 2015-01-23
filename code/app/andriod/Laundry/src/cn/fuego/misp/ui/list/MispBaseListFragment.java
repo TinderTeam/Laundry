@@ -73,6 +73,16 @@ public abstract class MispBaseListFragment<E> extends MispHttpFragment implement
 		this.adapter.notifyDataSetChanged();
 	}
 	
+	public void refreshList(List<E> newDataList)
+	{
+		this.dataList.clear();
+		if(!ValidatorUtil.isEmpty(newDataList))
+		{
+			this.dataList.addAll(newDataList);
+		}
+		repaint();
+	}
+	
 	public void adapterForScrollView()
 	{
     	ListAdapter listAdapter = listView.getAdapter();   

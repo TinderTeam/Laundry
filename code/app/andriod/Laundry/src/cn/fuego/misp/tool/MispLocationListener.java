@@ -20,6 +20,7 @@ public abstract class MispLocationListener implements BDLocationListener
 	public void onReceiveLocation(BDLocation location)
 	{
 	 
+	 
 		if(null != location)
 		{
 			MispLocation mispLocation = new MispLocation();

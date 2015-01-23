@@ -5,7 +5,7 @@ import java.util.List;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import cn.fuego.laundry.R;
+import cn.fuego.misp.constant.MispCommonIDName;
 import cn.fuego.misp.ui.list.MispDistinctListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 
@@ -16,8 +16,8 @@ public class MispInfoListActivity extends MispDistinctListActivity
 	@Override
 	public void initRes()
 	{
-		this.activityRes.setAvtivityView(R.layout.misp_info_display);
-		this.listViewRes.setListView(R.id.misp_info_list);
+		this.activityRes.setAvtivityView(MispCommonIDName.layout_misp_info_display);
+		this.listViewRes.setListView(MispCommonIDName.misp_info_list);
 		 
 	 
 

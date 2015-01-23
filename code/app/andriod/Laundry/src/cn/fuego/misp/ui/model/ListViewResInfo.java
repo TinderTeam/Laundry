@@ -9,7 +9,12 @@ public class ListViewResInfo
 	private int listType = VIEW_TYPE_LIST;
 	private int listView;
 	private int listItemView;
+	/**
+	 * 作用域：MispListActivity
+	 * 点击后跳转的目标Class
+	 */
 	private Class clickActivityClass;
+	
 	public int getListView()
 	{
 		return listView;

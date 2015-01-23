@@ -21,7 +21,7 @@
     <string name="misp_modify">修改</string>
     <string name="misp_delete">删除</string>
     <string name="misp_create">新增</string>
-    
+    <string name="misp_udpate">更新</string>
     <string name="misp_old_password">原始密码</string>
     <string name="misp_new_password">新密码</string>
     <string name="misp_confirm_password">确认密码</string>

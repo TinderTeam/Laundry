@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.constant.PayOptionEnum;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.cart.CartProduct;
@@ -19,6 +20,8 @@ import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
+import cn.fuego.misp.ui.common.alipay.MispPayActivity;
+import cn.fuego.misp.ui.common.alipay.MispPayParameter;
 import cn.fuego.misp.ui.info.MispInfoListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 
@@ -104,39 +107,60 @@ public class OrderActivity extends MispInfoListActivity
 		}
 		else if(CommonItemMeta.SUBMIT_BUTTON == item.getLayoutType())
 		{
-		     final ProgressDialog proDialog =ProgressDialog.show(this, "请稍等", "订单正在提交......");
-			WebServiceContext.getInstance().getOrderManageRest(new MispHttpHandler()
-			{
 
-				@Override
-				public void handle(MispHttpMessage message)
-				{
-					 proDialog.dismiss();
-					 if(message.isSuccess())
-					 {
-						 jumpToOrderList();
-					 }
-					 else
-					 {
-						 log.error("create order failed");
 
-					 }
-					 showMessage(message);
-				}
-				
-			}).create(CartProduct.getInstance().getOrderInfo());
 		}
+	}
+	
+	private void submitOrder()
+	{
+	     final ProgressDialog proDialog =ProgressDialog.show(this, "请稍等", "订单正在提交......");
+		WebServiceContext.getInstance().getOrderManageRest(new MispHttpHandler()
+		{
+
+			@Override
+			public void handle(MispHttpMessage message)
+			{
+				 proDialog.dismiss();
+				 if(message.isSuccess())
+				 {
+					 jumpToOrderList();
+				 }
+				 else
+				 {
+					 log.error("create order failed");
+
+				 }
+				 showMessage(message);
+			}
+			
+		}).create(CartProduct.getInstance().getOrderInfo());
 	}
  
  
 	private void jumpToOrderList()
 	{
-		Intent i = new Intent();
-		i.setClass(this, MainTabbarActivity.class);
-		i.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(HomeFragment.class));
-        startActivity(i);
-        CartProduct.getInstance().clearCart();
-        this.finish();
+		OrderJson   order = CartProduct.getInstance().getOrderInfo().getOrder();
+		if(PayOptionEnum.ONLINE_PAY.getStrValue().equals(order.getPay_option()))
+		{
+			MispPayParameter parameter = new MispPayParameter();
+			parameter.setOrder_code(order.getOrder_code());
+			parameter.setOrder_name(order.getOrder_name());
+			parameter.setOrder_desc(order.getOrder_note());
+			parameter.setOrder_price(String.valueOf(order.getTotal_price()));
+			
+ 			MispPayActivity.jump(this, parameter);
+		}
+		else
+		{
+	 		Intent i = new Intent();
+			i.setClass(this, MainTabbarActivity.class);
+			i.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(HomeFragment.class));
+	        startActivity(i);
+	        CartProduct.getInstance().clearCart();
+	        this.finish();
+		}
+
 	}
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)

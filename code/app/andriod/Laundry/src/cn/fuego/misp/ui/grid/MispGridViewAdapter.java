@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import cn.fuego.laundry.R;
+import cn.fuego.misp.constant.MispCommonIDName;
 import cn.fuego.misp.ui.model.MispGridDataModel;
 
 /** 
@@ -78,10 +78,10 @@ public class MispGridViewAdapter extends BaseAdapter
 		if (convertView == null)
 		{
 
-			convertView = LayoutInflater.from(this.mContext).inflate(R.layout.home_grid_item, null, false);
+			convertView = LayoutInflater.from(this.mContext).inflate(MispCommonIDName.layout_misp_grid_item, null, false);
 			//holder.button = (Button) convertView.findViewById(R.id.gridview_item_button);
-			TextView title_view = (TextView) convertView.findViewById(R.id.grid_item_title);
-			ImageView img = (ImageView) convertView.findViewById(R.id.grid_item_img);
+			TextView title_view = (TextView) convertView.findViewById(MispCommonIDName.misp_grid_item_title);
+			ImageView img = (ImageView) convertView.findViewById(MispCommonIDName.misp_grid_item_img);
 			title_view.setText(gridData.getName());
 			//String title=mylist.get(position).get("data");
 			img.setImageResource(gridData.getImage());

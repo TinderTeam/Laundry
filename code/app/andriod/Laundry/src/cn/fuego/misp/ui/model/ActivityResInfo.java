@@ -10,6 +10,7 @@ public class ActivityResInfo
 	
 	private int avtivityView;
 	private int backBtn;
+	private int titleTextView;
 	
 	private List<Integer> buttonIDList = new ArrayList<Integer>();
 
@@ -55,6 +56,14 @@ public class ActivityResInfo
 		this.buttonIDList = buttonIDList;
 	}
 
- 
+ 	public int getTitleTextView()
+	{
+		return titleTextView;
+	}
+
+	public void setTitleTextView(int titleTextView)
+	{
+		this.titleTextView = titleTextView;
+	}
 
 }

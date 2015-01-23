@@ -14,8 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
-import cn.fuego.laundry.R;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
+import cn.fuego.misp.constant.MispCommonIDName;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.model.ActivityResInfo;
 
@@ -28,46 +28,29 @@ public abstract class MispBaseActivtiy extends Activity implements OnClickListen
 	{
 		this.finish();
 	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		initRes();
 		// TODO Auto-generated method stub
  		super.onCreate(savedInstanceState);
- 	 
- 		//setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
  		if(0 != activityRes.getAvtivityView())
  		{
  			setContentView(activityRes.getAvtivityView());
 
  		}
-		View button = findViewById(activityRes.getBackBtn());
-		if(null == button)
-		{
-			 button = findViewById(R.id.misp_title_back);
-		}
-		if(null != button)
-		{
-			
-			OnClickListener l = new OnClickListener()
-			{
-				
-				@Override
-				public void onClick(View v)
-				{
-					backOnClick();
-					
-				}
-			};
-			button.setOnClickListener(l);
-		}
- 
+		initBackButton();
+		//setup title
+		initTitle();	
+		initActivityButton();
+
 		
-		titleView = (TextView) findViewById(R.id.misp_title_name);
-		if(null != titleView)
-		{
-			titleView.setText(this.activityRes.getName());
-		}
+	}
+	
+	private void initActivityButton()
+	{
+		 
 		if(!ValidatorUtil.isEmpty(this.activityRes.getButtonIDList()))
 		{
 			for(Integer id :this.activityRes.getButtonIDList() )
@@ -84,20 +67,51 @@ public abstract class MispBaseActivtiy extends Activity implements OnClickListen
 				}
 			}
 		}
+	}
 
+	private void initTitle()
+	{
+		TextView title =(TextView) findViewById(activityRes.getTitleTextView());
+		if(null != title)
+		{
+			title.setText(activityRes.getName());
+		}
+		else
+		{
+			titleView = (TextView) findViewById(MispCommonIDName.misp_title_name);
+			if(null != titleView)
+			{
+				titleView.setText(this.activityRes.getName());
+			}
+		}
 	}
 	
-	
-	
-	public TextView getTitleView()
+	private void initBackButton()
 	{
-		return titleView;
+		View button = findViewById(activityRes.getBackBtn());
+		if(null == button)
+		{
+			 button = findViewById(MispCommonIDName.misp_title_back);
+		}
+		if(null != button)
+		{
+			 
+			OnClickListener l = new OnClickListener()
+			{
+				
+				@Override
+				public void onClick(View v)
+				{
+					backOnClick();
+				}
+			};
+			button.setOnClickListener(l);
+		}
 	}
 	public Button getButtonByID(int id)
 	{
 		return this.buttonViewList.get(id);
 	}
-
 	public ActivityResInfo activityRes = new ActivityResInfo();
 
 	public abstract void initRes();
@@ -157,6 +171,12 @@ public abstract class MispBaseActivtiy extends Activity implements OnClickListen
 		// TODO Auto-generated method stub
 		
 	}
+	public TextView getTitleView()
+	{
+		return titleView;
+	}
+ 
+	
 	
 
 }

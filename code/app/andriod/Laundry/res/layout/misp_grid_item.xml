@@ -6,7 +6,7 @@
     android:layout_gravity="center" >
 
     <ImageView
-        android:id="@+id/grid_item_img"
+        android:id="@+id/misp_grid_item_img"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
@@ -14,10 +14,10 @@
         android:gravity="center" />
 
     <TextView
-        android:id="@+id/grid_item_title"
+        android:id="@+id/misp_grid_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/grid_item_img"
+        android:layout_below="@+id/misp_grid_item_img"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="休闲娱乐" />

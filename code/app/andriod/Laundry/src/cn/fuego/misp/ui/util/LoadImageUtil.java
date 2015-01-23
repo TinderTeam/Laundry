@@ -14,7 +14,7 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.ImageView;
 import cn.fuego.common.log.FuegoLog;
-import cn.fuego.laundry.R;
+import cn.fuego.misp.constant.MispCommonIDName;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -50,7 +50,7 @@ public class LoadImageUtil
 		options = new DisplayImageOptions.Builder()  
 		 .showImageOnLoading(loadingImage) //设置图片在下载期间显示的图片  
 		 .showImageForEmptyUri(faileImage)//设置图片Uri为空或是错误的时候显示的图片  
-		.showImageOnFail(R.drawable.ic_launcher)  //设置图片加载/解码过程中错误时候显示的图片
+		.showImageOnFail(faileImage)  //设置图片加载/解码过程中错误时候显示的图片
 		.cacheInMemory(true)//设置下载的图片是否缓存在内存中  
 		.cacheOnDisc(true)//设置下载的图片是否缓存在SD卡中  
 		.considerExifParams(true)  //是否考虑JPEG图像EXIF参数（旋转，翻转）
@@ -72,9 +72,9 @@ public class LoadImageUtil
 	{
 		DisplayImageOptions options;  
 		options = new DisplayImageOptions.Builder()  
-		 .showImageOnLoading(R.drawable.loading_small_image) //设置图片在下载期间显示的图片  
-		 .showImageForEmptyUri(R.drawable.load_small_image_fail)//设置图片Uri为空或是错误的时候显示的图片  
-		.showImageOnFail(R.drawable.ic_launcher)  //设置图片加载/解码过程中错误时候显示的图片
+		 .showImageOnLoading(MispCommonIDName.drawable_loading_small_image) //设置图片在下载期间显示的图片  
+		 .showImageForEmptyUri(MispCommonIDName.drawable_load_small_image_fail)//设置图片Uri为空或是错误的时候显示的图片  
+		.showImageOnFail(MispCommonIDName.drawable_ic_launcher)  //设置图片加载/解码过程中错误时候显示的图片
 		.cacheInMemory(true)//设置下载的图片是否缓存在内存中  
 		.cacheOnDisc(true)//设置下载的图片是否缓存在SD卡中  
 		.considerExifParams(true)  //是否考虑JPEG图像EXIF参数（旋转，翻转）
@@ -96,9 +96,9 @@ public class LoadImageUtil
 	{
 		DisplayImageOptions options;  
 		options = new DisplayImageOptions.Builder()  
-		 .showImageOnLoading(R.drawable.loading_large_image) //设置图片在下载期间显示的图片  
-		 .showImageForEmptyUri(R.drawable.load_large_image_failed)//设置图片Uri为空或是错误的时候显示的图片  
-		.showImageOnFail(R.drawable.ic_launcher)  //设置图片加载/解码过程中错误时候显示的图片
+		 .showImageOnLoading(MispCommonIDName.drawable_loading_large_image) //设置图片在下载期间显示的图片  
+		 .showImageForEmptyUri(MispCommonIDName.drawable_load_large_image_failed)//设置图片Uri为空或是错误的时候显示的图片  
+		.showImageOnFail(MispCommonIDName.drawable_ic_launcher)  //设置图片加载/解码过程中错误时候显示的图片
 		.cacheInMemory(true)//设置下载的图片是否缓存在内存中  
 		.cacheOnDisc(true)//设置下载的图片是否缓存在SD卡中  
 		.considerExifParams(true)  //是否考虑JPEG图像EXIF参数（旋转，翻转）
@@ -160,7 +160,7 @@ public class LoadImageUtil
 	{
 		if(!isLoad)
 		{
-			imageView.setImageResource(R.drawable.load_large_image_failed);
+			imageView.setImageResource(MispCommonIDName.drawable_load_large_image_failed);
 			return;
 		}
 		if (isAllCache && cache.containsKey(urlString))
@@ -170,7 +170,7 @@ public class LoadImageUtil
 		}
 
 		// Show a "Loading" image here
-		imageView.setImageResource(R.drawable.loading_large_image);
+		imageView.setImageResource(MispCommonIDName.drawable_loading_large_image);
 
 		log.info("Image url:" + urlString);
 
@@ -203,7 +203,7 @@ public class LoadImageUtil
 							"Image download failed", e);
 					// Show a "download fail" image
 					drawable = imageView.getResources().getDrawable(
-							R.drawable.load_large_image_failed);
+							MispCommonIDName.drawable_load_large_image_failed);
 				}
 
 				// Notify UI thread to show this image using Handler

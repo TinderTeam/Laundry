@@ -4,11 +4,10 @@ import java.io.Serializable;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import cn.fuego.common.util.validate.ValidatorUtil;
-import cn.fuego.laundry.R;
+import cn.fuego.misp.constant.MispCommonIDName;
 
 public class CommonItemMeta implements Serializable
 {
@@ -102,18 +101,18 @@ public class CommonItemMeta implements Serializable
 		{
 		case IMG_CONTENT:
 			{
-				view = inflater.inflate(R.layout.misp_list_item_imgtype, null);
-				TextView title_view = (TextView) view.findViewById(R.id.item_imgtype_name);
-				ImageView img = (ImageView) view.findViewById(R.id.item_imgtype_img);
+				view = inflater.inflate(MispCommonIDName.layout_misp_list_item_imgtype, null);
+				TextView title_view = (TextView) view.findViewById(MispCommonIDName.item_imgtype_name);
+				ImageView img = (ImageView) view.findViewById(MispCommonIDName.item_imgtype_img);
 				title_view.setText(title);
 			}
 			
 			break;
 		case TEXT_CONTENT:
 			{
-				view = inflater.inflate(R.layout.misp_list_item_texttype, null);
-				TextView title_view = (TextView) view.findViewById(R.id.item_texttype_name);
-				TextView content_view = (TextView) view.findViewById(R.id.item_texttype_text);
+				view = inflater.inflate(MispCommonIDName.layout_misp_list_item_texttype, null);
+				TextView title_view = (TextView) view.findViewById(MispCommonIDName.item_texttype_name);
+				TextView content_view = (TextView) view.findViewById(MispCommonIDName.item_texttype_text);
 				title_view.setText(title);
 				content_view.setText(content);
 			}
@@ -121,18 +120,18 @@ public class CommonItemMeta implements Serializable
 			break;
 		case DEFAULT_CONTENT:
 			{
-				view = inflater.inflate(R.layout.misp_list_item_btntype, null);
-				TextView title_view = (TextView) view.findViewById(R.id.item_btntype_name);
+				view = inflater.inflate(MispCommonIDName.layout_misp_list_item_btntype, null);
+				TextView title_view = (TextView) view.findViewById(MispCommonIDName.item_btntype_name);
 				title_view.setText(title);
 			}
 			
 			break;
 		case BUTTON_TO_EDIT_ITEM:
 			{
-				view = inflater.inflate(R.layout.misp_list_item_btntype, null);
-				TextView title_view = (TextView) view.findViewById(R.id.item_btntype_name);
+				view = inflater.inflate(MispCommonIDName.layout_misp_list_item_btntype, null);
+				TextView title_view = (TextView) view.findViewById(MispCommonIDName.item_btntype_name);
 				title_view.setText(title);
-				TextView valueView  = (TextView) view.findViewById(R.id.item_btntype_value);
+				TextView valueView  = (TextView) view.findViewById(MispCommonIDName.item_btntype_value);
 				if(null != this.getContent())
 				{
 					valueView.setText(String.valueOf(this.getContent()));
@@ -141,22 +140,22 @@ public class CommonItemMeta implements Serializable
 			break;
 		case DIVIDER_ITEM:
 		   {
-			view = inflater.inflate(R.layout.misp_list_item_divider, null);
+			view = inflater.inflate(MispCommonIDName.layout_misp_list_item_divider, null);
 		   }
 		   break;
 		case LARGE_TEXT:
 		   {
-			view = inflater.inflate(R.layout.misp_list_item_large_text, null);
-			TextView titleView = (TextView) view.findViewById(R.id.misp_list_item_title_text);
+			view = inflater.inflate(MispCommonIDName.layout_misp_list_item_large_text, null);
+			TextView titleView = (TextView) view.findViewById(MispCommonIDName.misp_list_item_title_text);
 			titleView.setText(title);
-			TextView contentView = (TextView) view.findViewById(R.id.misp_list_item_content_text);
+			TextView contentView = (TextView) view.findViewById(MispCommonIDName.misp_list_item_content_text);
 			contentView.setText(content);
 		   }
 		   break;
 		case SUBMIT_BUTTON:
 		   {
-			view = inflater.inflate(R.layout.misp_list_item_submit_btn, null);
-			TextView titleView = (TextView) view.findViewById(R.id.misp_list_item_submit_txt);
+			view = inflater.inflate(MispCommonIDName.layout_misp_list_item_submit_btn, null);
+			TextView titleView = (TextView) view.findViewById(MispCommonIDName.misp_list_item_submit_txt);
 			if(!ValidatorUtil.isEmpty(title))
 			{
 				titleView.setText(title);

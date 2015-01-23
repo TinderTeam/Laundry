@@ -6,26 +6,18 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.PopupWindow.OnDismissListener;
-import antistatic.spinnerwheel.AbstractWheel;
-import antistatic.spinnerwheel.OnWheelChangedListener;
-import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 import cn.fuego.common.util.validate.ValidatorUtil;
-import cn.fuego.laundry.R;
 import cn.fuego.laundry.ui.home.GroupAdapter;
-import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
+import cn.fuego.misp.constant.MispCommonIDName;
 import cn.fuego.misp.service.MemoryCache;
 
 public class MispPopListWindow
@@ -68,11 +60,11 @@ public class MispPopListWindow
         {  
             LayoutInflater layoutInflater = (LayoutInflater) this.contex.getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
   
-        	 View view = layoutInflater.inflate(R.layout.misp_pop_list_window, null);  
+        	 View view = layoutInflater.inflate(MispCommonIDName.layout_misp_pop_list_window, null);  
 
            
          
-            listView  = (ListView) view.findViewById(R.id.misp_pop_list);
+            listView  = (ListView) view.findViewById(MispCommonIDName.misp_pop_list);
             
 
             fatherAdapter = new GroupAdapter(contex, dataList);  

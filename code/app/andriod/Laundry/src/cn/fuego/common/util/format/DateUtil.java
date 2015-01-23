@@ -172,4 +172,12 @@ public class DateUtil
 		
 	}
 
+	public static CharSequence DateToShotString(Date datetime)
+	{
+		String strTime=null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");		
+		strTime=sdf.format(datetime);
+		return strTime;
+	}
+
 }
