@@ -104,13 +104,13 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		 View gridViewLayout = rootView.findViewById(R.id.home_gridview_layout);
 		 
 		 int gridHeight = (int)(this.getActivityHeight() - getResources().getDisplayMetrics().density*(UIDimenConstant.TITLE_HEIGHT_DP+UIDimenConstant.TAB_BAR_HEIGHT_DP) - (this.getScreenWidth()*(UIDimenConstant.AD_L_W_RATIO+3*UIDimenConstant.HOME_BTN_L_W_RATIO)));
-		 if(gridHeight <getResources().getDisplayMetrics().density*50)
+		 if(gridHeight <getResources().getDisplayMetrics().density*100)
 		 {
-			 gridViewLayout.getLayoutParams().height = gridHeight;
+			 gridViewLayout.getLayoutParams().height = (int)(getResources().getDisplayMetrics().density*100);
 		 }
 		 else
 		 {
-			 gridViewLayout.getLayoutParams().height = (int)(getResources().getDisplayMetrics().density*50);
+			 gridViewLayout.getLayoutParams().height = gridHeight;//
 		 }
 		 
 		 
