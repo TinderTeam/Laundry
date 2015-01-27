@@ -1,4 +1,4 @@
-package cn.fuego.misp.ui.common.upgrage;
+package cn.fuego.misp.ui.common.upgrade;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -221,7 +221,7 @@ public class UpgradeActivity extends MispBaseActivtiy
 								if(interceptFlag)
 								{
 									mhandler.sendEmptyMessage(DOWNLOAD_CANCEL);
-									return;
+ 									return;
 
 								}
 

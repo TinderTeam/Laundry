@@ -102,7 +102,7 @@ public class UserFragment extends BaseFragment implements OnClickListener
 			LoginReq req = new LoginReq();
 			req.setObj(AppCache.getInstance().getUser());
 			WebServiceContext.getInstance().getUserManageRest(this).logout(req);
-			MemoryCache.setToken(null);
+
 			AppCache.getInstance().clear();
 			intent.setClass(this.getActivity(), MainTabbarActivity.class);
 

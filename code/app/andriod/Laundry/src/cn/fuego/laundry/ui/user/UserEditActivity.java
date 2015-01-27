@@ -29,7 +29,7 @@ public class UserEditActivity extends BaseActivtiy
 		super.showMessage(message);
 		if(message.isSuccess())
 		{
-			AppCache.getInstance().loadLoginInfo(customer);
+			AppCache.getInstance().update(customer);
 			this.finish();
 			
 		}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/misp_tilte_with_back_layout" />
+	<ScrollView android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:background="@color/white" >
+	
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" >
+	
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:gravity="center_vertical"
+	            android:orientation="horizontal" >
+	
+	            <TextView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginRight="10dp"
+	                android:text="商品名称:"
+	                android:textColor="#777777"
+	                 />
+	
+	            <TextView
+	                android:id="@+id/misp_pay_order_name"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:gravity="right"
+	                android:text="测试的商品"
+	                android:textColor="#333333"
+	                />
+	        </LinearLayout>
+	
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:gravity="center_vertical"
+	            android:orientation="horizontal" >
+	
+	            <TextView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginRight="10dp"
+	                android:text="商品描述:"
+	                android:textColor="#777777"
+	                />
+	
+	            <TextView
+	                android:id="@+id/misp_pay_order_desp"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:gravity="right"
+	                android:text="该测试商品的详细描述"
+	                android:textColor="#333333"
+	               />
+	        </LinearLayout>
+	
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:gravity="center_vertical"
+	            android:orientation="horizontal" >
+	
+	            <TextView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginRight="10dp"
+	                android:text="商品价格:"
+	                android:textColor="#777777"
+	                />
+	
+	            <TextView
+	                android:id="@+id/misp_pay_order_price"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:gravity="right"
+	                android:text="0.01元"
+	                android:textColor="#ff6600"
+	              />
+	        </LinearLayout>
+	
+	        <Button
+	            android:id="@+id/misp_pay_submit_btn"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:onClick="pay"
+	            android:text="支付"
+	             />
+	 
+	    </LinearLayout>
+
+	</ScrollView>
+ </LinearLayout>

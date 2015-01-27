@@ -9,8 +9,8 @@ import cn.fuego.laundry.constant.PayOptionEnum;
 public class OrderJson implements Serializable
 {
 	private int order_id;
-	private String order_code;
-	private String order_name;
+	private String order_code ="11111111";
+	private String order_name ="洗衣";
 	private int company_id;
 	private int user_id;
 	private String user_name;

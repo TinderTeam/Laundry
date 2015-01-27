@@ -12,7 +12,7 @@ import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.common.MispImageActivity;
-import cn.fuego.misp.ui.common.upgrage.UpgradeActivity;
+import cn.fuego.misp.ui.common.upgrade.UpgradeActivity;
 import cn.fuego.misp.ui.info.MispInfoListFragment;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 import cn.fuego.misp.ui.model.ImageDisplayInfo;

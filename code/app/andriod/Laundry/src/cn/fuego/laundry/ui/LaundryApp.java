@@ -19,6 +19,7 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.misp.dao.SharedPreUtil;
 import cn.fuego.misp.service.MemoryCache;
 import android.app.Application;
 import android.content.pm.PackageInfo;
@@ -40,18 +41,23 @@ public class LaundryApp extends Application
 
 		try
 		{
-			PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(),0);
-			AppCache.getInstance().setVersionCode(packInfo.versionCode);
-			AppCache.getInstance().setVersionNname(packInfo.versionName);
-			AppCache.getInstance().loadCompany();
-			MemoryCache.setDensity(getResources().getDisplayMetrics().density);
-		 
-	 
+			SharedPreUtil.initSharedPreference(getApplicationContext());
 			
 			//initial image cache
 			initImageCache();
 			//initial baidu 
 			SDKInitializer.initialize(getApplicationContext());
+
+			PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(),0);
+			MemoryCache.setVersionCode(packInfo.versionCode);
+			MemoryCache.setVersionNname(packInfo.versionName);
+			MemoryCache.setDensity(getResources().getDisplayMetrics().density);
+
+			AppCache.getInstance().loadCompany();
+			AppCache.getInstance().load();
+		 
+			
+
 
 		} catch (NameNotFoundException e)
 		{

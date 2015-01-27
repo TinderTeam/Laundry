@@ -28,6 +28,7 @@ import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.constant.ClientTypeEnum;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
+import cn.fuego.misp.dao.SharedPreUtil;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
@@ -38,9 +39,7 @@ import cn.fuego.misp.webservice.up.model.base.UserJson;
 public class LoginActivity extends BaseActivtiy implements OnClickListener
 {
 	private FuegoLog log = FuegoLog.getLog(getClass());
-	private Button loginBtn;
     private EditText textName,textPwd;
-    private String 	userName,password;
     private ProgressDialog proDialog;
 	private int[] buttonIDList = new int[]{R.id.user_login_submit,R.id.user_login_find_password,R.id.user_login_to_register};
 
@@ -74,13 +73,52 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
        
 		
 	}
+    
+	@Override
+	public void onClick(View v)
+	{
+		
  
-	private void checkLogin()
+		switch(v.getId())
+		{
+			case R.id.user_login_submit:
+			{
+				proDialog =ProgressDialog.show(this, "请稍等", "登录信息验证中……");
+				String userName = textName.getText().toString().trim();
+				// password =textPwd.getText().toString();
+				String password = textPwd.getText().toString().trim();
+				checkLogin(userName,password);
+			}
+			break;
+			case R.id.user_login_find_password:
+			{
+				Intent i = new Intent();
+				i.putExtra(UserRegisterActivity.OPERTATE_NAME, UserRegisterActivity.FIND_PWD);
+				i.setClass(this, UserRegisterActivity.class);
+		        this.startActivity(i);
+
+			}
+			break;
+			case R.id.user_login_to_register:
+			{
+				Intent i = new Intent();
+				i.putExtra(UserRegisterActivity.OPERTATE_NAME, UserRegisterActivity.REGISTER);
+
+				i.setClass(this, UserRegisterActivity.class);
+		        this.startActivity(i);
+			}
+			break;
+			
+		}
+
+		
+	}
+
+ 
+	private void checkLogin(String userName,String password)
 	{
 
-		userName = textName.getText().toString().trim();
-		// password =textPwd.getText().toString();
-		password = textPwd.getText().toString().trim();
+
 		LoginReq req = new LoginReq();
 		req.getObj().setPassword(password);
 		req.getObj().setUser_name(userName);
@@ -176,7 +214,15 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 	private void loginSuccess(String token,UserJson user,CustomerJson customer)
 	{
 		MemoryCache.setToken(token);
-		AppCache.getInstance().loadLoginInfo(user, customer);
+		AppCache.getInstance().update(token,user, customer);
+		
+		/**存储登录用户**/
+		
+	
+ 
+ 		SharedPreferences userInfo = getSharedPreferences(SharedPreferenceConst.UESR_INFO, Context.MODE_PRIVATE);
+ 		userInfo.edit().putString(SharedPreferenceConst.NAME, user.getUser_name()).commit();
+ 		userInfo.edit().putString(SharedPreferenceConst.PASSWORD, user.getPassword()).commit();
 	 
 	      
 		Class clazz = (Class) this.getIntent().getSerializableExtra(JUMP_SOURCE);
@@ -197,46 +243,6 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 		 return tm.getDeviceId();
 	}
 
-	@Override
-	public void onClick(View v)
-	{
-		
-		if(v.getId() == R.id.user_btn_to_login)
-		{
-			
-		}
-
-		switch(v.getId())
-		{
-			case R.id.user_login_submit:
-			{
-				proDialog =ProgressDialog.show(this, "请稍等", "登录信息验证中……");
-				checkLogin();
-			}
-			break;
-			case R.id.user_login_find_password:
-			{
-				Intent i = new Intent();
-				i.putExtra(UserRegisterActivity.OPERTATE_NAME, UserRegisterActivity.FIND_PWD);
-				i.setClass(this, UserRegisterActivity.class);
-		        this.startActivity(i);
-
-			}
-			break;
-			case R.id.user_login_to_register:
-			{
-				Intent i = new Intent();
-				i.putExtra(UserRegisterActivity.OPERTATE_NAME, UserRegisterActivity.REGISTER);
-
-				i.setClass(this, UserRegisterActivity.class);
-		        this.startActivity(i);
-			}
-			break;
-			
-		}
-
-		
-	}
 
 	
  

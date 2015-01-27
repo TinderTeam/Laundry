@@ -8,6 +8,7 @@
 */ 
 package cn.fuego.misp.webservice.up.model.base;
 
+import java.io.Serializable;
 import java.util.Date;
 
  /** 
@@ -17,7 +18,7 @@ import java.util.Date;
  * @date 2014-11-1 下午12:13:54 
  *  
  */
-public class UserJson
+public class UserJson implements Serializable
 {
 	private int user_id;
 	private String password;

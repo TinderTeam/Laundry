@@ -7,6 +7,8 @@ import cn.fuego.laundry.webservice.up.model.GetCustomerRsp;
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.model.base.DeliveryInfoJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.dao.SharedPreUtil;
+import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.webservice.up.model.GetCompanyReq;
@@ -17,15 +19,19 @@ import cn.fuego.misp.webservice.up.model.base.UserJson;
 public class AppCache
 {
 	private FuegoLog log = FuegoLog.getLog(getClass());
+	
+	public static String PAY_NOTIFY_URL = MemoryCache.getWebContextUrl() + "/index.php/AlipayNotify/GetNotify";
 
 	private UserJson user;
 	private CustomerJson customer;
 	private CompanyJson company;
 	private static AppCache instance;
 	private  int company_id = 1;
+ 
 	
-	private String versionNname;
-	private int versionCode;
+	public static final String USER_CACHE="user";
+	public static final String CUSTOMER_CACHE="customer";
+	public static final String TOKEN_CACHE="token";
 	
 
 	
@@ -42,27 +48,8 @@ public class AppCache
 		return company_id;
 	}
  
-	public String getVersionNname()
-	{
-		return versionNname;
-	}
-
-	public int getVersionCode()
-	{
-		return versionCode;
-	}
-	
-	
-
-	public void setVersionNname(String versionNname)
-	{
-		this.versionNname = versionNname;
-	}
-
-	public void setVersionCode(int versionCode)
-	{
-		this.versionCode = versionCode;
-	}
+ 
+ 
 
 	private AppCache()
 	{
@@ -83,8 +70,12 @@ public class AppCache
 	
 	public void clear()
 	{
+		MemoryCache.setToken(null);
 		user = null;
 		customer = null;
+		SharedPreUtil.getInstance().delete(USER_CACHE);
+		SharedPreUtil.getInstance().delete(CUSTOMER_CACHE);
+		SharedPreUtil.getInstance().delete(TOKEN_CACHE);
 				
 	}
 
@@ -92,16 +83,27 @@ public class AppCache
 	{
 		return customer;
 	}
-	public void loadLoginInfo(CustomerJson customer)
+	public void update(CustomerJson customer)
 	{
 		this.customer = customer;
 	}
-	public void loadLoginInfo(UserJson user,CustomerJson customer)
+	public void update(String token,UserJson user,CustomerJson customer)
 	{
 		this.user = user;
 		this.customer = customer;
+		SharedPreUtil.getInstance().put(USER_CACHE, user);
+		SharedPreUtil.getInstance().put(CUSTOMER_CACHE, customer);
+		SharedPreUtil.getInstance().put(TOKEN_CACHE,token );
+
 	}
 
+	public void load()
+	{
+		this.user =  (UserJson) SharedPreUtil.getInstance().get(USER_CACHE);
+		this.customer = (CustomerJson) SharedPreUtil.getInstance().get(CUSTOMER_CACHE);
+		MemoryCache.setToken((String) SharedPreUtil.getInstance().get(TOKEN_CACHE));
+		
+	}
  
 	public UserJson getUser()
 	{
@@ -150,6 +152,7 @@ public class AppCache
 		}
 		return info;
 	}
+
 	
 
 	

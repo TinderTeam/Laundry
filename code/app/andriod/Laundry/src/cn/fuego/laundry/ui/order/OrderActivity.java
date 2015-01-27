@@ -3,19 +3,18 @@ package cn.fuego.laundry.ui.order;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import cn.fuego.common.log.FuegoLog;
-import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.PayOptionEnum;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.ui.home.HomeFragment;
+import cn.fuego.laundry.webservice.up.model.CreateOrderRsp;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.http.MispHttpHandler;
@@ -108,7 +107,7 @@ public class OrderActivity extends MispInfoListActivity
 		else if(CommonItemMeta.SUBMIT_BUTTON == item.getLayoutType())
 		{
 
-
+			submitOrder();
 		}
 	}
 	
@@ -124,7 +123,11 @@ public class OrderActivity extends MispInfoListActivity
 				 proDialog.dismiss();
 				 if(message.isSuccess())
 				 {
-					 jumpToOrderList();
+					 CreateOrderRsp rsp = (CreateOrderRsp) message.getMessage().obj;
+					 if(null != rsp.getObj())
+					 {
+						 jumpToOrderList(rsp.getObj());
+					 }
 				 }
 				 else
 				 {
@@ -138,18 +141,18 @@ public class OrderActivity extends MispInfoListActivity
 	}
  
  
-	private void jumpToOrderList()
+	private void jumpToOrderList(OrderJson   order)
 	{
-		OrderJson   order = CartProduct.getInstance().getOrderInfo().getOrder();
-		if(PayOptionEnum.ONLINE_PAY.getStrValue().equals(order.getPay_option()))
+ 		if(PayOptionEnum.ONLINE_PAY.getStrValue().equals(order.getPay_option()))
 		{
 			MispPayParameter parameter = new MispPayParameter();
 			parameter.setOrder_code(order.getOrder_code());
 			parameter.setOrder_name(order.getOrder_name());
-			parameter.setOrder_desc(order.getOrder_note());
+			parameter.setOrder_desc("描述");
 			parameter.setOrder_price(String.valueOf(order.getTotal_price()));
+			parameter.setNotify_url(AppCache.PAY_NOTIFY_URL);
 			
- 			MispPayActivity.jump(this, parameter);
+			MispPayActivity.jump(this, parameter);
 		}
 		else
 		{
@@ -157,9 +160,9 @@ public class OrderActivity extends MispInfoListActivity
 			i.setClass(this, MainTabbarActivity.class);
 			i.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(HomeFragment.class));
 	        startActivity(i);
-	        CartProduct.getInstance().clearCart();
-	        this.finish();
 		}
+        CartProduct.getInstance().clearCart();
+        this.finish();
 
 	}
 	@Override

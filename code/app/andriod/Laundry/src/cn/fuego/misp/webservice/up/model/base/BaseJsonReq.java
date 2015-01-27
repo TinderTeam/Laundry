@@ -20,7 +20,7 @@ public class BaseJsonReq implements Serializable
  	protected String token = MemoryCache.getToken();
  	protected int app_id = AppCache.getInstance().getCompany_id();
 	protected String clientType = ClientTypeEnum.ANDRIOD_CLIENT.getStrValue();		//
-	protected int clientVersion = AppCache.getInstance().getVersionCode();	//
+	protected int clientVersion = MemoryCache.getVersionCode();	//
 	public String getToken()
 	{
 		return token;

@@ -10,16 +10,18 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.ui.home.HomeFragment;
+import cn.fuego.misp.ui.base.MispBaseActivtiy;
 
 import com.alipay.sdk.app.PayTask;
 
-public class MispPayActivity extends Activity
+public class MispPayActivity extends MispBaseActivtiy
 {
 
 	public static final String PARTNER = "2088811061975475";
@@ -32,6 +34,11 @@ public class MispPayActivity extends Activity
 	private static final int SDK_CHECK_FLAG = 2;
 	
 	public static final String PAY_PARAMETER = "pay_parameter";
+	
+	private MispPayParameter payParamerter;
+	private TextView nameView;
+	private TextView despView;
+	private TextView priceView;
 
 	public static void jump(Activity activity,MispPayParameter parameter)
 	{
@@ -39,7 +46,44 @@ public class MispPayActivity extends Activity
 		i.setClass(activity, MispPayActivity.class);
 		i.putExtra(PAY_PARAMETER, parameter);
 		activity.startActivity(i);
+
   	}
+	
+ 
+	@Override
+	public void initRes()
+	{
+		this.activityRes.setName("在线支付");
+		this.activityRes.setAvtivityView(R.layout.misp_pay_page);
+		this.activityRes.getButtonIDList().add(R.id.misp_pay_submit_btn);
+		payParamerter = (MispPayParameter) this.getIntent().getSerializableExtra(PAY_PARAMETER);
+
+		
+	}
+	
+	@Override
+	public void onClick(View v)
+	{
+		pay();
+	}
+
+
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		nameView = (TextView) findViewById(R.id.misp_pay_order_name);
+		
+		nameView.setText(payParamerter.getOrder_name());
+		
+		despView = (TextView) findViewById(R.id.misp_pay_order_desp);
+		despView.setText(payParamerter.getOrder_desc());
+		priceView = (TextView) findViewById(R.id.misp_pay_order_price);
+		priceView.setText(payParamerter.getOrder_price());
+
+  
+	}
 	private Handler mHandler = new Handler()
 	{
 		public void handleMessage(Message msg)
@@ -87,20 +131,14 @@ public class MispPayActivity extends Activity
 		};
 	};
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.pay_main);
-	}
+
 
 	/**
 	 * call alipay sdk pay. 调用SDK支付
 	 * 
 	 */
-	public void pay(View v)
+	public void pay()
 	{
-		MispPayParameter payParamerter = (MispPayParameter) this.getIntent().getSerializableExtra(PAY_PARAMETER);
 		
 		String orderInfo = getOrderInfo(payParamerter);
 		String sign = sign(orderInfo,payParamerter.getRsa_private());
@@ -250,5 +288,6 @@ public class MispPayActivity extends Activity
 	{
 		return "sign_type=\"RSA\"";
 	}
+
 
 }
