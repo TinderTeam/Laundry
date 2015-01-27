@@ -86,6 +86,8 @@ public class AppCache
 	public void update(CustomerJson customer)
 	{
 		this.customer = customer;
+		SharedPreUtil.getInstance().put(CUSTOMER_CACHE, customer);
+
 	}
 	public void update(String token,UserJson user,CustomerJson customer)
 	{

@@ -102,7 +102,12 @@
 		        android:verticalSpacing="10dp" />
                 
             </LinearLayout>
-              <LinearLayout
+              <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+
+                <Button android:id="@+id/home_btn_direct_order" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/home_direct_order" />
+            </LinearLayout><LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <Button android:id="@+id/home_btn_service_phone" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/home_service_phone" />
+            </LinearLayout><LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
  >
@@ -116,27 +121,8 @@
                 
                 
             </LinearLayout>
-             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <Button
-                    android:id="@+id/home_btn_service_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/home_service_phone"
-                   />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/home_btn_direct_order"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/home_direct_order"
-                    />
-            </LinearLayout>
+             
+            
         </LinearLayout>
     </ScrollView>
         

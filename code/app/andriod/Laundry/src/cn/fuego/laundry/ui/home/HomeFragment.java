@@ -110,7 +110,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		 }
 		 else
 		 {
-			 gridViewLayout.getLayoutParams().height = gridHeight;
+			 gridViewLayout.getLayoutParams().height = (int)(getResources().getDisplayMetrics().density*50);
 		 }
 		 
 		 

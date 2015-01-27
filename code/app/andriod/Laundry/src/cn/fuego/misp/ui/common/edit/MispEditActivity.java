@@ -16,7 +16,7 @@ public class MispEditActivity extends BaseActivtiy
 {
 
 	public static final String PAY_PARAMETER = "pay_parameter";
-	public static final String data;
+	public   String data ;
  	@Override
 	public void handle(MispHttpMessage message)
 	{
@@ -28,7 +28,7 @@ public class MispEditActivity extends BaseActivtiy
 	public void initRes()
 	{
 		data = (String) this.getIntent().getSerializableExtra(PAY_PARAMETER);
-		this.activityRes.setName(imageInfo.getTilteName());
+		 
 		this.activityRes.setAvtivityView(R.layout.misp_image_display);
 		
 	}
