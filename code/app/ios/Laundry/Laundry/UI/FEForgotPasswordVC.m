@@ -7,8 +7,20 @@
 //
 
 #import "FEForgotPasswordVC.h"
+#import "UIImage+LogN.h"
+#import "FELaundryWebService.h"
+#import "FEVerifyCodeRequest.h"
+#import "FEVerifyCodeResponse.h"
+#import "FEResetPasswordRequest.h"
 
 @interface FEForgotPasswordVC ()
+@property (strong, nonatomic) IBOutlet UIButton *getCodeButton;
+@property (strong, nonatomic) IBOutlet UITextField *phoneTextField;
+@property (strong, nonatomic) IBOutlet UITextField *codeTextFeild;
+@property (strong, nonatomic) IBOutlet UITextField *passwordTextFeild;
+@property (strong, nonatomic) NSTimer *timer;
+@property (assign, nonatomic) NSInteger totalTime;
+@property (nonatomic, strong) NSString *code;
 
 @end
 
@@ -18,11 +30,54 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = kString(@"找回密码");
+    [self.getCodeButton setBackgroundImage:[UIImage imageFromColor:kColor(255, 100, 63, 1)] forState:UIControlStateNormal];
+    _totalTime = 60;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)getCode:(id)sender {
+    [self requestGetCode];
+}
+
+-(void)requestGetCode{
+    __weak typeof(self) weaksekf = self;
+    [[FELaundryWebService sharedInstance] request:[[FEVerifyCodeRequest alloc] initWithPhoneNumber:self.phoneTextField.text] responseClass:[FEVerifyCodeResponse class] response:^(NSError *error, id response) {
+        FEVerifyCodeResponse *rsp = response;
+        if (!error && rsp.errorCode.integerValue == 0) {
+            weaksekf.getCodeButton.enabled = NO;
+            weaksekf.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:weaksekf selector:@selector(updateTime) userInfo:nil repeats:YES];
+            weaksekf.code = rsp.obj;
+        }
+    }];
+}
+
+-(void)updateTime{
+    
+    [self.getCodeButton setTitle:[NSString stringWithFormat:@"%ld's",(long)_totalTime] forState:UIControlStateDisabled];
+    _totalTime--;
+    if (_totalTime == 0) {
+        self.getCodeButton.enabled = YES;
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
+
+- (IBAction)resetPassword:(id)sender {
+    if ([self.codeTextFeild.text isEqualToString:self.code]) {
+        if (self.passwordTextFeild.text.length >= 6) {
+            [[FELaundryWebService sharedInstance] request:[[FEResetPasswordRequest alloc] initWithUserName:self.passwordTextFeild.text password:self.passwordTextFeild.text] responseClass:[FEBaseResponse class] response:^(NSError *error, id response) {
+                FEBaseResponse *rsp = response;
+                if (!error && !rsp.errorCode.boolValue) {
+                    NSLog(@"success");
+                }
+            }];
+        }
+    }
+    
 }
 
 /*

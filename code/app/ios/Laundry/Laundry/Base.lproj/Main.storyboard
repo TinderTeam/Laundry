@@ -698,7 +698,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="i4h-J9-6Dj" kind="show" id="Nki-LW-Wj8"/>
+                                            <segue destination="i4h-J9-6Dj" kind="show" id="HxD-uZ-7YD"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -872,12 +872,12 @@
         <scene sceneID="wYR-3V-qEt">
             <objects>
                 <tableViewController id="i4h-J9-6Dj" customClass="FEForgotPasswordVC" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="oNR-DG-XcL" customClass="FETableView">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="oNR-DG-XcL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="OpK-tc-Tmz">
-                            <rect key="frame" x="0.0" y="264" width="600" height="331"/>
+                            <rect key="frame" x="0.0" y="264" width="600" height="338"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOk-U3-fJo" customClass="FEButton">
@@ -890,7 +890,7 @@
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <action selector="registAction:" destination="yTe-XN-s5P" eventType="touchUpInside" id="yKA-OB-PQH"/>
+                                        <action selector="resetPassword:" destination="i4h-J9-6Dj" eventType="touchUpInside" id="bL5-xN-LPF"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -903,7 +903,7 @@
                         <sections>
                             <tableViewSection id="ffu-i3-jlx">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="45" id="bop-Ad-o27">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="45" id="bop-Ad-o27">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bop-Ad-o27" id="EYT-2t-jGQ">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -924,7 +924,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="45" id="WcE-Pt-q6U">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="45" id="WcE-Pt-q6U">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WcE-Pt-q6U" id="FAj-RE-ECQ">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -948,6 +948,9 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="getCode:" destination="i4h-J9-6Dj" eventType="touchUpInside" id="Ela-v9-263"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -963,7 +966,7 @@
                             </tableViewSection>
                             <tableViewSection id="6Nc-ST-PHB">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="45" id="r6D-Wv-aBp">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="45" id="r6D-Wv-aBp">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r6D-Wv-aBp" id="pBX-lY-nca">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -992,6 +995,12 @@
                             <outlet property="delegate" destination="i4h-J9-6Dj" id="iUN-Cq-EYW"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="codeTextFeild" destination="ZeU-kk-nZ0" id="EoD-14-eO9"/>
+                        <outlet property="getCodeButton" destination="5eY-po-z4c" id="trC-nr-I0T"/>
+                        <outlet property="passwordTextFeild" destination="HGJ-8C-FyL" id="gEH-JD-1X0"/>
+                        <outlet property="phoneTextField" destination="rEs-iH-w5A" id="XCq-0P-0FX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UzV-Uf-OCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

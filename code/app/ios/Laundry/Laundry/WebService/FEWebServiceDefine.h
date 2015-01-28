@@ -21,6 +21,7 @@
 #define __METHOD_ModifyPassword     @"index.php/Index/ModifyPassword"
 #define __METHOD_Register           @"index.php/Index/Register"
 #define __METHOD_SendVerifyCode     @"index.php/UserManage/SendVerifyCode"
+#define __METHOD_ResetPsw           @"index.php/Index/ResetPassword"
 
 //AD manager
 #define __METHOD_GetAD             @"laundry.php/ADManage/LoadAll"
