@@ -7,7 +7,9 @@ import java.util.Map;
 
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.constant.PriceTypeEnum;
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
+import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.model.base.ProductJson;
@@ -24,6 +26,7 @@ public class CartProduct
 	{
 		orderInfo.getOrder().setTotal_count(getTotalCount());
 		orderInfo.getOrder().setTotal_price(getTotalPrice());
+		orderInfo.getOrder().setPrice_type(getOrderPriceType());
 		return orderInfo;
 	}
 
@@ -33,6 +36,16 @@ public class CartProduct
 		 
 	}
 	
+	public String getOrderDispPrice()
+	{
+		String totalPrice = String.valueOf(CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price());
+		if(PriceTypeEnum.FLOAT_PRICE.getStrValue().equals(CartProduct.getInstance().getOrderInfo().getOrder().getPrice_type()))
+		{
+			totalPrice = PriceTypeEnum.FLOAT_PRICE.getStrValue();
+		}
+		return totalPrice;
+	}
+
 	
 	public void clearCart()
 	{
@@ -47,12 +60,17 @@ public class CartProduct
 	public void setDefaultOrderInfo()
 	{
 		OrderJson order =  this.orderInfo.getOrder();
-		order.setUser_id(AppCache.getInstance().getUser().getUser_id());
-		order.setUser_name(AppCache.getInstance().getUser().getUser_name());
-		order.setTake_addr(AppCache.getInstance().getCustomer().getAddr());
-		order.setDelivery_addr(AppCache.getInstance().getCustomer().getAddr());
-		order.setContact_name(AppCache.getInstance().getCustomer().getCustomer_name());
-		order.setPhone(AppCache.getInstance().getCustomer().getPhone());
+		CustomerJson customer = AppCache.getInstance().getCustomer();
+		if(null != customer)
+		{
+			order.setUser_id(customer.getUser_id());
+			order.setUser_name(customer.getUser_name());
+			order.setTake_addr(customer.getAddr());
+			order.setDelivery_addr(customer.getAddr());
+			order.setContact_name(customer.getCustomer_name());
+			order.setPhone(customer.getPhone());
+		}
+
 	}
 	
 	public synchronized static CartProduct getInstance()
@@ -98,10 +116,16 @@ public class CartProduct
 	public void addSelected(int productID)
 	{
 		OrderDetailJson detail = new OrderDetailJson();
+		
 		ProductJson product = getProductByID(productID);
 		detail.setProduct_id(productID);
 		detail.setProduct_name(product.getProduct_name());
+		detail.setPrice_type(product.getPrice_type());
+		detail.setProduct_describe(product.getDescribe());
+		detail.setProduct_img(product.getImg());
 		detail.setCurrent_price(product.getPrice());
+		detail.setOriginal_price(product.getOriginal_price());
+		
 		orderInfo.getOrderDetailList().add(detail);
 	}
 
@@ -174,6 +198,17 @@ public class CartProduct
 		return null;
 	}
  
+	public String getOrderPriceType()
+	{
+ 		for(OrderDetailJson e : orderInfo.getOrderDetailList())
+		{
+			if(PriceTypeEnum.FLOAT_PRICE.getStrValue().equals(e.getPrice_type()))
+			{
+				return PriceTypeEnum.FLOAT_PRICE.getStrValue();
+			}
+ 		}
+		return PriceTypeEnum.FIX_PRICE.getStrValue();
+	}
 	
 
 }

@@ -91,11 +91,13 @@ public class AppCache
 	}
 	public void update(String token,UserJson user,CustomerJson customer)
 	{
+		MemoryCache.setToken(token);
 		this.user = user;
 		this.customer = customer;
 		SharedPreUtil.getInstance().put(USER_CACHE, user);
 		SharedPreUtil.getInstance().put(CUSTOMER_CACHE, customer);
 		SharedPreUtil.getInstance().put(TOKEN_CACHE,token );
+		
 
 	}
 
@@ -104,6 +106,8 @@ public class AppCache
 		this.user =  (UserJson) SharedPreUtil.getInstance().get(USER_CACHE);
 		this.customer = (CustomerJson) SharedPreUtil.getInstance().get(CUSTOMER_CACHE);
 		MemoryCache.setToken((String) SharedPreUtil.getInstance().get(TOKEN_CACHE));
+	    CartProduct.getInstance().setDefaultOrderInfo();
+
 		
 	}
  

@@ -18,6 +18,7 @@ public class OrderDetailJson implements Serializable
 	
 	private float current_price;
  	private float original_price;
+ 	private String price_type;
 	private String product_img;
 	private String product_status;
 	private String product_update_time;
@@ -26,6 +27,16 @@ public class OrderDetailJson implements Serializable
 	private String detail_info;
 	
 	
+	
+ 
+	public String getPrice_type()
+	{
+		return price_type;
+	}
+	public void setPrice_type(String price_type)
+	{
+		this.price_type = price_type;
+	}
 	public int getQuantity()
 	{
 		return quantity;

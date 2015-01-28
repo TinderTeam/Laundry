@@ -26,6 +26,7 @@ import antistatic.spinnerwheel.OnWheelChangedListener;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.constant.PriceTypeEnum;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.home.HomeFragment;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
@@ -161,7 +162,8 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		else
 		{
 			this.totalCountView.setText(String.valueOf(CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count()));
-			this.totalPriceView.setText(String.valueOf(CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price()));
+
+			this.totalPriceView.setText(CartProduct.getInstance().getOrderDispPrice());
 			repaint();
 		}
 	}

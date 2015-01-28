@@ -23,6 +23,8 @@ public class OrderJson implements Serializable
 	private String operater_name;
 	private String order_type = OrderTypeEnum.NORMAL_ORDER.getStrValue() ;
 	private String order_note ="";
+	
+	private String price_type;
 	private float total_price;
 	private int total_count;
 	
@@ -35,6 +37,15 @@ public class OrderJson implements Serializable
 	private String phone;
 	
 	
+	
+	public String getPrice_type()
+	{
+		return price_type;
+	}
+	public void setPrice_type(String price_type)
+	{
+		this.price_type = price_type;
+	}
 	public int getCompany_id()
 	{
 		return company_id;

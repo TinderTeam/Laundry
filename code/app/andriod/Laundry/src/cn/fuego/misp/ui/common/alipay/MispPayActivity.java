@@ -24,11 +24,7 @@ import com.alipay.sdk.app.PayTask;
 public class MispPayActivity extends MispBaseActivtiy
 {
 
-	public static final String PARTNER = "2088811061975475";
-	public static final String SELLER = "996825888@qq.com";
-	public static final String RSA_PRIVATE = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAOVjx6iMMZgkgIndiKHoerD18LWnpjzIHEA6oyWAd0UaN5iWAoDeg71PW7h+k5ZPIJ8XCzHLj9PSBKrEKg8gCjKJxH7jR1hDaodL4Vm4HgOmf6XdhFxZOM0cy3NyD4sorFqMca5r1X5EkenDYkFjXmrwKaRifDOWRfGAf6RrWzxbAgMBAAECgYEA35m6xp4Zvc9fCIRMql5eMl8aS0hnb/o0J5vA6k5mdJKQvQkE2a+NRRy1MIsZvDvXdZxVyi0+PuEKsZbT1LiLlk0xZl+EmiXDRSYR6Wsz8LpT7edRhrAJj9IusPV1TDgghVIXmkEYT5dpRLke9l1sYQFWQb4rr6vjrnPxaajbhdECQQD57+1hSYmVX6GZQuZLhnlQt/SlV7Tz45zVBmcd4ZlZ877a19WsKHMWHDQbU7QNONtJ6CiAWaLycRUUPMDmlXlzAkEA6vRBjMiD59vMrLQyWUiBEKexXeCsypvh5OIFQ2hkiBKw6gIl4QK4uEfC1LxcIg1xfc8N7bn7gUlz6tdajyaXeQJAYFhTijAdwB34HitCuRRiSXJP9TilAWrZNujb8RHY2mryREv1CwMgsgI3N92BR6OGLKw4iJmFDa33sTBmL7yo7wJBALVIPQNo+w18dBGU/3wQCzVUje+HGQtC9ypokfMOqvKqqUIE4kEYnnnhNJx7sQK9KKIPjgmshDee+wdpnf/xoNECQDg8O7/Vm23PAUaiN70t/XU2GT334yb0n6VWcdow9LaRLsajL5c8/MbsGBa8gWw0smrcIyHbS0jLe5A1Gsr0jRg=";
-	public static final String RSA_PUBLIC = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlY8eojDGYJICJ3Yih6Hqw9fC1p6Y8yBxAOqMlgHdFGjeYlgKA3oO9T1u4fpOWTyCfFwsxy4/T0gSqxCoPIAoyicR+40dYQ2qHS+FZuB4Dpn+l3YRcWTjNHMtzcg+LKKxajHGua9V+RJHpw2JBY15q8CmkYnwzlkXxgH+ka1s8WwIDAQAB";
-
+ 
 	private static final int SDK_PAY_FLAG = 1;
 
 	private static final int SDK_CHECK_FLAG = 2;
@@ -221,10 +217,10 @@ public class MispPayActivity extends MispBaseActivtiy
 	public String getOrderInfo(MispPayParameter payParamerter)
 	{
 		// 合作者身份ID
-		String orderInfo = "partner=" + "\"" + PARTNER + "\"";
+		String orderInfo = "partner=" + "\"" + payParamerter.getPartner() + "\"";
 
 		// 卖家支付宝账号
-		orderInfo += "&seller_id=" + "\"" + SELLER + "\"";
+		orderInfo += "&seller_id=" + "\"" + payParamerter.getSeller() + "\"";
 
 		// 商户网站唯一订单号
 		orderInfo += "&out_trade_no=" + "\"" + payParamerter.getOrder_code() + "\"";

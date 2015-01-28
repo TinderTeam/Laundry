@@ -143,11 +143,7 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 		{
 			LoginRsp rsp = (LoginRsp) message.getMessage().obj;
 
-			// 存放个人信息cookie
-//			SharedPreferences userInfo = getSharedPreferences(SharedPreferenceConst.UESR_INFO, Context.MODE_PRIVATE);
-//			userInfo.edit().putString(SharedPreferenceConst.NAME, userName).commit();
-//			userInfo.edit().putString(SharedPreferenceConst.PASSWORD, password).commit();
-//			
+ 	
 			if(!ValidatorUtil.isEmpty(rsp.getToken()) && null != rsp.getUser())
 			{
 				loadCustomer(rsp.getToken(),rsp.getUser());
@@ -213,26 +209,19 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 	
 	private void loginSuccess(String token,UserJson user,CustomerJson customer)
 	{
-		MemoryCache.setToken(token);
-		AppCache.getInstance().update(token,user, customer);
-		
-		/**存储登录用户**/
-		
-	
+ 		AppCache.getInstance().update(token,user, customer);
+	    CartProduct.getInstance().setDefaultOrderInfo();
+
  
- 		SharedPreferences userInfo = getSharedPreferences(SharedPreferenceConst.UESR_INFO, Context.MODE_PRIVATE);
- 		userInfo.edit().putString(SharedPreferenceConst.NAME, user.getUser_name()).commit();
- 		userInfo.edit().putString(SharedPreferenceConst.PASSWORD, user.getPassword()).commit();
-	 
 	      
 		Class clazz = (Class) this.getIntent().getSerializableExtra(JUMP_SOURCE);
+		
 		
 		Intent intent = new Intent(this,MainTabbarActivity.class);
 		intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(clazz));
 		this.startActivity(intent);
 
 
-	    CartProduct.getInstance().setDefaultOrderInfo();
 	    
 		this.finish();
 	}

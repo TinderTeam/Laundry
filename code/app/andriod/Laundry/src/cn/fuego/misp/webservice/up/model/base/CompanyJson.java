@@ -8,10 +8,13 @@ public class CompanyJson
 	private String company_addr;
 	private String company_desp;
 	private String service_phone;
- 	private int ios_version;
-	private int andriod_version;
 	
+	private String alipay_seller;
+	private String alipay_partner;
+	private String alipay_private_key;
 	
+	private String company_status;
+ 
 	public int getCompany_id()
 	{
 		return company_id;
@@ -61,23 +64,40 @@ public class CompanyJson
 	{
 		this.company_addr = company_addr;
 	}
-	public int getIos_version()
+	public String getAlipay_seller()
 	{
-		return ios_version;
+		return alipay_seller;
 	}
-	public void setIos_version(int ios_version)
+	public void setAlipay_seller(String alipay_seller)
 	{
-		this.ios_version = ios_version;
+		this.alipay_seller = alipay_seller;
 	}
-	public int getAndriod_version()
+	public String getAlipay_partner()
 	{
-		return andriod_version;
+		return alipay_partner;
 	}
-	public void setAndriod_version(int andriod_version)
+	public void setAlipay_partner(String alipay_partner)
 	{
-		this.andriod_version = andriod_version;
+		this.alipay_partner = alipay_partner;
 	}
-	
+	public String getAlipay_private_key()
+	{
+		return alipay_private_key;
+	}
+	public void setAlipay_private_key(String alipay_private_key)
+	{
+		this.alipay_private_key = alipay_private_key;
+	}
+	public String getCompany_status()
+	{
+		return company_status;
+	}
+	public void setCompany_status(String company_status)
+	{
+		this.company_status = company_status;
+	}
+ 
+ 
 	
 
 }

@@ -17,8 +17,8 @@ package cn.fuego.laundry.constant;
 */ 
 public enum PriceTypeEnum
 {	
-	FIX_PRICE("固定价格",1),  
-	FLOAT_PRICE("浮动价格",2);
+	FIX_PRICE("固定",1),  
+	FLOAT_PRICE("面议",2);
 	private String strValue;
 	private int intValue;
 	

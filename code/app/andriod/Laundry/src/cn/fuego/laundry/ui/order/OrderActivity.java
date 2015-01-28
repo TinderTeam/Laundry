@@ -23,6 +23,7 @@ import cn.fuego.misp.ui.common.alipay.MispPayActivity;
 import cn.fuego.misp.ui.common.alipay.MispPayParameter;
 import cn.fuego.misp.ui.info.MispInfoListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
+import cn.fuego.misp.webservice.up.model.base.CompanyJson;
 
 public class OrderActivity extends MispInfoListActivity
 {
@@ -151,8 +152,20 @@ public class OrderActivity extends MispInfoListActivity
 			parameter.setOrder_desc("描述");
 			parameter.setOrder_price(String.valueOf(order.getTotal_price()));
 			parameter.setNotify_url(AppCache.PAY_NOTIFY_URL);
+			CompanyJson company = AppCache.getInstance().getCompany();
+			if(null != company)
+			{
+				parameter.setSeller(company.getAlipay_seller());
+				parameter.setPartner(company.getAlipay_partner());
+				parameter.setRsa_private(company.getAlipay_private_key());
+				MispPayActivity.jump(this, parameter);
+
+			}
+			else
+			{
+				showMessage("订单提交成功，支付异常");
+			}
 			
-			MispPayActivity.jump(this, parameter);
 		}
 		else
 		{
