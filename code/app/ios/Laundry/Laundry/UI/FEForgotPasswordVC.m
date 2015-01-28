@@ -68,11 +68,14 @@
 
 - (IBAction)resetPassword:(id)sender {
     if ([self.codeTextFeild.text isEqualToString:self.code]) {
+        
         if (self.passwordTextFeild.text.length >= 6) {
-            [[FELaundryWebService sharedInstance] request:[[FEResetPasswordRequest alloc] initWithUserName:self.passwordTextFeild.text password:self.passwordTextFeild.text] responseClass:[FEBaseResponse class] response:^(NSError *error, id response) {
+            __weak typeof(self) weakself = self;
+            [[FELaundryWebService sharedInstance] request:[[FEResetPasswordRequest alloc] initWithUserName:self.phoneTextField.text password:self.passwordTextFeild.text] responseClass:[FEBaseResponse class] response:^(NSError *error, id response) {
                 FEBaseResponse *rsp = response;
                 if (!error && !rsp.errorCode.boolValue) {
                     NSLog(@"success");
+                    [weakself.navigationController popViewControllerAnimated:YES];
                 }
             }];
         }
