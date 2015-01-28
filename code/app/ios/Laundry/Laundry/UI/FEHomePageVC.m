@@ -14,6 +14,7 @@
 #import "FEGetADResponse.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "FESelectCategoryVC.h"
+#import "FEDataCache.h"
 
 #define __KEY_TITLE @"title"
 #define __KEY_PNG   @"png"
@@ -88,6 +89,7 @@
             FEGetCompanyResponse *rsp = response;
             if (!error && rsp.errorCode.integerValue == 0) {
                 weakself.company = rsp.obj;
+                [FEDataCache sharedInstance].company = rsp.obj;
             }
             dispatch_semaphore_signal(sem);
         }];

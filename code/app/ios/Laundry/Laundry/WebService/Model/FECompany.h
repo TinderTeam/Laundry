@@ -16,7 +16,10 @@
 @property (nonatomic, strong, readonly) NSString *company_addr;
 @property (nonatomic, strong, readonly) NSString *company_desp;
 @property (nonatomic, strong, readonly) NSString *service_phone;
-@property (nonatomic, strong, readonly) NSNumber *ios_version;
-@property (nonatomic, strong, readonly) NSNumber *andriod_version;
+
+@property (nonatomic, strong, readonly) NSString *alipay_seller;
+@property (nonatomic, strong, readonly) NSString *alipay_partner;
+@property (nonatomic, strong, readonly) NSString *alipay_private_key;
+
 
 @end

@@ -20,7 +20,8 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - libPhoneNumber-iOS (0.7.5)
+  - libPhoneNumber-iOS (0.7.6)
+  - OpenSSL (1.0.200)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
@@ -29,12 +30,14 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - libPhoneNumber-iOS (~> 0.7.5)
+  - OpenSSL (~> 1.0.200)
   - SDWebImage (~> 3.7.1)
   - UIAlertView-Blocks (~> 1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
-  libPhoneNumber-iOS: 16b9556d7fdf4819eabeb7b7356fea3373fa47f9
+  libPhoneNumber-iOS: d4316d494d4997c40a6059faf35a970d7f4eb1c0
+  OpenSSL: 4c7be3eca71139f52984542d8c4c0752154d26c3
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   UIAlertView-Blocks: f3271e84372beb97aea115cd1fb26ae66457f12f
 

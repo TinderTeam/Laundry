@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "FEProduct.h"
+#import "FECompany.h"
 
 @interface FEDataCache : NSObject
 +(FEDataCache *)sharedInstance;
 @property (nonatomic, strong, readonly) NSArray *selectProducts;
+@property (nonatomic, strong) FECompany *company;
 
 -(void)getProductForID:(NSNumber *)rid block:(void (^)(NSArray *list))block;
 

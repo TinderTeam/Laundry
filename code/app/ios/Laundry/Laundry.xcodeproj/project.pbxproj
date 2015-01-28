@@ -55,6 +55,18 @@
 		144716591A6E1C62003359FC /* FEOrderDeleteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 144716581A6E1C62003359FC /* FEOrderDeleteRequest.m */; };
 		1447165C1A6E1CFF003359FC /* FEOrderOperationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1447165B1A6E1CFF003359FC /* FEOrderOperationResponse.m */; };
 		14950D621A78CD3C001416A7 /* FEResetPasswordRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D611A78CD3C001416A7 /* FEResetPasswordRequest.m */; };
+		14950D661A7917E2001416A7 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14950D641A7917E2001416A7 /* AlipaySDK.bundle */; };
+		14950D671A7917E2001416A7 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14950D651A7917E2001416A7 /* AlipaySDK.framework */; };
+		14950D6A1A79184B001416A7 /* FEAlipay.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D691A79184B001416A7 /* FEAlipay.m */; };
+		14950D6D1A792092001416A7 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D6C1A792092001416A7 /* Order.m */; };
+		14950D831A7923F0001416A7 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D731A7923F0001416A7 /* base64.m */; };
+		14950D841A7923F0001416A7 /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D761A7923F0001416A7 /* DataSigner.m */; };
+		14950D851A7923F0001416A7 /* DataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D781A7923F0001416A7 /* DataVerifier.m */; };
+		14950D861A7923F0001416A7 /* MD5DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D7A1A7923F0001416A7 /* MD5DataSigner.m */; };
+		14950D871A7923F0001416A7 /* NSDataEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D7C1A7923F0001416A7 /* NSDataEx.m */; };
+		14950D881A7923F0001416A7 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D7E1A7923F0001416A7 /* openssl_wrapper.m */; };
+		14950D891A7923F0001416A7 /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D801A7923F0001416A7 /* RSADataSigner.m */; };
+		14950D8A1A7923F0001416A7 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D821A7923F0001416A7 /* RSADataVerifier.m */; };
 		14DD64A91A6BBB040074D9CA /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DD64A81A6BBB040074D9CA /* CustomIOS7AlertView.m */; };
 		14DD64AC1A6BBB3C0074D9CA /* FEInputAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DD64AB1A6BBB3C0074D9CA /* FEInputAlertView.m */; };
 		14FF4A1A1A66936000DECA7B /* FESelectCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */; };
@@ -188,6 +200,29 @@
 		1447165B1A6E1CFF003359FC /* FEOrderOperationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderOperationResponse.m; sourceTree = "<group>"; };
 		14950D601A78CD3C001416A7 /* FEResetPasswordRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEResetPasswordRequest.h; sourceTree = "<group>"; };
 		14950D611A78CD3C001416A7 /* FEResetPasswordRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEResetPasswordRequest.m; sourceTree = "<group>"; };
+		14950D641A7917E2001416A7 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		14950D651A7917E2001416A7 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = Laundry/Alipay/AlipaySDK.framework; sourceTree = "<group>"; };
+		14950D681A79184B001416A7 /* FEAlipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEAlipay.h; sourceTree = "<group>"; };
+		14950D691A79184B001416A7 /* FEAlipay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEAlipay.m; sourceTree = "<group>"; };
+		14950D6B1A792092001416A7 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		14950D6C1A792092001416A7 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		14950D721A7923F0001416A7 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		14950D731A7923F0001416A7 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
+		14950D741A7923F0001416A7 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		14950D751A7923F0001416A7 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
+		14950D761A7923F0001416A7 /* DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSigner.m; sourceTree = "<group>"; };
+		14950D771A7923F0001416A7 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
+		14950D781A7923F0001416A7 /* DataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataVerifier.m; sourceTree = "<group>"; };
+		14950D791A7923F0001416A7 /* MD5DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5DataSigner.h; sourceTree = "<group>"; };
+		14950D7A1A7923F0001416A7 /* MD5DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5DataSigner.m; sourceTree = "<group>"; };
+		14950D7B1A7923F0001416A7 /* NSDataEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataEx.h; sourceTree = "<group>"; };
+		14950D7C1A7923F0001416A7 /* NSDataEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataEx.m; sourceTree = "<group>"; };
+		14950D7D1A7923F0001416A7 /* openssl_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openssl_wrapper.h; sourceTree = "<group>"; };
+		14950D7E1A7923F0001416A7 /* openssl_wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openssl_wrapper.m; sourceTree = "<group>"; };
+		14950D7F1A7923F0001416A7 /* RSADataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataSigner.h; sourceTree = "<group>"; };
+		14950D801A7923F0001416A7 /* RSADataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataSigner.m; sourceTree = "<group>"; };
+		14950D811A7923F0001416A7 /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
+		14950D821A7923F0001416A7 /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
 		14DD64A71A6BBB040074D9CA /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
 		14DD64A81A6BBB040074D9CA /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
 		14DD64AA1A6BBB3C0074D9CA /* FEInputAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEInputAlertView.h; sourceTree = "<group>"; };
@@ -263,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E569705F7F110B016F064A8F /* libPods.a in Frameworks */,
+				14950D671A7917E2001416A7 /* AlipaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +417,7 @@
 		14469E651A65F9DC00515685 /* Laundry */ = {
 			isa = PBXGroup;
 			children = (
+				14950D631A7917B0001416A7 /* Alipay */,
 				14FF4A691A6766F700DECA7B /* Model */,
 				144350511A6652A6002BB228 /* Categorys */,
 				14469E971A65FAA900515685 /* DB */,
@@ -490,6 +527,43 @@
 			path = DB;
 			sourceTree = "<group>";
 		};
+		14950D631A7917B0001416A7 /* Alipay */ = {
+			isa = PBXGroup;
+			children = (
+				14950D711A7923F0001416A7 /* Util */,
+				14950D6B1A792092001416A7 /* Order.h */,
+				14950D6C1A792092001416A7 /* Order.m */,
+				14950D641A7917E2001416A7 /* AlipaySDK.bundle */,
+				14950D681A79184B001416A7 /* FEAlipay.h */,
+				14950D691A79184B001416A7 /* FEAlipay.m */,
+			);
+			path = Alipay;
+			sourceTree = "<group>";
+		};
+		14950D711A7923F0001416A7 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				14950D721A7923F0001416A7 /* base64.h */,
+				14950D731A7923F0001416A7 /* base64.m */,
+				14950D741A7923F0001416A7 /* config.h */,
+				14950D751A7923F0001416A7 /* DataSigner.h */,
+				14950D761A7923F0001416A7 /* DataSigner.m */,
+				14950D771A7923F0001416A7 /* DataVerifier.h */,
+				14950D781A7923F0001416A7 /* DataVerifier.m */,
+				14950D791A7923F0001416A7 /* MD5DataSigner.h */,
+				14950D7A1A7923F0001416A7 /* MD5DataSigner.m */,
+				14950D7B1A7923F0001416A7 /* NSDataEx.h */,
+				14950D7C1A7923F0001416A7 /* NSDataEx.m */,
+				14950D7D1A7923F0001416A7 /* openssl_wrapper.h */,
+				14950D7E1A7923F0001416A7 /* openssl_wrapper.m */,
+				14950D7F1A7923F0001416A7 /* RSADataSigner.h */,
+				14950D801A7923F0001416A7 /* RSADataSigner.m */,
+				14950D811A7923F0001416A7 /* RSADataVerifier.h */,
+				14950D821A7923F0001416A7 /* RSADataVerifier.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		14DD64A61A6BBAFA0074D9CA /* AlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,6 +668,7 @@
 		AEADF1BE1820F012637853C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14950D651A7917E2001416A7 /* AlipaySDK.framework */,
 				027B1062FF46A8B12B174FC1 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -660,6 +735,7 @@
 			files = (
 				14469E751A65F9DC00515685 /* Main.storyboard in Resources */,
 				14469E7A1A65F9DC00515685 /* LaunchScreen.xib in Resources */,
+				14950D661A7917E2001416A7 /* AlipaySDK.bundle in Resources */,
 				14469E771A65F9DC00515685 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,6 +784,7 @@
 				14469E691A65F9DC00515685 /* main.m in Sources */,
 				14FF4A471A66A79300DECA7B /* FEAD.m in Sources */,
 				144350711A6652A6002BB228 /* UIColor+Hex.m in Sources */,
+				14950D6A1A79184B001416A7 /* FEAlipay.m in Sources */,
 				14DD64AC1A6BBB3C0074D9CA /* FEInputAlertView.m in Sources */,
 				14FF4A6C1A67671400DECA7B /* FEDataCache.m in Sources */,
 				14FF4A871A67ECE900DECA7B /* FESigninRequest.m in Sources */,
@@ -715,6 +792,7 @@
 				14FF4A1A1A66936000DECA7B /* FESelectCategoryVC.m in Sources */,
 				144350221A66408A002BB228 /* FEBasketVC.m in Sources */,
 				14FF4A591A67527000DECA7B /* FECategory.m in Sources */,
+				14950D861A7923F0001416A7 /* MD5DataSigner.m in Sources */,
 				1443506D1A6652A6002BB228 /* NSString+MD5.m in Sources */,
 				144350281A6640EC002BB228 /* FESettingVC.m in Sources */,
 				1443506F1A6652A6002BB228 /* NSString+UUID.m in Sources */,
@@ -728,6 +806,7 @@
 				14469EA01A6612BB00515685 /* FECommonTabbarController.m in Sources */,
 				1443506E1A6652A6002BB228 /* NSString+Number.m in Sources */,
 				14FF4A351A66A02D00DECA7B /* FEGetCompanyRequest.m in Sources */,
+				14950D891A7923F0001416A7 /* RSADataSigner.m in Sources */,
 				14FF4A721A67899200DECA7B /* FEButton.m in Sources */,
 				144350721A6652A6002BB228 /* UIColor+Theme.m in Sources */,
 				14FF4A441A66A72200DECA7B /* FEGetADResponse.m in Sources */,
@@ -743,6 +822,7 @@
 				14FF4A681A6765EE00DECA7B /* FEGetProductRequest.m in Sources */,
 				14469E9A1A65FAA900515685 /* Laundry.xcdatamodeld in Sources */,
 				1418A1B81A68B7BF00886FDA /* FECustomSegue.m in Sources */,
+				14950D831A7923F0001416A7 /* base64.m in Sources */,
 				144350731A6652A6002BB228 /* UIFont+AppFont.m in Sources */,
 				144716501A6D56AA003359FC /* FEOrderDetailVC.m in Sources */,
 				1443501F1A664074002BB228 /* FEHomePageVC.m in Sources */,
@@ -752,17 +832,23 @@
 				14FF4A651A67646D00DECA7B /* FEProduct.m in Sources */,
 				14469E961A65FA8500515685 /* AppDelegate.m in Sources */,
 				14FF4A901A67F79500DECA7B /* FEProfileVC.m in Sources */,
+				14950D8A1A7923F0001416A7 /* RSADataVerifier.m in Sources */,
 				1418A1B51A68A32F00886FDA /* FEOrderDetail.m in Sources */,
 				14FF4A301A6696B300DECA7B /* FEBaseResponse.m in Sources */,
 				14FF4A811A67E69100DECA7B /* FERegistVC.m in Sources */,
 				14FF4A781A67AC2100DECA7B /* FEPickerView.m in Sources */,
 				14FF4A5C1A675B2200DECA7B /* FEGetProductTypeReques.m in Sources */,
+				14950D881A7923F0001416A7 /* openssl_wrapper.m in Sources */,
 				14FF4A841A67EC7F00DECA7B /* FEForgotPasswordVC.m in Sources */,
 				14FF4A291A66962400DECA7B /* SSObject.m in Sources */,
+				14950D851A7923F0001416A7 /* DataVerifier.m in Sources */,
+				14950D6D1A792092001416A7 /* Order.m in Sources */,
 				14FF4A8D1A67F00700DECA7B /* FESigninResponse.m in Sources */,
 				14FF4A3B1A66A48C00DECA7B /* FECompany.m in Sources */,
+				14950D841A7923F0001416A7 /* DataSigner.m in Sources */,
 				144350131A663EA2002BB228 /* FETableViewController.m in Sources */,
 				144716531A6D5798003359FC /* FEOrderDetailRequest.m in Sources */,
+				14950D871A7923F0001416A7 /* NSDataEx.m in Sources */,
 				14FF4A2D1A6696A200DECA7B /* FEBaseRequest.m in Sources */,
 				1418A1A61A68122800886FDA /* FEVerifyCodeRequest.m in Sources */,
 				1443506A1A6652A6002BB228 /* NSDate+Formatter.m in Sources */,
@@ -892,6 +978,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Sun (2P4V8NVH4U)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Laundry/Alipay",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Laundry/Laundry-Prefix.pch";
 				INFOPLIST_FILE = Laundry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -907,6 +997,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Laundry/Alipay",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Laundry/Laundry-Prefix.pch";
 				INFOPLIST_FILE = Laundry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

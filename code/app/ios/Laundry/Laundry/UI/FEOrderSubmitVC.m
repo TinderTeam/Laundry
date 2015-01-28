@@ -17,6 +17,7 @@
 #import "FEOrderInfo.h"
 #import "FEUser.h"
 #import "FEDataCache.h"
+#import "FEAlipay.h"
 
 @interface FEOrderSubmitVC ()
 @property (strong, nonatomic) IBOutlet UILabel *attachLabel;
@@ -80,23 +81,15 @@
 }
 
 - (IBAction)submitOrder:(id)sender {
+    
+    [[FEAlipay sharedInstance] pay];
+    
+    return;
     __weak typeof(self) weakself = self;
     NSArray *products = [FEDataCache sharedInstance].selectProducts;
     NSMutableArray *marray = [NSMutableArray new];
     for (FEProduct *product in products) {
         NSInteger number = [[FEDataCache sharedInstance] productNumber:product].integerValue;
-//        for (int i= 0; i < number; i++) {
-        
-        //            @property (nonatomic, strong) NSNumber *quantity;
-        //            @property (nonatomic, strong, readonly) NSString *product_name;
-        //            @property (nonatomic, strong, readonly) NSString *product_type;
-        //            @property (nonatomic, strong, readonly) NSString *product_describe;
-        //            @property (nonatomic, strong, readonly) NSString *current_price;
-        //            @property (nonatomic, strong, readonly) NSString *original_price;
-        //            @property (nonatomic, strong, readonly) NSString *product_img;
-        //            @property (nonatomic, strong, readonly) NSString *product_status;
-        //            @property (nonatomic, strong, readonly) NSString *product_update_time;
-        //            @property (nonatomic, strong, readonly) NSString *product_limit_time;
         
         FEOrderDetail *detail = [[FEOrderDetail alloc] init];
         detail.quantity = @(number);
