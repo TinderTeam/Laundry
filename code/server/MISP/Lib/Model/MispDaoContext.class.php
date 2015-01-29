@@ -20,6 +20,18 @@ class MispDaoContext
 	{
 		return M('client_version',MispDaoContext::PREFIX,MispDaoContext::MISPDB);
 	}
+	static function Privilege()
+	{
+		return M('privilege',MispDaoContext::PREFIX,MispDaoContext::MISPDB);
+	}
+	static function SystemRole()
+	{
+		return M('system_role',MispDaoContext::PREFIX,MispDaoContext::MISPDB);
+	}
+	static function Token()
+	{
+		return M('token',MispDaoContext::PREFIX,MispDaoContext::MISPDB);
+	}
 }
 
 ?>

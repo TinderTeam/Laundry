@@ -36,20 +36,24 @@
 		<a class="easyui-linkbutton" iconCls="icon-remove" onclick="onDelete()">删除</a>
 	</div>
 	<div class="easyui-layout"data-options="fit:true">
-	<table id="customerGrid" class="easyui-datagrid" style="width:100%;height:89%"
+	<table id="customerGrid" class="easyui-datagrid" style="width:100%;height:88%"
 			data-options="checkOnSelect:true,rownumbers:true,pagination:true,pageList:[10,20,30],singleSelect:true,
 			url:'__APP__/CustomerManage/LoadPage',method:'post',queryParams:'',toolbar:'#toolbar'">
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'user_id',width:80">会员编号</th>
+				<!--<th data-options="field:'user_id',width:80">会员编号</th>-->
 				<th data-options="field:'user_name',width:120">会员账号</th>
-				<th data-options="field:'nickname',width:120">昵称</th>
 				<th data-options="field:'customer_name',width:80">姓名</th>
+				<th data-options="field:'customer_sex',width:50">性别</th>
+				<!--<th field="customer_sex" width = "50" formatter = "formatSex">性别</th> -->
+				<th data-options="field:'card_number',width:180">会员卡号</th>
+				<th data-options="field:'score',width:50">积分</th>
+				<th data-options="field:'customer_email',width:120">邮箱</th>
 				<th data-options="field:'phone',width:120">电话</th>
-				<th data-options="field:'addr',width:240">住址</th>
+				<th data-options="field:'nickname',width:120">昵称</th>
 				<th data-options="field:'birthday',width:100">生日</th>
-				<th data-options="field:'score',width:80">积分</th>
+				<th data-options="field:'addr',width:240">住址</th>
 				<!--  <th data-options="field:'level',width:80">会员级别</th>-->
 			</tr>
 		</thead>
@@ -64,6 +68,13 @@ function onSearch(){
 	$('#customerGrid').datagrid('load', param);
 	
 }
+//function formatSex(val,row){
+//	if (val == "false"){
+//		return "男";
+//	} else {
+//		return "女";
+//	}
+//}
 function onModify(type){
 	var row = $('#customerGrid').datagrid('getSelected');
 	if((type == "Modify")&&(!row))
@@ -76,7 +87,7 @@ function onModify(type){
 		$('#customerModify').dialog({
 		    title: '会员信息',
 		    width: 480,
-		    height: 220,
+		    height: 320,
 		    closed: false,
 		    cache: false,
 		    href: '__APP__/CustomerManage/customerInfo.html',
@@ -124,11 +135,13 @@ function onDelete(){
 					dataType:"json",
 					success:function(rsp){
 						if(isSuccess(rsp)){
-							//解决最后一条记录无法删除BUG
-							 var rowIndex = $('#customerGrid').datagrid('getRowIndex', row);
-					         $('#customerGrid').datagrid('deleteRow', rowIndex);
+							//删除前台显示数据
+							//var rowIndex = $('#customerGrid').datagrid('getRowIndex', row);
+					        //$('#customerGrid').datagrid('deleteRow', rowIndex);
+					        //解决最后一条记录无法删除BUG
+					        $('#customerGrid').datagrid('loadData', { total: 0, rows: [] });
 					        //重新加载datagrid数据
-							//$("#customerGrid").datagrid('reload');
+							$("#customerGrid").datagrid('reload');
 						}
 						else{
 							fuegoAlert(rsp.errorMsg);

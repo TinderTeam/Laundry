@@ -12,6 +12,7 @@ class ClientVersionManageAction extends EasyUITableAction
 	 */
 	public function GetLatestVersion()
 	{
+		$this->LogInfo("Get latest client version.");
 		$req = $this->GetReqObj();
 		$condition['client_type'] = $req->clientType;
 		$condition['company_id'] = $req->app_id;
@@ -27,6 +28,7 @@ class ClientVersionManageAction extends EasyUITableAction
 			$this->ReturnJson();
 			return;
 		}
+		$this->LogInfo("Latest client version info ".json_encode($object));
 		$data['obj'] = $object;
     	$this->ReturnJson($data);
 	} 

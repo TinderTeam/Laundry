@@ -1,5 +1,5 @@
 ﻿# Host: 127.0.0.1  (Version: 5.1.70-community)
-# Date: 2015-01-13 21:11:26
+# Date: 2015-01-29 12:08:47
 # Generator: MySQL-Front 5.3  (Build 2.42)
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -56,14 +56,18 @@ CREATE TABLE `misp_company` (
   `company_addr` varchar(50) DEFAULT NULL,
   `company_desp` varchar(255) DEFAULT NULL,
   `service_phone` varchar(20) DEFAULT NULL,
+  `alipay_seller` varchar(50) DEFAULT NULL,
+  `alipay_partner` varchar(50) DEFAULT NULL,
+  `alipay_private_key` varchar(2000) DEFAULT NULL,
+  `company_status` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`company_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "misp_company"
 #
 
-INSERT INTO `misp_company` VALUES (1,'快客洗涤','www.kkxd.com.cn',NULL,NULL,'0755-01234567'),(10,'孚思科技','www.fuego.cn','深圳市龙华新区工业路盈安大厦706室','深圳市孚思科技有限公司','88888');
+INSERT INTO `misp_company` VALUES (1,'快客洗涤','www.kkxd.com.cn',NULL,NULL,'0755-01234567','996825888@qq.com','2088811061975475','MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAOVjx6iMMZgkgIndiKHoerD18LWnpjzIHEA6oyWAd0UaN5iWAoDeg71PW7h+k5ZPIJ8XCzHLj9PSBKrEKg8gCjKJxH7jR1hDaodL4Vm4HgOmf6XdhFxZOM0cy3NyD4sorFqMca5r1X5EkenDYkFjXmrwKaRifDOWRfGAf6RrWzxbAgMBAAECgYEA35m6xp4Zvc9fCIRMql5eMl8aS0hnb/o0J5vA6k5mdJKQvQkE2a+NRRy1MIsZvDvXdZxVyi0+PuEKsZbT1LiLlk0xZl+EmiXDRSYR6Wsz8LpT7edRhrAJj9IusPV1TDgghVIXmkEYT5dpRLke9l1sYQFWQb4rr6vjrnPxaajbhdECQQD57+1hSYmVX6GZQuZLhnlQt/SlV7Tz45zVBmcd4ZlZ877a19WsKHMWHDQbU7QNONtJ6CiAWaLycRUUPMDmlXlzAkEA6vRBjMiD59vMrLQyWUiBEKexXeCsypvh5OIFQ2hkiBKw6gIl4QK4uEfC1LxcIg1xfc8N7bn7gUlz6tdajyaXeQJAYFhTijAdwB34HitCuRRiSXJP9TilAWrZNujb8RHY2mryREv1CwMgsgI3N92BR6OGLKw4iJmFDa33sTBmL7yo7wJBALVIPQNo+w18dBGU/3wQCzVUje+HGQtC9ypokfMOqvKqqUIE4kEYnnnhNJx7sQK9KKIPjgmshDee+wdpnf/xoNECQDg8O7/Vm23PAUaiN70t/XU2GT334yb0n6VWcdow9LaRLsajL5c8/MbsGBa8gWw0smrcIyHbS0jLe5A1Gsr0jRg=','正常'),(11,'孚思科技','wwww','ffg','d ','8888888','234234234','234234234','234efdgsdfsdf1111111111233333','冻结');
 
 #
 # Source for table "misp_menu"
@@ -80,13 +84,13 @@ CREATE TABLE `misp_menu` (
   `url` varchar(50) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "misp_menu"
 #
 
-INSERT INTO `misp_menu` VALUES (1,'UserManage','用户管理',NULL,'icon-user',NULL,'laundry.php/AdminManage/adminManage.html',NULL),(2,'CustomerManage','会员管理',NULL,'icon-group',NULL,'laundry.php/CustomerManage/customerManage.html',NULL),(3,'ProductManage','产品管理',NULL,'icon-product',NULL,'laundry.php/ProductManage/productManage.html',NULL),(4,'OrderManage','订单管理',NULL,'icon-order',NULL,'laundry.php/OrderManage/orderManage.html',NULL),(5,'CompanyManage','公司管理',NULL,'icon-house',NULL,'index.php/CompanyManage/companyManage.html',NULL);
+INSERT INTO `misp_menu` VALUES (1,'AdminManage','用户管理',NULL,'icon-user',NULL,'laundry.php/AdminManage/adminManage.html',NULL),(2,'CustomerManage','会员管理',NULL,'icon-group',NULL,'laundry.php/CustomerManage/customerManage.html',NULL),(3,'ProductManage','产品管理',NULL,'icon-product',NULL,'laundry.php/ProductManage/productManage.html',NULL),(4,'OrderManage','订单管理',NULL,'icon-order',NULL,'laundry.php/OrderManage/orderManage.html',NULL),(5,'CompanyManage','公司管理',NULL,'icon-house',NULL,'index.php/CompanyManage/companyManage.html',NULL),(6,'UserManage','超级管理员',NULL,'icon-admin',NULL,'index.php/UserManage/userManage.html',NULL);
 
 #
 # Source for table "misp_operate_log"
@@ -121,12 +125,13 @@ CREATE TABLE `misp_privilege` (
   `access_obj_type` varchar(20) DEFAULT NULL,
   `access_obj_value` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`privilege_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "misp_privilege"
 #
 
+INSERT INTO `misp_privilege` VALUES (1,'ROLE','1','LOGIN','1'),(2,'ROLE','2','LOGIN','1'),(3,'ROLE','3','LOGIN','1'),(4,'ROLE','1','MENU','1'),(5,'ROLE','1','MENU','2'),(6,'ROLE','1','MENU','3'),(7,'ROLE','1','MENU','4'),(8,'ROLE','1','MENU','5'),(9,'ROLE','1','MENU','6'),(10,'ROLE','2','MENU','1'),(11,'ROLE','2','MENU','2'),(12,'ROLE','2','MENU','3'),(13,'ROLE','2','MENU','4'),(14,'ROLE','3','MENU','2'),(15,'ROLE','3','MENU','4'),(16,'ROLE','4','LOGIN','2'),(17,'ROLE','5','MENU','1'),(18,'ROLE','5','MENU','2'),(19,'ROLE','5','MENU','3'),(20,'ROLE','5','MENU','4'),(21,'ROLE','5','LOGIN','1'),(22,'ROLE','6','LOGIN','2');
 
 #
 # Source for table "misp_system_id_type"
@@ -157,14 +162,17 @@ DROP TABLE IF EXISTS `misp_system_role`;
 CREATE TABLE `misp_system_role` (
   `role_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(50) DEFAULT NULL,
+  `user_type_id` int(11) DEFAULT NULL,
+  `user_type_name` varchar(50) DEFAULT NULL,
+  `company_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "misp_system_role"
 #
 
-INSERT INTO `misp_system_role` VALUES (1,'ADMIN'),(2,'CUSTOMER');
+INSERT INTO `misp_system_role` VALUES (1,'系统管理员',1,'SUPER_ADMIN',0),(2,'管理员',2,'ADMIN',1),(3,'客服',2,'ADMIN',1),(4,'消费者',3,'CUSTOMER',1),(5,'管理员',2,'ADMIN',11),(6,'消费者',3,'CUSTOMER',11);
 
 #
 # Source for table "misp_system_user"
@@ -179,13 +187,31 @@ CREATE TABLE `misp_system_user` (
   `reg_date` datetime DEFAULT NULL,
   `company_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "misp_system_user"
 #
 
-INSERT INTO `misp_system_user` VALUES (1,'admin','123456',1,NULL,0),(63,'18603036649','123456',2,'2015-01-07 19:34:47',1),(98,'user1','123456',1,'2015-01-13 16:41:58',1),(99,'user2','888888',1,'2015-01-13 16:45:51',2),(108,'fuego','123456',1,'2015-01-13 19:50:35',10);
+INSERT INTO `misp_system_user` VALUES (1,'admin','123456',1,NULL,0),(98,'kkxd','123456',2,'2015-01-13 16:41:58',1),(126,'客服2','888888',3,'2015-01-23 18:07:34',0),(129,'客服234','888888',2,'2015-01-27 14:57:42',1),(130,'1234445556','888888',4,'2015-01-27 17:27:31',1),(131,'12333333333','888888',4,'2015-01-27 17:30:11',1),(133,'18603036649','123456',4,'2015-01-27 19:17:58',1),(134,'fuego','888888',5,'2015-01-27 23:46:19',11);
+
+#
+# Source for table "misp_token"
+#
+
+DROP TABLE IF EXISTS `misp_token`;
+CREATE TABLE `misp_token` (
+  `token_id` int(11) NOT NULL AUTO_INCREMENT,
+  `token_name` varchar(50) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`token_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# Data for table "misp_token"
+#
+
+INSERT INTO `misp_token` VALUES (8,'8a531149-cb0c-b63b-4cfb-9bc547e7bcbd',133);
 
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

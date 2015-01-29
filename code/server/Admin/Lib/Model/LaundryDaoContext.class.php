@@ -35,6 +35,14 @@ class LaundryDaoContext
 	{
 		return M('administrators',NULL,LaundryDaoContext::LAUNDRYDB);
 	}
+	static function ViewAdmin()
+	{
+		return M('view_administrators',NULL,LaundryDaoContext::LAUNDRYDB);
+	}
+	static function ViewCustomer()
+	{
+		return M('view_customer',NULL,LaundryDaoContext::LAUNDRYDB);
+	}
 }
 
 ?>

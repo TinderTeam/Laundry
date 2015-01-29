@@ -1,7 +1,7 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
 import("MISP.Action.BaseAction");
-abstract  class EasyUITableAction extends BaseAction 
+abstract class EasyUITableAction extends BaseAction 
 {
     abstract protected function GetModel();
     
@@ -56,7 +56,7 @@ abstract  class EasyUITableAction extends BaseAction
     public function LoadPage()
     {
         $db =  $this->GetModel();
-        $this->LoadPageTable($db,$this->GetTableCondition());
+        $this->LoadPageTable($db,$this->GetTableCondition(),$db->getPk());
     }
     
     public  function LoadAll()
@@ -144,7 +144,7 @@ abstract  class EasyUITableAction extends BaseAction
         if(SUCCESS != $result)
         {
             $this->errorCode = $result;
-            $this->LogErr("validator failed when create ".$db->tableName);
+            $this->LogErr("validator failed when create ".$model->tableName);
             $this->LogErr("the error is ".$result);
             $this->ReturnJson();
             return;
@@ -180,12 +180,14 @@ abstract  class EasyUITableAction extends BaseAction
         $this->ReturnJson();
     }
     
-    public function LoadPageTable($model,$condition)
+    public function LoadPageTable($model,$condition,$orderby=null)
     {
+    	
     	$ReqType = $this->GetReqType();
+    	$this->LogInfo("LoadPageTable,ReqType is ".$ReqType);
     	if(($ReqType == ClientTypeEnum::IOS)||($ReqType == ClientTypeEnum::ANDROID))
     	{
-    		$productList = $model->where($condition)->select();
+    		$productList = $model->where($condition)->order($orderby.' desc')->select();
     		$data['obj'] = $productList;
     		$this->ReturnJson($data);
     	}
@@ -194,7 +196,7 @@ abstract  class EasyUITableAction extends BaseAction
     		$count = $model->where($condition)->count();
     		$page = $this->GetPage();
     		$index = $page['currentPage']*$page['pageSize'];
-    		$rows = $model->where($condition)->limit($index,$page['pageSize'])->select();
+    		$rows = $model->where($condition)->order($orderby.' desc')->limit($index,$page['pageSize'])->select();
     		$this->LogInfo("query the table ".$model->tableName." count is ".$count);
     		$data['total'] = $count;
     		$data['rows'] = $rows;

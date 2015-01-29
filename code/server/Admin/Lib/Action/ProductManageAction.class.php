@@ -13,29 +13,47 @@ class ProductManageAction extends EasyUITableAction
 	 */
 	public function LoadPage()
 	{
-		//删除自动转义增加的\
-		$PostStr = stripslashes($_POST['data']);
-		$req = json_decode($PostStr);
-		if("" != $req->product_id)
+		$this->LogInfo("Load product page list");
+		$clientType = $this->GetReqObj()->clientType;
+		$searchFilter = null;
+		if((ClientTypeEnum::ANDROID == $clientType)||(ClientTypeEnum::IOS == $clientType))
 		{
-			$keyID = '%'.$req->product_id.'%';
-			$searchFilter['product_id'] = array('like',$keyID);
+			$searchFilter['company_id'] = $this->GetReqObj()->app_id;
+			$this->LogInfo("ClientType is ".$clientType.",SearchFilter is ".json_encode($searchFilter));
 		}
-		if("" != $req->product_name)
+		else
 		{
-			$keyName = '%'.$req->product_name.'%';
-			$searchFilter['product_name'] = array('like',$keyName);
-		}
-		if("" != $req->type_id)
-		{
-			$searchFilter['type_id'] = $req->type_id;
-		}
-		if(0 != $_SESSION['user']['company_id'])
-		{
-			$searchFilter['company_id'] = $_SESSION['user']['company_id'];
+			//删除自动转义增加的\
+			$PostStr = stripslashes($_POST['data']);
+			$req = json_decode($PostStr);
+			if("" != $req->product_id)
+			{
+				$keyID = '%'.$req->product_id.'%';
+				$searchFilter['product_id'] = array('like',$keyID);
+			}
+			if("" != $req->product_name)
+			{
+				$keyName = '%'.$req->product_name.'%';
+				$searchFilter['product_name'] = array('like',$keyName);
+			}
+			if("" != $req->type_id)
+			{
+				$searchFilter['type_id'] = $req->type_id;
+			}
+			if(CompanyEnum::GROUP_COMPANY == $_SESSION['user']['company_id'])
+			{
+				//显示所有产品
+				$this->LogInfo("The company id of this user is ".$_SESSION['user']['company_id']);
+			}
+			else
+			{
+				$this->LogInfo("The company id of this user is ".$_SESSION['user']['company_id']);
+				$searchFilter['company_id'] = $_SESSION['user']['company_id'];
+			}
+			$this->LogInfo("ClientType is WEB,SearchFilter is ".json_encode($searchFilter));
 		}
 		$viewProductDao = LaundryDaoContext::ViewProduct();
-		$this->LoadPageTable($viewProductDao,$searchFilter);
+		$this->LoadPageTable($viewProductDao,$searchFilter,"product_id");
 	}
 
 	/* (non-PHPdoc)
@@ -55,20 +73,24 @@ class ProductManageAction extends EasyUITableAction
         //设置文件上传名(按照时间)  
         //$upload->saveRule = "time";  
         if (!$upload->upload()){
+        	$this->LogErr("Create product fail, no img is upload.");
         	$this->errorCode = NO_IMG;
             return $this->ReturnJson();  
         }else{ 
             //上传成功，获取上传信息  
+            $this->LogInfo("Create product, upload img success");
            	$info = $upload->getUploadFileInfo();
         }
         
 		$productDao = $this->GetModel();
 		$data['product_name'] = $_POST['product_name'];
+		$data['price_type'] = $_POST['price_type'];
 		$data['price'] = $_POST['price'];
 		$data['describe'] = $_POST['describe'];
 		$data['type_id'] = $_POST['type_id'];
 		$data['company_id'] = $_SESSION['user']['company_id'];
  		$data['img'] = $info[0]['savename'];
+ 		$this->LogInfo("Create product info ".json_encode($data));
  		try
  		{
  			$result = MispCommonService::Create($productDao, $data);
@@ -97,23 +119,27 @@ class ProductManageAction extends EasyUITableAction
 		//设置文件上传名(按照时间)
 		//$upload->saveRule = "time";
 		if (!$upload->upload()){
+			$this->LogInfo("Modify product, no img update.");
 			//$this->error($upload->getErrorMsg());
 		}else{
+			$this->LogInfo("Modify product, img update success.");
 			//上传成功，获取上传信息
 			$info = $upload->getUploadFileInfo();
 		}
 		$productDao = $this->GetModel();
-		$condition['product_id']=$_POST['product_id'];
+		$data['product_id']=$_POST['product_id'];
 		$data['product_name'] = $_POST['product_name'];
+		$data['price_type'] = $_POST['price_type'];
 		$data['price'] = $_POST['price'];
 		$data['describe'] = $_POST['describe'];
 		$data['type_id'] = $_POST['type_id'];
 		if($info[0]['savename']!=""){
 			$data['img'] = $info[0]['savename'];
 		}
+		$this->LogInfo("Modify product info ".json_encode($data));
 		try
 		{
-			$result = MispCommonService::Modify($productDao, $condition);
+			$result = MispCommonService::Modify($productDao, $data);
 		}
 		catch(FuegoException $e)
 		{
@@ -125,6 +151,7 @@ class ProductManageAction extends EasyUITableAction
 	//加载产品类型列表
 	public function getProductTypeList()
 	{
+		$this->LogInfo("Load product type list.");
 		$productTypeDao = LaundryDaoContext::ProductType();
 		//$condition['parent_id']= ROOTTYPE;
 		$productTypeList = $productTypeDao->select();
@@ -139,7 +166,7 @@ class ProductManageAction extends EasyUITableAction
 			//$combox['parent_name'] = $productType['type_name'];
 			array_push($comboxTypeList,$combox);	
 		}
-		$this->LogInfo(json_encode($comboxTypeList));
+		$this->LogInfo("The product type list is ".json_encode($comboxTypeList));
 		echo json_encode($comboxTypeList);
 		exit;
 	}

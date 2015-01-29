@@ -40,7 +40,7 @@
 		<a class="easyui-linkbutton" iconCls="icon-remove" onclick="onDelete()">删除</a>
 	</div>
 	<div class="easyui-layout"data-options="fit:true">
-	<table id="orderGrid" class="easyui-datagrid" style="width:100%;height:89%"
+	<table id="orderGrid" class="easyui-datagrid" style="width:100%;height:88%"
 			data-options="checkOnSelect:true,rownumbers:true,pagination:true,pageList:[10,20,30],
 			url:'__APP__/OrderManage/LoadPage',method:'post',queryParams:'',toolbar:'#toolbar'">
 		<thead>
@@ -187,7 +187,9 @@ function onDelete(){
 					dataType:"json",
 					success:function(rsp){
 						if(isSuccess(rsp)){
-							//重新加载datagrid数据
+							//解决最后一条记录无法删除BUG
+					        $('#orderGrid').datagrid('loadData', { total: 0, rows: [] });
+					        //重新加载datagrid数据
 							$("#orderGrid").datagrid('reload');
 						}
 						else{

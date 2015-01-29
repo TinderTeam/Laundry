@@ -16,6 +16,7 @@ class AdminManageAction extends EasyUITableAction
 	 */
 	public function LoadPage()
 	{
+		$this->LogInfo("Load admin page list");
 		//删除自动转义增加的\
 		$PostStr = stripslashes($_POST['data']);
 		$req = json_decode($PostStr);
@@ -24,12 +25,19 @@ class AdminManageAction extends EasyUITableAction
 			$keyword = '%'.$req->user_name.'%';
 			$searchFilter['user_name'] = array('like',$keyword);
 		}
-		//$searchFilter['role_id'] = UserRoleEnum::ADMIN;
-		if(0 != $_SESSION['user']['company_id'])
+		if(CompanyEnum::GROUP_COMPANY == $_SESSION['user']['company_id'])
 		{
+			//显示所有管理员
+			$this->LogInfo("The company id of this user is ".$_SESSION['user']['company_id']);
+		}
+		else
+		{
+			$this->LogInfo("The company id of this user is ".$_SESSION['user']['company_id']);
 			$searchFilter['company_id'] = $_SESSION['user']['company_id'];
 		}
-		$this->LoadPageTable($this->GetModel(),$searchFilter);
+		$viewAdminDao = LaundryDaoContext::ViewAdmin();
+		$this->LogInfo("SearchFilter is".json_encode($searchFilter));
+		$this->LoadPageTable($viewAdminDao,$searchFilter,$this->GetModel()->getPK());
 	}
 	/* 新增管理员
 	 * (non-PHPdoc)
@@ -37,26 +45,25 @@ class AdminManageAction extends EasyUITableAction
 	 */
 	public function Create()
 	{
-		$this->LogInfo("create user...");
+		$this->LogInfo("create admin...");
         $systemUserDao = MispDaoContext::SystemUser();
         $req = $this->GetCommonData();
-
-        $condition['user_name'] = $req->user_name;
-        $userID = $systemUserDao->where($condition)->getField('user_id');
-        if($userID!=''){
-        	$this->LogWarn("Create user failed, user_name is exist.");
-        	$this->errorCode = MispErrorCode::USER_EXISTED;
+        if("" == $obj->role_id)
+        {
+        	$this->errorCode = MispErrorCode::ERROR_ROLE_IS_EMPTY;
         	$this->ReturnJson();
         	return;
         }
+		//创建User信息
         $user['user_name'] = $req->user_name;
         $user['password'] = "888888";
-        $user['role_id'] = UserRoleEnum::ADMIN;
+        $user['role_id'] = $req->role_id;
         $user['reg_date'] = date('Y-m-d H:i:s',time());
         $user['company_id'] = $_SESSION['user']['company_id'];
+        $this->LogInfo("Create user info ".json_encode($user));
         try
         {
-        	$result = MispCommonService::Create($systemUserDao, $user);
+        	$result = MispCommonUserService::Create($user);
         }
         catch(FuegoException $e)
         {
@@ -64,11 +71,13 @@ class AdminManageAction extends EasyUITableAction
         	$this->ReturnJson();
         	return;
         }
+        //创建管理员信息
         $adminDao = $this->GetModel();
         $admin['user_id'] = $result;
         $admin['user_name'] = $req->user_name;
         $admin['email'] = $req->email;
         $admin['company_id'] = $_SESSION['user']['company_id'];
+        $this->LogInfo("Create admin info ".json_encode($admin));
         try
         {
         	$result = MispCommonService::Create($adminDao, $admin);
@@ -79,13 +88,73 @@ class AdminManageAction extends EasyUITableAction
         }
         $this->ReturnJson();
 	}
+	
+	/* (non-PHPdoc)
+	 * @see EasyUITableAction::Show()
+	 */
+	public function Show()
+	{
+    	$objID = $this->GetCommonData();
+    	$this->LogInfo("show admin, user_id is ".$objID);
+    	$viewAdminDao = LaundryDaoContext::ViewAdmin();
+    	$condition['user_id'] = $objID;
+    	try
+    	{
+    		$object = MispCommonService::GetUniRecord($viewAdminDao, $condition);
+    	}
+    	catch(FuegoException $e)
+    	{
+    		$this->errorCode = $e->getCode();
+    		$this->ReturnJson();
+    		return;
+    	}
+    	$data['obj'] = $object;
+    	$this->ReturnJson($data);
+	}
+	
+	/* (non-PHPdoc)
+	 * @see EasyUITableAction::Modify()
+	 */
+	public function Modify()
+	{
+		$this->LogInfo("Modify admin ...");
+		$admin = $this->objectToArray($this->GetCommonData());
+		if("" == $admin['role_id'])
+		{
+			$this->errorCode = MispErrorCode::ERROR_ROLE_IS_EMPTY;
+			$this->ReturnJson();
+			return;
+		}
+		//修改用户角色
+		$user['user_id'] = $admin['user_id'];
+		$user['role_id'] = $admin['role_id'];
+		$this->errorCode = MispCommonUserService::Modify($user);
+		if(MispErrorCode::SUCCESS != $this->errorCode)
+		{
+			$this->ReturnJson();
+			return; 
+		}
+		//修改管理员信息
+		unset($admin['role_id']);		//删除admin中的role_id字段
+		try
+        {
+        	$result = MispCommonService::Modify($this->GetModel(), $admin);
+        }
+        catch(FuegoException $e)
+        {
+        	$this->errorCode = $e->getCode();
+        }
+        $this->ReturnJson();
+	}
+
 	/* (non-PHPdoc)
 	 * @see EasyUITableAction::Delete()
 	 */
 	public function Delete()
 	{
-		$this->LogInfo("admin delete ...");
 		$Req = $this->GetReqObj();
+		
+		$this->LogInfo("admin delete, user_id is ".$Req->obj);
 		if($Req->obj == $_SESSION['user']['user_id'])
 		{
 			$this->LogWarn("Delete admin failed, can not delete yourself.");
@@ -93,7 +162,7 @@ class AdminManageAction extends EasyUITableAction
 			$this->ReturnJson();
 			return;
 		}
-		//删除会员信息
+		//删除管理员信息
 		$adminDao = $this->GetModel();
 		$adminCondition[$adminDao->getPk()] = $Req->obj;
 		try
@@ -107,16 +176,7 @@ class AdminManageAction extends EasyUITableAction
 			return;
 		}
 		//删除用户信息
-		$userDao = MispDaoContext::SystemUser();
-		$userCondition[$userDao->getPk()] = $Req->obj;
-		try
-		{
-			$result = MispCommonService::Delete($userDao, $userCondition);
-		}
-		catch(FuegoException $e)
-		{
-			$this->errorCode = $e->getCode();
-		}
+		$this->errorCode = MispCommonUserService::Delete($Req->obj);
 		$this->ReturnJson();
 	}
 

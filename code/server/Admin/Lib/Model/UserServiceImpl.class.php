@@ -11,9 +11,11 @@ class UserServiceImpl implements MispUserService
 		FuegoLog::getLog()->LogInfo('register customer');
 		$customerDao = LaundryDaoContext::Customer();
 		$customer['user_id'] = $user['user_id'];
+		$customer['user_name'] = $user['user_name'];
 		$customer['phone'] = $user['user_name'];
 		$customer['addr'] = $customerInfo['addr'];
 		$customer['company_id'] = $user['company_id'];
+		FuegoLog::getLog()->LogInfo("customer info is ".json_encode($customer));
 		try
 		{
 			$result = MispCommonService::Create($customerDao, $customer);
@@ -29,18 +31,12 @@ class UserServiceImpl implements MispUserService
 	 */
 	public function WebLogin($user)
 	{
-		FuegoLog::getLog()->LogInfo("WEB login");
-		if($user['role_id'] != UserRoleEnum::ADMIN)
-	    {
-	    	FuegoLog::getLog()->LogWarn("Web login failed");
-	    	return MispErrorCode::USERNAME_OR_PASSWORD_WRONG;
-	    }
 	    $user['password'] = "";
-	    session_start();
 	    $time=30*60;
 	    setcookie(session_name(),session_id(),time()+$time,"/");
+	    session_start();                            // 初始化session
 	    $_SESSION['user'] = $user;
-	    FuegoLog::getLog()->LogInfo("Web login success, the user name is ".$user['user_name']);
+	    FuegoLog::getLog()->LogInfo("User WEBLogin success, the user name is ".$user['user_name']);
 	    return MispErrorCode::SUCCESS;
 	}
 
@@ -49,26 +45,40 @@ class UserServiceImpl implements MispUserService
 	 */
 	public function AppLogin($user)
 	{
-		FuegoLog::getLog()->LogInfo("APP login");
-		if($user['role_id'] != UserRoleEnum::CUSTOMER)
-	    {
-	    	FuegoLog::getLog()->LogWarn("APP login failed");
-	    	return MispErrorCode::USERNAME_OR_PASSWORD_WRONG;
-	    }
-	    FuegoLog::getLog()->LogInfo("customer login success, the user name is ".$user['user_name']);
+		$data['user'] = $user;
+		$token['token_name'] = DataCreateUtil::GetUUID();
+		$token['user_id'] = $user['user_id'];
+		$tokenDao = MispDaoContext::Token();
+		$result = $tokenDao->add($token);
+		FuegoLog::getLog()->LogInfo("Create token success, token id is ".json_encode($result).". And token is ".$token['token_name']);
+		$data['token'] = $token['token_name'];
+		FuegoLog::getLog()->LogInfo("customer APPLogin success, the user name is ".$user['user_name']);
+		return $data;
+	}
+	
+	/* (non-PHPdoc)
+	 * @see MispUserService::AppLogout()
+	 */
+	public function AppLogout($user)
+	{
+		FuegoLog::getLog()->LogInfo("APP logout...");
+		$condition['user_id'] = $user['user_id'];
+		$tokenDao = MispDaoContext::Token();
+		$result = MispCommonService::Delete($tokenDao, $condition);
+		FuegoLog::getLog()->LogInfo("Delete token success.");
 		return MispErrorCode::SUCCESS;
 	}
+
 	/* (non-PHPdoc)
 	 * @see MispUserService::ModifyPassword()
 	 */
 	public function ModifyPassword($condition, $req)
 	{
+		FuegoLog::getLog()->LogInfo("Modify password...");
 		$errorCode = MispErrorCode::SUCCESS;
 		$userDao= MispDaoContext::SystemUser();
     	$orginalUser = $userDao->where($condition)->find();
     	$orginalPwd = $orginalUser['password'];
-    	FuegoLog::getLog()->LogWarn("OK".$orginalPwd);
-    	FuegoLog::getLog()->LogWarn("OK".$req->pwdOld);
     	if($orginalPwd != $req->pwdOld)
     	{
     		FuegoLog::getLog()->LogWarn("Modify password failed,pwdOld is wrong.");
@@ -79,6 +89,7 @@ class UserServiceImpl implements MispUserService
     	try
     	{
     		$result = MispCommonService::Modify($userDao, $orginalUser);
+    		FuegoLog::getLog()->LogInfo("Modify password success.");
     	}
     	catch(FuegoException $e)
     	{

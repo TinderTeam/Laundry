@@ -7,7 +7,7 @@ class UserManageAction extends EasyUITableAction
 	 */
 	protected function GetModel()
 	{
-		return LaundryDaoContext::administrator();	
+		return MispDaoContext::SystemUser();	
 	}
 	
 	/* (non-PHPdoc)
@@ -18,17 +18,18 @@ class UserManageAction extends EasyUITableAction
 		//删除自动转义增加的\
 		$PostStr = stripslashes($_POST['data']);
 		$req = json_decode($PostStr);
+		$searchFilter = null;
 		if("" != $req->user_name)
 		{
 			$keyword = '%'.$req->user_name.'%';
 			$searchFilter['user_name'] = array('like',$keyword);
 		}
-		//$searchFilter['role_id'] = UserRoleEnum::ADMIN;
-		if(0 != $_SESSION['user']['company_id'])
-		{
-			$searchFilter['company_id'] = $_SESSION['user']['company_id'];
-		}
-		$this->LoadPageTable($this->GetModel(),$searchFilter);
+		$condition['company_id'] = CompanyEnum::GROUP_COMPANY;
+		$condition['user_type_id'] = UserTypeEnum::SUPER_ADMIN;
+		$roleList = MispCommonDataService::GetRoleID($condition);
+		$searchFilter['role_id']=array('in',$roleList);
+		$this->LogInfo("LoadPage, searchFilter is ".json_encode($searchFilter));
+		$this->LoadPageTable($this->GetModel(),$searchFilter,$this->GetModel()->getPk());
 	}
 	/* 新增管理员
 	 * (non-PHPdoc)
@@ -39,41 +40,21 @@ class UserManageAction extends EasyUITableAction
 		$this->LogInfo("create user...");
         $systemUserDao = MispDaoContext::SystemUser();
         $req = $this->GetCommonData();
-
-        $condition['user_name'] = $req->user_name;
-        $userID = $systemUserDao->where($condition)->getField('user_id');
-        if($userID!=''){
-        	$this->LogWarn("Create user failed, user_name is exist.");
-        	$this->errorCode = MispErrorCode::USER_EXISTED;
-        	$this->ReturnJson();
-        	return;
-        }
+		
         $user['user_name'] = $req->user_name;
         $user['password'] = $req->password;
-        $user['role_id'] = UserRoleEnum::ADMIN;
+        $user['role_id'] = $req->role_id;
         $user['reg_date'] = date('Y-m-d H:i:s',time());
-        $user['company_id'] = $_SESSION['user']['company_id'];
+        $user['company_id'] = CompanyEnum::GROUP_COMPANY;
         try
         {
-        	$result = MispCommonService::Create($systemUserDao, $user);
+        	$result = MispCommonUserService::Create($user);
         }
         catch(FuegoException $e)
         {
         	$this->errorCode = $e->getCode();
         	$this->ReturnJson();
         	return;
-        }
-        $adminDao = $this->GetModel();
-        $admin['user_id'] = $result;
-        $admin['user_name'] = $req->user_name;
-        $admin['company_id'] = $_SESSION['user']['company_id'];
-        try
-        {
-        	$result = MispCommonService::Create($adminDao, $user);
-        }
-        catch(FuegoException $e)
-        {
-        	$this->errorCode = $e->getCode();
         }
         $this->ReturnJson();
 	}
@@ -83,7 +64,7 @@ class UserManageAction extends EasyUITableAction
 	 */
 	public function SendVerifyCode(){
 		$obj = $this->GetReqObj();
-        $phoneNum = $obj->phone_num;
+		$phoneNum = $obj->phone_num;
 		$content = ShortMessage::getRandNum(4);
 		$message = $content."【快客洗涤】";
 		$result = ShortMessage::SendMessage($phoneNum,$message);
@@ -96,11 +77,12 @@ class UserManageAction extends EasyUITableAction
 			$this->ReturnJson($data);
 			return;
 		}
-		else 
+		else
 		{
 			$this->errorCode = SEND_MESSAGE_FAILED;
 			$this->ReturnJson();
 			return;
 		}
-	}	 
+	}
 }
+?>

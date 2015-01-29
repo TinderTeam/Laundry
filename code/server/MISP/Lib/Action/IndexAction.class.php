@@ -3,11 +3,6 @@ import("MISP.Model.MispServiceContext");
 // 本类由系统自动生成，仅供测试用途
 class IndexAction extends BaseAction 
 {
-	//展示登录首页
-    public function index()
-    {
-		$this->display();
-    }
 
     //APP会员注册
     public function Register()
@@ -15,24 +10,21 @@ class IndexAction extends BaseAction
     	$this->LogInfo("customer register ...");
     	$Req = $this->GetReqObj();
     	
-    	$systemUserDao = MispDaoContext::SystemUser();
-    	$condition['user_name'] = $Req->user_name;
-    	$condition['company_id'] = $Req->app_id;
-    	$userID = $systemUserDao->where($condition)->getField('user_id');
-    	if($userID!=''){
-    		$this->LogWarn("Create customer failed, user_name is exist.");
-    		$this->errorCode = MispErrorCode::USER_EXISTED;
-    		$this->ReturnJson();
-    		return;
-    	}
+    	//获取用户角色
+    	$roleDao = MispDaoContext::SystemRole();
+    	$roleCondition['user_type_id'] = UserTypeEnum::CUSTOMER;
+    	$roleCondition['company_id'] = $Req->app_id;
+    	$customerRole = $roleDao->where($roleCondition)->getField('role_id');
+    	$this->LogInfo("customer role is ".$customerRole);
+    	//创建用户信息
     	$user['user_name'] = $Req->user_name;
     	$user['password'] = $Req->password;
-    	$user['role_id'] = UserRoleEnum::CUSTOMER;
+    	$user['role_id'] = $customerRole;
     	$user['reg_date'] = date('Y-m-d H:i:s',time());
     	$user['company_id'] = $Req->app_id;
     	try
     	{
-    		$result = MispCommonService::Create($systemUserDao, $user);
+    		$result = MispCommonUserService::Create($user);
     	}
     	catch(FuegoException $e)
     	{
@@ -40,6 +32,7 @@ class IndexAction extends BaseAction
     		$this->ReturnJson();
     		return;
     	}
+    	//创建会员信息
     	$user['user_id'] = $result;
     	$customerInfo['addr'] = $Req->addr;
     	$this->errorCode = MispServiceContext::UserManage()->Register($user,$customerInfo);
@@ -49,72 +42,117 @@ class IndexAction extends BaseAction
     public function Login()
     {
     	$Req = $this->GetReqObj();
-    	$reqType = $Req->clientType;
-    	$req = $Req->obj;
-    	$userDao= MispDaoContext::SystemUser();
-    	$condition['user_name']=$req->user_name;
+    	$req = $this->GetCommonData();
+    	$reqType = $this->GetReqType();
+    	$this->LogInfo("User login, Client type is ".$reqType);
+    	$user['user_name'] = $req->user_name;
+    	$user['password'] = $req->password;
     	if(($reqType == ClientTypeEnum::IOS)||($reqType == ClientTypeEnum::ANDROID))
     	{
-    		$condition['company_id'] = $Req->app_id;
+    		//APP客户端登陆验证
+    		$data = null;
+    		$user['company_id'] = $Req->app_id;
+    		$this->LogInfo("Login client type is ".$reqType.",company_id is ".$Req->app_id);
+    		//验证用户与登录密码
+    		try 
+    		{
+    			$orignalUser = MispCommonUserService::LoginValidate($user);
+    		}
+	    	catch(FuegoException $e)
+	    	{
+	    		$this->errorCode = $e->getCode();
+	    		return  $this->ReturnJson();
+	    	}
+    		//获取用户APP登录权限
+    		$privilegeResult = MispCommonDataService::GetRolePrivilege($orignalUser, PrivilegeEnum::ACCESS_TYPE_LOGIN, PrivilegeEnum::ACCESS_VALUE_APP_LOGIN);
+    		if(false == $privilegeResult)
+    		{
+    			//用户不存在APP登录权限
+    			$this->LogWarn("Get role privilege failed.The user don't have APP login privilege, login failed.");
+    			$this->errorCode = MispErrorCode::USERNAME_OR_PASSWORD_WRONG;
+    			return  $this->ReturnJson();
+    		}
+    		else
+    		{
+    			//APP登录成功
+    			$this->LogInfo("Get user login privilege success. The user have APP login privilege.");
+    			$data = MispServiceContext::UserManage()->AppLogin($orignalUser);
+    		}
+    		$this->ReturnJson($data);
     	}
-    	$userCount = $userDao->where($condition)->count();
-    	if($userCount==0)		//用户不存在
-    	{
-    		$this->LogErr("login failed, the user is not exsit. user name is ".$req->user_name);
-    		$this->errorCode = MispErrorCode::USERNAME_OR_PASSWORD_WRONG;
-    		return  $this->ReturnJson();
-    	}
-    	$orignalUser = $userDao->where($condition)->find();
-    	if($req->password != $orignalUser['password'])		//验证密码
-    	{
-    		$this->LogErr("login failed, the password is wrong. user name is ".$req->user_name);
-    		$this->errorCode = MispErrorCode::USERNAME_OR_PASSWORD_WRONG;
-    		$this->ReturnJson();
-    		return;
-    	}
-    	$data = null;
     	if($reqType == ClientTypeEnum::WEB)
     	{
-    		
-    		$this->errorCode = MispServiceContext::UserManage()->WebLogin($orignalUser);
-    	}
-    	else
-    	{
-    		$this->errorCode = MispServiceContext::UserManage()->AppLogin($orignalUser);
-    		if($this->errorCode == MispErrorCode::SUCCESS)
+    		//WEB端登陆验证
+    		//验证用户与登录密码
+    		try
     		{
-    			$data['user'] = $orignalUser;
-    			$data['token'] = DataCreateUtil::GetUUID();
+    			$orignalUser = MispCommonUserService::LoginValidate($user);
     		}
+    		catch(FuegoException $e)
+    		{
+    			$this->errorCode = $e->getCode();
+    			return  $this->ReturnJson();
+    		}
+    		$privilegeResult = MispCommonDataService::GetRolePrivilege($orignalUser, PrivilegeEnum::ACCESS_TYPE_LOGIN, PrivilegeEnum::ACCESS_VALUE_WEB_LOGIN);    		
+    		if(false ==  $privilegeResult)
+    		{
+    			//用户不存在WEB登录权限
+    			$this->LogWarn("Get role privilege failed. The user don't have WEB login privilege, login failed.");
+    			$this->errorCode = MispErrorCode::USERNAME_OR_PASSWORD_WRONG;
+    		}
+    		else
+    		{
+    			//WEB登录成功
+    			$this->LogInfo("Get user login privilege success. The user have WEB login privilege.");
+    			$this->errorCode = MispServiceContext::UserManage()->WebLogin($orignalUser);
+    		}
+    		
     	}
-    	$this->ReturnJson($data);   	
+    	$this->ReturnJson();   	
     }
     //退出系统
     public function Logout()
     {
-    	session_destroy();
+    	$reqType = $this->GetReqType();
+    	$this->LogInfo("User Logout, Client type is ".$reqType);
+    	if(($reqType == ClientTypeEnum::IOS)||($reqType == ClientTypeEnum::ANDROID))
+    	{
+    		$req = $this->GetCommonData();
+    		$user = $this->objectToArray($req);
+	    	try
+			{
+				$this->errorCode = MispServiceContext::UserManage()->AppLogout($user);
+			}
+			catch(FuegoException $e)
+			{
+				$this->errorCode = $e->getCode();
+			} 
+    	}
+    	else 
+    	{
+    		$this->LogInfo("WEB logout...");
+    		session_destroy();
+    	}
+    	$this->LogInfo("User logout success.");
     	$this->ReturnJson();
     }
     //修改密码
     public function ModifyPassword()
     {
     	$req = $this->GetReqObj();
-    	$reqType = $req->clientType;
+    	$reqType = $this->GetReqType();
+    	$this->LogInfo("Modify password,client type is ".$reqType);
     	if(($reqType == ClientTypeEnum::IOS)||($reqType == ClientTypeEnum::ANDROID))
     	{
+    		//验证APP是否登录
+    		$this->DoAuth();
+    		//修改密码
     		$condition['company_id'] = $req->app_id;
     		$condition['user_name'] = $req->user_name;
     		$this->errorCode = MispServiceContext::UserManage()->ModifyPassword($condition,$req);
     	}
     	if($reqType == "WEB")
     	{
-    		if($_SESSION['user']['user_name'] == "")
-    		{
-    			$this->LogWarn("Modify password failed,no user login.");
-    			$this->errorCode = MispErrorCode::ERROR_SESSION_INVALID;
-    			$this->ReturnJson();
-    			return;
-    		}
     		$condition['user_name'] = $_SESSION['user']['user_name'];
     		$this->errorCode = MispServiceContext::UserManage()->ModifyPassword($condition,$req);
     		if($this->errorCode == MispErrorCode::SUCCESS)
@@ -124,12 +162,50 @@ class IndexAction extends BaseAction
     	}
     	$this->ReturnJson();
     }
+    //APP会员找回密码
+    public function ResetPassword()
+    {
+    	
+    	$Req = $this->GetReqObj();
+    	 
+    	$systemUserDao = MispDaoContext::SystemUser();
+    	$condition['user_name'] = $Req->user_name;
+    	$condition['company_id'] = $Req->app_id;
+    	$this->LogInfo("customer reset password , customer info is ".json_encode($condition));
+    	$userID = $systemUserDao->where($condition)->getField('user_id');
+    	if($userID ==''){
+    		$this->LogWarn("Finding password failed, user_name is not exist.".$Req->user_name);
+    		$this->errorCode = MispErrorCode::ERROR_USER_NOT_EXISTED;
+    		$this->ReturnJson();
+    		return;
+    	}
+    	$user['user_id'] = $userID;
+    	$user['password'] = $Req->password;
+    	try
+    	{
+    		$result = MispCommonService::Modify($systemUserDao, $user);
+    	}
+    	catch(FuegoException $e)
+    	{
+    		$this->errorCode = $e->getCode();
+    	}
+    	$this->ReturnJson();
+    }
     //WEB加载菜单列表
     public function GetMenuTree()
     {
+    	$this->LogInfo("get menu tree");
+    	//获取用户菜单权限
+    	$privilegeDao = MispDaoContext::Privilege();
+    	$condition['master_value'] = $_SESSION['user']['role_id'];
+    	$condition['master_type'] = PrivilegeEnum::MASTER_TYPE_ROLE;
+    	$condition['access_obj_type'] = PrivilegeEnum::ACCESS_TYPE_MENU;
+    	$menuIDList = $privilegeDao->where($condition)->getField('access_obj_value',true);
+    	//获取菜单列表
     	$menuDao = MispDaoContext::Menu();
-    	$menuList = $menuDao->select();
-    	$this->LogWarn($menuList);
+    	$map['menu_id']=array('in',$menuIDList);
+    	$menuList = $menuDao->where($map)->select();
+    	//转换为tree
     	$treeList = array();
     	foreach($menuList as $menu)
     	{
@@ -139,7 +215,7 @@ class IndexAction extends BaseAction
     		$tree['attributes']['url'] = $menu['url'];
     		array_push($treeList,$tree);
     	}
-    	$this->LogInfo(json_encode($treeList));
+    	$this->LogInfo("menu tree is ".json_encode($treeList));
     	echo json_encode($treeList);
     	exit;
     }

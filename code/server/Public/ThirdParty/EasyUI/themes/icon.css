@@ -1,3 +1,6 @@
+.icon-admin{
+	background:url('icons/admin.png') no-repeat center center;
+}
 .icon-blank{
 	background:url('icons/blank.gif') no-repeat center center;
 }
@@ -91,8 +94,9 @@
 .icon-lock{
 	background:url('icons/lock.png') no-repeat center center;
 }
-
-
+.icon-lock-open{
+	background:url('icons/lock_open.png') no-repeat center center;
+}
 .icon-mini-add{
 	background:url('icons/mini_add.png') no-repeat center center;
 }

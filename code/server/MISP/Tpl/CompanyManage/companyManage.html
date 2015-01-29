@@ -9,14 +9,15 @@
 	<div id="toolbar" style="padding:5px;height:auto">
 		<table style="width:100%;">
         	<tr>
-            	<td style="width:17%;">
+            	<td style="width:23%;">
 					<a class="easyui-linkbutton" iconCls="icon-add" onclick="onModify('Create')">增加</a>
 					<a class="easyui-linkbutton" iconCls="icon-edit" onclick="onModify('Modify')">编辑</a>
-					<a class="easyui-linkbutton" iconCls="icon-remove" onclick="onDelete()">删除</a>
+					<a class="easyui-linkbutton" iconCls="icon-lock" onclick="onUpdateStatus('freeze')">冻结</a>
+					<a class="easyui-linkbutton" iconCls="icon-lock-open" onclick="onUpdateStatus('unfreeze')">解冻</a>
 				</td>
 				<td>
 					<form id="searchForm" method="post">
-					<input name="user_name" class="easyui-textbox" data-options="prompt:'请输入用户名'" style="width:120px">
+					<input name="company_name" class="easyui-textbox" data-options="prompt:'请输入公司名'" style="width:120px">
 					<a class="easyui-linkbutton" iconCls="icon-search" onclick="onSearch()">搜索</a>
 					</form>
 				</td>
@@ -31,11 +32,15 @@
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
 				<th data-options="field:'company_id',width:80">公司编号</th>
-				<th data-options="field:'company_name',width:80">公司名称</th>
-				<th data-options="field:'company_web_site',width:80">公司网址</th>
-				<th data-options="field:'company_addr',width:80">公司地址</th>
-				<th data-options="field:'company_desp',width:80">公司描述</th>
-				<th data-options="field:'service_phone',width:80">客服电话</th>
+				<th data-options="field:'company_name',width:100">公司名称</th>
+				<th data-options="field:'company_status',width:100">公司状态</th>
+				<th data-options="field:'company_web_site',width:180">公司网址</th>
+				<th data-options="field:'company_addr',width:260">公司地址</th>
+				<th data-options="field:'company_desp',width:200">公司描述</th>
+				<th data-options="field:'service_phone',width:120">客服电话</th>
+				<th data-options="field:'alipay_seller',width:120">支付宝账户</th>
+				<th data-options="field:'alipay_partner',width:120">支付宝ID</th>
+				<th data-options="field:'alipay_private_key',width:120">支付宝私钥</th>
 			</tr>
 		</thead>
 	</table>
@@ -60,8 +65,8 @@ function onModify(type){
 		//打开用户编辑窗口
 		$('#companyModify').dialog({
 		    title: '用户信息',
-		    width: 490,
-		    height: 260,
+		    width: 500,
+		    height: 360,
 		    closed: false,
 		    cache: false,
 		    href: '__APP__/CompanyManage/companyInfo.html',
@@ -69,7 +74,7 @@ function onModify(type){
 		});
 		if(type == "Modify")
 		{
-			var json = objToJson(row.user_id);
+			var json = objToJson(row.company_id);
 			$.ajax({
 				type:"post",
 				url:"__APP__/CompanyManage/Show",
@@ -90,27 +95,31 @@ function onModify(type){
 		}
 	}	
 }
-function onDelete(){
-	var row = $('#companyGrid').datagrid('getSelected');
-	if(!row)
+//更新公司状态
+function onUpdateStatus(type){
+	var rows = $('#companyGrid').datagrid('getChecked');
+	var ids = [];
+	if(rows.length < 1)
 	{
-		fuegoAlert("请选择一条记录");
+		fuegoAlert("请至少选择一条记录");
 	}
 	else
 	{
-		$.messager.confirm('确认提示', '确认删除该条记录？', function (r) {
+		for (var i = 0 ; i < rows.length; i++) {
+	        ids.push(rows[i].company_id);
+	    }
+	    var json = objToJson(ids);
+		$.messager.confirm('确认提示', '确认更改公司状态？', function (r) {
 			if(r){
-				var json = objToJson(row.user_id);
 				$.ajax({
 					type:"post",
-					url:"__APP__/CompanyManage/Delete",
+					url:"__APP__/CompanyManage/UpdateStatus?status="+type,
 					data:json,
 					dataType:"json",
 					success:function(rsp){
 						if(isSuccess(rsp)){
-							//解决最后一条记录无法删除BUG
-							 var rowIndex = $('#companyGrid').datagrid('getRowIndex', row);
-					         $('#companyGrid').datagrid('deleteRow', rowIndex);
+							//重新加载datagrid数据
+							$("#companyGrid").datagrid('reload');
 						}
 						else{
 							fuegoAlert(rsp.errorMsg);
@@ -122,6 +131,7 @@ function onDelete(){
 				});
 			}
 		});
+		
 	}	
 }
 </script>

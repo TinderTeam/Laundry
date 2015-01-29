@@ -6,6 +6,8 @@ class BaseAction extends Action
      protected $errorCode = MispErrorCode::SUCCESS ;
 	 protected $errorMsg;
 	 
+	 private  $reqLogFlag = true;
+	 
 	 public function LogErr($log)
 	 {
 	   Log::write($log);
@@ -18,12 +20,46 @@ class BaseAction extends Action
 	 {
 	 	Log::write($log,Log::INFO);
 	 }
+	 //Session统一验证
+	 public function _initialize(){
+	 	$indexURL = "Index/index";
+	 	$loginURL = "Index/Login";
+	 	$logoutURL = "Index/Logout";
+	 	$redirectURL = "Index/redirectPage";
+	 	
+	 	$reqURL = $_SERVER["REQUEST_URI"];
+	 	if((ClientTypeEnum::WEB == $this->GetReqType())||(""== $this->GetReqType()))
+	 	{
+	 		$this->LogInfo("Session validator...".$this->GetReqType());
+	 		if(strpos($reqURL, $redirectURL)||strpos($reqURL, $indexURL)||strpos($reqURL, $loginURL)||strpos($reqURL, $logoutURL))
+	 		{
+	 			$this->LogInfo("Session validator login Page");
+	 			return;
+	 		}
+	 		if($_SESSION['user']['user_name'] == null)
+	 		{
+	 			$this->LogInfo("Session is out ...,Jump to login page");
+	 			session_destroy();
+	 			header("location: http://".$_SERVER['HTTP_HOST']."/Laundry/index.php/Index/redirectPage.html");
+	 		}
+	 		else 
+	 		{
+	 			$time=30*60;
+	 			setcookie(session_name(),session_id(),time()+$time,"/");
+	 		}
+	 	}
+	 }
+	 
 	 private function GetReqJson()
 	 {
 	   $req = file_get_contents("php://input");
-	   $this->LogInfo('the url is '.$_SERVER["REQUEST_URI"] );
-	   $this->LogInfo('request is '.$req);
-
+	   if($this->reqLogFlag)
+	   {
+	   	$this->LogInfo('the url is '.$_SERVER["REQUEST_URI"] );
+	   	$this->LogInfo('request is '.$req);
+	   	$this->reqLogFlag=false;
+	   	 
+	   }
 	   return $req;
 	 }
 	 
@@ -54,12 +90,18 @@ class BaseAction extends Action
 	 
 	 public function DoAuth()
 	 {
+	   $this->LogInfo("User login validator.DoAuth...");
 	   $req =  $this->GetReqObj();
-	   $token = $req->token;
-	   if(true)
+	   $condition['token_name'] = $req->token;
+	   $tokenDao = MispDaoContext::Token();
+	   $tokenCount = $tokenDao->where($condition)->count();
+	   if(0 == $tokenCount)
 	   {
-	       //$this->returnJson(ERROR_TOKEN_INVALID,null);
+	   	    $this->LogWarn("DoAuth failed, user login invalid.");
+	   		$this->errorCode = MispErrorCode::ERROR_LOGIN_INVALID;
+	   		$this->ReturnJson();
 	   }
+	   $this->LogInfo("DoAuth success.");
 	 }
 	 
  
