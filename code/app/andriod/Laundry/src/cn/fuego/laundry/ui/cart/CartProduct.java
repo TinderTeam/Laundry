@@ -13,10 +13,12 @@ import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.model.base.ProductJson;
+import cn.fuego.misp.service.MemoryCache;
 
 public class CartProduct
 {
  	
+	
  	private static CartProduct instance;
 	
 	private CreateOrderReq orderInfo = new CreateOrderReq();
@@ -59,6 +61,7 @@ public class CartProduct
 	
 	public void setDefaultOrderInfo()
 	{
+		this.orderInfo.setToken(MemoryCache.getToken());
 		OrderJson order =  this.orderInfo.getOrder();
 		CustomerJson customer = AppCache.getInstance().getCustomer();
 		if(null != customer)

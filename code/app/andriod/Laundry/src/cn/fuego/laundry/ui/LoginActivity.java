@@ -173,6 +173,7 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 			return;
 		}
 		GetCustomerReq req = new GetCustomerReq();
+		req.setToken(token);
 		req.setObj(user.getUser_id());
 		
 		WebServiceContext.getInstance().getCustomerManageRest(new MispHttpHandler()
@@ -210,8 +211,7 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 	private void loginSuccess(String token,UserJson user,CustomerJson customer)
 	{
  		AppCache.getInstance().update(token,user, customer);
-	    CartProduct.getInstance().setDefaultOrderInfo();
-
+ 
  
 	      
 		Class clazz = (Class) this.getIntent().getSerializableExtra(JUMP_SOURCE);

@@ -41,8 +41,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 	
 	private PopupWindow popupWindow=null;  
  	private TextView totalPriceView;
-	private TextView totalCountView;
-	private View view;  
+ 	private View view;  
 	private  int  curNum= 1;
  	@Override
 	public void initRes()
@@ -83,8 +82,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		{
 			totalPriceView = (TextView) rootView.findViewById(R.id.chart_total_price);
 			
-			totalCountView = (TextView) rootView.findViewById(R.id.chart_total_count);
-	 
+ 	 
 			refreshView();
 		}
 
@@ -153,17 +151,18 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		{
  
 			totalPriceView.setVisibility(View.INVISIBLE);
-			totalCountView.setVisibility(View.INVISIBLE);
-			this.getActivity().findViewById(R.id.cart_text).setVisibility(View.INVISIBLE);
-			this.getButtonByID(R.id.cart_submit).setVisibility(View.INVISIBLE);
+ 
+ 			this.getButtonByID(R.id.cart_submit).setVisibility(View.INVISIBLE);
 			repaint();
 
 		}
 		else
 		{
-			this.totalCountView.setText(String.valueOf(CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count()));
+			String price = "数量："+ CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count() + ",";
+			
+			price += "总价：" + CartProduct.getInstance().getOrderDispPrice();
 
-			this.totalPriceView.setText(CartProduct.getInstance().getOrderDispPrice());
+			this.totalPriceView.setText(price);
 			repaint();
 		}
 	}

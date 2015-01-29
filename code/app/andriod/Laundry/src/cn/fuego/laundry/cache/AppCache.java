@@ -91,13 +91,11 @@ public class AppCache
 	}
 	public void update(String token,UserJson user,CustomerJson customer)
 	{
-		MemoryCache.setToken(token);
-		this.user = user;
-		this.customer = customer;
+ 
 		SharedPreUtil.getInstance().put(USER_CACHE, user);
 		SharedPreUtil.getInstance().put(CUSTOMER_CACHE, customer);
 		SharedPreUtil.getInstance().put(TOKEN_CACHE,token );
-		
+		load();
 
 	}
 

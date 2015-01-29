@@ -62,16 +62,23 @@ public abstract class MispBaseListActivity<E> extends MispHttpActivtiy implement
 			case ListViewResInfo.VIEW_TYPE_LIST:
 			{
 				ListView listView = (ListView) findViewById(this.listViewRes.getListView());
-				listView.setAdapter(adapter);
-				listView.setOnItemClickListener(this);
+				if(null != listView)
+				{
+					listView.setAdapter(adapter);
+					listView.setOnItemClickListener(this);
+				}
+
 				break;
 			}
 		
 			case ListViewResInfo.VIEW_TYPE_GRID:
 			{
-				MispGridView listView = (MispGridView) findViewById(this.listViewRes.getListView());
-				listView.setAdapter(adapter);
-				listView.setOnItemClickListener(this);
+				MispGridView gridView = (MispGridView) findViewById(this.listViewRes.getListView());
+				if(null != gridView)
+				{
+					gridView.setAdapter(adapter);
+					gridView.setOnItemClickListener(this);
+				}
 				break;
 	
 			}

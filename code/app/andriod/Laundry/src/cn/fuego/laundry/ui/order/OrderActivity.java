@@ -5,9 +5,14 @@ import java.util.List;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
+import cn.fuego.common.util.validate.ValidatorUtil;
+import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.PayOptionEnum;
 import cn.fuego.laundry.ui.MainTabbarActivity;
@@ -17,6 +22,8 @@ import cn.fuego.laundry.ui.home.HomeFragment;
 import cn.fuego.laundry.webservice.up.model.CreateOrderRsp;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.constant.MispCommonIDName;
+import cn.fuego.misp.service.MISPException;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.common.alipay.MispPayActivity;
@@ -33,6 +40,8 @@ public class OrderActivity extends MispInfoListActivity
 	private static final String EDIT_DELIVERY = "配送信息";
 	
 	private static final String BTN_VALUE ="点击修改";
+	
+	private TextView tatolPriceView;
 
 	
 	
@@ -41,8 +50,10 @@ public class OrderActivity extends MispInfoListActivity
 	{
  
 		super.initRes();
+		
+		this.activityRes.setAvtivityView(R.layout.order_confirm);
  		this.activityRes.setName("提交订单");
-
+ 		this.activityRes.getButtonIDList().add(R.id.misp_btn_submit);
 		this.getDataList().clear();
 		this.getDataList().addAll(getBtnData());
 	}
@@ -54,29 +65,23 @@ public class OrderActivity extends MispInfoListActivity
 			
 			if(null != order)
 			{
-				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, EDIT_DELIVERY, BTN_VALUE));
+ 
+				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "取衣地址", order.getTake_addr()));
 
-				list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "取衣地址", order.getTake_addr()));
-
-				list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "送回地址", order.getDelivery_addr()));
+				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "送回地址", order.getDelivery_addr()));
 				
-				list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "联系人", order.getContact_name()));
-				list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "联系电话", order.getPhone()));
+				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "联系人", order.getContact_name()));
+				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "联系电话", order.getPhone()));
 				
 				
-				list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
+				//list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
 
 		 
-				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, ORDER_INFO, BTN_VALUE));
-
-				list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "总价", order.getTotal_price()));
-				list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "付款方式", order.getPay_option()));
-				list.add(new CommonItemMeta(CommonItemMeta.LARGE_TEXT, "您的要求", order.getOrder_note()));
-				
-				list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
-
-				
-				list.add(new CommonItemMeta(CommonItemMeta.SUBMIT_BUTTON, null, null));
+ 
+				//list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "总价", order.getTotal_price()));
+				//list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "付款方式", order.getPay_option()));
+				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "您的要求", order.getOrder_note()));
+ 
 
 			}
 
@@ -85,7 +90,23 @@ public class OrderActivity extends MispInfoListActivity
 	}
  
 	
+	
 	 
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		
+		tatolPriceView = (TextView) findViewById(R.id.order_tatal_price_txt);
+		
+		String price = "数量："+ CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count() + ",";
+		
+		price += "总价：" + CartProduct.getInstance().getOrderDispPrice();
+
+		tatolPriceView.setText(price);
+	}
+
 	@Override
 	public void onItemListClick(AdapterView<?> parent, View view, long id,
 			CommonItemMeta item)
@@ -105,13 +126,18 @@ public class OrderActivity extends MispInfoListActivity
 				this.startActivityForResult(intent,1);
 			}
 		}
-		else if(CommonItemMeta.SUBMIT_BUTTON == item.getLayoutType())
-		{
-
-			submitOrder();
-		}
+ 
 	}
 	
+	
+	
+	@Override
+	public void onClick(View v)
+	{
+		// TODO Auto-generated method stub
+		submitOrder();
+	}
+
 	private void submitOrder()
 	{
 	     final ProgressDialog proDialog =ProgressDialog.show(this, "请稍等", "订单正在提交......");
@@ -140,8 +166,65 @@ public class OrderActivity extends MispInfoListActivity
 			
 		}).create(CartProduct.getInstance().getOrderInfo());
 	}
+	
+	
  
  
+	@Override
+	public View getListItemView(LayoutInflater inflater, CommonItemMeta item)
+	{
+ 		View view =null;
+		int type= item.getLayoutType();
+		String title= "";
+		if(!ValidatorUtil.isEmpty(item.getTitle()))
+		{
+			title = item.getTitle();
+		}
+		String content = "";
+		if(null != item.getContent())
+		{
+			content = String.valueOf(item.getContent());
+		}
+				
+		
+		switch(type)
+		{
+ 
+		case CommonItemMeta.BUTTON_TO_EDIT_ITEM:
+			{
+				view = inflater.inflate(R.layout.order_confirm_item, null);
+				TextView title_view = (TextView) view.findViewById(R.id.item_btntype_name);
+				if(null != title_view)
+				{
+					title_view.setText(title);
+				}
+				else
+				{
+					log.warn("can not find text view by id, the is item_btntype_name " + MispCommonIDName.item_btntype_name);
+				}
+				
+				TextView valueView  = (TextView) view.findViewById(MispCommonIDName.item_btntype_value);
+				if(null != valueView)
+				{
+					valueView.setText(content);	
+				}
+				else
+				{
+					log.warn("can not find text view by id, the is item_btntype_value " + MispCommonIDName.item_btntype_name);
+				}
+				
+				
+			}
+			break;
+	    default:
+	    	throw new MISPException("the item layout can not be empty");
+	    	 
+ 
+		}
+		 
+		return view;
+	}
+
 	private void jumpToOrderList(OrderJson   order)
 	{
  		if(PayOptionEnum.ONLINE_PAY.getStrValue().equals(order.getPay_option()))
