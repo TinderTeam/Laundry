@@ -65,6 +65,7 @@ public class MispCommonIDName
 	public static final int misp_upgrade_old_version_txt = R.id.misp_upgrade_old_version_txt;
 	public static final int misp_upgrade_count_txt = R.id.misp_upgrade_count_txt;
 	public static final int misp_uprade_progress_count = R.id.misp_uprade_progress_count;
+	public static final int misp_icon_img_view = R.id.misp_icon_img_view;;
 
 	 
 	

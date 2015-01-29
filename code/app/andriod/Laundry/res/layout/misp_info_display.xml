@@ -9,25 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/misp_tilte_with_back_layout" />
- 
- 
-        <LinearLayout
+
+        <ListView
+            android:id="@+id/misp_info_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:divider="@null" >
 
-            <ListView
-                android:id="@+id/misp_info_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" 
-                android:layout_marginBottom="50dp">
-
-            </ListView>
-
-           
-        </LinearLayout>
- 
- 
+        </ListView>
 
 </LinearLayout>

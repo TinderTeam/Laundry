@@ -13,12 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.21"
+        android:background="@color/backcolor"
         android:orientation="vertical" >
 
         <ListView
             android:id="@+id/order_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/backcolor"
+            android:divider="@null" >
+
         </ListView>
        
     </LinearLayout>

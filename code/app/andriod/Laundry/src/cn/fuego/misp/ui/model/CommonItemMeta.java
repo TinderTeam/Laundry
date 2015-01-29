@@ -116,8 +116,10 @@ public class CommonItemMeta implements Serializable
 				view = inflater.inflate(MispCommonIDName.layout_misp_list_item_texttype, null);
 				
 				ImageView img = (ImageView) view.findViewById(MispCommonIDName.misp_icon_img);
+				View imgview = (View) view.findViewById(MispCommonIDName.misp_icon_img_view);
 				if(!ValidatorUtil.isEmpty(this.titleImage))
 				{
+					imgview.setVisibility(View.VISIBLE);
 					if(ValidatorUtil.isInt(this.titleImage))
 					{
 						LoadImageUtil.getInstance().loadImage(img, Integer.valueOf(this.titleImage));

@@ -41,15 +41,18 @@
                     android:textColor="@color/white" />
 
             </RelativeLayout>
+
             <EditText
                 android:id="@+id/item_btntype_value"
                 style="@null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/edittext_sel"
                 android:gravity="start"
                 android:inputType="textMultiLine"
                 android:lines="5"
-                android:textSize="12sp">
+                android:textSize="12sp" >
+
                 <requestFocus />
             </EditText>
 
