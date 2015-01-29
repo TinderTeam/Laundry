@@ -30,12 +30,15 @@ import cn.fuego.misp.ui.common.alipay.MispPayActivity;
 import cn.fuego.misp.ui.common.alipay.MispPayParameter;
 import cn.fuego.misp.ui.info.MispInfoListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
+import cn.fuego.misp.webservice.up.model.base.AttributeJson;
 import cn.fuego.misp.webservice.up.model.base.CompanyJson;
 
 public class OrderActivity extends MispInfoListActivity
 {
 	private FuegoLog log = FuegoLog.getLog(getClass());
-	public static final String ORDER_INFO = "订单信息";
+	public static final String TAKE_ADDR = "取衣地址";
+	public static final String SEND_ADDR = "送回地址";
+
   
 	private static final String EDIT_DELIVERY = "配送信息";
 	
@@ -66,9 +69,9 @@ public class OrderActivity extends MispInfoListActivity
 			if(null != order)
 			{
  
-				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "取衣地址", order.getTake_addr()));
+				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, TAKE_ADDR, order.getTake_addr()));
 
-				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "送回地址", order.getDelivery_addr()));
+				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, SEND_ADDR, order.getDelivery_addr()));
 				
 				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "联系人", order.getContact_name()));
 				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "联系电话", order.getPhone()));
@@ -80,7 +83,7 @@ public class OrderActivity extends MispInfoListActivity
  
 				//list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "总价", order.getTotal_price()));
 				//list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "付款方式", order.getPay_option()));
-				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "您的要求", order.getOrder_note()));
+				list.add(new CommonItemMeta(CommonItemMeta.LARGE_TEXT, "您的要求", order.getOrder_note()));
  
 
 			}
@@ -116,18 +119,24 @@ public class OrderActivity extends MispInfoListActivity
 	{
 		if(CommonItemMeta.BUTTON_TO_EDIT_ITEM == item.getLayoutType())
 		{
-			String content =   item.getTitle();
+			String title =   item.getTitle();
 			Intent intent = new Intent();
-			if(EDIT_DELIVERY.equals(content))
+			AttributeJson data = new AttributeJson();
+			data.setAttrKey(title);
+			data.setAttrValue(String.valueOf(item.getContent()));
+			if(TAKE_ADDR.equals(title))
 			{
 				intent.setClass(this, AddrEditActivity.class);
+				intent.putExtra(AddrEditActivity.JUMP_DATA, data);
 				this.startActivityForResult(intent,1);
 			}
-			else if(ORDER_INFO.equals(content))
+			else if(SEND_ADDR.equals(title))
 			{
-				intent.setClass(this,  OrderEditActivity.class);
+				intent.setClass(this, AddrEditActivity.class);
+				intent.putExtra(AddrEditActivity.JUMP_DATA, data);
 				this.startActivityForResult(intent,1);
 			}
+ 
 		}
  
 	}
@@ -219,6 +228,32 @@ public class OrderActivity extends MispInfoListActivity
 				
 			}
 			break;
+		case CommonItemMeta.LARGE_TEXT:
+		{
+			view = inflater.inflate(R.layout.order_confirm_largetext_item, null);
+			TextView title_view = (TextView) view.findViewById(R.id.item_btntype_name);
+			if(null != title_view)
+			{
+				title_view.setText(title);
+			}
+			else
+			{
+				log.warn("can not find text view by id, the is item_btntype_name " + MispCommonIDName.item_btntype_name);
+			}
+			
+			TextView valueView  = (TextView) view.findViewById(MispCommonIDName.item_btntype_value);
+			if(null != valueView)
+			{
+				valueView.setText(content);	
+			}
+			else
+			{
+				log.warn("can not find text view by id, the is item_btntype_value " + MispCommonIDName.item_btntype_name);
+			}
+			
+			
+		}
+		break;
 	    default:
 	    	throw new MISPException("the item layout can not be empty");
 	    	 
@@ -264,13 +299,32 @@ public class OrderActivity extends MispInfoListActivity
         this.finish();
 
 	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
+
+		AttributeJson result_value = (AttributeJson) data
+				.getSerializableExtra(AddrEditActivity.JUMP_DATA);
+
+		if (null != result_value)
+		{
+			if (TAKE_ADDR.equals(result_value.getAttrKey()))
+			{
+				CartProduct.getInstance().getOrderInfo().getOrder()
+						.setTake_addr(result_value.getAttrValue());
+			} else if (SEND_ADDR.equals(result_value.getAttrValue()))
+			{
+				CartProduct.getInstance().getOrderInfo().getOrder()
+						.setDelivery_addr(result_value.getAttrValue());
+
+			}
+		}
+
 		this.refreshList(this.getBtnData());
-		 
+
 	}
 
 

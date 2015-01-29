@@ -9,149 +9,71 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/misp_tilte_with_save_layout" />
-    <ScrollView
-        android:id="@+id/scrollView1"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:fillViewport="true" >
 
- 
-        <LinearLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp" >
+
+        <EditText
+            android:id="@+id/deliver_addr_text"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/edittext_sel"
+            android:ems="10"
+            android:gravity="center_vertical|top"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/content_font_size" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_weight="1"
+            android:padding="10dp" >
 
-            <LinearLayout
+            <Button
+                android:id="@+id/set_location_addr_btn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_height="50dp"
+                android:background="@drawable/btn_green"
+                android:drawableLeft="@drawable/icon_gps"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="定位地址"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_height_size"
-                    android:gravity="center_vertical"
-                    android:text="@string/deliver_take_addr"
-                    android:textColor="@color/content_text_color"
-                    android:textSize="@dimen/content_font_size" />
+        </RelativeLayout>
 
-                <EditText
-                    android:id="@+id/deliver_take_addr_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height_size"
-                    android:ems="10" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp" >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-
-                    <Button
-                        android:id="@+id/delivery_set_default_take_addr_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_height_size"
-                        android:layout_weight="1"
-                        android:text="@string/default_addr" />
-
-                    <Button
-                        android:id="@+id/delivery_set_location_take_addr_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_height_size"
-                        android:layout_weight="1"
-                        android:text="@string/location_addr" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <Button
+                android:id="@+id/set_default_addr_btn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_height="50dp"
+                android:background="@drawable/common_btn"
+                android:drawableLeft="@drawable/icon_def_addr"
+                android:focusable="false"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="默认地址"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_height_size"
-                    android:gravity="center_vertical"
-                    android:text="@string/deliver_delivery_addr"
-                    android:textColor="@color/content_text_color"
-                    android:textSize="@dimen/content_font_size" />
-
-                <EditText
-                    android:id="@+id/deliver_delivery_addr_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height_size"
-                    android:ems="10" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-
-                    <Button
-                        android:id="@+id/delivery_set_default_delivery_addr_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_height_size"
-                        android:layout_weight="1"
-                        android:text="@string/default_addr" />
-
-                    <Button
-                        android:id="@+id/delivery_set_location_delivery_addr_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_height_size"
-                        android:layout_weight="1"
-                        android:text="@string/location_addr" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-                
-                <TextView
-                    android:id="@+id/textVew2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_height_size"
-                    android:gravity="center_vertical"
-                    android:text="@string/deliver_contact"
-                    android:textColor="@color/content_text_color"
-                    android:textSize="@dimen/content_font_size" />
-
-                <EditText
-                    android:id="@+id/deliver_contact_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height_size"
-                    android:ems="10" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_height_size"
-                    android:gravity="center_vertical"
-                    android:text="@string/deliver_contact_phone"
-                    android:textColor="@color/content_text_color"
-                    android:textSize="@dimen/content_font_size" />
-
-                <EditText
-                    android:id="@+id/deliver_contact_phone_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height_size"
-                    android:ems="10"
-                    android:inputType="number" />
-            </LinearLayout>
-
-           
-
-        </LinearLayout>
- 
- 
-    </ScrollView>
+        </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

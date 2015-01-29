@@ -208,7 +208,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 				req.getOrder().setUser_name(AppCache.getInstance().getUser().getUser_name());
  
 				intent = new Intent(this.getActivity(),OrderActivity.class);
-				intent.putExtra(OrderActivity.ORDER_INFO, req);
+				//intent.putExtra(OrderActivity.ORDER_INFO, req);
 			}
 			else
 			{
