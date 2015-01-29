@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.misp.constant.MispCommonIDName;
+import cn.fuego.misp.ui.util.LoadImageUtil;
 
 public class CommonItemMeta implements Serializable
 {
@@ -29,7 +30,7 @@ public class CommonItemMeta implements Serializable
 	
 	private String title;
 	private int layoutType;
-	private Integer titleIamge = null; //if no title image the value is empty
+	private String titleImage = null; //if no title image the value is empty
 	private Object content;
 	
 	public CommonItemMeta()
@@ -42,12 +43,12 @@ public class CommonItemMeta implements Serializable
 		this.title = title;
 		this.content = content;
 	}
-	public CommonItemMeta(int type,String title,Object content,Integer titleImage)
+	public CommonItemMeta(int type,String title,Object content,String titleImage)
 	{
 		this.layoutType = type;
 		this.title = title;
 		this.content = content;
-		this.titleIamge =titleImage;
+		this.titleImage =titleImage;
 	}
 	public String getTitle()
 	{
@@ -65,13 +66,15 @@ public class CommonItemMeta implements Serializable
 	{
 		this.layoutType = layoutType;
 	}
-	public Integer getTitleIamge()
+ 
+ 
+	public String getTitleImage()
 	{
-		return titleIamge;
+		return titleImage;
 	}
-	public void setTitleIamge(Integer titleIamge)
+	public void setTitleImage(String titleImage)
 	{
-		this.titleIamge = titleIamge;
+		this.titleImage = titleImage;
 	}
 	public Object getContent()
 	{
@@ -111,6 +114,20 @@ public class CommonItemMeta implements Serializable
 		case TEXT_CONTENT:
 			{
 				view = inflater.inflate(MispCommonIDName.layout_misp_list_item_texttype, null);
+				
+				ImageView img = (ImageView) view.findViewById(MispCommonIDName.misp_icon_img);
+				if(!ValidatorUtil.isEmpty(this.titleImage))
+				{
+					if(ValidatorUtil.isInt(this.titleImage))
+					{
+						LoadImageUtil.getInstance().loadImage(img, Integer.valueOf(this.titleImage));
+					}
+					else
+					{
+						LoadImageUtil.getInstance().loadImage(img, this.titleImage);
+					}
+
+				}
 				TextView title_view = (TextView) view.findViewById(MispCommonIDName.item_texttype_name);
 				TextView content_view = (TextView) view.findViewById(MispCommonIDName.item_texttype_text);
 				title_view.setText(title);

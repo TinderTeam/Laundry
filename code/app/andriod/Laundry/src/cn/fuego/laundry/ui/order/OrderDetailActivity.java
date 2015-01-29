@@ -11,6 +11,7 @@ import cn.fuego.laundry.webservice.up.model.GetOrderDetailRsp;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.info.MispInfoListActivity;
@@ -68,7 +69,7 @@ public class OrderDetailActivity extends MispInfoListActivity
 		{
 			for(OrderDetailJson detail : orderDetailList)
 			{
-				list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, detail.getProduct_name(), detail.getCurrent_price()));
+				list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, detail.getProduct_name(), detail.getCurrent_price(),MemoryCache.getImageUrl()+detail.getProduct_img()));
 			}
 		}
 

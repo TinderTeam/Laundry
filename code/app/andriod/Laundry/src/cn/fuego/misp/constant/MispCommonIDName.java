@@ -29,9 +29,10 @@ public class MispCommonIDName
 	public static final int layout_misp_list_item_divider = R.layout.misp_list_item_divider;
 	public static final int layout_misp_list_item_large_text = R.layout.misp_list_item_large_text;
  	public static final int layout_misp_list_item_submit_btn = R.layout.misp_list_item_submit_btn;
-
- 
  	
+ 
+	public static final int misp_icon_img = R.id.misp_icon_img;
+
 	public static final int item_imgtype_name = R.id.item_imgtype_name;
 	public static final int item_imgtype_img = R.id.item_imgtype_img;
 	public static final int item_texttype_name = R.id.item_texttype_name;
