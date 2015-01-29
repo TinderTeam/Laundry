@@ -107,7 +107,10 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		nameView.setText(item.getProduct_name());
 		
 		TextView priceView = (TextView) view.findViewById(R.id.chart_list_item_price);
-		priceView.setText(String.valueOf(item.getCurrent_price()));
+		priceView.setText(CartProduct.getInstance().getDispPrice(item.getPrice_type(),item.getCurrent_price()));
+		
+		TextView tatolPriceView = (TextView) view.findViewById(R.id.chart_list_item_tatol_price);
+		tatolPriceView.setText( CartProduct.getInstance().getDispPrice(item.getPrice_type(),item.getCurrent_price()*item.getQuantity()));
 		
 		 EditText  amountView = (EditText) view.findViewById(R.id.chart_list_item_quantity);
 		//强制关闭软键盘
@@ -158,11 +161,12 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		}
 		else
 		{
-			String price = "数量："+ CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count() + ",";
-			
-			price += "总价：" + CartProduct.getInstance().getOrderDispPrice();
+			String priceStr = "数量："+ CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count() + ",";
+			float price = CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price();
+			String priceType = CartProduct.getInstance().getOrderInfo().getOrder().getPrice_type();
+			priceStr += "总价：" + CartProduct.getInstance().getDispPrice(priceType,price);
 
-			this.totalPriceView.setText(price);
+			this.totalPriceView.setText(priceStr);
 			repaint();
 		}
 	}

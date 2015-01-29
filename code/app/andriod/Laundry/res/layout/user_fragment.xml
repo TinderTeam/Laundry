@@ -51,6 +51,15 @@
                 android:textColor="@color/white"
                 android:textSize="10sp" />
 
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/textView4"
+                android:scaleType="fitXY"
+                android:src="@drawable/image" />
+
         </RelativeLayout>
 
         <Space
@@ -111,17 +120,6 @@
         </RelativeLayout>
 
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="133dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/image" />
 
     <RelativeLayout
         android:layout_width="match_parent"

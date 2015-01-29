@@ -38,10 +38,10 @@ public class CartProduct
 		 
 	}
 	
-	public String getOrderDispPrice()
+	public String getDispPrice(String priceType,float price)
 	{
-		String totalPrice = String.valueOf(CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price());
-		if(PriceTypeEnum.FLOAT_PRICE.getStrValue().equals(CartProduct.getInstance().getOrderInfo().getOrder().getPrice_type()))
+		String totalPrice = String.valueOf(price);
+		if(PriceTypeEnum.FLOAT_PRICE.getStrValue().equals(priceType))
 		{
 			totalPrice = PriceTypeEnum.FLOAT_PRICE.getStrValue();
 		}

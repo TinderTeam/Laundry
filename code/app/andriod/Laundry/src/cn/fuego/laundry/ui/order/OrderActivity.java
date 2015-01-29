@@ -100,11 +100,14 @@ public class OrderActivity extends MispInfoListActivity
 		
 		tatolPriceView = (TextView) findViewById(R.id.order_tatal_price_txt);
 		
-		String price = "数量："+ CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count() + ",";
+		String priceStr = "数量："+ CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count() + ",";
 		
-		price += "总价：" + CartProduct.getInstance().getOrderDispPrice();
+		String priceType = CartProduct.getInstance().getOrderInfo().getOrder().getPrice_type();
+		float price = CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price();
+		
+		priceStr += "总价：" + CartProduct.getInstance().getDispPrice(priceType,price);
 
-		tatolPriceView.setText(price);
+		tatolPriceView.setText(priceStr);
 	}
 
 	@Override
