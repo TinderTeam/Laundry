@@ -97,7 +97,7 @@ public class GroupAdapter extends BaseAdapter
 		}
 		else
 		{
-			holder.groupItem.setTextColor(Color.LTGRAY);
+			holder.groupItem.setTextColor(Color.GRAY);
 			//view.setBackgroundColor(Color.TRANSPARENT);
 			//holder.groupItem.setSelected(false);
 			

@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -33,7 +34,7 @@ public class MispPopListWindow
 	private MispPopWindowListener listener;
 	
 	//size
-	private int width=ViewGroup.LayoutParams.WRAP_CONTENT;
+	private int width=(int) (300*MemoryCache.getDensity());
 	private int height=ViewGroup.LayoutParams.WRAP_CONTENT;
 	private int location=SHOW_CENTER;
 	private boolean showTitleFlag = true;
@@ -138,6 +139,7 @@ public class MispPopListWindow
             @Override  
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id)
             {
+            	view.getBackground().setAlpha(40);
                 fatherAdapter.setSelectedPosition(position);
                 fatherAdapter.notifyDataSetInvalidated();
             	listener.onConfirmClick((String)fatherAdapter.getItem(position));

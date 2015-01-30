@@ -28,5 +28,8 @@
     <color name="blue_light">#FF179dc5</color>
     <color name="red_notice">#FFd90707</color>
 
-	
+	    <drawable name="list_normal">#FFFFFF</drawable> 
+	    <drawable name="list_active">#FFFFFF</drawable> 
+	    <drawable name="list_pressed">#c4cedc</drawable> 
+
 	</resources>
