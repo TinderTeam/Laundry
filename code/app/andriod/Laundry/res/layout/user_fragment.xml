@@ -5,28 +5,32 @@
     android:background="@color/white"
     android:orientation="vertical" >
 
-    
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/misp_tilte_layout" />
-    <RelativeLayout
+    <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        layout="@layout/misp_tilte_layout" />
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
         <ImageView
             android:id="@+id/img_bg_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/bg_user" />
+            android:adjustViewBounds="true"
+            android:src="@drawable/basketlogo" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp" >
 
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/img_bg_user"
             android:layout_marginBottom="18dp"
             android:orientation="vertical" >
 
@@ -118,7 +122,6 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/img_bg_user"
             android:layout_marginLeft="15dp" >
 
             <ImageView
@@ -127,9 +130,7 @@
                 android:layout_height="80dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/image" />
-
         </FrameLayout>
-
     </RelativeLayout>
 
     <LinearLayout
