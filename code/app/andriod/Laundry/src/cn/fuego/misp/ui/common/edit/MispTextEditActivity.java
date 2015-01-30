@@ -21,7 +21,7 @@ public class MispTextEditActivity extends BaseActivtiy
 	public static String JUMP_DATA = "result";
 	private TextView takeAddr;
 	
-	private AttributeJson result;
+	private MispEditParameter result;
  
 	
 	@Override
@@ -39,9 +39,12 @@ public class MispTextEditActivity extends BaseActivtiy
 		this.activityRes.getButtonIDList().add(R.id.misp_title_save);
  
 		Intent intent = this.getIntent();
-		result = (AttributeJson) intent.getSerializableExtra(MispTextEditActivity.JUMP_DATA);
+		result = (MispEditParameter) intent.getSerializableExtra(MispTextEditActivity.JUMP_DATA);
  
-
+		if(null != result)
+		{
+			this.activityRes.setName(result.getTilteName());
+		}
 	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -51,7 +54,7 @@ public class MispTextEditActivity extends BaseActivtiy
  		if(null != result)
 		{
 			takeAddr = (TextView) findViewById(R.id.misp_text_edit_txt);
-			takeAddr.setText(result.getAttrValue());
+			takeAddr.setText(result.getDataValue());
  
  
 		}
@@ -59,7 +62,7 @@ public class MispTextEditActivity extends BaseActivtiy
 		
 	}
 	
-	public void activityFinish(AttributeJson result)
+	public void activityFinish(MispEditParameter result)
 	{
         Intent intent = new Intent();
         intent.putExtra(JUMP_DATA, result);
@@ -80,7 +83,7 @@ public class MispTextEditActivity extends BaseActivtiy
 			{
  				
   
-				result.setAttrValue(takeAddr.getText().toString().trim());
+				result.setDataValue(takeAddr.getText().toString().trim());
                 activityFinish(result);
 			}
 			break;

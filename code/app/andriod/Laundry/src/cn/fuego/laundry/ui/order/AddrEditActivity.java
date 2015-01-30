@@ -13,6 +13,7 @@ import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.model.base.ProductTypeJson;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.tool.MispLocationService;
+import cn.fuego.misp.ui.common.edit.MispEditParameter;
 import cn.fuego.misp.webservice.up.model.base.AttributeJson;
 
 public class AddrEditActivity extends BaseActivtiy 
@@ -21,7 +22,7 @@ public class AddrEditActivity extends BaseActivtiy
 	public static String JUMP_DATA = "result";
 	private TextView takeAddr;
 	
-	private AttributeJson result;
+	private MispEditParameter result;
  
 	
 	@Override
@@ -41,8 +42,12 @@ public class AddrEditActivity extends BaseActivtiy
 		this.activityRes.getButtonIDList().add(R.id.set_location_addr_btn);
 		this.activityRes.getButtonIDList().add(R.id.set_default_addr_btn);
 		Intent intent = this.getIntent();
-		result = (AttributeJson) intent.getSerializableExtra(AddrEditActivity.JUMP_DATA);
+		result = (MispEditParameter) intent.getSerializableExtra(AddrEditActivity.JUMP_DATA);
  
+		if(null != result)
+		{
+			this.activityRes.setName(result.getTilteName());
+		}
 
 	}
 	@Override
@@ -53,7 +58,7 @@ public class AddrEditActivity extends BaseActivtiy
  		if(null != result)
 		{
 			takeAddr = (TextView) findViewById(R.id.deliver_addr_text);
-			takeAddr.setText(result.getAttrValue());
+			takeAddr.setText(result.getDataValue());
  
  
 		}
@@ -61,7 +66,7 @@ public class AddrEditActivity extends BaseActivtiy
 		
 	}
 	
-	public void activityFinish(AttributeJson result)
+	public void activityFinish(MispEditParameter result)
 	{
         Intent intent = new Intent();
         intent.putExtra(JUMP_DATA, result);
@@ -82,7 +87,7 @@ public class AddrEditActivity extends BaseActivtiy
 			{
  				
   
-				result.setAttrValue(takeAddr.getText().toString().trim());
+				result.setDataValue(takeAddr.getText().toString().trim());
                 activityFinish(result);
 			}
 			break;

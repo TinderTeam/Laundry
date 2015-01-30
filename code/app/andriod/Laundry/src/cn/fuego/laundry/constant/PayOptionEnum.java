@@ -8,6 +8,9 @@
 */ 
 package cn.fuego.laundry.constant;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /** 
 * @ClassName: UserTypeEnum 
 * @Description: TODO
@@ -75,5 +78,15 @@ public enum PayOptionEnum
 		}
 		return null;
 	}	 
+	
+	public static List<String> getAllStr()
+	{
+		List<String> payList = new ArrayList<String>();
+		for (PayOptionEnum c : PayOptionEnum.values())
+		{
+			payList.add(c.strValue);
+		}
+		return payList;
+	}
 
 }

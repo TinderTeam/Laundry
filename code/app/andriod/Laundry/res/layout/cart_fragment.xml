@@ -38,6 +38,7 @@
             android:padding="10dp" >
         </FrameLayout>
 
+ 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -129,12 +130,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/bottom"
+        android:id="@+id/bottom1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="gone" >
 
         <TextView
             android:id="@+id/chart_total_price"
@@ -177,4 +179,32 @@
         </LinearLayout>
     </LinearLayout>
 
+  <LinearLayout
+      android:id="@+id/bottom2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentLeft="true"
+      android:orientation="vertical"
+      android:visibility="visible" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+              >
+
+            <Button
+                android:id="@+id/cart_to_product1"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_light_blue"
+                android:padding="10dp"
+                android:textColor="@color/theme_text_color"
+                android:text="添加衣物" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

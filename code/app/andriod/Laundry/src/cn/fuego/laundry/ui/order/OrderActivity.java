@@ -28,9 +28,12 @@ import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.common.alipay.MispPayActivity;
 import cn.fuego.misp.ui.common.alipay.MispPayParameter;
+import cn.fuego.misp.ui.common.edit.MispEditParameter;
 import cn.fuego.misp.ui.common.edit.MispTextEditActivity;
 import cn.fuego.misp.ui.info.MispInfoListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
+import cn.fuego.misp.ui.pop.MispPopListWindow;
+import cn.fuego.misp.ui.pop.MispPopWindowListener;
 import cn.fuego.misp.webservice.up.model.base.AttributeJson;
 import cn.fuego.misp.webservice.up.model.base.CompanyJson;
 
@@ -43,6 +46,9 @@ public class OrderActivity extends MispInfoListActivity
 
 	public static final String CONTACT_PHONE = "联系电话";
 
+	public static final String PAY_OPTION = "付款方式";
+
+	
 	public static final String NOTE = "您的要求";
 
 	
@@ -84,7 +90,7 @@ public class OrderActivity extends MispInfoListActivity
 		 
  
 				//list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "总价", order.getTotal_price()));
-				//list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "付款方式", order.getPay_option()));
+				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, PAY_OPTION, order.getPay_option()));
 				list.add(new CommonItemMeta(CommonItemMeta.LARGE_TEXT, NOTE, order.getOrder_note()));
  
 
@@ -123,9 +129,10 @@ public class OrderActivity extends MispInfoListActivity
 		{
 			String title =   item.getTitle();
 			Intent intent = new Intent();
-			AttributeJson data = new AttributeJson();
-			data.setAttrKey(title);
-			data.setAttrValue(String.valueOf(item.getContent()));
+			MispEditParameter data = new MispEditParameter();
+			data.setTilteName(title);
+			data.setDataKey(title);
+			data.setDataValue(String.valueOf(item.getContent()));
 			if(TAKE_ADDR.equals(title))
 			{
 				intent.setClass(this, AddrEditActivity.class);
@@ -162,9 +169,38 @@ public class OrderActivity extends MispInfoListActivity
 				intent.putExtra(MispTextEditActivity.JUMP_DATA, data);
 				this.startActivityForResult(intent,1);
 			}
+			else if(PAY_OPTION.equals(title))
+			{
+				setPayOption(view);
+			}
  
 		}
  
+	}
+	
+	private MispPopListWindow popWin = null;
+	public void setPayOption(View v)
+	{
+		
+		MispPopWindowListener listener = new MispPopWindowListener()
+		{
+			@Override
+			public void onConfirmClick(String value)
+			{
+				CartProduct.getInstance().getOrderInfo().getOrder().setPay_option(value);
+				refreshList(getBtnData());
+ 			}
+			
+		};
+		
+		if(null == popWin)
+		{
+			popWin = new MispPopListWindow(this,listener,PayOptionEnum.getAllStr());
+			//popWin.setWidth((int) (300*MemoryCache.getDensity()));
+			popWin.setTitle(PAY_OPTION);
+			popWin.setLocation(MispPopListWindow.SHOW_CENTER);
+		}
+		popWin.showWindow(v,CartProduct.getInstance().getOrderInfo().getOrder().getPay_option());
 	}
 	
 	

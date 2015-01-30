@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -26,9 +24,7 @@ import antistatic.spinnerwheel.OnWheelChangedListener;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
-import cn.fuego.laundry.constant.PriceTypeEnum;
 import cn.fuego.laundry.ui.LoginActivity;
-import cn.fuego.laundry.ui.home.HomeFragment;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
 import cn.fuego.laundry.ui.order.OrderActivity;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
@@ -43,21 +39,17 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
  	private TextView totalPriceView;
  	private View view;  
 	private  int  curNum= 1;
+	
+	private View bottom1;
+	private View bottom2;
+
  	@Override
 	public void initRes()
 	{
 		this.fragmentRes.setImage(R.drawable.tab_icon_cart);
 		this.fragmentRes.setName(R.string.tabbar_cart);
 		
-		if(CartProduct.getInstance().isEmpty())
-		{
-			this.fragmentRes.setFragmentView(R.layout.cart_fragment_default);
-			this.fragmentRes.getButtonIDList().add(R.id.cart_submit);
-
-		}
-		else
-		{
-			this.fragmentRes.setFragmentView(R.layout.cart_fragment);
+		 this.fragmentRes.setFragmentView(R.layout.cart_fragment);
 			 
 			listViewRes.setListView(R.id.chart_list);
 			listViewRes.setListItemView(R.layout.cart_list_item);
@@ -65,9 +57,10 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 			
 			this.fragmentRes.getButtonIDList().add(R.id.cart_submit);
 			this.fragmentRes.getButtonIDList().add(R.id.cart_to_product);
+			this.fragmentRes.getButtonIDList().add(R.id.cart_to_product1);
 
 			this.setDataList(CartProduct.getInstance().getOrderInfo().getOrderDetailList());  
-		}
+		 
 
   
 	}
@@ -78,6 +71,9 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 	{
 		View rootView = super.onCreateView(inflater, container, savedInstanceState);
 		
+		 bottom1 = rootView.findViewById(R.id.bottom1);
+		 bottom2 = rootView.findViewById(R.id.bottom2);
+		  
 		if(!CartProduct.getInstance().isEmpty())
 		{
 			totalPriceView = (TextView) rootView.findViewById(R.id.chart_total_price);
@@ -85,6 +81,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
  	 
 			refreshView();
 		}
+ 
 
  
 		return rootView;
@@ -153,14 +150,16 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		if(CartProduct.getInstance().isEmpty())
 		{
  
-			totalPriceView.setVisibility(View.INVISIBLE);
- 
- 			this.getButtonByID(R.id.cart_submit).setVisibility(View.INVISIBLE);
+			bottom1.setVisibility(View.GONE);
+			bottom2.setVisibility(View.VISIBLE);
 			repaint();
 
 		}
 		else
 		{
+			bottom1.setVisibility(View.VISIBLE);
+			bottom2.setVisibility(View.GONE);
+			
 			String priceStr = "数量："+ CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count() + ",";
 			float price = CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price();
 			String priceType = CartProduct.getInstance().getOrderInfo().getOrder().getPrice_type();
@@ -204,6 +203,12 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 			}
 				break;
 			case R.id.cart_to_product:
+			{
+                Intent intent = new Intent(getActivity(),HomeProductActivity.class);
+				
+  				startActivity(intent);
+			}
+			case R.id.cart_to_product1:
 			{
                 Intent intent = new Intent(getActivity(),HomeProductActivity.class);
 				
