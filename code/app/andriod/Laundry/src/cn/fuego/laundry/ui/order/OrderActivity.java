@@ -306,22 +306,26 @@ public class OrderActivity extends MispInfoListActivity
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 
-		AttributeJson result_value = (AttributeJson) data
-				.getSerializableExtra(AddrEditActivity.JUMP_DATA);
-
-		if (null != result_value)
+		if(null != data)
 		{
-			if (TAKE_ADDR.equals(result_value.getAttrKey()))
-			{
-				CartProduct.getInstance().getOrderInfo().getOrder()
-						.setTake_addr(result_value.getAttrValue());
-			} else if (SEND_ADDR.equals(result_value.getAttrValue()))
-			{
-				CartProduct.getInstance().getOrderInfo().getOrder()
-						.setDelivery_addr(result_value.getAttrValue());
+			AttributeJson result_value = (AttributeJson) data
+					.getSerializableExtra(AddrEditActivity.JUMP_DATA);
 
+			if (null != result_value)
+			{
+				if (TAKE_ADDR.equals(result_value.getAttrKey()))
+				{
+					CartProduct.getInstance().getOrderInfo().getOrder()
+							.setTake_addr(result_value.getAttrValue());
+				} else if (SEND_ADDR.equals(result_value.getAttrKey()))
+				{
+					CartProduct.getInstance().getOrderInfo().getOrder()
+							.setDelivery_addr(result_value.getAttrValue());
+
+				}
 			}
 		}
+
 
 		this.refreshList(this.getBtnData());
 

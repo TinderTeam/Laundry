@@ -13,7 +13,7 @@
         <include
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/misp_tilte_with_back_layout" />
+            layout="@layout/misp_tilte_layout" />
 
         <ImageView
             android:id="@+id/img_bg_user"
@@ -145,7 +145,7 @@
             android:orientation="vertical" >
 
             <Button
-                android:id="@+id/Button02"
+                android:id="@+id/user_to_order"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="1dp"
@@ -162,7 +162,7 @@
                 android:textSize="@dimen/content_font_size" />
 
             <Button
-                android:id="@+id/Button01"
+                android:id="@+id/user_to_user_info"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="1dp"
@@ -178,7 +178,7 @@
                 android:textSize="@dimen/content_font_size" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/user_btn_logout"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="1dp"

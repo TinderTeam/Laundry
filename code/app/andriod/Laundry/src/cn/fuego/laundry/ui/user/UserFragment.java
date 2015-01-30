@@ -56,8 +56,8 @@ public class UserFragment extends BaseFragment implements OnClickListener
 				Button button = (Button) rootView.findViewById(id);
 				button.setOnClickListener(this);
 			}
-			TextView view = (TextView) rootView.findViewById(R.id.user_user_name);
-			view.setText(AppCache.getInstance().getUser().getUser_name());
+			//TextView view = (TextView) rootView.findViewById(R.id.user_user_name);
+			//view.setText(AppCache.getInstance().getUser().getUser_name());
 			
 		}
 		else

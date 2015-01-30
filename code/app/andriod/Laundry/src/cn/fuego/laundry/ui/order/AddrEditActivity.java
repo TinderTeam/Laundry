@@ -50,11 +50,10 @@ public class AddrEditActivity extends BaseActivtiy
 	{
 		super.onCreate(savedInstanceState);
 		
-		OrderJson order = CartProduct.getInstance().getOrderInfo().getOrder();
-		if(null != order)
+ 		if(null != result)
 		{
 			takeAddr = (TextView) findViewById(R.id.deliver_addr_text);
-			takeAddr.setText(order.getTake_addr());
+			takeAddr.setText(result.getAttrValue());
  
  
 		}
