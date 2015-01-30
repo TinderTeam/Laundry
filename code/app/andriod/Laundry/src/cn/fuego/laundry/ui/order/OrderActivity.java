@@ -28,6 +28,7 @@ import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.common.alipay.MispPayActivity;
 import cn.fuego.misp.ui.common.alipay.MispPayParameter;
+import cn.fuego.misp.ui.common.edit.MispTextEditActivity;
 import cn.fuego.misp.ui.info.MispInfoListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 import cn.fuego.misp.webservice.up.model.base.AttributeJson;
@@ -38,11 +39,12 @@ public class OrderActivity extends MispInfoListActivity
 	private FuegoLog log = FuegoLog.getLog(getClass());
 	public static final String TAKE_ADDR = "取衣地址";
 	public static final String SEND_ADDR = "送回地址";
+	public static final String CONTACT_NAME = "联系人";
 
-  
-	private static final String EDIT_DELIVERY = "配送信息";
-	
-	private static final String BTN_VALUE ="点击修改";
+	public static final String CONTACT_PHONE = "联系电话";
+
+	public static final String NOTE = "您的要求";
+
 	
 	private TextView tatolPriceView;
 
@@ -73,8 +75,8 @@ public class OrderActivity extends MispInfoListActivity
 
 				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, SEND_ADDR, order.getDelivery_addr()));
 				
-				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "联系人", order.getContact_name()));
-				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, "联系电话", order.getPhone()));
+				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, CONTACT_NAME, order.getContact_name()));
+				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, CONTACT_PHONE, order.getPhone()));
 				
 				
 				//list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
@@ -83,7 +85,7 @@ public class OrderActivity extends MispInfoListActivity
  
 				//list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "总价", order.getTotal_price()));
 				//list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "付款方式", order.getPay_option()));
-				list.add(new CommonItemMeta(CommonItemMeta.LARGE_TEXT, "您的要求", order.getOrder_note()));
+				list.add(new CommonItemMeta(CommonItemMeta.LARGE_TEXT, NOTE, order.getOrder_note()));
  
 
 			}
@@ -117,7 +119,7 @@ public class OrderActivity extends MispInfoListActivity
 	public void onItemListClick(AdapterView<?> parent, View view, long id,
 			CommonItemMeta item)
 	{
-		if(CommonItemMeta.BUTTON_TO_EDIT_ITEM == item.getLayoutType())
+		if(CommonItemMeta.BUTTON_TO_EDIT_ITEM == item.getLayoutType() || CommonItemMeta.LARGE_TEXT  == item.getLayoutType())
 		{
 			String title =   item.getTitle();
 			Intent intent = new Intent();
@@ -134,6 +136,30 @@ public class OrderActivity extends MispInfoListActivity
 			{
 				intent.setClass(this, AddrEditActivity.class);
 				intent.putExtra(AddrEditActivity.JUMP_DATA, data);
+				this.startActivityForResult(intent,1);
+			}
+			else if(SEND_ADDR.equals(title))
+			{
+				intent.setClass(this, AddrEditActivity.class);
+				intent.putExtra(AddrEditActivity.JUMP_DATA, data);
+				this.startActivityForResult(intent,1);
+			}
+			else if(CONTACT_NAME.equals(title))
+			{
+				intent.setClass(this, MispTextEditActivity.class);
+				intent.putExtra(MispTextEditActivity.JUMP_DATA, data);
+				this.startActivityForResult(intent,1);
+			}
+			else if(CONTACT_PHONE.equals(title))
+			{
+				intent.setClass(this, MispTextEditActivity.class);
+				intent.putExtra(MispTextEditActivity.JUMP_DATA, data);
+				this.startActivityForResult(intent,1);
+			}
+			else if(NOTE.equals(title))
+			{
+				intent.setClass(this, MispTextEditActivity.class);
+				intent.putExtra(MispTextEditActivity.JUMP_DATA, data);
 				this.startActivityForResult(intent,1);
 			}
  
@@ -317,10 +343,29 @@ public class OrderActivity extends MispInfoListActivity
 				{
 					CartProduct.getInstance().getOrderInfo().getOrder()
 							.setTake_addr(result_value.getAttrValue());
-				} else if (SEND_ADDR.equals(result_value.getAttrKey()))
+				}
+				else if (SEND_ADDR.equals(result_value.getAttrKey()))
 				{
 					CartProduct.getInstance().getOrderInfo().getOrder()
 							.setDelivery_addr(result_value.getAttrValue());
+
+				}
+				else if (CONTACT_NAME.equals(result_value.getAttrKey()))
+				{
+					CartProduct.getInstance().getOrderInfo().getOrder()
+							.setContact_name(result_value.getAttrValue());
+
+				}
+				else if (CONTACT_PHONE.equals(result_value.getAttrKey()))
+				{
+					CartProduct.getInstance().getOrderInfo().getOrder()
+							.setPhone(result_value.getAttrValue());
+
+				}
+				else if (NOTE.equals(result_value.getAttrKey()))
+				{
+					CartProduct.getInstance().getOrderInfo().getOrder()
+							.setOrder_note(result_value.getAttrValue());
 
 				}
 			}

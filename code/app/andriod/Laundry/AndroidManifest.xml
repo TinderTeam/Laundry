@@ -70,6 +70,10 @@
             android:label="@string/app_name" >
         </activity>
         <activity
+            android:name="cn.fuego.misp.ui.common.edit.MispTextEditActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
             android:name="cn.fuego.misp.ui.common.MispImageActivity"
             android:label="@string/app_name" >
         </activity>
