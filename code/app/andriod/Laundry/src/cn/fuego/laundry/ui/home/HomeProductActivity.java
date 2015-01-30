@@ -155,7 +155,6 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 	@Override
 	public void onClick(View v)
 	{
- 
 		switch(v.getId())
 		{
 			case R.id.misp_title_save:
@@ -175,19 +174,17 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 		}
 
 	}
-	
 	private MispPopListWindow popWin = null;
 	public void setSelectType(View v)
 	{
 		MispPopWindowListener listener = new MispPopWindowListener()
 		{
-
 			@Override
 			public void onConfirmClick(String value)
 			{
  				selectType = ProductTypeCache.getInstance().getTypeByName(value);
 				refreshList(CartProduct.getInstance().getProductMap().get(selectType.getType_id()));
-				 updateCount();
+				updateCount();
  			}
 			
 		};
@@ -195,13 +192,10 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 		if(null == popWin)
 		{
 			popWin = new MispPopListWindow(this,listener,ProductTypeCache.getInstance().getTypeNameList());
-
+			//popWin.setWidth((int) (300*MemoryCache.getDensity()));
+			popWin.setTitle("分类");
+			popWin.setLocation(MispPopListWindow.SHOW_CENTER);
 		}
-		
 		popWin.showWindow(v,this.selectType.getType_name());
 	}
-	
-	
-
-
 }

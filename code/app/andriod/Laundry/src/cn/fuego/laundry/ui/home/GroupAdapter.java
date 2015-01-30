@@ -70,16 +70,15 @@ public class GroupAdapter extends BaseAdapter
 	{
         View view ;
 		ViewHolder holder;
+
+		
 		if (convertView == null)
 		{
 			convertView = LayoutInflater.from(context).inflate(
 					R.layout.search_condition_item, null);
-			holder = new ViewHolder();
-			
+			holder = new ViewHolder();	
 			view= convertView;
-			
 			convertView.setTag(holder);
-
 			holder.groupItem = (TextView) convertView
 					.findViewById(R.id.search_item_text);
 
@@ -91,17 +90,20 @@ public class GroupAdapter extends BaseAdapter
 		
 		if(selectedPosition == position)
 		{
-			view.setBackgroundColor(Color.rgb(231,230, 227));
-			holder.groupItem.setSelected(true);
 			
+			holder.groupItem.setTextColor(Color.BLACK);
+			//view.setBackgroundColor(Color.rgb(231,230, 227));
+			//holder.groupItem.setSelected(true);
 		}
 		else
 		{
-			view.setBackgroundColor(Color.TRANSPARENT);
-			holder.groupItem.setSelected(false);
+			holder.groupItem.setTextColor(Color.LTGRAY);
+			//view.setBackgroundColor(Color.TRANSPARENT);
+			//holder.groupItem.setSelected(false);
 			
 		}
-		holder.groupItem.setTextColor(Color.BLACK);
+		
+		//holder.groupItem.setTextColor(Color.BLACK);
 		holder.groupItem.setText(list.get(position));
 
 		return view;

@@ -119,22 +119,14 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="12sp" />
         </LinearLayout>
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_centerHorizontal="true"
-       >
 
         <ListView
             android:id="@+id/chart_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
         </ListView>
-    </RelativeLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/bottom"
