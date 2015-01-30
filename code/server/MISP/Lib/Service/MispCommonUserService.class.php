@@ -10,7 +10,7 @@ class MispCommonUserService
 	static function Create($user)
 	{
 		$errorCode = MispErrorCode::SUCCESS;
-		FuegoLog::getLog()->LogInfo("create user...");
+		FuegoLog::getLog()->LogInfo("Create user...");
 		//获取用户类型
 		$roleDao = MispDaoContext::SystemRole();
 		$roleCondition['role_id'] = $user['role_id'];
@@ -29,7 +29,9 @@ class MispCommonUserService
 			$errorCode = MispErrorCode::USER_EXISTED;
 			throw new FuegoException(null,$errorCode);
 		}
+		FuegoLog::getLog()->LogInfo("User info is ".json_encode($user));
 		$result = MispCommonService::Create($systemUserDao, $user);
+		FuegoLog::getLog()->LogInfo("Create user success.");
 		return $result;
 		
 	}

@@ -13,17 +13,17 @@
                     <tr>
                     	<td style="width:60px;">产品编号:</td>
 		    			<td style="width:170px;">
-		    				<input name="product_id" class="easyui-textbox" type="text"></input>
+		    				<input name="product_id" class="easyui-textbox" type="text" data-options="validType:{length:[0,20]}"></input>
 		   				</td>
 		   				<td style="width:60px;">产品名称:</td>
 		    			<td style="width:170px;">
-		    				<input name="product_name" class="easyui-textbox" type="text"></input>
+		    				<input name="product_name" class="easyui-textbox" type="text" data-options="validType:{length:[0,20]}"></input>
 		   				</td>
 		   				<td style="width:60px;">产品类型:</td>
 		    			<td style="width:170px;">
 		    				<input class="easyui-combobox" name="type_id" style="width:80%"
 							   data-options="url: '__APP__/ProductManage/getProductTypeList',method: 'get',
-								valueField:'type_id',textField:'type_name',panelHeight:'auto'">
+								valueField:'type_id',textField:'type_name',panelHeight:'auto',editable:false">
 		   				</td>
 		   				<td >
 		   				<a class="easyui-linkbutton" iconCls="icon-search" onclick="onSearch()">搜索</a>
@@ -63,6 +63,7 @@
 	<div id="productModify" style="padding-left:15px;padding-top:10px;"></div>
 <script type="text/javascript">
 function onSearch(){
+	if($("#searchForm").form('validate') == false) return;
 	var json = buildRequest('#searchForm');
 	var param = {"data" : json};
 	$('#productGrid').datagrid('loadData', { total: 0, rows: [] });

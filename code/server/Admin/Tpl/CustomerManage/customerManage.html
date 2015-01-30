@@ -13,15 +13,15 @@
                     <tr>
                     	<td style="width:60px;">会员编号:</td>
 		    			<td style="width:170px;">
-		    				<input name="user_id" class="easyui-textbox" type="text"></input>
+		    				<input name="user_id" class="easyui-textbox" type="text" data-options="validType:{length:[0,20]}"></input>
 		   				</td>
 		   				<td style="width:60px;">会员账号:</td>
 		    			<td style="width:170px;">
-		    				<input name="user_name" class="easyui-textbox" type="text"></input>
+		    				<input name="user_name" class="easyui-textbox" type="text" data-options="validType:{length:[0,20]}"></input>
 		   				</td>
 		   				<td style="width:60px;">会员姓名:</td>
 		    			<td style="width:170px;">
-		    				<input name="customer_name" class="easyui-textbox" type="text"></input>
+		    				<input name="customer_name" class="easyui-textbox" type="text" data-options="validType:{length:[0,20]}"></input>
 		   				</td>
 		   				<td >
 		   				<a class="easyui-linkbutton" iconCls="icon-search" onclick="onSearch()">搜索</a>
@@ -44,8 +44,8 @@
 				<th data-options="field:'ck',checkbox:true"></th>
 				<!--<th data-options="field:'user_id',width:80">会员编号</th>-->
 				<th data-options="field:'user_name',width:120">会员账号</th>
-				<th data-options="field:'customer_name',width:80">姓名</th>
-				<th data-options="field:'customer_sex',width:50">性别</th>
+				<th data-options="field:'customer_name',width:60">姓名</th>
+				<th data-options="field:'customer_sex',width:40">性别</th>
 				<!--<th field="customer_sex" width = "50" formatter = "formatSex">性别</th> -->
 				<th data-options="field:'card_number',width:180">会员卡号</th>
 				<th data-options="field:'score',width:50">积分</th>
@@ -53,7 +53,7 @@
 				<th data-options="field:'phone',width:120">电话</th>
 				<th data-options="field:'nickname',width:120">昵称</th>
 				<th data-options="field:'birthday',width:100">生日</th>
-				<th data-options="field:'addr',width:240">住址</th>
+				<th data-options="field:'addr',width:260">住址</th>
 				<!--  <th data-options="field:'level',width:80">会员级别</th>-->
 			</tr>
 		</thead>
@@ -62,6 +62,7 @@
 	<div id="customerModify" style="padding-left:15px;padding-top:10px;"></div>
 <script type="text/javascript">
 function onSearch(){
+	if($("#searchForm").form('validate') == false) return;
 	var json = buildRequest('#searchForm');
 	var param = {"data" : json};
 	$('#customerGrid').datagrid('loadData', { total: 0, rows: [] });

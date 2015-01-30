@@ -109,6 +109,12 @@ class CustomerManageAction extends EasyUITableAction
 	 */
 	public function Show()
 	{
+		$reqType = $this->GetReqType();
+		if(($reqType == ClientTypeEnum::IOS)||($reqType == ClientTypeEnum::ANDROID))
+		{
+			//验证APP是否登录
+			$this->DoAuth();
+		}
 		$objID = $this->GetCommonData();
     	$this->LogInfo("show customer, user_id is ".$objID);
     	$viewCustomerDao = LaundryDaoContext::ViewCustomer();

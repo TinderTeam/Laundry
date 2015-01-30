@@ -8,7 +8,7 @@ class UserServiceImpl implements MispUserService
 	public function Register($user,$customerInfo)
 	{
 		$errorCode = MispErrorCode::SUCCESS;
-		FuegoLog::getLog()->LogInfo('register customer');
+		FuegoLog::getLog()->LogInfo('Create customer...');
 		$customerDao = LaundryDaoContext::Customer();
 		$customer['user_id'] = $user['user_id'];
 		$customer['user_name'] = $user['user_name'];
@@ -19,6 +19,8 @@ class UserServiceImpl implements MispUserService
 		try
 		{
 			$result = MispCommonService::Create($customerDao, $customer);
+			FuegoLog::getLog()->LogInfo("Create customer success.");
+			FuegoLog::getLog()->LogInfo("Customer register success.");
 		}
 		catch(FuegoException $e)
 		{

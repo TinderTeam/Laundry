@@ -48,7 +48,7 @@ class AdminManageAction extends EasyUITableAction
 		$this->LogInfo("create admin...");
         $systemUserDao = MispDaoContext::SystemUser();
         $req = $this->GetCommonData();
-        if("" == $obj->role_id)
+        if("" == $req->role_id)
         {
         	$this->errorCode = MispErrorCode::ERROR_ROLE_IS_EMPTY;
         	$this->ReturnJson();

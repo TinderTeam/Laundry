@@ -28,11 +28,11 @@
 			    <div class="loginForm">
                         <p>
 						    <label>用户名：</label>
-						    <input class="easyui-validatebox" type="text" name="user_name"/>
+						    <input class="easyui-validatebox" type="text" name="user_name" data-options="required:true,validType:{length:[4,20]}"/>
 					    </p>
 					    <p>
 						    <label>密码：</label>
-						    <input class="easyui-validatebox" type="password" name="password"/>
+						    <input class="easyui-validatebox" type="password" name="password" data-options="required:true,validType:{length:[6,20]}"/>
 					    </p>
 					    <div class="login_bar">
 						    <a  class="sub" onclick="submitForm()" value=" "></a>
@@ -56,6 +56,7 @@
     <script type="text/javascript">
     
         function submitForm() {
+        	if($("#loginForm").form('validate') == false) return;
         	var json = formToJson('#loginForm');
         	$.ajax({
 				type:"post",

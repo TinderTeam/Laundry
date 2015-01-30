@@ -63,22 +63,35 @@ class UserManageAction extends EasyUITableAction
 	 * 发送注册验证码
 	 */
 	public function SendVerifyCode(){
+		$this->LogInfo("Send verify code...");
 		$obj = $this->GetReqObj();
+		//判断公司是否冻结
+		$companyCondition['company_id'] = $obj->app_id;
+		$companyDao = MispDaoContext::Company();
+		$companyStatus = $companyDao->where($companyCondition)->getField('company_status');
+		if(CompanyEnum::STATUS_FREEZE == $companyStatus)
+		{
+			$this->LogWarn("Send verify code failed. The company is freezed, company id is ".$obj->app_id);
+			$this->errorCode = MispErrorCode::COMPANY_SERVICE_STOP;
+			$this->ReturnJson();
+			return;
+		}
+		//发送验证码
 		$phoneNum = $obj->phone_num;
 		$content = ShortMessage::getRandNum(4);
 		$message = $content."【快客洗涤】";
 		$result = ShortMessage::SendMessage($phoneNum,$message);
-		$this->LogInfo("OK".$result);
 		$xmlObj = simplexml_load_string($result);
-		$this->LogInfo($xmlObj->RetCode);
 		if($xmlObj->RetCode == "Sucess")
 		{
+			$this->LogInfo("Send verify code success, verify code is ".$content);
 			$data['obj'] = $content;
 			$this->ReturnJson($data);
 			return;
 		}
 		else
 		{
+			$this->LogInfo("Send verify code failed.");
 			$this->errorCode = SEND_MESSAGE_FAILED;
 			$this->ReturnJson();
 			return;

@@ -4,17 +4,17 @@
 	<meta charset="UTF-8">
 </head>
 <body>
-    <form id="pwdForm" method="post">
+    <form id="pwdForm" method="post" style="margin-top:10px; margin-left:15px;">
     	<table cellpadding="5">
     		<tr>
     			<td>请输入原密码:</td>
     			<td>
-    				<input class="easyui-textbox" type="text" name="pwdOld" data-options="required:true"></input>
+    				<input class="easyui-textbox" type="password" name="pwdOld" data-options="required:true,validType:{length:[6,20]}"></input>
    				</td>
     		</tr>
     		<tr>
     			<td>请输入新密码:</td>
-    			<td><input id="pwdNew" name="pwdNew" class="easyui-textbox" type="password"  data-options="required:true"></input></td>
+    			<td><input id="pwdNew" name="pwdNew" class="easyui-textbox" type="password"  data-options="required:true,validType:{length:[6,20]}"></input></td>
     		</tr>
     		<tr>
     			<td>请再次输入新密码:</td>
@@ -22,9 +22,10 @@
     		</tr>
     	</table>
     </form>
-    <div style="text-align:center;padding:5px">
-    	<a class="easyui-linkbutton" onclick="submitForm()">提交</a>
-    	<a class="easyui-linkbutton" onclick="$('#pwdManage').dialog('close')">关闭</a>
+    <div style="text-align:center;padding:5px;margin-top:10px">
+    	<a class="easyui-linkbutton" iconCls="icon-ok" onclick="submitForm()">提交</a>
+    	<a>&nbsp&nbsp&nbsp&nbsp</a>
+    	<a class="easyui-linkbutton" iconCls="icon-cancel" onclick="$('#pwdManage').dialog('close')">关闭</a>
     </div>
 <script type="text/javascript">
 //验证两次输入密码是否一致

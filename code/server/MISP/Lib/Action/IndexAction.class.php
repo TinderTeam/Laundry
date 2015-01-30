@@ -7,15 +7,14 @@ class IndexAction extends BaseAction
     //APP会员注册
     public function Register()
     {
-    	$this->LogInfo("customer register ...");
+    	$this->LogInfo("Customer register ...");
     	$Req = $this->GetReqObj();
-    	
     	//获取用户角色
     	$roleDao = MispDaoContext::SystemRole();
     	$roleCondition['user_type_id'] = UserTypeEnum::CUSTOMER;
     	$roleCondition['company_id'] = $Req->app_id;
     	$customerRole = $roleDao->where($roleCondition)->getField('role_id');
-    	$this->LogInfo("customer role is ".$customerRole);
+    	$this->LogInfo("Get customer role success,customer role is ".$customerRole);
     	//创建用户信息
     	$user['user_name'] = $Req->user_name;
     	$user['password'] = $Req->password;
@@ -167,11 +166,10 @@ class IndexAction extends BaseAction
     {
     	
     	$Req = $this->GetReqObj();
-    	 
     	$systemUserDao = MispDaoContext::SystemUser();
     	$condition['user_name'] = $Req->user_name;
     	$condition['company_id'] = $Req->app_id;
-    	$this->LogInfo("customer reset password , customer info is ".json_encode($condition));
+    	$this->LogInfo("Customer reset password , customer info is ".json_encode($condition));
     	$userID = $systemUserDao->where($condition)->getField('user_id');
     	if($userID ==''){
     		$this->LogWarn("Finding password failed, user_name is not exist.".$Req->user_name);

@@ -36,6 +36,7 @@ class MispErrorCode
 	const SEND_MESSAGE_FAILED = 10003;		//发送验证码失败
 	const COMPANY_EXISTED = 10004;			//公司已存在
 	const CANT_DELETE_YOURSELF = 10005;		//不能删除自己
+	const COMPANY_SERVICE_STOP = 10006;		//公司服务暂停
 	
 }
 
