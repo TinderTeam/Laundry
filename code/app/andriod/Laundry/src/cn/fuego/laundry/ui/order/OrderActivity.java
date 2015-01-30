@@ -370,38 +370,38 @@ public class OrderActivity extends MispInfoListActivity
 
 		if(null != data)
 		{
-			AttributeJson result_value = (AttributeJson) data
+			MispEditParameter result_value = (MispEditParameter) data
 					.getSerializableExtra(AddrEditActivity.JUMP_DATA);
 
 			if (null != result_value)
 			{
-				if (TAKE_ADDR.equals(result_value.getAttrKey()))
+				if (TAKE_ADDR.equals(result_value.getDataKey()))
 				{
 					CartProduct.getInstance().getOrderInfo().getOrder()
-							.setTake_addr(result_value.getAttrValue());
+							.setTake_addr(result_value.getDataValue());
 				}
-				else if (SEND_ADDR.equals(result_value.getAttrKey()))
+				else if (SEND_ADDR.equals(result_value.getDataKey()))
 				{
 					CartProduct.getInstance().getOrderInfo().getOrder()
-							.setDelivery_addr(result_value.getAttrValue());
+							.setDelivery_addr(result_value.getDataValue());
 
 				}
-				else if (CONTACT_NAME.equals(result_value.getAttrKey()))
+				else if (CONTACT_NAME.equals(result_value.getDataKey()))
 				{
 					CartProduct.getInstance().getOrderInfo().getOrder()
-							.setContact_name(result_value.getAttrValue());
+							.setContact_name(result_value.getDataValue());
 
 				}
-				else if (CONTACT_PHONE.equals(result_value.getAttrKey()))
+				else if (CONTACT_PHONE.equals(result_value.getDataKey()))
 				{
 					CartProduct.getInstance().getOrderInfo().getOrder()
-							.setPhone(result_value.getAttrValue());
+							.setPhone(result_value.getDataValue());
 
 				}
-				else if (NOTE.equals(result_value.getAttrKey()))
+				else if (NOTE.equals(result_value.getDataKey()))
 				{
 					CartProduct.getInstance().getOrderInfo().getOrder()
-							.setOrder_note(result_value.getAttrValue());
+							.setOrder_note(result_value.getDataValue());
 
 				}
 			}
