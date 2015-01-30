@@ -49,7 +49,7 @@
                     android:layout_marginTop="5dp" >
 
                     <TextView
-                        android:id="@+id/TextView05"
+                        android:id="@+id/TextView04"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -58,7 +58,7 @@
                         android:textSize="@dimen/content_font_size_sm" />
 
                     <TextView
-                        android:id="@+id/TextView04"
+                        android:id="@+id/user_nickname_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -89,7 +89,7 @@
                         android:textSize="13dp" />
 
                     <TextView
-                        android:id="@+id/TextView01"
+                        android:id="@+id/user_sex_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:layout_marginRight="20dp"
@@ -108,7 +108,7 @@
                         android:textSize="13dp" />
 
                     <TextView
-                        android:id="@+id/TextView03"
+                        android:id="@+id/user_phone_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:gravity="center"

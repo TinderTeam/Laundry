@@ -124,6 +124,7 @@ public class CartProduct
 		detail.setProduct_id(productID);
 		detail.setProduct_name(product.getProduct_name());
 		detail.setPrice_type(product.getPrice_type());
+		detail.setProduct_type(product.getProduct_name());
 		detail.setProduct_describe(product.getDescribe());
 		detail.setProduct_img(product.getImg());
 		detail.setCurrent_price(product.getPrice());

@@ -15,6 +15,7 @@ import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.PayOptionEnum;
+import cn.fuego.laundry.constant.PriceTypeEnum;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.cart.CartProduct;
@@ -171,7 +172,15 @@ public class OrderActivity extends MispInfoListActivity
 			}
 			else if(PAY_OPTION.equals(title))
 			{
-				setPayOption(view);
+				if(PriceTypeEnum.FLOAT_PRICE.getStrValue().equals(CartProduct.getInstance().getOrderPriceType()))
+				{
+					showMessage("总价面议，只能使用送衣付款");
+				}
+				else
+				{
+					setPayOption(view);	
+				}
+				
 			}
  
 		}

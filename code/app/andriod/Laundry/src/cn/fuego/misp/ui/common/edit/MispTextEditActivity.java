@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.ui.base.BaseActivtiy;
@@ -54,7 +55,12 @@ public class MispTextEditActivity extends BaseActivtiy
  		if(null != result)
 		{
 			takeAddr = (TextView) findViewById(R.id.misp_text_edit_txt);
-			takeAddr.setText(result.getDataValue());
+			String value = result.getDataValue();
+			if(ValidatorUtil.isEmpty(value))
+			{
+				value = "";
+			}
+			takeAddr.setText(value);
  
  
 		}

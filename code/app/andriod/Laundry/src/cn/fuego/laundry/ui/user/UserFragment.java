@@ -15,6 +15,7 @@ import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.base.BaseFragment;
 import cn.fuego.laundry.ui.order.OrderListActivity;
+import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
@@ -56,9 +57,20 @@ public class UserFragment extends BaseFragment implements OnClickListener
 				Button button = (Button) rootView.findViewById(id);
 				button.setOnClickListener(this);
 			}
-			//TextView view = (TextView) rootView.findViewById(R.id.user_user_name);
-			//view.setText(AppCache.getInstance().getUser().getUser_name());
-			
+			TextView nickName = (TextView) rootView.findViewById(R.id.user_nickname_txt);
+			TextView phoneView = (TextView) rootView.findViewById(R.id.user_phone_txt);
+			TextView sexView = (TextView) rootView.findViewById(R.id.user_sex_txt);
+
+			CustomerJson customer = AppCache.getInstance().getCustomer();
+
+			if(null != customer)
+			{
+				nickName.setText(customer.getNickname());
+				phoneView.setText(customer.getPhone());
+				sexView.setText(customer.getCustomer_sex());
+			}
+
+
 		}
 		else
 		{
