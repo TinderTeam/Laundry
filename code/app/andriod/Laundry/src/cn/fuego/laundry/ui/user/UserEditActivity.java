@@ -59,8 +59,8 @@ public class UserEditActivity extends BaseActivtiy
 		{
 			userName = (TextView) findViewById(R.id.user_user_name_text);
 			userName.setText(customer.getCustomer_name());
-		    sex = (TextView) findViewById(R.id.user_user_sex_text);
-			sex.setText(customer.getCustomer_sex());
+		    //sex = (TextView) findViewById(R.id.user_user_sex_text);
+			//sex.setText(customer.getCustomer_sex());
 
 			birthday = (TextView) findViewById(R.id.user_user_birthday_text);
 			birthday.setText(customer.getBirthday());

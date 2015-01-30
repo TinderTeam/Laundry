@@ -18,7 +18,7 @@
             android:layout_height="@dimen/top_head_height" >
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/popwindow_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"

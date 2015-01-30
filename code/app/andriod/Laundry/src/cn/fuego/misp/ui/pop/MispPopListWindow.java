@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.ui.home.GroupAdapter;
 import cn.fuego.misp.constant.MispCommonIDName;
@@ -23,11 +25,23 @@ import cn.fuego.misp.service.MemoryCache;
 public class MispPopListWindow
 {
 	private PopupWindow popupWindow=null;  
-	private  ListView  listView = null;
-	private  GroupAdapter  fatherAdapter;
+	private ListView  listView = null;
+	private TextView titleView;
+	private GroupAdapter  fatherAdapter;
 	private Activity contex;
 	private List<String> dataList = new ArrayList<String>();
 	private MispPopWindowListener listener;
+	
+	//size
+	private int width=ViewGroup.LayoutParams.WRAP_CONTENT;
+	private int height=ViewGroup.LayoutParams.WRAP_CONTENT;
+	private int location=SHOW_CENTER;
+	private boolean showTitleFlag = true;
+	
+	private String title = "";
+	public static final int SHOW_AS_DROP_DOWN = 1;
+	public static final int SHOW_CENTER=0;
+	
 	
 	public MispPopListWindow(Activity context,MispPopWindowListener listener,List<String> dataList)
 	{
@@ -38,6 +52,13 @@ public class MispPopListWindow
 
 		}
 		this.listener = listener;
+	}
+	
+	
+	
+	public void setSize(int height,int width){
+		this.setWidth(width);
+		this.setHeight(height);
 	}
 	
 	private int getPosition(String type)
@@ -54,33 +75,30 @@ public class MispPopListWindow
 	
 	public void showWindow(View parent,String selectItem) 
 	{  
-
- 
         if (popupWindow == null)
         {  
             LayoutInflater layoutInflater = (LayoutInflater) this.contex.getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
-  
-        	 View view = layoutInflater.inflate(MispCommonIDName.layout_misp_pop_list_window, null);  
-
-           
-         
-            listView  = (ListView) view.findViewById(MispCommonIDName.misp_pop_list);
-            
-
+        	View view = layoutInflater.inflate(MispCommonIDName.layout_misp_pop_list_window, null);  
+        	listView  = (ListView) view.findViewById(MispCommonIDName.misp_pop_list);
+        	
+        	titleView = (TextView) view.findViewById(MispCommonIDName.misp_pop_title);
+        	titleView.setText(title);
+        	
+        	if(!showTitleFlag){
+        		titleView.setVisibility(View.GONE);
+        	}
+        	
             fatherAdapter = new GroupAdapter(contex, dataList);  
             listView.setAdapter(fatherAdapter);  
-
-            int width =  (int) (300*MemoryCache.getDensity());
-            popupWindow = new PopupWindow(view, width, ViewGroup.LayoutParams.WRAP_CONTENT);
+            popupWindow = new PopupWindow(view, width, height);
             // 使其聚集  
             popupWindow.setFocusable(true);  
             //点击外部消失
             popupWindow.setOutsideTouchable(true);  
             ColorDrawable dw = new ColorDrawable(0x90000000);  
             popupWindow.setBackgroundDrawable(dw);
-
-
         } 
+        
         //设置背景变暗
         WindowManager.LayoutParams lp=this.contex.getWindow().getAttributes();
         lp.alpha = 0.4f;
@@ -89,8 +107,17 @@ public class MispPopListWindow
         fatherAdapter.setSelectedPosition(this.getPosition(selectItem));
         fatherAdapter.notifyDataSetChanged();
   
-		popupWindow.showAsDropDown(parent, 0, 0);// 在屏幕居中，无偏移
-
+		switch(location)
+		{
+			case SHOW_CENTER: 
+				popupWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);	//在屏幕居中，无偏移
+			break;
+			
+			case SHOW_AS_DROP_DOWN: 
+				popupWindow.showAsDropDown(parent, 0, 0);	//在屏幕居中，无偏移
+			break;
+		}
+		
 		// 监听popwindow消失事件，并对radioGroup清零
 		popupWindow.setOnDismissListener(new OnDismissListener()
 		{
@@ -119,6 +146,80 @@ public class MispPopListWindow
         });
 
 
-    } 
+    }
+
+	public int getWidth()
+	{
+		return width;
+	}
+
+	public void setWidth(int width)
+	{
+		this.width = width;
+	}
+
+	public int getHeight()
+	{
+		return height;
+	}
+
+	public void setHeight(int height)
+	{
+		this.height = height;
+	}
+
+
+
+	/**
+	 * @return the location
+	 */
+	public int getLocation()
+	{
+		return location;
+	}
+
+
+
+	/**
+	 * @param location the location to set
+	 */
+	public void setLocation(int location)
+	{
+		this.location = location;
+	}
+
+
+
+	public boolean isShowTitleFlag()
+	{
+		return showTitleFlag;
+	}
+
+
+
+	public void setShowTitleFlag(boolean showTitleFlag)
+	{
+		this.showTitleFlag = showTitleFlag;
+	}
+
+
+
+	/**
+	 * @return the title
+	 */
+	public String getTitle()
+	{
+		return title;
+	}
+
+
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title)
+	{
+		this.title = title;
+	} 
 
 }

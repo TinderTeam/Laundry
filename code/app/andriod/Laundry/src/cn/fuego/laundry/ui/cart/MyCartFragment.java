@@ -1,13 +1,10 @@
 package cn.fuego.laundry.ui.cart;
-
 import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -26,14 +23,13 @@ import antistatic.spinnerwheel.OnWheelChangedListener;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
-import cn.fuego.laundry.constant.PriceTypeEnum;
 import cn.fuego.laundry.ui.LoginActivity;
-import cn.fuego.laundry.ui.home.HomeFragment;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
 import cn.fuego.laundry.ui.order.OrderActivity;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.ui.list.MispListFragment;
+import cn.fuego.misp.ui.pop.MispPopListWindow;
 
 public class MyCartFragment extends MispListFragment<OrderDetailJson>  
 {
@@ -43,33 +39,27 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
  	private TextView totalPriceView;
  	private View view;  
 	private  int  curNum= 1;
+	
  	@Override
 	public void initRes()
 	{
 		this.fragmentRes.setImage(R.drawable.tab_icon_cart);
-		this.fragmentRes.setName(R.string.tabbar_cart);
-		
+		this.fragmentRes.setName(R.string.tabbar_cart);	
 		if(CartProduct.getInstance().isEmpty())
 		{
 			this.fragmentRes.setFragmentView(R.layout.cart_fragment_default);
 			this.fragmentRes.getButtonIDList().add(R.id.cart_submit);
-
 		}
 		else
 		{
-			this.fragmentRes.setFragmentView(R.layout.cart_fragment);
-			 
+			this.fragmentRes.setFragmentView(R.layout.cart_fragment); 
 			listViewRes.setListView(R.id.chart_list);
 			listViewRes.setListItemView(R.layout.cart_list_item);
 			listViewRes.setClickActivityClass(HomeProductActivity.class);
-			
 			this.fragmentRes.getButtonIDList().add(R.id.cart_submit);
 			this.fragmentRes.getButtonIDList().add(R.id.cart_to_product);
-
 			this.setDataList(CartProduct.getInstance().getOrderInfo().getOrderDetailList());  
 		}
-
-  
 	}
 
 	@Override
@@ -77,27 +67,19 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 			Bundle savedInstanceState)
 	{
 		View rootView = super.onCreateView(inflater, container, savedInstanceState);
-		
 		if(!CartProduct.getInstance().isEmpty())
 		{
 			totalPriceView = (TextView) rootView.findViewById(R.id.chart_total_price);
-			
- 	 
 			refreshView();
 		}
-
- 
+		
 		return rootView;
 	}
-
- 
-
 
 	@Override
 	public void loadSendList()
 	{
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -105,28 +87,23 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 	{
 		final TextView nameView = (TextView) view.findViewById(R.id.chart_list_item_name);
 		nameView.setText(item.getProduct_name());
-		
 		TextView priceView = (TextView) view.findViewById(R.id.chart_list_item_price);
 		priceView.setText(CartProduct.getInstance().getDispPrice(item.getPrice_type(),item.getCurrent_price()));
-		
 		TextView tatolPriceView = (TextView) view.findViewById(R.id.chart_list_item_tatol_price);
 		tatolPriceView.setText( CartProduct.getInstance().getDispPrice(item.getPrice_type(),item.getCurrent_price()*item.getQuantity()));
-		
 		 EditText  amountView = (EditText) view.findViewById(R.id.chart_list_item_quantity);
-		//强制关闭软键盘
+		
+		 //强制关闭软键盘
 		InputMethodManager imm = (InputMethodManager) this.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(amountView.getWindowToken(), 0);
 		amountView.setInputType(InputType.TYPE_NULL);
 		amountView.setText(String.valueOf(item.getQuantity()));
 		amountView.setOnClickListener(new OnClickListener()
 		{
-			
 			@Override
 			public void onClick(View v)
 			{
-
 				showWindow(v,item);
-
 			}
 		});
 		
@@ -165,7 +142,6 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 			float price = CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price();
 			String priceType = CartProduct.getInstance().getOrderInfo().getOrder().getPrice_type();
 			priceStr += "总价：" + CartProduct.getInstance().getDispPrice(priceType,price);
-
 			this.totalPriceView.setText(priceStr);
 			repaint();
 		}
@@ -187,17 +163,14 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 			{
 				Intent intent;
 				if(MemoryCache.isLogined())
-				{
-		 
-					//set default delivery information
-		 
+				{		 
+					//set default delivery information		 
 					intent = new Intent(this.getActivity(),OrderActivity.class);
 				}
 				else
 				{
 					intent = new Intent(this.getActivity(),LoginActivity.class);
-					intent.putExtra(LoginActivity.JUMP_SOURCE, this.getClass());
-	
+					intent.putExtra(LoginActivity.JUMP_SOURCE, this.getClass());	
 					log.warn("have not login when create order");
 				}
 				this.startActivity(intent);
@@ -226,10 +199,8 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 
         if (popupWindow == null)
         {  
-            LayoutInflater layoutInflater = (LayoutInflater) this.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
-  
+            LayoutInflater layoutInflater = (LayoutInflater) this.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);   
             view = layoutInflater.inflate(R.layout.pop_window_num, null);  
-
             TextView  title= (TextView) view.findViewById(R.id.pop_window_title);
             title.setText(orderDetail.getProduct_name());
             sure_btn = (Button) view.findViewById(R.id.pop_window_sure_btn);
@@ -237,17 +208,15 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
             // 使其聚集  
             popupWindow.setFocusable(true);  
             //点击外部消失
-            popupWindow.setOutsideTouchable(true);  
+            popupWindow.setOutsideTouchable(true);
             ColorDrawable dw = new ColorDrawable(0x90000000);  
             popupWindow.setBackgroundDrawable(dw);
-
-
         } 
+        
         //设置背景变暗
         WindowManager.LayoutParams lp= getActivity().getWindow().getAttributes();
         lp.alpha = 0.4f;
         this.getActivity().getWindow().setAttributes(lp); 
-        
 		final AbstractWheel num = (AbstractWheel)view.findViewById(R.id.chart_list_item_num);
 		NumericWheelAdapter numAdapter = new NumericWheelAdapter(this.getActivity(), 1, 20);
 		num.setViewAdapter(numAdapter);
@@ -295,12 +264,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
         DismissListener disListener = new DismissListener();
 		//监听popwindow消失事件，并对radioGroup清零
         popupWindow.setOnDismissListener(disListener);
-
-
+        
     } 
-
-
-
-
 
 }

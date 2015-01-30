@@ -93,7 +93,6 @@ public class GroupAdapter extends BaseAdapter
 		{
 			view.setBackgroundColor(Color.rgb(231,230, 227));
 			holder.groupItem.setSelected(true);
-			
 		}
 		else
 		{
@@ -101,9 +100,11 @@ public class GroupAdapter extends BaseAdapter
 			holder.groupItem.setSelected(false);
 			
 		}
-		holder.groupItem.setTextColor(Color.BLACK);
+		//holder.groupItem.setTextColor(Color.BLACK);
 		holder.groupItem.setText(list.get(position));
 
+		view =  LayoutInflater.from(context).inflate(
+				R.layout.search_condition_item, null);
 		return view;
 	}
 
