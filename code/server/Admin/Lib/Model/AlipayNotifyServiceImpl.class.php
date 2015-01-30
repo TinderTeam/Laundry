@@ -24,7 +24,7 @@ class AlipayNotifyServiceImpl implements MispAlipayNotifyService
 		else 
 		{
 			FuegoLog::getLog()->LogInfo('order pay failed, wait buyer pay.');
-			$result = $orderDao->where($condition)->setField('order_status', OrderEnum::PayFailed);
+			$result = $orderDao->where($condition)->setField('order_status', OrderEnum::WaitBuyerPay);
 		}
 		
 		

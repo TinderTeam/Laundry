@@ -73,8 +73,32 @@ class IndexAction extends BaseAction
     		}
     		else
     		{
-    			//APP登录成功
+    			//获取登录权限成功
     			$this->LogInfo("Get user login privilege success. The user have APP login privilege.");
+    			//判断是否已经在其他设备登录
+    			$condition['user_id'] = $orignalUser['user_id'];
+    			$tokenDao = MispDaoContext::Token();
+    			$tokenCount = $tokenDao->where($condition)->count();
+    			$this->LogInfo("Token count is ".$tokenCount);
+    			if($tokenCount>0)
+    			{
+    				//用户已在其他设备登录，删除已有token
+    				$this->LogInfo("The user has login in other device, user name is ".$orignalUser['user_name']);
+    				try
+    				{
+    					$result = MispCommonService::Delete($tokenDao, $condition);
+    					$this->LogInfo("Delete orginal token success.");
+    				}
+    				catch(FuegoException $e)
+    				{
+    					$this->LogWarn("Delete orginal token failed.");
+    					$this->LogWarn("Customer APPLogin failed");
+    					$this->errorCode = MispErrorCode::ERROR_LOGIN_FAILED;
+    					$this->ReturnJson();
+    					return;
+    				}	
+    			}
+    			//APP登录成功
     			$data = MispServiceContext::UserManage()->AppLogin($orignalUser);
     		}
     		$this->ReturnJson($data);

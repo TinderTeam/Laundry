@@ -18,7 +18,7 @@ class MispErrorCode
 	const DB_DELETE_ERROR = 13; 			//数据库删除失败
 	const DB_MODIFY_ERROR = 14; 			//数据库更新失败
 	const DB_GET_ERROR = 15; 				//数据库查询失败
-	const ERROR_NO_IMG = 16;				//上传图片为空
+	const UPLOAD_IMG_FAILED = 16;			//上传图片失败
 	const ERROR_NET_FAIL = 17 ; 			// 网络连接异常
 	const ERROR_INPUT_NULL = 18 ; 			// 输入为空
 	const ERROR_NO_RIGHT_OPERATE = 19;		//无权操作

@@ -61,11 +61,13 @@ class ProductManageAction extends EasyUITableAction
 	 */
 	public function Create()
 	{
+		$this->LogInfo("Create product...");
 		//导入图片上传类  
         import("ORG.Net.UploadFile");
         //实例化上传类  
-        $upload = new UploadFile();  
-        $upload->maxSize = 4145728;  
+        $upload = new UploadFile();
+        $upload->maxSize = 20976;		//138px*152px
+        //$upload->maxSize = 4145728;  
         //设置文件上传类型  
         $upload->allowExts = array('jpg','gif','png','jpeg');  
         //设置文件上传位置  
@@ -73,12 +75,16 @@ class ProductManageAction extends EasyUITableAction
         //设置文件上传名(按照时间)  
         //$upload->saveRule = "time";  
         if (!$upload->upload()){
-        	$this->LogErr("Create product fail, no img is upload.");
-        	$this->errorCode = NO_IMG;
-            return $this->ReturnJson();  
+        	//上传图片错误
+        	$this->LogWarn("Upload image failed.".$upload->getErrorMsg());
+        	$this->LogWarn("Modify product failed.");
+        	$this->errorCode =MispErrorCode::UPLOAD_IMG_FAILED;
+        	$data['PrivateErrorMsg'] = $upload->getErrorMsg();
+        	$this->ReturnJson($data);
+        	return; 
         }else{ 
             //上传成功，获取上传信息  
-            $this->LogInfo("Create product, upload img success");
+            $this->LogInfo("Upload image success.");
            	$info = $upload->getUploadFileInfo();
         }
         
@@ -94,12 +100,13 @@ class ProductManageAction extends EasyUITableAction
  		try
  		{
  			$result = MispCommonService::Create($productDao, $data);
+ 			$this->LogInfo("Create product success.");
  		}
  		catch(FuegoException $e)
  		{
  			$this->errorCode = $e->getCode();
  		}
-		return $this->ReturnJson();
+ 		$this->ReturnJson();
 	}
 	
 	/* (non-PHPdoc)
@@ -107,11 +114,12 @@ class ProductManageAction extends EasyUITableAction
 	 */
 	public function Modify()
 	{
+		$this->LogInfo("Modify product...");
 		//导入图片上传类
 		import("ORG.Net.UploadFile");
 		//实例化上传类
 		$upload = new UploadFile();
-		$upload->maxSize = 4145728;
+		$upload->maxSize = 20976;
 		//设置文件上传类型
 		$upload->allowExts = array('jpg','gif','png','jpeg');
 		//设置文件上传位置
@@ -119,10 +127,23 @@ class ProductManageAction extends EasyUITableAction
 		//设置文件上传名(按照时间)
 		//$upload->saveRule = "time";
 		if (!$upload->upload()){
-			$this->LogInfo("Modify product, no img update.");
-			//$this->error($upload->getErrorMsg());
+			if(MispErrorCode::UPLOAD_IMG_FAILED == $upload->getErrorMsg())
+			{
+				//图片未更新
+				$this->LogInfo("No image update.");
+			}
+			else 
+			{
+				//上传图片错误
+				$this->LogWarn("Image update failed.".$upload->getErrorMsg());
+				$this->LogWarn("Modify product failed.");
+				$this->errorCode =MispErrorCode::UPLOAD_IMG_FAILED;
+				$data['PrivateErrorMsg'] = $upload->getErrorMsg();
+				$this->ReturnJson($data);
+				return;
+			}
 		}else{
-			$this->LogInfo("Modify product, img update success.");
+			$this->LogInfo("Image update success.");
 			//上传成功，获取上传信息
 			$info = $upload->getUploadFileInfo();
 		}
@@ -140,6 +161,7 @@ class ProductManageAction extends EasyUITableAction
 		try
 		{
 			$result = MispCommonService::Modify($productDao, $data);
+			$this->LogInfo("Modify product success.");
 		}
 		catch(FuegoException $e)
 		{

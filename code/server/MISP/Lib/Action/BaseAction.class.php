@@ -113,13 +113,20 @@ class BaseAction extends Action
 	     }
  	     $returnArray['errorCode'] = $this->errorCode;
  	     $clientType = $this->GetReqType();
- 	     if($clientType == ClientTypeEnum::WEB)
+ 	     if((ClientTypeEnum::ANDROID == $clientType)||(ClientTypeEnum::IOS == $clientType))
  	     {
- 	     	$returnArray['errorMsg'] = $this->GetErrorMsg();
+ 	     	$returnArray['errorMsg'] = null;
  	     }
  	     else 
  	     {
- 	     	$returnArray['errorMsg'] = null;
+ 	     	if(!ValidatorUtil::IsEmpty($data['PrivateErrorMsg']))
+ 	     	{
+ 	     		$returnArray['errorMsg'] = $data['PrivateErrorMsg'];
+ 	     	}
+ 	     	else 
+ 	     	{
+ 	     		$returnArray['errorMsg'] = $this->GetErrorMsg();
+ 	     	}
  	     }
 	     $json = json_encode($returnArray);
 	     

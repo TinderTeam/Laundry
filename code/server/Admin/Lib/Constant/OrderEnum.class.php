@@ -3,9 +3,11 @@ class OrderEnum
 {
 	const OrderSubmit = "已下单";
 	const PaySuccess = "付款成功";
-	const PayFailed = "待付款";
+	const WaitBuyerPay = "待付款";
 	const PayFinished = "交易完成";
 	const OrderComplete = "已完成";
+	const OrderCancel = "已取消";
+	const OrderAbolish = "已作废";
 	
 	const NormalOrder = "正常下单";
 	const DirectOrder = "直接下单";

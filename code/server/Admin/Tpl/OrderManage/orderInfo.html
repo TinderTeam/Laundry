@@ -39,9 +39,9 @@
 	  		</tr>
 	  		<tr>
 	   			<td>家庭住址:</td>
-	   			<td colspan="3"><input name="delivery_addr" class="easyui-textbox" style="width:378px;height:40px" type="text" data-options="multiline:true"></input></td>
+	   			<td colspan="3"><input name="delivery_addr" class="easyui-textbox" readonly="readonly" style="width:378px;height:40px" type="text" data-options="multiline:true"></input></td>
 	   			<td>订单备注:</td>
-	   			<td colspan="3"><input name="order_note" class="easyui-textbox" style="width:378px;height:40px" type="text" data-options="multiline:true"></input></td>
+	   			<td colspan="3"><input name="order_note" class="easyui-textbox" readonly="readonly" style="width:378px;height:40px" type="text" data-options="multiline:true"></input></td>
 	   		</tr>
 	  	</table>
 	</form>
@@ -52,11 +52,14 @@
 		<thead>
 			<tr>
 				<th hidden="true" data-options="field:'order_detail_id',width:200">订单详情ID</th>
-				<th data-options="field:'product_id',width:200">产品编号</th>
-				<th data-options="field:'product_name',width:120">产品名称</th>
-				<th data-options="field:'product_type',width:80">产品类型</th>
-				<th data-options="field:'price',width:80">产品价格</th>
-				<th data-options="field:'quantity',width:80">数量</th>
+				<th hidden="true" data-options="field:'price_type',width:80,formatter:formatPrice" >价格类型</th>
+				<th data-options="field:'product_id',width:60" >产品编号</th>
+				<th data-options="field:'product_name',width:180">产品名称</th>
+				<th data-options="field:'current_price',width:80">产品价格</th>
+				<th data-options="field:'quantity',width:60">数量</th>
+				<th data-options="field:'product_type',width:100">产品类型</th>
+				<th data-options="field:'product_img',width:160">产品图片</th> 
+				<th data-options="field:'product_describe',width:280">产品描述</th>
 			</tr>
 		</thead>
 	</table>
@@ -66,31 +69,11 @@
 	<a class="easyui-linkbutton" onclick="$('#productModify').dialog('close')">Close</a>
 </div>
 <script type="text/javascript">
-$(function () {
-    $("#up0").uploadPreview({ Img: "img0"});
-});
-function submitForm(){
-	if("" != $("#product_id").val())
-	 {
-		$("#productForm").attr('action', '__APP__/ProductManage/Modify');
-	 }
-	var form = document.productForm;
-	var rsp = iframeCallback(form,submitFormDone);
-	form.submit();
-	return rsp;
-}
-function submitFormDone(rsp){
-	if(isSuccess(rsp)){
-		//关闭当前对话框
-		$('#productModify').dialog('close');
-		//重新加载datagrid数据
-		$("#productGrid").datagrid('reload'); 
-	}
-	else{
-		fuegoAlert(rsp.errorMsg);
+function formatPrice(val,row){
+	if (val == "面议"){
+		return row.current_price = "面议";
 	}
 }
-
 </script>
 </body>
 </html>

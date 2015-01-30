@@ -104,7 +104,7 @@ class OrderManageAction extends EasyUITableAction
 	 */
 	public function Create()
 	{
-		$this->LogInfo("APP create order.");
+		$this->LogInfo("APP create order...");
 		//验证APP是否登录
 		$this->DoAuth();
 		$req = $this->GetReqObj();
@@ -120,7 +120,7 @@ class OrderManageAction extends EasyUITableAction
 		while($orderDao->where('order_code='.$orderData['order_code'])->count());
 		if(OrderEnum::OnlinePay == $orderData['pay_option'])
 		{
-			$orderData['order_status'] = OrderEnum::PayFailed;
+			$orderData['order_status'] = OrderEnum::WaitBuyerPay;
 		}
 		else 
 		{

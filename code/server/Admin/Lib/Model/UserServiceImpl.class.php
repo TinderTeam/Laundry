@@ -47,14 +47,16 @@ class UserServiceImpl implements MispUserService
 	 */
 	public function AppLogin($user)
 	{
-		$data['user'] = $user;
+		//创建新的token
+		$tokenDao = MispDaoContext::Token();
 		$token['token_name'] = DataCreateUtil::GetUUID();
 		$token['user_id'] = $user['user_id'];
-		$tokenDao = MispDaoContext::Token();
 		$result = $tokenDao->add($token);
 		FuegoLog::getLog()->LogInfo("Create token success, token id is ".json_encode($result).". And token is ".$token['token_name']);
+		FuegoLog::getLog()->LogInfo("Customer APPLogin success, the user name is ".$user['user_name']);
+		//返回数据
+		$data['user'] = $user;
 		$data['token'] = $token['token_name'];
-		FuegoLog::getLog()->LogInfo("customer APPLogin success, the user name is ".$user['user_name']);
 		return $data;
 	}
 	

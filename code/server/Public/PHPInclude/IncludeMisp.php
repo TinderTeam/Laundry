@@ -20,5 +20,5 @@ import("MISP.Util.DataCreateUtil");
 import("MISP.Util.FuegoException");
 import("MISP.Util.FuegoLog");
 import("MISP.Util.ShortMessage");
-
+import("MISP.Util.ValidatorUtil");
 ?>
