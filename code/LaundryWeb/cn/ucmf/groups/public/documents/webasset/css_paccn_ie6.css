@@ -1,0 +1,65 @@
+
+*html #arpuPopup .solutions{ width:364px; height:229px; background:url(../../../../../ucmf/groups/public/documents/webasset/hw_000508.gif) no-repeat; padding:30px 18px 15px 18px; }
+
+*html .grid765 .block { min-height:80px; height:auto !important; *height:80px; }
+
+
+*html .grid215 .block { min-height:80px; height:auto !important; *height:80px; }
+
+/***html .services .content {width: 750px; }**/
+
+
+*html .nav A.join_huawei {FLOAT: left}
+*html .nav A.join_huawei SPAN {FLOAT: left}
+*html .menuitempanel .join_huawei {WIDTH: 930px}
+
+*html .leftNav .content,*html .grid215 .content{zoom:1;}
+
+*html .grid550{ width: 510px; overflow:hidden;margin:0 22px;display:inline}
+
+*html .nav a.trad, *html .nav a.solutions_products, *html .nav a.support, *html .nav a.about_huawei, *html .nav a.media_center, *html .nav a.join_huawei, *html .nav a.shop_huawei{float:left;}
+*html .nav a.trad span, *html .nav a.solutions_products span, *html .nav a.support span, *html .nav a.about_huawei span, *html .nav a.media_center span, *html .nav a.join_huawei span, *html .nav a.shop_huawei span{float:left;}
+*html .menufillet_e {position: relative; background-image: none; right: 0; top: 0; height: 1px; font-size: 1px; line-height: 1px;}
+*html .menuitempanel{ top:46px;}
+*html .menucontentdiv {border-bottom: 1px solid #ccc; position: relative; z-index: 1009;border-top: 1px solid #ccc;border-right: 1px solid #ccc; padding: 0px 20px 0 30px;}
+*html .nav li a.hover {background-image: url(../../../../../ucmf/groups/public/documents/webasset/hw_s_237649.png);}
+*html .nav li a.hover span { background-image: url(../../../../../ucmf/groups/public/documents/webasset/hw_s_237649.png);}
+*html .shadow_b_layout, *html .shadow_b_layout div {position: relative;background: none;height: 1px;line-height: 1px;font-size: 1px;}
+*html .menuitempanel div.clearfix{padding-top:20px;}
+*html .menuitempanel ul.list li.left ul{margin-right:10px;}
+*html .menuitempanel ul.list li.left ul.last{margin-right:0;}
+*html .menuitempanel ul.list li.last{margin-left:0;}
+*html .menuitempanel .trad{width:930px;}
+*html .menuitempanel .solutions_products{width:930px;}
+*html .menuitempanel .support{width:930px;}
+*html .menuitempanel .about_huawei{width:930px;}
+*html #slide-index .button img{width:100%; height:100%;}
+
+
+* html #seo-footer .links{width:153px;} 
+* html #seo-footer .offer{width:100px;}
+
+*html #menu-popup .solutions_products { left:120px;}
+*html #features-index a{width:316px;}
+*html #features-index a span{width:186px;}
+*html #feature-popup .maskContainer{left:0;}
+*html #feature-popup .content {background:url(../../../../../ucmf/groups/public/documents/webasset/hw_078270.gif) 0 -372px;}
+*html #feature-popup .content div.list {background:url(../../../../../ucmf/groups/public/documents/webasset/hw_078270.gif) right 0;}
+*html .myhuawei-favorite #tabs a.active{ padding:0 0;}
+*html .magazine_info .right{width:515px;}
+
+*html #feature-popup .content .item { margin: 0px 10px 16px 15px;display:inline; width:287px;}
+
+*html #seo-footer .seoAbout{ background:url(../../../../../ucmf/groups/public/documents/webasset/footer_sprite.gif) no-repeat; background-position: 0 -2px;}
+*html #seo-footer .seoInfo{ background:url(../../../../../ucmf/groups/public/documents/webasset/footer_sprite.gif) no-repeat; background-position: -80px -2px;}
+*html #seo-footer .seoNews{ background:url(../../../../../ucmf/groups/public/documents/webasset/footer_sprite.gif) no-repeat; background-position: -172px -2px;}
+*html #seo-footer .seoOffer { background:url(../../../../../ucmf/groups/public/documents/webasset/footer_sprite.gif) no-repeat; background-position: -272px 0;}
+*html #seo-footer .seoLinks{ background:url(../../../../../ucmf/groups/public/documents/webasset/footer_sprite.gif) no-repeat; background-position: -365px 0;}
+
+
+
+*html #group_searchButton{ margin-top:-21px;}
+
+/*nav ie6*/
+*html .nav .media_center,*html .nav .join_huawei,*html .nav .shop_huawei{width:112px;}
+*html .pic_case img{width:168px;padding-top:10px;}

@@ -1,0 +1,150 @@
+h1, h2, h3, h4, h5, h6, #footer .left_inner label {
+font-family: frutigernext_medium,frutigernext, "Microsoft YaHei", Arial, Helvetica, sans-serif;
+}
+
+.top_nav_1 a{font-size:14px;}
+#nav-cont-wrap p{line-height:180%;}
+h1{font-size: 28px;
+margin-bottom: 12px;
+margin-top: 0;}
+.solCategory{padding-top:0;}
+.solCategory .solution-nav li span{margin-bottom:2px;}
+.solCategory .solution-nav li {
+ border-top: 1px solid #d7d7d7; 
+padding: 10px 0px;
+}
+.solCategory .lt-img-rt-tx{padding-top:0px;}
+a{outline:0 !important;}
+.nav-cont-wrap ul li span {
+display: block;
+margin-bottom: 7px;
+}
+.nav-cont-wrap h3{font-size:16px; font-weight:bold !important;}
+.nav-cont-wrap h3 + p{margin-top:-5px !important;}
+.banner-btn{border:none; width:auto;padding:0 20px; display:inline-block;}
+
+.solCategorytitle h1, .page-title h1{font-weight:normal !important;}
+.solCategory .solution-nav li i{padding-left:20px;}
+.solution-cont p{margin-bottom:15px;}
+.solution-cont h3 p{margin-bottom:0;}
+.all_product .product-subtitle {
+color: #cc0000;
+margin: 15px 0 0 0;
+}
+.banner-mobile-link {
+position: absolute;
+height: 0;
+width: 100%;
+top: 0;
+left: 0;
+padding-bottom: 56.25%!important;
+text-indent:10000%;
+}
+
+.weixin-qr-bottom {
+top: -280px;
+left:-110px;
+}
+
+#footer .left_inner label{font-weight:bold !important;}
+.index-other-part h3{margin-bottom:15px;}
+.lt-img-rt-tx h2{margin-top:0;}
+
+.group-news .row .col-xs-2{width:12.666667%;}
+.group-news .row .col-xs-1{width:12.33333333%;}
+
+
+
+/*subscribe style*/
+#fancybox-outer {
+background: none;
+}
+#fancybox-wrap{padding:0;}
+.fancybox-bg{display:none;}
+#fancybox-close {
+position: absolute;
+width: 36px;
+height: 36px;
+top: 0;
+right: 0;
+background: url("http://www.huawei.com/better-connected-world/image/icon_close.png") no-repeat scroll center center transparent;
+cursor: pointer;
+z-index: 1103;
+display: none;
+}
+
+.NewFeedback{margin:5px 0 0 10px;}
+.box_subscribe{overflow:hidden;
+border-radius: 6px;
+background-color: #edebeb;
+width: 720px;
+padding: 15px;
+overflow: hidden;
+border: none;
+}
+#ftextarea{height:100px}
+.box_subscribe .Title .red_bg .close_sub{display:none;}
+.box_subscribe .InforList ul.choose{margin:15px 0 12px 0;overflow:hidden}
+.box_subscribe .InforList ul.choose li{ float:left; vertical-align:middle; color:#333;margin-right:15px;}
+.box_subscribe .InforList ul.information{ clear:both;}
+.box_subscribe .InforList ul.information li{color:#333;padding:8px 0;}
+.box_subscribe .InforList ul.information li input,textarea{ padding: 5px;border-radius: 5px; width:99%;}
+.box_subscribe .InforList ul.information li span{text-align:right; float:left;margin:0;}
+
+
+.box_subscribe .box{ width:539px; margin:25% auto}
+.box_subscribe .Title { width:auto; height:33px; overflow:hidden;}
+/*.box_subscribe .Title .left{background:url(../../../../../us/ucmf/groups/public/documents/webasset/hw_s_197568.png) no-repeat left 0; float:left; height:33px; width:7px;_margin-right:-3px;}*/
+/*.box_subscribe .Title .red_bg{ background:#660000; height:33px;overflow:hidden; height:33px;color:#FFF; font-weight:bold; font-size:16px;line-height:33px;padding-left:8px;}*/
+.box_subscribe .Title .red_bg span{font-style:italic;margin-right:3px;}
+/*.box_subscribe .Title .right{background:url(../../../../../us/ucmf/groups/public/documents/webasset/hw_s_197569.png) no-repeat right 0; width:7px; height:33px;float:right;_margin-left:-3px;}*/
+.box_subscribe .Title .red_bg .close_sub{ background:url(../../../../../us/ucmf/groups/public/documents/webasset/hw_s_197570.gif) no-repeat 0 0; float:right; width:16px;height:16px;margin:8px 5px 0 0;cursor: pointer;}
+
+.box_subscribe .InforList .notes_sub li{padding:5px 0; color:#333;}
+.box_subscribe .InforList .notes_sub li input.inputTxt{ border:1px solid #d0d0d0; background:none;font-size:14px;height:20px;width:220px;color:#2e2e2e;line-height: 20px;}
+.box_subscribe .InforList .notes_sub li span{ float:left; text-align:right;padding-right:15px;width:150px;font-size:14px; line-height:20px;}
+.box_subscribe .InforList ul.information li p{ display:block;margin:5px 0 0 0;_margin-left:113px;padding:0;color:#b3b3b3}
+.box_subscribe .InforList .tip_subscribe p{ line-height:20px;margin:0px 0 12px 0;clear:both;overflow:hidden; color:#333;}
+
+
+.box_subscribe .InforList h1{font-size:18px; font-weight:bold;color:#333;margin-bottom: 10px;}
+
+.box_subscribe .BtnBox input.btn{ width:80px; height:30px; color:#000; font-size:12px;font-family: arial;text-align:center;margin-right:20px;cursor:pointer; line-height:100%;border-radius: 0;width: 125px;
+height: 38px;
+border: none;
+font-size: 16px;
+color: #fff;
+background: #c00;
+cursor: pointer;
+border-radius: 5px;}
+.box_subscribe .BtnBox input.btn_b{ width:80px; height:30px; font-weight:bold;;color:#666; font-size:12px;font-family: arial;text-align:center;margin-right:15px;cursor:pointer}
+
+.box_subscribe .InforList .notes_sub{margin:5px 10px 10px 0px; overflow:hidden;}
+.box_subscribe .InforList .notes_sub h1{font-size:14px;font-weight:  normal;margin-bottom:15px; line-height:18px; color:#494949;}
+.box_subscribe .InforList .notes_sub p{font-size:13px;color:#171717; line-height:22px;}
+.box_subscribe .InforList .notes_sub .btn input{margin:15px 0 0 0; background: url(../../../../../us/ucmf/groups/public/documents/webasset/hw_s_195457.gif) no-repeat 0 0; width:90px; height:29px;cursor:pointer; font-size:14px; font-weight:bold; color:#FFF;padding-bottom: 5px; border:none;padding:3px 3px 9px 0;padding-top:5px \9;*padding-top:5px;_padding-top:5px;}
+.InforList .notes_sub .text .btn{margin:10px 0 0 68px;}
+.box_subscribe .InforList .notes_sub .ico-subscribe{ float:left;margin:0 20px 0 0}
+.box_subscribe .InforList .notes_sub .text{color:#515151;font-size:17px;font-weight:bold;margin:0 10px 0 0px; line-height:22px;}
+.InforList .notes_sub .Email_input{ font-size:15px; font-weight:bold; color:#000;margin-bottom:15px;}
+.InforList .notes_sub .Email_input input{font-weight:normal;font-size:12px;height:20px;width:152px;}
+.InforList .notes_sub .Email_input span{font-weight:normal;font-size:14px;margin-left:6px;}
+
+#tipbox{ background: url(../../../../../us/ucmf/groups/public/documents/webasset/hw_s_197607.png) no-repeat 0 0; width:122px;height:38px; color:#303030;font-size:13px;padding-top:8px;padding-left:11px; font-family:Arial; font-weight:bold; position:absolute;right:160px;top:205px;}
+#tipbox_top{ background: url(../../../../../us/ucmf/groups/public/documents/webasset/hw_s_197659.png) no-repeat 0 0; width:116px;height:39px; color:#303030;font-size:13px;padding-top:8px;padding-top:8px \9;*padding-top:8px;_padding-top:8px; padding-left:20px;font-family:Arial; font-weight:bold; position:absolute;left:72px;top:30px;}
+
+#Header_subscription{ background:url(../../../../../us/ucmf/groups/public/documents/webasset/hw_s_169917.gif) repeat-x 0 top;height:63px;}
+#Header_subscription .bound_subscription{width:750px;margin:0 auto;}
+.bound_subscription h1{padding:15px 0 0 20px;}
+.page1 {overflow: hidden;width:750px;margin:35px auto 0 auto}
+.Subscribe_page h1{color:#990000;font-size:18px;font-weight:bold;}
+.Subscribe_page h1 span{font-style: italic;}
+.Subscribe_page .Box_page{width:745px;height:170px;border:1px solid #ccc;background:#f5f5f5;margin-top:20px;padding-bottom:20px;}
+.Left_Icon{ background: url(../../../../../us/ucmf/groups/public/documents/webasset/hw_s_195468.jpg) no-repeat left center;width:47px;height:44px;margin:55px 0 0 98px;_margin:40px 0 0 48px;float:left;}
+.Left_Icon_error{background: url(../../../../../us/ucmf/groups/public/documents/webasset/hw_s_leftico.jpg) no-repeat left center;width:62px;height:51px;margin:55px 0 0 98px;_margin:60px 0 0 50px;float:left;}
+.Right_Txt{float:left;margin:44px 0 0 48px;font-size:16px;line-height:24px;color:#666;width:470px;}
+.Right_Txt strong{ display:block;}
+.Right_Txt strong span{ font-style:italic}
+.Right_Txt p a{ display:block;margin:30px 0 0 0px;color:#003399;text-decoration:none}
+.Right_Txt span a{color:#003399;}
+#subscriber-email{text-decoration:underline;color:#003399} 
