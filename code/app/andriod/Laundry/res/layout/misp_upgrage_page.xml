@@ -32,6 +32,7 @@
         android:gravity="center_horizontal"
         android:textColor="@color/content_text_color"
         android:textSize="@dimen/content_font_size" />
+
     <TextView
         android:id="@+id/misp_upgrade_new_version_txt"
         android:layout_width="match_parent"
@@ -39,20 +40,26 @@
         android:gravity="center_horizontal"
         android:textColor="@color/content_text_color"
         android:textSize="@dimen/content_font_size" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp" >
+        android:layout_marginBottom="50dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingTop="10dp" >
 
         <Button
             android:id="@+id/misp_upgrade_version_btn"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-    
-            android:text="@string/misp_udpate"
-            android:textColor="@color/theme_text_color"
-            android:textSize="@dimen/content_font_size"
-            android:background="@color/themecolor" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/common_btn"
+            android:text="更 新"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
     </RelativeLayout>
 
 </LinearLayout>

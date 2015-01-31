@@ -45,12 +45,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="90dp"
-             android:alpha="0.8"
-            android:background="@color/white"
- 
+            android:alpha="0.8"
             android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            >
+            android:paddingRight="40dp" >
 
             <Button
                 android:id="@+id/product_btn_to_cart"
@@ -58,11 +55,10 @@
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-    
                 android:background="@drawable/common_btn"
                 android:text="洗衣篮"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/content_font_size" />
 
         </RelativeLayout>
 

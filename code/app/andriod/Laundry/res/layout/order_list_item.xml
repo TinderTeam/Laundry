@@ -2,21 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-
+    android:background="@drawable/common_item"
     android:paddingBottom="10dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-             android:background="@color/white"
         android:orientation="vertical" >
 
         <LinearLayout
             android:id="@+id/home_list_item_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/common_item"
             android:orientation="vertical" >
 
             <LinearLayout

@@ -56,11 +56,13 @@
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-  
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_sel"
-                    android:gravity="center"
-                    android:padding="8dp"
                     android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:padding="2dp"
                     android:textColor="@color/black"
                     android:textSize="12sp" >
 

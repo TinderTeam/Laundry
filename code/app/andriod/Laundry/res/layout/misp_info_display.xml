@@ -14,7 +14,8 @@
             android:id="@+id/misp_info_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@null" >
+            android:divider="@color/backcolor"
+            android:dividerHeight="1dp" >
 
         </ListView>
 

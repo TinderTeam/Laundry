@@ -120,7 +120,7 @@
             android:background="@drawable/common_btn"
             android:text="提  交"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="@dimen/content_font_size" />
 
     </RelativeLayout>
 

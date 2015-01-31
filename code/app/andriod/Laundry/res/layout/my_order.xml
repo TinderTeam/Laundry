@@ -22,7 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/backcolor"
-            android:divider="@null"
+            android:divider="@color/backcolor"
+            android:dividerHeight="10dp"
             android:listSelector="@null" >
 
         </ListView>

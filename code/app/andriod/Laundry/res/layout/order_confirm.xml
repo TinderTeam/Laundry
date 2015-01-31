@@ -76,21 +76,25 @@
             android:text="已选物品总共9件共计506元"
             android:textColor="@color/red_notice"
             android:textSize="14sp" />
- 
 
-        <Button
-            android:id="@+id/misp_btn_submit"
-            style="?android:attr/buttonStyleSmall"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_light_blue"
-            android:padding="10dp"
-            android:text="@string/misp_submit"
-            android:textColor="@color/theme_text_color" />
+            android:layout_height="90dp"
+            android:alpha="0.8"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp" >
+
+            <Button
+                android:id="@+id/misp_btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/common_btn"
+                android:text="提  交"
+                android:textColor="@color/white"
+                android:textSize="@dimen/content_font_size" />
+        </RelativeLayout>
 
     </LinearLayout>
 

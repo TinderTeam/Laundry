@@ -202,22 +202,23 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:padding="30dp" >
 
-                <Button
-                    android:id="@+id/user_set_location_addr_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:background="@drawable/common_btn"
-                    android:padding="10dp"
-                    android:text="@string/location_addr"
-                    android:textColor="@color/white" />
-
-            </LinearLayout>
+               <Button
+                   android:id="@+id/user_set_location_addr_btn"
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_alignParentLeft="true"
+                   android:layout_alignParentTop="true"
+                   android:background="@drawable/common_btn"
+                   android:text="@string/location_addr"
+                   android:textColor="@color/white"
+                   android:textSize="@dimen/content_font_size" />
+           </RelativeLayout>
 
         </LinearLayout>
  

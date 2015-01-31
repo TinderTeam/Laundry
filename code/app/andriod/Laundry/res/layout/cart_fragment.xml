@@ -189,23 +189,23 @@
       android:orientation="vertical"
       android:visibility="visible" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-              >
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="90dp"
+          android:alpha="0.8"
+          android:paddingLeft="40dp"
+          android:paddingRight="40dp" >
 
-            <Button
-                android:id="@+id/cart_to_product1"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_light_blue"
-                android:padding="10dp"
-                android:textColor="@color/theme_text_color"
-                android:text="添加衣物" />
-        </LinearLayout>
+          <Button
+              android:id="@+id/cart_to_product1"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true"
+              android:background="@drawable/common_btn"
+              android:text="添加衣物"
+              android:textColor="@color/white"
+              android:textSize="@dimen/content_font_size" />
+      </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>
