@@ -15,9 +15,11 @@
 @interface FEProfileVC ()
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIView *shouldSigninView;
-@property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (strong, nonatomic) UIView *header;
 @property (strong, nonatomic) UIView *footer;
+@property (strong, nonatomic) IBOutlet UILabel *nickNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *sexLabel;
+@property (strong, nonatomic) IBOutlet UILabel *phoneLabel;
 
 @end
 
@@ -70,13 +72,13 @@
         self.tableView.tableHeaderView = self.headerView;
 //        [self.navigationController setNavigationBarHidden:YES];
         FEUser *user = [[FEUser alloc] initWithDictionary:kLoginUser];
-        self.userNameLabel.text = user.user_name;
+        self.phoneLabel.text = [NSString stringWithFormat:@"电话:%@",user.user_name];
         [self.tableView reloadData];
     }else{
         self.tableView.tableHeaderView = nil;
         self.tableView.tableFooterView = self.shouldSigninView;
         self.tableView.scrollEnabled = NO;
-        self.userNameLabel.text = @"";
+        self.phoneLabel.text = @"";
 //        [self.navigationController setNavigationBarHidden:NO];
         [self.tableView reloadData];
     }

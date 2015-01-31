@@ -15,6 +15,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "FESelectCategoryVC.h"
 #import "FEDataCache.h"
+#import "FECustomSegue.h"
 
 #define __KEY_TITLE @"title"
 #define __KEY_PNG   @"png"
@@ -58,7 +59,7 @@
                               @{__KEY_TITLE:kString(@"奢侈品牌类"),__KEY_PNG:@"product_type_5",__KEY_NUMBER:@(5)},
                               @{__KEY_TITLE:kString(@"居家类"),__KEY_PNG:@"product_type_6",__KEY_NUMBER:@(6)},
                               @{__KEY_TITLE:kString(@"汽车配饰类"),__KEY_PNG:@"product_type_7",__KEY_NUMBER:@(7)},
-                              @{__KEY_TITLE:kString(@"染色/改色/救治"),__KEY_PNG:@"product_type_8",__KEY_NUMBER:@(8)}];
+                              @{__KEY_TITLE:kString(@"染色/救治"),__KEY_PNG:@"product_type_8",__KEY_NUMBER:@(8)}];
         
         NSInvocation *inv1 = [self invocation:@selector(goOrder:)];
         NSInvocation *inv2 = [self invocation:@selector(call:)];
@@ -144,12 +145,21 @@
     
 }
 
+-(void)toCategory{
+    
+    [self performSegueWithIdentifier:@"toCategorySegue" sender:self];
+}
+
 #pragma mark - UIStoryboardSegue
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([sender isKindOfClass:[UICollectionViewCell class]]) {
         FESelectCategoryVC *vc = segue.destinationViewController;
         NSIndexPath *indexPath = [self.functionCollectionView indexPathForCell:sender];
         vc.fatherID = self.categoryList[indexPath.row][__KEY_NUMBER];
+    }else if(sender == self){
+        ((FECustomSegue *)segue).animation = NO;
+        FESelectCategoryVC *vc = segue.destinationViewController;
+        vc.fatherID = self.categoryList[0][__KEY_NUMBER];
     }
 }
 

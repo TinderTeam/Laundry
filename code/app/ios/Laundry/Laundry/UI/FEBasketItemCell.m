@@ -27,6 +27,7 @@
     _product = product;
     self.priceLabel.text = product.price.stringValue;
     self.titleLabel.text = product.product_name;
+    self.perPriceLabel.text = product.price.stringValue;
     self.numberTextField.text = number.stringValue;
 }
 

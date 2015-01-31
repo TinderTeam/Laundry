@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *priceLabel;
 @property (strong, nonatomic) IBOutlet UITextField *numberTextField;
+@property (strong, nonatomic) IBOutlet UILabel *perPriceLabel;
 @property (strong, nonatomic) FEProduct *product;
 
 -(void)configWithProduct:(FEProduct *)product number:(NSNumber *)number;

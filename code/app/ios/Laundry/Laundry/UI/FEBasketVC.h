@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 FUEGO. All rights reserved.
 //
 
-#import "FETableViewController.h"
+#import "FEViewController.h"
 
 
-@interface FEBasketVC : FETableViewController
+@interface FEBasketVC : FEViewController
 
 //-(void)appendProduct:(NSArray *)products;
 -(void)shoulRefresh;

@@ -11,13 +11,19 @@
 #import "FEDataCache.h"
 #import "FEPickerView.h"
 #import "AppDelegate.h"
+#import "FEHomePageVC.h"
+#import "UIImage+LogN.h"
+
 
 @interface FEBasketVC ()<UITextFieldDelegate,FEPickerViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *productList;
 @property (nonatomic, strong) UITextField *textField;
-@property (strong, nonatomic) IBOutlet UILabel *totalProduct;
-@property (strong, nonatomic) IBOutlet UILabel *totalPriceLabel;
+@property (strong, nonatomic) IBOutlet UIButton *toCategory;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UILabel *totalLabel;
+@property (strong, nonatomic) IBOutlet UIButton *submitButton;
+@property (strong, nonatomic) IBOutlet UIButton *addButton;
 
 @end
 
@@ -37,6 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.toCategory setBackgroundImage:[UIImage imageFromColor:kColor(23, 157, 197, 1)] forState:UIControlStateNormal];
     [self refreshUI];
 }
 
@@ -78,6 +85,16 @@
     
 }
 
+- (IBAction)toCategoryAction:(id)sender {
+    UIViewController *controller = [[[self.tabBarController viewControllers] objectAtIndex:0] topViewController];
+    if ([controller isKindOfClass:[FEHomePageVC class]]) {
+        
+//        [((FEHomePageVC *)controller) shoulRefresh];
+        [self.tabBarController setSelectedIndex:0];
+        [((FEHomePageVC *)controller) toCategory];
+    }
+}
+
 #pragma mark - UITextFieldDelegate
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     self.textField = textField;
@@ -109,16 +126,30 @@
         totalNumber += number;
         totalPrice += product.price.floatValue * number;
     }
-    self.totalProduct.text = [NSString stringWithFormat:@"%ld件物品,共计:",(long)totalNumber];
-    self.totalPriceLabel.text = [NSString stringWithFormat:@"%.2f",totalPrice];
+    self.totalLabel.text = [NSString stringWithFormat:@"总量:%ld,共计:%.2f",(long)totalNumber,totalPrice];
+    if (products.count) {
+        self.addButton.hidden = NO;
+        self.submitButton.hidden = NO;
+        self.totalLabel.hidden = NO;
+        self.toCategory.hidden = YES;
+    
+    }else{
+        self.toCategory.hidden = NO;
+        self.addButton.hidden = YES;
+        self.totalLabel.hidden = YES;
+        self.submitButton.hidden = YES;
+    }
+    
 }
 - (IBAction)nextAction:(id)sender {
-    
     if (kLoginUser) {
-        [self performSegueWithIdentifier:@"orderSubmitSegue" sender:nil];
+        if ([FEDataCache sharedInstance].selectProducts.count) {
+            [self performSegueWithIdentifier:@"orderSegue" sender:nil];
+        }
     }else{
         [self performSegueWithIdentifier:@"signinSegue" sender:nil];
     }
+    
 }
 
 - (void)didReceiveMemoryWarning {

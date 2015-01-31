@@ -24,7 +24,7 @@
         self.layer.cornerRadius = 5;
         self.layer.masksToBounds = YES;
         [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [self setBackgroundImage:[UIImage imageFromColor:kThemeColor] forState:UIControlStateNormal];
+        [self setBackgroundImage:[UIImage imageFromColor:kButtonColor] forState:UIControlStateNormal];
     }
     return self;
 }
@@ -34,7 +34,7 @@
     btn.layer.cornerRadius = 5;
     btn.layer.masksToBounds = YES;
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageFromColor:kThemeColor] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageFromColor:kButtonColor] forState:UIControlStateNormal];
     return btn;
 }
 

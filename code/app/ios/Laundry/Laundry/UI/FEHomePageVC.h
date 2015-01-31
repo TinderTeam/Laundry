@@ -10,4 +10,6 @@
 
 @interface FEHomePageVC : FETableViewController
 
+-(void)toCategory;
+
 @end
