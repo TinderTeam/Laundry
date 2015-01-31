@@ -5,69 +5,66 @@
     android:background="@color/backcolor"
     android:orientation="vertical" >
 
-<LinearLayout
+    <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="@dimen/tabbar_height"
     android:background="@color/themecolor"
-    android:orientation="horizontal"
-    android:paddingLeft="@dimen/title_margin" >
+        android:gravity="center" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
             android:orientation="vertical" >
 
             <Button
                 android:id="@+id/misp_title_back"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/misp_tilte_btn_selector"
                 android:drawableLeft="@drawable/detail_back"
+                android:paddingLeft="10dp"
                 android:text="@string/misp_back"
                 android:textColor="@color/theme_text_color"
                 android:textSize="@dimen/top_head_btn_size" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="2.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical" >
 
-                    <TextView
-                        android:id="@+id/misp_title_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text=""
-                        android:textColor="@color/theme_text_color"
-                        android:textSize="@dimen/top_head_title_font_size" />
+            <TextView
+                android:id="@+id/misp_title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/theme_text_color"
+                android:textSize="@dimen/top_head_title_font_size" />
+        </LinearLayout>
 
-         </LinearLayout>    
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:orientation="vertical" >
 
-       <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="center"
-           android:layout_weight="1"
-           android:gravity="center"
-           android:orientation="vertical" >
- 
             <Button
                 android:id="@+id/misp_title_save"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/misp_tilte_btn_selector"
+                android:gravity="center_vertical|center_horizontal"
                 android:text="@string/misp_save"
                 android:textColor="@color/theme_text_color"
                 android:textSize="@dimen/top_head_btn_size"
                 android:visibility="invisible" />
 
-        </LinearLayout>   
-    </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
 
  
 </LinearLayout>

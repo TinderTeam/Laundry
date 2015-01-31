@@ -59,8 +59,15 @@ public class MISPErrorMessageConst
 	public static final int ERROR_PASSWORD_NOT_SAME = 23;//确认密码不一致
 	
 	public static final int ERROR_UPDATE_VERSION_FAILED = 24;//更新版本失败
+ 
+	public static final int PRIVILEGE_NOT_EXIST = 25;	 //权限不存在
+	public static final int ERROR_ROLE_IS_EMPTY = 26;	 //角色不能为空
+	
+	public static final int SEND_MESSAGE_FAILED = 27;	 //发送验证码失败
 
- 	
+	public static final int COMPANY_EXISTED = 28;	 //公司已存在
+	public static final int CANT_DELETE_YOURSELF = 29;	 //不能删除自己
+	public static final int COMPANY_SERVICE_STOP = 30;	 //公司服务暂停
 	
 	public static String getMessageByErrorCode(int errorCode)
 	{

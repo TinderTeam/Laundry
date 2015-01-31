@@ -8,9 +8,13 @@ public class ActivityResInfo
 {
 	private String name;
 	
-	private int avtivityView;
+	private String saveBtnName;
+	
 	private int backBtn;
+	private int avtivityView;
+
 	private int titleTextView;
+	
 	
 	private List<Integer> buttonIDList = new ArrayList<Integer>();
 
@@ -65,5 +69,18 @@ public class ActivityResInfo
 	{
 		this.titleTextView = titleTextView;
 	}
+
+	public String getSaveBtnName()
+	{
+		return saveBtnName;
+	}
+
+	public void setSaveBtnName(String saveBtnName)
+	{
+		this.saveBtnName = saveBtnName;
+	}
+ 
+	
+	
 
 }

@@ -7,6 +7,7 @@ public class MispCommonIDName
 	/**for title**/
 	public static final int misp_title_name = R.id.misp_title_name;
 	public static final int misp_title_back = R.id.misp_title_back;
+	public static final int misp_tilte_save = R.id.misp_title_save;
 
  	
 	/**for grid view**/

@@ -32,4 +32,11 @@
 	    <drawable name="list_active">#FFFFFF</drawable> 
 	    <drawable name="list_pressed">#c4cedc</drawable> 
 
+	    <drawable name="misp_list_item_normal">#FFFFFF</drawable> 
+	    <drawable name="misp_list_item_active">#FFFFFF</drawable> 
+	    <drawable name="misp_list_item_pressed">#c4cedc</drawable> 
+	    
+	    <drawable name="misp_title_btn_seletor_normal">#143844</drawable> 
+	    <drawable name="misp_title_btn_seletor_active">#143844</drawable> 
+	    <drawable name="misp_title_btn_seletor_pressed">#143823</drawable> 
 	</resources>

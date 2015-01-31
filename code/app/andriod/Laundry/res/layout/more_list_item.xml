@@ -15,7 +15,7 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingTop="10dp" >
-
+ 
             <TextView
                 android:id="@+id/item_btntype_name"
                 android:layout_width="match_parent"
@@ -29,6 +29,6 @@
                 android:textSize="16sp" />
  
         </RelativeLayout>
-
+ 
         
 </RelativeLayout>

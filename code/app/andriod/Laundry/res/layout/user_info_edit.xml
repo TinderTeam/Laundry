@@ -41,7 +41,7 @@
                 <EditText
                     android:id="@+id/user_user_name_text"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_sel"
@@ -71,7 +71,7 @@
                 <EditText
                     android:id="@+id/user_user_sex_text"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_sel"
@@ -102,7 +102,7 @@
                 <EditText
                     android:id="@+id/user_user_birthday_text"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_sel"
@@ -132,7 +132,7 @@
                 <EditText
                     android:id="@+id/user_user_phone_text"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_sel"
@@ -163,7 +163,7 @@
                 <EditText
                     android:id="@+id/user_user_email_text"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_sel"
@@ -192,7 +192,7 @@
                 <EditText
                     android:id="@+id/user_user_addr_text"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_sel"

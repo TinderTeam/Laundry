@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="50dp"
+    android:background="@color/backcolor"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/themecolor"
+        android:paddingBottom="1dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/themecolor"
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/pop_window_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择日期"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+        
+        </RelativeLayout>
+        
+    </RelativeLayout>
+        
+ 
+        
+</LinearLayout>
+ 

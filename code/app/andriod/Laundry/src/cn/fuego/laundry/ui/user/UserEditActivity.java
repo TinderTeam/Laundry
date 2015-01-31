@@ -1,7 +1,10 @@
 package cn.fuego.laundry.ui.user;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.view.View.OnTouchListener;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
@@ -9,10 +12,14 @@ import cn.fuego.laundry.ui.base.BaseActivtiy;
 import cn.fuego.laundry.webservice.up.model.ModifyCustomerReq;
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.constant.MispCommonDataSource;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.tool.MispLocationService;
+import cn.fuego.misp.ui.pop.MispDataSelector;
+import cn.fuego.misp.ui.pop.MispDatePicker;
+import cn.fuego.misp.ui.pop.MispPopWindowListener;
 
-public class UserEditActivity extends BaseActivtiy
+public class UserEditActivity extends BaseActivtiy    
 {
 	private CustomerJson customer;
 	private TextView userName;
@@ -22,6 +29,7 @@ public class UserEditActivity extends BaseActivtiy
 	private TextView phone;
 	private TextView email;
 	private TextView addr;
+	
 
 	@Override
 	public void handle(MispHttpMessage message)
@@ -61,9 +69,15 @@ public class UserEditActivity extends BaseActivtiy
 			userName.setText(customer.getCustomer_name());
 		    sex = (TextView) findViewById(R.id.user_user_sex_text);
 			sex.setText(customer.getCustomer_sex());
+			sex.setClickable(true);
+			sex.setFocusable(false);
+			sex.setOnClickListener(this);
 
 			birthday = (TextView) findViewById(R.id.user_user_birthday_text);
 			birthday.setText(customer.getBirthday());
+			birthday.setClickable(true);
+			birthday.setFocusable(false);
+			birthday.setOnClickListener(this);
 
 			phone = (TextView) findViewById(R.id.user_user_phone_text);
 			phone.setText(customer.getPhone());
@@ -73,8 +87,6 @@ public class UserEditActivity extends BaseActivtiy
 
 			addr = (TextView) findViewById(R.id.user_user_addr_text);
 			addr.setText(customer.getAddr());
-
-
 		}
 		
 		
@@ -104,7 +116,18 @@ public class UserEditActivity extends BaseActivtiy
 			break;
 			case R.id.user_set_location_addr_btn:
 			{
-				MispLocationService.getInstance().setLocationAddr(getApplicationContext(), addr);
+ 				MispLocationService.getInstance().setLocationAddr(getApplicationContext(), addr);
+			}
+			break;
+			case R.id.user_user_birthday_text:
+			{
+				showDatePickerDialog(this.birthday);
+			}
+			break;
+			case R.id.user_user_sex_text:
+			{
+				
+				MispDataSelector.getInstance().selectItem("性别", this, MispCommonDataSource.getSexDataSource(), this.sex);
 			}
 				
 			break;
@@ -114,6 +137,20 @@ public class UserEditActivity extends BaseActivtiy
 
 	}
 	
+	public void showDatePickerDialog(final TextView view)
+	{  
+		MispDatePicker datePicker = new MispDatePicker(new MispPopWindowListener()
+		{
+			
+			@Override
+			public void onConfirmClick(String value)
+			{
+				view.setText(value);
+				
+			}
+		});  
+	    datePicker.show(getFragmentManager(), "datePicker");
+  	}
  
 
 

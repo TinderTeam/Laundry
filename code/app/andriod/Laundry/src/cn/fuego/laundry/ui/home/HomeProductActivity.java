@@ -47,8 +47,8 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 		
 		this.activityRes.setAvtivityView(R.layout.home_goods_sel);
 		this.activityRes.setName("衣物•"+selectType.getType_name());
-		this.activityRes.getButtonIDList().add(R.id.misp_title_save);
-		this.activityRes.getButtonIDList().add(R.id.product_btn_to_cart);
+ 		this.activityRes.getButtonIDList().add(R.id.product_btn_to_cart);
+		this.activityRes.setSaveBtnName("分类");
 
 		
 		this.listViewRes.setListType(ListViewResInfo.VIEW_TYPE_GRID);
@@ -112,12 +112,13 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
    	 
         LoadImageUtil.getInstance().loadImage(imageView,MemoryCache.getImageUrl()+item.getImg());
         
+        String price = CartProduct.getInstance().getDispPrice(item.getPrice_type(), item.getPrice());
 		TextView priceView = (TextView) view.findViewById(R.id.product_list_item_curPrice);
+		priceView.setText(price);
 
 		TextView nameView = (TextView) view.findViewById(R.id.product_list_item_name);
 		nameView.setText(item.getProduct_name());
 		
-		priceView.setText(String.valueOf(item.getPrice()));
 		ImageView check = (ImageView) view.findViewById(R.id.product_list_item_check_img);
 		final int nowProductID = item.getProduct_id();
         if(CartProduct.getInstance().containsSelected(nowProductID))
@@ -153,15 +154,17 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
  
 
 	@Override
+	public void saveOnClick(View v)
+	{
+		setSelectType(v);
+	}
+
+
+	@Override
 	public void onClick(View v)
 	{
 		switch(v.getId())
 		{
-			case R.id.misp_title_save:
-			{
-				setSelectType(v);
-			}
-			break;
 			case R.id.product_btn_to_cart: 
 			{
 				Intent intent = new Intent(this,MainTabbarActivity.class);

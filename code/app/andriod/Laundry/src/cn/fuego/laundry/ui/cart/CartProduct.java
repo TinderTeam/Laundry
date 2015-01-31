@@ -7,6 +7,7 @@ import java.util.Map;
 
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.constant.OrderTypeEnum;
 import cn.fuego.laundry.constant.PriceTypeEnum;
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
@@ -52,6 +53,7 @@ public class CartProduct
 	public void clearCart()
 	{
 		this.orderInfo = new CreateOrderReq();
+		setDefaultOrderInfo();
 	}
 	
 	public boolean isEmpty()
@@ -210,6 +212,10 @@ public class CartProduct
 			{
 				return PriceTypeEnum.FLOAT_PRICE.getStrValue();
 			}
+ 		}
+ 		if(OrderTypeEnum.DIRECT_ORDER.getStrValue().equals(orderInfo.getOrder().getOrder_type()))
+ 		{
+ 			return PriceTypeEnum.FLOAT_PRICE.getStrValue();
  		}
 		return PriceTypeEnum.FIX_PRICE.getStrValue();
 	}

@@ -3,14 +3,18 @@ package cn.fuego.laundry.ui.order;
 import java.util.List;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.webservice.up.model.GetOrderListReq;
 import cn.fuego.laundry.webservice.up.model.GetOrderListRsp;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.ui.list.MispListActivity;
+import cn.fuego.misp.ui.util.LoadImageUtil;
 
 public class OrderListActivity extends MispListActivity<OrderJson>
 {
@@ -50,11 +54,15 @@ public class OrderListActivity extends MispListActivity<OrderJson>
 		TextView idView = (TextView) view.findViewById(R.id.order_list_item_id);
 		idView.setText(item.getOrder_code());
 		TextView priceView = (TextView) view.findViewById(R.id.order_list_item_price);
-		priceView.setText(String.valueOf(item.getTotal_price()));
+		
+		String price = CartProduct.getInstance().getDispPrice(item.getPrice_type(), item.getTotal_price());
+		priceView.setText(price);
 		TextView statusView = (TextView)view.findViewById(R.id.order_list_item_status);
 		statusView.setText(item.getOrder_status());
 		TextView timeView = (TextView) view.findViewById(R.id.order_list_item_time);
 		timeView.setText(item.getCreate_time());
+ 
+
 		return view;
 	}
 

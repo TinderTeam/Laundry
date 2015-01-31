@@ -20,8 +20,10 @@
             android:id="@+id/order_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:background="@color/backcolor"
-            android:divider="@null" >
+            android:divider="@null"
+            android:listSelector="@null" >
 
         </ListView>
        

@@ -24,6 +24,7 @@ import antistatic.spinnerwheel.OnWheelChangedListener;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.constant.OrderTypeEnum;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
 import cn.fuego.laundry.ui.order.OrderActivity;
@@ -189,7 +190,8 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 				{
 		 
 					//set default delivery information
-		 
+					CartProduct.getInstance().getOrderInfo().getOrder().setOrder_type(OrderTypeEnum.NORMAL_ORDER.getStrValue());
+
 					intent = new Intent(this.getActivity(),OrderActivity.class);
 				}
 				else
@@ -208,6 +210,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 				
   				startActivity(intent);
 			}
+			break;
 			case R.id.cart_to_product1:
 			{
                 Intent intent = new Intent(getActivity(),HomeProductActivity.class);

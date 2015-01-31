@@ -54,8 +54,10 @@ public class UserInfoActivity extends MispInfoListActivity
 			
 			list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
 			list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, MODIFY_PASSWORD, MODIFY_PASSWORD));
+			list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
+			list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
 
-
+			
 		}
 	 
 		

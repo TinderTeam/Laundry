@@ -24,7 +24,13 @@ public abstract class MispBaseActivtiy extends Activity implements OnClickListen
 	private FuegoLog log = FuegoLog.getLog(MispBaseActivtiy.class);
 	private Map<Integer,Button> buttonViewList = new HashMap<Integer,Button>();
 	private TextView titleView;
+	private Button saveButton;
 	public void backOnClick()
+	{
+		this.finish();
+	}
+	
+	public void saveOnClick(View v)
 	{
 		this.finish();
 	}
@@ -84,8 +90,33 @@ public abstract class MispBaseActivtiy extends Activity implements OnClickListen
 				titleView.setText(this.activityRes.getName());
 			}
 		}
+		if(!ValidatorUtil.isEmpty(activityRes.getSaveBtnName()))
+		{
+			saveButton = (Button) findViewById(MispCommonIDName.misp_tilte_save);
+			saveButton.setVisibility(View.VISIBLE);
+			saveButton.setText(activityRes.getSaveBtnName());
+			saveButton.setOnClickListener(new OnClickListener()
+			{
+				
+				@Override
+				public void onClick(View v)
+				{
+					saveOnClick(v);
+					
+				}
+			});
+		}
+		
+		
 	}
 	
+	
+	
+	public Button getSaveButton()
+	{
+		return saveButton;
+	}
+
 	private void initBackButton()
 	{
 		View button = findViewById(activityRes.getBackBtn());
