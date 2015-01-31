@@ -1832,7 +1832,7 @@
         <image name="personal_bkg" width="360" height="187"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zDU-fa-yqm"/>
         <segue reference="y9a-xc-h00"/>
+        <segue reference="5jw-CL-GwX"/>
     </inferredMetricsTieBreakers>
 </document>
