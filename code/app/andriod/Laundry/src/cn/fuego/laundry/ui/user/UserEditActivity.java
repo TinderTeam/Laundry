@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
+import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.ui.base.BaseActivtiy;
@@ -22,6 +23,7 @@ import cn.fuego.misp.ui.pop.MispPopWindowListener;
 public class UserEditActivity extends BaseActivtiy    
 {
 	private CustomerJson customer;
+	private TextView nickName;
 	private TextView userName;
 	private TextView sex;
 
@@ -67,6 +69,9 @@ public class UserEditActivity extends BaseActivtiy
 		{
 			userName = (TextView) findViewById(R.id.user_user_name_text);
 			userName.setText(customer.getCustomer_name());
+			nickName = (TextView) findViewById(R.id.user_user_nickname_text);
+			nickName.setText(customer.getNickname());
+			
 		    sex = (TextView) findViewById(R.id.user_user_sex_text);
 			sex.setText(customer.getCustomer_sex());
 			sex.setClickable(true);
@@ -104,8 +109,26 @@ public class UserEditActivity extends BaseActivtiy
 				
 				customer.setCustomer_sex(sex.getText().toString().trim());
 				customer.setCustomer_name(userName.getText().toString().trim());
+				customer.setNickname(nickName.getText().toString().trim());
+
+				
+				
+				String phoneStr = phone.getText().toString().trim();
+				if(!ValidatorUtil.isPhone(phoneStr))
+				{
+					showMessage("电话格式不正确");
+					return;
+				}
+				customer.setPhone(phoneStr);
+				
+				String emailStr = email.getText().toString().trim();
+				if(!ValidatorUtil.isEmail(emailStr))
+				{
+					showMessage("邮箱格式不正确");
+					return;
+				}
 				customer.setCustomer_email(email.getText().toString().trim());
-				customer.setPhone(phone.getText().toString().trim());
+
 				customer.setBirthday(birthday.getText().toString().trim());
 				customer.setAddr(addr.getText().toString().trim());
 				req.setObj(customer);

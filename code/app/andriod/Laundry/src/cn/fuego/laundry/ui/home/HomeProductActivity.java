@@ -168,6 +168,8 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 			case R.id.product_btn_to_cart: 
 			{
 				Intent intent = new Intent(this,MainTabbarActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
 				intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(MyCartFragment.class));
 				this.startActivity(intent);
 				this.finish();

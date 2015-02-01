@@ -146,12 +146,6 @@ public class OrderActivity extends MispInfoListActivity
 				intent.putExtra(AddrEditActivity.JUMP_DATA, data);
 				this.startActivityForResult(intent,1);
 			}
-			else if(SEND_ADDR.equals(title))
-			{
-				intent.setClass(this, AddrEditActivity.class);
-				intent.putExtra(AddrEditActivity.JUMP_DATA, data);
-				this.startActivityForResult(intent,1);
-			}
 			else if(CONTACT_NAME.equals(title))
 			{
 				intent.setClass(this, MispTextEditActivity.class);
@@ -218,6 +212,16 @@ public class OrderActivity extends MispInfoListActivity
 	public void onClick(View v)
 	{
 		// TODO Auto-generated method stub
+		if(ValidatorUtil.isEmpty(CartProduct.getInstance().getOrderInfo().getOrder().getPhone()))
+		{
+			showMessage("联系电话不能为空");
+			return;
+		}
+		if(!ValidatorUtil.isPhone(CartProduct.getInstance().getOrderInfo().getOrder().getPhone()))
+		{
+			showMessage("电话号码无效");
+			return;
+		}
 		submitOrder();
 	}
 
@@ -236,7 +240,7 @@ public class OrderActivity extends MispInfoListActivity
 					 CreateOrderRsp rsp = (CreateOrderRsp) message.getMessage().obj;
 					 if(null != rsp.getObj())
 					 {
-						 jumpToOrderList(rsp.getObj());
+						 submitOrderSuccess(rsp.getObj());
 					 }
 				 }
 				 else
@@ -334,8 +338,9 @@ public class OrderActivity extends MispInfoListActivity
 		return view;
 	}
 
-	private void jumpToOrderList(OrderJson   order)
+	private void submitOrderSuccess(OrderJson   order)
 	{
+
  		if(PayOptionEnum.ONLINE_PAY.getStrValue().equals(order.getPay_option()))
 		{
 			MispPayParameter parameter = new MispPayParameter();
@@ -361,10 +366,11 @@ public class OrderActivity extends MispInfoListActivity
 		}
 		else
 		{
-	 		Intent i = new Intent();
-			i.setClass(this, MainTabbarActivity.class);
-			i.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(HomeFragment.class));
-	        startActivity(i);
+	 		Intent intent = new Intent();
+	 		intent.setClass(this, MainTabbarActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(HomeFragment.class));
+	        startActivity(intent);
 		}
         CartProduct.getInstance().clearCart();
         this.finish();

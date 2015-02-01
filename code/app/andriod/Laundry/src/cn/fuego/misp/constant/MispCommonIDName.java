@@ -51,9 +51,9 @@ public class MispCommonIDName
 	
 	public static final int drawable_ic_launcher = R.drawable.ic_launcher;
 	public static final int drawable_loading_small_image = R.drawable.loading_small_image;
-	public static final int drawable_loading_large_image = R.drawable.loading_large_image;
+	public static final int drawable_loading_large_image = R.drawable.advertisement_img1;
 	public static final int drawable_load_small_image_fail = R.drawable.load_small_image_fail;
-	public static final int drawable_load_large_image_failed = R.drawable.load_large_image_failed;
+	public static final int drawable_load_large_image_failed = R.drawable.advertisement_img1;
 
 	/**for upgrade **/
 	public static final int layout_misp_upgrage_page = R.layout.misp_upgrage_page;

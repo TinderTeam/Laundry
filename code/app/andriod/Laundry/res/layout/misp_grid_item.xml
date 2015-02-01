@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_margin="10dp"
     android:layout_gravity="center" >
 
     <ImageView
@@ -20,6 +19,7 @@
         android:layout_below="@+id/misp_grid_item_img"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="休闲娱乐" />
+        android:text="休闲娱乐" 
+        android:textSize="12dp"/>
 
 </RelativeLayout>

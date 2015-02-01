@@ -43,6 +43,7 @@ public class MainTabbarActivity extends FragmentActivity
         ExitApplication.getInstance().addActivity(this);
 
         initView();  
+        
         int index =  this.getIntent().getIntExtra(SELECTED_TAB, 0);
       
         log.info("select tab is " + index);

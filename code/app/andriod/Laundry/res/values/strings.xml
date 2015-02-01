@@ -3,6 +3,7 @@
 
     <string name="tabbar_default">菜单</string>
     <string name="user_user_name">真实姓名</string>
+    <string name="user_user_nickname">昵称</string>
     <string name="user_user_sex">性别</string>
     <string name="user_user_birthday">生日</string>
     <string name="user_user_phone">手机号码</string>

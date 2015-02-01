@@ -64,7 +64,7 @@
 			        android:layout_height="200dp"  
 			        android:layout_gravity="center"
 			      
-			        android:background="@drawable/loading_large_image"
+			        android:background="@drawable/advertisement_img1"
 			     
                       android:persistentDrawingCache="animation" >  
 			    </android.support.v4.view.ViewPager>  

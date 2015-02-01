@@ -218,6 +218,8 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 		
 		
 		Intent intent = new Intent(this,MainTabbarActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
 		intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(clazz));
 		this.startActivity(intent);
 

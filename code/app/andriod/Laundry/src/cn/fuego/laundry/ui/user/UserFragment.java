@@ -14,6 +14,7 @@ import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.base.BaseFragment;
+import cn.fuego.laundry.ui.loader.CustomerLoader;
 import cn.fuego.laundry.ui.order.OrderListActivity;
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
@@ -94,34 +95,71 @@ public class UserFragment extends BaseFragment implements OnClickListener
 	@Override
 	public void onClick(View v)
 	{
-		Intent intent = new Intent();
 		
 		switch(v.getId())
 		{
 		case R.id.user_btn_to_login:
+		{
+			Intent intent = new Intent();
+
 			intent.setClass(this.getActivity(), LoginActivity.class);
 			intent.putExtra(LoginActivity.JUMP_SOURCE, this.getClass());
-		 
+			startActivity(intent);
+
+		}
 			break;
 		case R.id.user_to_user_info:
-			intent.setClass(this.getActivity(), UserInfoActivity.class);
+		{
+			new CustomerLoader()
+			{
+
+				@Override
+				public void loadFinish(Object object)
+				{
+					Intent intent = new Intent();
+
+					intent.setClass(getActivity(), UserInfoActivity.class);
+					super.loadFinish(object);
+					startActivity(intent);
+
+				}
+
+				@Override
+				public void loadError(int errorCode)
+				{
+					// TODO Auto-generated method stub
+					showMessage(errorCode);
+				}
+				
+			}.loadCustomer(MemoryCache.getToken(), AppCache.getInstance().getUser());
+		}
 			break;
 		case R.id.user_to_order:
+		{
+			Intent intent = new Intent();
+
 			intent.setClass(this.getActivity(), OrderListActivity.class);
+			startActivity(intent);
+
+		}
 			break;
 		case R.id.user_btn_logout:
-			
-			LoginReq req = new LoginReq();
-			req.setObj(AppCache.getInstance().getUser());
-			WebServiceContext.getInstance().getUserManageRest(this).logout(req);
+			{	
+				Intent intent = new Intent();
 
-			AppCache.getInstance().clear();
-			intent.setClass(this.getActivity(), MainTabbarActivity.class);
+				LoginReq req = new LoginReq();
+				req.setObj(AppCache.getInstance().getUser());
+				WebServiceContext.getInstance().getUserManageRest(this).logout(req);
+	
+				AppCache.getInstance().clear();
+				intent.setClass(this.getActivity(), MainTabbarActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	
+				intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(UserFragment.class));
+				startActivity(intent);
 
-			intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(UserFragment.class));
-			
+			}
 		}
-		this.startActivity(intent);
 
  
 
