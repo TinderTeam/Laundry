@@ -17,9 +17,9 @@
 #import "FEDataCache.h"
 #import "FECustomSegue.h"
 
-#define __KEY_TITLE @"title"
-#define __KEY_PNG   @"png"
-#define __KEY_NUMBER    @"number"
+//#define __KEY_TITLE @"title"
+//#define __KEY_PNG   @"png"
+//#define __KEY_NUMBER    @"number"
 #define __KEY_ACTION    @"action"
 
 @interface FEHomePageVC ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
@@ -36,15 +36,6 @@
 
 @implementation FEHomePageVC
 
-//typeList.add(getType(0,1,"上装类"));
-//typeList.add(getType(0,2,"下装类"));
-//typeList.add(getType(0,3,"毛皮服饰类"));
-//typeList.add(getType(0,4,"箱包鞋类"));
-//typeList.add(getType(0,5,"奢侈品牌类"));
-//typeList.add(getType(0,6,"居家类"));
-//typeList.add(getType(0,7,"汽车配饰类"));
-//typeList.add(getType(0,8,"染色/改色/救治"));
-
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -52,15 +43,8 @@
         UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"快客洗涤") image:[UIImage imageNamed:@"tab_icon_home_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_home_pressed"]];
         self.tabBarItem = tabitem;
         
-        self.categoryList = @[@{__KEY_TITLE:kString(@"上装类"),__KEY_PNG:@"product_type_1",__KEY_NUMBER:@(1)},
-                              @{__KEY_TITLE:kString(@"下装类"),__KEY_PNG:@"product_type_2",__KEY_NUMBER:@(2)},
-                              @{__KEY_TITLE:kString(@"毛皮服饰类"),__KEY_PNG:@"product_type_3",__KEY_NUMBER:@(3)},
-                              @{__KEY_TITLE:kString(@"箱包鞋类"),__KEY_PNG:@"product_type_4",__KEY_NUMBER:@(4)},
-                              @{__KEY_TITLE:kString(@"奢侈品牌类"),__KEY_PNG:@"product_type_5",__KEY_NUMBER:@(5)},
-                              @{__KEY_TITLE:kString(@"居家类"),__KEY_PNG:@"product_type_6",__KEY_NUMBER:@(6)},
-                              @{__KEY_TITLE:kString(@"汽车配饰类"),__KEY_PNG:@"product_type_7",__KEY_NUMBER:@(7)},
-                              @{__KEY_TITLE:kString(@"染色/救治"),__KEY_PNG:@"product_type_8",__KEY_NUMBER:@(8)}];
-        
+        self.categoryList = [FEDataCache sharedInstance].cateGoryList;
+
         NSInvocation *inv1 = [self invocation:@selector(goOrder:)];
         NSInvocation *inv2 = [self invocation:@selector(call:)];
         NSInvocation *inv3 = [self invocation:@selector(join:)];
@@ -115,18 +99,6 @@
 
 }
 
-//-(void)requestAD{
-//    __weak typeof(self) weakself = self;
-//    [[FELaundryWebService sharedInstance] request:[[FEGetADRequest alloc] init] responseClass:[FEGetADResponse class] response:^(NSError *error, id response) {
-//        FEGetADResponse *rsp = response;
-//        if (!error && rsp.errorCode.integerValue == 0) {
-//            weakself.pageIndicate.numberOfPages = rsp.obj.count;
-//            weakself.adList = rsp.obj;
-//            [weakself.adImageCollectionView reloadData];
-//        
-//        }
-//    }];
-//}
 
 -(NSInvocation *)invocation:(SEL)selector{
     
@@ -250,7 +222,7 @@
 }
 
 -(void)join:(id)sender{
-    [self performSegueWithIdentifier:@"joinSegue" sender:self];
+    [self performSegueWithIdentifier:@"joinSegue" sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {

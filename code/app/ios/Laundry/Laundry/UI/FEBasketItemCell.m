@@ -25,10 +25,11 @@
 }
 -(void)configWithProduct:(FEProduct *)product number:(NSNumber *)number{
     _product = product;
-    self.priceLabel.text = product.price.stringValue;
+    self.priceLabel.text = [NSString stringWithFormat:@"%.2f",(product.price.floatValue * number.integerValue)];
     self.titleLabel.text = product.product_name;
     self.perPriceLabel.text = product.price.stringValue;
     self.numberTextField.text = number.stringValue;
+    
 }
 
 

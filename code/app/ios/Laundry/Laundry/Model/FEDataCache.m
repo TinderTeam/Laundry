@@ -29,6 +29,21 @@
     return instance;
 }
 
+-(id)init{
+    self = [super init];
+    if (self) {
+        _cateGoryList = @[@{__KEY_TITLE:kString(@"上装类"),__KEY_PNG:@"product_type_1",__KEY_NUMBER:@(1)},
+                              @{__KEY_TITLE:kString(@"下装类"),__KEY_PNG:@"product_type_2",__KEY_NUMBER:@(2)},
+                              @{__KEY_TITLE:kString(@"毛皮服饰类"),__KEY_PNG:@"product_type_3",__KEY_NUMBER:@(3)},
+                              @{__KEY_TITLE:kString(@"箱包鞋类"),__KEY_PNG:@"product_type_4",__KEY_NUMBER:@(4)},
+                              @{__KEY_TITLE:kString(@"奢侈品牌类"),__KEY_PNG:@"product_type_5",__KEY_NUMBER:@(5)},
+                              @{__KEY_TITLE:kString(@"居家类"),__KEY_PNG:@"product_type_6",__KEY_NUMBER:@(6)},
+                              @{__KEY_TITLE:kString(@"汽车配饰类"),__KEY_PNG:@"product_type_7",__KEY_NUMBER:@(7)},
+                              @{__KEY_TITLE:kString(@"染色/救治"),__KEY_PNG:@"product_type_8",__KEY_NUMBER:@(8)}];
+    }
+    return self;
+}
+
 -(void)getProductForID:(NSNumber *)rid block:(void (^)(NSArray *list))block{
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF.type_id == %@",rid];
     if (!self.allProduct) {

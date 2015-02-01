@@ -69,6 +69,9 @@
 		14950D8A1A7923F0001416A7 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D821A7923F0001416A7 /* RSADataVerifier.m */; };
 		14DD64A91A6BBB040074D9CA /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DD64A81A6BBB040074D9CA /* CustomIOS7AlertView.m */; };
 		14DD64AC1A6BBB3C0074D9CA /* FEInputAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DD64AB1A6BBB3C0074D9CA /* FEInputAlertView.m */; };
+		14F9982F1A7DD4370052D0B3 /* FEOrderInfoItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F9982E1A7DD4370052D0B3 /* FEOrderInfoItemCell.m */; };
+		14F998321A7DDDC30052D0B3 /* FEInfoInputVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F998311A7DDDC30052D0B3 /* FEInfoInputVC.m */; };
+		14F998351A7E5C2C0052D0B3 /* FECreateOrderResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F998341A7E5C2C0052D0B3 /* FECreateOrderResponse.m */; };
 		14FF4A1A1A66936000DECA7B /* FESelectCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */; };
 		14FF4A1D1A66950D00DECA7B /* FELaundryWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A1C1A66950D00DECA7B /* FELaundryWebService.m */; };
 		14FF4A281A66962400DECA7B /* NSString+Attribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A251A66962400DECA7B /* NSString+Attribute.m */; };
@@ -227,6 +230,12 @@
 		14DD64A81A6BBB040074D9CA /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
 		14DD64AA1A6BBB3C0074D9CA /* FEInputAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEInputAlertView.h; sourceTree = "<group>"; };
 		14DD64AB1A6BBB3C0074D9CA /* FEInputAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEInputAlertView.m; sourceTree = "<group>"; };
+		14F9982D1A7DD4370052D0B3 /* FEOrderInfoItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOrderInfoItemCell.h; sourceTree = "<group>"; };
+		14F9982E1A7DD4370052D0B3 /* FEOrderInfoItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderInfoItemCell.m; sourceTree = "<group>"; };
+		14F998301A7DDDC30052D0B3 /* FEInfoInputVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEInfoInputVC.h; sourceTree = "<group>"; };
+		14F998311A7DDDC30052D0B3 /* FEInfoInputVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEInfoInputVC.m; sourceTree = "<group>"; };
+		14F998331A7E5C2C0052D0B3 /* FECreateOrderResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FECreateOrderResponse.h; sourceTree = "<group>"; };
+		14F998341A7E5C2C0052D0B3 /* FECreateOrderResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FECreateOrderResponse.m; sourceTree = "<group>"; };
 		14FF4A181A66936000DECA7B /* FESelectCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESelectCategoryVC.h; sourceTree = "<group>"; };
 		14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESelectCategoryVC.m; sourceTree = "<group>"; };
 		14FF4A1B1A66950D00DECA7B /* FELaundryWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FELaundryWebService.h; sourceTree = "<group>"; };
@@ -331,6 +340,10 @@
 				1403EEE31A6C9F1A00B6DF64 /* FEModifyInfoVC.m */,
 				1403EEE51A6CA36000B6DF64 /* FEOrderInfo.h */,
 				1403EEE61A6CA36000B6DF64 /* FEOrderInfo.m */,
+				14F9982D1A7DD4370052D0B3 /* FEOrderInfoItemCell.h */,
+				14F9982E1A7DD4370052D0B3 /* FEOrderInfoItemCell.m */,
+				14F998301A7DDDC30052D0B3 /* FEInfoInputVC.h */,
+				14F998311A7DDDC30052D0B3 /* FEInfoInputVC.m */,
 			);
 			name = Basket;
 			sourceTree = "<group>";
@@ -643,6 +656,8 @@
 				1447165B1A6E1CFF003359FC /* FEOrderOperationResponse.m */,
 				14950D601A78CD3C001416A7 /* FEResetPasswordRequest.h */,
 				14950D611A78CD3C001416A7 /* FEResetPasswordRequest.m */,
+				14F998331A7E5C2C0052D0B3 /* FECreateOrderResponse.h */,
+				14F998341A7E5C2C0052D0B3 /* FECreateOrderResponse.m */,
 			);
 			path = Param;
 			sourceTree = "<group>";
@@ -782,6 +797,7 @@
 			files = (
 				1447165C1A6E1CFF003359FC /* FEOrderOperationResponse.m in Sources */,
 				14469E691A65F9DC00515685 /* main.m in Sources */,
+				14F9982F1A7DD4370052D0B3 /* FEOrderInfoItemCell.m in Sources */,
 				14FF4A471A66A79300DECA7B /* FEAD.m in Sources */,
 				144350711A6652A6002BB228 /* UIColor+Hex.m in Sources */,
 				14950D6A1A79184B001416A7 /* FEAlipay.m in Sources */,
@@ -837,6 +853,7 @@
 				14FF4A301A6696B300DECA7B /* FEBaseResponse.m in Sources */,
 				14FF4A811A67E69100DECA7B /* FERegistVC.m in Sources */,
 				14FF4A781A67AC2100DECA7B /* FEPickerView.m in Sources */,
+				14F998321A7DDDC30052D0B3 /* FEInfoInputVC.m in Sources */,
 				14FF4A5C1A675B2200DECA7B /* FEGetProductTypeReques.m in Sources */,
 				14950D881A7923F0001416A7 /* openssl_wrapper.m in Sources */,
 				14FF4A841A67EC7F00DECA7B /* FEForgotPasswordVC.m in Sources */,
@@ -858,6 +875,7 @@
 				144350251A6640D3002BB228 /* FEMeShouldSigninVC.m in Sources */,
 				14FF4A7B1A67BE6C00DECA7B /* FEOrderSubmitVC.m in Sources */,
 				1403EEE41A6C9F1A00B6DF64 /* FEModifyInfoVC.m in Sources */,
+				14F998351A7E5C2C0052D0B3 /* FECreateOrderResponse.m in Sources */,
 				144350161A663EC1002BB228 /* FEViewController.m in Sources */,
 				1418A1AF1A68A2DA00886FDA /* FEOrderCreateRequest.m in Sources */,
 				144716561A6D5A4E003359FC /* FEOrderDetailResponse.m in Sources */,
@@ -966,7 +984,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "55f774a0-9158-46e3-a406-14a1079e4686";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -977,6 +995,7 @@
 			baseConfigurationReference = 37D466024D554E110EE6D485 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Sun (2P4V8NVH4U)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -995,6 +1014,7 @@
 			baseConfigurationReference = 8D324F9EA567674ADBDC5E80 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1009,6 +1029,63 @@
 			};
 			name = Release;
 		};
+		14F998361A7E6A0A0052D0B3 /* Hoc_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "55f774a0-9158-46e3-a406-14a1079e4686";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Hoc_Release;
+		};
+		14F998371A7E6A0A0052D0B3 /* Hoc_Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D324F9EA567674ADBDC5E80 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao Sun (PYXGNPJVW5)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Laundry/Alipay",
+				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Laundry/Laundry-Prefix.pch";
+				INFOPLIST_FILE = Laundry/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "55f774a0-9158-46e3-a406-14a1079e4686";
+			};
+			name = Hoc_Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1017,6 +1094,7 @@
 			buildConfigurations = (
 				14469E871A65F9DC00515685 /* Debug */,
 				14469E881A65F9DC00515685 /* Release */,
+				14F998361A7E6A0A0052D0B3 /* Hoc_Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1026,6 +1104,7 @@
 			buildConfigurations = (
 				14469E8A1A65F9DC00515685 /* Debug */,
 				14469E8B1A65F9DC00515685 /* Release */,
+				14F998371A7E6A0A0052D0B3 /* Hoc_Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

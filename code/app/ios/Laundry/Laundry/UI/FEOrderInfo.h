@@ -15,4 +15,6 @@
 @property (nonatomic, strong) NSString *take_time;
 @property (nonatomic, strong) NSString *contact_name;
 @property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong) NSString *payType;
+@property (nonatomic, strong) NSString *remark;
 @end

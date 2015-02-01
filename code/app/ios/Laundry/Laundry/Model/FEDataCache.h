@@ -10,10 +10,15 @@
 #import "FEProduct.h"
 #import "FECompany.h"
 
+#define __KEY_TITLE @"title"
+#define __KEY_PNG   @"png"
+#define __KEY_NUMBER    @"number"
+
 @interface FEDataCache : NSObject
 +(FEDataCache *)sharedInstance;
 @property (nonatomic, strong, readonly) NSArray *selectProducts;
 @property (nonatomic, strong) FECompany *company;
+@property (nonatomic, strong) NSArray *cateGoryList;
 
 -(void)getProductForID:(NSNumber *)rid block:(void (^)(NSArray *list))block;
 

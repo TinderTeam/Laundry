@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class FEPickerView;
+
 @protocol FEPickerViewDelegate <NSObject>
+
+@required
+-(NSInteger)pickerNumber:(FEPickerView *)picker;
+-(NSString *)pickerStringAtIndex:(NSInteger)index;
 
 @optional
 -(void)pickerDidSelected:(NSInteger)number;

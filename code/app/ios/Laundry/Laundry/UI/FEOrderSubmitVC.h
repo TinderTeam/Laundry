@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 FUEGO. All rights reserved.
 //
 
-#import "FETableViewController.h"
+#import "FEViewController.h"
 
-@interface FEOrderSubmitVC : FETableViewController
+@interface FEOrderSubmitVC : FEViewController
 
 @end

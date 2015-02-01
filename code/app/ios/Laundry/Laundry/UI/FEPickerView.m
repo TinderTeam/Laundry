@@ -116,12 +116,14 @@
 
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return 20;
+//    return 20;
+    return [self.delegate pickerNumber:self];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return @(row + 1).stringValue;
+//    return @(row + 1).stringValue;
+    return [self.delegate pickerStringAtIndex:row];
 }
 
 #pragma mark - UIPickerViewDelegate

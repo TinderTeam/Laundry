@@ -117,6 +117,13 @@
     
 }
 
+-(NSInteger)pickerNumber:(FEPickerView *)picker{
+    return 20;
+}
+-(NSString *)pickerStringAtIndex:(NSInteger)index{
+    return @(index + 1).stringValue;
+}
+
 -(void)refreshUI{
     NSArray *products = [FEDataCache sharedInstance].selectProducts;
     float totalPrice = 0;

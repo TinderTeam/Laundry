@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class FEOrder;
+
 @interface FEAlipay : NSObject
 +(FEAlipay *)sharedInstance;
--(void)pay;
+-(void)payWithOrder:(FEOrder *)forder complete:(void (^)(NSDictionary *result))complete;
 @end

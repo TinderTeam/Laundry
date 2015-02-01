@@ -11,6 +11,7 @@
 #import "Order.h"
 #import "FEDataCache.h"
 #import "DataSigner.h"
+#import "FEOrder.h"
 
 @implementation FEAlipay
 
@@ -24,35 +25,35 @@
 }
 
 
-#pragma mark -
-#pragma mark   ==============产生随机订单号=============
+//#pragma mark -
+//#pragma mark   ==============产生随机订单号=============
+//
+//- (NSString *)generateTradeNO
+//{
+//    static int kNumber = 15;
+//    
+//    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//    NSMutableString *resultStr = [[NSMutableString alloc] init];
+//    srand(time(0));
+//    for (int i = 0; i < kNumber; i++)
+//    {
+//        unsigned index = rand() % [sourceStr length];
+//        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
+//        [resultStr appendString:oneStr];
+//    }
+//    return resultStr;
+//}
 
-- (NSString *)generateTradeNO
-{
-    static int kNumber = 15;
-    
-    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    NSMutableString *resultStr = [[NSMutableString alloc] init];
-    srand(time(0));
-    for (int i = 0; i < kNumber; i++)
-    {
-        unsigned index = rand() % [sourceStr length];
-        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
-        [resultStr appendString:oneStr];
-    }
-    return resultStr;
-}
-
--(void)pay{
+-(void)payWithOrder:(FEOrder *)forder complete:(void (^)(NSDictionary *result))complete{
     
     //将商品信息赋予AlixPayOrder的成员变量
     Order *order = [[Order alloc] init];
     order.partner = [FEDataCache sharedInstance].company.alipay_partner;
     order.seller = [FEDataCache sharedInstance].company.alipay_seller;
-    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
-    order.productName = @"测试标题"; //商品标题
+    order.tradeNO = forder.order_code; //订单ID（由商家自行制定）
+    order.productName = forder.order_name; //商品标题
     order.productDescription = @"测试body"; //商品描述
-    order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
+    order.amount = [NSString stringWithFormat:@"%.2f",forder.total_price.floatValue]; //商品价格
     order.notifyURL =  @"http://www.xxx.com"; //回调URL
     
     order.service = @"mobile.securitypay.pay";
@@ -79,6 +80,9 @@
         
         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             NSLog(@"reslut = %@",resultDic);
+            if (complete) {
+                complete(resultDic);
+            }
         }];
         
     }

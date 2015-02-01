@@ -53,9 +53,14 @@
         if (!error) {
             CLPlacemark *mark = [placemarks firstObject];
 //            NSString *locality = mark.locality;
-            self.complete(nil,mark.name);
+            if (self.complete) {
+                self.complete(nil,mark.name);
+            }
+            
         }else{
-            self.complete(error,nil);
+            if (self.complete) {
+                self.complete(error,nil);
+            }
         }
     }];
 }
@@ -71,7 +76,10 @@
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    self.complete(error,nil);
+    if (self.complete) {
+        self.complete(error,nil);
+    }
+    
 }
 
 -(void)cacel{

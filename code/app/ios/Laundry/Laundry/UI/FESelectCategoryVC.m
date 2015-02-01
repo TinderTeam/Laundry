@@ -14,12 +14,15 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "FEBasketVC.h"
 #import "FEDataCache.h"
+#import "FEPickerView.h"
+#import "AppDelegate.h"
 
-@interface FESelectCategoryVC ()<UICollectionViewDataSource, UICollisionBehaviorDelegate, UICollectionViewDelegateFlowLayout>
+@interface FESelectCategoryVC ()<UICollectionViewDataSource, UICollisionBehaviorDelegate, UICollectionViewDelegateFlowLayout,FEPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *categoryCollectionView;
 @property (strong, nonatomic) IBOutlet UIButton *goBasket;
 @property (strong, nonatomic) NSArray *productList;
 @property (strong, nonatomic) NSMutableArray *selectProduct;
+@property (strong, nonatomic) NSArray *categoryList;
 @end
 
 @implementation FESelectCategoryVC
@@ -28,10 +31,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = kString(@"添加待洗物品");
+    self.categoryList = [FEDataCache sharedInstance].cateGoryList;
     self.view.backgroundColor = kThemeColor;
     self.selectProduct = [NSMutableArray new];
     [self refreshButton];
 
+    [self reloadCateGory];
+}
+
+-(void)reloadCateGory{
     __weak typeof(self) weakself = self;
     [[FEDataCache sharedInstance] getProductForID:self.fatherID block:^(NSArray *list) {
         weakself.productList = list;
@@ -103,6 +111,11 @@
         [self.navigationController popViewControllerAnimated:NO];
     }
 }
+- (IBAction)picker:(id)sender {
+    FEPickerView *pick = [[FEPickerView alloc] initFromView:[[AppDelegate sharedDelegate].window viewWithTag:0]];
+    pick.delegate = self;
+    [pick show];
+}
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -114,6 +127,19 @@
     }else{
         return UIEdgeInsetsMake(5, 5, 5, 5);
     }
+}
+
+#pragma mark - FEPickerViewDelegate
+-(void)pickerDidSelected:(NSInteger)number{
+    self.fatherID = self.categoryList[number][__KEY_NUMBER];
+    [self reloadCateGory];
+}
+
+-(NSInteger)pickerNumber:(FEPickerView *)picker{
+    return self.categoryList.count;
+}
+-(NSString *)pickerStringAtIndex:(NSInteger)index{
+    return self.categoryList[index][__KEY_TITLE];
 }
 
 /*
