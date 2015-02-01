@@ -1412,6 +1412,7 @@
                         <outlet property="toCategory" destination="uWN-Pm-EII" id="acR-5q-5O1"/>
                         <outlet property="totalLabel" destination="G3v-yu-2i6" id="XgZ-Qc-I99"/>
                         <segue destination="AIP-4A-wIQ" kind="show" identifier="orderSegue" id="NIx-J8-3N1"/>
+                        <segue destination="iXJ-X0-J2d" kind="presentation" identifier="signinSegue" id="sI4-aU-8cQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtp-gW-l9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1871,6 +1872,7 @@
         <image name="user_do_task_normal" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="sI4-aU-8cQ"/>
         <segue reference="vSk-ko-rUt"/>
     </inferredMetricsTieBreakers>
 </document>

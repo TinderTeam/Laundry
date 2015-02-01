@@ -107,14 +107,22 @@
 #pragma mark - FEPickerViewDelegate
 -(void)pickerDidSelected:(NSInteger)number{
     
-    FEBasketItemCell *cell = (FEBasketItemCell *)[[self.textField superview] superview];
-    FEProduct *product = cell.product;
-    [cell configWithProduct:product number:@(number + 1)];
+    id sview;
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        sview = [[[self.textField superview] superview] superview];
+    }else{
+        sview = [[self.textField superview] superview];
+    }
     
-    [[FEDataCache sharedInstance] setProduct:product number:@(number + 1)];
-    
-    [self refreshUI];
-    
+    if ([sview isKindOfClass:[FEBasketItemCell class]]) {
+        FEBasketItemCell *cell = sview;
+        FEProduct *product = cell.product;
+        [cell configWithProduct:product number:@(number + 1)];
+        
+        [[FEDataCache sharedInstance] setProduct:product number:@(number + 1)];
+        
+        [self refreshUI];
+    }
 }
 
 -(NSInteger)pickerNumber:(FEPickerView *)picker{

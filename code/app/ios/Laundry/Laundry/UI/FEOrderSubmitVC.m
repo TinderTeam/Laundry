@@ -104,8 +104,8 @@
         detail.quantity = @(number);
         detail.product_name = product.product_name;
         detail.product_type = product.type_id.stringValue;
-        detail.current_price = product.price.stringValue;
-        detail.original_price = product.original_price.stringValue;
+        detail.current_price = product.price;
+        detail.original_price = product.original_price;
         detail.product_img = product.img;
         detail.product_status = product.product_status;
         detail.product_update_time = product.update_time;

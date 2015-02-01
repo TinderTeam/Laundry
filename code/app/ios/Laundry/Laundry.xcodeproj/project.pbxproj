@@ -996,7 +996,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chao Sun (2P4V8NVH4U)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gary Zheng (2S6HA5KBZ5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Laundry/Alipay",
@@ -1005,7 +1005,7 @@
 				INFOPLIST_FILE = Laundry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "205cf4ed-57c8-4b71-b363-d4e2e17cd84e";
+				PROVISIONING_PROFILE = "bdd8f75d-82a8-4063-a684-c1d3bedb4a66";
 			};
 			name = Debug;
 		};
