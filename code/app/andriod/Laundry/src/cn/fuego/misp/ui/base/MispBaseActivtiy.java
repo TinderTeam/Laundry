@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -40,7 +41,8 @@ public abstract class MispBaseActivtiy extends Activity implements OnClickListen
 	{
 		initRes();
 		// TODO Auto-generated method stub
- 		super.onCreate(savedInstanceState);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+  		super.onCreate(savedInstanceState);
  		if(0 != activityRes.getAvtivityView())
  		{
  			setContentView(activityRes.getAvtivityView());

@@ -1,13 +1,13 @@
 package cn.fuego.laundry.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.misp.ui.base.MispBaseActivtiy;
 
-public class StartActivity extends Activity 
+public class StartActivity extends MispBaseActivtiy 
 {
 	private FuegoLog log = FuegoLog.getLog(StartActivity.class);
 	
@@ -46,6 +46,13 @@ public class StartActivity extends Activity
 				finish();
 			}
 		}.start();
+		
+	}
+
+	@Override
+	public void initRes()
+	{
+		// TODO Auto-generated method stub
 		
 	}
 	

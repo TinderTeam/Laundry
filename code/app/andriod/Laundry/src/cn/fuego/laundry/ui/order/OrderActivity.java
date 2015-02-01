@@ -346,7 +346,7 @@ public class OrderActivity extends MispInfoListActivity
 			MispPayParameter parameter = new MispPayParameter();
 			parameter.setOrder_code(order.getOrder_code());
 			parameter.setOrder_name(order.getOrder_name());
-			parameter.setOrder_desc("描述");
+			parameter.setOrder_desc(order.getOrder_note());
 			parameter.setOrder_price(String.valueOf(order.getTotal_price()));
 			parameter.setNotify_url(AppCache.PAY_NOTIFY_URL);
 			CompanyJson company = AppCache.getInstance().getCompany();

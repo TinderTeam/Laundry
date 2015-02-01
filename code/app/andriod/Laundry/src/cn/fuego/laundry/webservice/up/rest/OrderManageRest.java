@@ -37,10 +37,10 @@ public interface OrderManageRest
 	GetOrderDetailRsp getOrderDetailList(GetOrderDetailReq req);
 	
 	@POST
-	@Path("/Cancel")
+	@Path("/CancelOrder")
 	OperateOrderRsp cancel(OperateOrderReq req);
 	
 	@POST
-	@Path("/Delete")
+	@Path("/AbolishOrder")
 	OperateOrderRsp delete(OperateOrderReq req);
 }

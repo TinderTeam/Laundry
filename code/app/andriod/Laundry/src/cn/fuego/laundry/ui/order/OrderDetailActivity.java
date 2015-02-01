@@ -4,21 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
+import android.view.View;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.constant.OrderStatusEnum;
 import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.webservice.up.model.GetOrderDetailReq;
 import cn.fuego.laundry.webservice.up.model.GetOrderDetailRsp;
+import cn.fuego.laundry.webservice.up.model.OperateOrderReq;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
+import cn.fuego.misp.ui.common.alipay.MispPayActivity;
+import cn.fuego.misp.ui.common.alipay.MispPayParameter;
 import cn.fuego.misp.ui.info.MispInfoListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 import cn.fuego.misp.ui.model.ListViewResInfo;
+import cn.fuego.misp.webservice.up.model.base.CompanyJson;
 
 public class OrderDetailActivity extends MispInfoListActivity
 {
@@ -34,8 +41,45 @@ public class OrderDetailActivity extends MispInfoListActivity
 	 
 		super.initRes();
 		this.activityRes.setName("订单详情");
+		this.activityRes.setSaveBtnName(getOperateByStatus(order.getOrder_status()));
 		getOrderDetail();
  		
+	}
+	private String getOperateByStatus(String status)
+	{
+		if(OrderStatusEnum.OrderSubmit.getStrValue().equals(status))
+		{
+			return "取消";
+		}
+		else if(OrderStatusEnum.PaySuccess.getStrValue().equals(status))
+		{
+			return "";
+		}
+		else if(OrderStatusEnum.WaitBuyerPay.getStrValue().equals(status))
+		{
+			return "付款";
+		}
+		else if(OrderStatusEnum.PayFinished.getStrValue().equals(status))
+		{
+			return "";
+		}
+		else if(OrderStatusEnum.OrderComplete.getStrValue().equals(status))
+		{
+			return "删除";
+		}
+		else if(OrderStatusEnum.OrderCancel.getStrValue().equals(status))
+		{
+			return "删除";
+		}
+		else if(OrderStatusEnum.OrderAbolish.getStrValue().equals(status))
+		{
+			return "";
+		}
+		else if(OrderStatusEnum.OnOperating.getStrValue().equals(status))
+		{
+			return "";
+		}
+		return "";
 	}
 	private List<CommonItemMeta> getBtnData(OrderJson order)
 	{
@@ -127,6 +171,67 @@ public class OrderDetailActivity extends MispInfoListActivity
 		
 		this.getDataList().addAll(getOrderDetailData(detaliList));
 
+	}
+	@Override
+	public void saveOnClick(View v)
+	{
+	
+		String status = order.getOrder_status();
+		
+		OperateOrderReq req = new  OperateOrderReq();
+		req.setObj(order.getOrder_id());
+		if(OrderStatusEnum.OrderSubmit.getStrValue().equals(status))
+		{
+			  //"取消";
+ 
+			WebServiceContext.getInstance().getOrderManageRest(this).cancel(req);
+		}
+		else if(OrderStatusEnum.WaitBuyerPay.getStrValue().equals(status))
+		{
+			 //"付款";
+			MispPayParameter parameter = new MispPayParameter();
+			parameter.setOrder_code(order.getOrder_code());
+			parameter.setOrder_name(order.getOrder_name());
+			parameter.setOrder_desc(order.getOrder_note());
+			parameter.setOrder_price(String.valueOf(order.getTotal_price()));
+			parameter.setNotify_url(AppCache.PAY_NOTIFY_URL);
+			CompanyJson company = AppCache.getInstance().getCompany();
+			if(null != company)
+			{
+				parameter.setSeller(company.getAlipay_seller());
+				parameter.setPartner(company.getAlipay_partner());
+				parameter.setRsa_private(company.getAlipay_private_key());
+				MispPayActivity.jump(this, parameter);
+
+			}
+			else
+			{
+				showMessage("订单提交成功，支付异常");
+			}
+		}
+		else if(OrderStatusEnum.OrderComplete.getStrValue().equals(status))
+		{
+
+			WebServiceContext.getInstance().getOrderManageRest(this).delete(req);
+			// "删除";
+		}
+		else if(OrderStatusEnum.OrderCancel.getStrValue().equals(status))
+		{
+ 
+			WebServiceContext.getInstance().getOrderManageRest(this).delete(req);
+			// "删除";
+		}
+
+		
+	}
+	@Override
+	public void handle(MispHttpMessage message)
+	{
+		if(message.isSuccess())
+		{
+			this.finish();
+		}
+		showMessage(message);
 	}
  
 

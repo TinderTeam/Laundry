@@ -34,6 +34,9 @@ public class MoreFragment extends MispInfoListFragment
 	private static String JOIN_US= "加入我们";
 	private static String UPDATE_VERSION= "版本更新";
 	private static String APP_INFO= "快客介绍";
+	private static String PROTOCOL="洗涤协议";
+	private static String ATTENTION="注意事项";
+	private static String HELP="新手指引";
 
 	
 	@Override
@@ -60,6 +63,10 @@ public class MoreFragment extends MispInfoListFragment
 		
 		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, APP_INFO ,null));
 		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, JOIN_US ,null));
+		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, PROTOCOL ,null));
+		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, ATTENTION ,null));
+		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, HELP ,null));
+
 		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, UPDATE_VERSION,null));
  
 
