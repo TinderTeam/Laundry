@@ -10,16 +10,16 @@ public class MemoryCache
 
  	
 	private static String version = "0.1";
-	//private static String serverIp =  "120.24.217.173";
-	//private static String serverPort= "80";
+	private static String serverIp =  "120.24.217.173";
+	private static String serverPort= "80";
 	
 	private static float density = 1;
 	 
  	private static String versionNname;
 	private static int versionCode;
 
-	private static String serverIp = "192.168.1.104";//"120.24.217.173";
-    private static String serverPort= "7000";
+	//private static String serverIp = "192.168.1.104";//"120.24.217.173";
+    //private static String serverPort= "7000";
 
 	
 	

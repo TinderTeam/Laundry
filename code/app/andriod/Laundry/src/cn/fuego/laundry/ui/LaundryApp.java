@@ -46,7 +46,15 @@ public class LaundryApp extends Application
 			//initial image cache
 			initImageCache();
 			//initial baidu 
-			SDKInitializer.initialize(getApplicationContext());
+			try
+			{
+				SDKInitializer.initialize(getApplicationContext());
+			}
+			catch(Exception e)
+			{
+				log.error("baidu sdk initial failed");
+			}
+
 
 			PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(),0);
 			MemoryCache.setVersionCode(packInfo.versionCode);

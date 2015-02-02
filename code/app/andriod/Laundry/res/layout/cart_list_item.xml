@@ -79,18 +79,26 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.1"
+                android:background="@color/grid_back_color"
+                android:gravity="center"
+                android:orientation="vertical" >
+
             <Button
                 android:id="@+id/char_list_item_btn_delete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="0.5dp"
-                android:layout_weight="1.1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+      
                 android:background="@drawable/cancel"
                 android:gravity="center"
-                android:padding="8dp"
+ 
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/black"
+                android:textColor="@color/grid_back_color"
                 android:textSize="12sp" />
+            </LinearLayout>
 
         </LinearLayout>
 </RelativeLayout>

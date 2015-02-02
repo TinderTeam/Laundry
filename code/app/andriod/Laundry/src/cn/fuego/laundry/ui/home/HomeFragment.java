@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +24,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.AdDataCache;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.cache.ProductTypeCache;
 import cn.fuego.laundry.constant.OrderTypeEnum;
@@ -114,7 +119,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 			 gridViewLayout.getLayoutParams().height = gridHeight;//
 		 }
 		 
-		 
+		
 		return rootView;
 	}
 	
@@ -165,9 +170,13 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 	
 	private void loadAdd()
 	{
-		GetADReq req = new GetADReq();
-		
-		WebServiceContext.getInstance().getADManageRest(this).getAll(req);
+		if(AdDataCache.getInstance().isEmpty())
+		{
+			GetADReq req = new GetADReq();
+			
+			WebServiceContext.getInstance().getADManageRest(this).getAll(req);
+		}
+
 	}
 	
  
@@ -181,6 +190,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 			GetADRsp rsp = (GetADRsp) message.getMessage().obj;
 			
 			List<String> urlList = new ArrayList<String>();
+			AdDataCache.getInstance().init(rsp.getObj());
 			for(AdvertisementJson json : rsp.getObj())
 			{
 				urlList.add(MemoryCache.getImageUrl()+json.getAd_img());
@@ -190,6 +200,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		 
 		    viewPager.setCurrentItem(0); 
 		    viewPager.setOnPageChangeListener(adapter);
+		    startCarouselTimer();
 		 }
 
 	}
@@ -273,7 +284,37 @@ public class HomeFragment extends BaseFragment implements OnClickListener
                 .show();  
 	}
 
- 
+	  
+	private Handler adHandler = new Handler()
+	{
+
+		@Override
+		public void handleMessage(Message msg)
+		{
+			// TODO Auto-generated method stub
+			viewPager.setCurrentItem(msg.what);
+		}
+		
+	};
+
+	private void startCarouselTimer()
+	{
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask()
+		{
+
+			@Override
+			public void run()
+			{
+				int index = viewPager.getCurrentItem()+1;
+				if(index>=3)
+				{
+					index = 0;
+				}
+				adHandler.sendEmptyMessage(index);
+			}
+		}, 3000, 3000);
+	}
  
  
 

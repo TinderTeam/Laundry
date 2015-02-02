@@ -116,10 +116,11 @@ public class UserFragment extends BaseFragment implements OnClickListener
 				@Override
 				public void loadFinish(Object object)
 				{
+					super.loadFinish(object);
+
 					Intent intent = new Intent();
 
 					intent.setClass(getActivity(), UserInfoActivity.class);
-					super.loadFinish(object);
 					startActivity(intent);
 
 				}

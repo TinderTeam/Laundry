@@ -2,6 +2,8 @@ package cn.fuego.laundry.ui.home;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -50,7 +52,13 @@ public class ImagePagerAdapter extends PagerAdapter implements OnPageChangeListe
       */  
      @Override  
      public Object instantiateItem(View container, int position) {  
-         ((ViewPager)container).addView(imageList.get(position), 0);  
+         
+    	 if(position>=imageList.size())
+    	 {
+    		 position = 0;
+    	 }
+    	 ((ViewPager)container).addView(imageList.get(position), 0);  
+         
          return imageList.get(position);  
      }
  	private void displayImage(ViewGroup group)
@@ -118,5 +126,6 @@ public class ImagePagerAdapter extends PagerAdapter implements OnPageChangeListe
 		// TODO Auto-generated method stub
 		
 	} 
+
        
 }
