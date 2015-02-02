@@ -5,6 +5,7 @@ class OrderEnum
 	const PaySuccess = "付款成功";
 	const WaitBuyerPay = "待付款";
 	const PayFinished = "交易完成";
+	const OnOperating = "处理中";
 	const OrderComplete = "已完成";
 	const OrderCancel = "已取消";
 	const OrderAbolish = "已作废";

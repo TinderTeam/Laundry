@@ -29,15 +29,14 @@ class MispErrorCode
 	const ERROR_UPDATE_VERSION_FAILED = 24;	//更新版本失败 
 	const PRIVILEGE_NOT_EXIST = 25;			//权限不存在
 	const ERROR_ROLE_IS_EMPTY = 26;			//角色不能为空
+	const SEND_MESSAGE_FAILED = 27;			//发送验证码失败
+	const COMPANY_EXISTED = 28;				//公司已存在
+	const CANT_DELETE_YOURSELF = 29;		//不能删除自己
+	const COMPANY_SERVICE_STOP = 30;		//公司服务暂停
 
 	const USER_UNCHECKED = 10000;           //用户未审核
 	const USER_APPROVAL_REFUSED = 10001;    //用户审核未通过
 	const CODE_IS_INVALID = 10002;          //激活码已失效
-	const SEND_MESSAGE_FAILED = 10003;		//发送验证码失败
-	const COMPANY_EXISTED = 10004;			//公司已存在
-	const CANT_DELETE_YOURSELF = 10005;		//不能删除自己
-	const COMPANY_SERVICE_STOP = 10006;		//公司服务暂停
-	
 }
 
 ?>

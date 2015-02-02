@@ -29,7 +29,8 @@ class UserManageAction extends EasyUITableAction
 		$roleList = MispCommonDataService::GetRoleID($condition);
 		$searchFilter['role_id']=array('in',$roleList);
 		$this->LogInfo("LoadPage, searchFilter is ".json_encode($searchFilter));
-		$this->LoadPageTable($this->GetModel(),$searchFilter,$this->GetModel()->getPk());
+		$order['user_id'] = 'desc';
+		$this->LoadPageTable($this->GetModel(),$searchFilter,$order);
 	}
 	/* 新增管理员
 	 * (non-PHPdoc)
@@ -79,7 +80,9 @@ class UserManageAction extends EasyUITableAction
 		//发送验证码
 		$phoneNum = $obj->phone_num;
 		$content = ShortMessage::getRandNum(4);
-		$message = $content."【快客洗涤】";
+		$text1 = "验证码：";
+		$text2 = "，您正在使用快客洗涤手机客户端，请在10分钟内验证。（洁净生活·快客开始，服务电话：0859-3383000）";
+		$message = $text1.$content.$text2."【快客洗涤】";
 		$result = ShortMessage::SendMessage($phoneNum,$message);
 		$xmlObj = simplexml_load_string($result);
 		if($xmlObj->RetCode == "Sucess")

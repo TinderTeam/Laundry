@@ -180,14 +180,14 @@ abstract class EasyUITableAction extends BaseAction
         $this->ReturnJson();
     }
     
-    public function LoadPageTable($model,$condition,$orderby=null)
+    public function LoadPageTable($model,$condition,$order)
     {
     	
     	$ReqType = $this->GetReqType();
     	$this->LogInfo("LoadPageTable,ReqType is ".$ReqType);
     	if(($ReqType == ClientTypeEnum::IOS)||($ReqType == ClientTypeEnum::ANDROID))
     	{
-    		$productList = $model->where($condition)->order($orderby.' desc')->select();
+    		$productList = $model->where($condition)->order($order)->select();
     		$data['obj'] = $productList;
     		$this->ReturnJson($data);
     	}
@@ -196,7 +196,7 @@ abstract class EasyUITableAction extends BaseAction
     		$count = $model->where($condition)->count();
     		$page = $this->GetPage();
     		$index = $page['currentPage']*$page['pageSize'];
-    		$rows = $model->where($condition)->order($orderby.' desc')->limit($index,$page['pageSize'])->select();
+    		$rows = $model->where($condition)->order($order)->limit($index,$page['pageSize'])->select();
     		$this->LogInfo("query the table ".$model->tableName." count is ".$count);
     		$data['total'] = $count;
     		$data['rows'] = $rows;

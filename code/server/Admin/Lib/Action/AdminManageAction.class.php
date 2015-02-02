@@ -37,7 +37,8 @@ class AdminManageAction extends EasyUITableAction
 		}
 		$viewAdminDao = LaundryDaoContext::ViewAdmin();
 		$this->LogInfo("SearchFilter is".json_encode($searchFilter));
-		$this->LoadPageTable($viewAdminDao,$searchFilter,$this->GetModel()->getPK());
+		$order['user_id'] = 'desc';
+		$this->LoadPageTable($viewAdminDao,$searchFilter,$order);
 	}
 	/* 新增管理员
 	 * (non-PHPdoc)

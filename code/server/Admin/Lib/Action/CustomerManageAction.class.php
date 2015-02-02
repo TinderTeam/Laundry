@@ -46,7 +46,8 @@ class CustomerManageAction extends EasyUITableAction
 			$searchFilter['company_id'] = $_SESSION['user']['company_id'];
 		}
 		$this->LogInfo("SearchFilter is".json_encode($searchFilter));
-		$this->LoadPageTable($this->GetModel(),$searchFilter,$this->GetModel()->getPk());
+		$order['user_id'] = 'desc';
+		$this->LoadPageTable($this->GetModel(),$searchFilter,$order);
 	}
 	//会员新增
 	/* (non-PHPdoc)

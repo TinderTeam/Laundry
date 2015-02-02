@@ -22,6 +22,7 @@ class OrderManageAction extends EasyUITableAction
 			$this->DoAuth();
 			$searchFilter['company_id'] = $this->GetReqObj()->app_id;
 			$searchFilter['user_id'] = $this->GetReqObj()->user_id;
+			$searchFilter['order_status']  = array('neq',OrderEnum::OrderAbolish);
 			$this->LogInfo("ClientType is ".$clientType.",SearchFilter is ".json_encode($searchFilter));
 		}
 		else
@@ -64,7 +65,8 @@ class OrderManageAction extends EasyUITableAction
 			$this->LogInfo("ClientType is WEB,SearchFilter is ".json_encode($searchFilter));
 			
 		}
-		$this->LoadPageTable($this->GetModel(),$searchFilter,"order_code");
+		$order['order_code'] = 'desc';
+		$this->LoadPageTable($this->GetModel(),$searchFilter,$order);
 	}
 	//加载订单详情中的产品列表
 	public function LoadOrderDetailPage()
@@ -80,23 +82,6 @@ class OrderManageAction extends EasyUITableAction
 		$condition['order_id'] = $req->obj;
 		$orderDetailDao = LaundryDaoContext::OrderDetail();
 		$this->LoadPageTable($orderDetailDao,$condition,$orderDetailDao->getPk());
-	}
-	//更新订单状态
-	public function UpdateOrder()
-	{
-		$req = $this->GetReqObj();
-		$orderIDList = $req->obj;
-		$this->LogInfo("Update order status, order list is ".$orderIDList);
-		$orderDao = $this->GetModel();
-		try
-		{
-			$result = MispCommonService::ModifyField($orderDao, $orderIDList, 'order_status', OrderEnum::OrderComplete);
-		}
-		catch(FuegoException $e)
-		{
-			$this->errorCode = $e->getCode();
-		}
-		$this->ReturnJson();
 	}
 	/*APP下单
 	 *  (non-PHPdoc)
@@ -191,6 +176,63 @@ class OrderManageAction extends EasyUITableAction
 		}
 		$data['obj'] = $object;
 		$this->ReturnJson($data);
+	}
+	//更新订单状态
+	public function UpdateOrder()
+	{
+		$req = $this->GetReqObj();
+		$orderIDList = $req->obj;
+		$this->LogInfo("Update order status, order list is ".$orderIDList);
+		$orderDao = $this->GetModel();
+		try
+		{
+			$result = MispCommonService::ModifyField($orderDao, $orderIDList, 'order_status', OrderEnum::OrderComplete);
+		}
+		catch(FuegoException $e)
+		{
+			$this->errorCode = $e->getCode();
+		}
+		$this->ReturnJson();
+	}
+	//APP取消订单
+	public function CancelOrder()
+	{
+		//验证APP是否登录
+		$this->DoAuth();
+		$orderID = $this->GetCommonData();
+		$orderIDList = array();
+		array_push($orderIDList, $orderID);
+		$this->LogInfo("APP cancel order, order id is ".$orderID);
+		$orderDao = $this->GetModel();
+		try
+		{
+			$result = MispCommonService::ModifyField($orderDao, $orderIDList, 'order_status', OrderEnum::OrderCancel);
+		}
+		catch(FuegoException $e)
+		{
+			$this->errorCode = $e->getCode();
+		}
+		$this->ReturnJson();
+	}
+	//APP删除订单
+	public function AbolishOrder()
+	{
+		//验证APP是否登录
+		$this->DoAuth();
+		$orderID = $this->GetCommonData();
+		$orderIDList = array();
+		array_push($orderIDList, $orderID);
+		$this->LogInfo("APP abolish order, order id is ".$orderID);
+		$orderDao = $this->GetModel();
+		try
+		{
+			$result = MispCommonService::ModifyField($orderDao, $orderIDList, 'order_status', OrderEnum::OrderAbolish);
+		}
+		catch(FuegoException $e)
+		{
+			$this->errorCode = $e->getCode();
+		}
+		$this->ReturnJson();
 	}
 	/* 删除订单
 	 * (non-PHPdoc)

@@ -53,7 +53,8 @@ class ProductManageAction extends EasyUITableAction
 			$this->LogInfo("ClientType is WEB,SearchFilter is ".json_encode($searchFilter));
 		}
 		$viewProductDao = LaundryDaoContext::ViewProduct();
-		$this->LoadPageTable($viewProductDao,$searchFilter,"product_id");
+		$order['sort_id'] = 'asc'; 
+		$this->LoadPageTable($viewProductDao,$searchFilter,$order);
 	}
 
 	/* (non-PHPdoc)

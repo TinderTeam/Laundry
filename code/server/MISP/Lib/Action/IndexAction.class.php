@@ -167,8 +167,6 @@ class IndexAction extends BaseAction
     	$this->LogInfo("Modify password,client type is ".$reqType);
     	if(($reqType == ClientTypeEnum::IOS)||($reqType == ClientTypeEnum::ANDROID))
     	{
-    		//验证APP是否登录
-    		$this->DoAuth();
     		//修改密码
     		$condition['company_id'] = $req->app_id;
     		$condition['user_name'] = $req->user_name;
