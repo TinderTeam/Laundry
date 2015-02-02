@@ -44,6 +44,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.toCategory setBackgroundImage:[UIImage imageFromColor:kColor(23, 157, 197, 1)] forState:UIControlStateNormal];
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 80, 0);
+    [self.addButton setBackgroundImage:[UIImage imageFromColor:kColor(196, 206, 220, 1.0)] forState:UIControlStateNormal];
     [self refreshUI];
 }
 
