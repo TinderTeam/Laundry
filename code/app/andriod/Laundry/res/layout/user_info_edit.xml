@@ -217,36 +217,43 @@
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
-                <EditText
-                    android:id="@+id/user_user_addr_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/edittext_sel"
-                    android:hint="常用地址"
-                    android:paddingLeft="20dp"
-                    android:textSize="14dp" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp" >
+
+                    <EditText
+                        android:id="@+id/user_user_addr_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edittext_sel"
+                        android:gravity="center_vertical|top"
+                        android:hint="常用地址"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp"
+                        android:textSize="14dp" />
+
+                    <Button
+                        android:id="@+id/user_set_location_addr_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignBottom="@id/user_user_addr_text"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginRight="1dp"
+                        android:background="@color/blue_light"
+                        android:drawableRight="@drawable/icon_gps"
+                        android:padding="5dp"
+                        android:text="定位"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/content_font_size_sm" />
+
+                </RelativeLayout>
 
             </LinearLayout>
-
-           <RelativeLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="20dp"
-               android:padding="30dp" >
-
-               <Button
-                   android:id="@+id/user_set_location_addr_btn"
-                   android:layout_width="match_parent"
-                   android:layout_height="50dp"
-                   android:layout_alignParentLeft="true"
-                   android:layout_alignParentTop="true"
-                   android:background="@drawable/common_btn"
-                   android:text="@string/location_addr"
-                   android:textColor="@color/white"
-                   android:textSize="@dimen/content_font_size" />
-           </RelativeLayout>
 
         </LinearLayout>
  
