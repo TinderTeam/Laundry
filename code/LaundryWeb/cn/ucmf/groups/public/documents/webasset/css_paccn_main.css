@@ -156,7 +156,7 @@ background-attachment:scroll; background-color:transparent; z-index: 999; width:
 
 html{color:#666;background:#FFFFFF;overflow:auto;overflow-y:scroll;height:100%;}
 body{ background-color:#FFFFFF; min-width: 960px; font-size:12px; line-height:22px; font-family:Arial, Helvetica, sans-serif;}
-.bound { margin:0 auto; width: 960px; padding-bottom:20px;}
+.bound { margin:0 auto; width: 1160px; padding-bottom:20px;}
 
 .grid_1,.grid_2,.grid_3,.grid_4,.grid_5,.grid_6,.grid_7,.grid_8,.grid_9,.grid_10,.grid_11,.grid_12 { display: inline;  float: left;margin-left: 10px;margin-right: 10px;}
 
@@ -191,7 +191,7 @@ body{ background-color:#FFFFFF; min-width: 960px; font-size:12px; line-height:22
 
 .no_bottom{ padding-bottom:0px; margin-bottom:0px;}
 
-.detail{font-size:12px;color:#666; line-height:22px;}
+.detail{font-size:16px;color:#666; line-height:28px;}
 .detail_b{font-size:14px; line-height:26px; color:#666;}
 .detail_b p{ text-indent:28px; line-height:26px;}
 .red_title{ color:#b00; font-size:16px; font-weight:bold; line-height:46px; height:46px; border-bottom:1px #d1d1d1 solid;}
