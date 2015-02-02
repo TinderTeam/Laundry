@@ -6,13 +6,15 @@
     android:orientation="vertical" >
 
        <include
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/misp_tilte_with_back_layout" />
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="1dp"
+           layout="@layout/misp_tilte_with_back_layout" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
         android:background="@color/white"
         android:paddingLeft="10dp" >
 

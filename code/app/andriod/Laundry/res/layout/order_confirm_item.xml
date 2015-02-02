@@ -47,6 +47,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/imageView1"
+                    android:ellipsize="marquee"
                     android:text="订单信息详情qi八九十一二三"
                     android:textColor="@color/black"
                     android:textSize="12dp" />

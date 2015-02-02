@@ -27,6 +27,13 @@
                 android:src="@drawable/basketlogo" />
         </FrameLayout>
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/tabbarback"
+            android:padding="10dp" >
+        </FrameLayout>
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
