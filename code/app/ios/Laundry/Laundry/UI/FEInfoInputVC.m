@@ -10,11 +10,14 @@
 #import "FEGetCurrentCity.h"
 #import "FEButton.h"
 
-@interface FEInfoInputVC ()
+@interface FEInfoInputVC ()<UITextViewDelegate>{
+    NSInteger _inputLenth;
+}
 @property (strong, nonatomic) IBOutlet UITextView *inputTextView;
 @property (strong, nonatomic) FEGetCurrentCity *currentCity;
 @property (strong, nonatomic) IBOutlet FEButton *gpsLocationButton;
 @property (strong, nonatomic) IBOutlet FEButton *defaultLocationButton;
+@property (strong, nonatomic) IBOutlet UILabel *limitLabel;
 
 @end
 
@@ -30,9 +33,27 @@
     self.inputTextView.layer.cornerRadius = 3;
     self.gpsLocationButton.hidden = YES;
     self.defaultLocationButton.hidden = YES;
+    self.inputTextView.delegate = self;
     [self configUI];
     
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextViewTextDidChangeNotification object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
+}
+
+-(void)textDidChange:(NSNotification *)note{
+    self.limitLabel.text = [NSString stringWithFormat:@"%ld/%ld",(long)
+                            self.inputTextView.text.length,(long)_inputLenth];
+}
+
+
 - (IBAction)currentLocation:(id)sender {
     [self.currentCity cacel];
     self.currentCity = [[FEGetCurrentCity alloc] init];
@@ -50,14 +71,17 @@
 
 -(void)configUI{
     if ([self.typeName isEqualToString:@"取衣地址"]) {
+        _inputLenth = 50;
         self.gpsLocationButton.hidden = NO;
         self.defaultLocationButton.hidden = NO;
         self.title = @"取衣地址";
     }else if([self.typeName isEqualToString:@"送回地址"]){
+        _inputLenth = 50;
         self.gpsLocationButton.hidden = NO;
         self.defaultLocationButton.hidden = NO;
         self.title = @"送回地址";
     }else if([self.typeName isEqualToString:@"联系人"]){
+        _inputLenth = 10;
         self.title = @"联系人";
     }else if([self.typeName isEqualToString:@"联系电话"]){
         self.title = @"联系电话";
@@ -80,6 +104,13 @@
         self.orderInfo.remark = self.inputTextView.text;
     }
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([textView.text stringByReplacingCharactersInRange:range withString:text].length > _inputLenth) {
+        return NO;
+    }
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

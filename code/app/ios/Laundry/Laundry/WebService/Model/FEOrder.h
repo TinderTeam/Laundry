@@ -20,7 +20,7 @@
 @property (nonatomic, strong, readonly) NSString *confirm_time;
 @property (nonatomic, strong, readonly) NSString *end_time;
 @property (nonatomic, strong, readonly) NSString *pay_option;
-@property (nonatomic, strong, readonly) NSString *order_status;
+@property (nonatomic, strong) NSString *order_status;
 @property (nonatomic, strong, readonly) NSNumber *handler_id;
 @property (nonatomic, strong, readonly) NSString *operater_name;
 @property (nonatomic, strong, readonly) NSString *order_type;

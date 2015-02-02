@@ -16,7 +16,7 @@
 #import "FEOrderDeleteRequest.h"
 #import "FEOrderOperationResponse.h"
 
-@interface FEMyOrderVC ()
+@interface FEMyOrderVC ()<FEOrderDetailDelegate>
 @property (nonatomic, strong) NSMutableArray *orderList;
 
 @end
@@ -27,6 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = kString(@"我的订单");
+    self.tableView.backgroundColor = kColor(230, 230, 230, 1.0);
     _orderList = [NSMutableArray new];
     [self requestOrder];
 }
@@ -53,6 +54,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         FEOrder *order = self.orderList[indexPath.row];
         FEOrderDetailVC *vc = segue.destinationViewController;
+        vc.delegate = self;
         vc.order = order;
     }
 }
@@ -77,30 +79,17 @@
     return self.orderList.count;
 }
 
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return YES;
-}
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        FEOrder *order = self.orderList[indexPath.row];
-        [self deleteOrder:order];
+#pragma mark - FEOrderDetailDelegate
+-(void)orderDidDelete:(FEOrder *)order{
+    NSInteger index = [self.orderList indexOfObject:order];
+    if (index != NSNotFound) {
+        [self.orderList removeObject:order];
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
     }
 }
 
--(void)deleteOrder:(FEOrder *)order{
-    __weak typeof(self) weakself = self;
-    [[FELaundryWebService sharedInstance] request:[[FEOrderDeleteRequest alloc] initWithOrderID:order.order_id] responseClass:[FEOrderOperationResponse class] response:^(NSError *error, id response) {
-        FEOrderOperationResponse *rsp = response;
-        if (!error && rsp.errorCode.integerValue == 0) {
-            NSInteger index = [weakself.orderList indexOfObject:order];
-            if (index != NSNotFound) {
-                [weakself.orderList removeObject:order];
-                [weakself.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-            }
-        }
-    }];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

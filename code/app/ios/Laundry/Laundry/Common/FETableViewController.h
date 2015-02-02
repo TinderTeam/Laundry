@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ZBUtilities/UIViewController+HUD.h>
 
 @interface FETableViewController : UITableViewController
 

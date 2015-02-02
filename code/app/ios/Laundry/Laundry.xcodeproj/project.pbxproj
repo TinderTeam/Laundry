@@ -76,6 +76,9 @@
 		14F9983E1A7F3FC30052D0B3 /* FEPopPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F9983D1A7F3FC30052D0B3 /* FEPopPickerView.m */; };
 		14F998411A7F5D670052D0B3 /* FEPayOnlineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F998401A7F5D670052D0B3 /* FEPayOnlineVC.m */; };
 		14F998441A7F68DC0052D0B3 /* FEMyInfoTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F998431A7F68DC0052D0B3 /* FEMyInfoTableVC.m */; };
+		14F998471A7FA60C0052D0B3 /* FEOrderCancelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F998461A7FA60C0052D0B3 /* FEOrderCancelRequest.m */; };
+		14F9984A1A7FBD3C0052D0B3 /* FEModifyPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F998491A7FBD3C0052D0B3 /* FEModifyPasswordVC.m */; };
+		14F9984D1A7FC0470052D0B3 /* FEModifyPswRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F9984C1A7FC0470052D0B3 /* FEModifyPswRequest.m */; };
 		14FF4A1A1A66936000DECA7B /* FESelectCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */; };
 		14FF4A1D1A66950D00DECA7B /* FELaundryWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A1C1A66950D00DECA7B /* FELaundryWebService.m */; };
 		14FF4A281A66962400DECA7B /* NSString+Attribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A251A66962400DECA7B /* NSString+Attribute.m */; };
@@ -248,6 +251,12 @@
 		14F998401A7F5D670052D0B3 /* FEPayOnlineVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEPayOnlineVC.m; sourceTree = "<group>"; };
 		14F998421A7F68DC0052D0B3 /* FEMyInfoTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMyInfoTableVC.h; sourceTree = "<group>"; };
 		14F998431A7F68DC0052D0B3 /* FEMyInfoTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMyInfoTableVC.m; sourceTree = "<group>"; };
+		14F998451A7FA60C0052D0B3 /* FEOrderCancelRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOrderCancelRequest.h; sourceTree = "<group>"; };
+		14F998461A7FA60C0052D0B3 /* FEOrderCancelRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderCancelRequest.m; sourceTree = "<group>"; };
+		14F998481A7FBD3C0052D0B3 /* FEModifyPasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEModifyPasswordVC.h; sourceTree = "<group>"; };
+		14F998491A7FBD3C0052D0B3 /* FEModifyPasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEModifyPasswordVC.m; sourceTree = "<group>"; };
+		14F9984B1A7FC0470052D0B3 /* FEModifyPswRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEModifyPswRequest.h; sourceTree = "<group>"; };
+		14F9984C1A7FC0470052D0B3 /* FEModifyPswRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEModifyPswRequest.m; sourceTree = "<group>"; };
 		14FF4A181A66936000DECA7B /* FESelectCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESelectCategoryVC.h; sourceTree = "<group>"; };
 		14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESelectCategoryVC.m; sourceTree = "<group>"; };
 		14FF4A1B1A66950D00DECA7B /* FELaundryWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FELaundryWebService.h; sourceTree = "<group>"; };
@@ -383,6 +392,8 @@
 				1447164F1A6D56AA003359FC /* FEOrderDetailVC.m */,
 				14F998421A7F68DC0052D0B3 /* FEMyInfoTableVC.h */,
 				14F998431A7F68DC0052D0B3 /* FEMyInfoTableVC.m */,
+				14F998481A7FBD3C0052D0B3 /* FEModifyPasswordVC.h */,
+				14F998491A7FBD3C0052D0B3 /* FEModifyPasswordVC.m */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -672,6 +683,8 @@
 				1418A1AB1A6817C200886FDA /* FERegistResquest.m */,
 				1418A1AD1A68A2DA00886FDA /* FEOrderCreateRequest.h */,
 				1418A1AE1A68A2DA00886FDA /* FEOrderCreateRequest.m */,
+				14F998331A7E5C2C0052D0B3 /* FECreateOrderResponse.h */,
+				14F998341A7E5C2C0052D0B3 /* FECreateOrderResponse.m */,
 				1418A1B01A68A2F600886FDA /* FEOrderCreateResponse.h */,
 				1418A1B11A68A2F600886FDA /* FEOrderCreateResponse.m */,
 				144716511A6D5798003359FC /* FEOrderDetailRequest.h */,
@@ -680,12 +693,14 @@
 				144716551A6D5A4E003359FC /* FEOrderDetailResponse.m */,
 				144716571A6E1C62003359FC /* FEOrderDeleteRequest.h */,
 				144716581A6E1C62003359FC /* FEOrderDeleteRequest.m */,
+				14F998451A7FA60C0052D0B3 /* FEOrderCancelRequest.h */,
+				14F998461A7FA60C0052D0B3 /* FEOrderCancelRequest.m */,
 				1447165A1A6E1CFF003359FC /* FEOrderOperationResponse.h */,
 				1447165B1A6E1CFF003359FC /* FEOrderOperationResponse.m */,
 				14950D601A78CD3C001416A7 /* FEResetPasswordRequest.h */,
 				14950D611A78CD3C001416A7 /* FEResetPasswordRequest.m */,
-				14F998331A7E5C2C0052D0B3 /* FECreateOrderResponse.h */,
-				14F998341A7E5C2C0052D0B3 /* FECreateOrderResponse.m */,
+				14F9984B1A7FC0470052D0B3 /* FEModifyPswRequest.h */,
+				14F9984C1A7FC0470052D0B3 /* FEModifyPswRequest.m */,
 			);
 			path = Param;
 			sourceTree = "<group>";
@@ -827,6 +842,7 @@
 				14469E691A65F9DC00515685 /* main.m in Sources */,
 				14F9982F1A7DD4370052D0B3 /* FEOrderInfoItemCell.m in Sources */,
 				14FF4A471A66A79300DECA7B /* FEAD.m in Sources */,
+				14F9984D1A7FC0470052D0B3 /* FEModifyPswRequest.m in Sources */,
 				144350711A6652A6002BB228 /* UIColor+Hex.m in Sources */,
 				14950D6A1A79184B001416A7 /* FEAlipay.m in Sources */,
 				14DD64AC1A6BBB3C0074D9CA /* FEInputAlertView.m in Sources */,
@@ -837,6 +853,7 @@
 				144350221A66408A002BB228 /* FEBasketVC.m in Sources */,
 				14FF4A591A67527000DECA7B /* FECategory.m in Sources */,
 				14950D861A7923F0001416A7 /* MD5DataSigner.m in Sources */,
+				14F9984A1A7FBD3C0052D0B3 /* FEModifyPasswordVC.m in Sources */,
 				1443506D1A6652A6002BB228 /* NSString+MD5.m in Sources */,
 				144350281A6640EC002BB228 /* FESettingVC.m in Sources */,
 				1443506F1A6652A6002BB228 /* NSString+UUID.m in Sources */,
@@ -877,6 +894,7 @@
 				14469E961A65FA8500515685 /* AppDelegate.m in Sources */,
 				14FF4A901A67F79500DECA7B /* FEProfileVC.m in Sources */,
 				14950D8A1A7923F0001416A7 /* RSADataVerifier.m in Sources */,
+				14F998471A7FA60C0052D0B3 /* FEOrderCancelRequest.m in Sources */,
 				1418A1B51A68A32F00886FDA /* FEOrderDetail.m in Sources */,
 				14FF4A301A6696B300DECA7B /* FEBaseResponse.m in Sources */,
 				14FF4A811A67E69100DECA7B /* FERegistVC.m in Sources */,

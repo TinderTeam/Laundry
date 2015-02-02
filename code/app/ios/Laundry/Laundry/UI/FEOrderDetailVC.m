@@ -10,11 +10,18 @@
 #import "FELaundryWebService.h"
 #import "FEOrderDetailRequest.h"
 #import "FEOrderDetailResponse.h"
+#import "FEOrderCancelRequest.h"
+#import "FEOrderOperationResponse.h"
+#import "FEPayOnlineVC.h"
 #import "FEOrder.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
-@interface FEOrderDetailVC ()
+@interface FEOrderDetailVC (){
+    NSDictionary *_pngDic;
+}
 
 @property (nonatomic, strong) NSMutableArray *orderDetail;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *operationBarItem;
 
 
 @end
@@ -24,11 +31,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if ([self.order.order_status isEqualToString:@"已下单"]) {
+        self.operationBarItem.title = @"取消";
+    }else if ([self.order.order_status isEqualToString:@"待付款"]){
+        self.operationBarItem.title = @"付款";
+    }else if([self.order.order_status isEqualToString:@"已取消"]){
+        self.operationBarItem.title = @"删除";
+    }
+    
     self.title = kString(@"我的订单");
+    
+    NSArray *orderInfo = @[@{@"订单号":self.order.order_code},@{@"订单状态":self.order.order_status},@{@"订单时间":self.order.create_time}];
+    
     NSArray *orderArray = @[@{@"取衣地址":self.order.take_addr?self.order.take_addr:@""},@{@"送回地址":self.order.delivery_addr?self.order.delivery_addr:@""},@{@"联系人":self.order.contact_name?self.order.contact_name:@""},@{@"联系电话":self.order.phone?self.order.phone:@""}];
+    _pngDic = @{@"取衣地址":@"address",@"送回地址":@"address",@"联系人":@"contact",@"联系电话":@"cell",@"订单号":@"order",@"订单状态":@"status",@"订单时间":@"date",@"总价":@"price",@"付款方式":@"pay",@"备注":@"note"};
+    
     NSArray *orderPrice = @[@{@"总价":[NSString stringWithFormat:@"%.2f",self.order.total_price.floatValue]},@{@"付款方式":self.order.pay_option?self.order.pay_option:@""},@{@"备注":@""}];
     
     _orderDetail = [[NSMutableArray alloc] init];
+    [_orderDetail addObject:orderInfo];
     [_orderDetail addObject:orderArray];
     [_orderDetail addObject:orderPrice];
     [self requestOrderDetail];
@@ -55,15 +77,19 @@
     id item = self.orderDetail[indexPath.section][indexPath.row];
     UILabel *title = (UILabel *)[cell viewWithTag:1];
     UILabel *detail = (UILabel *)[cell viewWithTag:2];
+    UIImageView *imageV = (UIImageView *)[cell viewWithTag:3];
     if ([item isKindOfClass:[NSDictionary class]]) {
         NSDictionary *detailItem = item;
         NSString *key = [detailItem.allKeys firstObject];
         title.text = key;
         detail.text = detailItem[key];
+//        cell.imageView.image = [UIImage imageNamed:_pngDic[key]];
+        imageV.image = [UIImage imageNamed:_pngDic[key]];
     }else if ([item isKindOfClass:[FEOrderDetail class]]){
         FEOrderDetail *detailItem = item;
         title.text = detailItem.product_name;
         detail.text = detailItem.current_price;
+        [imageV sd_setImageWithURL:[NSURL URLWithString:kImageURL(detailItem.product_img)] placeholderImage:[UIImage imageNamed:@"loading_small_image"]];
     }
     
     return cell;
@@ -75,6 +101,48 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.orderDetail[section] count];
+}
+
+- (IBAction)operation:(id)sender {
+    __weak typeof(self) weakself = self;
+    
+    if ([self.order.order_status isEqualToString:@"已下单"]) {
+        [self displayHUD:@"取消中..."];
+        FEOrderCancelRequest *rdata = [[FEOrderCancelRequest alloc] initWithOrderID:self.order.order_id];
+        [[FELaundryWebService sharedInstance] request:rdata responseClass:[FEOrderOperationResponse class] response:^(NSError *error, id response) {
+            FEOrderOperationResponse *rsp = response;
+            if (!error && rsp.errorCode.integerValue == 0) {
+                weakself.order.order_status = @"已取消";
+                weakself.operationBarItem.title = @"删除";
+            }
+            [weakself hideHUD:YES];
+        }];
+    }else if ([self.order.order_status isEqualToString:@"待付款"]){
+        [self performSegueWithIdentifier:@"payOnlineSegue" sender:self.order];
+    }else if([self.order.order_status isEqualToString:@"已取消"]){
+        [self displayHUD:@"删除中..."];
+        FEOrderCancelRequest *rdata = [[FEOrderCancelRequest alloc] initWithOrderID:self.order.order_id];
+        [[FELaundryWebService sharedInstance] request:rdata responseClass:[FEOrderOperationResponse class] response:^(NSError *error, id response) {
+            FEOrderOperationResponse *rsp = response;
+            if (!error && rsp.errorCode.integerValue == 0) {
+                
+                if ([self.delegate respondsToSelector:@selector(orderDidDelete:)]) {
+                    [self.delegate orderDidDelete:self.order];
+                }
+                
+                [weakself.navigationController popViewControllerAnimated:YES];
+            }
+            [weakself hideHUD:YES];
+        }];
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([sender isKindOfClass:[FEOrder class]]) {
+        FEPayOnlineVC *vc = segue.destinationViewController;
+        vc.order = sender;
+        vc.isFromOrder = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

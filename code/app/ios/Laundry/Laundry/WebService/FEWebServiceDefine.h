@@ -32,8 +32,8 @@
 #define __METHOD_OrderCreate              @"laundry.php/OrderManage/Create"
 #define __METHOD_OrderModify         @"laundry.php/OrderManage/Modify"
 #define __METHOD_OrderDetail         @"laundry.php/OrderManage/LoadOrderDetailPage"
-#define __METHOD_OrederCancel         @"laundry.php/OrderManage/Cancel"
-#define __METHOD_OrderDelete         @"laundry.php/OrderManage/Delete"
+#define __METHOD_OrederCancel         @"laundry.php/OrderManage/CancelOrder"
+#define __METHOD_OrderDelete         @"laundry.php/OrderManage/AbolishOrder"
 
 //product manage
 #define __METHOD_ProductGetList     @"laundry.php/ProductManage/LoadPage"

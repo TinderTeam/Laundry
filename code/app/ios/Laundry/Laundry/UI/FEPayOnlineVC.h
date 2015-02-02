@@ -12,4 +12,5 @@
 
 @interface FEPayOnlineVC : FEViewController
 @property (nonatomic, strong) FEOrder *order;
+@property (nonatomic, assign) BOOL isFromOrder;
 @end

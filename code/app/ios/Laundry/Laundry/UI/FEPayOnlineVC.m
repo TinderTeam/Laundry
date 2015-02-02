@@ -38,7 +38,12 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)back:(id)sender {
-    [self toOrder];
+    if (self.isFromOrder) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self toOrder];
+    }
+    
 }
 
 - (IBAction)payOnline:(id)sender {
@@ -64,7 +69,11 @@
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    [self toOrder];
+    if (self.isFromOrder) {
+        
+    }else{
+       [self toOrder];
+    }
 }
 
 

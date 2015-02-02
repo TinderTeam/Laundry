@@ -49,6 +49,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self refreshUI];
     if (kLoginUser) {
 //        [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
