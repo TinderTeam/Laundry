@@ -16,6 +16,7 @@
 #import "FESelectCategoryVC.h"
 #import "FEDataCache.h"
 #import "FECustomSegue.h"
+#import "GAAlertObj.h"
 
 //#define __KEY_TITLE @"title"
 //#define __KEY_PNG   @"png"
@@ -40,6 +41,23 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.title = kString(@"快客洗涤");
+        
+        UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+        UILabel *tlabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, titleView.bounds.size.width, 25)];
+        tlabel.font = [UIFont appFontWithSize:20];
+        tlabel.textAlignment = NSTextAlignmentCenter;
+        tlabel.textColor = [UIColor whiteColor];
+        tlabel.text = kString(@"快客洗涤");
+        [titleView addSubview:tlabel];
+        
+        UILabel *slabel = [[UILabel alloc] initWithFrame:CGRectMake(0, tlabel.frame.origin.y + tlabel.frame.size.height, tlabel.bounds.size.width, 12)];
+        slabel.font = [UIFont appFontWithSize:10];
+        slabel.textAlignment = NSTextAlignmentCenter;
+        slabel.textColor = [UIColor whiteColor];
+        slabel.text = @"www.kkxd.com.cn";
+        [titleView addSubview:slabel];
+        
+        self.navigationItem.titleView = titleView;
         UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"快客洗涤") image:[UIImage imageNamed:@"tab_icon_home_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_home_pressed"]];
         self.tabBarItem = tabitem;
         
@@ -49,9 +67,10 @@
         NSInvocation *inv2 = [self invocation:@selector(call:)];
         NSInvocation *inv3 = [self invocation:@selector(join:)];
         
-        self.listData = @[@{__KEY_PNG:@"home_join_invest",__KEY_ACTION:inv3},
+        self.listData = @[@{__KEY_PNG:@"home_direct_order",__KEY_ACTION:inv1},
                           @{__KEY_PNG:@"home_service_phone",__KEY_ACTION:inv2},
-                          @{__KEY_PNG:@"home_direct_order",__KEY_ACTION:inv1}];
+                          @{__KEY_PNG:@"home_join_invest",__KEY_ACTION:inv3}
+                          ];
         
     }
     return self;
@@ -62,6 +81,7 @@
     // Do any additional setup after loading the view.
     [self initUI];
     [self request];
+    [self autoScroll];
 }
 
 -(void)request{
@@ -120,6 +140,27 @@
 -(void)toCategory{
     
     [self performSegueWithIdentifier:@"toCategorySegue" sender:self];
+}
+
+-(void)autoScroll{
+    __weak typeof(self) weakself = self;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        NSInteger index = 0;
+        while (1) {
+            if (weakself.adList.count) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakself.adImageCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+                    weakself.pageIndicate.currentPage = index;
+                });
+                index++;
+                if (index >= weakself.adList.count) {
+                    index = 0;
+                }
+            }
+            
+            sleep(3);
+        }
+    });
 }
 
 #pragma mark - UIStoryboardSegue
@@ -217,7 +258,18 @@
 
 -(void)call:(id)sender{
     if (self.company) {
-        kCall(self.company.service_phone);
+        __weak typeof(self) weakself = self;
+        GAAlertAction *action = [GAAlertAction actionWithTitle:@"拨打" action:^{
+            kCall(weakself.company.service_phone);
+        }];
+        
+        GAAlertAction *action1 = [GAAlertAction actionWithTitle:@"取消" action:^{
+            
+        }];
+        
+        [GAAlertObj showAlertWithTitle:@"客服电话" message:weakself.company.service_phone actions:@[action,action1] inViewController:self];
+        
+//        kCall(self.company.service_phone);
     }
 }
 

@@ -23,11 +23,13 @@
 #import "FEPickerView.h"
 #import "AppDelegate.h"
 #import "FECreateOrderResponse.h"
+#import "FEPopPickerView.h"
+#import "FEPayOnlineVC.h"
 
 #define __KEY_PAY_NAME @"name"
 #define __KEY_PAY_TYPE @"type"
 
-@interface FEOrderSubmitVC ()<UITableViewDataSource,UITableViewDelegate,FEPickerViewDelegate,UIAlertViewDelegate>{
+@interface FEOrderSubmitVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,FEPopPickerViewDataSource>{
     NSArray *_dataSource;
 }
 @property (strong, nonatomic) IBOutlet UILabel *totalValueLabel;
@@ -37,6 +39,7 @@
 @property (strong, nonatomic) NSArray *payType;
 //@property (nonatomic, strong) NSDictionary *
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) FEOrder *currentOrder;
 
 @end
 
@@ -45,13 +48,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = kString(@"订单");
+    self.title = kString(@"提交订单");
     _oinfo = [FEOrderInfo new];
     _dataSource = @[@"取衣地址",@"送回地址",@"联系人",@"联系电话",@"付款方式",@"您的要求"];
     _payType = @[@{__KEY_PAY_NAME:@"在线付款",__KEY_NUMBER:@(1)},@{__KEY_PAY_NAME:@"取衣付款",__KEY_PAY_TYPE:@(2)}];
     FEUser *user = [[FEUser alloc] initWithDictionary:kLoginUser];
     _oinfo.phone = user.user_name;
-    
+    self.oinfo.payType = @"在线付款";
     self.totalPrice = 0;
     self.totalNumber = 0;
      NSArray *products = [FEDataCache sharedInstance].selectProducts;
@@ -70,10 +73,16 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    FEInfoInputVC *mvc = segue.destinationViewController;
-    mvc.orderInfo = self.oinfo;
-    NSString *title = _dataSource[((NSIndexPath *)sender).row];
-    mvc.typeName = title;
+    if ([segue.identifier isEqualToString:@"payOnlineSegue"]) {
+        FEPayOnlineVC *vc = segue.destinationViewController;
+        vc.order = self.currentOrder;
+    }else{
+        FEInfoInputVC *mvc = segue.destinationViewController;
+        mvc.orderInfo = self.oinfo;
+        NSString *title = _dataSource[((NSIndexPath *)sender).row];
+        mvc.typeName = title;
+    }
+    
 }
 
 -(void)refreshUI{
@@ -129,15 +138,10 @@
             NSLog(@"order success!");
 //
             [[FEDataCache sharedInstance] clearSelectProduct];
-            if ([weakself.oinfo.payType isEqualToString:@"在线支付"]) {
-                [[FEAlipay sharedInstance] payWithOrder:rsp.obj complete:^(NSDictionary *result) {
-                    if ([result[@"resultStatus"] integerValue] == 9000) {
-                        [weakself toOrder];
-                    }else{
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未支付成功" delegate:weakself cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                        [alert show];
-                    }
-                }];
+            weakself.currentOrder = rsp.obj;
+            
+            if ([weakself.oinfo.payType isEqualToString:@"在线付款"]) {
+                [weakself performSegueWithIdentifier:@"payOnlineSegue" sender:self];
             }else{
                 [weakself toOrder];
             }
@@ -152,11 +156,12 @@
 
 
 -(void)toOrder{
+    
     UIViewController *controller = [[[self.tabBarController viewControllers] objectAtIndex:2] topViewController];
     if ([controller isKindOfClass:[FEProfileVC class]]) {
         [self.tabBarController setSelectedIndex:2];
-        [self.navigationController popViewControllerAnimated:NO];
         [((FEProfileVC *)controller) automaticToOrder];
+        [self.navigationController popToRootViewControllerAnimated:NO];
     }
 }
 
@@ -192,8 +197,16 @@
 //    }
     NSString *title = _dataSource[indexPath.row];
     if ([title isEqualToString:@"付款方式"]) {
-        FEPickerView *pick = [[FEPickerView alloc] initFromView:[[AppDelegate sharedDelegate].window viewWithTag:0]];
-        pick.delegate = self;
+        FEPopPickerView *pick = [[FEPopPickerView alloc] initFromView:[[AppDelegate sharedDelegate].window viewWithTag:0]];
+        NSInteger index = 0;
+        for (NSDictionary *item in self.payType) {
+            if ([item[__KEY_PAY_NAME] isEqualToString:self.oinfo.payType]) {
+                index = [self.payType indexOfObject:item];
+                break;
+            }
+        }
+        pick.selectIndex = index;
+        pick.dataSource = self;
         [pick show];
     }else{
         [self performSegueWithIdentifier:@"inputSegue" sender:indexPath];
@@ -201,19 +214,18 @@
     
 }
 
-#pragma mark - FEPickerViewDelegate
--(void)pickerDidSelected:(NSInteger)number{
-//    self.fatherID = self.categoryList[number][__KEY_NUMBER];
-//    [self reloadCateGory];
-    self.oinfo.payType = self.payType[number][__KEY_PAY_NAME];
-    [self.tableView reloadData];
-}
-
--(NSInteger)pickerNumber:(FEPickerView *)picker{
+#pragma mark - FEPopPickerViewDataSource
+-(NSInteger)numberInPicker:(FEPopPickerView *)picker{
     return self.payType.count;
 }
--(NSString *)pickerStringAtIndex:(NSInteger)index{
+-(NSString *)picker:(FEPopPickerView *)picker titleAtIndex:(NSInteger)index{
     return self.payType[index][__KEY_PAY_NAME];
+}
+
+
+-(void)picker:(FEPopPickerView *)picker didSelectAtIndex:(NSInteger)index{
+    self.oinfo.payType = self.payType[index][__KEY_PAY_NAME];
+    [self.tableView reloadData];
 }
 
 /*

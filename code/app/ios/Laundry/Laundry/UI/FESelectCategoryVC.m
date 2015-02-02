@@ -16,8 +16,9 @@
 #import "FEDataCache.h"
 #import "FEPickerView.h"
 #import "AppDelegate.h"
+#import "FEPopPickerView.h"
 
-@interface FESelectCategoryVC ()<UICollectionViewDataSource, UICollisionBehaviorDelegate, UICollectionViewDelegateFlowLayout,FEPickerViewDelegate>
+@interface FESelectCategoryVC ()<UICollectionViewDataSource, UICollisionBehaviorDelegate, UICollectionViewDelegateFlowLayout,FEPickerViewDelegate,FEPopPickerViewDataSource>
 @property (strong, nonatomic) IBOutlet UICollectionView *categoryCollectionView;
 @property (strong, nonatomic) IBOutlet UIButton *goBasket;
 @property (strong, nonatomic) NSArray *productList;
@@ -33,6 +34,7 @@
     self.title = kString(@"添加待洗物品");
     self.categoryList = [FEDataCache sharedInstance].cateGoryList;
     self.view.backgroundColor = kThemeColor;
+    self.categoryCollectionView.backgroundColor = kThemeGrayColor;
     self.selectProduct = [NSMutableArray new];
     [self refreshButton];
 
@@ -41,6 +43,8 @@
 
 -(void)reloadCateGory{
     __weak typeof(self) weakself = self;
+    NSArray *cateGory = [self.categoryList filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.%@ == %@",__KEY_NUMBER,self.fatherID]];
+    self.title = [NSString stringWithFormat:@"衣物·%@",[[cateGory lastObject] objectForKey:__KEY_TITLE]];
     [[FEDataCache sharedInstance] getProductForID:self.fatherID block:^(NSArray *list) {
         weakself.productList = list;
         NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF in %@",list];
@@ -112,9 +116,18 @@
     }
 }
 - (IBAction)picker:(id)sender {
-    FEPickerView *pick = [[FEPickerView alloc] initFromView:[[AppDelegate sharedDelegate].window viewWithTag:0]];
-    pick.delegate = self;
+    
+    NSArray *cateGory = [self.categoryList filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.%@ == %@",__KEY_NUMBER,self.fatherID]];
+    NSDictionary *cdic = [cateGory lastObject];
+    NSInteger index = [self.categoryList indexOfObject:cdic];
+    
+    FEPopPickerView *pick = [[FEPopPickerView alloc] initFromView:[[AppDelegate sharedDelegate].window viewWithTag:0]];
+    pick.selectIndex = index;
+    pick.dataSource = self;
     [pick show];
+//    FEPickerView *pick = [[FEPickerView alloc] initFromView:[[AppDelegate sharedDelegate].window viewWithTag:0]];
+//    pick.delegate = self;
+//    [pick show];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -140,6 +153,19 @@
 }
 -(NSString *)pickerStringAtIndex:(NSInteger)index{
     return self.categoryList[index][__KEY_TITLE];
+}
+
+#pragma mark - FEPopPickerView
+-(NSInteger)numberInPicker:(FEPopPickerView *)picker{
+    return self.categoryList.count;
+}
+-(NSString *)picker:(FEPopPickerView *)picker titleAtIndex:(NSInteger)index{
+    return self.categoryList[index][__KEY_TITLE];
+}
+
+-(void)picker:(FEPopPickerView *)picker didSelectAtIndex:(NSInteger)index{
+    self.fatherID = self.categoryList[index][__KEY_NUMBER];
+    [self reloadCateGory];
 }
 
 /*

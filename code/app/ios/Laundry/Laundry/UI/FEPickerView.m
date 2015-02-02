@@ -7,6 +7,7 @@
 //
 
 #import "FEPickerView.h"
+#import "FEButton.h"
 
 #define _DefaultTime_ 3
 #define _MineTime_    2
@@ -16,8 +17,9 @@
     __unsafe_unretained UIView *_view;
 }
 @property (nonatomic, strong) UIPickerView *pview;
-@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIView *toolbar;
 @property (nonatomic, strong) UIControl *maskview;
+
 
 @end
 
@@ -25,30 +27,35 @@
 
 - (id)initFromView:(UIView *)view
 {
-    self = [super initWithFrame:CGRectMake(0, view.bounds.size.height, view.bounds.size.width, 260)];
+    self = [super initWithFrame:CGRectMake(0, view.bounds.size.height, view.bounds.size.width, 230)];
     if (self) {
         // Initialization code
         _view = view;
 //        _view = [[AppDelegate sharedDelegate].window viewWithTag:0];
+        self.backgroundColor = kThemeColor;
         UIControl *mask = [[UIControl alloc] initWithFrame:_view.bounds];
         [mask addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
         self.maskview = mask;
         mask.backgroundColor = [UIColor blackColor];
         mask.alpha = 0.5;
         
-        self.backgroundColor = [UIColor whiteColor];
-        UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 44)];
+        UIView *toolbar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 44)];
+//        UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 44)];
+        toolbar.backgroundColor = [UIColor whiteColor];
         self.toolbar = toolbar;
         
-        UIBarButtonItem * item0 = [[UIBarButtonItem alloc] initWithTitle:kString(@"取消") style:UIBarButtonItemStyleDone target:self action:@selector(dismiss:)];
-        item0.tag = 1;
+        FEButton *item0 = [FEButton buttonWithType:UIButtonTypeCustom];
+        [item0 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        item0.frame = CGRectMake(toolbar.bounds.size.width - 60 - 10, (self.toolbar.bounds.size.height - 35) / 2.0, 60, 35);
+        [item0 setTitle:@"确定" forState:UIControlStateNormal];
+        [item0 addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
+        [toolbar addSubview:item0];
         
-        UIBarButtonItem * item2 = [[UIBarButtonItem alloc] initWithTitle:kString(@"确定") style:UIBarButtonItemStyleDone target:self action:@selector(dismiss:)];
-        item2.tag = 2;
-        UIBarButtonItem * spaceItem1 = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStylePlain target:nil action:nil];
-        UIBarButtonItem * spaceItem2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem * spaceItem3 = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStylePlain target:nil action:nil];
-        toolbar.items = [NSArray arrayWithObjects:spaceItem1,item0,spaceItem2,item2,spaceItem3, nil];
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 0, item0.frame.origin.x - 3, toolbar.bounds.size.height)];
+        self.titleLabel = titleLabel;
+        titleLabel.textColor = [UIColor blackColor];
+        titleLabel.text = @"所选衣物";
+        [toolbar addSubview:titleLabel];
         
         [self addSubview:toolbar];
         [self initWithPickerView];
@@ -58,8 +65,12 @@
 
 
 - (void)initWithPickerView{
-
-    UIPickerView *p = [[UIPickerView alloc]initWithFrame:CGRectMake(0, self.toolbar.bounds.size.height, self.bounds.size.width, 216)];
+    UIView *e = [[UIView alloc] initWithFrame:CGRectMake(0, self.toolbar.bounds.size.height + 2, self.bounds.size.width, self.bounds.size.height - self.toolbar.bounds.size.height - 2)];
+    e.backgroundColor = [UIColor whiteColor];
+    [self addSubview:e];
+    
+    UIPickerView *p = [[UIPickerView alloc]initWithFrame:CGRectMake(0, self.toolbar.bounds.size.height + 2, self.bounds.size.width, self.bounds.size.height - self.toolbar.bounds.size.height - 2)];
+    p.backgroundColor = [UIColor whiteColor];
     p.showsSelectionIndicator = YES;
     p.dataSource = self;
     p.delegate = self;
@@ -67,13 +78,16 @@
     [self addSubview:p];
 }
 
+- (void)setSelectAtIndex:(NSInteger)index{
+    [self.pview selectRow:index inComponent:0 animated:NO];
+}
+
+
 
 - (void)dismiss:(UIBarButtonItem *)item{
     [self dismiss];
-    if (item.tag == 2) {
-        if ([self.delegate respondsToSelector:@selector(pickerDidSelected:)]) {
-            [self.delegate pickerDidSelected:[self.pview selectedRowInComponent:0]];
-        }
+    if ([self.delegate respondsToSelector:@selector(pickerDidSelected:)]) {
+        [self.delegate pickerDidSelected:[self.pview selectedRowInComponent:0]];
     }
 }
 

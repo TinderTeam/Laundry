@@ -24,8 +24,11 @@
 @interface FEPickerView : UIView
 
 @property (nonatomic, weak) id<FEPickerViewDelegate> delegate;
+@property (nonatomic, strong) UILabel *titleLabel;
 - (id)initFromView:(UIView *)view;
 - (void)show;
+- (void)setSelectAtIndex:(NSInteger)index;
+
 @end
 
 

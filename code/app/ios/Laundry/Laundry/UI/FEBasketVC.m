@@ -35,7 +35,7 @@
         self.title = kString(@"洗衣篮");
         UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"洗衣篮") image:[UIImage imageNamed:@"tab_icon_cart_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_cart_pressed"]];
         self.tabBarItem = tabitem;
-        _productList = [NSMutableArray new];
+//        _productList = [NSMutableArray new];
     }
     return self;
 }
@@ -59,11 +59,11 @@
     [self refreshUI];
 }
 
--(void)appendProduct:(NSArray *)products{
-    [_productList removeAllObjects];
-    [_productList addObjectsFromArray:products];
-    [self.tableView reloadData];
-}
+//-(void)appendProduct:(NSArray *)products{
+//    [_productList removeAllObjects];
+//    [_productList addObjectsFromArray:products];
+//    [self.tableView reloadData];
+//}
 
 #pragma mark - UITableViewDelegate
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -78,12 +78,19 @@
     return [FEDataCache sharedInstance].selectProducts.count;
 }
 - (IBAction)deleteItem:(id)sender {
+    id sview;
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        sview = [[[sender superview] superview] superview];
+    }else{
+        sview = [[sender superview] superview];
+    }
     
-    FEBasketItemCell *cell = (FEBasketItemCell *)[[sender superview] superview];
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    [[FEDataCache sharedInstance] removeSelectProduct:cell.product];
-    [self.tableView reloadData];
-    [self refreshUI];
+    if ([sview isKindOfClass:[FEBasketItemCell class]]) {
+        FEBasketItemCell *cell = sview;
+        [[FEDataCache sharedInstance] removeSelectProduct:cell.product];
+        [self.tableView reloadData];
+        [self refreshUI];
+    }
     
 }
 
@@ -100,9 +107,26 @@
 #pragma mark - UITextFieldDelegate
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     self.textField = textField;
+    
+    NSString *title;
+    id sview;
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        sview = [[[self.textField superview] superview] superview];
+    }else{
+        sview = [[self.textField superview] superview];
+    }
+    
+    if ([sview isKindOfClass:[FEBasketItemCell class]]) {
+        FEBasketItemCell *cell = sview;
+        FEProduct *product = cell.product;
+        title = product.product_name;
+    }
+    
     FEPickerView *pick = [[FEPickerView alloc] initFromView:[[AppDelegate sharedDelegate].window viewWithTag:0]];
+    pick.titleLabel.text = [NSString stringWithFormat:@"所选衣物:   %@",title];
     pick.delegate = self;
     [pick show];
+    [pick setSelectAtIndex:self.textField.text.integerValue - 1];
     return NO;
 }
 
