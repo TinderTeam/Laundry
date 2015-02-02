@@ -7,7 +7,6 @@
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom1"
         android:layout_alignParentTop="true"
         android:orientation="vertical" >
 
@@ -126,8 +125,8 @@
             android:id="@+id/chart_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fadeScrollbars="false"
-            android:scrollbarFadeDuration="0" >
+            android:clipToPadding="false"
+            android:paddingBottom="120dp">
 
         </ListView>
 
@@ -136,9 +135,11 @@
     <LinearLayout
         android:id="@+id/bottom1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:alpha="0.9"
+        android:background="@color/backcolor"
         android:orientation="vertical"
         android:visibility="gone" >
 
