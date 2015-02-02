@@ -91,30 +91,30 @@ public class OrderDetailActivity extends MispInfoListActivity
 		
 		if(null != order)
 		{
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "订单号", order.getOrder_code(),String.valueOf(R.drawable.order)));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "订单号", order.getOrder_code(),String.valueOf(R.drawable.icon_order_num)));
 
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "订单状态", order.getOrder_status(),String.valueOf(R.drawable.status)));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "订单状态", order.getOrder_status(),String.valueOf(R.drawable.icon_order_status)));
 
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "下单时间", order.getCreate_time(),String.valueOf(R.drawable.date)));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "下单时间", order.getCreate_time(),String.valueOf(R.drawable.icon_order_time)));
 			
 			list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
 
 			
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "取衣地址", order.getTake_addr(),String.valueOf(R.drawable.address)));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "取衣地址", order.getTake_addr(),String.valueOf(R.drawable.icon_addr_out)));
 
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "送回地址", order.getDelivery_addr(),String.valueOf(R.drawable.address)));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "送回地址", order.getDelivery_addr(),String.valueOf(R.drawable.icon_addr_home)));
 			
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "联系人", order.getContact_name(),String.valueOf(R.drawable.contact)));
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "联系电话", order.getPhone(),String.valueOf(R.drawable.cell)));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "联系人", order.getContact_name(),String.valueOf(R.drawable.icon_contact_name)));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "联系电话", order.getPhone(),String.valueOf(R.drawable.icon_contact_phone)));
 			
 			
 			list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
 
 	 
 			
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "总价", CartProduct.getInstance().getDispPrice(order.getPrice_type(), order.getTotal_price()),String.valueOf(R.drawable.price)));
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "付款方式", order.getPay_option(),String.valueOf(R.drawable.pay)));
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "您的要求", order.getOrder_note(),String.valueOf(R.drawable.note)));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "总价", CartProduct.getInstance().getDispPrice(order.getPrice_type(), order.getTotal_price()),String.valueOf(R.drawable.icon_order_sum)));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "付款方式", order.getPay_option(),String.valueOf(R.drawable.icon_pay_way)));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "您的要求", order.getOrder_note(),String.valueOf(R.drawable.icon_customer_note)));
 		}
 
 		return list;

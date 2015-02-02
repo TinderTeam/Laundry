@@ -47,7 +47,8 @@
                     android:background="@drawable/edittext_sel"
                     android:hint="(必填项)"
                     android:paddingLeft="10dp"
-                    android:textSize="14dp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/content_font_size_sm" />
 
             </LinearLayout>
  
@@ -76,7 +77,8 @@
                     android:background="@drawable/edittext_sel"
                     android:hint="性别"
                     android:paddingLeft="10dp"
-                    android:textSize="14dp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/content_font_size_sm" />
 
             </LinearLayout>
             
@@ -106,9 +108,9 @@
                     android:layout_weight="1"
                     android:background="@drawable/edittext_sel"
                     android:hint="选填项"
-                    
                     android:paddingLeft="10dp"
-                    android:textSize="14dp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/content_font_size_sm" />
 
             </LinearLayout>
             
@@ -137,9 +139,9 @@
                     android:layout_weight="1"
                     android:background="@drawable/edittext_sel"
                     android:hint="必填项"
-                    
                     android:paddingLeft="10dp"
-                    android:textSize="14dp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/content_font_size_sm" />
 
             </LinearLayout>
             
@@ -170,18 +172,19 @@
                     android:background="@drawable/edittext_sel"
                     android:hint="选填项"
                     android:paddingLeft="10dp"
-                    android:textSize="14dp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/content_font_size_sm" />
 
             </LinearLayout>
             
            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" >
+               android:layout_width="match_parent"
+               android:layout_height="70dp"
+               android:layout_gravity="center"
+               android:layout_marginBottom="10dp"
+               android:layout_marginLeft="20dp"
+               android:layout_marginRight="20dp"
+               android:layout_marginTop="10dp" >
 
                 <TextView
                     android:layout_width="60dp"
@@ -191,64 +194,45 @@
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
-                <EditText
-                    android:id="@+id/user_user_addr_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="5dp"
-                    
-                    android:paddingTop="0dp"
-                    android:paddingBottom="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/edittext_sel"
-    
-                    android:hint="选填项"
-                    android:lines="2"
-                    android:paddingLeft="10dp"
-                    android:textSize="12dp" />
-                <Button
-                   android:id="@+id/user_set_location_addr_btn"
-                   android:layout_width="60dp"
-                   android:layout_height="45dp"
-                     android:gravity="center"
- 
-                   android:drawableLeft="@drawable/icon_gps"
-                   android:background="@drawable/common_btn"
-                   android:text="定位"
-                   android:textColor="@color/white"
-                   android:textSize="14dp" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
 
-            </LinearLayout>
- 
-          
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp" 
-                android:visibility="invisible">
+                        <EditText
+                            android:id="@+id/user_user_addr_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/edittext_sel"
+                            android:gravity="center_vertical|top"
+                            android:hint="选填项"
+                            android:lines="2"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/content_font_size_sm" >
 
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/user_user_email"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
+                            <requestFocus />
+                        </EditText>
 
-                <EditText
-                     
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/edittext_sel"
-                    android:hint="邮箱"
-                    android:paddingLeft="10dp"
-                    android:textSize="14dp" />
+                        <Button
+                            android:id="@+id/user_set_location_addr_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginBottom="1dp"
+                            android:layout_marginRight="1dp"
+                            android:background="@color/blue_light"
+                            android:drawableRight="@drawable/icon_gps"
+                            android:focusable="false"
+                            android:focusableInTouchMode="true"
+                            android:padding="5dp"
+                            android:text="定位"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/content_font_size_sm" />
+
+                    </RelativeLayout>
 
             </LinearLayout>
         </LinearLayout>
