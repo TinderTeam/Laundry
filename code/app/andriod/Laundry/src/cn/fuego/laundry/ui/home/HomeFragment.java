@@ -69,8 +69,9 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 	private ViewGroup group;
 	private ViewPager viewPager;
 	
+	private ImagePagerAdapter adapter;//new ImagePagerAdapter(this.getActivity(),group,urlList);
  
-
+	private Timer timer;
 
 	
 	@Override
@@ -176,11 +177,12 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 			
 			WebServiceContext.getInstance().getADManageRest(this).getAll(req);
 		}
+		else
+		{
+			initAdView(AdDataCache.getInstance().getDataList());
+		}
 
 	}
-	
- 
-
 
 	@Override
 	public void handle(MispHttpMessage message)
@@ -188,22 +190,47 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		 if(message.isSuccess())
 		 {
 			GetADRsp rsp = (GetADRsp) message.getMessage().obj;
-			
-			List<String> urlList = new ArrayList<String>();
 			AdDataCache.getInstance().init(rsp.getObj());
-			for(AdvertisementJson json : rsp.getObj())
-			{
-				urlList.add(MemoryCache.getImageUrl()+json.getAd_img());
-			}
-			ImagePagerAdapter adapter = new ImagePagerAdapter(this.getActivity(),group,urlList);
-		    viewPager.setAdapter(adapter);  
-		 
-		    viewPager.setCurrentItem(0); 
-		    viewPager.setOnPageChangeListener(adapter);
-		    startCarouselTimer();
+
+			initAdView(rsp.getObj());
+		 }
+		 else
+		 {
+			 showMessage(message);
 		 }
 
 	}
+ 
+	private void initAdView(List<AdvertisementJson> adList)
+	{
+ 		
+		List<String> urlList = new ArrayList<String>();
+		for(AdvertisementJson json : adList)
+		{
+			urlList.add(MemoryCache.getImageUrl()+json.getAd_img());
+		}
+		ImagePagerAdapter adapter = new ImagePagerAdapter(this.getActivity(),group,urlList);
+	    viewPager.setAdapter(adapter);  
+	   
+	 
+	    viewPager.setCurrentItem(0); 
+	    viewPager.setOnPageChangeListener(adapter);
+	    startCarouselTimer(adHandler);
+	}
+
+
+	 
+	private Handler adHandler = new Handler()
+	{
+
+		@Override
+		public void handleMessage(Message msg)
+		{
+			// TODO Auto-generated method stub
+			viewPager.setCurrentItem(msg.what);
+		}
+		
+	};
 
 	@Override
 	public void onClick(View v)
@@ -285,21 +312,11 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 	}
 
 	  
-	private Handler adHandler = new Handler()
-	{
 
-		@Override
-		public void handleMessage(Message msg)
-		{
-			// TODO Auto-generated method stub
-			viewPager.setCurrentItem(msg.what);
-		}
-		
-	};
 
-	private void startCarouselTimer()
+	private void startCarouselTimer(final Handler handler)
 	{
-		Timer timer = new Timer();
+ 		timer = new Timer();
 		timer.schedule(new TimerTask()
 		{
 
@@ -311,12 +328,31 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 				{
 					index = 0;
 				}
-				adHandler.sendEmptyMessage(index);
+				handler.sendEmptyMessage(index);
 			}
 		}, 3000, 3000);
 	}
  
- 
+	
+	@Override
+	public void onDestroyView()
+	{
+		if (timer != null)
+ 			timer.cancel();
+		super.onDestroyView();
+	}
+
+
+
+
+	@Override
+	public void onDestroy()
+	{
+		if (timer != null)
+			timer.cancel();
+
+ 		super.onDestroy();
+	}
 
 
  

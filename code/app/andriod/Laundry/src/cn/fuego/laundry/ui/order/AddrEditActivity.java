@@ -1,5 +1,6 @@
 package cn.fuego.laundry.ui.order;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import cn.fuego.laundry.webservice.up.model.base.ProductTypeJson;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.tool.MispLocationService;
 import cn.fuego.misp.ui.common.edit.MispEditParameter;
+import cn.fuego.misp.ui.common.edit.MispTextEditActivity;
 import cn.fuego.misp.webservice.up.model.base.AttributeJson;
 
 public class AddrEditActivity extends BaseActivtiy 
@@ -31,7 +33,14 @@ public class AddrEditActivity extends BaseActivtiy
 		// TODO Auto-generated method stub
 		
 	}
+	public static void jump(Activity activity,MispEditParameter parameter,int code)
+	{
+ 		Intent intent = new Intent();
+ 		intent.setClass(activity, MispTextEditActivity.class);
+ 		intent.putExtra(MispTextEditActivity.JUMP_DATA, parameter);
+ 		activity.startActivityForResult(intent,code);
 
+  	}
 	@Override
 	public void initRes()
 	{

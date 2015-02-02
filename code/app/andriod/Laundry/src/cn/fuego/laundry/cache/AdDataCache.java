@@ -38,10 +38,18 @@ public class AdDataCache
 	}
 	public void init(List<AdvertisementJson> newData)
 	{
-		if(ValidatorUtil.isEmpty(dataList))
+		dataList.clear();
+		if(!ValidatorUtil.isEmpty(newData))
 		{
-			dataList.addAll(dataList);
+			dataList.addAll(newData);
 		}
 	}
+
+	public List<AdvertisementJson> getDataList()
+	{
+		return dataList;
+	}
+	
+	
 	
 }

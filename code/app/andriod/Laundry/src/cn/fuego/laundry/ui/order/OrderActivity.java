@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
+import cn.fuego.common.util.validate.ValidatorRules;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
@@ -92,7 +93,7 @@ public class OrderActivity extends MispInfoListActivity
  
 				//list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "总价", order.getTotal_price()));
 				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, PAY_OPTION, order.getPay_option()));
-				list.add(new CommonItemMeta(CommonItemMeta.LARGE_TEXT, NOTE, order.getOrder_note()));
+				list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, NOTE, order.getOrder_note()));
  
 
 			}
@@ -129,40 +130,49 @@ public class OrderActivity extends MispInfoListActivity
 		if(CommonItemMeta.BUTTON_TO_EDIT_ITEM == item.getLayoutType() || CommonItemMeta.LARGE_TEXT  == item.getLayoutType())
 		{
 			String title =   item.getTitle();
-			Intent intent = new Intent();
-			MispEditParameter data = new MispEditParameter();
+ 			MispEditParameter data = new MispEditParameter();
 			data.setTilteName(title);
 			data.setDataKey(title);
 			data.setDataValue(String.valueOf(item.getContent()));
+			
 			if(TAKE_ADDR.equals(title))
 			{
-				intent.setClass(this, AddrEditActivity.class);
-				intent.putExtra(AddrEditActivity.JUMP_DATA, data);
-				this.startActivityForResult(intent,1);
+				data.setDataRule(ValidatorRules.isLenght(0, 50));
+				data.setErrorMsg("长度不能大于50");
+				AddrEditActivity.jump(this, data, 1);
+
 			}
 			else if(SEND_ADDR.equals(title))
 			{
-				intent.setClass(this, AddrEditActivity.class);
-				intent.putExtra(AddrEditActivity.JUMP_DATA, data);
-				this.startActivityForResult(intent,1);
+				data.setDataRule(ValidatorRules.isLenght(0, 50));
+				data.setErrorMsg("长度不能大于50");
+
+				AddrEditActivity.jump(this, data, 1);
+
 			}
 			else if(CONTACT_NAME.equals(title))
 			{
-				intent.setClass(this, MispTextEditActivity.class);
-				intent.putExtra(MispTextEditActivity.JUMP_DATA, data);
-				this.startActivityForResult(intent,1);
+				data.setDataRule(ValidatorRules.isLenght(0, 10));
+				data.setErrorMsg("长度不能大于10");
+
+				MispTextEditActivity.jump(this, data, 1);
+ 
 			}
 			else if(CONTACT_PHONE.equals(title))
 			{
-				intent.setClass(this, MispTextEditActivity.class);
-				intent.putExtra(MispTextEditActivity.JUMP_DATA, data);
-				this.startActivityForResult(intent,1);
+				data.setDataRule(ValidatorRules.isPhone());
+				data.setErrorMsg("电话格式不正确");
+
+				MispTextEditActivity.jump(this, data, 1);
+
 			}
 			else if(NOTE.equals(title))
 			{
-				intent.setClass(this, MispTextEditActivity.class);
-				intent.putExtra(MispTextEditActivity.JUMP_DATA, data);
-				this.startActivityForResult(intent,1);
+				data.setDataRule(ValidatorRules.isLenght(0, 200));
+				data.setErrorMsg("长度不能大于200");
+
+				MispTextEditActivity.jump(this, data, 1);
+
 			}
 			else if(PAY_OPTION.equals(title))
 			{

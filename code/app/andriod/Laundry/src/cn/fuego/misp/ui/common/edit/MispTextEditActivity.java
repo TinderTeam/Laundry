@@ -1,5 +1,6 @@
 package cn.fuego.misp.ui.common.edit;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,12 +15,16 @@ import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.model.base.ProductTypeJson;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.tool.MispLocationService;
+import cn.fuego.misp.ui.common.alipay.MispPayActivity;
+import cn.fuego.misp.ui.common.alipay.MispPayParameter;
 import cn.fuego.misp.webservice.up.model.base.AttributeJson;
 
 public class MispTextEditActivity extends BaseActivtiy 
 {
 
 	public static String JUMP_DATA = "result";
+	
+	public static int REQUEST_CODE = 1;
 	private TextView takeAddr;
 	
 	private MispEditParameter result;
@@ -31,7 +36,14 @@ public class MispTextEditActivity extends BaseActivtiy
 		// TODO Auto-generated method stub
 		
 	}
+	public static void jump(Activity activity,MispEditParameter parameter,int code)
+	{
+ 		Intent intent = new Intent();
+ 		intent.setClass(activity, MispTextEditActivity.class);
+ 		intent.putExtra(MispTextEditActivity.JUMP_DATA, parameter);
+ 		activity.startActivityForResult(intent,code);
 
+  	}
 	@Override
 	public void initRes()
 	{
@@ -89,7 +101,14 @@ public class MispTextEditActivity extends BaseActivtiy
 			{
  				
   
-				result.setDataValue(takeAddr.getText().toString().trim());
+				String data = takeAddr.getText().toString().trim();
+				if(!result.isValid(data))
+				{
+					showMessage(result.getErrorMsg());
+					return;
+				}
+				result.setDataValue(data);
+
                 activityFinish(result);
 			}
 			break;

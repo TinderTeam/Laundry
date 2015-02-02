@@ -1,6 +1,9 @@
 package cn.fuego.misp.ui.common.edit;
 
 import java.io.Serializable;
+import java.util.regex.Pattern;
+
+import cn.fuego.common.util.validate.ValidatorUtil;
 
 public class MispEditParameter implements Serializable
 {
@@ -11,6 +14,15 @@ public class MispEditParameter implements Serializable
 	private String dataType;
 	private String dataRule;
 	private String errorMsg;
+	
+	public boolean isValid(String value)
+	{
+		if(ValidatorUtil.isEmpty(dataRule))
+		{
+			return true;
+		}
+		return Pattern.matches(dataRule,value);  
+ 	}
 	public String getTilteName()
 	{
 		return tilteName;
