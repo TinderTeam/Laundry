@@ -41,6 +41,7 @@ public class MispTextEditActivity extends BaseActivtiy
  		Intent intent = new Intent();
  		intent.setClass(activity, MispTextEditActivity.class);
  		intent.putExtra(MispTextEditActivity.JUMP_DATA, parameter);
+ 	
  		activity.startActivityForResult(intent,code);
 
   	}
@@ -58,6 +59,7 @@ public class MispTextEditActivity extends BaseActivtiy
 		{
 			this.activityRes.setName(result.getTilteName());
 		}
+	
 	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -68,11 +70,16 @@ public class MispTextEditActivity extends BaseActivtiy
 		{
 			takeAddr = (TextView) findViewById(R.id.misp_text_edit_txt);
 			String value = result.getDataValue();
-			if(ValidatorUtil.isEmpty(value))
+			if(!ValidatorUtil.isEmpty(value))
 			{
-				value = "";
+				takeAddr.setText(value);
+
 			}
-			takeAddr.setText(value);
+			if(!ValidatorUtil.isEmpty(result.getPointOut()))
+			{
+				takeAddr.setHint(result.getPointOut());
+			}
+			
  
  
 		}

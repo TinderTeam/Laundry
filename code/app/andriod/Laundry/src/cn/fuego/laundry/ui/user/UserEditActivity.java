@@ -23,8 +23,7 @@ import cn.fuego.misp.ui.pop.MispPopWindowListener;
 public class UserEditActivity extends BaseActivtiy    
 {
 	private CustomerJson customer;
-	private TextView nickName;
-	private TextView userName;
+ 	private TextView userName;
 	private TextView sex;
 
 	private TextView birthday;
@@ -69,8 +68,7 @@ public class UserEditActivity extends BaseActivtiy
 		{
 			userName = (TextView) findViewById(R.id.user_user_name_text);
 			userName.setText(customer.getCustomer_name());
-			nickName = (TextView) findViewById(R.id.user_user_nickname_text);
-			nickName.setText(customer.getNickname());
+ 
 			
 		    sex = (TextView) findViewById(R.id.user_user_sex_text);
 			sex.setText(customer.getCustomer_sex());
@@ -108,12 +106,23 @@ public class UserEditActivity extends BaseActivtiy
 				customer = AppCache.getInstance().getCustomer().clone();
 				
 				customer.setCustomer_sex(sex.getText().toString().trim());
-				customer.setCustomer_name(userName.getText().toString().trim());
-				customer.setNickname(nickName.getText().toString().trim());
-
+				String userNameStr  = userName.getText().toString().trim();
+				
+				if(ValidatorUtil.isEmpty(userNameStr))
+				{
+					showMessage("姓名为必填项");
+					return;
+				}
+				customer.setCustomer_name(userNameStr);
+ 
 				
 				
 				String phoneStr = phone.getText().toString().trim();
+				if(ValidatorUtil.isEmpty(phoneStr))
+				{
+					showMessage("电话为必填项");
+					return;
+				}
 				if(!ValidatorUtil.isPhone(phoneStr))
 				{
 					showMessage("电话格式不正确");
@@ -122,11 +131,15 @@ public class UserEditActivity extends BaseActivtiy
 				customer.setPhone(phoneStr);
 				
 				String emailStr = email.getText().toString().trim();
-				if(!ValidatorUtil.isEmail(emailStr))
+				if(!ValidatorUtil.isEmpty(emailStr))
 				{
-					showMessage("邮箱格式不正确");
-					return;
+					if(!ValidatorUtil.isEmail(emailStr))
+					{
+						showMessage("邮箱格式不正确");
+						return;
+					}
 				}
+
 				customer.setCustomer_email(email.getText().toString().trim());
 
 				customer.setBirthday(birthday.getText().toString().trim());

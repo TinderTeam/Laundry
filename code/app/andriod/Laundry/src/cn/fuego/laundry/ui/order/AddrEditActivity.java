@@ -5,18 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.ui.base.BaseActivtiy;
-import cn.fuego.laundry.ui.cart.CartProduct;
-import cn.fuego.laundry.ui.home.HomeFragment;
-import cn.fuego.laundry.webservice.up.model.base.OrderJson;
-import cn.fuego.laundry.webservice.up.model.base.ProductTypeJson;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.tool.MispLocationService;
 import cn.fuego.misp.ui.common.edit.MispEditParameter;
-import cn.fuego.misp.ui.common.edit.MispTextEditActivity;
-import cn.fuego.misp.webservice.up.model.base.AttributeJson;
 
 public class AddrEditActivity extends BaseActivtiy 
 {
@@ -36,8 +31,8 @@ public class AddrEditActivity extends BaseActivtiy
 	public static void jump(Activity activity,MispEditParameter parameter,int code)
 	{
  		Intent intent = new Intent();
- 		intent.setClass(activity, MispTextEditActivity.class);
- 		intent.putExtra(MispTextEditActivity.JUMP_DATA, parameter);
+ 		intent.setClass(activity, AddrEditActivity.class);
+ 		intent.putExtra(AddrEditActivity.JUMP_DATA, parameter);
  		activity.startActivityForResult(intent,code);
 
   	}
@@ -67,10 +62,20 @@ public class AddrEditActivity extends BaseActivtiy
  		if(null != result)
 		{
 			takeAddr = (TextView) findViewById(R.id.deliver_addr_text);
-			takeAddr.setText(result.getDataValue());
- 
+  			String value = result.getDataValue();
+			if(!ValidatorUtil.isEmpty(value))
+			{
+				takeAddr.setText(value);
+
+			}
+			if(!ValidatorUtil.isEmpty(result.getPointOut()))
+			{
+				takeAddr.setHint(result.getPointOut());
+			}
  
 		}
+ 		
+
 		
 		
 	}

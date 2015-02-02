@@ -17,6 +17,7 @@ import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.PayOptionEnum;
 import cn.fuego.laundry.constant.PriceTypeEnum;
+import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.cart.CartProduct;
@@ -24,6 +25,7 @@ import cn.fuego.laundry.ui.home.HomeFragment;
 import cn.fuego.laundry.webservice.up.model.CreateOrderRsp;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.constant.MispCommonIDName;
 import cn.fuego.misp.service.MISPException;
 import cn.fuego.misp.service.http.MispHttpHandler;
@@ -133,12 +135,16 @@ public class OrderActivity extends MispInfoListActivity
  			MispEditParameter data = new MispEditParameter();
 			data.setTilteName(title);
 			data.setDataKey(title);
-			data.setDataValue(String.valueOf(item.getContent()));
+			if(null != item.getContent())
+			{
+				data.setDataValue(String.valueOf(item.getContent()));
+			}
 			
 			if(TAKE_ADDR.equals(title))
 			{
 				data.setDataRule(ValidatorRules.isLenght(0, 50));
 				data.setErrorMsg("长度不能大于50");
+				data.setPointOut("您可以使用LBS定位获取地址或手动填写地址！");
 				AddrEditActivity.jump(this, data, 1);
 
 			}
@@ -146,6 +152,7 @@ public class OrderActivity extends MispInfoListActivity
 			{
 				data.setDataRule(ValidatorRules.isLenght(0, 50));
 				data.setErrorMsg("长度不能大于50");
+				data.setPointOut("您可以使用LBS定位获取地址或手动填写地址！");
 
 				AddrEditActivity.jump(this, data, 1);
 
@@ -154,6 +161,7 @@ public class OrderActivity extends MispInfoListActivity
 			{
 				data.setDataRule(ValidatorRules.isLenght(0, 10));
 				data.setErrorMsg("长度不能大于10");
+				data.setPointOut("请填写您的真实姓名，方便我们更好的服务于您！");
 
 				MispTextEditActivity.jump(this, data, 1);
  
@@ -162,6 +170,8 @@ public class OrderActivity extends MispInfoListActivity
 			{
 				data.setDataRule(ValidatorRules.isPhone());
 				data.setErrorMsg("电话格式不正确");
+				data.setPointOut("请填写您的联系电话！\n手机格式:1**********\n座机格式:0***-******");
+
 
 				MispTextEditActivity.jump(this, data, 1);
 
@@ -170,6 +180,7 @@ public class OrderActivity extends MispInfoListActivity
 			{
 				data.setDataRule(ValidatorRules.isLenght(0, 200));
 				data.setErrorMsg("长度不能大于200");
+				data.setPointOut("您可填写详细地址及其他要求,或静候工作人员与您取得联系,敬请保持手机畅通！");
 
 				MispTextEditActivity.jump(this, data, 1);
 
@@ -255,10 +266,18 @@ public class OrderActivity extends MispInfoListActivity
 				 }
 				 else
 				 {
+					 
+					 if(message.getErrorCode() == MISPErrorMessageConst.ERROR_LOGIN_INVALID)
+					 {
+						 LoginActivity.jump(OrderActivity.this, 1);
+					 }
 					 log.error("create order failed");
 
 				 }
+				 
 				 showMessage(message);
+
+				 
 			}
 			
 		}).create(CartProduct.getInstance().getOrderInfo());

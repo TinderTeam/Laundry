@@ -144,8 +144,7 @@ public class ValidatorUtil
      */  
     public static boolean isPhone(String phone)
     {  
-        String regEx = "(\\+\\d+)?1[3458]\\d{9}$";  
-        return Pattern.matches(regEx,phone);  
+         return Pattern.matches(ValidatorRules.isPhone(),phone);  
     }  
     /** 
      * 验证日期（年月日） 

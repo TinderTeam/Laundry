@@ -353,6 +353,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 
  		super.onDestroy();
 	}
+ 
 
 
  

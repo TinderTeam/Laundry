@@ -22,7 +22,7 @@ public class OrderJson implements Serializable
 	private int handler_id;
 	private String operater_name;
 	private String order_type = OrderTypeEnum.NORMAL_ORDER.getStrValue() ;
-	private String order_note ="洗衣在线支付";
+	private String order_note;
 	
 	private String price_type;
 	private float total_price;

@@ -10,12 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.webservice.up.model.GetOrderListReq;
 import cn.fuego.laundry.webservice.up.model.GetOrderListRsp;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.MemoryCache;
+import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.list.MispListActivity;
 import cn.fuego.misp.ui.model.ListViewResInfo;
 import cn.fuego.misp.ui.util.LoadImageUtil;
@@ -50,6 +53,19 @@ public class OrderListActivity extends MispListActivity<OrderJson>
 		GetOrderListRsp rsp = (GetOrderListRsp) obj;
 		
 		return rsp.getObj();
+	}
+	
+	
+
+	@Override
+	public void handle(MispHttpMessage message)
+	{
+		// TODO Auto-generated method stub
+		super.handle(message);
+		 if(message.getErrorCode() == MISPErrorMessageConst.ERROR_LOGIN_INVALID)
+		 {
+			 LoginActivity.jump(this, 1);
+		 }
 	}
 
 	@Override

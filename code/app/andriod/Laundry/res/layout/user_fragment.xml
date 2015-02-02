@@ -13,13 +13,6 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
-        <ImageView
-            android:id="@+id/img_bg_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/basketlogo" />
     </FrameLayout>
 
     <RelativeLayout
@@ -28,11 +21,18 @@
         android:layout_marginBottom="10dp" >
 
         <LinearLayout
-            android:id="@+id/linearLayout1"
+            android:id="@+id/li_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="18dp"
             android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/img_bg_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/basketlogo" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="昵称："
+                        android:text="姓名："
                         android:textColor="@color/white"
                         android:textSize="@dimen/content_font_size_sm" />
 
@@ -117,11 +117,20 @@
                         android:textSize="13dp" />
                 </LinearLayout>
             </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:orientation="vertical" >
+            </LinearLayout>
+
         </LinearLayout>
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/li_user"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="15dp" >
 
             <ImageView
@@ -130,6 +139,7 @@
                 android:layout_height="80dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/image" />
+
         </FrameLayout>
     </RelativeLayout>
 

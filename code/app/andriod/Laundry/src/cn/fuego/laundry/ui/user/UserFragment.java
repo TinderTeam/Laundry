@@ -15,9 +15,11 @@ import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.base.BaseFragment;
 import cn.fuego.laundry.ui.loader.CustomerLoader;
+import cn.fuego.laundry.ui.order.OrderDetailActivity;
 import cn.fuego.laundry.ui.order.OrderListActivity;
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.webservice.up.model.LoginReq;
@@ -66,7 +68,7 @@ public class UserFragment extends BaseFragment implements OnClickListener
 
 			if(null != customer)
 			{
-				nickName.setText(customer.getNickname());
+				nickName.setText(customer.getCustomer_name());
 				phoneView.setText(customer.getPhone());
 				sexView.setText(customer.getCustomer_sex());
 			}
@@ -130,6 +132,10 @@ public class UserFragment extends BaseFragment implements OnClickListener
 				{
 					// TODO Auto-generated method stub
 					showMessage(errorCode);
+					 if(errorCode == MISPErrorMessageConst.ERROR_LOGIN_INVALID)
+					 {
+						 LoginActivity.jump(UserFragment.this.getActivity(), 1);
+					 }
 				}
 				
 			}.loadCustomer(MemoryCache.getToken(), AppCache.getInstance().getUser());

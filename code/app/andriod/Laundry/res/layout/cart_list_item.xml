@@ -47,11 +47,11 @@
 
                 <EditText
                     android:id="@+id/chart_list_item_quantity"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
+ 
+                    android:layout_margin="2dp"
                     android:background="@drawable/edittext_sel"
                     android:focusable="false"
                     android:focusableInTouchMode="false"

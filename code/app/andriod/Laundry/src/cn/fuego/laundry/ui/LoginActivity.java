@@ -1,5 +1,6 @@
 package cn.fuego.laundry.ui;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -32,6 +33,8 @@ import cn.fuego.misp.dao.SharedPreUtil;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
+import cn.fuego.misp.ui.common.edit.MispEditParameter;
+import cn.fuego.misp.ui.common.edit.MispTextEditActivity;
 import cn.fuego.misp.webservice.up.model.LoginReq;
 import cn.fuego.misp.webservice.up.model.LoginRsp;
 import cn.fuego.misp.webservice.up.model.base.UserJson;
@@ -53,6 +56,14 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 
 		
 	}
+	
+	public static void jump(Activity activity,int code)
+	{
+ 		Intent intent = new Intent();
+ 		intent.setClass(activity, LoginActivity.class);
+  		activity.startActivityForResult(intent,code);
+
+  	}
 	
     @Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -211,21 +222,26 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 	private void loginSuccess(String token,UserJson user,CustomerJson customer)
 	{
  		AppCache.getInstance().update(token,user, customer);
+ 		jumpToSource();
  
  
+		this.finish();
+	}
+	private void jumpToSource()
+	{
 	      
 		Class clazz = (Class) this.getIntent().getSerializableExtra(JUMP_SOURCE);
 		
+		if(null != clazz)
+		{
+			Intent intent = new Intent(this,MainTabbarActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+			intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(clazz));
+			this.startActivity(intent);
+		}
 		
-		Intent intent = new Intent(this,MainTabbarActivity.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-		intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(clazz));
-		this.startActivity(intent);
-
-
-	    
-		this.finish();
 	}
 	
 	public String getDeviceID()

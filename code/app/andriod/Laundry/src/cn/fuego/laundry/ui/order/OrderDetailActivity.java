@@ -10,13 +10,16 @@ import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.OrderStatusEnum;
+import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.cart.CartProduct;
+import cn.fuego.laundry.ui.user.UserFragment;
 import cn.fuego.laundry.webservice.up.model.GetOrderDetailReq;
 import cn.fuego.laundry.webservice.up.model.GetOrderDetailRsp;
 import cn.fuego.laundry.webservice.up.model.OperateOrderReq;
 import cn.fuego.laundry.webservice.up.model.base.OrderDetailJson;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
+import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
@@ -156,6 +159,10 @@ public class OrderDetailActivity extends MispInfoListActivity
 				 {
 					 log.error("can not get order detali by id"+order.getOrder_id());
 					 showMessage(message);
+					 if(message.getErrorCode() == MISPErrorMessageConst.ERROR_LOGIN_INVALID)
+					 {
+						 LoginActivity.jump(OrderDetailActivity.this, 1);
+					 }
 				 }
 			}
 			
@@ -232,6 +239,10 @@ public class OrderDetailActivity extends MispInfoListActivity
 			this.finish();
 		}
 		showMessage(message);
+		 if(message.getErrorCode() == MISPErrorMessageConst.ERROR_LOGIN_INVALID)
+		 {
+			 LoginActivity.jump(this, 1);
+		 }
 	}
  
 

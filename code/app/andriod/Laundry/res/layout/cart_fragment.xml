@@ -117,6 +117,7 @@
                 android:background="@color/blue_light"
                 android:gravity="center"
                 android:padding="8dp"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -138,7 +139,7 @@
         android:layout_height="120dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:alpha="0.8"
+        android:alpha="0.9"
         android:background="@color/backcolor"
         android:orientation="vertical"
         android:visibility="gone" >

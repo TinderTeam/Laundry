@@ -3,6 +3,7 @@ package cn.fuego.misp.ui.common.edit;
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
+import cn.fuego.common.util.validate.ValidatorRules;
 import cn.fuego.common.util.validate.ValidatorUtil;
 
 public class MispEditParameter implements Serializable
@@ -21,7 +22,7 @@ public class MispEditParameter implements Serializable
 		{
 			return true;
 		}
-		return Pattern.matches(dataRule,value);  
+		return ValidatorRules.isValid(dataRule, value);
  	}
 	public String getTilteName()
 	{

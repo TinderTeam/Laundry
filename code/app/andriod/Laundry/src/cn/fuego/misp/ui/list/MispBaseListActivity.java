@@ -42,7 +42,7 @@ public abstract class MispBaseListActivity<E> extends MispHttpActivtiy implement
 	{
 		if(null != dataList)
 		{
-			this.dataList = dataList;
+			this.dataList.addAll(dataList);
 		}
 	}
 

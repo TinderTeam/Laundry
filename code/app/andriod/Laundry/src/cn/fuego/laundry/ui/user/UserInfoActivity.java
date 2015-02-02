@@ -44,8 +44,7 @@ public class UserInfoActivity extends MispInfoListActivity
 			list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));
 
 			list.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, MODIFY_INFO, MODIFY_INFO));
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "昵称", customer.getNickname()));
-
+ 
 			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "真实姓名", customer.getCustomer_name()));
 			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "性别", customer.getCustomer_sex()));
 			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "出生年月", customer.getBirthday()));
