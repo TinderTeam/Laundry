@@ -3,59 +3,58 @@
     android:layout_height="match_parent"
     android:background="@color/backcolor" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical" >
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp" >
-
-                <TextView
-                    android:id="@+id/TextView02"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:text="修改"
-                    android:textColor="@color/blue_light"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/item_btntype_name"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_light_blue"
-                    android:gravity="center"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp"
-                    android:text="订单信息"
-                    android:textColor="@color/white" />
-
-            </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp" >
 
             <TextView
-                android:id="@+id/item_btntype_value"
-                style="@null"
-                android:layout_width="match_parent"
+                android:id="@+id/TextView02"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edittext_sel"
-                android:gravity="start"
-                 android:lines="5"
-                android:textSize="12sp" >
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="修改"
+                android:textColor="@color/blue_light"
+                android:textSize="12sp"
+                android:visibility="gone" />
 
-                <requestFocus />
-            </TextView>
+            <TextView
+                android:id="@+id/item_btntype_name"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_light_blue"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="订单信息"
+                android:textColor="@color/white" />
+        </RelativeLayout>
 
-        </LinearLayout>
- 
+        <TextView
+            android:id="@+id/item_btntype_value"
+            style="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_sel"
+            android:gravity="start"
+            android:lines="5"
+            android:textSize="12sp" >
+
+            <requestFocus />
+        </TextView>
+    </LinearLayout>
+
 </RelativeLayout>

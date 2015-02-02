@@ -125,7 +125,10 @@
         <ListView
             android:id="@+id/chart_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:fadeScrollbars="false"
+            android:scrollbarFadeDuration="0" >
+
         </ListView>
 
     </LinearLayout>

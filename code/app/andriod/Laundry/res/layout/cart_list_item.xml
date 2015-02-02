@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
 <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -11,10 +11,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="0.5dp"
                 android:layout_marginLeft="0.5dp"
                 android:layout_marginRight="0.5dp"
-                android:layout_marginTop="0.5dp"
                 android:layout_weight="0.8"
                 android:background="@color/grid_back_color"
                 android:gravity="center"
@@ -29,9 +27,7 @@
                 android:id="@+id/chart_list_item_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="0.5dp"
                 android:layout_marginRight="0.5dp"
-                android:layout_marginTop="0.5dp"
                 android:layout_weight="1"
                 android:background="@color/grid_back_color"
                 android:gravity="center"
@@ -44,12 +40,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical" 
-                android:layout_marginBottom="0.5dp"
                 android:layout_marginRight="0.5dp"
-                android:layout_marginTop="0.5dp"
-                android:background="@color/grid_back_color">
+                android:layout_weight="1"
+                android:background="@color/grid_back_color"
+                android:orientation="vertical" >
 
                 <EditText
                     android:id="@+id/chart_list_item_quantity"
@@ -75,9 +69,7 @@
                 android:id="@+id/chart_list_item_tatol_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="0.5dp"
                 android:layout_marginRight="0.5dp"
-                android:layout_marginTop="0.5dp"
                 android:layout_weight="1"
                 android:background="@color/grid_back_color"
                 android:gravity="center"
@@ -91,9 +83,7 @@
                 android:id="@+id/char_list_item_btn_delete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="0.5dp"
                 android:layout_marginRight="0.5dp"
-                android:layout_marginTop="0.5dp"
                 android:layout_weight="1.1"
                 android:background="@drawable/cancel"
                 android:gravity="center"
