@@ -153,14 +153,15 @@ public class LoadImageUtil
 	}
 	public void loadImage(final ImageView imageView, final int localImageId)
 	{
-		if(isLocalCache)
-		{
-			ImageLoader.getInstance().displayImage("drawable://"+localImageId, imageView,smallImageSetting());
-		}
-		else
-		{
-			loadWithMemoryCache(imageView, "drawable://"+localImageId);
-		}
+		imageView.setImageResource(localImageId);
+//		if(isLocalCache)
+//		{
+//			ImageLoader.getInstance().displayImage("drawable://"+localImageId, imageView,smallImageSetting());
+//		}
+//		else
+//		{
+//			loadWithMemoryCache(imageView, "drawable://"+localImageId);
+//		}
 	}
 	
 	private void loadWithMemoryCache(final ImageView imageView, final String urlString)

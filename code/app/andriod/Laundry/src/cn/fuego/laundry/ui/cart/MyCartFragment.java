@@ -222,11 +222,10 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		default:
 			break;
 		}
+ 
+ 	}
+ 
 
-
-
-		
-	}
 	private void showWindow(View parent,final OrderDetailJson orderDetail) 
 	{  
 

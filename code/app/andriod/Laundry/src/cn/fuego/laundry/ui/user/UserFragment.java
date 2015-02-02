@@ -32,12 +32,18 @@ public class UserFragment extends BaseFragment implements OnClickListener
 	
 	private int[] userInfoButtonList = new int[]{R.id.user_to_user_info,R.id.user_to_order,R.id.user_btn_logout};
 
+	private View rootView;
 	
 	@Override
 	public void initRes()
 	{
 		this.fragmentRes.setImage(R.drawable.tab_icon_user);
 		this.fragmentRes.setName(R.string.tabbar_user);
+		this.fragmentRes.getButtonIDList().add(R.id.user_btn_to_login);
+		this.fragmentRes.getButtonIDList().add(R.id.user_to_user_info);
+		this.fragmentRes.getButtonIDList().add(R.id.user_to_order);
+		this.fragmentRes.getButtonIDList().add(R.id.user_btn_logout);
+
 		if(MemoryCache.isLogined())
 		{
 			this.fragmentRes.setFragmentView(R.layout.user_fragment);
@@ -52,39 +58,33 @@ public class UserFragment extends BaseFragment implements OnClickListener
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
-		View rootView = super.onCreateView(inflater, container, savedInstanceState);
+		rootView = super.onCreateView(inflater, container, savedInstanceState);
+		
 		if(MemoryCache.isLogined())
 		{
-			for(int id : userInfoButtonList)
-			{
-				Button button = (Button) rootView.findViewById(id);
-				button.setOnClickListener(this);
-			}
-			TextView nickName = (TextView) rootView.findViewById(R.id.user_nickname_txt);
-			TextView phoneView = (TextView) rootView.findViewById(R.id.user_phone_txt);
-			TextView sexView = (TextView) rootView.findViewById(R.id.user_sex_txt);
-
-			CustomerJson customer = AppCache.getInstance().getCustomer();
-
-			if(null != customer)
-			{
-				nickName.setText(customer.getCustomer_name());
-				phoneView.setText(customer.getPhone());
-				sexView.setText(customer.getCustomer_sex());
-			}
+ 
+			initView(rootView);
 
 
-		}
-		else
-		{
-			for(int id : buttonIDList)
-			{
-				Button button = (Button) rootView.findViewById(id);
-				button.setOnClickListener(this);
-			}
 		}
  
 		return rootView;
+	}
+
+	private void initView(View rootView)
+	{
+		TextView nickName = (TextView) rootView.findViewById(R.id.user_nickname_txt);
+		TextView phoneView = (TextView) rootView.findViewById(R.id.user_phone_txt);
+		TextView sexView = (TextView) rootView.findViewById(R.id.user_sex_txt);
+
+		CustomerJson customer = AppCache.getInstance().getCustomer();
+
+		if(null != customer)
+		{
+			nickName.setText(customer.getCustomer_name());
+			phoneView.setText(customer.getPhone());
+			sexView.setText(customer.getCustomer_sex());
+		}
 	}
 
 	@Override
@@ -123,7 +123,7 @@ public class UserFragment extends BaseFragment implements OnClickListener
 					Intent intent = new Intent();
 
 					intent.setClass(getActivity(), UserInfoActivity.class);
-					startActivity(intent);
+					startActivityForResult(intent, 1);
 
 				}
 
@@ -146,7 +146,7 @@ public class UserFragment extends BaseFragment implements OnClickListener
 			Intent intent = new Intent();
 
 			intent.setClass(this.getActivity(), OrderListActivity.class);
-			startActivity(intent);
+			startActivityForResult(intent, 1);
 
 		}
 			break;
@@ -167,11 +167,17 @@ public class UserFragment extends BaseFragment implements OnClickListener
 
 			}
 		}
-
  
-
-        
 		
 	}
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		 
+		initView(rootView);
+	}
+
 
 }

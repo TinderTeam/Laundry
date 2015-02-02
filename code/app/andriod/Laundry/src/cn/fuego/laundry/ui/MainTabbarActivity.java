@@ -2,6 +2,7 @@ package cn.fuego.laundry.ui;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
@@ -53,6 +54,7 @@ public class MainTabbarActivity extends FragmentActivity
     public void setDisplayTab(Class clazz)
     {
     	this.mTabHost.setCurrentTab(MainTabbarInfo.getIndexByClass(clazz));
+    	this.mTabHost.getCurrentTabView().refreshDrawableState();
     }
            
     /** 
@@ -116,8 +118,9 @@ public class MainTabbarActivity extends FragmentActivity
         return view;  
     } 
     
-    
-    @Override  
+  
+
+	@Override  
     public boolean onKeyDown(int keyCode, KeyEvent event)  
     {  
         if (keyCode == KeyEvent.KEYCODE_BACK )  

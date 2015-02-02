@@ -65,6 +65,7 @@ public class OrderListActivity extends MispListActivity<OrderJson>
 		 if(message.getErrorCode() == MISPErrorMessageConst.ERROR_LOGIN_INVALID)
 		 {
 			 LoginActivity.jump(this, 1);
+			 this.finish();
 		 }
 	}
 
@@ -94,13 +95,17 @@ public class OrderListActivity extends MispListActivity<OrderJson>
 		Intent intent = new Intent(this,this.listViewRes.getClickActivityClass());
 		intent.putExtra(ListViewResInfo.SELECT_ITEM, (Serializable) item);
 
-		this.startActivityForResult(intent, 1);
+		this.startActivityForResult(intent, 2);
 	}
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
-		loadSendList();
+		if(requestCode == 2)
+		{
+			loadSendList();
+		}
+		
 	}
 
 

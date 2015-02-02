@@ -162,6 +162,7 @@ public class OrderDetailActivity extends MispInfoListActivity
 					 if(message.getErrorCode() == MISPErrorMessageConst.ERROR_LOGIN_INVALID)
 					 {
 						 LoginActivity.jump(OrderDetailActivity.this, 1);
+						 finish();
 					 }
 				 }
 			}

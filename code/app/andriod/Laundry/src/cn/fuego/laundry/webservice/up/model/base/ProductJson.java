@@ -13,6 +13,8 @@ public class ProductJson implements Serializable
 	private int seller_id;
 	private String describe;
 	private String price_type;
+	
+	private int sort_id;
 
 	private float price;
 	private float original_price;
@@ -153,6 +155,14 @@ public class ProductJson implements Serializable
 	public void setPrice_type(String price_type)
 	{
 		this.price_type = price_type;
+	}
+	public int getSort_id()
+	{
+		return sort_id;
+	}
+	public void setSort_id(int sort_id)
+	{
+		this.sort_id = sort_id;
 	}
  
 	

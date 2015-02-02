@@ -389,7 +389,9 @@ public class OrderActivity extends MispInfoListActivity
 			}
 			else
 			{
+				
 				showMessage("订单提交成功，支付异常");
+				finish();
 			}
 			
 		}
@@ -400,9 +402,10 @@ public class OrderActivity extends MispInfoListActivity
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(HomeFragment.class));
 	        startActivity(intent);
+	        this.finish();
 		}
         CartProduct.getInstance().clearCart();
-        this.finish();
+
 
 	}
 
@@ -412,48 +415,54 @@ public class OrderActivity extends MispInfoListActivity
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 
-		if(null != data)
+		if(1==requestCode)
 		{
-			MispEditParameter result_value = (MispEditParameter) data
-					.getSerializableExtra(AddrEditActivity.JUMP_DATA);
-
-			if (null != result_value)
+			if(null != data)
 			{
-				if (TAKE_ADDR.equals(result_value.getDataKey()))
-				{
-					CartProduct.getInstance().getOrderInfo().getOrder()
-							.setTake_addr(result_value.getDataValue());
-				}
-				else if (SEND_ADDR.equals(result_value.getDataKey()))
-				{
-					CartProduct.getInstance().getOrderInfo().getOrder()
-							.setDelivery_addr(result_value.getDataValue());
+				MispEditParameter result_value = (MispEditParameter) data
+						.getSerializableExtra(AddrEditActivity.JUMP_DATA);
 
-				}
-				else if (CONTACT_NAME.equals(result_value.getDataKey()))
+				if (null != result_value)
 				{
-					CartProduct.getInstance().getOrderInfo().getOrder()
-							.setContact_name(result_value.getDataValue());
+					if (TAKE_ADDR.equals(result_value.getDataKey()))
+					{
+						CartProduct.getInstance().getOrderInfo().getOrder()
+								.setTake_addr(result_value.getDataValue());
+					}
+					else if (SEND_ADDR.equals(result_value.getDataKey()))
+					{
+						CartProduct.getInstance().getOrderInfo().getOrder()
+								.setDelivery_addr(result_value.getDataValue());
 
-				}
-				else if (CONTACT_PHONE.equals(result_value.getDataKey()))
-				{
-					CartProduct.getInstance().getOrderInfo().getOrder()
-							.setPhone(result_value.getDataValue());
+					}
+					else if (CONTACT_NAME.equals(result_value.getDataKey()))
+					{
+						CartProduct.getInstance().getOrderInfo().getOrder()
+								.setContact_name(result_value.getDataValue());
 
-				}
-				else if (NOTE.equals(result_value.getDataKey()))
-				{
-					CartProduct.getInstance().getOrderInfo().getOrder()
-							.setOrder_note(result_value.getDataValue());
+					}
+					else if (CONTACT_PHONE.equals(result_value.getDataKey()))
+					{
+						CartProduct.getInstance().getOrderInfo().getOrder()
+								.setPhone(result_value.getDataValue());
 
+					}
+					else if (NOTE.equals(result_value.getDataKey()))
+					{
+						CartProduct.getInstance().getOrderInfo().getOrder()
+								.setOrder_note(result_value.getDataValue());
+
+					}
 				}
 			}
+			this.refreshList(this.getBtnData());
+
 		}
-
-
-		this.refreshList(this.getBtnData());
-
+		else if(2 == requestCode)
+		{
+			
+		}
+ 
 	}
 
 
