@@ -36,6 +36,7 @@
     self = [super initWithFrame:CGRectMake(0,0,20,20)];
     if (self) {
         // Initialization code
+        _selectIndex = -1;
         self.backgroundColor = [UIColor whiteColor];
         self.center = CGPointMake(view.bounds.size.width / 2, view.bounds.size.height / 2);
         UIControl *mask = [[UIControl alloc] initWithFrame:view.bounds];

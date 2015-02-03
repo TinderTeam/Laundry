@@ -79,6 +79,11 @@
 		14F998471A7FA60C0052D0B3 /* FEOrderCancelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F998461A7FA60C0052D0B3 /* FEOrderCancelRequest.m */; };
 		14F9984A1A7FBD3C0052D0B3 /* FEModifyPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F998491A7FBD3C0052D0B3 /* FEModifyPasswordVC.m */; };
 		14F9984D1A7FC0470052D0B3 /* FEModifyPswRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F9984C1A7FC0470052D0B3 /* FEModifyPswRequest.m */; };
+		14F998501A80573A0052D0B3 /* FEModifyProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F9984F1A80573A0052D0B3 /* FEModifyProfileVC.m */; };
+		14F998531A8069010052D0B3 /* FEModifyProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F998521A8069010052D0B3 /* FEModifyProfileRequest.m */; };
+		14F998561A8069A70052D0B3 /* FECustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F998551A8069A70052D0B3 /* FECustomer.m */; };
+		14F998591A806B170052D0B3 /* FEGetCustomerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F998581A806B170052D0B3 /* FEGetCustomerRequest.m */; };
+		14F9985C1A806E9B0052D0B3 /* FEGetCustomerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F9985B1A806E9B0052D0B3 /* FEGetCustomerResponse.m */; };
 		14FF4A1A1A66936000DECA7B /* FESelectCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */; };
 		14FF4A1D1A66950D00DECA7B /* FELaundryWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A1C1A66950D00DECA7B /* FELaundryWebService.m */; };
 		14FF4A281A66962400DECA7B /* NSString+Attribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF4A251A66962400DECA7B /* NSString+Attribute.m */; };
@@ -257,6 +262,16 @@
 		14F998491A7FBD3C0052D0B3 /* FEModifyPasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEModifyPasswordVC.m; sourceTree = "<group>"; };
 		14F9984B1A7FC0470052D0B3 /* FEModifyPswRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEModifyPswRequest.h; sourceTree = "<group>"; };
 		14F9984C1A7FC0470052D0B3 /* FEModifyPswRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEModifyPswRequest.m; sourceTree = "<group>"; };
+		14F9984E1A8057390052D0B3 /* FEModifyProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEModifyProfileVC.h; sourceTree = "<group>"; };
+		14F9984F1A80573A0052D0B3 /* FEModifyProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEModifyProfileVC.m; sourceTree = "<group>"; };
+		14F998511A8069010052D0B3 /* FEModifyProfileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEModifyProfileRequest.h; sourceTree = "<group>"; };
+		14F998521A8069010052D0B3 /* FEModifyProfileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEModifyProfileRequest.m; sourceTree = "<group>"; };
+		14F998541A8069A70052D0B3 /* FECustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FECustomer.h; sourceTree = "<group>"; };
+		14F998551A8069A70052D0B3 /* FECustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FECustomer.m; sourceTree = "<group>"; };
+		14F998571A806B170052D0B3 /* FEGetCustomerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEGetCustomerRequest.h; sourceTree = "<group>"; };
+		14F998581A806B170052D0B3 /* FEGetCustomerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEGetCustomerRequest.m; sourceTree = "<group>"; };
+		14F9985A1A806E9B0052D0B3 /* FEGetCustomerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEGetCustomerResponse.h; sourceTree = "<group>"; };
+		14F9985B1A806E9B0052D0B3 /* FEGetCustomerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEGetCustomerResponse.m; sourceTree = "<group>"; };
 		14FF4A181A66936000DECA7B /* FESelectCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESelectCategoryVC.h; sourceTree = "<group>"; };
 		14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESelectCategoryVC.m; sourceTree = "<group>"; };
 		14FF4A1B1A66950D00DECA7B /* FELaundryWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FELaundryWebService.h; sourceTree = "<group>"; };
@@ -394,6 +409,8 @@
 				14F998431A7F68DC0052D0B3 /* FEMyInfoTableVC.m */,
 				14F998481A7FBD3C0052D0B3 /* FEModifyPasswordVC.h */,
 				14F998491A7FBD3C0052D0B3 /* FEModifyPasswordVC.m */,
+				14F9984E1A8057390052D0B3 /* FEModifyProfileVC.h */,
+				14F9984F1A80573A0052D0B3 /* FEModifyProfileVC.m */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -642,6 +659,8 @@
 				1418A1A21A680B3900886FDA /* FEOrder.m */,
 				1418A1B31A68A32F00886FDA /* FEOrderDetail.h */,
 				1418A1B41A68A32F00886FDA /* FEOrderDetail.m */,
+				14F998541A8069A70052D0B3 /* FECustomer.h */,
+				14F998551A8069A70052D0B3 /* FECustomer.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -701,6 +720,12 @@
 				14950D611A78CD3C001416A7 /* FEResetPasswordRequest.m */,
 				14F9984B1A7FC0470052D0B3 /* FEModifyPswRequest.h */,
 				14F9984C1A7FC0470052D0B3 /* FEModifyPswRequest.m */,
+				14F998511A8069010052D0B3 /* FEModifyProfileRequest.h */,
+				14F998521A8069010052D0B3 /* FEModifyProfileRequest.m */,
+				14F998571A806B170052D0B3 /* FEGetCustomerRequest.h */,
+				14F998581A806B170052D0B3 /* FEGetCustomerRequest.m */,
+				14F9985A1A806E9B0052D0B3 /* FEGetCustomerResponse.h */,
+				14F9985B1A806E9B0052D0B3 /* FEGetCustomerResponse.m */,
 			);
 			path = Param;
 			sourceTree = "<group>";
@@ -854,6 +879,7 @@
 				14FF4A591A67527000DECA7B /* FECategory.m in Sources */,
 				14950D861A7923F0001416A7 /* MD5DataSigner.m in Sources */,
 				14F9984A1A7FBD3C0052D0B3 /* FEModifyPasswordVC.m in Sources */,
+				14F998591A806B170052D0B3 /* FEGetCustomerRequest.m in Sources */,
 				1443506D1A6652A6002BB228 /* NSString+MD5.m in Sources */,
 				144350281A6640EC002BB228 /* FESettingVC.m in Sources */,
 				1443506F1A6652A6002BB228 /* NSString+UUID.m in Sources */,
@@ -881,6 +907,7 @@
 				14FF4A6F1A67738000DECA7B /* FEGetProductResponse.m in Sources */,
 				14FF4A751A67928800DECA7B /* FEBasketItemCell.m in Sources */,
 				14FF4A681A6765EE00DECA7B /* FEGetProductRequest.m in Sources */,
+				14F9985C1A806E9B0052D0B3 /* FEGetCustomerResponse.m in Sources */,
 				14469E9A1A65FAA900515685 /* Laundry.xcdatamodeld in Sources */,
 				1418A1B81A68B7BF00886FDA /* FECustomSegue.m in Sources */,
 				14950D831A7923F0001416A7 /* base64.m in Sources */,
@@ -901,6 +928,7 @@
 				14FF4A781A67AC2100DECA7B /* FEPickerView.m in Sources */,
 				14F998321A7DDDC30052D0B3 /* FEInfoInputVC.m in Sources */,
 				14FF4A5C1A675B2200DECA7B /* FEGetProductTypeReques.m in Sources */,
+				14F998531A8069010052D0B3 /* FEModifyProfileRequest.m in Sources */,
 				14950D881A7923F0001416A7 /* openssl_wrapper.m in Sources */,
 				14FF4A841A67EC7F00DECA7B /* FEForgotPasswordVC.m in Sources */,
 				14FF4A291A66962400DECA7B /* SSObject.m in Sources */,
@@ -917,6 +945,7 @@
 				14FF4A2D1A6696A200DECA7B /* FEBaseRequest.m in Sources */,
 				1418A1A61A68122800886FDA /* FEVerifyCodeRequest.m in Sources */,
 				1443506A1A6652A6002BB228 /* NSDate+Formatter.m in Sources */,
+				14F998501A80573A0052D0B3 /* FEModifyProfileVC.m in Sources */,
 				14FF4A411A66A6D500DECA7B /* FEGetADRequest.m in Sources */,
 				144350751A6652A6002BB228 /* UIImage+Resize.m in Sources */,
 				14950D621A78CD3C001416A7 /* FEResetPasswordRequest.m in Sources */,
@@ -928,6 +957,7 @@
 				14F998351A7E5C2C0052D0B3 /* FECreateOrderResponse.m in Sources */,
 				144350161A663EC1002BB228 /* FEViewController.m in Sources */,
 				1418A1AF1A68A2DA00886FDA /* FEOrderCreateRequest.m in Sources */,
+				14F998561A8069A70052D0B3 /* FECustomer.m in Sources */,
 				144716561A6D5A4E003359FC /* FEOrderDetailResponse.m in Sources */,
 				144350701A6652A6002BB228 /* NSString+Verify.m in Sources */,
 				1418A1A01A680B0300886FDA /* FEOrderListResponse.m in Sources */,

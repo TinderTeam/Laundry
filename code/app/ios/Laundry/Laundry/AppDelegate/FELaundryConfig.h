@@ -29,6 +29,7 @@
 #define kLoginUser              kUserDefaultsObjectForKey(kLoginUserKey)
 
 #define kNotificationUserDidLogin           @"notificationUserDidLogin"
+#define kNotificationUserDidChange           @"notificationUserDidChange"
 
 #define kCall(_PHONE)       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"tel://" stringByAppendingString:_PHONE]]];
 

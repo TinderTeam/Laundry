@@ -22,6 +22,8 @@
 #define __METHOD_Register           @"index.php/Index/Register"
 #define __METHOD_SendVerifyCode     @"index.php/UserManage/SendVerifyCode"
 #define __METHOD_ResetPsw           @"index.php/Index/ResetPassword"
+#define __METHOD_ModifyProfile      @"laundry.php/CustomerManage/Modify"
+#define __METHOD_GetCustomer        @"laundry.php/CustomerManage/Show"
 
 //AD manager
 #define __METHOD_GetAD             @"laundry.php/ADManage/LoadAll"

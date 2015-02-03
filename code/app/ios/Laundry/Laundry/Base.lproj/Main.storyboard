@@ -741,7 +741,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2LX-sY-aiP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3674" y="-81"/>
+            <point key="canvasLocation" x="3650" y="-81"/>
         </scene>
         <!--SigninVC-->
         <scene sceneID="UJf-O8-KWS">
@@ -869,7 +869,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gfl-3L-crw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3612" y="613"/>
+            <point key="canvasLocation" x="3650" y="613"/>
         </scene>
         <!--RegistVC-->
         <scene sceneID="3AV-RX-zW9">
@@ -1007,7 +1007,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Eq-hL-ske" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4282" y="613"/>
+            <point key="canvasLocation" x="4320" y="613"/>
         </scene>
         <!--Forgot PasswordVC-->
         <scene sceneID="wYR-3V-qEt">
@@ -1145,7 +1145,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UzV-Uf-OCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3612" y="1301"/>
+            <point key="canvasLocation" x="3650" y="1301"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CP6-Lv-FaT">
@@ -1236,10 +1236,10 @@
             </objects>
             <point key="canvasLocation" x="2936" y="1301"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Modify ProfileVC-->
         <scene sceneID="UkU-MF-4gT">
             <objects>
-                <tableViewController id="Hrw-lZ-UfL" sceneMemberID="viewController">
+                <tableViewController id="Hrw-lZ-UfL" customClass="FEModifyProfileVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="Cr3-fm-9pt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1265,6 +1265,9 @@
                                                     <rect key="frame" x="85" y="10" width="505" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hrw-lZ-UfL" id="kki-iS-O5G"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1295,6 +1298,9 @@
                                                     <rect key="frame" x="85" y="10" width="505" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hrw-lZ-UfL" id="M14-U2-wsx"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1325,6 +1331,9 @@
                                                     <rect key="frame" x="85" y="10" width="505" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hrw-lZ-UfL" id="U5r-az-6fZ"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1355,6 +1364,9 @@
                                                     <rect key="frame" x="85" y="10" width="505" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hrw-lZ-UfL" id="W9n-DV-Hic"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1385,6 +1397,9 @@
                                                     <rect key="frame" x="85" y="10" width="505" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hrw-lZ-UfL" id="Nte-34-kNY"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1415,6 +1430,9 @@
                                                     <rect key="frame" x="85" y="10" width="505" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hrw-lZ-UfL" id="76B-Ve-Agb"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1435,6 +1453,21 @@
                             <outlet property="delegate" destination="Hrw-lZ-UfL" id="Xyd-lT-PgU"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="ZNB-0t-GQt">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="ALf-gL-kHK">
+                            <connections>
+                                <action selector="save:" destination="Hrw-lZ-UfL" id="CgE-Ke-jQn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityRegion" destination="YYH-Hp-BQW" id="wNq-Tn-d4a"/>
+                        <outlet property="birthday" destination="TFH-Th-rjh" id="hx6-gt-QOi"/>
+                        <outlet property="email" destination="kT7-Pk-SN5" id="BrP-lw-Ibg"/>
+                        <outlet property="phone" destination="93R-5J-bYi" id="3lb-99-N3I"/>
+                        <outlet property="realName" destination="iBE-ZG-jik" id="4YH-Nx-hLH"/>
+                        <outlet property="sex" destination="bop-mX-18s" id="FyR-Ew-NZF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPS-RX-yQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2556,7 +2589,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Hrw-lZ-UfL" kind="show" id="9wN-4c-p25"/>
+                                            <segue destination="Hrw-lZ-UfL" kind="show" identifier="modifyProfileSegue" id="9wN-4c-p25"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="45" id="HhI-6Q-qoQ">
