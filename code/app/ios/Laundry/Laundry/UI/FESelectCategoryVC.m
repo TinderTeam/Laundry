@@ -78,8 +78,11 @@
     }
     
     UILabel *priceLabel = (UILabel *)[cell viewWithTag:4];
-    priceLabel.text = [NSString stringWithFormat:@"￥%@",product.price];
-    
+    if ([product.price_type isEqualToString:@"面议"]) {
+        priceLabel.text = [NSString stringWithFormat:@"面议"];
+    }else{
+        priceLabel.text = [NSString stringWithFormat:@"￥%@",product.price];
+    }
     return cell;
 }
 

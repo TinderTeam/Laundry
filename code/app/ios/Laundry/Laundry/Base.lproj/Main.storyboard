@@ -263,20 +263,37 @@
                                             <rect key="frame" x="0.0" y="0.0" width="152" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L1J-t5-Wzd">
+                                                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L1J-t5-Wzd">
                                                     <rect key="frame" x="5" y="5" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="F4U-eA-Q6G"/>
+                                                        <constraint firstAttribute="height" constant="70" id="zBE-Gc-o0N"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checkbox_off" translatesAutoresizingMaskIntoConstraints="NO" id="m2X-yi-oSN">
-                                                    <rect key="frame" x="130" y="0.0" width="20" height="20"/>
+                                                <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkbox_off" translatesAutoresizingMaskIntoConstraints="NO" id="m2X-yi-oSN">
+                                                    <rect key="frame" x="130" y="2" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Uer-Nl-SjX"/>
+                                                        <constraint firstAttribute="width" constant="20" id="psf-w2-k4w"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbN-1G-uRc">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbN-1G-uRc">
                                                     <rect key="frame" x="75" y="22" width="75" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="numberOfLines">
+                                                            <integer key="value" value="0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRR-8m-fC4">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRR-8m-fC4">
                                                     <rect key="frame" x="100" y="60" width="50" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="Td1-B6-YBN"/>
+                                                        <constraint firstAttribute="height" constant="20" id="rkU-MC-aOd"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -285,6 +302,17 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="CRR-8m-fC4" secondAttribute="trailing" constant="2" id="E6p-Sr-T5G"/>
+                                            <constraint firstItem="MbN-1G-uRc" firstAttribute="top" secondItem="m2X-yi-oSN" secondAttribute="bottom" id="GZr-6n-KcZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="CRR-8m-fC4" secondAttribute="bottom" constant="2" id="UJv-wS-4Lh"/>
+                                            <constraint firstItem="m2X-yi-oSN" firstAttribute="top" secondItem="BaA-QK-oVt" secondAttribute="top" constant="2" id="VLH-Hv-aCD"/>
+                                            <constraint firstAttribute="trailing" secondItem="MbN-1G-uRc" secondAttribute="trailing" constant="2" id="Wgk-Hs-hpu"/>
+                                            <constraint firstItem="L1J-t5-Wzd" firstAttribute="top" secondItem="BaA-QK-oVt" secondAttribute="top" constant="5" id="eTf-d5-8kO"/>
+                                            <constraint firstItem="MbN-1G-uRc" firstAttribute="leading" secondItem="L1J-t5-Wzd" secondAttribute="trailing" id="ebu-em-T9D"/>
+                                            <constraint firstAttribute="trailing" secondItem="m2X-yi-oSN" secondAttribute="trailing" constant="2" id="o3b-9f-1aP"/>
+                                            <constraint firstItem="L1J-t5-Wzd" firstAttribute="leading" secondItem="BaA-QK-oVt" secondAttribute="leading" constant="5" id="wTD-hq-6eC"/>
+                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

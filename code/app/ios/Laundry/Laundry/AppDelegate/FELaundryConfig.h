@@ -25,8 +25,10 @@
 
 //login user
 #define kLoginUserKey           @"user"
+#define kUserTokenKey           @"token"
 
 #define kLoginUser              kUserDefaultsObjectForKey(kLoginUserKey)
+#define kUserToken              kUserDefaultsObjectForKey(kUserTokenKey)
 
 #define kNotificationUserDidLogin           @"notificationUserDidLogin"
 #define kNotificationUserDidChange           @"notificationUserDidChange"

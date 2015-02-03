@@ -25,12 +25,14 @@
 #import "FECreateOrderResponse.h"
 #import "FEPopPickerView.h"
 #import "FEPayOnlineVC.h"
+#import "GAAlertObj.h"
 
 #define __KEY_PAY_NAME @"name"
 #define __KEY_PAY_TYPE @"type"
 
 @interface FEOrderSubmitVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,FEPopPickerViewDataSource>{
     NSArray *_dataSource;
+    BOOL _canSelectPayType;
 }
 @property (strong, nonatomic) IBOutlet UILabel *totalValueLabel;
 @property (strong, nonatomic) FEOrderInfo *oinfo;
@@ -54,7 +56,6 @@
     _payType = @[@{__KEY_PAY_NAME:@"在线付款",__KEY_NUMBER:@(1)},@{__KEY_PAY_NAME:@"取衣付款",__KEY_PAY_TYPE:@(2)}];
     FEUser *user = [[FEUser alloc] initWithDictionary:kLoginUser];
     _oinfo.phone = user.user_name;
-    self.oinfo.payType = @"在线付款";
     self.totalPrice = 0;
     self.totalNumber = 0;
      NSArray *products = [FEDataCache sharedInstance].selectProducts;
@@ -86,13 +87,19 @@
 }
 
 -(void)refreshUI{
-//    self.payTypeLabel.text = kString(@"送衣付款");
-//    self.phoneLabel.text = self.oinfo.phone;
-//    self.contactLabel.text = self.oinfo.contact_name;
-//    self.getAdressLabel.text = self.oinfo.take_addr;
-//    self.backAddress.text = self.oinfo.delivery_addr;
     [self.tableView reloadData];
-    self.totalValueLabel.text = [NSString stringWithFormat:@"总量:%ld,共计:%.2f",(long)self.totalNumber,self.totalPrice];
+    NSArray *products = [FEDataCache sharedInstance].selectProducts;
+    NSArray *noPrice = [products filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.price_type == %@",@"面议"]];
+    if (noPrice.count) {
+        self.totalValueLabel.text = [NSString stringWithFormat:@"总量:%ld,共计:面议",(long)self.totalNumber];
+        self.oinfo.payType = @"取衣付款";
+        _canSelectPayType = NO;
+    }else{
+        self.totalValueLabel.text = [NSString stringWithFormat:@"总量:%ld,共计:%.2f",(long)self.totalNumber,self.totalPrice];
+        self.oinfo.payType = @"在线付款";
+        _canSelectPayType = YES;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -197,17 +204,25 @@
 //    }
     NSString *title = _dataSource[indexPath.row];
     if ([title isEqualToString:@"付款方式"]) {
-        FEPopPickerView *pick = [[FEPopPickerView alloc] initFromView:[[AppDelegate sharedDelegate].window viewWithTag:0]];
-        NSInteger index = 0;
-        for (NSDictionary *item in self.payType) {
-            if ([item[__KEY_PAY_NAME] isEqualToString:self.oinfo.payType]) {
-                index = [self.payType indexOfObject:item];
-                break;
+        if (_canSelectPayType) {
+            FEPopPickerView *pick = [[FEPopPickerView alloc] initFromView:[[AppDelegate sharedDelegate].window viewWithTag:0]];
+            NSInteger index = 0;
+            for (NSDictionary *item in self.payType) {
+                if ([item[__KEY_PAY_NAME] isEqualToString:self.oinfo.payType]) {
+                    index = [self.payType indexOfObject:item];
+                    break;
+                }
             }
+            pick.selectIndex = index;
+            pick.dataSource = self;
+            [pick show];
+        }else{
+            GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
+                
+            }];
+            [GAAlertObj showAlertWithTitle:@"提示" message:@"面议不能选择付款方式" actions:@[action] inViewController:self];
         }
-        pick.selectIndex = index;
-        pick.dataSource = self;
-        [pick show];
+        
     }else{
         [self performSegueWithIdentifier:@"inputSegue" sender:indexPath];
     }

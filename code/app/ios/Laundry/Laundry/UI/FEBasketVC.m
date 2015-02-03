@@ -162,12 +162,18 @@
     NSArray *products = [FEDataCache sharedInstance].selectProducts;
     float totalPrice = 0;
     NSInteger totalNumber = 0;
+    NSArray *noPrice = [products filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.price_type == %@",@"面议"]];
     for (FEProduct *product in products) {
         NSInteger number = [[FEDataCache sharedInstance] productNumber:product].integerValue;
         totalNumber += number;
         totalPrice += product.price.floatValue * number;
     }
-    self.totalLabel.text = [NSString stringWithFormat:@"数量:%ld,总价:%.2f",(long)totalNumber,totalPrice];
+    if (noPrice.count) {
+        self.totalLabel.text = [NSString stringWithFormat:@"数量:%ld,总价:面议",(long)totalNumber];
+    }else{
+        self.totalLabel.text = [NSString stringWithFormat:@"数量:%ld,总价:%.2f",(long)totalNumber,totalPrice];
+    }
+    
     if (products.count) {
         self.addButton.hidden = NO;
         self.submitButton.hidden = NO;

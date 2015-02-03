@@ -44,6 +44,8 @@
             FESigninResponse *rsp = response;
             if (!error && rsp.errorCode.integerValue == 0) {
                 kUserDefaultsSetObjectForKey(rsp.user.dictionary, kLoginUserKey);
+                kUserDefaultsSetObjectForKey(rsp.token, kUserTokenKey);
+                kUserDefaultsSync;
                 [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserDidLogin object:rsp.user];
                 [weakself dismissViewControllerAnimated:YES completion:nil];
             }

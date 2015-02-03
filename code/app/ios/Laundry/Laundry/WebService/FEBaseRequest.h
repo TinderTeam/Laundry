@@ -11,7 +11,7 @@
 
 @interface FEBaseRequest : SSObject
 
-@property (nonatomic, strong, readonly) NSNumber *token;
+@property (nonatomic, strong, readonly) NSString *token;
 @property (nonatomic, strong, readonly) NSNumber *app_id;
 @property (nonatomic, strong, readonly) NSString *clientType;
 @property (nonatomic, strong, readonly) NSString *clientVersion;

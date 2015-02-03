@@ -13,7 +13,7 @@
 -(id)initWithMethod:(NSString *)method{
     self = [super init];
     if (self) {
-        _token = @(0);
+        _token = kUserToken;
         _app_id = @(1);
         _clientType = @"IOS";
         _clientVersion = kAppVersion;

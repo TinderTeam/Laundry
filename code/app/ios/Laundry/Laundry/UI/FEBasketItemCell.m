@@ -27,9 +27,15 @@
     _product = product;
     self.priceLabel.text = [NSString stringWithFormat:@"%.2f",(product.price.floatValue * number.integerValue)];
     self.titleLabel.text = product.product_name;
-    self.perPriceLabel.text = [NSString stringWithFormat:@"%@",product.price];
+    if ([product.price_type isEqualToString:@"面议"]) {
+        self.perPriceLabel.text = [NSString stringWithFormat:@"面议"];
+        self.priceLabel.text = [NSString stringWithFormat:@"面议"];
+    }else{
+        self.perPriceLabel.text = [NSString stringWithFormat:@"%@",product.price];
+        self.priceLabel.text = [NSString stringWithFormat:@"%.2f",(product.price.floatValue * number.integerValue)];
+    }
     self.numberTextField.text = number.stringValue;
-    
+
 }
 
 
