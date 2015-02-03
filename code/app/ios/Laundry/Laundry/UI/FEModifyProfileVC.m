@@ -15,6 +15,7 @@
 #import "FEButton.h"
 #import "FEModifyProfileRequest.h"
 #import "FELaundryWebService.h"
+#import "GAAlertObj.h"
 
 @interface FEModifyProfileVC ()<UITextFieldDelegate,FEPopPickerViewDataSource>
 @property (strong, nonatomic) IBOutlet UITextField *realName;
@@ -114,21 +115,33 @@
 - (IBAction)save:(id)sender {
     BOOL isPass = NO;
     if (self.realName.text.length) {
-        if ([[NBPhoneNumberUtil sharedInstance] isViablePhoneNumber:self.phone.text]) {
+        if ([self.phone.text isPhone]) {
             if (self.email.text.length) {
                 if ([self.email.text isEmailType]) {
                     NSLog(@"email");
                     isPass = YES;
                 }else{
                     NSLog(@"email invalue");
+                    GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
+                        
+                    }];
+                    [GAAlertObj showAlertWithTitle:@"提示" message:@"邮箱格式不正确" actions:@[action] inViewController:self];
                 }
             }else{
                 isPass = YES;
             }
         }else{
+            GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
+                
+            }];
+            [GAAlertObj showAlertWithTitle:@"提示" message:@"手机格式不正确" actions:@[action] inViewController:self];
             NSLog(@"phone invalue");
         }
     }else{
+        GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
+            
+        }];
+        [GAAlertObj showAlertWithTitle:@"提示" message:@"真实姓名不能为空！" actions:@[action] inViewController:self];
         NSLog(@"名不能为空");
     }
     if (isPass) {
@@ -145,7 +158,7 @@
         [[FELaundryWebService sharedInstance] request:rdata responseClass:[FEBaseResponse class] response:^(NSError *error, id response) {
             FEBaseResponse *rsp = response;
             if (!error && rsp.errorCode.integerValue == 0) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserDidChange object:self.customer];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserDidChange object:customer];
                 [weakself.navigationController popViewControllerAnimated:YES];
             }
             [weakself hideHUD:YES];

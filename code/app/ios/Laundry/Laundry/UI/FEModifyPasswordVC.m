@@ -30,24 +30,32 @@
 - (IBAction)save:(id)sender {
     FEUser *user = [[FEUser alloc] initWithDictionary:kLoginUser];
     if ([self.oldPassword.text isEqualToString:user.password]) {
-        if (self.newpassword.text.length >= 6 && [self.newpassword.text isEqualToString:self.confirmPassword.text]) {
-            __weak typeof(self) weakself = self;
-            [self displayHUD:@"连接中..."];
-            FEModifyPswRequest *rdata = [[FEModifyPswRequest alloc] initWithUname:user.user_name oldPsw:self.oldPassword.text newPsw:self.newpassword.text];
-            [[FELaundryWebService sharedInstance] request:rdata responseClass:[FEBaseResponse class] response:^(NSError *error, id response) {
-                FEBaseResponse *rsp = response;
-                if (!error && rsp.errorCode.integerValue == 0) {
-                    kUserDefaultsRemoveForKey(kLoginUserKey);
-                    [weakself.navigationController popToRootViewControllerAnimated:YES];
-                }
-                [weakself hideHUD:YES];
-            }];
+        if (self.newpassword.text.length >= 6){
+            if ([self.newpassword.text isEqualToString:self.confirmPassword.text]) {
+                __weak typeof(self) weakself = self;
+                [self displayHUD:@"连接中..."];
+                FEModifyPswRequest *rdata = [[FEModifyPswRequest alloc] initWithUname:user.user_name oldPsw:self.oldPassword.text newPsw:self.newpassword.text];
+                [[FELaundryWebService sharedInstance] request:rdata responseClass:[FEBaseResponse class] response:^(NSError *error, id response) {
+                    FEBaseResponse *rsp = response;
+                    if (!error && rsp.errorCode.integerValue == 0) {
+                        kUserDefaultsRemoveForKey(kLoginUserKey);
+                        [weakself.navigationController popToRootViewControllerAnimated:YES];
+                    }
+                    [weakself hideHUD:YES];
+                }];
+            }else{
+                GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
+                    
+                }];
+                [GAAlertObj showAlertWithTitle:@"提示" message:@"新密码不一致" actions:@[action] inViewController:self];
+            }
         }else{
             GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
                 
             }];
-            [GAAlertObj showAlertWithTitle:@"提示" message:@"输入的密码不一致" actions:@[action] inViewController:self];
+            [GAAlertObj showAlertWithTitle:@"提示" message:@"新密码小于6位" actions:@[action] inViewController:self];
         }
+        
     }else{
         GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
             

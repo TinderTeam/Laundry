@@ -2160,7 +2160,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tKD-a0-xOT">
                                     <rect key="frame" x="0.0" y="150" width="600" height="25"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmQ-hP-KXN">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmQ-hP-KXN">
                                             <rect key="frame" x="110" y="0.0" width="42" height="25"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2203,7 +2203,7 @@
                                     </constraints>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_header" translatesAutoresizingMaskIntoConstraints="NO" id="omt-tw-xJy">
-                                    <rect key="frame" x="20" y="155" width="70" height="70"/>
+                                    <rect key="frame" x="20" y="140" width="70" height="70"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="dMn-Uf-Cz6"/>
                                         <constraint firstAttribute="width" constant="70" id="kNE-Gc-31E"/>
@@ -2214,7 +2214,7 @@
                             <constraints>
                                 <constraint firstItem="tKD-a0-xOT" firstAttribute="leading" secondItem="ing-f8-BJJ" secondAttribute="leading" id="0Or-S9-qpL"/>
                                 <constraint firstItem="IWT-ca-Nz3" firstAttribute="leading" secondItem="ing-f8-BJJ" secondAttribute="leading" id="2o8-Ze-R9h"/>
-                                <constraint firstItem="omt-tw-xJy" firstAttribute="top" secondItem="IWT-ca-Nz3" secondAttribute="bottom" constant="5" id="8BR-WV-5ka"/>
+                                <constraint firstItem="omt-tw-xJy" firstAttribute="top" secondItem="IWT-ca-Nz3" secondAttribute="bottom" constant="-10" id="8BR-WV-5ka"/>
                                 <constraint firstItem="tKD-a0-xOT" firstAttribute="top" secondItem="IWT-ca-Nz3" secondAttribute="bottom" id="C72-9m-PcI"/>
                                 <constraint firstAttribute="trailing" secondItem="tKD-a0-xOT" secondAttribute="trailing" id="CQH-QE-8MQ"/>
                                 <constraint firstItem="JY9-HH-htJ" firstAttribute="leading" secondItem="ing-f8-BJJ" secondAttribute="leading" id="FBV-Za-Wyo"/>

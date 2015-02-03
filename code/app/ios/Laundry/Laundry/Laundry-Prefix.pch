@@ -15,6 +15,7 @@
 #import "FELaundryConfig.h"
 #import "FELaundryDefine.h"
 #import "UIFont+AppFont.h"
-
+#import "NSString+Verify.h"
+#import "UIImage+LogN.h"
 
 #endif

@@ -167,7 +167,7 @@
         totalNumber += number;
         totalPrice += product.price.floatValue * number;
     }
-    self.totalLabel.text = [NSString stringWithFormat:@"总量:%ld,共计:%.2f",(long)totalNumber,totalPrice];
+    self.totalLabel.text = [NSString stringWithFormat:@"数量:%ld,总价:%.2f",(long)totalNumber,totalPrice];
     if (products.count) {
         self.addButton.hidden = NO;
         self.submitButton.hidden = NO;

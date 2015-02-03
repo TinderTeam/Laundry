@@ -11,5 +11,6 @@
 @interface NSString (Verify)
 
 -(BOOL)isEmailType;
+-(BOOL)isPhone;
 
 @end

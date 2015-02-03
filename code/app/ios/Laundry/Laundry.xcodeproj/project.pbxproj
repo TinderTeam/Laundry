@@ -22,6 +22,7 @@
 		1418A1B21A68A2F600886FDA /* FEOrderCreateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1B11A68A2F600886FDA /* FEOrderCreateResponse.m */; };
 		1418A1B51A68A32F00886FDA /* FEOrderDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1B41A68A32F00886FDA /* FEOrderDetail.m */; };
 		1418A1B81A68B7BF00886FDA /* FECustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1418A1B71A68B7BF00886FDA /* FECustomSegue.m */; };
+		1423F5D11A80A35700625A53 /* ErrorCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1423F5D01A80A35700625A53 /* ErrorCode.plist */; };
 		144350131A663EA2002BB228 /* FETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350121A663EA2002BB228 /* FETableViewController.m */; };
 		144350161A663EC1002BB228 /* FEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350151A663EC1002BB228 /* FEViewController.m */; };
 		144350191A663FA0002BB228 /* FENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144350181A663FA0002BB228 /* FENavigationController.m */; };
@@ -149,6 +150,7 @@
 		1418A1B41A68A32F00886FDA /* FEOrderDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderDetail.m; sourceTree = "<group>"; };
 		1418A1B61A68B7BF00886FDA /* FECustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FECustomSegue.h; sourceTree = "<group>"; };
 		1418A1B71A68B7BF00886FDA /* FECustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FECustomSegue.m; sourceTree = "<group>"; };
+		1423F5D01A80A35700625A53 /* ErrorCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ErrorCode.plist; sourceTree = "<group>"; };
 		144350111A663EA2002BB228 /* FETableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FETableViewController.h; sourceTree = "<group>"; };
 		144350121A663EA2002BB228 /* FETableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FETableViewController.m; sourceTree = "<group>"; };
 		144350141A663EC1002BB228 /* FEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEViewController.h; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 		14469E661A65F9DC00515685 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1423F5D01A80A35700625A53 /* ErrorCode.plist */,
 				14469E671A65F9DC00515685 /* Info.plist */,
 				14469E681A65F9DC00515685 /* main.m */,
 				1443502B1A66433F002BB228 /* Laundry-Prefix.pch */,
@@ -816,6 +819,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1423F5D11A80A35700625A53 /* ErrorCode.plist in Resources */,
 				14469E751A65F9DC00515685 /* Main.storyboard in Resources */,
 				14469E7A1A65F9DC00515685 /* LaunchScreen.xib in Resources */,
 				14950D661A7917E2001416A7 /* AlipaySDK.bundle in Resources */,
