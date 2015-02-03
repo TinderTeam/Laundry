@@ -19,6 +19,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusable="true" 
+android:focusableInTouchMode="true" 
             android:orientation="vertical" >
 
             <LinearLayout
@@ -107,7 +109,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_sel"
-                    android:hint="选填项"
+                    android:hint="(选填项)"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/content_font_size_sm" />
@@ -138,7 +140,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_sel"
-                    android:hint="必填项"
+                    android:hint="(必填项)"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/content_font_size_sm" />
@@ -170,7 +172,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_sel"
-                    android:hint="选填项"
+                    android:hint="(选填项)"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/content_font_size_sm" />
@@ -203,7 +205,7 @@
                     android:background="@drawable/edittext_sel"
                     android:ems="10"
                     android:gravity="center_vertical"
-                    android:hint="选填项"
+                    android:hint="(选填项)"
                     android:lines="2"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
@@ -211,8 +213,7 @@
                     android:paddingBottom="2dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/content_font_size_sm" >
-
-                    <requestFocus />
+  
                 </EditText>
 
                 <LinearLayout
@@ -229,8 +230,6 @@
                         android:layout_weight="1"
                         android:background="@color/blue_light"
                         android:drawableRight="@drawable/icon_gps"
-                        android:focusable="false"
-                        android:focusableInTouchMode="true"
                         android:padding="5dp"
                         android:text="定位"
                         android:textColor="@color/white"

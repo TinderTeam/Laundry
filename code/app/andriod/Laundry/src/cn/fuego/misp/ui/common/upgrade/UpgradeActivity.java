@@ -7,8 +7,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -57,6 +57,14 @@ public class UpgradeActivity extends MispBaseActivtiy
 		newVerInfo = (ClientVersionJson) intent.getSerializableExtra(CLIENT_INFO);
 		
 	}
+	
+	public static void jump(Activity activity,ClientVersionJson clientVersion)
+	{
+		Intent intent = new Intent(activity,UpgradeActivity.class);
+		intent.putExtra(UpgradeActivity.CLIENT_INFO, clientVersion);
+
+		activity.startActivity(intent);
+	}
  
  
 	
@@ -90,19 +98,28 @@ public class UpgradeActivity extends MispBaseActivtiy
 	     }
 		
 	}
-	private void checkVersion()
+	
+	public static boolean isNewVision(ClientVersionJson version)
 	{
         int vercode = MemoryCache.getVersionCode();
-        if (null != newVerInfo && newVerInfo.getVersion_code() > vercode) 
+        if (null != version && version.getVersion_code() > vercode) 
         {  
+        	return true;
+        }
+        return false;
+	}
+	private void checkVersion()
+	{
+         if(isNewVision(newVerInfo))
+        {
         	log.info("there is a new version");
         }
         else
-        {  
+        {
     		this.getButtonByID(MispCommonIDName.misp_upgrade_version_btn).setEnabled(false);
     		this.getButtonByID(MispCommonIDName.misp_upgrade_version_btn).setText("当前是最新版本");
-        }  
-	}
+        }
+  	}
 
  
  

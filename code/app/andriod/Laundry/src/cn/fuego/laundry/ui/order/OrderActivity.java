@@ -57,6 +57,10 @@ public class OrderActivity extends MispInfoListActivity
 
 	
 	private TextView tatolPriceView;
+	
+	public static final int REQUEST_CODE_EDIT_ADDR = 1;
+	public static final int REQUEST_CODE_EDIT_TEXT = 2;
+	public static final int REQUEST_CODE_EDIT_PAY = 3;
 
 	
 	
@@ -142,47 +146,48 @@ public class OrderActivity extends MispInfoListActivity
 			
 			if(TAKE_ADDR.equals(title))
 			{
-				data.setDataRule(ValidatorRules.isLenght(0, 50));
-				data.setErrorMsg("长度不能大于50");
+				data.getRuleMap().put(ValidatorRules.isLenght(0, 50), "长度不能大于50");
+ 
 				data.setPointOut("您可以使用LBS定位获取地址或手动填写地址！");
-				AddrEditActivity.jump(this, data, 1);
+				AddrEditActivity.jump(this, data, REQUEST_CODE_EDIT_ADDR);
 
 			}
 			else if(SEND_ADDR.equals(title))
 			{
-				data.setDataRule(ValidatorRules.isLenght(0, 50));
-				data.setErrorMsg("长度不能大于50");
+				data.getRuleMap().put(ValidatorRules.isLenght(0, 50), "长度不能大于50");
+
 				data.setPointOut("您可以使用LBS定位获取地址或手动填写地址！");
 
-				AddrEditActivity.jump(this, data, 1);
+				AddrEditActivity.jump(this, data, REQUEST_CODE_EDIT_ADDR);
 
 			}
 			else if(CONTACT_NAME.equals(title))
 			{
-				data.setDataRule(ValidatorRules.isLenght(0, 10));
-				data.setErrorMsg("长度不能大于10");
+				data.getRuleMap().put(ValidatorRules.isLenght(0, 10), "长度不能大于10");
+ 
 				data.setPointOut("请填写您的真实姓名，方便我们更好的服务于您！");
 
-				MispTextEditActivity.jump(this, data, 1);
+				MispTextEditActivity.jump(this, data, REQUEST_CODE_EDIT_TEXT);
  
 			}
 			else if(CONTACT_PHONE.equals(title))
 			{
-				data.setDataRule(ValidatorRules.isPhone());
-				data.setErrorMsg("电话格式不正确");
+				data.getRuleMap().put(ValidatorRules.isEmpty(),"电话不能空");
+				data.getRuleMap().put(ValidatorRules.isPhone(),"电话格式不正确");
+ 
 				data.setPointOut("请填写您的联系电话！\n手机格式:1**********\n座机格式:0***-******");
 
 
-				MispTextEditActivity.jump(this, data, 1);
+				MispTextEditActivity.jump(this, data, REQUEST_CODE_EDIT_TEXT);
 
 			}
 			else if(NOTE.equals(title))
 			{
-				data.setDataRule(ValidatorRules.isLenght(0, 200));
-				data.setErrorMsg("长度不能大于200");
+				data.getRuleMap().put(ValidatorRules.isLenght(0, 200), "长度不能大于200");
+ 
 				data.setPointOut("您可填写详细地址及其他要求,或静候工作人员与您取得联系,敬请保持手机畅通！");
 
-				MispTextEditActivity.jump(this, data, 1);
+				MispTextEditActivity.jump(this, data, REQUEST_CODE_EDIT_TEXT);
 
 			}
 			else if(PAY_OPTION.equals(title))
@@ -384,28 +389,27 @@ public class OrderActivity extends MispInfoListActivity
 				parameter.setSeller(company.getAlipay_seller());
 				parameter.setPartner(company.getAlipay_partner());
 				parameter.setRsa_private(company.getAlipay_private_key());
-				MispPayActivity.jump(this, parameter);
+				MispPayActivity.jump(this, parameter,REQUEST_CODE_EDIT_PAY);
 
 			}
 			else
 			{
 				
 				showMessage("订单提交成功，支付异常");
-				finish();
+				
+				OrderListActivity.jump(this,1);
+				this.finish();
 			}
+ 
 			
 		}
 		else
 		{
-	 		Intent intent = new Intent();
-	 		intent.setClass(this, MainTabbarActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(HomeFragment.class));
-	        startActivity(intent);
-	        this.finish();
+			OrderListActivity.jump(this,1);
+			this.finish();
 		}
-        CartProduct.getInstance().clearCart();
 
+        CartProduct.getInstance().clearCart();
 
 	}
 
@@ -415,7 +419,7 @@ public class OrderActivity extends MispInfoListActivity
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 
-		if(1==requestCode)
+		if(REQUEST_CODE_EDIT_ADDR==requestCode ||REQUEST_CODE_EDIT_TEXT == requestCode)
 		{
 			if(null != data)
 			{
@@ -458,9 +462,11 @@ public class OrderActivity extends MispInfoListActivity
 			this.refreshList(this.getBtnData());
 
 		}
-		else if(2 == requestCode)
+		else if(REQUEST_CODE_EDIT_PAY == requestCode)
 		{
-			
+			OrderListActivity.jump(this,1);
+
+			this.finish();
 		}
  
 	}

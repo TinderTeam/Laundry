@@ -153,6 +153,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
  
 			bottom1.setVisibility(View.GONE);
 			bottom2.setVisibility(View.VISIBLE);
+			this.getDataList().clear();
 			repaint();
 
 		}
@@ -177,7 +178,14 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		return null;
 	}
 
-
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		refreshView(); 
+		 
+	}
 	@Override
 	public void onClick(View v)
 	{
@@ -193,30 +201,28 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 					CartProduct.getInstance().getOrderInfo().getOrder().setOrder_type(OrderTypeEnum.NORMAL_ORDER.getStrValue());
 
 					intent = new Intent(this.getActivity(),OrderActivity.class);
+					startActivityForResult(intent, 1);		
+
 				}
 				else
 				{
-					intent = new Intent(this.getActivity(),LoginActivity.class);
-					intent.putExtra(LoginActivity.JUMP_SOURCE, this.getClass());
-	
-					log.warn("have not login when create order");
+					LoginActivity.jump(this.getActivity(), 1);
 				}
-				this.startActivity(intent);
 			}
 				break;
 			case R.id.cart_to_product:
 			{
                 Intent intent = new Intent(getActivity(),HomeProductActivity.class);
 				
-  				startActivity(intent);
+  				startActivityForResult(intent, 1);
 			}
 			break;
 			case R.id.cart_to_product1:
 			{
                 Intent intent = new Intent(getActivity(),HomeProductActivity.class);
 				
-  				startActivity(intent);
-			}
+                startActivityForResult(intent, 1);		
+            }
 			break;
 
 		default:

@@ -31,12 +31,19 @@ public class UserRegisterActivity extends MispHttpActivtiy
 	private TextView verifyCodeView;
 	private TextView phoneNumView;
 	private TextView passwordView;
-	private int validTime = 60;
+	
+	public static final int SEND_CYCLE_TIME = 60;
+	
+	//public static final int VALID
+	
+	private int validTime = SEND_CYCLE_TIME;
 	
 	public static final String OPERTATE_NAME = "operate";
 	public static final int REGISTER = 0;
 	public static final int FIND_PWD = 1;
 	private  int operate = 0;
+	
+	private long lastCodeTime = 0;
 
 	@Override
 	public void initRes()
@@ -118,6 +125,11 @@ public class UserRegisterActivity extends MispHttpActivtiy
 				this.showMessage(MISPErrorMessageConst.ERROR_PASSWORD_IS_EMPTY);
 				return;
 			}
+			if(password.length()<6)
+			{
+				this.showMessage("密码长度应该大于6");
+				return;
+			}
 			UserRegisterReq req = new UserRegisterReq();
 			req.setUser_name(phoneNum);
 			req.setPassword(password);
@@ -157,6 +169,7 @@ public class UserRegisterActivity extends MispHttpActivtiy
 				{
 					SendVerifyCodeRsp rsp  = (SendVerifyCodeRsp) message.getMessage().obj;
 					verifyCode = rsp.getObj();
+					lastCodeTime = System.currentTimeMillis();
 					startVerifyTimer();
 
 				} else
@@ -173,7 +186,7 @@ public class UserRegisterActivity extends MispHttpActivtiy
 	
 	private void startVerifyTimer()
 	{
-		validTime = 60;
+		validTime = SEND_CYCLE_TIME;
 		verifyCodeBtn.setEnabled(false);
 		timer = new Timer();
 		timer.schedule(new TimerTask()
@@ -198,6 +211,11 @@ public class UserRegisterActivity extends MispHttpActivtiy
 		{
 			return false;
 		}
+		long nowTime = System.currentTimeMillis();
+		if((nowTime - lastCodeTime)>10*60*1000)
+		{
+			return false;
+		}
 		return true;
 	}
 	private Handler handler = new Handler()
@@ -208,11 +226,11 @@ public class UserRegisterActivity extends MispHttpActivtiy
 			{
 				verifyCodeBtn.setEnabled(true);
 				verifyCodeBtn.setText("获取验证码");
-				verifyCode = null;
+				//verifyCode = null;
 				timer.cancel();
 			} else
 			{
-				verifyCodeBtn.setText(msg.what + "秒");
+ 				verifyCodeBtn.setText(msg.what+"秒");
 			}
 		};
 	};

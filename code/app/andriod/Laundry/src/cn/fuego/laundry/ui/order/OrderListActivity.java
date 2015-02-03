@@ -3,6 +3,7 @@ package cn.fuego.laundry.ui.order;
 import java.io.Serializable;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,7 +12,9 @@ import android.widget.TextView;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.ui.LoginActivity;
+import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.cart.CartProduct;
+import cn.fuego.laundry.ui.user.UserFragment;
 import cn.fuego.laundry.webservice.up.model.GetOrderListReq;
 import cn.fuego.laundry.webservice.up.model.GetOrderListRsp;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
@@ -25,6 +28,23 @@ import cn.fuego.misp.ui.util.LoadImageUtil;
 
 public class OrderListActivity extends MispListActivity<OrderJson>
 {
+	
+	
+	@Override
+	public void backOnClick()
+	{
+		// TODO Auto-generated method stub
+		super.backOnClick();
+		MainTabbarActivity.jump(this, UserFragment.class, 1);
+		
+	}
+
+	public static void jump(Activity activity,int code)
+	{
+ 		Intent intent = new Intent();
+ 		intent.setClass(activity, OrderListActivity.class);
+  		activity.startActivityForResult(intent,code);
+  	}
 
 	@Override
 	public void initRes()

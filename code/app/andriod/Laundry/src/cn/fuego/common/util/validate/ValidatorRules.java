@@ -12,7 +12,8 @@ public class ValidatorRules
 	
 	public static String isEmpty()
 	{
-		return "";
+		String rule =FUEGO_RULE_LENGTH+1+","+Integer.MAX_VALUE;
+		return rule;
 	}
 	
 	public static String isLenght(int minLenght,int maxLength)

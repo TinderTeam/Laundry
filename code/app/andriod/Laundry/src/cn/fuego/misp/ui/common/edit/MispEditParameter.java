@@ -1,7 +1,8 @@
 package cn.fuego.misp.ui.common.edit;
 
 import java.io.Serializable;
-import java.util.regex.Pattern;
+import java.util.HashMap;
+import java.util.Map;
 
 import cn.fuego.common.util.validate.ValidatorRules;
 import cn.fuego.common.util.validate.ValidatorUtil;
@@ -13,16 +14,39 @@ public class MispEditParameter implements Serializable
 	private String dataKey;
 	private String dataValue;
 	private String dataType;
-	private String dataRule;
-	private String errorMsg;
 	
+	private Map<String,String> ruleMap = new HashMap<String,String>();
+ 	private String errorMsg;
+	
+	
+	public Map<String, String> getRuleMap()
+	{
+		return ruleMap;
+	}
+	public void setRuleMap(Map<String, String> ruleMap)
+	{
+		this.ruleMap = ruleMap;
+	}
 	public boolean isValid(String value)
 	{
-		if(ValidatorUtil.isEmpty(dataRule))
+		if(null == ruleMap || ruleMap.isEmpty())
 		{
 			return true;
 		}
-		return ValidatorRules.isValid(dataRule, value);
+		
+		for(String key:ruleMap.keySet())
+		{
+			if(!ValidatorUtil.isEmpty(key))
+			{
+				if(!ValidatorRules.isValid(key, value))
+				{
+					this.errorMsg = ruleMap.get(key);
+					return false;
+				}
+ 			}
+		}
+
+		return true;
  	}
 	public String getTilteName()
 	{
@@ -64,22 +88,12 @@ public class MispEditParameter implements Serializable
 	{
 		this.dataType = dataType;
 	}
-	public String getDataRule()
-	{
-		return dataRule;
-	}
-	public void setDataRule(String dataRule)
-	{
-		this.dataRule = dataRule;
-	}
+ 
 	public String getErrorMsg()
 	{
 		return errorMsg;
 	}
-	public void setErrorMsg(String errorMsg)
-	{
-		this.errorMsg = errorMsg;
-	}
+ 
 	
 
 }

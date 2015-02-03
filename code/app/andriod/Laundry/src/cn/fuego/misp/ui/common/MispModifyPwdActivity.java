@@ -5,10 +5,11 @@ import android.widget.TextView;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.base.BaseActivtiy;
+import cn.fuego.laundry.ui.user.UserFragment;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
-import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.webservice.up.model.ModifyPwdReq;
 
@@ -18,11 +19,19 @@ public class MispModifyPwdActivity extends BaseActivtiy
 	@Override
 	public void handle(MispHttpMessage message)
 	{
-		super.showMessage(message);
 		if(message.isSuccess())
 		{
 			this.finish();
+			AppCache.getInstance().clear();
+			super.showMessage("密码修改成功，请重新登录");
+			LoginActivity.jump(this,UserFragment.class,1);
 		}
+		else
+		{
+			super.showMessage(message);
+
+		}
+
 		
 		
 	}
@@ -53,6 +62,12 @@ public class MispModifyPwdActivity extends BaseActivtiy
 		{
 		    super.showMessage(MISPErrorMessageConst.ERROR_PASSWORD_IS_EMPTY);
 		    return ;
+		}
+		
+		if(newPwd.length()<6)
+		{
+			this.showMessage("新密码长度应该大于6");
+			return;
 		}
 		if(!newPwd.equals(confirm))
 		{		    

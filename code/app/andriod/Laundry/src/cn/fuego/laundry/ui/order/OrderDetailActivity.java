@@ -209,7 +209,7 @@ public class OrderDetailActivity extends MispInfoListActivity
 				parameter.setSeller(company.getAlipay_seller());
 				parameter.setPartner(company.getAlipay_partner());
 				parameter.setRsa_private(company.getAlipay_private_key());
-				MispPayActivity.jump(this, parameter);
+				MispPayActivity.jump(this, parameter,1);
 
 			}
 			else

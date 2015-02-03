@@ -169,10 +169,8 @@ public class MoreFragment extends MispInfoListFragment
 				if(message.isSuccess())
 				{
 					GetClientVersionRsp rsp = (GetClientVersionRsp) message.getMessage().obj;
-					Intent intent = new Intent(getActivity(),UpgradeActivity.class);
-					intent.putExtra(UpgradeActivity.CLIENT_INFO, (Serializable) rsp.getObj());
-
-					startActivity(intent);
+					UpgradeActivity.jump(MoreFragment.this.getActivity(), rsp.getObj());
+ 
 				}
 				else
 				{

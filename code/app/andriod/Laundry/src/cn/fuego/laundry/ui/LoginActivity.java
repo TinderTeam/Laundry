@@ -57,6 +57,13 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 		
 	}
 	
+	public static void jump(Activity activity,Class clazz,int code)
+	{
+		Intent intent = new Intent(activity,LoginActivity.class);
+		intent.putExtra(LoginActivity.JUMP_SOURCE, clazz);
+		activity.startActivity(intent);
+	}
+	
 	public static void jump(Activity activity,int code)
 	{
  		Intent intent = new Intent();
@@ -234,11 +241,8 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 		
 		if(null != clazz)
 		{
-			Intent intent = new Intent(this,MainTabbarActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-			intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(clazz));
-			this.startActivity(intent);
+			MainTabbarActivity.jump(this, clazz, 1);
+ 
 		}
 		
 

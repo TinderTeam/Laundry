@@ -33,10 +33,21 @@ public class AppCache
 	public static final String CUSTOMER_CACHE="customer";
 	public static final String TOKEN_CACHE="token";
 	
+	private boolean started = false;
 
 	
 	
  
+
+	public boolean isStarted()
+	{
+		return started;
+	}
+
+	public void setStarted(boolean started)
+	{
+		this.started = started;
+	}
 
 	public CompanyJson getCompany()
 	{
@@ -87,6 +98,7 @@ public class AppCache
 	{
 		this.customer = customer;
 		SharedPreUtil.getInstance().put(CUSTOMER_CACHE, customer);
+		load();
 
 	}
 	public void update(String token,UserJson user,CustomerJson customer)

@@ -138,7 +138,7 @@ public class MispPopListWindow
             @Override  
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id)
             {
-            	view.getBackground().setAlpha(40);
+            	//view.getBackground().setAlpha(40);
                 fatherAdapter.setSelectedPosition(position);
                 fatherAdapter.notifyDataSetInvalidated();
             	listener.onConfirmClick((String)fatherAdapter.getItem(position));

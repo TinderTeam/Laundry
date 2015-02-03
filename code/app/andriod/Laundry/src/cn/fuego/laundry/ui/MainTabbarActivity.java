@@ -1,5 +1,6 @@
 package cn.fuego.laundry.ui;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.ui.base.ExitApplication;
+import cn.fuego.laundry.ui.user.UserFragment;
 import cn.fuego.misp.ui.base.MispBaseFragment;
 import cn.fuego.misp.ui.model.FragmentResInfo;
 
@@ -36,6 +38,17 @@ public class MainTabbarActivity extends FragmentActivity
     //定义一个布局  
     private LayoutInflater layoutInflater;  
   
+	public static void jump(Activity activity,Class clazz,int code)
+	{
+		Intent intent = new Intent();
+
+		intent.setClass(activity, MainTabbarActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+		intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(clazz));
+		activity.startActivityForResult(intent, code);
+	}
+
           
     public void onCreate(Bundle savedInstanceState) {  
         super.onCreate(savedInstanceState);  

@@ -19,10 +19,11 @@
                 android:background="@drawable/btn_light_blue"
                 android:gravity="center"
                 android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:paddingTop="5dp"
                 android:text="订单信息"
+                android:textSize="14dp"
                 android:textColor="@color/white" />
 
             <RelativeLayout

@@ -36,12 +36,12 @@ public class MispPayActivity extends MispBaseActivtiy
 	private TextView despView;
 	private TextView priceView;
 
-	public static void jump(Activity activity,MispPayParameter parameter)
+	public static void jump(Activity activity,MispPayParameter parameter,int requestCode)
 	{
- 		Intent i = new Intent();
-		i.setClass(activity, MispPayActivity.class);
-		i.putExtra(PAY_PARAMETER, parameter);
-		activity.startActivity(i);
+ 		Intent intent = new Intent();
+ 		intent.setClass(activity, MispPayActivity.class);
+ 		intent.putExtra(PAY_PARAMETER, parameter);
+		activity.startActivityForResult(intent, requestCode);
 
   	}
 	

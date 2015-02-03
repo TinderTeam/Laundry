@@ -6,16 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.MainTabbarActivity;
-import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.base.BaseFragment;
 import cn.fuego.laundry.ui.loader.CustomerLoader;
-import cn.fuego.laundry.ui.order.OrderDetailActivity;
 import cn.fuego.laundry.ui.order.OrderListActivity;
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
@@ -23,7 +20,6 @@ import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.webservice.up.model.LoginReq;
-import cn.fuego.misp.webservice.up.model.base.UserJson;
 
 public class UserFragment extends BaseFragment implements OnClickListener
 {
@@ -73,18 +69,22 @@ public class UserFragment extends BaseFragment implements OnClickListener
 
 	private void initView(View rootView)
 	{
-		TextView nickName = (TextView) rootView.findViewById(R.id.user_nickname_txt);
-		TextView phoneView = (TextView) rootView.findViewById(R.id.user_phone_txt);
-		TextView sexView = (TextView) rootView.findViewById(R.id.user_sex_txt);
-
-		CustomerJson customer = AppCache.getInstance().getCustomer();
-
-		if(null != customer)
+		if(null != rootView)
 		{
-			nickName.setText(customer.getCustomer_name());
-			phoneView.setText(customer.getPhone());
-			sexView.setText(customer.getCustomer_sex());
+			TextView nickName = (TextView) rootView.findViewById(R.id.user_nickname_txt);
+			TextView phoneView = (TextView) rootView.findViewById(R.id.user_phone_txt);
+			TextView sexView = (TextView) rootView.findViewById(R.id.user_sex_txt);
+
+			CustomerJson customer = AppCache.getInstance().getCustomer();
+
+			if(null != customer)
+			{
+				nickName.setText(customer.getCustomer_name());
+				phoneView.setText(customer.getPhone());
+				sexView.setText(customer.getCustomer_sex());
+			}
 		}
+
 	}
 
 	@Override
@@ -152,18 +152,15 @@ public class UserFragment extends BaseFragment implements OnClickListener
 			break;
 		case R.id.user_btn_logout:
 			{	
-				Intent intent = new Intent();
 
 				LoginReq req = new LoginReq();
 				req.setObj(AppCache.getInstance().getUser());
 				WebServiceContext.getInstance().getUserManageRest(this).logout(req);
 	
 				AppCache.getInstance().clear();
-				intent.setClass(this.getActivity(), MainTabbarActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-	
-				intent.putExtra(MainTabbarActivity.SELECTED_TAB, MainTabbarInfo.getIndexByClass(UserFragment.class));
-				startActivity(intent);
+				
+				MainTabbarActivity.jump(this.getActivity(),UserFragment.class,1);
+ 
 
 			}
 		}

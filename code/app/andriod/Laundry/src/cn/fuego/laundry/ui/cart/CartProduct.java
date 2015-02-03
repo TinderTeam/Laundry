@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.content.Intent;
+
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.OrderTypeEnum;
@@ -219,6 +221,6 @@ public class CartProduct
  		}
 		return PriceTypeEnum.FIX_PRICE.getStrValue();
 	}
-	
+
 
 }

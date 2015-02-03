@@ -32,6 +32,7 @@ import cn.fuego.laundry.constant.UIDimenConstant;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.base.BaseFragment;
 import cn.fuego.laundry.ui.cart.CartProduct;
+import cn.fuego.laundry.ui.more.MoreFragment;
 import cn.fuego.laundry.ui.order.OrderActivity;
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.GetADReq;
@@ -41,14 +42,19 @@ import cn.fuego.laundry.webservice.up.model.base.ProductTypeJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.MemoryCache;
+import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.tool.MispLocationListener;
 import cn.fuego.misp.ui.base.MispGridView;
 import cn.fuego.misp.ui.common.MispImageActivity;
+import cn.fuego.misp.ui.common.upgrade.UpgradeActivity;
 import cn.fuego.misp.ui.grid.MispGridViewAdapter;
 import cn.fuego.misp.ui.model.ImageDisplayInfo;
 import cn.fuego.misp.ui.model.MispGridDataModel;
 import cn.fuego.misp.ui.util.LoadImageUtil;
+import cn.fuego.misp.webservice.up.model.GetClientVersionReq;
+import cn.fuego.misp.webservice.up.model.GetClientVersionRsp;
+import cn.fuego.misp.webservice.up.model.base.ClientVersionJson;
 import cn.fuego.misp.webservice.up.model.base.CompanyJson;
 
 import com.baidu.location.BDLocationListener;
@@ -119,6 +125,14 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		 {
 			 gridViewLayout.getLayoutParams().height = gridHeight;//
 		 }
+		 
+		 //check version
+		 if(!AppCache.getInstance().isStarted())
+		 {
+			 AppCache.getInstance().setStarted(true);
+			 updateVersion();	 
+		 }
+		 
 		 
 		
 		return rootView;
@@ -309,6 +323,59 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 				})
                 .setNegativeButton("取消", null)
                 .show();  
+	}
+	
+	private void updateVersion()
+	{
+		GetClientVersionReq req = new GetClientVersionReq();
+		WebServiceContext.getInstance().getSystemManageRest(new MispHttpHandler()
+		{
+
+			@Override
+			public void handle(MispHttpMessage message)
+			{
+				if(message.isSuccess())
+				{
+					GetClientVersionRsp rsp = (GetClientVersionRsp) message.getMessage().obj;
+					checkVersion(rsp.getObj());
+
+ 
+				}
+				else
+				{
+					showMessage(message);
+				}
+				
+			}
+			
+			
+		}).getAppVersion(req);
+
+	}
+	
+	private void checkVersion(final ClientVersionJson version)
+	{
+		if(UpgradeActivity.isNewVision(version))
+		{
+	 		new AlertDialog.Builder(this.getActivity())    
+	        .setTitle("版本更新").setMessage("发现新版本，是否要更新") 
+	                .setPositiveButton("确定", new DialogInterface.OnClickListener()
+					{
+
+						@Override
+						public void onClick(DialogInterface dialog, int which)
+						{
+							 
+							UpgradeActivity.jump(HomeFragment.this.getActivity(), version);
+							
+						}
+						
+						 
+					})
+	                .setNegativeButton("取消", null)
+	                .show();
+		}
+
 	}
 
 	  
