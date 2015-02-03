@@ -14,6 +14,7 @@
 
 @optional
 -(void)orderDidDelete:(FEOrder *)order;
+-(void)orderShouldRefresh:(FEOrder *)order;
 
 @end
 

@@ -37,7 +37,9 @@
     self.gpsLocationButton.hidden = YES;
     self.defaultLocationButton.hidden = YES;
     self.inputTextView.delegate = self;
+    [self.gpsLocationButton setBackgroundImage:[UIImage imageFromColor:kColor(72, 184, 5, 1.0)] forState:UIControlStateNormal];
     [self configUI];
+    [self refreshLimit];
     
 }
 
@@ -52,6 +54,11 @@
 }
 
 -(void)textDidChange:(NSNotification *)note{
+    self.limitLabel.text = [NSString stringWithFormat:@"%ld/%ld",(long)
+                            self.inputTextView.text.length,(long)_inputLenth];
+}
+
+-(void)refreshLimit{
     self.limitLabel.text = [NSString stringWithFormat:@"%ld/%ld",(long)
                             self.inputTextView.text.length,(long)_inputLenth];
 }
@@ -94,7 +101,7 @@
         self.title = @"联系电话";
     }else if([self.typeName isEqualToString:@"您的要求"]){
         self.title = @"您的要求";
-        self.inputTextView.text = self.orderInfo.remark;
+        self.inputTextView.text = self.orderInfo.order_note;
     }
 }
 - (IBAction)saveInfo:(id)sender {
@@ -117,7 +124,7 @@
         }
         
     }else if([self.typeName isEqualToString:@"您的要求"]){
-        self.orderInfo.remark = self.inputTextView.text;
+        self.orderInfo.order_note = self.inputTextView.text;
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

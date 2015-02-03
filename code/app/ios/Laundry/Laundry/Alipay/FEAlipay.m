@@ -55,7 +55,7 @@
     order.productDescription = @"洗衣在线支付"; //商品描述
 //    order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
     order.amount = [NSString stringWithFormat:@"%.2f",forder.total_price.floatValue]; //商品价格
-//    order.notifyURL =  @"http://www.xxx.com"; //回调URL
+    order.notifyURL =  kAliPayURL; //回调URL
     
     order.service = @"mobile.securitypay.pay";
     order.paymentType = @"1";

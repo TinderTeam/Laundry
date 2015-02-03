@@ -68,7 +68,7 @@
     label.text = product.product_name;
     
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:2];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:kImageURL(product.img)] placeholderImage:[UIImage imageNamed:@"loading_small_image"]];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:kImageURL(product.img)]];
     
     UIImageView *checkImageView = (UIImageView *)[cell viewWithTag:3];
     if ([self.selectProduct containsObject:self.productList[indexPath.row]]) {

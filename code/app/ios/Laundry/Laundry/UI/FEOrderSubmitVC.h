@@ -10,4 +10,6 @@
 
 @interface FEOrderSubmitVC : FEViewController
 
+@property (nonatomic, strong) NSString *orderType;
+
 @end

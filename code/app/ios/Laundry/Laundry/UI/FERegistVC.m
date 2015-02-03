@@ -12,6 +12,7 @@
 #import "FEVerifyCodeRequest.h"
 #import "FEVerifyCodeResponse.h"
 #import "FERegistResquest.h"
+#import "GAAlertObj.h"
 
 @interface FERegistVC ()
 @property (strong, nonatomic) IBOutlet UIButton *getCodeButton;
@@ -36,8 +37,13 @@
 }
 
 - (IBAction)getCodeAction:(id)sender {
-    if (self.phoneTextFeild.text.length) {
+    if ([self.phoneTextFeild.text isPhone]) {
         [self requestGetCode];
+    }else{
+        GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
+            
+        }];
+        [GAAlertObj showAlertWithTitle:@"提示" message:@"请输入正确的手机号码" actions:@[action] inViewController:self];
     }
 }
 - (IBAction)registAction:(id)sender {

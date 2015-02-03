@@ -12,6 +12,7 @@
 #import "FELaundryWebService.h"
 #import "FEGetCustomerResponse.h"
 #import "FEModifyProfileVC.h"
+#import "FEDataCache.h"
 
 @interface FEMyInfoTableVC ()
 @property (strong, nonatomic) IBOutlet UILabel *ulabel;
@@ -74,6 +75,15 @@
         if (!error && rsp.errorCode.integerValue == 0) {
             weakself.customer = rsp.obj;
             [weakself refreshUI];
+        }else if(rsp.errorCode.integerValue == 10){
+            kUserDefaultsRemoveForKey(kLoginUserKey);
+            kUserDefaultsRemoveForKey(kCustomerKey);
+            kUserDefaultsSync;
+            [FEDataCache sharedInstance].user = nil;
+            [FEDataCache sharedInstance].customer = nil;
+            
+            [weakself.navigationController popToRootViewControllerAnimated:YES];
+            
         }
     }];
 }

@@ -26,6 +26,8 @@
 #import "FEPopPickerView.h"
 #import "FEPayOnlineVC.h"
 #import "GAAlertObj.h"
+#import "FEBasketVC.h"
+#import "FEProfileVC.h"
 
 #define __KEY_PAY_NAME @"name"
 #define __KEY_PAY_TYPE @"type"
@@ -47,13 +49,21 @@
 
 @implementation FEOrderSubmitVC
 
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _orderType = @"正常下单";
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = kString(@"提交订单");
     _oinfo = [FEOrderInfo new];
     _dataSource = @[@"取衣地址",@"送回地址",@"联系人",@"联系电话",@"付款方式",@"您的要求"];
-    _payType = @[@{__KEY_PAY_NAME:@"在线付款",__KEY_NUMBER:@(1)},@{__KEY_PAY_NAME:@"取衣付款",__KEY_PAY_TYPE:@(2)}];
+    _payType = @[@{__KEY_PAY_NAME:@"在线支付",__KEY_NUMBER:@(1)},@{__KEY_PAY_NAME:@"送衣付款",__KEY_PAY_TYPE:@(2)}];
     FEUser *user = [[FEUser alloc] initWithDictionary:kLoginUser];
     _oinfo.phone = user.user_name;
     self.totalPrice = 0;
@@ -88,15 +98,21 @@
 
 -(void)refreshUI{
     [self.tableView reloadData];
+    if ([self.orderType isEqualToString:@"直接下单"]) {
+        self.totalValueLabel.text = [NSString stringWithFormat:@"总量:0,共计:面议"];
+        self.oinfo.pay_option = @"送衣付款";
+        _canSelectPayType = NO;
+        return;
+    }
     NSArray *products = [FEDataCache sharedInstance].selectProducts;
     NSArray *noPrice = [products filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.price_type == %@",@"面议"]];
     if (noPrice.count) {
         self.totalValueLabel.text = [NSString stringWithFormat:@"总量:%ld,共计:面议",(long)self.totalNumber];
-        self.oinfo.payType = @"取衣付款";
+        self.oinfo.pay_option = @"送衣付款";
         _canSelectPayType = NO;
     }else{
         self.totalValueLabel.text = [NSString stringWithFormat:@"总量:%ld,共计:%.2f",(long)self.totalNumber,self.totalPrice];
-        self.oinfo.payType = @"在线付款";
+        self.oinfo.pay_option = @"在线支付";
         _canSelectPayType = YES;
     }
     
@@ -126,34 +142,70 @@
         detail.product_status = product.product_status;
         detail.product_update_time = product.update_time;
         detail.product_limit_time = product.end_time;
+        detail.price_type = product.price_type;
         [marray addObject:detail];
         
     }
-    
+    BOOL isDorder = NO;
     FEUser *user = [[FEUser alloc] initWithDictionary:kLoginUser];
+    
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.oinfo.dictionary];
-    [dic setObject:user.user_id forKey:@"user_id"];
-    [dic setObject:@(self.totalPrice) forKey:@"total_price"];
-    [dic setObject:@(self.totalNumber) forKey:@"total_count"];
-    [dic setObject:@"正常下单" forKey:@"order_type"];
-    
     FEOrder *order = [[FEOrder alloc] initWithDictionary:dic];
+    order.user_id = user.user_id;
+    if ([self.orderType isEqualToString:@"直接下单"]) {
+//        order.total_price = @(self.totalPrice);
+//        order.total_count = @(self.totalNumber);
+        order.price_type = @"面议";
+        isDorder = YES;
+    }else{
+        order.total_price = @(self.totalPrice);
+        order.total_count = @(self.totalNumber);
+        if (_canSelectPayType) {
+            order.price_type = @"固定";
+        }else{
+            order.price_type = @"面议";
+        }
+    }
     
-    [[FELaundryWebService sharedInstance] request:[[FEOrderCreateRequest alloc] initWithOrder:order orderDetails:marray] responseClass:[FECreateOrderResponse class] response:^(NSError *error, id response) {
+    order.order_type = self.orderType;
+    order.phone = self.oinfo.phone;
+    
+    
+    [[FELaundryWebService sharedInstance] request:[[FEOrderCreateRequest alloc] initWithOrder:order orderDetails:isDorder?nil:marray] responseClass:[FECreateOrderResponse class] response:^(NSError *error, id response) {
         FECreateOrderResponse *rsp = response;
         if (!error && rsp.errorCode.integerValue == 0) {
             NSLog(@"order success!");
 //
-            [[FEDataCache sharedInstance] clearSelectProduct];
+            if (!isDorder) {
+                [[FEDataCache sharedInstance] clearSelectProduct];
+            }
             weakself.currentOrder = rsp.obj;
             
-            if ([weakself.oinfo.payType isEqualToString:@"在线付款"]) {
+            if ([weakself.oinfo.pay_option isEqualToString:@"在线支付"]) {
                 [weakself performSegueWithIdentifier:@"payOnlineSegue" sender:self];
             }else{
                 [weakself toOrder];
             }
+        }else if (rsp.errorCode.integerValue == 10){
+//            kUserDefaultsRemoveForKey(kLoginUserKey);
+//            kUserDefaultsRemoveForKey(kCustomerKey);
+//            kUserDefaultsSync;
+//            [FEDataCache sharedInstance].user = nil;
+//            [FEDataCache sharedInstance].customer = nil;
+            [weakself toLogin];
+//            [weakself.navigationController popToRootViewControllerAnimated:YES];
         }
+        [weakself hideHUD:YES];
     }];
+}
+
+-(void)toLogin{
+    UIViewController *controller = [[[self.tabBarController viewControllers] objectAtIndex:2] topViewController];
+    if ([controller isKindOfClass:[FEProfileVC class]]) {
+//        [self.tabBarController setSelectedIndex:2];
+        FEProfileVC *vc = (FEProfileVC *)controller;
+        [vc signin];
+    }
 }
 
 
@@ -186,9 +238,9 @@
     }else if([identifier isEqualToString:@"联系电话"]){
         cell.titleLabel.text = self.oinfo.phone.length?self.oinfo.phone:@"未设置";
     }else if([identifier isEqualToString:@"付款方式"]){
-        cell.titleLabel.text = self.oinfo.payType;
+        cell.titleLabel.text = self.oinfo.pay_option;
     }else if([identifier isEqualToString:@"您的要求"]){
-        cell.titleLabel.text = self.oinfo.remark;
+        cell.titleLabel.text = self.oinfo.order_note;
     }
     return cell;
 }
@@ -206,9 +258,10 @@
     if ([title isEqualToString:@"付款方式"]) {
         if (_canSelectPayType) {
             FEPopPickerView *pick = [[FEPopPickerView alloc] initFromView:[[AppDelegate sharedDelegate].window viewWithTag:0]];
+            pick.tlabel.text = @"付款方式";
             NSInteger index = 0;
             for (NSDictionary *item in self.payType) {
-                if ([item[__KEY_PAY_NAME] isEqualToString:self.oinfo.payType]) {
+                if ([item[__KEY_PAY_NAME] isEqualToString:self.oinfo.pay_option]) {
                     index = [self.payType indexOfObject:item];
                     break;
                 }
@@ -239,7 +292,7 @@
 
 
 -(void)picker:(FEPopPickerView *)picker didSelectAtIndex:(NSInteger)index{
-    self.oinfo.payType = self.payType[index][__KEY_PAY_NAME];
+    self.oinfo.pay_option = self.payType[index][__KEY_PAY_NAME];
     [self.tableView reloadData];
 }
 

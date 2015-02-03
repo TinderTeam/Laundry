@@ -10,6 +10,9 @@
 #import "FELaundryWebService.h"
 #import "FESigninRequest.h"
 #import "FESigninResponse.h"
+#import "FEGetCustomerRequest.h"
+#import "FEGetCustomerResponse.h"
+#import "FEDataCache.h"
 
 @interface FESigninVC ()
 @property (strong, nonatomic) IBOutlet UITextField *phoneTextField;
@@ -43,11 +46,21 @@
         [[FELaundryWebService sharedInstance] request:[[FESigninRequest alloc] initWithUser:user] responseClass:[FESigninResponse class] response:^(NSError *error, id response) {
             FESigninResponse *rsp = response;
             if (!error && rsp.errorCode.integerValue == 0) {
+                [FEDataCache sharedInstance].user = rsp.user;
                 kUserDefaultsSetObjectForKey(rsp.user.dictionary, kLoginUserKey);
                 kUserDefaultsSetObjectForKey(rsp.token, kUserTokenKey);
                 kUserDefaultsSync;
                 [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserDidLogin object:rsp.user];
                 [weakself dismissViewControllerAnimated:YES completion:nil];
+                FEGetCustomerRequest *customer = [[FEGetCustomerRequest alloc] initWithCid:rsp.user.user_id];
+                [[FELaundryWebService sharedInstance] request:customer responseClass:[FEGetCustomerResponse class] response:^(NSError *error, id response) {
+                    FEGetCustomerResponse *rsp = response;
+                    if (!error && rsp.errorCode.integerValue == 0) {
+                        [FEDataCache sharedInstance].customer = rsp.obj;
+                        kUserDefaultsSetObjectForKey(rsp.obj.dictionary, kCustomerKey);
+                        kUserDefaultsSync;
+                    }
+                }];
             }
         }];
     }

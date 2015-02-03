@@ -41,7 +41,14 @@
 }
 
 - (IBAction)getCode:(id)sender {
-    [self requestGetCode];
+    if ([self.phoneTextField.text isPhone]) {
+        [self requestGetCode];
+    }else{
+        GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
+            
+        }];
+        [GAAlertObj showAlertWithTitle:@"提示" message:@"请输入正确的手机号码" actions:@[action] inViewController:self];
+    }
 }
 
 -(void)requestGetCode{

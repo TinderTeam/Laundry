@@ -18,8 +18,8 @@
         _take_time = @"";
         _contact_name = @"";
         _phone = @"";
-        _payType = @"在线支付";
-        _remark = @"";
+        _pay_option = @"在线支付";
+        _order_note = @"";
     }
     return self;
 }

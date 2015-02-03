@@ -10,5 +10,6 @@
 
 @interface FEProfileVC : FETableViewController
 -(void)automaticToOrder;
+-(void)signin;
 
 @end

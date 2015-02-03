@@ -12,28 +12,30 @@
 
 @property (nonatomic, strong, readonly) NSNumber *order_id;
 @property (nonatomic, strong, readonly) NSString *order_code;
-@property (nonatomic, strong, readonly) NSString *order_name;
+@property (nonatomic, strong) NSString *order_name;
 @property (nonatomic, strong, readonly) NSNumber *company_id;
-@property (nonatomic, strong, readonly) NSNumber *user_id;
-@property (nonatomic, strong, readonly) NSString *user_name;
+@property (nonatomic, strong) NSNumber *user_id;
+@property (nonatomic, strong) NSString *user_name;
 @property (nonatomic, strong, readonly) NSString *create_time;
 @property (nonatomic, strong, readonly) NSString *confirm_time;
 @property (nonatomic, strong, readonly) NSString *end_time;
-@property (nonatomic, strong, readonly) NSString *pay_option;
+@property (nonatomic, strong) NSString *pay_option; //必填
 @property (nonatomic, strong) NSString *order_status;
 @property (nonatomic, strong, readonly) NSNumber *handler_id;
 @property (nonatomic, strong, readonly) NSString *operater_name;
-@property (nonatomic, strong, readonly) NSString *order_type;
-@property (nonatomic, strong, readonly) NSString *order_note;
-@property (nonatomic, strong, readonly) NSNumber *total_price;
-@property (nonatomic, strong, readonly) NSNumber *total_count;
+@property (nonatomic, strong) NSString *order_type; //必填
+@property (nonatomic, strong) NSString *order_note;
 
-@property (nonatomic, strong, readonly) NSString *delivery_addr;
-@property (nonatomic, strong, readonly) NSString *take_addr;
-@property (nonatomic, strong, readonly) NSString *delivery_time;
-@property (nonatomic, strong, readonly) NSString *take_time;
-@property (nonatomic, strong, readonly) NSString *contact_name;
-@property (nonatomic, strong, readonly) NSString *phone;
+@property (nonatomic, strong) NSString *price_type;
+@property (nonatomic, strong) NSNumber *total_price; //必填
+@property (nonatomic, strong) NSNumber *total_count; //必填
+
+@property (nonatomic, strong) NSString *delivery_addr;
+@property (nonatomic, strong) NSString *take_addr;
+@property (nonatomic, strong) NSString *delivery_time;
+@property (nonatomic, strong) NSString *take_time;
+@property (nonatomic, strong) NSString *contact_name;
+@property (nonatomic, strong) NSString *phone;
 
 
 @end

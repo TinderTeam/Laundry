@@ -11,6 +11,7 @@
 #import "FESignoutRequest.h"
 #import "FECustomSegue.h"
 #import "FEUser.h"
+#import "FEDataCache.h"
 
 @interface FEProfileVC ()
 @property (strong, nonatomic) IBOutlet UIView *headerView;
@@ -68,6 +69,9 @@
 
 -(void)refreshUI{
     if (kLoginUser) {
+        FECustomer *customer = [FEDataCache sharedInstance].customer;
+        self.sexLabel.text = [NSString stringWithFormat:@"性别：%@",customer.customer_sex?customer.customer_sex:@""];
+        self.nickNameLabel.text = [NSString stringWithFormat:@"姓名：%@",customer.customer_name?customer.customer_name:@""];
         self.tableView.scrollEnabled = YES;
         self.tableView.tableFooterView = [UIView new];
         self.tableView.tableHeaderView = self.headerView;
@@ -85,6 +89,11 @@
     }
 }
 
+-(void)signin{
+//    signinSegue
+    [self performSegueWithIdentifier:@"signinSegue" sender:nil];
+}
+
 #pragma mark - UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (kLoginUser) {
@@ -100,12 +109,15 @@
 }
 
 -(void)logout{
-    __weak typeof(self) weakself = self;
+    kUserDefaultsRemoveForKey(kLoginUserKey);
+    kUserDefaultsRemoveForKey(kCustomerKey);
+    [FEDataCache sharedInstance].user = nil;
+    [FEDataCache sharedInstance].customer = nil;
+    [self refreshUI];
+//    __weak typeof(self) weakself = self;
     [[FELaundryWebService sharedInstance] request:[[FESignoutRequest alloc] initWithUser:[[FEUser alloc] initWithDictionary:kLoginUser]] responseClass:[FEBaseResponse class] response:^(NSError *error, id response) {
         FEBaseResponse *rsp = response;
         if (!error && rsp.errorCode.integerValue == 0) {
-            kUserDefaultsRemoveForKey(kLoginUserKey);
-            [weakself refreshUI];
         }
     }];
 }

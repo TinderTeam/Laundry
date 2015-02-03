@@ -40,6 +40,12 @@
                               @{__KEY_TITLE:kString(@"居家类"),__KEY_PNG:@"product_type_6",__KEY_NUMBER:@(6)},
                               @{__KEY_TITLE:kString(@"汽车配饰类"),__KEY_PNG:@"product_type_7",__KEY_NUMBER:@(7)},
                               @{__KEY_TITLE:kString(@"染色/救治"),__KEY_PNG:@"product_type_8",__KEY_NUMBER:@(8)}];
+        if (kLoginUser) {
+            _user = [[FEUser alloc] initWithDictionary:kLoginUser];
+        }
+        if (kCustomer) {
+            _customer = [[FECustomer alloc] initWithDictionary:kCustomer];
+        }
     }
     return self;
 }

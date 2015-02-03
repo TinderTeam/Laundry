@@ -14,6 +14,7 @@
 #import "FEOrderOperationResponse.h"
 #import "FEPayOnlineVC.h"
 #import "FEOrder.h"
+#import "FEOrderDeleteRequest.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface FEOrderDetailVC (){
@@ -89,7 +90,7 @@
         FEOrderDetail *detailItem = item;
         title.text = detailItem.product_name;
         detail.text = detailItem.current_price;
-        [imageV sd_setImageWithURL:[NSURL URLWithString:kImageURL(detailItem.product_img)] placeholderImage:[UIImage imageNamed:@"loading_small_image"]];
+        [imageV sd_setImageWithURL:[NSURL URLWithString:kImageURL(detailItem.product_img)]];
     }
     
     return cell;
@@ -114,6 +115,9 @@
             if (!error && rsp.errorCode.integerValue == 0) {
                 weakself.order.order_status = @"已取消";
                 weakself.operationBarItem.title = @"删除";
+                if ([weakself.delegate respondsToSelector:@selector(orderShouldRefresh:)]) {
+                    [weakself.delegate orderShouldRefresh:self.order];
+                }
             }
             [weakself hideHUD:YES];
         }];
@@ -121,13 +125,13 @@
         [self performSegueWithIdentifier:@"payOnlineSegue" sender:self.order];
     }else if([self.order.order_status isEqualToString:@"已取消"]){
         [self displayHUD:@"删除中..."];
-        FEOrderCancelRequest *rdata = [[FEOrderCancelRequest alloc] initWithOrderID:self.order.order_id];
+        FEOrderDeleteRequest *rdata = [[FEOrderDeleteRequest alloc] initWithOrderID:self.order.order_id];
         [[FELaundryWebService sharedInstance] request:rdata responseClass:[FEOrderOperationResponse class] response:^(NSError *error, id response) {
             FEOrderOperationResponse *rsp = response;
             if (!error && rsp.errorCode.integerValue == 0) {
                 
-                if ([self.delegate respondsToSelector:@selector(orderDidDelete:)]) {
-                    [self.delegate orderDidDelete:self.order];
+                if ([weakself.delegate respondsToSelector:@selector(orderDidDelete:)]) {
+                    [weakself.delegate orderDidDelete:self.order];
                 }
                 
                 [weakself.navigationController popViewControllerAnimated:YES];

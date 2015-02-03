@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "FEHomePageVC.h"
 #import "UIImage+LogN.h"
+#import "FEOrderSubmitVC.h"
 
 
 @interface FEBasketVC ()<UITextFieldDelegate,FEPickerViewDelegate>
@@ -64,6 +65,18 @@
 //    [_productList addObjectsFromArray:products];
 //    [self.tableView reloadData];
 //}
+
+-(void)toSubmitOrder{
+    [self performSegueWithIdentifier:@"orderSegue" sender:self];
+    
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if (sender == self && [segue.identifier isEqualToString:@"orderSegue"]) {
+        FEOrderSubmitVC *vc = segue.destinationViewController;
+        vc.orderType = @"直接下单";
+    }
+}
 
 #pragma mark - UITableViewDelegate
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -191,7 +204,7 @@
 - (IBAction)nextAction:(id)sender {
     if (kLoginUser) {
         if ([FEDataCache sharedInstance].selectProducts.count) {
-            [self performSegueWithIdentifier:@"orderSegue" sender:nil];
+            [self performSegueWithIdentifier:@"orderSegue" sender:sender];
         }
     }else{
         [self performSegueWithIdentifier:@"signinSegue" sender:nil];

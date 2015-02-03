@@ -13,5 +13,5 @@
 
 //-(void)appendProduct:(NSArray *)products;
 -(void)shoulRefresh;
-
+-(void)toSubmitOrder;
 @end

@@ -19,16 +19,23 @@
 #define kServerPort             @"80"
 #define kBasePath               @"/Laundry"
 #define kImagePath              @"/Public/Fuego/uploads/"
+#define kAliPayPath             @"/index.php/AlipayNotify/GetNotify"
+
+
 
 #define kImageURL(_A)           [NSString stringWithFormat:@"http://%@:%@%@%@%@",kServerIP,kServerPort,kBasePath,kImagePath,_A]//[@"http://120.24.217.173:9000/Laundry/Public/Fuego/uploads/" stringByAppendingString:_A]
 #define __SERVICE_BASE_URL    [NSString stringWithFormat:@"http://%@:%@%@",kServerIP,kServerPort,kBasePath]//@"http://120.24.217.173:80/Laundry"
 
+#define kAliPayURL              [NSString stringWithFormat:@"%@%@",__SERVICE_BASE_URL,kAliPayPath]
+
 //login user
 #define kLoginUserKey           @"user"
 #define kUserTokenKey           @"token"
+#define kCustomerKey               @"customer"
 
 #define kLoginUser              kUserDefaultsObjectForKey(kLoginUserKey)
 #define kUserToken              kUserDefaultsObjectForKey(kUserTokenKey)
+#define kCustomer               kUserDefaultsObjectForKey(kCustomerKey)
 
 #define kNotificationUserDidLogin           @"notificationUserDidLogin"
 #define kNotificationUserDidChange           @"notificationUserDidChange"

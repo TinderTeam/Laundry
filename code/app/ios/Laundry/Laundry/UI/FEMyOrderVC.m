@@ -90,6 +90,13 @@
     }
 }
 
+-(void)orderShouldRefresh:(FEOrder *)order{
+    NSInteger index = [self.orderList indexOfObject:order];
+    if (index != NSNotFound) {
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

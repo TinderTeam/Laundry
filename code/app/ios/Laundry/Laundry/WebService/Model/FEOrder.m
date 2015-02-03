@@ -10,4 +10,20 @@
 
 @implementation FEOrder
 
+-(id)init{
+    self = [super init];
+    if (self) {
+        _order_name = @"洗衣";
+    }
+    return self;
+}
+
+-(id)initWithDictionary:(id)dictionary{
+    self = [super initWithDictionary:dictionary];
+    if (self) {
+        _order_name = @"洗衣";
+    }
+    return self;
+}
+
 @end

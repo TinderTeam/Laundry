@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "FEProduct.h"
 #import "FECompany.h"
+#import "FECustomer.h"
+#import "FEUser.h"
 
 #define __KEY_TITLE @"title"
 #define __KEY_PNG   @"png"
@@ -19,6 +21,8 @@
 @property (nonatomic, strong, readonly) NSArray *selectProducts;
 @property (nonatomic, strong) FECompany *company;
 @property (nonatomic, strong) NSArray *cateGoryList;
+@property (nonatomic, strong) FECustomer *customer;
+@property (nonatomic, strong) FEUser *user;
 
 -(void)getProductForID:(NSNumber *)rid block:(void (^)(NSArray *list))block;
 

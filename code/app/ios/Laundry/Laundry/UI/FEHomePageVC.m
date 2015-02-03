@@ -17,6 +17,7 @@
 #import "FEDataCache.h"
 #import "FECustomSegue.h"
 #import "GAAlertObj.h"
+#import "FEBasketVC.h"
 
 //#define __KEY_TITLE @"title"
 //#define __KEY_PNG   @"png"
@@ -58,7 +59,7 @@
         [titleView addSubview:slabel];
         
         self.navigationItem.titleView = titleView;
-        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"快客洗涤") image:[UIImage imageNamed:@"tab_icon_home_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_home_pressed"]];
+        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"首页") image:[UIImage imageNamed:@"tab_icon_home_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_home_pressed"]];
         self.tabBarItem = tabitem;
         
         self.categoryList = [FEDataCache sharedInstance].cateGoryList;
@@ -253,7 +254,20 @@
 }
 
 -(void)goOrder:(id)sender{
-    [self.tabBarController setSelectedIndex:1];
+    if (kLoginUser) {
+//        [self.tabBarController setSelectedIndex:1];
+        UIViewController *controller = [[[self.tabBarController viewControllers] objectAtIndex:1] topViewController];
+        if ([controller isKindOfClass:[FEBasketVC class]]) {
+            [self.tabBarController setSelectedIndex:1];
+            [((FEBasketVC *)controller) toSubmitOrder];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }
+
+    }else{
+//        toSigninSegue
+        [self performSegueWithIdentifier:@"toSigninSegue" sender:nil];
+    }
+    
 }
 
 -(void)call:(id)sender{

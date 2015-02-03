@@ -18,11 +18,16 @@
 @property (nonatomic, strong) NSString *product_name;
 @property (nonatomic, strong) NSString *product_type;
 @property (nonatomic, strong) NSString *product_describe;
+
 @property (nonatomic, strong) NSString *current_price;
 @property (nonatomic, strong) NSString *original_price;
+@property (nonatomic, strong) NSString *price_type;
 @property (nonatomic, strong) NSString *product_img;
 @property (nonatomic, strong) NSString *product_status;
 @property (nonatomic, strong) NSString *product_update_time;
 @property (nonatomic, strong) NSString *product_limit_time;
+
+@property (nonatomic, strong) NSString *detail_info;
+
 
 @end

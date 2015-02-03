@@ -16,6 +16,7 @@
 #import "FEModifyProfileRequest.h"
 #import "FELaundryWebService.h"
 #import "GAAlertObj.h"
+#import "FEDataCache.h"
 
 @interface FEModifyProfileVC ()<UITextFieldDelegate,FEPopPickerViewDataSource>
 @property (strong, nonatomic) IBOutlet UITextField *realName;
@@ -59,6 +60,7 @@
     if (self.birthday == textField || self.sex == textField) {
         if (self.sex == textField) {
             FEPopPickerView *pick = [[FEPopPickerView alloc] initFromView:[[AppDelegate sharedDelegate].window viewWithTag:0]];
+            pick.tlabel.text = @"性别";
             NSInteger index = [self.sexString indexOfObject:self.sex.text];
             NSInteger indexs = -1;
             if (index != NSNotFound) {
@@ -158,6 +160,9 @@
         [[FELaundryWebService sharedInstance] request:rdata responseClass:[FEBaseResponse class] response:^(NSError *error, id response) {
             FEBaseResponse *rsp = response;
             if (!error && rsp.errorCode.integerValue == 0) {
+                [FEDataCache sharedInstance].customer = customer;
+                kUserDefaultsSetObjectForKey(customer.dictionary, kCustomerKey);
+                kUserDefaultsSync;
                 [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserDidChange object:customer];
                 [weakself.navigationController popViewControllerAnimated:YES];
             }
