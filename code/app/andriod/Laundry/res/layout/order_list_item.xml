@@ -69,20 +69,20 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="80dp"
                 android:orientation="horizontal"
                 android:padding="10dp" >
 
                 <RelativeLayout
-                    android:layout_width="60dp"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="10dp"  >
 
                     <ImageView
                         android:id="@+id/order_list_iamge1"
-                        android:layout_width="60dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/icon_cloth" />
+                        android:src="@drawable/order_washing" />
                 </RelativeLayout>
 
                   <RelativeLayout
