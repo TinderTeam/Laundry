@@ -92,6 +92,8 @@ public class UserEditActivity extends BaseActivtiy
 			addr.setText(customer.getAddr());
 		}
 		
+		this.getButtonByID(R.id.user_set_location_addr_btn).requestFocus();
+		this.getButtonByID(R.id.user_set_location_addr_btn).requestFocusFromTouch();
 		
 	}
 

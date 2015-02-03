@@ -258,7 +258,18 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		final AbstractWheel num = (AbstractWheel)view.findViewById(R.id.chart_list_item_num);
 		NumericWheelAdapter numAdapter = new NumericWheelAdapter(this.getActivity(), 1, 20);
 		num.setViewAdapter(numAdapter);
-		num.setCurrentItem(0);
+		
+		curNum = orderDetail.getQuantity();
+		int curIndex = orderDetail.getQuantity()-1;
+		if(0<=curIndex && curIndex<20)
+		{
+			num.setCurrentItem(orderDetail.getQuantity()-1);
+		}
+		else
+		{
+			num.setCurrentItem(0);
+		}
+		
 		num.setVisibleItems(5);
 		num.addChangingListener(new OnWheelChangedListener()
 		{

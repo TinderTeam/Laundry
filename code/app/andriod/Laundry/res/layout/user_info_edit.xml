@@ -179,7 +179,7 @@
             
            <LinearLayout
                android:layout_width="match_parent"
-               android:layout_height="70dp"
+               android:layout_height="45dp"
                android:layout_gravity="center"
                android:layout_marginBottom="10dp"
                android:layout_marginLeft="20dp"
@@ -188,51 +188,55 @@
 
                 <TextView
                     android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:text="@string/user_user_addr"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
+                <EditText
+                    android:id="@+id/user_user_addr_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edittext_sel"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:hint="选填项"
+                    android:lines="2"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/content_font_size_sm" >
 
-                        <EditText
-                            android:id="@+id/user_user_addr_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/edittext_sel"
-                            android:gravity="center_vertical|top"
-                            android:hint="选填项"
-                            android:lines="2"
-                            android:padding="10dp"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/content_font_size_sm" >
+                    <requestFocus />
+                </EditText>
 
-                            <requestFocus />
-                        </EditText>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
 
-                        <Button
-                            android:id="@+id/user_set_location_addr_btn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginBottom="1dp"
-                            android:layout_marginRight="1dp"
-                            android:background="@color/blue_light"
-                            android:drawableRight="@drawable/icon_gps"
-                            android:focusable="false"
-                            android:focusableInTouchMode="true"
-                            android:padding="5dp"
-                            android:text="定位"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/content_font_size_sm" />
+                    <Button
+                        android:id="@+id/user_set_location_addr_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/blue_light"
+                        android:drawableRight="@drawable/icon_gps"
+                        android:focusable="false"
+                        android:focusableInTouchMode="true"
+                        android:padding="5dp"
+                        android:text="定位"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/content_font_size_sm" />
 
-                    </RelativeLayout>
+                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
