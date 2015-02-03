@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSTimer *timer;
 @property (assign, nonatomic) NSInteger totalTime;
 @property (nonatomic, strong) NSString *code;
+@property (nonatomic, assign) long time;
 
 @end
 
@@ -51,6 +52,7 @@
             weaksekf.getCodeButton.enabled = NO;
             weaksekf.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:weaksekf selector:@selector(updateTime) userInfo:nil repeats:YES];
             weaksekf.code = rsp.obj;
+            weaksekf.time = [[NSDate date] timeIntervalSince1970];
         }
     }];
 }
@@ -67,7 +69,7 @@
 }
 
 - (IBAction)resetPassword:(id)sender {
-    if ([self.codeTextFeild.text isEqualToString:self.code]) {
+    if ([[NSDate date] timeIntervalSince1970] - self.time < 10 * 60 && [self.codeTextFeild.text isEqualToString:self.code]) {
         
         if (self.passwordTextFeild.text.length >= 6) {
             __weak typeof(self) weakself = self;

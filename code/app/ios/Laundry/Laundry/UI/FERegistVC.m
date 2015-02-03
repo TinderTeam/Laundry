@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSTimer *timer;
 @property (assign, nonatomic) NSInteger totalTime;
 @property (strong, nonatomic) NSString *code;
+@property (assign, nonatomic) long time;
 
 @end
 
@@ -41,7 +42,7 @@
 }
 - (IBAction)registAction:(id)sender {
     if (self.passwordTextField.text.length) {
-        if ([self.code isEqual:self.verifyCode.text]) {
+        if (([[NSDate date] timeIntervalSince1970] - self.time) < 10 * 60 && [self.code isEqual:self.verifyCode.text]) {
             NSLog(@"resgist");
             [self regist];
         }else{
@@ -59,6 +60,7 @@
             weaksekf.getCodeButton.enabled = NO;
             weaksekf.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:weaksekf selector:@selector(updateTime) userInfo:nil repeats:YES];//[NSTimer timerWithTimeInterval:1 target:weaksekf selector:@selector(updateTime) userInfo:nil repeats:YES];
             weaksekf.code = rsp.obj;
+            weaksekf.time = [[NSDate date] timeIntervalSince1970];
         }
     }];
 }
