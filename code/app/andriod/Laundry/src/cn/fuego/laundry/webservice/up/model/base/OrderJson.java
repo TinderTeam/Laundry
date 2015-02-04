@@ -12,29 +12,29 @@ public class OrderJson implements Serializable
 	private String order_code ="11111111";
 	private String order_name ="洗衣";
 	private int company_id;
-	private int user_id;
-	private String user_name;
-	private String create_time;
+	private int user_id;  //
+	private String user_name;  //
+	private String create_time;  
 	private String confirm_time;
 	private String end_time;
-	private String pay_option = PayOptionEnum.OFFLINE_PAY.getStrValue();
-	private String order_status;
+	private String pay_option = PayOptionEnum.OFFLINE_PAY.getStrValue();  //
+	private String order_status;  
 	private int handler_id;
 	private String operater_name;
-	private String order_type = OrderTypeEnum.NORMAL_ORDER.getStrValue() ;
-	private String order_note;
+	private String order_type = OrderTypeEnum.NORMAL_ORDER.getStrValue() ; //
+	private String order_note; //
 	
-	private String price_type;
-	private float total_price;
-	private int total_count;
+	private String price_type; //
+	private float total_price; //
+	private int total_count; //
 	
 	
- 	private String delivery_addr;
-	private String take_addr;
-	private String delivery_time;
-	private String take_time;
-	private String contact_name;   
-	private String phone;
+ 	private String delivery_addr; //
+	private String take_addr; //
+	private String delivery_time; //
+	private String take_time; //
+	private String contact_name; //   
+	private String phone; //
 	
 	
 	

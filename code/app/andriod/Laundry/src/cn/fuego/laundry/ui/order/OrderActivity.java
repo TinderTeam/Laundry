@@ -15,6 +15,7 @@ import cn.fuego.common.util.validate.ValidatorRules;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.constant.OrderTypeEnum;
 import cn.fuego.laundry.constant.PayOptionEnum;
 import cn.fuego.laundry.constant.PriceTypeEnum;
 import cn.fuego.laundry.ui.LoginActivity;
@@ -22,6 +23,7 @@ import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
 import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.ui.home.HomeFragment;
+import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.CreateOrderRsp;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
@@ -119,7 +121,16 @@ public class OrderActivity extends MispInfoListActivity
 		
 		tatolPriceView = (TextView) findViewById(R.id.order_tatal_price_txt);
 		
-		String priceStr = "数量："+ CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count() + ",";
+		String priceStr = "数量：";
+
+		if(OrderTypeEnum.DIRECT_ORDER.getStrValue().equals( CartProduct.getInstance().getOrderInfo().getOrder().getOrder_type()))
+		{
+			priceStr += 0 +", ";
+		}
+		else
+		{
+			priceStr += CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count() + ", ";
+		}
 		
 		String priceType = CartProduct.getInstance().getOrderInfo().getOrder().getPrice_type();
 		float price = CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price();
@@ -254,6 +265,26 @@ public class OrderActivity extends MispInfoListActivity
 	private void submitOrder()
 	{
 	     final ProgressDialog proDialog =ProgressDialog.show(this, "请稍等", "订单正在提交......");
+	     
+	     CreateOrderReq req = CartProduct.getInstance().getOrderInfo();
+	     if(OrderTypeEnum.DIRECT_ORDER.getStrValue().equals(req.getOrder().getOrder_type()))
+	     {
+	    	 req = new CreateOrderReq();
+ 	    	 
+	    	 req.getOrder().setDelivery_addr(CartProduct.getInstance().getOrderInfo().getOrder().getDelivery_addr());
+	    	 req.getOrder().setTake_addr(CartProduct.getInstance().getOrderInfo().getOrder().getTake_addr());
+	    	 req.getOrder().setPhone(CartProduct.getInstance().getOrderInfo().getOrder().getPhone());
+	    	 req.getOrder().setContact_name(CartProduct.getInstance().getOrderInfo().getOrder().getContact_name());
+	    	 
+	    	 req.getOrder().setOrder_type(CartProduct.getInstance().getOrderInfo().getOrder().getOrder_type());
+	    	 req.getOrder().setOrder_note(CartProduct.getInstance().getOrderInfo().getOrder().getOrder_note());
+	    	 req.getOrder().setTotal_count(0);
+	    	 req.getOrder().setTotal_price(0);
+	    	 req.getOrder().setPrice_type(CartProduct.getInstance().getOrderInfo().getOrder().getPrice_type());
+	    	 req.getOrder().setPay_option(CartProduct.getInstance().getOrderInfo().getOrder().getPay_option());
+	    	 req.getOrder().setUser_id(CartProduct.getInstance().getOrderInfo().getOrder().getUser_id());
+	    	 req.getOrder().setUser_name(CartProduct.getInstance().getOrderInfo().getOrder().getUser_name());
+	     }
 		WebServiceContext.getInstance().getOrderManageRest(new MispHttpHandler()
 		{
 
@@ -285,7 +316,7 @@ public class OrderActivity extends MispInfoListActivity
 				 
 			}
 			
-		}).create(CartProduct.getInstance().getOrderInfo());
+		}).create(req);
 	}
 	
 	
