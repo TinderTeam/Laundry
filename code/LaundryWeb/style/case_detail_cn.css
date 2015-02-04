@@ -1,0 +1,361 @@
+.huawei_bcw #picslider{
+    position: relative;
+}
+.huawei_bcw #picslider img.main{
+    width: 100%;
+}
+.huawei_bcw #picslider img.main_title {
+    width: 67%;
+    max-width: 858px;
+    vertical-align: middle;
+}
+.huawei_bcw #picslider div.box{
+    width: 100%;
+    position: absolute;
+    top: 20%;
+    display: block;
+    text-align: center;
+}
+.huawei_bcw #picslider h2{
+    display: block;
+    color: #fff;
+    max-width: 1000px;
+    margin: 3% auto;
+    text-align: center;
+    line-height: 25px;
+    font-size: 1.7em;
+    font-weight: 100;
+    letter-spacing: 3px;
+}
+.huawei_bcw div.slider_button {
+display: block;
+width: 100%;
+position: absolute;
+bottom: 3%;
+z-index: 1;
+text-align: center;
+}
+.huawei_bcw div.slider_button img{
+    vertical-align: middle;
+}
+.huawei_bcw div.contain-inner{
+    padding:10px 140px 50px 150px;
+}
+.huawei_bcw div.contain-inner h2{
+    font-weight: 100;
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.huawei_bcw 
+div.contain-inner div.content{
+    padding :10px 0px;
+    color: #555;
+    font-size: 18px;
+    line-height: 1.8em;
+}
+.huawei_bcw 
+div.contain-inner div.content:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.huawei_bcw 
+div.contain-inner div.content{zoom: 1;}
+.huawei_bcw 
+div.contain-inner div.video{
+    margin-top: 0px;
+}
+
+.huawei_bcw 
+div.contain-inner:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }
+
+.huawei_bcw 
+div.contain-inner {zoom:1; }
+
+.huawei_bcw 
+#crosspart_1,.huawei_bcw #crosspart_2{
+    background-image: url(../image/quote_BG.jpg);
+}
+.huawei_bcw 
+div.cross-inner{
+    background-image: url(../image/globe_BG.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    color: #000;
+    background-position: top center;
+    text-align: center;
+    max-width: 1000px;
+    width: 70%;
+    margin: 0 auto;
+}
+.huawei_bcw 
+div.cross-inner p.content{
+    padding: 40px 0px 20px 0px;
+    font-size: 1.2em;
+    line-height: 1.8em;
+    letter-spacing:normal;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    z-index: 3;
+    width: 100%;
+}
+.huawei_bcw 
+div.cross-inner div.info{
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 1em;
+}
+.huawei_bcw 
+div.cross-inner div.info img{
+    padding-right: 30px;
+    vertical-align: middle;
+}
+.huawei_bcw 
+div.contain-inner div.pics{
+    display: block;
+}
+.huawei_bcw 
+div.contain-inner div.pics img.pic-1{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width:58%;
+}
+.huawei_bcw 
+div.contain-inner div.pics img.pic-2{
+    position: absolute;
+    width:41%;
+    top: 0%;
+    left: 58%;
+    height: 45%;
+}
+.huawei_bcw 
+div.contain-inner div.pics img.pic-3{
+    position: absolute;
+    width:41%;
+    top: 45%;
+    left: 58%;
+    height: 55%;
+}
+.huawei_bcw 
+#lastcontainer{
+    height: 800px;
+    background-image: url(../image/dortmund-background.jpg);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: left;
+    /*
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='image/BG.jpg',
+    sizingMethod='scale');
+
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='image/BG.jpg',
+    sizingMethod='scale')";
+    */
+}
+.huawei_bcw 
+div.lastcontain-inner{
+    padding: 40px 0 40px 0px;
+    margin: 0 auto;
+
+    text-align: center;
+}
+.huawei_bcw 
+div.lastcontain-inner h2{
+    font-weight: 100;
+    text-align: center;
+    font-size: 2.9em;
+    letter-spacing: normal;
+}
+.huawei_bcw 
+div.lastcontain-inner img{
+    margin-top: 20px;
+}
+.huawei_bcw 
+div.lastcontain-inner p{
+    padding :10px 0px;
+    color: #555;
+    font-size: 1.1em;
+    line-height: 180%;
+    width: 600px;
+    margin: 0 auto;
+}
+.huawei_bcw 
+div.lastcontain-inner a.link-more:link, .huawei_bcw div.lastcontain-inner a.link-more:visited{
+    color: #00b4d4; font-size:1.6em;
+}
+
+/* 动态缩放~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media only screen and (min-width:768px) and (max-width: 1279px) {
+    
+    .huawei_bcw div.contain-inner {
+        padding: 20px 10% 30px 10%;
+    }
+    .huawei_bcw #picslider div.box h1{
+        font-size: 4em;
+    }
+    .huawei_bcw 
+    div.cross-inner {
+        width: 80%;
+    }
+    .huawei_bcw 
+    div.contain-inner div.pics img.pic {
+    }
+    .huawei_bcw 
+    div.contain-inner div.pics{
+        margin-top: 30px;
+        position: relative;
+        width: 100%;
+    }
+    .huawei_bcw div.cross-inner p.content{
+        font-size: 1.2em;
+    }
+}
+
+/* 非手机 */
+@media only screen and (min-width: 768px) {
+#lastcontainer{height:auto !important; min-height:800px !important;background-size: cover !important;}
+    .huawei_bcw div.contain-inner div.pics{
+        margin-top: 30px;
+        position: relative;
+        width: 100%; max-height:576px\9;
+    }
+    .huawei_bcw 
+    div.contain-inner div.pics img.pic{
+        display: block; max-width:100%; margin:auto;
+    }
+}
+/* 手机~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media only screen and (max-width: 767px) {
+	.huawei_bcw div.slider_button {
+display: none;
+}
+
+	#lastcontainer{height:auto !important; min-height:800px !important;background-size: cover !important; background-position:center top !important;}
+
+	.huawei_bcw p{
+	margin-bottom:20px;
+
+}
+    .huawei_bcw #picslider div.box{
+        top: 10%;
+    }
+    .huawei_bcw #picslider img.main_title {
+        width: 90%;
+        max-width: 924px;
+    }
+    .huawei_bcw 
+    #picslider h2{
+        width: 80%;
+        margin: 5% 10%;
+        font-size: 1.2em;
+        line-height: 1.2em;
+    }
+    .huawei_bcw 
+    div.contain-inner{
+        padding: 10px 10px 30px 10px;
+    }
+    .huawei_bcw 
+    div.contain-inner h2{
+        font-size: 1.8em !important;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .huawei_bcw 
+    #container_1 p.para_1,.huawei_bcw #container_1 p.para_2{
+        float: none;
+        display: block;
+        width: 100%;
+        line-height: 1.8em;
+    }
+    .huawei_bcw  
+    div.cross-inner{
+        padding: 30px 10px 45px 10px;
+        width: auto;
+        background-size: 100%;
+    }
+    .huawei_bcw 
+    div.cross-inner p.content{
+        font-size: 18px;
+        line-height: 1.2em;
+    }
+    .huawei_bcw 
+    div.cross-inner span.big-mark{
+        margin-left: -10px;
+    }
+    .huawei_bcw 
+    div.cross-inner div.info img{
+        display: block;
+		margin:0 auto; padding-right:0; margin-bottom:10px;
+    }
+    .huawei_bcw 
+    div.contain-inner div.pics img.pic{
+        width: 100%;
+        margin-bottom: 8px;
+        position: static;
+        height: auto;
+    }
+    .huawei_bcw 
+    #lastcontainer{
+        height: 800px;
+        background-image: url(../image/BG_mobile.jpg);
+        background-position: top;
+        background-size: 100% 100%;
+    }
+    .huawei_bcw 
+    div.lastcontain-inner{
+        width: 90%;
+    }
+    .huawei_bcw 
+    div.lastcontain-inner h2,.huawei_bcw 
+ div.lastcontain-inner h3{
+        font-size: 24px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+
+    }
+    .huawei_bcw 
+    div.lastcontain-inner img.product-pic{
+        width: auto;
+		margin:auto;
+		max-width:100%;
+    }
+    .huawei_bcw 
+    div.lastcontain-inner p{
+        width: 100%;
+        line-height: 30px;
+    }
+
+}
+/* 超小屏幕 */
+@media only screen and (max-width: 500px) {
+    .huawei_bcw #picslider h1 {
+        width: 90%;
+        margin: 0 5%;
+        top: 5%;
+        font-size: 2em;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.huawei_bcw 
+ div.lastcontain-inner .link-more img{margin-top:0;}
+
+.huawei_bcw #header{
+	border-bottom:1px solid #CCC\9;
+-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+	}
+#lastcontainer{background-position:center bottom !important;}j;

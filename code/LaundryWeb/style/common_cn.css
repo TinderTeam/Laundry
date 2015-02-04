@@ -1,0 +1,564 @@
+body.huawei_bcw{
+    background-color: #fff;
+}
+.huawei_bcw #main_body{
+    position: relative;
+    left: 0;
+}
+.huawei_bcw #red_x{
+    margin-left: 10px;
+}
+.huawei_bcw #mobile_slide_nav_box{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: -85%;
+    width: 85%;
+    height: 100%;
+    background: #fff;
+    border-left: 1px #ededed solid;
+	overflow:auto;
+}
+.huawei_bcw #mobile_slide_nav_box li{
+
+    padding: 10px 25px;
+    border-bottom: 1px solid #ededed;
+}
+.huawei_bcw #mobile_slide_nav_box li a:link,.huawei_bcw #mobile_slide_nav_box li a:visited{
+    color: #000;
+} 
+.huawei_bcw div.wrapper{
+    width: 1280px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.huawei_bcw #header{
+    width: 100%;
+    height: 80px;
+    font-size: 16px;
+	background-color: #fff;
+}
+.huawei_bcw #head-inner{
+    position: relative;
+    height: 80px;
+}
+.huawei_bcw #head-inner div.logo{
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    outline: 0px red solid;
+    height: 50px;
+    width: 200px;
+}
+.huawei_bcw #head-inner div.nav{
+    float: right;
+    margin-right: 0px;
+    margin-top: 35px;
+}
+.huawei_bcw #head-inner div.nav span{
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1em;
+}
+#about a.about:link,#about a.about:visited, .about{
+    color: #d14836 !important;
+}
+#case a.case:link,#case a.case:visited{
+    color: #d14836;
+}
+#connect a.connect:link,#connect a.connect:visited{
+    color: #d14836;
+}
+.huawei_bcw div.nav a:link, .huawei_bcw div.nav a:visited{
+    color: #000;
+}
+.huawei_bcw div.nav a:hover{
+    color: #000;
+    text-decoration: underline;
+}
+.huawei_bcw div.nav_mobile{
+    display: none;
+}
+.huawei_bcw div.nav_mobile_sub{
+    display: none;
+}
+
+
+.huawei_bcw div.foot-inner{
+	position:relative;
+    padding: 30px 200px;
+    text-align: center;
+}
+.huawei_bcw div.foot-inner div.links img{
+    padding: 5px;
+}
+.huawei_bcw div.foot-inner div.site-info{
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: #444;
+    font-size:16px;
+}
+
+
+@media only screen and (min-width:768px) and (max-width: 1279px) {
+    .huawei_bcw div.wrapper{
+        width: 100%;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+    .huawei_bcw #head-inner div.nav {
+        float: right;
+        /*margin-right: 10%;*/
+        margin-top: 35px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    body.huawei_bcw {
+        background-color: #fff;
+    }
+    .huawei_bcw div.wrapper{
+        width: 100%;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+    .huawei_bcw #header{
+        height: 60px;
+    }
+    .huawei_bcw #head-inner{
+        height: 60px;
+    }
+    .huawei_bcw #head-inner div.logo{
+        left: 10px;
+		top: 10px;
+    }
+    .huawei_bcw #head-inner div.logo img{
+        width: 90%;
+    }
+    .huawei_bcw div.nav{
+        display: none;
+    }
+    .huawei_bcw ul.mobile_slide_nav a{
+        font-size: 18px;
+        line-height: 1.2em;
+    }
+    .huawei_bcw div.nav_mobile{
+        display: block;
+        position: absolute;
+        right: 25px;
+        top: 20px;
+    }
+    .huawei_bcw div.nav_mobile img{
+        vertical-align: middle;
+    }
+    .huawei_bcw div.nav_mobile_sub{
+        z-index: 1;
+        display: none;
+        position: absolute;
+        right: 0px;
+        top: 60px;
+    }
+    .huawei_bcw div.nav_mobile_sub li.sub_item {
+        
+    }
+    .huawei_bcw div.nav_mobile_sub li.sub_item a {
+        display: block;
+        padding: 20px;
+        background-color: #fff;
+        border-top: 1px solid #ddd;
+        text-align: center;
+    }
+    .huawei_bcw div.nav_mobile_sub li a:link,div.nav_mobile_sub li a:visited{
+        color: black;
+    }
+    .huawei_bcw div.nav_mobile_sub li a:hover{
+        color: #d14836;
+    }
+    .huawei_bcw div.foot-inner{
+        padding: 20px 10px;
+    }
+}
+
+
+@font-face {
+	font-family: 'handwritten';
+	src: url('../fonts/Huawei Script Regular Web.eot');/* IE9 Compat Modes */
+	src: url('../fonts/Huawei Script Regular Web.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('../fonts/Huawei Script Regular Web.woff') format('woff'), /* Modern Browsers */
+	url('../fonts/Huawei Script Regular Web.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../fonts/Huawei Script Regular Web.svg#SingleMaltaRegular') format('svg');/* Legacy iOS */
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'frutigernext';
+	src: url('../fonts/LT_regular.eot');/* IE9 Compat Modes */
+	src: url('../fonts/LT_regular?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('../fonts/LT_regular.woff') format('woff'), /* Modern Browsers */
+	url('../fonts/LT_regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../fonts/LT_regular.svg#SingleMaltaRegular') format('svg');/* Legacy iOS */
+	font-weight: normal;
+	font-style: normal;
+}
+/*body,.huawei_bcw p, .huawei_bcw span, .huawei_bcw h4{font-family:frutigernext, Arial, Helvetica, sans-serif !important;}
+
+.huawei_bcw .huawei-font,.huawei-font{font-family:handwritten, Arial, Helvetica, sans-serif !important;}
+.huawei_bcw .frutiger-font,.frutiger-font{font-family:frutigernext, Arial, Helvetica, sans-serif !important;}
+*/.huawei_bcw .fs80, .fs80{font-size:80px !important;}
+.huawei_bcw .fs30, .fs30{font-size:30px !important;}
+.huawei_bcw .fs20, .fs20{font-size:20px !important;}
+.color-58595b{color:#58595b !important;}
+.huawei_bcw #picslider div.box{top:10% !important;}
+.huawei_bcw 
+ div.cross-inner p.content{line-height:180% !important;}
+.anti-lastcontainer{height: auto !important;
+background-image: url(../image/alibaba-background.jpg) !important;
+background-size: 100%;
+background-repeat: no-repeat;
+background-position: left bottom !important;}
+.bg-c00000{background:#c00000 !important;}
+.bg-179dc5{background:#179dc5 !important;}
+.bg-8ed6f0{background:#5bb3d3 !important;}
+.color-white{color:#FFF !important;}
+.mt20 {margin-top:20px !important;}
+.bg-f7c042{background:#f7c042 !important;}
+.ee-lastcontainer{height: 988px !important;
+background-image: url(../image/ee-background.jpg) !important;
+background-size: 100%;
+background-repeat: no-repeat;
+background-position: left bottom !important;}
+.nanjing-lastcontainer{height: 988px !important;
+background-image: url(../image/nanjing-background.jpg) !important;
+background-size: 100%;
+background-repeat: no-repeat;
+background-position: left bottom !important;}
+.bank-lastcontainer{height: auto !important;
+background-image: url(../image/bank-background.jpg) !important;
+background-size: 100%;
+background-repeat: no-repeat;
+background-position: center bottom !important;}
+.bg-009e96{background:#009e96 !important;}
+.bg-0d65c3{background:#0d65c3 !important;}
+.suohuang-lastcontainer{height: 1000px !important;
+background-image: url(../image/railway-bg.jpg) !important;
+background-size: 100%;
+background-repeat: no-repeat;
+background-position: left bottom !important;}
+.newz-lastcontainer{height: 1000px !important;
+background-image: url(../image/newzealand-background.jpg) !important;
+background-size: 100%;
+background-repeat: no-repeat;
+background-position: left bottom !important;}
+.f1-lastcontainer{height: 1000px !important;
+background-image: url(../image/f1-background.jpg) !important;
+background-size: 100%;
+background-repeat: no-repeat;
+background-position: left bottom !important;}
+.bg-657ab1{background:#657ab1 !important;}
+.mt10 {margin-top:10px !important;}
+.mobile-show,.pc-show, .pad-show{display:none !important;}
+
+
+@media (max-width:767px){
+.huawei_bcw div.slider-inner div.slider_button{display:none !important;}
+	.huawei_bcw 
+div.lastcontain-inner{
+    padding: 10px 0 40px 0px !important;
+    margin: 0 auto;
+
+    text-align: center;
+}
+.mobile-show{display:block !important;}	
+	.huawei_bcw .fs80, .fs80{font-size:30px !important;}
+.huawei_bcw .fs30, .fs30{font-size:20px !important;}
+	}
+	@media (min-width:992px){
+.pc-show{display:block !important;}}
+	@media (min-width:768px) and (max-width:991px){
+		.huawei_bcw #head-inner div.nav span{padding:10px;}
+.pad-show{display:block !important;}}
+	@media (min-width:768px) and (max-width:1024px){
+	.huawei_bcw .fs80, .fs80{font-size:40px !important;}
+.huawei_bcw .fs30, .fs30{font-size:20px !important;}
+}
+.huawei_bcw #picslider span.sub_text{margin-top:20px !important; display:block; }
+
+/* columns of same height styles */
+.container-xs-height {
+    display:table;
+    padding-left:0px;
+    padding-right:0px;
+}
+.row-xs-height {
+    display:table-row;
+}
+.col-xs-height {
+    display:table-cell;
+    float:none;
+}
+@media (min-width: 768px) {
+    .container-sm-height {
+        display:table;
+		max-width:1230px\9;
+        padding-left:0px !important;
+        padding-right:0px !important;
+    }
+    .row-sm-height {
+        display:table-row;
+    }
+    .col-sm-height {
+        display:table-cell;
+        float:none !important;
+    }
+}
+@media (min-width: 992px) {
+    .container-md-height {
+        display:table;
+        padding-left:0px;
+        padding-right:0px;
+    }
+    .row-md-height {
+        display:table-row;
+    }
+    .col-md-height {
+        display:table-cell;
+        float:none;
+    }
+}
+@media (min-width: 1200px) {
+    .container-lg-height {
+        display:table;
+        padding-left:0px;
+        padding-right:0px;
+    }
+    .row-lg-height {
+        display:table-row;
+    }
+    .col-lg-height {
+        display:table-cell;
+        float:none;
+    }
+}
+
+
+/* vertical alignment styles */
+.col-top {
+    vertical-align:top;
+}
+.col-middle {
+    vertical-align:middle;
+}
+.col-bottom {
+    vertical-align:bottom;
+}
+
+.bgcolor-333 {
+background: #333;
+}
+.follow-footer a {
+display: inline-block;
+width: 28px;
+padding: 0 2px;
+}
+.mt24 {
+margin-top: 20px;
+}
+.mb20 {
+margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+.text-right-pc{text-align:right;}
+.footer .mt10{margin-top:0 !important;}
+	.footer{padding: 20px 0;}
+	.footer .mb20{margin-bottom:0;}	
+
+	.follow {
+	position: relative;
+	}
+
+}
+.weixin-qr {
+position: absolute;
+bottom: 195px;
+left: 42%;
+display: none;
+}
+
+.mr30{margin-right:20px;}
+.more-menu{position: absolute;
+display: none;
+top: 45px;
+left:-20%;
+z-index: 999;
+background: #FFF;
+padding: 20px;}
+.more-menu li{
+padding: 10px;}
+.huawei_bcw #head-inner div.nav{position:relative;}
+.watch-more{display:inline-block; margin-top:30px !important;}
+.ml20{margin-left:23px;}
+.huawei_bcw #lastcontainer
+{    background-size: cover;
+    /* The url is relative to the document, not to the css file! */
+    /* Prefer absolute urls to avoid confusion. */
+    -ms-behavior: url(/minisite/better-connected-world/en/backgroundsize.min.htc);
+
+}
+#player_wrapper {
+height: 450px;
+width: 800px;
+}
+#fancybox-wrap{padding:0 !important;margin-left: 20px;}
+
+	#fancybox-content{width:100% !important;}
+	#fancybox-content > div{overflow:hidden !important;}
+.bdshare-button-style0-32 a { display:inline-block; float:none !important;}
+.bdshare-button-style0-32 a {    width: 50px !important;
+    line-height: 48px !important;
+    height: 50px !important;
+	margin:auto 5px !important;}
+
+.bdshare-button-style0-32 .bds_tsina {
+    background-image: url('../image/weibo.png') !important;
+	background-position: center center !important;
+}
+
+.bdshare-button-style0-32 .bds_weixin{
+    background-image: url('../image/wechat.png') !important;
+	background-position: center center !important;
+}
+
+.bdshare-button-style0-32 .bds_print{
+    background-image: url('../image/print.png') !important;
+	background-position: center center !important;
+}
+
+.bdshare-button-style0-32 .bds_mail{
+    background-image: url('../image/email.png') !important;
+	background-position: center center !important;
+}
+
+	@media (max-width:767px){
+.bdshare-button-style0-32 .bds_print{
+	display:none !important;
+}
+		
+}
+
+/* addthis share icon */
+.at-share-tbx-element .at-share-btn {height: 48px !important;
+width: 50px !important;
+line-height: 48px !important;
+display:inline-block;
+margin:0 5px 0 5px !important;
+
+	cursor:pointer;}
+.at-share-tbx-element.addthis_32x32_white_style .at15nc.at300bs{background:none !important; height:100%!important; width:100%!important;}	
+	.at-share-tbx-element .at-share-btn.at-svc-linkedin {
+background: url(../image/LinkedIn_Icon.png) no-repeat left !important;
+}
+	.at-share-tbx-element .at-share-btn.at-svc-twitter {
+background: url(../image/twitter.png) no-repeat left !important;
+}
+	.at-share-tbx-element .at-share-btn.at-svc-facebook {
+background: url(../image/facebook.png) no-repeat left !important;
+}
+	.at-share-tbx-element .at-share-btn.at-svc-google_plusone_share {
+background: url(../image/google+.png) no-repeat left !important;
+}	
+	.at-share-tbx-element .at-share-btn.at-svc-email {
+background: url(../image/email.png) no-repeat left !important;
+}
+	.at-share-tbx-element .at-share-btn.at-svc-printfriendly {
+background: url(../image/print.png) no-repeat left !important;
+}
+	.at-share-tbx-element .at-share-btn.at-svc-sinaweibo {
+background: url(../image/weibo.png)  no-repeat left !important;
+}
+
+@media (max-width:767px){
+	.at-share-tbx-element .at-share-btn.at-svc-printfriendly {
+display:none !important;
+}
+		
+}
+
+a{outline:none !important;}
+#top {
+display: none;
+height: 60px;
+width: 60px;
+background: url('http://www.huawei.com/en/ucmf/groups/public/documents/webasset/top_1.png') no-repeat center center;
+position: fixed;
+bottom: 20px;
+right: 20px;
+cursor: pointer;
+z-index: 999;
+}
+
+.huawei_bcw #head-inner div.nav span {
+padding: 15px;
+}
+.huawei_bcw #head-inner div.nav {
+margin-top: 25px;
+}
+.huawei_bcw #head-inner div.nav .follow-top{padding:0; display:inline-block;}
+.huawei_bcw #head-inner div.nav .follow-top a{margin:0 -5px;display: inline-block;}
+
+.links .bdsharebuttonbox,.links  .addthis_custom_sharing ,
+.foot-inner .bdsharebuttonbox,.foot-inner  .addthis_custom_sharing 
+{display:inline-block; vertical-align:middle;}
+.weixin-qr {
+position: absolute;
+top: 40px;
+left: -160px;
+display: none;
+z-index: 9999;
+}
+.weixin-link {
+position: relative;
+}
+.bd_weixin_popup{width:300px !important;height:320px !important;}
+.links .bdsharebuttonbox,
+.foot-inner .bdsharebuttonbox
+{margin-left:-5px;}
+
+
+
+.addthis_custom_sharing-custom .at-share-btn {
+height: 48px !important;
+width: 50px !important;
+line-height: 48px !important;
+display: inline-block;
+margin: 0 5px 0 5px !important;
+cursor: pointer;
+}
+.addthis_custom_sharing-custom .at15t, .at16nc, .at300bs{background:none !important;}
+.addthis_custom_sharing-custom{display:inline-block; vertical-align:middle;}
+.addthis_custom_sharing-custom .at-share-btn.at-svc-printfriendly {
+background: url(../image/print.png) no-repeat left !important;
+}
+.at-share-tbx-element .at-share-btn.at-svc-email {
+background: url(../image/email.png) no-repeat left !important;
+} 
+.at-share-tbx-element .at-share-btn {
+max-width: none !important;
+max-height: none !important;
+}
+
+.border-none{border:none !important;border-bottom:none !important;}
+.hide-not-important{display:none;}
+.mt-5{margin-top:5px;}
+.mt-10{margin-top:10px;}
+.ml-10{margin-left:10px;}
+.ml-2em{margin-left:10px;}
+.pb-0{padding-bottom:0 !important;}
+.text-indent-1em{text-indent:1.5em;}
+.huawei_bcw #close_video{z-index:999;}
+.sliderVideo-box {
+z-index: 2;
+}

@@ -1,30 +1,40 @@
 <!DOCTYPE html>
-<html class="no-js" lang="">
- <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="./cn/ucmf/groups/public/documents/webasset/css_paccn_main.css" type="text/css" media="screen, project, print" />
-  <!–-[if gte IE 6]> 
-  <link rel="stylesheet" href="./cn/ucmf/groups/public/documents/webasset/css_paccn_ie6.css" type="text/css" media="screen, project, print" />
-  <![endif]–->
-  <script type="text/javascript" src="./cn/ucmf/websites/cn/sitenavigationfunctions.js" id="SSNavigationFunctionsScript"></script> 
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style/reset_cn.css" />
+    <link rel="stylesheet" type="text/css" href="style/common_cn.css" />
+	<link rel="stylesheet" type="text/css" href="style/case_detail_cn.css" />
+	  <script type="text/javascript" src="./cn/ucmf/websites/cn/sitenavigationfunctions.js" id="SSNavigationFunctionsScript"></script> 
   <script type="text/javascript" src="./cn/ucmf/websites/cn/sitenavigation.js" id="SSNavigationScript"></script> 
   <script type="text/javascript" src="./cn/ucmf/resources/wcm/sitestudio/wcm.toggle.js"></script> 
   <script type="text/javascript" src="./cn/ucmf/resources/sitestudio/ssajax/ssajax.js"></script> 
-  <title>快客洗涤</title>
+  <title>快客洗涤</title> 
   <link rel="stylesheet" href="./cn/ucmf/groups/public/documents/webasset/new_bootstrap_css.css" type="text/css" media="screen, project, print" /> 
   <link rel="stylesheet" href="./cn/ucmf/groups/public/documents/webasset/www_en_fancybox_css.css" type="text/css" media="screen, project, print" /> 
   <link rel="stylesheet" href="./cn/ucmf/groups/public/documents/webasset/cn_main_comment.css" type="text/css" media="screen, project, print" /> 
   <link rel="stylesheet" href="./cn/ucmf/groups/public/documents/webasset/cn_main_css.css" type="text/css" media="screen, project, print" /> 
   <link rel="stylesheet" href="./cn/ucmf/groups/public/documents/webasset/cn_mobile.css" type="text/css" media="screen, project, print" />
-  <script type="text/javascript" src="./cn/ucmf/groups/public/documents/webasset/modernizr-2.8.3.min.js"></script>
- </head> 
- <body>
+	
+	<script src="jwplayer/jwplayer.js"></script>
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/detail.js"></script>
+
+    <!--[if lt IE 9]>
+	<script src="js/selectivizr-min.js"></script>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body id="case" class="huawei_bcw">
+	<div id="main_body">
    <div id="nav-wrap"> 
     <div class="container"> 
      <div id="tab_main_nav_container" style="height:80px"> 
       <div id="logo" class="cell"> 
-       <a href="http://www.kkxd.com/cn/"><img alt="huawei" src="./img/login_logo.png" /></a> 
+       <a href="http://www.kkxd.com/cn/"><img alt="Quik" src="./img/login_logo.png" /></a> 
       </div>  
      </div> 
     </div> 
@@ -35,100 +45,54 @@
         <div class="clearfix">
          <a href="Index.html" class="js-no-menu no-menu">首页</a>  
          <a href="CompanyInfo.html" class="js-no-menu no-menu">公司简介</a> 
-         <a href="http://www.huawei.com/cn/all-solutions/">设备</a> 
-         <a href="http://www.huawei.com/cn/services/index.htm">技术</a> 
-         <a href="http://www.huawei.com/cn/all-products/">加盟</a>
-         <a href="http://www.huawei.com/cn/all-products/">APP下载</a>  
-         <a href="/cn/index.htm#">联系我们</a>
+         <a href="#" class="js-no-menu no-menu">设备</a> 
+         <a href="#" class="js-no-menu no-menu">技术</a> 
+         <a href="joinUs.html" class="js-no-menu no-menu">加盟</a>
+         <a href="#" class="js-no-menu no-menu">APP下载</a>  
+         <a href="#" class="js-no-menu no-menu">联系我们</a>
         </div> 
 		</li> 
       </ul> 
      </div> 
     </div> 
-   </div> 
-   <div id="container"> 
-   <div class="bound">
-		<div class="grid_4">		
-			<div class="white_box">
-					<div class="header">按年份查询</div>
-					<div class="content">
-						<ul class="point f1424">
-							<li><a href="/cn/news/media-coverage/index-2014.htm">2014</a></li>
-							<li><a href="/cn/news/media-coverage/index-2013.htm">2013</a></li>
-							<li><a href="/cn/news/media-coverage/index-2012.htm">2012</a></li>
-							<li><a href="/cn/news/media-coverage/index-2011.htm">2011</a></li>
-							<li><a href="/cn/news/media-coverage/index-2010.htm">2010</a></li>
-							<li><a href="/cn/news/media-coverage/index-2009.htm">2009</a></li>
-						</ul>	
-					</div>
-			</div>			
-			<div class="white_box" id="tags">
-				<div class="header">热门标签</div>
-				<div class="content"> 
-				<span class='highlights3'>			
-				<a class='tags_link' name='移动宽带' onclick='javascript:return true;'>
-				移动宽带
-				</a>
-				</span>
-				<span class='highlights2'>			
-				<a class='tags_link' name='LTE' onclick='javascript:return true;'>
-				LTE
-				</a>
-				</span>
-				<span class='highlights3'>			
-				<a class='tags_link' name='手机' onclick='javascript:return true;'>
-				手机
-				</a>
-				</span>
-				</div>
-			</div>
-			<div class="white_box" >
-				<div class="header">媒体联系</div>
-				<div class="content ">
-					Email:<a href='mailto:media.affairs@huawei.com'>media.affairs@huawei.com</a>
-					<p>TEL:86 755-89242785<br /></p>
-				</div>		
-			</div>
+   </div>  
+	<div id="picslider" class="wrapper_full">
+		<img class="main pc-show pad-show" src="img/广告横幅1.jpg"><img class="main mobile-show" src="img/广告横幅1.jpg">
+		<div class="slider_button">
+				<a href="javascript:"><img src="img/arrow_down.png"></a>
 		</div>
-		<div class="grid_10">
-			<div class="bound no_bottom">
-				<div class="grid_10 now-site">
-					<div class="title">
-						快客洗涤公司简介
-					</div>
-					<div class="clear"></div>				
-				</div>
-			</div>		
-			<div class="top_line"></div>
-	     			
-
-		<div class="block press">
-			<div class="content">
-			<p style="display:none">News Start</p>
-			<p class="detail">
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp十九世纪中叶，在法国巴黎一个普通的服装店里，年轻的裁缝乔利·贝朗正在为一件不小心被煤油污染的
-				贵重衣服而焦急万分：这怎么赔得起啊?但煤油浸过的地方不仅没有污痕，反倒比别处显的更加干净。乔利因此
-				受到启发，1855年，法国巴黎诞生了世界上第一家干洗店。在此后漫长的时间里，做为世界服装之都的一个新
-				兴行业，干洗业在这个拥有灿烂文明和悠久历史的浪漫国度里，孕育、滋养、发展着，时至今日，干洗业已经
-				发展成为一个跨行业、多学科、世界性的朝阳行业。</p>
-			<p class="detail">
-　　				“Drolohq”，作为法国干洗业界的知名品牌，2000年经过特许进入中国，在儒家文化的溯源地山东济南
-			  成立了朵拉国际洗衣连锁中国总部-济南朵拉洗业有限公司，实现了两种文化的完美契合。</p>
-
-			<p class="detail">
-				“Drolohq”秉承法兰西悠久的洗业文化，整合全球顶极的洗业资源，不断追求诚信、完美、卓越的个性化品牌服务，经过11年的发展，带有金百合标志的“Drolohq”高质洗衣连锁店已成为国内最具实力和影响力的大型洗衣连锁特许加盟机构之一，在国内拥有数十家连锁洗业公司，数百家加盟代理商，拥有近千名洗衣技师，已经为中国几千万消费者提供了绿色、健康、环保的专业洗衣服务。</p>
-			
-			<p class="detail">　　作为国际洗涤协会常务理事单位，“Drolohq”始终坚持把洗涤设备和耗材的研制以及特许经营模式的探索和发展作为品牌发展的助力，通过“Drolohq”独有的高科技、高质量、高标准的“高质洗衣”理念，融合“Drolohq”绿色、健康、环保的洗业文化，全力打造最适合于中国的特许经营模式和“Drolohq”优质、高效的运营支持系统，相信“Drolohq”必将和志同道合的投资同盟在中国市场再次赢得胜利和辉煌，并保持“Drolohq”品牌在中国洗涤行业的领先地位，进一步实现品牌价值的社会化，全力推动中国洗业健康、持续的发展，为中国更多的消费者创造高品质的生活。</p>
-			
-			<p style="display:none">News End</p>
-			</div>
-			<img src="./img/bmgc.jpg" />
-		</div>	
-		</div>
-		<div class="clear"></div>
 	</div>
-  </div>
-  <div id="footer"> 
+	<div id="container_1" class="wrapper">
+		<div class="contain-inner">
+			<!--<h2>Title Goes Here</h2>-->
+			<div class="content">
+				<p class="para_1">
+				贵州省金州快客清洁服务有限公司是一家集干洗衣物、洗涤技术咨询培训，室内保洁及物业管理等多项服务为一体的O2O模式专业环保型清洁服务公司。
+				</p>
+				<p class="para_1">				公司管理机制完善，清洁作业采用专业清洗设备结合员工丰富的经验来进行工作流程；洗涤技术严格实行上岗前操作培训采用国内知名洗染技术及配方，让洗衣事故尽可能的减少，取得广大顾客的认可，凭着较高的洗涤、清洁质量和严格的管理制度，为众多企事业单位、酒店等提供优质的专业服务，特称之为“快客洗涤”。
+				</p>
+				<p class="para_1">
+				<strong>公司概况：</strong>贵州省金州快客清洁服务有限公司经过长期的策划和筹备，于2014年12月1日正式成立，注册资金200万元，自有多名掌握较好的干洗技术的技术骨干和多名从事多年家政保洁的员工，经集中进行专业技术及道德的培训，我公司员工自身素质较好。
+				</p>
+				<p class="para_1">
+				<strong>企业文化：</strong>洗涤满意、服务满意、形象满意、尊重顾客、理解顾客持续提供超越顾客期望的产品的服务与质量；自我完善服务系统，加强洗前上门收取、前后消毒干洗中、洗净后送回的服务，队顾客在洗涤衣物中出现的各种问题及时帮助解决，让顾客们感到极大的方便。
+				</p>
+				<p class="para_1">
+				<strong>公司产品：</strong>快客洗涤干洗加盟店、洗涤技术咨询与培训、洗涤设备销售、命名为“快客洗涤”的手机APP。
+				</p>
+			</div>
+		</div>
+	</div>
+	<div id="container_2" class="wrapper">
+		<div class="contain-inner">
+			<div class="content">
+			<div class="pics">
+			<img class="pic pic-detail" src="img/addr.png">
+			</div>
+		</div>
+	</div>
+	</div>
+   <div id="footer"> 
    <div class="container"> 
     <div class="bottom"> 
      <div class="row"> 
@@ -141,10 +105,10 @@
       <div class="col-sm-12 col-md-5"> 
        <div class="bottom_right"> 
         <ul> 
-         <li><a href="http://www.huawei.com/cn/about-huawei/legal/index.htm">法律声明</a></li> 
-         <li><a href="http://www.huawei.com/cn/about-huawei/legal/index.htm#Privacy policy">隐私保护</a></li> 
-         <li><a href="http://www.huawei.com/cn/about-huawei/contact-us/index.htm">联系我们</a></li> 
-         <li><a href="http://www.huawei.com/cn/sitemap/index.htm">网站地图</a></li> 
+         <li><a href="#">法律声明</a></li> 
+         <li><a href="#">隐私保护</a></li> 
+         <li><a href="#">联系我们</a></li> 
+         <li><a href="#">网站地图</a></li> 
         </ul> 
        </div> 
       </div> 
@@ -154,21 +118,14 @@
     <!-- container_inner END --> 
    </div> 
    <!-- container_outer END --> 
-  </div> 
-  <script type="text/javascript" src="./cn/ucmf/groups/public/documents/webasset/jquery-1.11.1.min.js"></script> 
-  <script type="text/javascript" src="./cn/ucmf/groups/public/documents/webasset/custom_min.js"></script> 
-  <script type="text/javascript" src="./cn/ucmf/groups/public/documents/webasset/jquery_migrate_1.2.1.js"></script> 
-  <script type="text/javascript" src="./cn/ucmf/groups/public/documents/webasset/jquery_cookies.js"></script> 
-  <!--[if gt IE 9]><!--> 
-  <script type="text/javascript" src="./cn/ucmf/groups/public/documents/webasset/bootstrap_min.js"></script> 
-  <!--<![endif]--> 
-  <!--[if lte IE 9]>
-    <script type="text/javascript" src="/cn/ucmf/groups/public/documents/webasset/ie_bootstrap_carousel.js" ></script> 
-    <![endif]--> 
-  <script type="text/javascript" src="./cn/ucmf/groups/public/documents/webasset/jquery_oracle_ucm.js"></script> 
-  <script type="text/javascript" src="./cn/ucmf/groups/public/documents/webasset/huawei.js"></script> 
-  <script type="text/javascript" src="./cn/ucmf/groups/public/documents/webasset/main_new.js"></script> 
-  <a href="./cn/ucmf/groups/public/documents/webasset/ie_bootstrap_carousel.js" name="forsspu" class="hidden"></a> 
-  <a href="./cn/ucmf/groups/public/documents/webasset/jquery_fancybox_pack1.js" name="forsspu" class="hidden"></a> 
- </body>
+  </div>
+</body>
 </html>
+
+
+
+
+
+
+
+
