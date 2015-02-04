@@ -11,6 +11,7 @@
 #import "FEButton.h"
 #import "GAAlertObj.h"
 #import <libPhoneNumber-iOS/NBPhoneNumberUtil.h>
+#import "FEDataCache.h"
 
 @interface FEInfoInputVC ()<UITextViewDelegate>{
     NSInteger _inputLenth;
@@ -54,11 +55,18 @@
 }
 
 -(void)textDidChange:(NSNotification *)note{
+    if ([self.typeName isEqualToString:@"联系人"]) {
+        return;
+    }
     self.limitLabel.text = [NSString stringWithFormat:@"%ld/%ld",(long)
                             self.inputTextView.text.length,(long)_inputLenth];
 }
 
 -(void)refreshLimit{
+    if ([self.typeName isEqualToString:@"联系人"]) {
+        self.limitLabel.text = @"";
+        return;
+    }
     self.limitLabel.text = [NSString stringWithFormat:@"%ld/%ld",(long)
                             self.inputTextView.text.length,(long)_inputLenth];
 }
@@ -76,7 +84,7 @@
 }
 
 - (IBAction)defaultLocation:(id)sender {
-    
+    self.inputTextView.text = [FEDataCache sharedInstance].customer.addr;
 }
 
 -(void)configUI{
@@ -100,6 +108,7 @@
         self.inputTextView.text = self.orderInfo.phone;
         self.title = @"联系电话";
     }else if([self.typeName isEqualToString:@"您的要求"]){
+        _inputLenth = 200;
         self.title = @"您的要求";
         self.inputTextView.text = self.orderInfo.order_note;
     }
@@ -107,15 +116,28 @@
 - (IBAction)saveInfo:(id)sender {
     
     if ([self.typeName isEqualToString:@"取衣地址"]) {
+        if (self.inputTextView.text.length > _inputLenth) {
+            kAlert(@"字数超过限制", self);
+            return;
+        }
         self.orderInfo.take_addr = self.inputTextView.text;
     }else if([self.typeName isEqualToString:@"送回地址"]){
+        if (self.inputTextView.text.length > _inputLenth) {
+            kAlert(@"字数超过限制", self);
+            return;
+        }
         self.orderInfo.delivery_addr = self.inputTextView.text;
     }else if([self.typeName isEqualToString:@"联系人"]){
+        if (self.inputTextView.text.length > _inputLenth) {
+            kAlert(@"字数超过限制", self);
+            return;
+        }
         self.orderInfo.contact_name = self.inputTextView.text;
     }else if([self.typeName isEqualToString:@"联系电话"]){
         if ([self.inputTextView.text isPhone]) {
             self.orderInfo.phone = self.inputTextView.text;
         }else{
+            
             GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
                 
             }];
@@ -124,17 +146,21 @@
         }
         
     }else if([self.typeName isEqualToString:@"您的要求"]){
+        if (self.inputTextView.text.length > _inputLenth) {
+            kAlert(@"字数超过限制", self);
+            return;
+        }
         self.orderInfo.order_note = self.inputTextView.text;
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([self.typeName isEqualToString:@"取衣地址"] || [self.typeName isEqualToString:@"送回地址"] || [self.typeName isEqualToString:@"联系人"] || [self.typeName isEqualToString:@"您的要求"]) {
-        if ([textView.text stringByReplacingCharactersInRange:range withString:text].length > _inputLenth) {
-            return NO;
-        }
-    }
+//    if ([self.typeName isEqualToString:@"取衣地址"] || [self.typeName isEqualToString:@"送回地址"] || [self.typeName isEqualToString:@"联系人"] || [self.typeName isEqualToString:@"您的要求"]) {
+//        if ([textView.text stringByReplacingCharactersInRange:range withString:text].length > _inputLenth) {
+//            return NO;
+//        }
+//    }
     return YES;
 }
 

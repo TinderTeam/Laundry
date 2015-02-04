@@ -14,7 +14,7 @@
 #import "FERegistResquest.h"
 #import "GAAlertObj.h"
 
-@interface FERegistVC ()
+@interface FERegistVC ()<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *getCodeButton;
 @property (strong, nonatomic) IBOutlet UITextField *phoneTextFeild;
 @property (strong, nonatomic) IBOutlet UITextField *verifyCode;
@@ -38,6 +38,7 @@
 
 - (IBAction)getCodeAction:(id)sender {
     if ([self.phoneTextFeild.text isPhone]) {
+        _totalTime = 60;
         [self requestGetCode];
     }else{
         GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
@@ -85,11 +86,25 @@
     
     [self.getCodeButton setTitle:[NSString stringWithFormat:@"%ld's",(long)_totalTime] forState:UIControlStateDisabled];
     _totalTime--;
-    if (_totalTime == 0) {
+    if (_totalTime <= 0) {
         self.getCodeButton.enabled = YES;
         [self.timer invalidate];
         self.timer = nil;
+        _totalTime = 60;
+        [self.getCodeButton setTitle:@"60's" forState:UIControlStateDisabled];
     }
+}
+#pragma mark - UITextFieldDelegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    if (self.phoneTextFeild == textField) {
+        [self.verifyCode becomeFirstResponder];
+    }else if (self.verifyCode == textField){
+        [self.passwordTextField becomeFirstResponder];
+    }else{
+        [self registAction:nil];
+    }
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

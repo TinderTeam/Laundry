@@ -148,7 +148,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         NSInteger index = 0;
         while (1) {
-            if (weakself.adList.count) {
+            if (weakself.adList.count && weakself.pageIndicate.numberOfPages != 0) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakself.adImageCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
                     weakself.pageIndicate.currentPage = index;

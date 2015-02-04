@@ -24,6 +24,7 @@
 #define __METHOD_ResetPsw           @"index.php/Index/ResetPassword"
 #define __METHOD_ModifyProfile      @"laundry.php/CustomerManage/Modify"
 #define __METHOD_GetCustomer        @"laundry.php/CustomerManage/Show"
+#define __METHOD_Update             @"index.php/ClientVersionManage/GetLatestVersion"
 
 //AD manager
 #define __METHOD_GetAD             @"laundry.php/ADManage/LoadAll"

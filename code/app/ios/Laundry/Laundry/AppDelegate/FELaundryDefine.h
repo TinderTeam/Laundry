@@ -31,4 +31,9 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
+#define kAlert(_M,_C)  {GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{ \
+\
+}];\
+[GAAlertObj showAlertWithTitle:@"提示" message:_M actions:@[action] inViewController:_C];}
+
 #endif

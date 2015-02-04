@@ -13,7 +13,7 @@
 #import "FEVerifyCodeResponse.h"
 #import "FEResetPasswordRequest.h"
 
-@interface FEForgotPasswordVC ()
+@interface FEForgotPasswordVC ()<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *getCodeButton;
 @property (strong, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (strong, nonatomic) IBOutlet UITextField *codeTextFeild;
@@ -68,10 +68,12 @@
     
     [self.getCodeButton setTitle:[NSString stringWithFormat:@"%ld's",(long)_totalTime] forState:UIControlStateDisabled];
     _totalTime--;
-    if (_totalTime == 0) {
+    if (_totalTime <= 0) {
         self.getCodeButton.enabled = YES;
         [self.timer invalidate];
         self.timer = nil;
+        _totalTime = 60;
+        [self.getCodeButton setTitle:@"60's" forState:UIControlStateDisabled];
     }
 }
 
@@ -90,6 +92,18 @@
         }
     }
     
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    if (self.phoneTextField == textField) {
+        [self.codeTextFeild becomeFirstResponder];
+    }else if (self.codeTextFeild == textField){
+        [self.passwordTextFeild becomeFirstResponder];
+    }else{
+        [self resetPassword:nil];
+    }
+    return YES;
 }
 
 /*

@@ -14,7 +14,7 @@
 #import "FEGetCustomerResponse.h"
 #import "FEDataCache.h"
 
-@interface FESigninVC ()
+@interface FESigninVC ()<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextfield;
 
@@ -64,6 +64,17 @@
             }
         }];
     }
+}
+
+#pragma mark - UITextFieldDelegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    if (self.phoneTextField == textField) {
+        [self.passwordTextfield becomeFirstResponder];
+    }else{
+        [self signinAction:nil];
+    }
+    return YES;
 }
 
 /*

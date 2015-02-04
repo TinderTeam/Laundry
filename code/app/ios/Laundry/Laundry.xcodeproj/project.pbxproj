@@ -55,6 +55,10 @@
 		144716561A6D5A4E003359FC /* FEOrderDetailResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 144716551A6D5A4E003359FC /* FEOrderDetailResponse.m */; };
 		144716591A6E1C62003359FC /* FEOrderDeleteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 144716581A6E1C62003359FC /* FEOrderDeleteRequest.m */; };
 		1447165C1A6E1CFF003359FC /* FEOrderOperationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1447165B1A6E1CFF003359FC /* FEOrderOperationResponse.m */; };
+		14509A7F1A81C1A900FE3898 /* FEUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14509A7E1A81C1A900FE3898 /* FEUpdateRequest.m */; };
+		14509A821A81C24000FE3898 /* FEClientVersionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 14509A811A81C24000FE3898 /* FEClientVersionResponse.m */; };
+		14509A851A81C2D100FE3898 /* FEClientVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 14509A841A81C2D100FE3898 /* FEClientVersion.m */; };
+		14509A881A81DACE00FE3898 /* FECheckUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14509A871A81DACE00FE3898 /* FECheckUpdate.m */; };
 		14950D621A78CD3C001416A7 /* FEResetPasswordRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D611A78CD3C001416A7 /* FEResetPasswordRequest.m */; };
 		14950D661A7917E2001416A7 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14950D641A7917E2001416A7 /* AlipaySDK.bundle */; };
 		14950D671A7917E2001416A7 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14950D651A7917E2001416A7 /* AlipaySDK.framework */; };
@@ -215,6 +219,14 @@
 		144716581A6E1C62003359FC /* FEOrderDeleteRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderDeleteRequest.m; sourceTree = "<group>"; };
 		1447165A1A6E1CFF003359FC /* FEOrderOperationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOrderOperationResponse.h; sourceTree = "<group>"; };
 		1447165B1A6E1CFF003359FC /* FEOrderOperationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOrderOperationResponse.m; sourceTree = "<group>"; };
+		14509A7D1A81C1A900FE3898 /* FEUpdateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FEUpdateRequest.h; path = Laundry/WebService/Param/FEUpdateRequest.h; sourceTree = SOURCE_ROOT; };
+		14509A7E1A81C1A900FE3898 /* FEUpdateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FEUpdateRequest.m; path = Laundry/WebService/Param/FEUpdateRequest.m; sourceTree = SOURCE_ROOT; };
+		14509A801A81C24000FE3898 /* FEClientVersionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEClientVersionResponse.h; sourceTree = "<group>"; };
+		14509A811A81C24000FE3898 /* FEClientVersionResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEClientVersionResponse.m; sourceTree = "<group>"; };
+		14509A831A81C2D100FE3898 /* FEClientVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEClientVersion.h; sourceTree = "<group>"; };
+		14509A841A81C2D100FE3898 /* FEClientVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEClientVersion.m; sourceTree = "<group>"; };
+		14509A861A81DACE00FE3898 /* FECheckUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FECheckUpdate.h; sourceTree = "<group>"; };
+		14509A871A81DACE00FE3898 /* FECheckUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FECheckUpdate.m; sourceTree = "<group>"; };
 		14950D601A78CD3C001416A7 /* FEResetPasswordRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEResetPasswordRequest.h; sourceTree = "<group>"; };
 		14950D611A78CD3C001416A7 /* FEResetPasswordRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEResetPasswordRequest.m; sourceTree = "<group>"; };
 		14950D641A7917E2001416A7 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
@@ -538,6 +550,8 @@
 				1418A1B71A68B7BF00886FDA /* FECustomSegue.m */,
 				14DD64AA1A6BBB3C0074D9CA /* FEInputAlertView.h */,
 				14DD64AB1A6BBB3C0074D9CA /* FEInputAlertView.m */,
+				14509A861A81DACE00FE3898 /* FECheckUpdate.h */,
+				14509A871A81DACE00FE3898 /* FECheckUpdate.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -664,6 +678,8 @@
 				1418A1B41A68A32F00886FDA /* FEOrderDetail.m */,
 				14F998541A8069A70052D0B3 /* FECustomer.h */,
 				14F998551A8069A70052D0B3 /* FECustomer.m */,
+				14509A831A81C2D100FE3898 /* FEClientVersion.h */,
+				14509A841A81C2D100FE3898 /* FEClientVersion.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -729,6 +745,10 @@
 				14F998581A806B170052D0B3 /* FEGetCustomerRequest.m */,
 				14F9985A1A806E9B0052D0B3 /* FEGetCustomerResponse.h */,
 				14F9985B1A806E9B0052D0B3 /* FEGetCustomerResponse.m */,
+				14509A7D1A81C1A900FE3898 /* FEUpdateRequest.h */,
+				14509A7E1A81C1A900FE3898 /* FEUpdateRequest.m */,
+				14509A801A81C24000FE3898 /* FEClientVersionResponse.h */,
+				14509A811A81C24000FE3898 /* FEClientVersionResponse.m */,
 			);
 			path = Param;
 			sourceTree = "<group>";
@@ -891,6 +911,7 @@
 				14DD64A91A6BBB040074D9CA /* CustomIOS7AlertView.m in Sources */,
 				1418A1971A68046600886FDA /* FESignoutRequest.m in Sources */,
 				144350741A6652A6002BB228 /* UIImage+LogN.m in Sources */,
+				14509A881A81DACE00FE3898 /* FECheckUpdate.m in Sources */,
 				14FF4A281A66962400DECA7B /* NSString+Attribute.m in Sources */,
 				1418A1A31A680B3900886FDA /* FEOrder.m in Sources */,
 				1403EEEA1A6CBF6200B6DF64 /* FEGetCurrentCity.m in Sources */,
@@ -904,6 +925,7 @@
 				14FF4A7E1A67E5F100DECA7B /* FESigninVC.m in Sources */,
 				1418A19A1A6809A100886FDA /* FEMyOrderVC.m in Sources */,
 				1418A19D1A680A4C00886FDA /* FEOrderRequest.m in Sources */,
+				14509A7F1A81C1A900FE3898 /* FEUpdateRequest.m in Sources */,
 				14FF4A8A1A67ED4300DECA7B /* FEUser.m in Sources */,
 				14FF4A5F1A675C4300DECA7B /* FEGetProductTypeResponse.m in Sources */,
 				1443506B1A6652A6002BB228 /* NSString+Attribute.m in Sources */,
@@ -926,6 +948,7 @@
 				14FF4A901A67F79500DECA7B /* FEProfileVC.m in Sources */,
 				14950D8A1A7923F0001416A7 /* RSADataVerifier.m in Sources */,
 				14F998471A7FA60C0052D0B3 /* FEOrderCancelRequest.m in Sources */,
+				14509A851A81C2D100FE3898 /* FEClientVersion.m in Sources */,
 				1418A1B51A68A32F00886FDA /* FEOrderDetail.m in Sources */,
 				14FF4A301A6696B300DECA7B /* FEBaseResponse.m in Sources */,
 				14FF4A811A67E69100DECA7B /* FERegistVC.m in Sources */,
@@ -957,6 +980,7 @@
 				14F9983E1A7F3FC30052D0B3 /* FEPopPickerView.m in Sources */,
 				14FF4A7B1A67BE6C00DECA7B /* FEOrderSubmitVC.m in Sources */,
 				14F998441A7F68DC0052D0B3 /* FEMyInfoTableVC.m in Sources */,
+				14509A821A81C24000FE3898 /* FEClientVersionResponse.m in Sources */,
 				1403EEE41A6C9F1A00B6DF64 /* FEModifyInfoVC.m in Sources */,
 				14F998351A7E5C2C0052D0B3 /* FECreateOrderResponse.m in Sources */,
 				144350161A663EC1002BB228 /* FEViewController.m in Sources */,
