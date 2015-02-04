@@ -1,0 +1,71 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+    <form id="userForm" method="post">
+    	<table cellpadding="5">
+    		<tr>
+    			<td>员工账号:</td>
+    			<td>
+    				<input id="user_name" name="user_name" class="easyui-textbox" type="text"  data-options="required:true,validType:{length:[4,20]}"/>
+   				</td>
+   				<td style="display:none">
+   					<input id="user_id" name="user_id" class="easyui-textbox" type="text"/>
+   				</td>
+    		</tr>
+    		<tr>
+    			<td>员工邮箱:</td>
+    			<td><input name="email" class="easyui-textbox" type="text" data-options="required:true,validType:['email','length[0,48]']"/></td>
+    		</tr>
+    		<tr>
+    			<td>员工类型:</td>
+    			<td>
+    				<input class="easyui-combobox" name="role_id" style="width:100%"
+						   data-options="url: '__ROOT__/index.php/CommonData/GetRoleList?RoleGroupID=2',method: 'post',
+							valueField:'role_id',textField:'role_name',panelHeight:'auto',required:true,editable:false"/>
+							
+					<!-- RoleGroupID=2 选择的是ADMIN组 -->
+				</td>
+			</tr>
+    	</table>
+    </form>
+    <div style="text-align:center;padding:5px;margin-top:10px">
+    	<a class="easyui-linkbutton" iconCls="icon-ok" style="width:60px;" onclick="submitForm()">提交</a>
+    	<a>&nbsp&nbsp&nbsp&nbsp</a>
+    	<a class="easyui-linkbutton" iconCls="icon-cancel" style="width:60px;" onclick="$('#userModify').dialog('close')">关闭</a>
+    </div>
+<script type="text/javascript">
+function submitForm() {
+	if($("#userForm").form('validate') == false) return;
+	var json = formToJson('#userForm');
+	 var submitUrl = "__APP__/AdminManage/Create";
+	 if("" != $("#user_id").val())
+	 {
+		 submitUrl = "__APP__/AdminManage/Modify";
+	 }
+	$.ajax({
+		type:"post",
+		url: submitUrl,
+		data:json,
+		dataType:"json",
+		success:function(rsp){
+			if(isSuccess(rsp)){
+				//关闭当前对话框
+				$('#userModify').dialog('close');
+				//重新加载datagrid数据
+				$("#userGrid").datagrid('reload'); 
+			}
+			else{
+				fuegoAlert(rsp.errorMsg);
+			}
+		},
+    	error:function(){
+    		fuegoAlert("当前ajax操作出错！");
+		}
+	});
+}
+</script>
+</body>
+</html>

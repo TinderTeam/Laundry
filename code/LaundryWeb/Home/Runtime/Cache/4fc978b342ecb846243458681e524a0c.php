@@ -1,0 +1,95 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+    <form id="productForm" name="productForm" action="__APP__/ProductManage/Create" method="post" enctype="multipart/form-data">
+    	<div style="width:50%;float:left;height:220px;" >
+	    	<table cellpadding="5">
+	    		<tr>
+	    			<td>产品名称:</td>
+	    			<td>
+	    				<input class="easyui-textbox" type="text" name="product_name" data-options="required:true,validType:['length[1,12]']"></input>
+	   				</td>
+	   				<td style="display:none">
+	   					<input id="product_id" name="product_id" class="easyui-textbox" type="text" ></input>
+	   				</td>
+	    		</tr>
+	    		<tr>
+	    			<td>价格类型:</td>
+	    			<td>
+		    			<input type="radio" name="price_type" checked="checked" value="固定"><span>固定</span>
+	    				<input type="radio" name="price_type" value="面议"><span>面议</span>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>产品价格:</td>
+	    			<td><input class="easyui-textbox" type="text" name="price" data-options="validType:['intOrFloat','length[0,8]']"/></td>
+	    		</tr>
+	    		<tr>
+	    			<td>产品类型:</td>
+	    			<td style="display:none">
+	   					<input id="img" name="img" class="easyui-textbox" type="text"></input>
+	   				</td>
+	    			<td>
+	    				<input class="easyui-combobox" name="type_id" style="width:100%"
+							   data-options="url: '__APP__/ProductManage/getProductTypeList',method: 'get',
+								valueField:'type_id',textField:'type_name',panelHeight:'auto',required:true,validType:['chinese'],editable:false">
+					</td>
+	    		</tr>
+	    		<tr>
+	    			<td>产品描述:</td>
+	    			<td><textarea style="height:60px;width:145px" class="easyui-validatebox" name="describe" data-options="validType:['length[0,50]']"></textarea></td>
+	    		</tr>
+	    	</table>
+    	</div>
+    	<div style="width:50%;float:right;height:220px;">
+    		<div style="text-align:center;margin:15px auto;">
+				<div style="text-align:center;margin:15px auto;">
+					<img id="img0" src="" alt="产品照片" height="120px" width="160px">
+				</div>
+			</div>
+			<input name="img[]" type="file" id="up0" onclick="Change()" style="margin-bottom:20px;margin-top:10px;margin-left:30px;width:200px;">
+    	</div>
+    </form>
+    <div colspan="2" style="text-align:center;padding:5px">
+    	<a class="easyui-linkbutton" iconCls="icon-ok" style="width:60px;" onclick="submitForm()">提交</a>
+    	<a>&nbsp&nbsp&nbsp&nbsp</a>
+    	<a class="easyui-linkbutton" iconCls="icon-cancel" style="width:60px;" onclick="$('#productModify').dialog('close')">关闭</a>
+    </div>
+<script type="text/javascript">
+function Change()
+{	
+	$("#img0").attr('src', '__PUBLIC__/Fuego/Uploads/'+$("#img").val());
+	//var up = $("#img0").attr("src",'');//清空图片预览内容 
+}
+$(function () {
+    $("#up0").uploadPreview({ Img: "img0"});
+});
+function submitForm(){
+	if($("#productForm").form('validate') == false) return;
+	if("" != $("#product_id").val())
+	 {
+		$("#productForm").attr('action', '__APP__/ProductManage/Modify');
+	 }
+	var form = document.productForm;
+	var rsp = iframeCallback(form,submitFormDone);
+	form.submit();
+	return rsp;
+}
+function submitFormDone(rsp){
+	if(isSuccess(rsp)){
+		//关闭当前对话框
+		$('#productModify').dialog('close');
+		//重新加载datagrid数据
+		$("#productGrid").datagrid('reload'); 
+	}
+	else{
+		fuegoAlert(rsp.errorMsg);
+	}
+}
+
+</script>
+</body>
+</html>

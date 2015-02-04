@@ -1,0 +1,170 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>会员管理</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/ThirdParty/EasyUI/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/ThirdParty/EasyUI/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/ThirdParty/EasyUI/demo/demo.css">
+<script type="text/javascript" src="__PUBLIC__/ThirdParty/EasyUI/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/ThirdParty/EasyUI/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/ThirdParty/Others/uploadPreview.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Fuego/PublicJS/jsonConvert.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Fuego/PublicJS/public.js"></script>
+<script type="text/javascript" src="__PUBLIC__/ThirdParty/EasyUI/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Fuego/PublicJS/EasyUIValidate.js"></script>
+</head>
+<body>
+	<fieldset style="width:100%;border:solid 1px #aaa;margin-top:5px;margin-bottom:5px;position:relative;">
+        <legend>信息查询</legend>
+            <form id="searchForm" method="post">
+                <table>
+                    <tr>
+                    	<td style="width:60px;">会员编号:</td>
+		    			<td style="width:170px;">
+		    				<input name="user_id" class="easyui-textbox" type="text" data-options="validType:{length:[0,20]}"></input>
+		   				</td>
+		   				<td style="width:60px;">会员账号:</td>
+		    			<td style="width:170px;">
+		    				<input name="user_name" class="easyui-textbox" type="text" data-options="validType:{length:[0,20]}"></input>
+		   				</td>
+		   				<td style="width:60px;">会员姓名:</td>
+		    			<td style="width:170px;">
+		    				<input name="customer_name" class="easyui-textbox" type="text" data-options="validType:{length:[0,20]}"></input>
+		   				</td>
+		   				<td >
+		   				<a class="easyui-linkbutton" iconCls="icon-search" onclick="onSearch()">搜索</a>
+		   				</td>  
+                    </tr>
+                </table>
+            </form>
+    </fieldset>
+	<div id="toolbar" style="padding:5px;height:auto">
+		<a class="easyui-linkbutton" iconCls="icon-add" onclick="onModify('Create')">增加</a>
+		<a class="easyui-linkbutton" iconCls="icon-edit" onclick="onModify('Modify')">编辑</a>
+		<a class="easyui-linkbutton" iconCls="icon-remove" onclick="onDelete()">删除</a>
+	</div>
+	<div class="easyui-layout"data-options="fit:true">
+	<table id="customerGrid" class="easyui-datagrid" style="width:100%;height:88%"
+			data-options="checkOnSelect:true,rownumbers:true,pagination:true,pageList:[10,20,30],singleSelect:true,
+			url:'__APP__/CustomerManage/LoadPage',method:'post',queryParams:'',toolbar:'#toolbar'">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<!--<th data-options="field:'user_id',width:80">会员编号</th>-->
+				<th data-options="field:'user_name',width:120">会员账号</th>
+				<th data-options="field:'customer_name',width:60">姓名</th>
+				<th data-options="field:'customer_sex',width:40">性别</th>
+				<!--<th field="customer_sex" width = "50" formatter = "formatSex">性别</th> -->
+				<th data-options="field:'card_number',width:180">会员卡号</th>
+				<th data-options="field:'score',width:50">积分</th>
+				<th data-options="field:'customer_email',width:120">邮箱</th>
+				<th data-options="field:'phone',width:120">电话</th>
+				<th data-options="field:'nickname',width:120">昵称</th>
+				<th data-options="field:'birthday',width:100">生日</th>
+				<th data-options="field:'addr',width:260">住址</th>
+				<!--  <th data-options="field:'level',width:80">会员级别</th>-->
+			</tr>
+		</thead>
+	</table>
+	</div>
+	<div id="customerModify" style="padding-left:15px;padding-top:10px;"></div>
+<script type="text/javascript">
+function onSearch(){
+	if($("#searchForm").form('validate') == false) return;
+	var json = buildRequest('#searchForm');
+	var param = {"data" : json};
+	$('#customerGrid').datagrid('loadData', { total: 0, rows: [] });
+	$('#customerGrid').datagrid('load', param);
+	
+}
+//function formatSex(val,row){
+//	if (val == "false"){
+//		return "男";
+//	} else {
+//		return "女";
+//	}
+//}
+function onModify(type){
+	var row = $('#customerGrid').datagrid('getSelected');
+	if((type == "Modify")&&(!row))
+	{
+		fuegoAlert("请选择一条记录");
+	}
+	else
+	{	
+		//打开产品编辑窗口
+		$('#customerModify').dialog({
+		    title: '会员信息',
+		    width: 480,
+		    height: 320,
+		    closed: false,
+		    cache: false,
+		    href: '__APP__/CustomerManage/customerInfo.html',
+		    modal: true
+		});
+		if(type == "Modify")
+		{
+			var json = objToJson(row.user_id);
+			$.ajax({
+				type:"post",
+				url:"__APP__/CustomerManage/Show",
+				data:json,
+				dataType:"json",
+				success:function(rsp){
+					if(isSuccess(rsp)){
+						$('#customerForm').form('load',rsp.obj);
+						$('#user_name').textbox('readonly');
+					}
+					else{
+						fuegoAlert(rsp.errorMsg);
+					}
+				},
+	        	error:function(){
+	        		fuegoAlert("当前ajax操作出错！");
+				}
+			});
+		}
+	}	
+}
+function onDelete(){
+	var row = $('#customerGrid').datagrid('getSelected');
+	if(!row)
+	{
+		fuegoAlert("请选择一条记录");
+	}
+	else
+	{
+		$.messager.confirm('确认提示', '确认删除该条记录？', function (r) {
+			if(r){
+				var json = objToJson(row.user_id);
+				$.ajax({
+					type:"post",
+					url:"__APP__/CustomerManage/Delete",
+					data:json,
+					dataType:"json",
+					success:function(rsp){
+						if(isSuccess(rsp)){
+							//删除前台显示数据
+							//var rowIndex = $('#customerGrid').datagrid('getRowIndex', row);
+					        //$('#customerGrid').datagrid('deleteRow', rowIndex);
+					        //解决最后一条记录无法删除BUG
+					        $('#customerGrid').datagrid('loadData', { total: 0, rows: [] });
+					        //重新加载datagrid数据
+							$("#customerGrid").datagrid('reload');
+						}
+						else{
+							fuegoAlert(rsp.errorMsg);
+						}
+					},
+		        	error:function(){
+		        		fuegoAlert("当前ajax操作出错！");
+					}
+				});
+			}
+		});
+	}	
+}
+</script>
+</body>
+</html>
