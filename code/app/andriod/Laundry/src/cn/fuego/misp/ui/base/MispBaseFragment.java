@@ -86,7 +86,7 @@ public abstract class MispBaseFragment extends Fragment implements OnClickListen
 	public void showMessage(String message)
 	{
 		Toast toast;
-		toast = Toast.makeText(this.getActivity(), message , Toast.LENGTH_LONG);
+		toast = Toast.makeText(this.getActivity(), message , Toast.LENGTH_SHORT);
 		toast.show();
 	}
 	public void showMessage(MispHttpMessage message)

@@ -117,6 +117,7 @@ public class AppCache
 		this.customer = (CustomerJson) SharedPreUtil.getInstance().get(CUSTOMER_CACHE);
 		MemoryCache.setToken((String) SharedPreUtil.getInstance().get(TOKEN_CACHE));
 	    CartProduct.getInstance().setDefaultOrderInfo();
+	    
 
 		
 	}

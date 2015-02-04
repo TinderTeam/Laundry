@@ -3,6 +3,7 @@ package cn.fuego.laundry.ui.order;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.View;
 import cn.fuego.common.log.FuegoLog;
@@ -25,6 +26,7 @@ import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.common.alipay.MispPayActivity;
 import cn.fuego.misp.ui.common.alipay.MispPayParameter;
+import cn.fuego.misp.ui.dailog.MispWaitDailog;
 import cn.fuego.misp.ui.info.MispInfoListActivity;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 import cn.fuego.misp.ui.model.ListViewResInfo;
@@ -36,6 +38,8 @@ public class OrderDetailActivity extends MispInfoListActivity
 	public static final String ORDER_INFO = "order_info";
 
 	private OrderJson order;
+	
+	private MispWaitDailog proDialog;
 	@Override
 	public void initRes()
 	{
@@ -141,12 +145,16 @@ public class OrderDetailActivity extends MispInfoListActivity
 	{
 		GetOrderDetailReq  req = new GetOrderDetailReq();
 		req.setObj(order.getOrder_id());
+		
+		proDialog    = new MispWaitDailog(this);
+		proDialog.show();
 		WebServiceContext.getInstance().getOrderManageRest(new MispHttpHandler()
 		{
 
 			@Override
 			public void handle(MispHttpMessage message)
 			{
+				proDialog.dismiss();
 				 if(message.isSuccess())
 				 {
 					 GetOrderDetailRsp rsp = (GetOrderDetailRsp) message.getMessage().obj;
@@ -188,13 +196,7 @@ public class OrderDetailActivity extends MispInfoListActivity
 		
 		OperateOrderReq req = new  OperateOrderReq();
 		req.setObj(order.getOrder_id());
-		if(OrderStatusEnum.OrderSubmit.getStrValue().equals(status))
-		{
-			  //"取消";
- 
-			WebServiceContext.getInstance().getOrderManageRest(this).cancel(req);
-		}
-		else if(OrderStatusEnum.WaitBuyerPay.getStrValue().equals(status))
+		if(OrderStatusEnum.WaitBuyerPay.getStrValue().equals(status))
 		{
 			 //"付款";
 			MispPayParameter parameter = new MispPayParameter();
@@ -217,24 +219,37 @@ public class OrderDetailActivity extends MispInfoListActivity
 				showMessage("订单提交成功，支付异常");
 			}
 		}
-		else if(OrderStatusEnum.OrderComplete.getStrValue().equals(status))
+		else
 		{
+			proDialog =  new MispWaitDailog(this);
+			proDialog.show();
+			if(OrderStatusEnum.OrderSubmit.getStrValue().equals(status))
+			{
+				  //"取消";
+	 
+				WebServiceContext.getInstance().getOrderManageRest(this).cancel(req);
+			}
+			else if(OrderStatusEnum.OrderComplete.getStrValue().equals(status))
+			{
 
-			WebServiceContext.getInstance().getOrderManageRest(this).delete(req);
-			// "删除";
+				WebServiceContext.getInstance().getOrderManageRest(this).delete(req);
+				// "删除";
+			}
+			else if(OrderStatusEnum.OrderCancel.getStrValue().equals(status))
+			{
+	 
+				WebServiceContext.getInstance().getOrderManageRest(this).delete(req);
+				// "删除";
+			}
 		}
-		else if(OrderStatusEnum.OrderCancel.getStrValue().equals(status))
-		{
- 
-			WebServiceContext.getInstance().getOrderManageRest(this).delete(req);
-			// "删除";
-		}
+
 
 		
 	}
 	@Override
 	public void handle(MispHttpMessage message)
 	{
+		proDialog.dismiss();
 		if(message.isSuccess())
 		{
 			this.finish();

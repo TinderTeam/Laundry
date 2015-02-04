@@ -1,29 +1,31 @@
 package cn.fuego.laundry.ui.more;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.webservice.up.model.GetADReq;
+import cn.fuego.laundry.webservice.up.model.GetADRsp;
+import cn.fuego.laundry.webservice.up.model.base.AdvertisementJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.constant.MispCommonIDName;
 import cn.fuego.misp.service.MISPException;
+import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
-import cn.fuego.misp.ui.common.MispImageActivity;
+import cn.fuego.misp.ui.common.MispWebViewActivity;
+import cn.fuego.misp.ui.common.display.MispImageActivity;
 import cn.fuego.misp.ui.common.upgrade.UpgradeActivity;
+import cn.fuego.misp.ui.dailog.MispWaitDailog;
 import cn.fuego.misp.ui.info.MispInfoListFragment;
 import cn.fuego.misp.ui.model.CommonItemMeta;
 import cn.fuego.misp.ui.model.ImageDisplayInfo;
-import cn.fuego.misp.ui.util.LoadImageUtil;
 import cn.fuego.misp.webservice.up.model.GetClientVersionReq;
 import cn.fuego.misp.webservice.up.model.GetClientVersionRsp;
 
@@ -37,6 +39,8 @@ public class MoreFragment extends MispInfoListFragment
 	private static String PROTOCOL="洗涤协议";
 	private static String ATTENTION="注意事项";
 	private static String HELP="新手指引";
+	
+	public static String baseUrl = "/Laundry.php/ADManage/";
 
 	
 	@Override
@@ -61,11 +65,10 @@ public class MoreFragment extends MispInfoListFragment
 		List<CommonItemMeta> metaList = new ArrayList<CommonItemMeta>();
 		this.getDataList().clear();
 		
-		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, APP_INFO ,null));
-		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, JOIN_US ,null));
-		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, PROTOCOL ,null));
-		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, ATTENTION ,null));
-		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, HELP ,null));
+		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, APP_INFO ,MemoryCache.getWebContextUrl()+baseUrl+"introduct.html"));
+		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, JOIN_US ,MemoryCache.getWebContextUrl()+baseUrl+"joinUS.html"));
+ 		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, ATTENTION ,MemoryCache.getWebContextUrl()+baseUrl+"attention.html"));
+		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, HELP ,MemoryCache.getWebContextUrl()+baseUrl+"help.html"));
 
 		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, UPDATE_VERSION,null));
  
@@ -133,32 +136,68 @@ public class MoreFragment extends MispInfoListFragment
 	public void onItemListClick(AdapterView<?> parent, View view, long id,
 			CommonItemMeta item)
 	{
+		ImageDisplayInfo displayInfo = new ImageDisplayInfo();
+		displayInfo.setTilteName(item.getTitle());
 		if(UPDATE_VERSION.equals(item.getTitle()))
 		{
 			updateVersion();
 
 		}
-		else if(JOIN_US.equals(item.getTitle()))
+		else if(HELP.equals(item.getTitle()))
 		{ 		
-			Intent intent =  new Intent(this.getActivity(),MispImageActivity.class);
-			ImageDisplayInfo imageInfo = new ImageDisplayInfo();
-			imageInfo.setTilteName(item.getTitle());
-			imageInfo.setUrl(LoadImageUtil.getInstance().getLocalUrl(R.drawable.home_join_info));
-			intent.putExtra(MispImageActivity.JUMP_DATA, imageInfo);
-			this.startActivity(intent);
+
+			loadHelp();
+			
+
 		}
 		else
 		{
-			Intent intent =  new Intent(this.getActivity(),MispImageActivity.class);
-			ImageDisplayInfo imageInfo = new ImageDisplayInfo();
-			imageInfo.setTilteName(item.getTitle());
-			imageInfo.setUrl(LoadImageUtil.getInstance().getLocalUrl(R.drawable.home_join_info));
-			intent.putExtra(MispImageActivity.JUMP_DATA, imageInfo);
-			this.startActivity(intent);
+ 			displayInfo.setUrl(item.getContent().toString());
+			MispWebViewActivity.jump(this.getActivity(), displayInfo);
 		}
+	}
+	
+	private void loadHelp()
+	{
+		final MispWaitDailog dailog = new MispWaitDailog(this.getActivity());
+		dailog.show();
+		GetADReq req = new GetADReq();
+		
+		WebServiceContext.getInstance().getADManageRest(new MispHttpHandler()
+		{
+
+			@Override
+			public void handle(MispHttpMessage message)
+			{
+				dailog.dismiss();
+				 if(message.isSuccess())
+				 {
+					ImageDisplayInfo displayInfo = new ImageDisplayInfo();
+					displayInfo.setTilteName(HELP);
+					GetADRsp rsp = (GetADRsp) message.getMessage().obj;
+				 
+					List<String> urlList = new ArrayList<String>();
+					for(AdvertisementJson json : rsp.getObj())
+					{
+						urlList.add(MemoryCache.getImageUrl()+json.getAd_img()); 
+					}
+					displayInfo.setImageList(urlList);
+ 					MispImageActivity.jump(MoreFragment.this.getActivity(), displayInfo);
+					//initAdView(rsp.getObj());
+				 }
+				 else
+				 {
+					 showMessage(message);
+				 }
+			}
+				
+		 }).getHelp(req);
+		 
 	}
 	private void updateVersion()
 	{
+		final MispWaitDailog dailog = new MispWaitDailog(this.getActivity());
+		dailog.show();
 		GetClientVersionReq req = new GetClientVersionReq();
 		WebServiceContext.getInstance().getSystemManageRest(new MispHttpHandler()
 		{
@@ -166,6 +205,7 @@ public class MoreFragment extends MispInfoListFragment
 			@Override
 			public void handle(MispHttpMessage message)
 			{
+				dailog.dismiss();
 				if(message.isSuccess())
 				{
 					GetClientVersionRsp rsp = (GetClientVersionRsp) message.getMessage().obj;

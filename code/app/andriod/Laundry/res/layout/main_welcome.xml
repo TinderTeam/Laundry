@@ -2,7 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/start_image"
+    android:background="#026688"
     android:orientation="vertical" >
-
+    <ImageView
+        android:id="@+id/misp_grid_item_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/start_image"
+        android:scaleType="fitCenter"
+ 
+        android:gravity="center" />
 </LinearLayout>

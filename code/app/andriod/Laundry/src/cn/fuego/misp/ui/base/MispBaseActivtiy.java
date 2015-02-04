@@ -161,7 +161,7 @@ public abstract class MispBaseActivtiy extends Activity implements OnClickListen
 	public void showMessage(String message)
 	{
 		Toast toast;
-		toast = Toast.makeText(getApplicationContext(), message , Toast.LENGTH_LONG);
+		toast = Toast.makeText(getApplicationContext(), message , Toast.LENGTH_SHORT);
 		toast.show();
 	}
 	public int getScreenWidth()

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backcolor"
+    android:orientation="vertical" >
+
+ <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/misp_tilte_with_back_layout" />
+ 
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true" 
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+				        <android.webkit.WebView
+			android:id="@+id/misp_web_view"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:text=""
+			    />
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

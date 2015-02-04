@@ -16,7 +16,7 @@ public class ValidatorRules
 		return rule;
 	}
 	
-	public static String isLenght(int minLenght,int maxLength)
+	public static String isLength(int minLenght,int maxLength)
 	{
 		String rule =FUEGO_RULE_LENGTH+minLenght+","+maxLength;
 		return rule;
@@ -78,5 +78,11 @@ public class ValidatorRules
         }
         return valueLength;
     }
+
+	public static String isMobile()
+	{
+		// TODO Auto-generated method stub
+		return "^(13|15|18|17)\\d{9}$";
+	}
 
 }

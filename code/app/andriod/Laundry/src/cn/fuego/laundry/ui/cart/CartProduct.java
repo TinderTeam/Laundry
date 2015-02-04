@@ -7,6 +7,7 @@ import java.util.Map;
 
 import android.content.Intent;
 
+import cn.fuego.common.util.format.DataTypeConvert;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.cache.AppCache;
 import cn.fuego.laundry.constant.OrderTypeEnum;
@@ -43,7 +44,8 @@ public class CartProduct
 	
 	public String getDispPrice(String priceType,float price)
 	{
-		String totalPrice = String.valueOf(price);
+		float f1 = DataTypeConvert.float1(price);
+		String totalPrice = String.valueOf(f1);
 		if(PriceTypeEnum.FLOAT_PRICE.getStrValue().equals(priceType))
 		{
 			totalPrice = PriceTypeEnum.FLOAT_PRICE.getStrValue();

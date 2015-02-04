@@ -132,7 +132,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="总价：￥"
+                        android:text="总价："
                         android:textColor="@color/themecolor" />
 
                     <TextView

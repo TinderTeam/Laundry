@@ -1,9 +1,7 @@
 package cn.fuego.laundry.ui.home;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -32,6 +30,7 @@ import cn.fuego.laundry.constant.UIDimenConstant;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.base.BaseFragment;
 import cn.fuego.laundry.ui.cart.CartProduct;
+import cn.fuego.laundry.ui.loader.ProductLoader;
 import cn.fuego.laundry.ui.more.MoreFragment;
 import cn.fuego.laundry.ui.order.OrderActivity;
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
@@ -44,23 +43,19 @@ import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
-import cn.fuego.misp.tool.MispLocationListener;
 import cn.fuego.misp.ui.base.MispGridView;
-import cn.fuego.misp.ui.common.MispImageActivity;
+import cn.fuego.misp.ui.common.MispWebViewActivity;
+import cn.fuego.misp.ui.common.display.MispImageActivity;
 import cn.fuego.misp.ui.common.upgrade.UpgradeActivity;
 import cn.fuego.misp.ui.grid.MispGridViewAdapter;
 import cn.fuego.misp.ui.model.ImageDisplayInfo;
 import cn.fuego.misp.ui.model.MispGridDataModel;
+import cn.fuego.misp.ui.pager.ImagePagerAdapter;
 import cn.fuego.misp.ui.util.LoadImageUtil;
 import cn.fuego.misp.webservice.up.model.GetClientVersionReq;
 import cn.fuego.misp.webservice.up.model.GetClientVersionRsp;
 import cn.fuego.misp.webservice.up.model.base.ClientVersionJson;
 import cn.fuego.misp.webservice.up.model.base.CompanyJson;
-
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
-import com.baidu.location.LocationClientOption.LocationMode;
 
 public class HomeFragment extends BaseFragment implements OnClickListener
 {
@@ -86,6 +81,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		this.fragmentRes.setImage(R.drawable.tab_icon_home);
 		this.fragmentRes.setName(R.string.tabbar_home);
 		this.fragmentRes.setFragmentView(R.layout.home_fragment);
+	
  
  
  	}
@@ -132,6 +128,8 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 			 AppCache.getInstance().setStarted(true);
 			 updateVersion();	 
 		 }
+		 
+		 new ProductLoader().load();
 		 
 		 
 		
@@ -280,13 +278,11 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		}
 		else
 		{
-			intent = new Intent(this.getActivity(),MispImageActivity.class);
 			ImageDisplayInfo imageInfo = new ImageDisplayInfo();
 			imageInfo.setTilteName("加入我们");
-			imageInfo.setUrl(LoadImageUtil.getInstance().getLocalUrl(R.drawable.home_join_info));
-			intent.putExtra(MispImageActivity.JUMP_DATA, imageInfo);
-			this.startActivity(intent);
-
+			imageInfo.setUrl(MemoryCache.getWebContextUrl()+MoreFragment.baseUrl+"joinUS.html");
+			MispWebViewActivity.jump(this.getActivity(), imageInfo);
+  
 		}
 
 

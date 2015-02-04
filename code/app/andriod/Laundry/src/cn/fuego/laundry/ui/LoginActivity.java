@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,25 +16,15 @@ import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
-import cn.fuego.laundry.constant.SharedPreferenceConst;
 import cn.fuego.laundry.ui.base.BaseActivtiy;
-import cn.fuego.laundry.ui.base.ExitApplication;
-import cn.fuego.laundry.ui.cart.CartProduct;
-import cn.fuego.laundry.ui.cart.MyCartFragment;
-import cn.fuego.laundry.ui.user.UserFragment;
 import cn.fuego.laundry.ui.user.UserRegisterActivity;
 import cn.fuego.laundry.webservice.up.model.GetCustomerReq;
 import cn.fuego.laundry.webservice.up.model.GetCustomerRsp;
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
 import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
-import cn.fuego.misp.constant.ClientTypeEnum;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
-import cn.fuego.misp.dao.SharedPreUtil;
-import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
-import cn.fuego.misp.ui.common.edit.MispEditParameter;
-import cn.fuego.misp.ui.common.edit.MispTextEditActivity;
 import cn.fuego.misp.webservice.up.model.LoginReq;
 import cn.fuego.misp.webservice.up.model.LoginRsp;
 import cn.fuego.misp.webservice.up.model.base.UserJson;
@@ -59,13 +49,24 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 	
 	public static void jump(Activity activity,Class clazz,int code)
 	{
+		AppCache.getInstance().clear();
 		Intent intent = new Intent(activity,LoginActivity.class);
 		intent.putExtra(LoginActivity.JUMP_SOURCE, clazz);
-		activity.startActivity(intent);
+		activity.startActivityForResult(intent,code);
 	}
-	
+	public static void jump(Fragment fragment,int code)
+	{
+		AppCache.getInstance().clear();
+
+ 		Intent intent = new Intent();
+ 		intent.setClass(fragment.getActivity(), LoginActivity.class);
+ 		fragment.startActivityForResult(intent,code);
+	}
+
 	public static void jump(Activity activity,int code)
 	{
+		AppCache.getInstance().clear();
+
  		Intent intent = new Intent();
  		intent.setClass(activity, LoginActivity.class);
   		activity.startActivityForResult(intent,code);
@@ -77,7 +78,7 @@ public class LoginActivity extends BaseActivtiy implements OnClickListener
 	{
 		super.onCreate(savedInstanceState);
  
-		ExitApplication.getInstance().addActivity(this);
+		//ExitApplication.getInstance().addActivity(this);
 		
 		textName = (EditText) findViewById(R.id.user_login_name);
 		textPwd =(EditText) findViewById(R.id.user_login_password);

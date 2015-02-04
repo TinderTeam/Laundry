@@ -100,8 +100,13 @@ public class AddrEditActivity extends BaseActivtiy
 			case R.id.misp_title_save:
 			{
  				
-  
-				result.setDataValue(takeAddr.getText().toString().trim());
+				String data = takeAddr.getText().toString().trim();
+				if(!result.isValid(data))
+				{
+					showMessage(result.getErrorMsg());
+					return;
+				}
+				result.setDataValue(data);
                 activityFinish(result);
 			}
 			break;

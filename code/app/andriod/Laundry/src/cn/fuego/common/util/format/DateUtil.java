@@ -1,5 +1,6 @@
 package cn.fuego.common.util.format;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -37,7 +38,8 @@ public class DateUtil
 	public static String DateToString(Date date)
 	{
 		String str = null;
-		DateFormat d = DateFormat.getDateInstance(DateFormat.MEDIUM);
+		//DateFormat d = DateFormat.getDateInstance(DateFormat.MEDIUM);
+		SimpleDateFormat d = new SimpleDateFormat("yyyy-MM-dd ");
 
 		if (null == date)
 		{
@@ -65,9 +67,10 @@ public class DateUtil
 
 	}
 
-	public static Date stringToDate(String date)
+
+	public static Date shortStrToDate(String date)
 	{
-		DateFormat d = DateFormat.getDateInstance(DateFormat.MEDIUM);
+		SimpleDateFormat d = new SimpleDateFormat("yyyy-MM-dd");
 
 		Date da;
 		if (null == date || date.trim().isEmpty())
@@ -93,7 +96,7 @@ public class DateUtil
 	public static Date addYear(String purchaseDate, int expectYear)
 	{
 
-		return addYear(stringToDate(purchaseDate), expectYear);
+		return addYear(shortStrToDate(purchaseDate), expectYear);
 	}
 
 	/**

@@ -201,12 +201,12 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 					CartProduct.getInstance().getOrderInfo().getOrder().setOrder_type(OrderTypeEnum.NORMAL_ORDER.getStrValue());
 
 					intent = new Intent(this.getActivity(),OrderActivity.class);
-					startActivityForResult(intent, 1);		
+					 startActivityForResult(intent, 1);		
 
 				}
 				else
 				{
-					LoginActivity.jump(this.getActivity(), 1);
+					LoginActivity.jump(this, 1);
 				}
 			}
 				break;

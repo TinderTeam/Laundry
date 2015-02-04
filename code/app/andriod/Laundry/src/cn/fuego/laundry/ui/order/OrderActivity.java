@@ -146,7 +146,7 @@ public class OrderActivity extends MispInfoListActivity
 			
 			if(TAKE_ADDR.equals(title))
 			{
-				data.getRuleMap().put(ValidatorRules.isLenght(0, 50), "长度不能大于50");
+				data.getRuleMap().put(ValidatorRules.isLength(0, 50), "长度不能大于50");
  
 				data.setPointOut("您可以使用LBS定位获取地址或手动填写地址！");
 				AddrEditActivity.jump(this, data, REQUEST_CODE_EDIT_ADDR);
@@ -154,7 +154,7 @@ public class OrderActivity extends MispInfoListActivity
 			}
 			else if(SEND_ADDR.equals(title))
 			{
-				data.getRuleMap().put(ValidatorRules.isLenght(0, 50), "长度不能大于50");
+				data.getRuleMap().put(ValidatorRules.isLength(0, 50), "长度不能大于50");
 
 				data.setPointOut("您可以使用LBS定位获取地址或手动填写地址！");
 
@@ -163,7 +163,7 @@ public class OrderActivity extends MispInfoListActivity
 			}
 			else if(CONTACT_NAME.equals(title))
 			{
-				data.getRuleMap().put(ValidatorRules.isLenght(0, 10), "长度不能大于10");
+				data.getRuleMap().put(ValidatorRules.isLength(0, 10), "长度不能大于10");
  
 				data.setPointOut("请填写您的真实姓名，方便我们更好的服务于您！");
 
@@ -183,7 +183,7 @@ public class OrderActivity extends MispInfoListActivity
 			}
 			else if(NOTE.equals(title))
 			{
-				data.getRuleMap().put(ValidatorRules.isLenght(0, 200), "长度不能大于200");
+				data.getRuleMap().put(ValidatorRules.isLength(0, 200), "长度不能大于200");
  
 				data.setPointOut("您可填写详细地址及其他要求,或静候工作人员与您取得联系,敬请保持手机畅通！");
 

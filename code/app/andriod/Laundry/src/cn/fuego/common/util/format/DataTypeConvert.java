@@ -9,6 +9,7 @@
 package cn.fuego.common.util.format;
 
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +32,14 @@ public class DataTypeConvert
 	{
 		 return  intToByteStr(value,4);
 	}
-	
+	public static float float1(float f1)
+	{
+		  BigDecimal  bd=new  BigDecimal(f1);
+		  BigDecimal  bd1=bd.setScale(2,bd.ROUND_HALF_UP);
+		  float f2=(float) bd1.doubleValue();
+ 		  
+		  return f2;
+	}
 	public static String intToByteStr(int value,int bit)
 	{
 		 byte[] src = new byte[4];  
@@ -128,7 +136,7 @@ public class DataTypeConvert
 		}
 		else if(fieldClass == Date.class)
 		{
-			object = DateUtil.stringToDate(value);
+			object = DateUtil.shortStrToDate(value);
 		}
 		else
 		{

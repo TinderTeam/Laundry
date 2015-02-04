@@ -16,19 +16,19 @@
                 android:id="@+id/item_btntype_name"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:background="@drawable/btn_light_blue"
                 android:gravity="center"
                 android:paddingBottom="5dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
                 android:paddingTop="5dp"
                 android:text="订单信息"
-                android:textSize="14dp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="13dp" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10dp" >
 
                 <TextView
@@ -39,7 +39,7 @@
                     android:layout_centerVertical="true"
                     android:text="修改"
                     android:textColor="@color/blue_light"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:visibility="gone" />
 
                 <TextView
@@ -50,7 +50,7 @@
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/imageView1"
                     android:ellipsize="marquee"
-                    android:text="订单信息详情qi八九十一二三"
+                    android:text="订单信息详情qi八九十一二三ddddddddddddddddddd"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
 
@@ -59,6 +59,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_centerHorizontal="false"
+                    android:layout_centerVertical="true"
                     android:src="@drawable/user_do_task_normal" />
 
             </RelativeLayout>

@@ -29,6 +29,8 @@ public interface ADManageRest
 	@Path("/LoadAll")
 	GetADRsp getAll(GetADReq req);
  
- 
+	@POST
+	@Path("/LoadHelp")
+	GetADRsp getHelp(GetADReq req);
  
 }

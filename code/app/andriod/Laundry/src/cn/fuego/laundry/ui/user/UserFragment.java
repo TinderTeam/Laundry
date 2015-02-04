@@ -1,5 +1,6 @@
 package cn.fuego.laundry.ui.user;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
+import cn.fuego.misp.ui.dailog.MispWaitDailog;
 import cn.fuego.misp.webservice.up.model.LoginReq;
 
 public class UserFragment extends BaseFragment implements OnClickListener
@@ -39,15 +41,8 @@ public class UserFragment extends BaseFragment implements OnClickListener
 		this.fragmentRes.getButtonIDList().add(R.id.user_to_user_info);
 		this.fragmentRes.getButtonIDList().add(R.id.user_to_order);
 		this.fragmentRes.getButtonIDList().add(R.id.user_btn_logout);
-
-		if(MemoryCache.isLogined())
-		{
-			this.fragmentRes.setFragmentView(R.layout.user_fragment);
-		}
-		else
-		{
-			this.fragmentRes.setFragmentView(R.layout.user_fragment_default);
-		}
+        this.fragmentRes.setFragmentView(R.layout.user_fragment);
+ 
  	}
 
 	@Override
@@ -56,34 +51,45 @@ public class UserFragment extends BaseFragment implements OnClickListener
 	{
 		rootView = super.onCreateView(inflater, container, savedInstanceState);
 		
-		if(MemoryCache.isLogined())
-		{
- 
-			initView(rootView);
-
-
-		}
+		 initView(rootView);
  
 		return rootView;
 	}
 
 	private void initView(View rootView)
 	{
-		if(null != rootView)
-		{
-			TextView nickName = (TextView) rootView.findViewById(R.id.user_nickname_txt);
-			TextView phoneView = (TextView) rootView.findViewById(R.id.user_phone_txt);
-			TextView sexView = (TextView) rootView.findViewById(R.id.user_sex_txt);
-
-			CustomerJson customer = AppCache.getInstance().getCustomer();
-
-			if(null != customer)
+		
+			if(null != rootView)
 			{
-				nickName.setText(customer.getCustomer_name());
-				phoneView.setText(customer.getPhone());
-				sexView.setText(customer.getCustomer_sex());
+				TextView nickName = (TextView) rootView.findViewById(R.id.user_nickname_txt);
+				TextView phoneView = (TextView) rootView.findViewById(R.id.user_phone_txt);
+				TextView sexView = (TextView) rootView.findViewById(R.id.user_sex_txt);
+
+				CustomerJson customer = AppCache.getInstance().getCustomer();
+
+				if(null != customer)
+				{
+					nickName.setText(customer.getCustomer_name());
+					phoneView.setText(customer.getPhone());
+					sexView.setText(customer.getCustomer_sex());
+				}
+				View infoLayout = rootView.findViewById(R.id.user_info_layout);
+				View defaultLayout = rootView.findViewById(R.id.user_default_layout);
+				
+				if(MemoryCache.isLogined())
+				{
+					infoLayout.setVisibility(View.VISIBLE);
+					defaultLayout.setVisibility(View.GONE);
+				}
+				else
+				{
+					defaultLayout.setVisibility(View.VISIBLE);
+					infoLayout.setVisibility(View.GONE);
+				}
+				 
 			}
-		}
+
+
 
 	}
 
@@ -112,29 +118,34 @@ public class UserFragment extends BaseFragment implements OnClickListener
 			break;
 		case R.id.user_to_user_info:
 		{
+			final MispWaitDailog proDialog = new MispWaitDailog(this.getActivity());
+			proDialog.show();
 			new CustomerLoader()
 			{
 
 				@Override
 				public void loadFinish(Object object)
 				{
+					proDialog.dismiss();
 					super.loadFinish(object);
 
 					Intent intent = new Intent();
 
 					intent.setClass(getActivity(), UserInfoActivity.class);
 					startActivityForResult(intent, 1);
+					
 
 				}
 
 				@Override
 				public void loadError(int errorCode)
 				{
+					proDialog.dismiss();
 					// TODO Auto-generated method stub
 					showMessage(errorCode);
 					 if(errorCode == MISPErrorMessageConst.ERROR_LOGIN_INVALID)
 					 {
-						 LoginActivity.jump(UserFragment.this.getActivity(), 1);
+						 LoginActivity.jump(UserFragment.this, 1);
 					 }
 				}
 				
@@ -173,8 +184,10 @@ public class UserFragment extends BaseFragment implements OnClickListener
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		 
-		initView(rootView);
+		
+		 initView(rootView);
 	}
+ 
 
 
 }

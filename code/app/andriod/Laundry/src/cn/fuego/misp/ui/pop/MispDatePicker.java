@@ -1,6 +1,7 @@
 package cn.fuego.misp.ui.pop;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -13,14 +14,20 @@ public class MispDatePicker extends DialogFragment implements
 		DatePickerDialog.OnDateSetListener
 {
 	private MispPopWindowListener listener;
-	public MispDatePicker(MispPopWindowListener listener)
+	private Date date;
+	public MispDatePicker(MispPopWindowListener listener,Date date)
 	{
 		this.listener = listener;
+		this.date = date;
 	}
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
 		final Calendar c = Calendar.getInstance();
+		if(null != date)
+		{
+			c.setTime(date);
+		}
 		int year = c.get(Calendar.YEAR);
 		int month = c.get(Calendar.MONTH);
 		int day = c.get(Calendar.DAY_OF_MONTH);
@@ -34,7 +41,16 @@ public class MispDatePicker extends DialogFragment implements
 	{
 		Log.d("OnDateSet", "select year:" + year + ";month:" + month + ";day:"
 				+ day);
-		String dataString = year+"-"+month + "-" + day;
+		int temp = month+1;
+		String dataString;
+		if(temp<10)
+		{
+			dataString = year+"-0"+temp + "-" + day;
+		}
+		else
+		{
+			dataString =  year+"-"+temp + "-" + day;
+		}
 		listener.onConfirmClick(dataString);
 	}
 }

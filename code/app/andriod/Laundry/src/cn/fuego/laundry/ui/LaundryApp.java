@@ -63,6 +63,7 @@ public class LaundryApp extends Application
 
 			AppCache.getInstance().loadCompany();
 			AppCache.getInstance().load();
+			
  
 
 		} catch (NameNotFoundException e)

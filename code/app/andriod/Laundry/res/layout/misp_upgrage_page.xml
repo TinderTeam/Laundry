@@ -44,7 +44,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:paddingBottom="10dp"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
@@ -61,5 +61,12 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
     </RelativeLayout>
-
+    <TextView
+        android:id="@+id/copyright"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/content_text_color"
+         android:text="快客公司，版权所有"
+        android:textSize="@dimen/content_font_size" />
 </LinearLayout>

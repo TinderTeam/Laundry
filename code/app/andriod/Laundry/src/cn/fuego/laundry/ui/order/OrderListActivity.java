@@ -4,13 +4,16 @@ import java.io.Serializable;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.constant.PriceTypeEnum;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.cart.CartProduct;
@@ -22,6 +25,7 @@ import cn.fuego.laundry.webservice.up.rest.WebServiceContext;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.MemoryCache;
 import cn.fuego.misp.service.http.MispHttpMessage;
+import cn.fuego.misp.ui.dailog.MispWaitDailog;
 import cn.fuego.misp.ui.list.MispListActivity;
 import cn.fuego.misp.ui.model.ListViewResInfo;
 import cn.fuego.misp.ui.util.LoadImageUtil;
@@ -29,8 +33,7 @@ import cn.fuego.misp.ui.util.LoadImageUtil;
 public class OrderListActivity extends MispListActivity<OrderJson>
 {
 	
-	
-	@Override
+ 	@Override
 	public void backOnClick()
 	{
 		// TODO Auto-generated method stub
@@ -55,6 +58,10 @@ public class OrderListActivity extends MispListActivity<OrderJson>
 		this.listViewRes.setListItemView(R.layout.order_list_item);
 		this.listViewRes.setClickActivityClass(OrderDetailActivity.class);
 		
+		waitDailog = new MispWaitDailog(this);  
+		this.waitDailog.show();
+
+		
 	}
 
 	@Override
@@ -62,10 +69,28 @@ public class OrderListActivity extends MispListActivity<OrderJson>
 	{
 		GetOrderListReq req = new GetOrderListReq();
 		req.setUser_id(AppCache.getInstance().getUser().getUser_id());
+
 		WebServiceContext.getInstance().getOrderManageRest(this).getAll(req);
 		
 		
 	}
+	
+	
+
+	@Override
+	public void handle(MispHttpMessage message)
+	{
+		// TODO Auto-generated method stub
+		waitDailog.dismiss();
+		super.handle(message);
+		 if(message.getErrorCode() == MISPErrorMessageConst.ERROR_LOGIN_INVALID)
+		 {
+			 LoginActivity.jump(this, 1);
+			 this.finish();
+		 }
+	}
+
+
 
 	@Override
 	public List<OrderJson> loadListRecv(Object obj)
@@ -76,18 +101,7 @@ public class OrderListActivity extends MispListActivity<OrderJson>
 	}
 	
 	
-
-	@Override
-	public void handle(MispHttpMessage message)
-	{
-		// TODO Auto-generated method stub
-		super.handle(message);
-		 if(message.getErrorCode() == MISPErrorMessageConst.ERROR_LOGIN_INVALID)
-		 {
-			 LoginActivity.jump(this, 1);
-			 this.finish();
-		 }
-	}
+	
 
 	@Override
 	public View getListItemView(View view, OrderJson item)
@@ -97,7 +111,15 @@ public class OrderListActivity extends MispListActivity<OrderJson>
 		TextView priceView = (TextView) view.findViewById(R.id.order_list_item_price);
 		
 		String price = CartProduct.getInstance().getDispPrice(item.getPrice_type(), item.getTotal_price());
-		priceView.setText(price);
+		if(PriceTypeEnum.FLOAT_PRICE.getStrValue().equals(price))
+		{
+			priceView.setText(price);
+		}
+		else
+		{
+			priceView.setText("￥"+price);
+		}
+		
 		TextView statusView = (TextView)view.findViewById(R.id.order_list_item_status);
 		statusView.setText(item.getOrder_status());
 		TextView timeView = (TextView) view.findViewById(R.id.order_list_item_time);

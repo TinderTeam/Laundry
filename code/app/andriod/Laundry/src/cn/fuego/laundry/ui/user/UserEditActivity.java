@@ -1,11 +1,12 @@
 package cn.fuego.laundry.ui.user;
 
+import java.util.Date;
+
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.view.View.OnTouchListener;
 import android.widget.TextView;
+import cn.fuego.common.log.FuegoLog;
+import cn.fuego.common.util.format.DateUtil;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
@@ -22,6 +23,7 @@ import cn.fuego.misp.ui.pop.MispPopWindowListener;
 
 public class UserEditActivity extends BaseActivtiy    
 {
+	private FuegoLog log = FuegoLog.getLog(getClass());
 	private CustomerJson customer;
  	private TextView userName;
 	private TextView sex;
@@ -142,10 +144,18 @@ public class UserEditActivity extends BaseActivtiy
 					}
 				}
 
-				customer.setCustomer_email(email.getText().toString().trim());
+				customer.setCustomer_email(emailStr);
 
 				customer.setBirthday(birthday.getText().toString().trim());
-				customer.setAddr(addr.getText().toString().trim());
+				
+				String addrStr = addr.getText().toString().trim();
+
+				if(!ValidatorUtil.isLength(addrStr, 0, 50))
+				{
+					showMessage("地址长度不能大于50");
+					return;
+				}
+				customer.setAddr(addrStr);
 				req.setObj(customer);
 				
 			    WebServiceContext.getInstance().getCustomerManageRest(this).modify(req);
@@ -177,6 +187,10 @@ public class UserEditActivity extends BaseActivtiy
 	
 	public void showDatePickerDialog(final TextView view)
 	{  
+		String str = view.getText().toString();
+ 
+		
+		Date date = DateUtil.shortStrToDate(str);
 		MispDatePicker datePicker = new MispDatePicker(new MispPopWindowListener()
 		{
 			
@@ -186,7 +200,7 @@ public class UserEditActivity extends BaseActivtiy
 				view.setText(value);
 				
 			}
-		});  
+		},date);  
 	    datePicker.show(getFragmentManager(), "datePicker");
   	}
  

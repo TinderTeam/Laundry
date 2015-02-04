@@ -22,7 +22,7 @@ public class MispModifyPwdActivity extends BaseActivtiy
 		if(message.isSuccess())
 		{
 			this.finish();
-			AppCache.getInstance().clear();
+			
 			super.showMessage("密码修改成功，请重新登录");
 			LoginActivity.jump(this,UserFragment.class,1);
 		}
@@ -64,9 +64,9 @@ public class MispModifyPwdActivity extends BaseActivtiy
 		    return ;
 		}
 		
-		if(newPwd.length()<6)
+		if(newPwd.length()<6 || newPwd.length()>20)
 		{
-			this.showMessage("新密码长度应该大于6");
+			this.showMessage("请输入6-20位新密码");
 			return;
 		}
 		if(!newPwd.equals(confirm))

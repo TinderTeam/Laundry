@@ -3,6 +3,7 @@ package cn.fuego.laundry.ui.user;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -16,6 +17,7 @@ import cn.fuego.misp.constant.MISPErrorMessageConst;
 import cn.fuego.misp.service.http.MispHttpHandler;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.ui.base.MispHttpActivtiy;
+import cn.fuego.misp.ui.dailog.MispWaitDailog;
 import cn.fuego.misp.webservice.up.model.SendVerifyCodeReq;
 import cn.fuego.misp.webservice.up.model.SendVerifyCodeRsp;
 import cn.fuego.misp.webservice.up.model.UserRegisterReq;
@@ -44,7 +46,9 @@ public class UserRegisterActivity extends MispHttpActivtiy
 	private  int operate = 0;
 	
 	private long lastCodeTime = 0;
+	private String sendPhoneNum;
 
+	private MispWaitDailog proDialog;
 	@Override
 	public void initRes()
 	{
@@ -107,7 +111,7 @@ public class UserRegisterActivity extends MispHttpActivtiy
 		case R.id.user_register_btn_submit:
 		{
 			String phoneNum = phoneNumView.getText().toString().trim();
-			if(!ValidatorUtil.isPhone(phoneNum))
+			if(!ValidatorUtil.isMobile(phoneNum))
 			{
 				this.showMessage(MISPErrorMessageConst.ERROR_PHONE_INVALID);
 				return;
@@ -119,15 +123,22 @@ public class UserRegisterActivity extends MispHttpActivtiy
 				this.showMessage(MISPErrorMessageConst.ERROR_VERIFY_CODE_INVALID);
 				return;
 			}
+			
+			if(!phoneNum.equals(this.sendPhoneNum))
+			{
+				this.showMessage(MISPErrorMessageConst.ERROR_VERIFY_CODE_INVALID);
+				return;
+			}
+			
 			String password = passwordView.getText().toString().trim();
 			if(ValidatorUtil.isEmpty(password))
 			{
 				this.showMessage(MISPErrorMessageConst.ERROR_PASSWORD_IS_EMPTY);
 				return;
 			}
-			if(password.length()<6)
+			if(password.length()<6 || password.length()>20)
 			{
-				this.showMessage("密码长度应该大于6");
+				this.showMessage("请输入6-20位新密码");
 				return;
 			}
 			UserRegisterReq req = new UserRegisterReq();
@@ -153,18 +164,23 @@ public class UserRegisterActivity extends MispHttpActivtiy
 	private void getVerifyCode()
 	{
 		String phoneNum = this.phoneNumView.getText().toString().trim();
-		if(!ValidatorUtil.isPhone(phoneNum))
+		if(!ValidatorUtil.isMobile(phoneNum))
 		{
 			this.showMessage(MISPErrorMessageConst.ERROR_PHONE_INVALID);
 			return;
 		}
 		SendVerifyCodeReq req = new SendVerifyCodeReq();
 		req.setPhone_num(phoneNum);
+		this.sendPhoneNum = phoneNum;
+		proDialog  = new MispWaitDailog(this);
+		proDialog.show();
+
 		WebServiceContext.getInstance().getUserManageRest(new MispHttpHandler()
 		{
 			@Override
 			public void handle(MispHttpMessage message)
 			{
+				proDialog.dismiss();
 				if (message.isSuccess())
 				{
 					SendVerifyCodeRsp rsp  = (SendVerifyCodeRsp) message.getMessage().obj;
