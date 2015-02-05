@@ -12,5 +12,6 @@
 
 - (NSString *)stringForDateWithFormatterString:(NSString *)dateFormatterString;
 - (NSString *)defaultFormat;
++(NSDate*) convertDateFromString:(NSString*)uiDate;
 
 @end

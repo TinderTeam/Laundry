@@ -23,4 +23,12 @@
     return [formatter stringFromDate:self];
 }
 
++(NSDate*) convertDateFromString:(NSString*)uiDate
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date=[formatter dateFromString:uiDate];
+    return date;
+}
+
 @end

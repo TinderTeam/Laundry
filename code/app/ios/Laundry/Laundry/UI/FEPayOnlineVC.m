@@ -28,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.payButton setBackgroundImage:[UIImage imageFromColor:kThemeGrayColor] forState:UIControlStateNormal];
+    [self.payButton setTitleColor:kThemeColor forState:UIControlStateNormal];
     self.titleLabel.text = @"洗衣";
     self.descLabel.text = @"洗衣在线支付";
     self.priceLabel.text = [NSString stringWithFormat:@"%@",self.order.total_price];

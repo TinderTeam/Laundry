@@ -41,14 +41,16 @@
 }
 
 - (IBAction)getCode:(id)sender {
-    if ([self.phoneTextField.text isPhone]) {
-        [self requestGetCode];
+    if (self.phoneTextField.text.length) {
+        if ([self.phoneTextField.text isPhone]) {
+            [self requestGetCode];
+        }else{
+            kAlert(@"手机号码格式不正确", self);
+        }
     }else{
-        GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
-            
-        }];
-        [GAAlertObj showAlertWithTitle:@"提示" message:@"请输入正确的手机号码" actions:@[action] inViewController:self];
+        kAlert(@"请输入手机号码", self);
     }
+    
 }
 
 -(void)requestGetCode{
@@ -80,7 +82,7 @@
 - (IBAction)resetPassword:(id)sender {
     if ([[NSDate date] timeIntervalSince1970] - self.time < 10 * 60 && [self.codeTextFeild.text isEqualToString:self.code]) {
         
-        if (self.passwordTextFeild.text.length >= 6) {
+        if (self.passwordTextFeild.text.length >= 6 && self.passwordTextFeild.text.length <= 20) {
             __weak typeof(self) weakself = self;
             [[FELaundryWebService sharedInstance] request:[[FEResetPasswordRequest alloc] initWithUserName:self.phoneTextField.text password:self.passwordTextFeild.text] responseClass:[FEBaseResponse class] response:^(NSError *error, id response) {
                 FEBaseResponse *rsp = response;
@@ -89,6 +91,8 @@
                     [weakself.navigationController popViewControllerAnimated:YES];
                 }
             }];
+        }else{
+            kAlert(@"密码为6-20位！", self);
         }
     }
     
