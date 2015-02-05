@@ -24,12 +24,12 @@ import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AdDataCache;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.cache.ProductCache;
 import cn.fuego.laundry.cache.ProductTypeCache;
 import cn.fuego.laundry.constant.OrderTypeEnum;
 import cn.fuego.laundry.constant.UIDimenConstant;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.base.BaseFragment;
-import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.ui.loader.ProductLoader;
 import cn.fuego.laundry.ui.more.MoreFragment;
 import cn.fuego.laundry.ui.order.OrderActivity;
@@ -258,7 +258,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 				req.getOrder().setUser_id(AppCache.getInstance().getUser().getUser_id());
 				req.getOrder().setUser_name(AppCache.getInstance().getUser().getUser_name());
  
-				CartProduct.getInstance().getOrderInfo().getOrder().setOrder_type(OrderTypeEnum.DIRECT_ORDER.getStrValue());
+				ProductCache.getInstance().getOrderInfo().getOrder().setOrder_type(OrderTypeEnum.DIRECT_ORDER.getStrValue());
 				intent = new Intent(this.getActivity(),OrderActivity.class);
 				//intent.putExtra(OrderActivity.ORDER_INFO, req);
 			}

@@ -24,6 +24,7 @@ import antistatic.spinnerwheel.OnWheelChangedListener;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.ProductCache;
 import cn.fuego.laundry.constant.OrderTypeEnum;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.home.HomeProductActivity;
@@ -60,7 +61,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 			this.fragmentRes.getButtonIDList().add(R.id.cart_to_product);
 			this.fragmentRes.getButtonIDList().add(R.id.cart_to_product1);
 
-			this.setDataList(CartProduct.getInstance().getOrderInfo().getOrderDetailList());  
+			this.setDataList(ProductCache.getInstance().getOrderInfo().getOrderDetailList());  
 		 
 
   
@@ -75,7 +76,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		 bottom1 = rootView.findViewById(R.id.bottom1);
 		 bottom2 = rootView.findViewById(R.id.bottom2);
 		  
-		if(!CartProduct.getInstance().isEmpty())
+		if(!ProductCache.getInstance().isEmpty())
 		{
 			totalPriceView = (TextView) rootView.findViewById(R.id.chart_total_price);
 			
@@ -105,10 +106,10 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 		nameView.setText(item.getProduct_name());
 		
 		TextView priceView = (TextView) view.findViewById(R.id.chart_list_item_price);
-		priceView.setText(CartProduct.getInstance().getDispPrice(item.getPrice_type(),item.getCurrent_price()));
+		priceView.setText(ProductCache.getInstance().getDispPrice(item.getPrice_type(),item.getCurrent_price()));
 		
 		TextView tatolPriceView = (TextView) view.findViewById(R.id.chart_list_item_tatol_price);
-		tatolPriceView.setText( CartProduct.getInstance().getDispPrice(item.getPrice_type(),item.getCurrent_price()*item.getQuantity()));
+		tatolPriceView.setText( ProductCache.getInstance().getDispPrice(item.getPrice_type(),item.getCurrent_price()*item.getQuantity()));
 		
 		 EditText  amountView = (EditText) view.findViewById(R.id.chart_list_item_quantity);
 		//强制关闭软键盘
@@ -137,7 +138,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 				public void onClick(View v)
 				{
 
-					CartProduct.getInstance().removeSelected(item.getProduct_id());
+					ProductCache.getInstance().removeSelected(item.getProduct_id());
 					refreshView();
 
 				}
@@ -148,7 +149,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 	private void refreshView()
 	{
  
-		if(CartProduct.getInstance().isEmpty())
+		if(ProductCache.getInstance().isEmpty())
 		{
  
 			bottom1.setVisibility(View.GONE);
@@ -162,10 +163,10 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 			bottom1.setVisibility(View.VISIBLE);
 			bottom2.setVisibility(View.GONE);
 			
-			String priceStr = "数量："+ CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count() + ",";
-			float price = CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price();
-			String priceType = CartProduct.getInstance().getOrderInfo().getOrder().getPrice_type();
-			priceStr += "总价：" + CartProduct.getInstance().getDispPrice(priceType,price);
+			String priceStr = "数量："+ ProductCache.getInstance().getOrderInfo().getOrder().getTotal_count() + ",";
+			float price = ProductCache.getInstance().getOrderInfo().getOrder().getTotal_price();
+			String priceType = ProductCache.getInstance().getOrderInfo().getOrder().getPrice_type();
+			priceStr += "总价：" + ProductCache.getInstance().getDispPrice(priceType,price);
 
 			this.totalPriceView.setText(priceStr);
 			repaint();
@@ -198,7 +199,7 @@ public class MyCartFragment extends MispListFragment<OrderDetailJson>
 				{
 		 
 					//set default delivery information
-					CartProduct.getInstance().getOrderInfo().getOrder().setOrder_type(OrderTypeEnum.NORMAL_ORDER.getStrValue());
+					ProductCache.getInstance().getOrderInfo().getOrder().setOrder_type(OrderTypeEnum.NORMAL_ORDER.getStrValue());
 
 					intent = new Intent(this.getActivity(),OrderActivity.class);
 					 startActivityForResult(intent, 1);		

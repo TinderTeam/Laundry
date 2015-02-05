@@ -13,9 +13,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.ProductCache;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
-import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.ui.home.HomeFragment;
 import cn.fuego.misp.ui.base.MispBaseActivtiy;
 

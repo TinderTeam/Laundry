@@ -5,8 +5,8 @@ import android.view.View;
 import android.widget.TextView;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.cache.ProductCache;
 import cn.fuego.laundry.ui.base.BaseActivtiy;
-import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.webservice.up.model.base.OrderJson;
 import cn.fuego.misp.service.http.MispHttpMessage;
 import cn.fuego.misp.tool.MispLocation;
@@ -42,7 +42,7 @@ public class OrderEditActivity extends BaseActivtiy
 	{
 		super.onCreate(savedInstanceState);
 		
-		OrderJson order = CartProduct.getInstance().getOrderInfo().getOrder();
+		OrderJson order = ProductCache.getInstance().getOrderInfo().getOrder();
 		if(null != order)
 		{
 			noteView = (TextView) findViewById(R.id.order_note_text);
@@ -65,7 +65,7 @@ public class OrderEditActivity extends BaseActivtiy
 		{
 			case R.id.misp_title_save:
 			{
-				OrderJson order =   CartProduct.getInstance().getOrderInfo().getOrder();
+				OrderJson order =   ProductCache.getInstance().getOrderInfo().getOrder();
 				order.setPay_option(payOptionView.getText().toString().trim());
 				order.setOrder_note(noteView.getText().toString().trim());
  

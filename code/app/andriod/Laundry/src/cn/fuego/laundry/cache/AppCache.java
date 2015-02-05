@@ -1,7 +1,7 @@
 package cn.fuego.laundry.cache;
 
 import cn.fuego.common.log.FuegoLog;
-import cn.fuego.laundry.ui.cart.CartProduct;
+import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.webservice.up.model.GetCustomerReq;
 import cn.fuego.laundry.webservice.up.model.GetCustomerRsp;
 import cn.fuego.laundry.webservice.up.model.base.CustomerJson;
@@ -33,11 +33,31 @@ public class AppCache
 	public static final String CUSTOMER_CACHE="customer";
 	public static final String TOKEN_CACHE="token";
 	
+	
+	private boolean firstStarted = true;
 	private boolean started = false;
 
 	
 	
  
+
+	public boolean isFirstStarted()
+	{
+		String startStr = (String) SharedPreUtil.getInstance().get("isFirstStarted");
+		if(!ValidatorUtil.isEmpty(startStr))
+		{
+			firstStarted = Boolean.valueOf(startStr);
+		}
+		
+		return firstStarted;
+	}
+
+	public void setFirstStarted(boolean firstStarted)
+	{
+		this.firstStarted = firstStarted;
+		SharedPreUtil.getInstance().put("isFirstStarted", String.valueOf(firstStarted));
+
+	}
 
 	public boolean isStarted()
 	{
@@ -116,7 +136,7 @@ public class AppCache
 		this.user =  (UserJson) SharedPreUtil.getInstance().get(USER_CACHE);
 		this.customer = (CustomerJson) SharedPreUtil.getInstance().get(CUSTOMER_CACHE);
 		MemoryCache.setToken((String) SharedPreUtil.getInstance().get(TOKEN_CACHE));
-	    CartProduct.getInstance().setDefaultOrderInfo();
+	    ProductCache.getInstance().setDefaultOrderInfo();
 	    
 
 		

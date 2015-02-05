@@ -15,13 +15,13 @@ import cn.fuego.common.util.validate.ValidatorRules;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.cache.ProductCache;
 import cn.fuego.laundry.constant.OrderTypeEnum;
 import cn.fuego.laundry.constant.PayOptionEnum;
 import cn.fuego.laundry.constant.PriceTypeEnum;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
-import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.ui.home.HomeFragment;
 import cn.fuego.laundry.webservice.up.model.CreateOrderReq;
 import cn.fuego.laundry.webservice.up.model.CreateOrderRsp;
@@ -81,7 +81,7 @@ public class OrderActivity extends MispInfoListActivity
  
 	private List<CommonItemMeta> getBtnData()
 	{
-		OrderJson order = CartProduct.getInstance().getOrderInfo().getOrder();
+		OrderJson order = ProductCache.getInstance().getOrderInfo().getOrder();
 			List<CommonItemMeta> list = new ArrayList<CommonItemMeta>();
 			
 			if(null != order)
@@ -123,19 +123,19 @@ public class OrderActivity extends MispInfoListActivity
 		
 		String priceStr = "数量：";
 
-		if(OrderTypeEnum.DIRECT_ORDER.getStrValue().equals( CartProduct.getInstance().getOrderInfo().getOrder().getOrder_type()))
+		if(OrderTypeEnum.DIRECT_ORDER.getStrValue().equals( ProductCache.getInstance().getOrderInfo().getOrder().getOrder_type()))
 		{
 			priceStr += 0 +", ";
 		}
 		else
 		{
-			priceStr += CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count() + ", ";
+			priceStr += ProductCache.getInstance().getOrderInfo().getOrder().getTotal_count() + ", ";
 		}
 		
-		String priceType = CartProduct.getInstance().getOrderInfo().getOrder().getPrice_type();
-		float price = CartProduct.getInstance().getOrderInfo().getOrder().getTotal_price();
+		String priceType = ProductCache.getInstance().getOrderInfo().getOrder().getPrice_type();
+		float price = ProductCache.getInstance().getOrderInfo().getOrder().getTotal_price();
 		
-		priceStr += "总价：" + CartProduct.getInstance().getDispPrice(priceType,price);
+		priceStr += "总价：" + ProductCache.getInstance().getDispPrice(priceType,price);
 
 		tatolPriceView.setText(priceStr);
 	}
@@ -203,7 +203,7 @@ public class OrderActivity extends MispInfoListActivity
 			}
 			else if(PAY_OPTION.equals(title))
 			{
-				if(PriceTypeEnum.FLOAT_PRICE.getStrValue().equals(CartProduct.getInstance().getOrderPriceType()))
+				if(PriceTypeEnum.FLOAT_PRICE.getStrValue().equals(ProductCache.getInstance().getOrderPriceType()))
 				{
 					showMessage("总价面议，只能使用送衣付款");
 				}
@@ -227,7 +227,7 @@ public class OrderActivity extends MispInfoListActivity
 			@Override
 			public void onConfirmClick(String value)
 			{
-				CartProduct.getInstance().getOrderInfo().getOrder().setPay_option(value);
+				ProductCache.getInstance().getOrderInfo().getOrder().setPay_option(value);
 				refreshList(getBtnData());
  			}
 			
@@ -240,7 +240,7 @@ public class OrderActivity extends MispInfoListActivity
 			popWin.setTitle(PAY_OPTION);
 			popWin.setLocation(MispPopListWindow.SHOW_CENTER);
 		}
-		popWin.showWindow(v,CartProduct.getInstance().getOrderInfo().getOrder().getPay_option());
+		popWin.showWindow(v,ProductCache.getInstance().getOrderInfo().getOrder().getPay_option());
 	}
 	
 	
@@ -249,12 +249,12 @@ public class OrderActivity extends MispInfoListActivity
 	public void onClick(View v)
 	{
 		// TODO Auto-generated method stub
-		if(ValidatorUtil.isEmpty(CartProduct.getInstance().getOrderInfo().getOrder().getPhone()))
+		if(ValidatorUtil.isEmpty(ProductCache.getInstance().getOrderInfo().getOrder().getPhone()))
 		{
 			showMessage("联系电话不能为空");
 			return;
 		}
-		if(!ValidatorUtil.isPhone(CartProduct.getInstance().getOrderInfo().getOrder().getPhone()))
+		if(!ValidatorUtil.isPhone(ProductCache.getInstance().getOrderInfo().getOrder().getPhone()))
 		{
 			showMessage("电话号码无效");
 			return;
@@ -266,24 +266,24 @@ public class OrderActivity extends MispInfoListActivity
 	{
 	     final ProgressDialog proDialog =ProgressDialog.show(this, "请稍等", "订单正在提交......");
 	     
-	     CreateOrderReq req = CartProduct.getInstance().getOrderInfo();
+	     CreateOrderReq req = ProductCache.getInstance().getOrderInfo();
 	     if(OrderTypeEnum.DIRECT_ORDER.getStrValue().equals(req.getOrder().getOrder_type()))
 	     {
 	    	 req = new CreateOrderReq();
  	    	 
-	    	 req.getOrder().setDelivery_addr(CartProduct.getInstance().getOrderInfo().getOrder().getDelivery_addr());
-	    	 req.getOrder().setTake_addr(CartProduct.getInstance().getOrderInfo().getOrder().getTake_addr());
-	    	 req.getOrder().setPhone(CartProduct.getInstance().getOrderInfo().getOrder().getPhone());
-	    	 req.getOrder().setContact_name(CartProduct.getInstance().getOrderInfo().getOrder().getContact_name());
+	    	 req.getOrder().setDelivery_addr(ProductCache.getInstance().getOrderInfo().getOrder().getDelivery_addr());
+	    	 req.getOrder().setTake_addr(ProductCache.getInstance().getOrderInfo().getOrder().getTake_addr());
+	    	 req.getOrder().setPhone(ProductCache.getInstance().getOrderInfo().getOrder().getPhone());
+	    	 req.getOrder().setContact_name(ProductCache.getInstance().getOrderInfo().getOrder().getContact_name());
 	    	 
-	    	 req.getOrder().setOrder_type(CartProduct.getInstance().getOrderInfo().getOrder().getOrder_type());
-	    	 req.getOrder().setOrder_note(CartProduct.getInstance().getOrderInfo().getOrder().getOrder_note());
+	    	 req.getOrder().setOrder_type(ProductCache.getInstance().getOrderInfo().getOrder().getOrder_type());
+	    	 req.getOrder().setOrder_note(ProductCache.getInstance().getOrderInfo().getOrder().getOrder_note());
 	    	 req.getOrder().setTotal_count(0);
 	    	 req.getOrder().setTotal_price(0);
-	    	 req.getOrder().setPrice_type(CartProduct.getInstance().getOrderInfo().getOrder().getPrice_type());
-	    	 req.getOrder().setPay_option(CartProduct.getInstance().getOrderInfo().getOrder().getPay_option());
-	    	 req.getOrder().setUser_id(CartProduct.getInstance().getOrderInfo().getOrder().getUser_id());
-	    	 req.getOrder().setUser_name(CartProduct.getInstance().getOrderInfo().getOrder().getUser_name());
+	    	 req.getOrder().setPrice_type(ProductCache.getInstance().getOrderInfo().getOrder().getPrice_type());
+	    	 req.getOrder().setPay_option(ProductCache.getInstance().getOrderInfo().getOrder().getPay_option());
+	    	 req.getOrder().setUser_id(ProductCache.getInstance().getOrderInfo().getOrder().getUser_id());
+	    	 req.getOrder().setUser_name(ProductCache.getInstance().getOrderInfo().getOrder().getUser_name());
 	     }
 		WebServiceContext.getInstance().getOrderManageRest(new MispHttpHandler()
 		{
@@ -440,7 +440,7 @@ public class OrderActivity extends MispInfoListActivity
 			this.finish();
 		}
 
-        CartProduct.getInstance().clearCart();
+        ProductCache.getInstance().clearCart();
 
 	}
 
@@ -461,30 +461,30 @@ public class OrderActivity extends MispInfoListActivity
 				{
 					if (TAKE_ADDR.equals(result_value.getDataKey()))
 					{
-						CartProduct.getInstance().getOrderInfo().getOrder()
+						ProductCache.getInstance().getOrderInfo().getOrder()
 								.setTake_addr(result_value.getDataValue());
 					}
 					else if (SEND_ADDR.equals(result_value.getDataKey()))
 					{
-						CartProduct.getInstance().getOrderInfo().getOrder()
+						ProductCache.getInstance().getOrderInfo().getOrder()
 								.setDelivery_addr(result_value.getDataValue());
 
 					}
 					else if (CONTACT_NAME.equals(result_value.getDataKey()))
 					{
-						CartProduct.getInstance().getOrderInfo().getOrder()
+						ProductCache.getInstance().getOrderInfo().getOrder()
 								.setContact_name(result_value.getDataValue());
 
 					}
 					else if (CONTACT_PHONE.equals(result_value.getDataKey()))
 					{
-						CartProduct.getInstance().getOrderInfo().getOrder()
+						ProductCache.getInstance().getOrderInfo().getOrder()
 								.setPhone(result_value.getDataValue());
 
 					}
 					else if (NOTE.equals(result_value.getDataKey()))
 					{
-						CartProduct.getInstance().getOrderInfo().getOrder()
+						ProductCache.getInstance().getOrderInfo().getOrder()
 								.setOrder_note(result_value.getDataValue());
 
 					}

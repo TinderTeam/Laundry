@@ -146,7 +146,7 @@ public class MoreFragment extends MispInfoListFragment
 		else if(HELP.equals(item.getTitle()))
 		{ 		
 
-			loadHelp();
+			 loadLocalHelp();
 			
 
 		}
@@ -157,8 +157,24 @@ public class MoreFragment extends MispInfoListFragment
 		}
 	}
 	
+	private void loadLocalHelp()
+	{
+		ImageDisplayInfo displayInfo = new ImageDisplayInfo();
+		displayInfo.setTilteName(HELP);
+ 	 
+ 	   	List<String> imageList = new ArrayList<String>();
+	   	imageList.add(String.valueOf(R.drawable.help_1));
+	   	imageList.add(String.valueOf(R.drawable.help_2));
+	   	imageList.add(String.valueOf(R.drawable.help_3));
+	   	imageList.add(String.valueOf(R.drawable.help_4));
+	   	imageList.add(String.valueOf(R.drawable.help_5));
+	   	
+		displayInfo.setImageList(imageList);
+		MispImageActivity.jump(MoreFragment.this.getActivity(), displayInfo);
+	}
 	private void loadHelp()
 	{
+		
 		final MispWaitDailog dailog = new MispWaitDailog(this.getActivity());
 		dailog.show();
 		GetADReq req = new GetADReq();

@@ -10,10 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import cn.fuego.common.log.FuegoLog;
 import cn.fuego.laundry.R;
+import cn.fuego.laundry.cache.ProductCache;
 import cn.fuego.laundry.cache.ProductTypeCache;
 import cn.fuego.laundry.ui.MainTabbarActivity;
 import cn.fuego.laundry.ui.MainTabbarInfo;
-import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.ui.cart.MyCartFragment;
 import cn.fuego.laundry.webservice.up.model.GetProductListReq;
 import cn.fuego.laundry.webservice.up.model.GetProductListRsp;
@@ -57,7 +57,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 
 		
 		 
-		this.setDataList(CartProduct.getInstance().getProductMap().get(selectType.getType_id()));
+		this.setDataList(ProductCache.getInstance().getProductMap().get(selectType.getType_id()));
  
 	} 
 	
@@ -74,21 +74,21 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 	{
 		this.getTitleView().setText("衣物•"+selectType.getType_name());
 		
-		this.getButtonByID(R.id.product_btn_to_cart).setText("洗衣篮（"+CartProduct.getInstance().getOrderInfo().getOrder().getTotal_count()+"）");
+		this.getButtonByID(R.id.product_btn_to_cart).setText("洗衣篮（"+ProductCache.getInstance().getOrderInfo().getOrder().getTotal_count()+"）");
 	
 	}
 
 	@Override
 	public void loadSendList()
 	{
-		if(CartProduct.getInstance().getProductMap().isEmpty())
+		if(ProductCache.getInstance().getProductMap().isEmpty())
 		{
 			GetProductListReq req = new GetProductListReq();
 			WebServiceContext.getInstance().getProductManageRest(this).getAllProductList(req);
 		}
 		else
 		{
-			List<ProductJson> productList = CartProduct.getInstance().getProductMap().get(selectType);
+			List<ProductJson> productList = ProductCache.getInstance().getProductMap().get(selectType);
 			if(null != productList)
 			{
 				this.getDataList().addAll(productList );
@@ -101,8 +101,8 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 	public List<ProductJson> loadListRecv(Object obj)
 	{
 		GetProductListRsp rsp = (GetProductListRsp) obj;
-		CartProduct.getInstance().refreshProduct(rsp.getObj());
-		return CartProduct.getInstance().getProductMap().get(selectType.getType_id());
+		ProductCache.getInstance().refreshProduct(rsp.getObj());
+		return ProductCache.getInstance().getProductMap().get(selectType.getType_id());
 	}
 	
  	@Override
@@ -112,7 +112,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
    	 
         LoadImageUtil.getInstance().loadImage(imageView,MemoryCache.getImageUrl()+item.getImg());
         
-        String price = CartProduct.getInstance().getDispPrice(item.getPrice_type(), item.getPrice());
+        String price = ProductCache.getInstance().getDispPrice(item.getPrice_type(), item.getPrice());
 		TextView priceView = (TextView) view.findViewById(R.id.product_list_item_curPrice);
 		priceView.setText(price);
 
@@ -121,7 +121,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 		
 		ImageView check = (ImageView) view.findViewById(R.id.product_list_item_check_img);
 		final int nowProductID = item.getProduct_id();
-        if(CartProduct.getInstance().containsSelected(nowProductID))
+        if(ProductCache.getInstance().containsSelected(nowProductID))
         {
         	check.setImageResource(R.drawable.checkbox_on);
         }
@@ -139,14 +139,14 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 		ImageView check = (ImageView) view.findViewById(R.id.product_list_item_check_img);
 		// TODO Auto-generated method stub
 		//super.onItemListClick(parent, view, id, item);
-        if(CartProduct.getInstance().containsSelected(item.getProduct_id()))
+        if(ProductCache.getInstance().containsSelected(item.getProduct_id()))
         {
-        	CartProduct.getInstance().removeSelected(item.getProduct_id());
+        	ProductCache.getInstance().removeSelected(item.getProduct_id());
         	check.setImageResource(R.drawable.checkbox_off);
         }  
         else
         {  
-        	CartProduct.getInstance().addSelected(item.getProduct_id());
+        	ProductCache.getInstance().addSelected(item.getProduct_id());
         	check.setImageResource(R.drawable.checkbox_on);
         }  
         updateCount();
@@ -184,7 +184,7 @@ public class HomeProductActivity extends MispListActivity<ProductJson>
 			public void onConfirmClick(String value)
 			{
  				selectType = ProductTypeCache.getInstance().getTypeByName(value);
-				refreshList(CartProduct.getInstance().getProductMap().get(selectType.getType_id()));
+				refreshList(ProductCache.getInstance().getProductMap().get(selectType.getType_id()));
 				updateCount();
  			}
 			

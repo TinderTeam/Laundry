@@ -74,7 +74,7 @@ public class LaundryApp extends Application
 	
 	private void initImageCache()
 	{
-		File cacheDir = StorageUtils.getOwnCacheDirectory(getApplicationContext(), "imageloader/Cache");  
+		File cacheDir = StorageUtils.getOwnCacheDirectory(getApplicationContext(), "kuaikexidi/imageloader/Cache");  
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration  
 			    .Builder(this)  
 			    .memoryCacheExtraOptions(480, 800) // max width, max height，即保存的每个缓存文件的最大长宽  
@@ -82,9 +82,9 @@ public class LaundryApp extends Application
 			    .threadPoolSize(30)//线程池内加载的数量  
 			    .threadPriority(Thread.NORM_PRIORITY - 2)  
 			    .denyCacheImageMultipleSizesInMemory()  
-			    .memoryCache(new UsingFreqLimitedMemoryCache(20 * 1024 * 1024)) // You can pass your own memory cache implementation/你可以通过自己的内存缓存实现  
-			    .memoryCacheSize(20 * 1024 * 1024)    
-			    .discCacheSize(100 * 1024 * 1024)    
+			    .memoryCache(new UsingFreqLimitedMemoryCache(5 * 1024 * 1024)) // You can pass your own memory cache implementation/你可以通过自己的内存缓存实现  
+			    .memoryCacheSize(5 * 1024 * 1024)    
+			    .discCacheSize(50 * 1024 * 1024)    
 			    .discCacheFileNameGenerator(new Md5FileNameGenerator())//将保存的时候的URI名称用MD5 加密  
 			    .tasksProcessingOrder(QueueProcessingType.LIFO)  
 			    .discCacheFileCount(500) //缓存的文件数量  

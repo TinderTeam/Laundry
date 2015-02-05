@@ -10,9 +10,9 @@ import cn.fuego.common.log.FuegoLog;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.cache.ProductCache;
 import cn.fuego.laundry.constant.OrderStatusEnum;
 import cn.fuego.laundry.ui.LoginActivity;
-import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.ui.user.UserFragment;
 import cn.fuego.laundry.webservice.up.model.GetOrderDetailReq;
 import cn.fuego.laundry.webservice.up.model.GetOrderDetailRsp;
@@ -116,7 +116,7 @@ public class OrderDetailActivity extends MispInfoListActivity
 
 	 
 			
-			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "总价", CartProduct.getInstance().getDispPrice(order.getPrice_type(), order.getTotal_price()),String.valueOf(R.drawable.icon_order_sum)));
+			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "总价", ProductCache.getInstance().getDispPrice(order.getPrice_type(), order.getTotal_price()),String.valueOf(R.drawable.icon_order_sum)));
 			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "付款方式", order.getPay_option(),String.valueOf(R.drawable.icon_pay_way)));
 			list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, "您的要求", order.getOrder_note(),String.valueOf(R.drawable.icon_customer_note)));
 		}
@@ -131,7 +131,7 @@ public class OrderDetailActivity extends MispInfoListActivity
 		{
 			for(OrderDetailJson detail : orderDetailList)
 			{
-				list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, detail.getProduct_name(), detail.getQuantity() +"*" +CartProduct.getInstance().getDispPrice(detail.getPrice_type(),detail.getCurrent_price()),MemoryCache.getImageUrl()+detail.getProduct_img()));
+				list.add(new CommonItemMeta(CommonItemMeta.TEXT_CONTENT, detail.getProduct_name(), detail.getQuantity() +"*" +ProductCache.getInstance().getDispPrice(detail.getPrice_type(),detail.getCurrent_price()),MemoryCache.getImageUrl()+detail.getProduct_img()));
 			}
 		}
 		list.add(new CommonItemMeta(CommonItemMeta.DIVIDER_ITEM, null, null));

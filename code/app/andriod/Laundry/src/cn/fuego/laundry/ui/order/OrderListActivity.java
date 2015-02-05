@@ -13,10 +13,10 @@ import android.widget.TextView;
 import cn.fuego.common.util.validate.ValidatorUtil;
 import cn.fuego.laundry.R;
 import cn.fuego.laundry.cache.AppCache;
+import cn.fuego.laundry.cache.ProductCache;
 import cn.fuego.laundry.constant.PriceTypeEnum;
 import cn.fuego.laundry.ui.LoginActivity;
 import cn.fuego.laundry.ui.MainTabbarActivity;
-import cn.fuego.laundry.ui.cart.CartProduct;
 import cn.fuego.laundry.ui.user.UserFragment;
 import cn.fuego.laundry.webservice.up.model.GetOrderListReq;
 import cn.fuego.laundry.webservice.up.model.GetOrderListRsp;
@@ -110,7 +110,7 @@ public class OrderListActivity extends MispListActivity<OrderJson>
 		idView.setText(item.getOrder_code());
 		TextView priceView = (TextView) view.findViewById(R.id.order_list_item_price);
 		
-		String price = CartProduct.getInstance().getDispPrice(item.getPrice_type(), item.getTotal_price());
+		String price = ProductCache.getInstance().getDispPrice(item.getPrice_type(), item.getTotal_price());
 		if(PriceTypeEnum.FLOAT_PRICE.getStrValue().equals(price))
 		{
 			priceView.setText(price);

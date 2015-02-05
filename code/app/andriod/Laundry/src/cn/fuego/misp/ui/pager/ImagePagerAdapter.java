@@ -65,34 +65,37 @@ public class ImagePagerAdapter extends PagerAdapter implements OnPageChangeListe
  	{
  		 
   
-           
+          if(null != context)
+          {
 
-          for(int i=0; i<imageUrlList.size(); i++)
-          {  
-              ImageView imageView = new ImageView(context);  
-              imageView.setLayoutParams(new LayoutParams(4,4));  
-              tips.add(imageView);  
-              if(i == 0){  
-                  tips.get(i).setBackgroundResource(R.drawable.image_selected);  
-              }else{  
-             	 tips.get(i).setBackgroundResource(R.drawable.image_unselected);  
+              for(int i=0; i<imageUrlList.size(); i++)
+              {  
+                  ImageView imageView = new ImageView(context);  
+                  imageView.setLayoutParams(new LayoutParams(4,4));  
+                  tips.add(imageView);  
+                  if(i == 0){  
+                      tips.get(i).setBackgroundResource(R.drawable.image_selected);  
+                  }else{  
+                 	 tips.get(i).setBackgroundResource(R.drawable.image_unselected);  
+                  }  
+                    
+                  LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT,    
+                          LayoutParams.WRAP_CONTENT));  
+                  layoutParams.leftMargin = 5;  
+                //  layoutParams.rightMargin = 5;  
+                  group.addView(imageView, layoutParams);  
               }  
-                
-              LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT,    
-                      LayoutParams.WRAP_CONTENT));  
-              layoutParams.leftMargin = 5;  
-            //  layoutParams.rightMargin = 5;  
-              group.addView(imageView, layoutParams);  
-          }  
-   
-  
-         for(String url : imageUrlList)
-         {  
-             ImageView imageView = new ImageView(context);
-             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-             LoadImageUtil.getInstance().loadImage(imageView, url,LoadImageUtil.getInstance().largeImageSetting());
-             imageList.add(imageView);
-          }  
+       
+      
+             for(String url : imageUrlList)
+             {  
+                 ImageView imageView = new ImageView(context);
+                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                 LoadImageUtil.getInstance().loadImage(imageView, url,LoadImageUtil.getInstance().largeImageSetting());
+                 imageList.add(imageView);
+              }  
+          }
+
  
    
  	}
