@@ -37,18 +37,20 @@
 }
 
 - (IBAction)getCodeAction:(id)sender {
-    if ([self.phoneTextFeild.text isPhone]) {
-        _totalTime = 60;
-        [self requestGetCode];
+    if (self.phoneTextFeild.text.length) {
+        if ([self.phoneTextFeild.text isPhone]) {
+            _totalTime = 60;
+            [self requestGetCode];
+        }else{
+            kAlert(@"手机格式不正确！", self);
+        }
     }else{
-        GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{
-            
-        }];
-        [GAAlertObj showAlertWithTitle:@"提示" message:@"请输入正确的手机号码" actions:@[action] inViewController:self];
+        kAlert(@"请输入手机号码！", self);
     }
+    
 }
 - (IBAction)registAction:(id)sender {
-    if (self.passwordTextField.text.length) {
+    if (self.passwordTextField.text.length >=6 && self.passwordTextField.text.length <= 20) {
         if (([[NSDate date] timeIntervalSince1970] - self.time) < 10 * 60 && [self.code isEqual:self.verifyCode.text]) {
             NSLog(@"resgist");
             [self regist];
@@ -56,6 +58,8 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kString(@"提示") message:kString(@"验证码错误！") delegate:nil cancelButtonTitle:kString(@"OK") otherButtonTitles: nil];
             [alert show];
         }
+    }else{
+        kAlert(@"密码为6-20位！", self);
     }
 }
 

@@ -11,9 +11,11 @@
 #import "FEUpdateRequest.h"
 #import "FELaundryWebService.h"
 #import "FECheckUpdate.h"
+#import "FEUpdateVC.h"
 
 @interface FESettingVC ()
-
+@property (nonatomic, strong) NSString *version;
+@property (nonatomic, strong) NSString *versionURL;
 @end
 
 @implementation FESettingVC
@@ -41,32 +43,47 @@
         
         [[FECheckUpdate sharedInstance] chechUpdate:^(NSError *error, id response) {
             NSDictionary *rsp = response;
+            if (error) {
+                [self hideHUD:YES];
+                return ;
+            }
             if (rsp && [rsp[@"resultCount"] integerValue] != 0) {
                 NSArray *resultArray = [rsp objectForKey:@"results"];
-                //                DLog(@"version %@",[resultArray objectAtIndex:0]);
                 NSDictionary *resultDict = [resultArray objectAtIndex:0];
-                //                DLog(@"version is %@",[resultDict objectForKey:@"version"]);
                 NSString *newVersion = [resultDict objectForKey:@"version"];
-                
-                if ([newVersion doubleValue] > [kAppVersion doubleValue]) {
-                    NSString *msg = [NSString stringWithFormat:@"最新版本为%@,是否更新？",newVersion];
-                    
-                    NSString *urlstring = [[resultDict objectForKey:@"trackViewUrl"] copy];
-                    
-                    GAAlertAction *action = [GAAlertAction actionWithTitle:@"立即更新" action:^{
-                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlstring]];
-                    }];
-                    
-                    GAAlertAction *action2 = [GAAlertAction actionWithTitle:@"取消" action:^{
-                        
-                    }];
-                    
-                    [GAAlertObj showAlertWithTitle:@"更新" message:msg actions:@[action,action2] inViewController:weakself];
-
-                }
+                weakself.version = newVersion;
+                NSString *urlstring = [[resultDict objectForKey:@"trackViewUrl"] copy];
+                self.versionURL = urlstring;
             }else{
-                kAlert(@"已是最新版本！", weakself);
+                weakself.version = @"";
             }
+            [weakself performSegueWithIdentifier:@"toupdateSegue" sender:self];
+//            if (rsp && [rsp[@"resultCount"] integerValue] != 0) {
+//                NSArray *resultArray = [rsp objectForKey:@"results"];
+//                //                DLog(@"version %@",[resultArray objectAtIndex:0]);
+//                NSDictionary *resultDict = [resultArray objectAtIndex:0];
+//                //                DLog(@"version is %@",[resultDict objectForKey:@"version"]);
+//                NSString *newVersion = [resultDict objectForKey:@"version"];
+//                
+//                if ([newVersion doubleValue] > [kAppVersion doubleValue]) {
+//                    NSString *msg = [NSString stringWithFormat:@"最新版本为%@,是否更新？",newVersion];
+//                    
+//                    NSString *urlstring = [[resultDict objectForKey:@"trackViewUrl"] copy];
+//                    
+//                    GAAlertAction *action = [GAAlertAction actionWithTitle:@"立即更新" action:^{
+//                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlstring]];
+//                    }];
+//                    
+//                    GAAlertAction *action2 = [GAAlertAction actionWithTitle:@"取消" action:^{
+//                        
+//                    }];
+//                    
+//                    [GAAlertObj showAlertWithTitle:@"更新" message:msg actions:@[action,action2] inViewController:weakself];
+//
+//                }
+//            }else{
+//                kAlert(@"已是最新版本！", weakself);
+//            }
             [self hideHUD:YES];
         }];
         
@@ -77,6 +94,14 @@
 //            }
 //            
 //        }];
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"toupdateSegue"]) {
+        FEUpdateVC *vc = segue.destinationViewController;
+        vc.versionLast = self.version;
+        vc.versionUrl = self.versionURL;
     }
 }
 

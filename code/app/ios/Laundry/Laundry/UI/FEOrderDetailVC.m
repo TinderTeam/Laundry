@@ -37,18 +37,26 @@
         self.operationBarItem.title = @"取消";
     }else if ([self.order.order_status isEqualToString:@"待付款"]){
         self.operationBarItem.title = @"付款";
-    }else if([self.order.order_status isEqualToString:@"已取消"]){
+    }else if([self.order.order_status isEqualToString:@"已取消"] || [self.order.order_status isEqualToString:@"已完成"]){
         self.operationBarItem.title = @"删除";
+    }else{
+        self.navigationItem.rightBarButtonItems = nil;
+        self.navigationItem.rightBarButtonItem = nil;
     }
     
-    self.title = kString(@"我的订单");
+    self.title = kString(@"订单详情");
     
     NSArray *orderInfo = @[@{@"订单号":self.order.order_code},@{@"订单状态":self.order.order_status},@{@"订单时间":self.order.create_time}];
     
     NSArray *orderArray = @[@{@"取衣地址":self.order.take_addr?self.order.take_addr:@""},@{@"送回地址":self.order.delivery_addr?self.order.delivery_addr:@""},@{@"联系人":self.order.contact_name?self.order.contact_name:@""},@{@"联系电话":self.order.phone?self.order.phone:@""}];
     _pngDic = @{@"取衣地址":@"icon_addr_home",@"送回地址":@"icon_addr_out",@"联系人":@"icon_contact_name",@"联系电话":@"icon_contact_phone",@"订单号":@"icon_order_num",@"订单状态":@"icon_order_status",@"订单时间":@"icon_order_time",@"总价":@"icon_order_sum",@"付款方式":@"icon_pay_way",@"备注":@"icon_customer_note"};
-    
-    NSArray *orderPrice = @[@{@"总价":[NSString stringWithFormat:@"%.2f",self.order.total_price.floatValue]},@{@"付款方式":self.order.pay_option?self.order.pay_option:@""},@{@"备注":@""}];
+    NSString *price ;
+    if ([self.order.price_type isEqualToString:@"面议"]) {
+        price = @"面议";
+    }else{
+        price = [NSString stringWithFormat:@"%.2f",self.order.total_price.floatValue];
+    }
+    NSArray *orderPrice = @[@{@"总价":price},@{@"付款方式":self.order.pay_option?self.order.pay_option:@""},@{@"备注":self.order.order_note?self.order.order_note:@""}];
     
     _orderDetail = [[NSMutableArray alloc] init];
     [_orderDetail addObject:orderInfo];
@@ -74,8 +82,14 @@
 
 #pragma mark - UITableViewDataSource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderInfoCell" forIndexPath:indexPath];
     id item = self.orderDetail[indexPath.section][indexPath.row];
+    UITableViewCell *cell;
+    if ([item isKindOfClass:[NSDictionary class]]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"orderInfoCell" forIndexPath:indexPath];
+    }else if ([item isKindOfClass:[FEOrderDetail class]]){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"orderItemCell" forIndexPath:indexPath];
+    }
+    
     UILabel *title = (UILabel *)[cell viewWithTag:1];
     UILabel *detail = (UILabel *)[cell viewWithTag:2];
     UIImageView *imageV = (UIImageView *)[cell viewWithTag:3];
@@ -89,7 +103,12 @@
     }else if ([item isKindOfClass:[FEOrderDetail class]]){
         FEOrderDetail *detailItem = item;
         title.text = detailItem.product_name;
-        detail.text = detailItem.current_price;
+        if ([detailItem.price_type isEqualToString:@"面议"]) {
+            detail.text = @"面议";
+        }else{
+            detail.text = [NSString stringWithFormat:@"%@*%@",detailItem.quantity,detailItem.current_price];
+        }
+        
         [imageV sd_setImageWithURL:[NSURL URLWithString:kImageURL(detailItem.product_img)]];
     }
     
@@ -123,7 +142,7 @@
         }];
     }else if ([self.order.order_status isEqualToString:@"待付款"]){
         [self performSegueWithIdentifier:@"payOnlineSegue" sender:self.order];
-    }else if([self.order.order_status isEqualToString:@"已取消"]){
+    }else if([self.order.order_status isEqualToString:@"已取消"] || [self.order.order_status isEqualToString:@"已完成"]){
         [self displayHUD:@"删除中..."];
         FEOrderDeleteRequest *rdata = [[FEOrderDeleteRequest alloc] initWithOrderID:self.order.order_id];
         [[FELaundryWebService sharedInstance] request:rdata responseClass:[FEOrderOperationResponse class] response:^(NSError *error, id response) {

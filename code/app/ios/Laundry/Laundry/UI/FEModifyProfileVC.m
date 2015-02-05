@@ -17,6 +17,8 @@
 #import "FELaundryWebService.h"
 #import "GAAlertObj.h"
 #import "FEDataCache.h"
+#import "FEGetCurrentCity.h"
+
 
 @interface FEModifyProfileVC ()<UITextFieldDelegate,FEPopPickerViewDataSource>
 @property (strong, nonatomic) IBOutlet UITextField *realName;
@@ -29,8 +31,11 @@
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIControl *maskview;
+@property (nonatomic, strong) FEGetCurrentCity *currentCity;
+
 
 @property (nonatomic, strong) NSArray *sexString;
+@property (strong, nonatomic) IBOutlet UIButton *locationButton;
 
 @end
 
@@ -45,6 +50,7 @@
 }
 
 -(void)refreshUI{
+    [self.locationButton setBackgroundImage:[UIImage imageFromColor:kThemeColor] forState:UIControlStateNormal];
     self.realName.text = self.customer.customer_name;
     self.sex.text = self.customer.customer_sex;
     self.birthday.text = self.customer.birthday;
@@ -78,6 +84,9 @@
             self.maskview.backgroundColor = [UIColor blackColor];
             self.maskview.alpha = .5;
             self.datePicker = [[UIDatePicker alloc] init];
+            if (self.birthday.text.length) {
+                self.datePicker.date = [NSDate convertDateFromString:self.birthday.text];
+            }
             self.datePicker.datePickerMode = UIDatePickerModeDate;
             self.datePicker.backgroundColor = [UIColor whiteColor];
 //            self.datePicker.center = CGPointMake(rect.size.width / 2.0, rect.size.height / 2.0);
@@ -112,6 +121,17 @@
 -(void)selectdate:(id)sender{
     self.currentTextField.text = [self.datePicker.date stringForDateWithFormatterString:@"YYYY-MM-dd"];
     [self dismiss:nil];
+}
+
+- (IBAction)location:(id)sender {
+    [self.currentCity cacel];
+    self.currentCity = [[FEGetCurrentCity alloc] init];
+    __weak typeof(self) weakself = self;
+    [self.currentCity getCity:^(NSError *error, NSString *city) {
+        if (!error) {
+            weakself.activityRegion.text = city;
+        }
+    }];
 }
 
 - (IBAction)save:(id)sender {
