@@ -11,9 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />  
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>	
-
-<include file="./Home/Tpl/PublicTpl/css.html"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+	<!--=== 视频插件引用 ===-->
+	<link href="__PUBLIC__/ThirdParty/video/video-js.css" rel="stylesheet" type="text/css">
+  	<script src="__PUBLIC__/ThirdParty/video/video.js"></script>
+  	<script>
+    	videojs.options.flash.swf = "__PUBLIC__/ThirdParty/video/video-js.swf";
+  	</script> 	
+	<include file="./Home/Tpl/PublicTpl/css.html"/>
 <body>
  
 
@@ -36,10 +41,10 @@
                 <div class="nav-collapse collapse">                                     
                     <ul class="nav top-2">
                         <li class="active">
-                            <a href="#" >首页</a>                      
+                            <a href="__URL__/index.html" >首页</a>                      
                         </li>
                         <li >
-                            <a href="#" >公司简介</a>                      
+                            <a href="__URL__/companyInfo.html" >公司简介</a>                      
                         </li>
 						<li >
                             <a href="#" >设备</a>                      
@@ -76,17 +81,21 @@
   </ol>
   <!-- Carousel items -->
   <div class="carousel-inner">
-    <div class="active item"><img src="__PUBLIC__/Fuego/img/AD1.jpg" alt="" /></div>
-    <div class="item"><img src="__PUBLIC__/Fuego/img/AD2.jpg" alt="" /></div>
-    <div class="item"><img src="__PUBLIC__/Fuego/img/AD3.jpg" alt="" /></div>
+    <div class="active item"><img src="__PUBLIC__/Fuego/img/index/AD1.jpg" alt="" /></div>
+    <div class="item"><img src="__PUBLIC__/Fuego/img/index/AD2.jpg" alt="" /></div>
+    <div class="item"><img src="__PUBLIC__/Fuego/img/index/AD3.jpg" alt="" /></div>
   </div>
   <!-- Carousel nav -->
   <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
   <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div>
-
-<!--=== End Slider ===-->
-
+<div class="container">
+      <video id="example_video_1" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="none" width="1170" height="577"
+		  poster="__PUBLIC__/Fuego/img/index/hw_u_396096.jpg"
+		  data-setup="{}">
+		<source src="__PUBLIC__/Fuego/img/index/hw_u_396095.mp4" type='video/mp4'></source>
+	  </video> 
+    </div>
 <!--=== Purchase Block ===-->
 <div class="row-fluid purchase margin-bottom-30">
     <div class="container">
