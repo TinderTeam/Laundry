@@ -14,11 +14,59 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>	
 
 <include file="./Home/Tpl/PublicTpl/css.html"/>
-<body>
+<style>
+html,body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+#container {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%; /*IE6不识别min-height*/
+	position: relative;
+}
+
+#header {
+	
+}
+
+#page {
+	margin: 0 auto;
+	padding-bottom: 55px; /*等于footer的高度*/
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 55px; /*脚部的高度*/
+	clear: both;
+}
+/*=======主体内容部分=======*/
+#left {
+	width: 220px;
+	float: left;
+	margin-right: 20px;
+}
+
+#content {
+	float: left;
+	width: 480px;
+	margin-right: 20px;
+}
+
+#right {
+	float: right;
+	width: 220px;
+}
+</style>
+<body >
  
 
 <!--=== Header ===-->
-<div class="header" style="margin-top:20px;">               
+<div class="header" style="margin-top:20px;" id="header">               
     <div class="container"> 
         <!-- Logo -->       
         <div class="logo">                                             
@@ -27,7 +75,13 @@
                                     
         <!-- Menu -->       
         <div class="navbar">                                
-            <div class="navbar-inner">                                                                   
+            <div class="navbar-inner"> 
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a><!-- /nav-collapse -->                                  
+                                                                 
                 <div class="nav-collapse collapse">                                     
                     <ul class="nav top-2">
                         <li >
@@ -58,18 +112,18 @@
     </div><!-- /container -->               
 </div><!--/header -->      
 <!--=== End Header ===-->
-
-<div class="container">		
+<div id="container">
+<div class="container" style="min-height: 100% !important;" id="page">		
 	<div class="row-fluid">
-		<div class="span9">
+		<div class="span8">
             <div class="headline"><h3>快客在哪儿？</h3></div>
 
-            <h3 class="color-green"><em>快客清洁有限公司总部位于美丽的贵州省兴义市</em></h3>
-			<div><img src="__PUBLIC__/Fuego/img/about/addr.png" alt="" />
-			</div>
+            <h3 class="color-green"><em>金州快客清洁服务有限公司总部位于美丽的贵州省兴义市</em></h3>
+			<img src="__PUBLIC__/Fuego/img/about/addr.png" alt="" /> 
+
         </div><!--/span9-->
         
-		<div class="span3">
+		<div class="span4">
         	<!-- Contacts -->
             <div class="headline"><h3>联系方式</h3></div>
             <ul class="unstyled who margin-bottom-20">
@@ -88,10 +142,12 @@
 
         </div><!--/span3-->
     </div><!--/row-fluid-->  
+    
 </div>
 <!--=== Copyright ===-->
-<div style="bottom:0px;position: absolute;width:100%;">
+<div id="footer">
 <include file="./Home/Tpl/PublicTpl/copyright.html"/>
+</div>
 </div>
 <!--=== End Copyright ===-->
 
