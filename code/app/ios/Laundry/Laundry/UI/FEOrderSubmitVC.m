@@ -108,14 +108,13 @@
     NSArray *noPrice = [products filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.price_type == %@",@"面议"]];
     if (noPrice.count) {
         self.totalValueLabel.text = [NSString stringWithFormat:@"总量:%ld,共计:面议",(long)self.totalNumber];
-        if (!self.oinfo.pay_option.length) {
-            self.oinfo.pay_option = @"送衣付款";
-        }
+        
+        self.oinfo.pay_option = @"送衣付款";
         
         _canSelectPayType = NO;
     }else{
         self.totalValueLabel.text = [NSString stringWithFormat:@"总量:%ld,共计:%.2f",(long)self.totalNumber,self.totalPrice];
-        if (!self.oinfo.pay_option.length) {
+        if (![self.oinfo.pay_option isEqualToString:@"送衣付款"]) {
             self.oinfo.pay_option = @"在线支付";
         }
         _canSelectPayType = YES;

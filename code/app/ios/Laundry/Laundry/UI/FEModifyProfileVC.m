@@ -50,7 +50,7 @@
 }
 
 -(void)refreshUI{
-    [self.locationButton setBackgroundImage:[UIImage imageFromColor:kThemeColor] forState:UIControlStateNormal];
+    [self.locationButton setBackgroundImage:[UIImage imageFromColor:kButtonColor] forState:UIControlStateNormal];
     self.realName.text = self.customer.customer_name;
     self.sex.text = self.customer.customer_sex;
     self.birthday.text = self.customer.birthday;

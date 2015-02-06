@@ -60,6 +60,9 @@
 		14509A851A81C2D100FE3898 /* FEClientVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 14509A841A81C2D100FE3898 /* FEClientVersion.m */; };
 		14509A881A81DACE00FE3898 /* FECheckUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14509A871A81DACE00FE3898 /* FECheckUpdate.m */; };
 		14509A911A82501600FE3898 /* FEUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 14509A901A82501600FE3898 /* FEUpdateVC.m */; };
+		146388E91A834CC500D766FB /* LandingPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146388E81A834CC400D766FB /* LandingPage.storyboard */; };
+		146388EC1A8350BD00D766FB /* FELaundryLandingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 146388EB1A8350BD00D766FB /* FELaundryLandingPage.m */; };
+		146388EF1A835D7B00D766FB /* FEWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 146388EE1A835D7B00D766FB /* FEWebVC.m */; };
 		14950D621A78CD3C001416A7 /* FEResetPasswordRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14950D611A78CD3C001416A7 /* FEResetPasswordRequest.m */; };
 		14950D661A7917E2001416A7 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14950D641A7917E2001416A7 /* AlipaySDK.bundle */; };
 		14950D671A7917E2001416A7 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14950D651A7917E2001416A7 /* AlipaySDK.framework */; };
@@ -230,6 +233,11 @@
 		14509A871A81DACE00FE3898 /* FECheckUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FECheckUpdate.m; sourceTree = "<group>"; };
 		14509A8F1A82501600FE3898 /* FEUpdateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEUpdateVC.h; sourceTree = "<group>"; };
 		14509A901A82501600FE3898 /* FEUpdateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEUpdateVC.m; sourceTree = "<group>"; };
+		146388E81A834CC400D766FB /* LandingPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LandingPage.storyboard; sourceTree = "<group>"; };
+		146388EA1A8350BD00D766FB /* FELaundryLandingPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FELaundryLandingPage.h; sourceTree = "<group>"; };
+		146388EB1A8350BD00D766FB /* FELaundryLandingPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FELaundryLandingPage.m; sourceTree = "<group>"; };
+		146388ED1A835D7B00D766FB /* FEWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWebVC.h; sourceTree = "<group>"; };
+		146388EE1A835D7B00D766FB /* FEWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWebVC.m; sourceTree = "<group>"; };
 		14950D601A78CD3C001416A7 /* FEResetPasswordRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEResetPasswordRequest.h; sourceTree = "<group>"; };
 		14950D611A78CD3C001416A7 /* FEResetPasswordRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEResetPasswordRequest.m; sourceTree = "<group>"; };
 		14950D641A7917E2001416A7 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
@@ -376,6 +384,8 @@
 				14FF4A191A66936000DECA7B /* FESelectCategoryVC.m */,
 				14F9983C1A7F3FC30052D0B3 /* FEPopPickerView.h */,
 				14F9983D1A7F3FC30052D0B3 /* FEPopPickerView.m */,
+				146388ED1A835D7B00D766FB /* FEWebVC.h */,
+				146388EE1A835D7B00D766FB /* FEWebVC.m */,
 			);
 			name = HomePage;
 			sourceTree = "<group>";
@@ -505,6 +515,7 @@
 				14469E921A65FA5A00515685 /* UI */,
 				14469E931A65FA5A00515685 /* WebService */,
 				14469E731A65F9DC00515685 /* Main.storyboard */,
+				146388E81A834CC400D766FB /* LandingPage.storyboard */,
 				14469E761A65F9DC00515685 /* Images.xcassets */,
 				14469E781A65F9DC00515685 /* LaunchScreen.xib */,
 				14469E661A65F9DC00515685 /* Supporting Files */,
@@ -530,6 +541,8 @@
 				14469E951A65FA8500515685 /* AppDelegate.m */,
 				144350291A6642E3002BB228 /* FELaundryConfig.h */,
 				1443502A1A664301002BB228 /* FELaundryDefine.h */,
+				146388EA1A8350BD00D766FB /* FELaundryLandingPage.h */,
+				146388EB1A8350BD00D766FB /* FELaundryLandingPage.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -847,6 +860,7 @@
 				1423F5D11A80A35700625A53 /* ErrorCode.plist in Resources */,
 				14469E751A65F9DC00515685 /* Main.storyboard in Resources */,
 				14469E7A1A65F9DC00515685 /* LaunchScreen.xib in Resources */,
+				146388E91A834CC500D766FB /* LandingPage.storyboard in Resources */,
 				14950D661A7917E2001416A7 /* AlipaySDK.bundle in Resources */,
 				14469E771A65F9DC00515685 /* Images.xcassets in Resources */,
 			);
@@ -969,6 +983,7 @@
 				14950D851A7923F0001416A7 /* DataVerifier.m in Sources */,
 				14950D6D1A792092001416A7 /* Order.m in Sources */,
 				14FF4A8D1A67F00700DECA7B /* FESigninResponse.m in Sources */,
+				146388EC1A8350BD00D766FB /* FELaundryLandingPage.m in Sources */,
 				14FF4A3B1A66A48C00DECA7B /* FECompany.m in Sources */,
 				14F998411A7F5D670052D0B3 /* FEPayOnlineVC.m in Sources */,
 				14950D841A7923F0001416A7 /* DataSigner.m in Sources */,
@@ -978,6 +993,7 @@
 				14FF4A2D1A6696A200DECA7B /* FEBaseRequest.m in Sources */,
 				1418A1A61A68122800886FDA /* FEVerifyCodeRequest.m in Sources */,
 				1443506A1A6652A6002BB228 /* NSDate+Formatter.m in Sources */,
+				146388EF1A835D7B00D766FB /* FEWebVC.m in Sources */,
 				14F998501A80573A0052D0B3 /* FEModifyProfileVC.m in Sources */,
 				14FF4A411A66A6D500DECA7B /* FEGetADRequest.m in Sources */,
 				144350751A6652A6002BB228 /* UIImage+Resize.m in Sources */,

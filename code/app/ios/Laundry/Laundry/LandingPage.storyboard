@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B0x-e6-jr5">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--Laundry Landing Page-->
+        <scene sceneID="tJ9-pP-3i0">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="B0x-e6-jr5" customClass="FELaundryLandingPage" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nD0-zt-6yw"/>
+                        <viewControllerLayoutGuide type="bottom" id="3de-4u-dvH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y8I-U9-UnY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehW-t6-Nyd">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.078431372549019607" green="0.2196078431372549" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="B0x-e6-jr5" id="6AM-Qu-v2E"/>
+                                </connections>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="LAH-jf-2fj">
+                                <rect key="frame" x="280" y="543" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hki-Lg-46K">
+                                <rect key="frame" x="480" y="545" width="100" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="7kK-ot-vNg"/>
+                                    <constraint firstAttribute="width" constant="100" id="Mfd-n6-lKL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="立即体验">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="start:" destination="B0x-e6-jr5" eventType="touchUpInside" id="js1-kv-kL3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3de-4u-dvH" firstAttribute="top" secondItem="hki-Lg-46K" secondAttribute="bottom" constant="20" id="2qm-qH-VGk"/>
+                            <constraint firstAttribute="trailing" secondItem="ehW-t6-Nyd" secondAttribute="trailing" id="4Gl-gQ-mYQ"/>
+                            <constraint firstAttribute="centerX" secondItem="LAH-jf-2fj" secondAttribute="centerX" id="BgC-gh-Kgk"/>
+                            <constraint firstItem="ehW-t6-Nyd" firstAttribute="top" secondItem="y8I-U9-UnY" secondAttribute="top" id="DLQ-Vy-vjd"/>
+                            <constraint firstAttribute="bottom" secondItem="LAH-jf-2fj" secondAttribute="bottom" constant="20" id="Vv4-ne-fwB"/>
+                            <constraint firstAttribute="trailing" secondItem="hki-Lg-46K" secondAttribute="trailing" constant="20" id="iuW-fq-TcV"/>
+                            <constraint firstAttribute="bottom" secondItem="ehW-t6-Nyd" secondAttribute="bottom" id="vva-VP-tn3"/>
+                            <constraint firstItem="ehW-t6-Nyd" firstAttribute="leading" secondItem="y8I-U9-UnY" secondAttribute="leading" id="xKC-iH-7af"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="page" destination="LAH-jf-2fj" id="quy-FH-UWl"/>
+                        <outlet property="scrollView" destination="ehW-t6-Nyd" id="Nq5-i0-kSR"/>
+                        <outlet property="startButton" destination="hki-Lg-46K" id="Ug4-WF-MgN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fbL-NN-3sh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194" y="268"/>
+        </scene>
+    </scenes>
+</document>

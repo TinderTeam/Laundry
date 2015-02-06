@@ -12,6 +12,8 @@
 #import "FELaundryWebService.h"
 #import "FECheckUpdate.h"
 #import "FEUpdateVC.h"
+#import "FEWebVC.h"
+#import "FELaundryLandingPage.h"
 
 @interface FESettingVC ()
 @property (nonatomic, strong) NSString *version;
@@ -36,7 +38,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 5) {
+    if (indexPath.row == 4) {
         NSLog(@"更新");
         __weak typeof(self) weakself = self;
         [self displayHUD:@"检查更新..."];
@@ -94,6 +96,10 @@
 //            }
 //            
 //        }];
+    }else if (indexPath.row == 3){
+        FELaundryLandingPage *page = [[UIStoryboard storyboardWithName:@"LandingPage" bundle:nil] instantiateInitialViewController];
+        page.isFromSetting = YES;
+        [self.navigationController pushViewController:page animated:YES];
     }
 }
 
@@ -102,6 +108,18 @@
         FEUpdateVC *vc = segue.destinationViewController;
         vc.versionLast = self.version;
         vc.versionUrl = self.versionURL;
+    }else if ([segue.identifier isEqualToString:@"toWebViewSegue1"]){
+        FEWebVC *vc = segue.destinationViewController;
+        vc.title = @"快客介绍";
+        vc.urlString = kIntroductURL;
+    }else if ([segue.identifier isEqualToString:@"toWebViewSegue2"]){
+        FEWebVC *vc = segue.destinationViewController;
+        vc.title = @"加入快客";
+        vc.urlString = kJoinURL;
+    }else if ([segue.identifier isEqualToString:@"toWebViewSegue3"]){
+        FEWebVC *vc = segue.destinationViewController;
+        vc.title = @"注意事项";
+        vc.urlString = kAttentionURL;
     }
 }
 

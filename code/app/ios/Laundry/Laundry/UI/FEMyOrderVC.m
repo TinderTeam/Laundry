@@ -69,9 +69,9 @@
     UILabel *orderTimeLabel = (UILabel *)[cell viewWithTag:4];
     statusLabel.text = order.order_status;
     if ([order.price_type isEqualToString:@"面议"]) {
-        priceLabel.text = [NSString stringWithFormat:@"面议"];
+        priceLabel.text = [NSString stringWithFormat:@"总价: 面议"];
     }else{
-        priceLabel.text = [NSString stringWithFormat:@"%@ %.2f",kString(@"总价: "),order.total_price.floatValue];
+        priceLabel.text = [NSString stringWithFormat:@"%@ ￥%.2f",kString(@"总价: "),order.total_price.floatValue];
     }
     orderIDLabel.text = order.order_code;
     orderTimeLabel.text = order.create_time;

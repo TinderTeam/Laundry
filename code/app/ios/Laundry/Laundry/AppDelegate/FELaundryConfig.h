@@ -20,11 +20,15 @@
 #define kBasePath               @"/Laundry"
 #define kImagePath              @"/Public/Fuego/uploads/"
 #define kAliPayPath             @"/index.php/AlipayNotify/GetNotify"
-
-
+#define kJoinPath               @"/Laundry.php/ADManage/joinUS.html"
+#define kIntroductPath          @"/Laundry.php/ADManage/introduct.html"
+#define kAttentionPath          @"/Laundry.php/ADManage/attention.html"
 
 #define kImageURL(_A)           [NSString stringWithFormat:@"http://%@:%@%@%@%@",kServerIP,kServerPort,kBasePath,kImagePath,_A]//[@"http://120.24.217.173:9000/Laundry/Public/Fuego/uploads/" stringByAppendingString:_A]
 #define __SERVICE_BASE_URL    [NSString stringWithFormat:@"http://%@:%@%@",kServerIP,kServerPort,kBasePath]//@"http://120.24.217.173:80/Laundry"
+#define kJoinURL                [NSString stringWithFormat:@"%@%@",__SERVICE_BASE_URL,kJoinPath]
+#define kIntroductURL           [NSString stringWithFormat:@"%@%@",__SERVICE_BASE_URL,kIntroductPath]
+#define kAttentionURL           [NSString stringWithFormat:@"%@%@",__SERVICE_BASE_URL,kAttentionPath]
 
 #define kAliPayURL              [NSString stringWithFormat:@"%@%@",__SERVICE_BASE_URL,kAliPayPath]
 

@@ -18,6 +18,7 @@
 #import "FECustomSegue.h"
 #import "GAAlertObj.h"
 #import "FEBasketVC.h"
+#import "FEWebVC.h"
 
 //#define __KEY_TITLE @"title"
 //#define __KEY_PNG   @"png"
@@ -166,7 +167,11 @@
 
 #pragma mark - UIStoryboardSegue
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([sender isKindOfClass:[UICollectionViewCell class]]) {
+    if ([segue.identifier isEqualToString:@"toWebViewSegue"]) {
+        FEWebVC *vc = segue.destinationViewController;
+        vc.title = @"加入快客";
+        vc.urlString = kJoinURL;
+    }else if ([sender isKindOfClass:[UICollectionViewCell class]]) {
         FESelectCategoryVC *vc = segue.destinationViewController;
         NSIndexPath *indexPath = [self.functionCollectionView indexPathForCell:sender];
         vc.fatherID = self.categoryList[indexPath.row][__KEY_NUMBER];
@@ -288,8 +293,9 @@
 }
 
 -(void)join:(id)sender{
-    [self performSegueWithIdentifier:@"joinSegue" sender:nil];
+    [self performSegueWithIdentifier:@"toWebViewSegue" sender:nil];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
