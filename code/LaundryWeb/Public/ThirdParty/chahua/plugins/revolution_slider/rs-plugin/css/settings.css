@@ -53,19 +53,19 @@ website:   	http://www.themepunch.com
 			letter-spacing: 0px;
 		}
 
-.tp-caption.big_orange{
+.tp-caption.big_blue{
 			position: absolute;
-			color: #fff;
+			color: #0070bb;
 			text-shadow: none;
-			font-weight: 700;
-			font-size: 36px;
+			font-weight: bold;
+			font-size: 72px;
 			line-height: 36px;
 			font-family: Arial;
 			padding: 0px 4px;
 			margin: 0px;
 			border-width: 0px;
 			border-style: none;
-			background-color:#fb7354;
+			background:transparent;
 			letter-spacing: -1.5px;
 		}
 
