@@ -11,7 +11,12 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <include file="./Home/Tpl/PublicTpl/css.html"/>  
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<style type="text/css">
+p{
+ text-indent: 2em; /*em是相对单位，2em即现在一个字大小的两倍*/
+}
+</style>	
 <body>
 <!--=== Header ===-->
 <div class="header" style="margin-top:20px;">               
@@ -60,31 +65,58 @@
     </div><!-- /container -->               
 </div><!--/header -->      
 <!--=== End Header ===-->
-
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-10">
+	<div class="container">
+        <h1 class="color-green pull-left">快客洗涤技术简介</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html"></a> <span class="divider"></span></li>
+            <li class="active"></li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
 <!--=== Content Part ===-->
-<div class="container">		
-	<div class="row-fluid">
-	 <!-- About Us -->
-            <div class="headline"><h3>快客洗涤技术简介</h3></div>
-            <p><img class="pull-left lft-img-margin img-width-200" src="__PUBLIC__/Fuego/img/tech/wash1.jpg" alt="" /></p>
-            <ul class="unstyled">
-            	<li><i class="icon-ok color-green"></i>君萍化料品质一流，也是全国唯一，有安全标准洗涤，流程和去渍流程的傻瓜式洗涤化料，品种齐全，是集于洗涤、去渍、精洗、救治、染色、补色、皮革和奢侈品护理最全面的化料。</li>
-            	<li><i class="icon-ok color-green"></i>君萍化料是唯一掌握全面安全救治的化料，即可以安全防止，也可以做救治服务。因为君萍化料有着十年数万件衣物救治技术经验，所以才可以安全防止，没有救治技术是谈不上安全的。</li>
-            	<li><i class="icon-ok color-green"></i>亡羊补牢不如防患于未然，让没有技术的员工也会操作，也是可以传承的标准流程，不用专业培训，君萍洗染的老师可以教员工，员工可以教新员工，如果不会，看看流程表就会独立操作。</li>
-            	<br /><li><i class="icon-ok color-green"></i>加盟商就不会在为员工洗坏衣服或不懂技术而发愁了，有专业的区域技术总监培训，还有非常专业的售后服务人员。君萍化料及工艺经数以千计的人员测试是安全可行。</li>
-           		<li><i class="icon-ok color-green"></i>君萍化料是安全、高效，防止事故，节约可以循环使用的环保化料。
-君萍化料永远站在衣物的流行时尚前线，因为全国各地有几十个技术总监在发现洗衣难题，不断上报总部，总部会及时的根据放映的问题给出应对的化料及工艺流程来完善行业问题：比如洗涤速度有优化洗涤工艺。
-</li>
-				<li><i class="icon-ok color-green"></i>羊毛真丝84烧伤有救治工艺、皮边衣物洗涤防止掉色也有高科技的化料、比如真丝洗涤发白问题我们更是轻松洗涤去油不发白等等洗涤行业的最强音都在君萍洗染……</li> 
-            </ul><br />
-
-    </div>
-
+<div class="container">
+	<!-- About Us -->
+    <div class="headline"><h3>君萍化料</h3></div>
+	<div class="row-fluid margin-bottom-10">
+    	<div class="span6">
+            <p style="font-size:1.3em">
+            	君萍化料品质一流，也是全国唯一，有安全标准洗涤，流程和去渍流程的傻瓜式洗涤化料，品种齐全，
+            	是集于洗涤、去渍、精洗、救治、染色、补色、皮革和奢侈品护理最全面的化料。
+            </p>
+            <p style="font-size:1.3em">
+            	君萍化料是唯一掌握全面安全救治的化料，即可以安全防止，也可以做救治服务。因为君萍化料有着十
+            	年数万件衣物救治技术经验，所以才可以安全防止，没有救治技术是谈不上安全的。
+            </p>            
+            <p style="font-size:1.3em">
+            	亡羊补牢不如防患于未然，让没有技术的员工也会操作，也是可以传承的标准流程，不用专业培训，君
+            	萍洗染的老师可以教员工，员工可以教新员工，如果不会，看看流程表就会独立操作。加盟商就不会在
+            	为员工洗坏衣服或不懂技术而发愁了，有专业的区域技术总监培训，还有非常专业的售后服务人员。君
+            	萍化料及工艺经数以千计的人员测试是安全可行。
+            </p> 
+        </div>
+    	<div class="span6">
+    		<img width="100%" height="327" src="__PUBLIC__/Fuego/img/tech/wash-1.png" alt="" />
+        </div>
+	</div><!--/row-fluid-->
+	<div class="row-fluid margin-bottom-10">
+            <p style="font-size:1.3em">
+            	君萍化料是安全、高效，防止事故，节约可以循环使用的环保化料。
+				君萍化料永远站在衣物的流行时尚前线，因为全国各地有几十个技术总监在发现洗衣难题，不断上报总部，
+				总部会及时的根据放映的问题给出应对的化料及工艺流程来完善行业问题：比如洗涤速度有优化洗涤工艺。
+			</p>
+			<p style="font-size:1.3em">
+            	羊毛真丝84烧伤有救治工艺、皮边衣物洗涤防止掉色也有高科技的化料、比如真丝洗涤发白问题我们更是轻
+            	松洗涤去油不发白等等洗涤行业的最强音都在君萍洗染……
+			</p>  
+	</div>	
+	<!--//End About Us -->
 	<div class="row-fluid">
 
             <!-- Blockquotes -->
             <blockquote class="hero-unify">
-                <h3 class="color-green">本公司自筹建以来，四处引进洗涤技术，经过反复的测试与实际操作后决定引进“君萍洗染”技术</h3>
+                <h3 class="color-blue">本公司自筹建以来，多处引进洗涤技术，经过反复的测试与实际操作后决定引进“君萍洗染”技术</h3>
                 <small>CEO, Mr Ma</small>
             </blockquote>
 	</div>
@@ -111,57 +143,57 @@
     <div class="row-fluid margin-bottom-40">
         <ul id="list" class="bxslider recent-work">
             <li>
-                <a href="#">
+                <a>
                 	<em class="overflow-hidden"><img src="__PUBLIC__/Fuego/img/tech/tech_1.jpg" alt="" /></em>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a >
                 	<em class="overflow-hidden"><img src="__PUBLIC__/Fuego/img/tech/tech_2.jpg" alt="" /></em>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a >
                 	<em class="overflow-hidden"><img src="__PUBLIC__/Fuego/img/tech/tech_3.jpg" alt="" /></em>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a >
                 	<em class="overflow-hidden"><img src="__PUBLIC__/Fuego/img/tech/tech_4.jpg" alt="" /></em>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a >
                 	<em class="overflow-hidden"><img src="__PUBLIC__/Fuego/img/tech/tech_5.jpg" alt="" /></em>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a >
                 	<em class="overflow-hidden"><img src="__PUBLIC__/Fuego/img/tech/tech_6.jpg" alt="" /></em>
                 </a>
             </li>
              <li>
-                <a href="#">
+                <a >
                 	<em class="overflow-hidden"><img src="__PUBLIC__/Fuego/img/tech/tech_7.jpg" alt="" /></em>
                 </a>
             </li>
              <li>
-                <a href="#">
+                <a >
                 	<em class="overflow-hidden"><img src="__PUBLIC__/Fuego/img/tech/tech_8.jpg" alt="" /></em>
                 </a>
             </li>
              <li>
-                <a href="#">
+                <a >
                 	<em class="overflow-hidden"><img src="__PUBLIC__/Fuego/img/tech/tech_9.jpg" alt="" /></em>
                 </a>
             </li>
              <li>
-                <a href="#">
+                <a >
                 	<em class="overflow-hidden"><img src="__PUBLIC__/Fuego/img/tech/tech_10.jpg" alt="" /></em>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a >
                 	<em class="overflow-hidden"><img src="__PUBLIC__/Fuego/img/tech/tech_11.jpg" alt="" /></em>
                 </a>
             </li>
