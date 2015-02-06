@@ -34,7 +34,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.title = kString(@"洗衣篮");
-        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"洗衣篮") image:[UIImage imageNamed:@"tab_icon_cart_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_cart_pressed"]];
+        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"洗衣篮") image:[[UIImage imageNamed:@"tab_icon_cart_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage imageNamed:@"tab_icon_cart_pressed"]];
         self.tabBarItem = tabitem;
 //        _productList = [NSMutableArray new];
     }
@@ -47,6 +47,7 @@
     [self.toCategory setBackgroundImage:[UIImage imageFromColor:kColor(23, 157, 197, 1)] forState:UIControlStateNormal];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 80, 0);
     [self.addButton setBackgroundImage:[UIImage imageFromColor:kColor(196, 206, 220, 1.0)] forState:UIControlStateNormal];
+    [self.addButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self refreshUI];
 }
 

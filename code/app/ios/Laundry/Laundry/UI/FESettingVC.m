@@ -26,7 +26,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.title = kString(@"更多");
-        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"更多") image:[UIImage imageNamed:@"tab_icon_more_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_more_pressed"]];
+        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"更多") image:[[UIImage imageNamed:@"tab_icon_more_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage imageNamed:@"tab_icon_more_pressed"]];
         self.tabBarItem = tabitem;
     }
     return self;
@@ -114,7 +114,7 @@
         vc.urlString = kIntroductURL;
     }else if ([segue.identifier isEqualToString:@"toWebViewSegue2"]){
         FEWebVC *vc = segue.destinationViewController;
-        vc.title = @"加入快客";
+        vc.title = @"加入我们";
         vc.urlString = kJoinURL;
     }else if ([segue.identifier isEqualToString:@"toWebViewSegue3"]){
         FEWebVC *vc = segue.destinationViewController;

@@ -8,6 +8,7 @@
 
 #import "FELaundryLandingPage.h"
 #import "AppDelegate.h"
+#import "UIColor+Hex.h"
 
 @interface FELaundryLandingPage (){
     NSArray *_images;
@@ -26,9 +27,10 @@
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
 //    self.extendedLayoutIncludesOpaqueBars = YES;
     if (self.isFromSetting) {
-        self.title = @"新手指导";
+        self.title = @"新手指引";
         self.startButton.hidden = YES;
     }
+    self.view.backgroundColor = [UIColor colorWithHex:0x026688];
     self.page.currentPageIndicatorTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image_selected"]];
     self.page.pageIndicatorTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image_unselected"]];
     
@@ -37,7 +39,7 @@
     self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * _images.count, 20);
     int i = 0;
     for (NSString *name in _images) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*self.view.bounds.size.width, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*self.view.bounds.size.width + self.view.bounds.size.width * 0.1, _isFromSetting?0:(self.view.bounds.size.height * 0.1), self.view.bounds.size.width * 0.8, self.view.bounds.size.height * 0.8)];
         
         imageView.image = [UIImage imageNamed:name];
         [self.scrollView addSubview:imageView];
