@@ -19,11 +19,61 @@
     	videojs.options.flash.swf = "__PUBLIC__/ThirdParty/video/video-js.swf";
   	</script> 	
 	<include file="./Home/Tpl/PublicTpl/css.html"/>
+	<style>
+html,body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	
+}
+
+#container {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%; /*IE6不识别min-height*/
+	position: relative;
+	
+}
+
+#header {
+	
+}
+
+#page {
+	margin: 0 auto;
+	padding-bottom: 55px; /*等于footer的高度*/
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 55px; /*脚部的高度*/
+	clear: both;
+}
+/*=======主体内容部分=======*/
+#left {
+	width: 220px;
+	float: left;
+	margin-right: 20px;
+}
+
+#content {
+	float: left;
+	width: 480px;
+	margin-right: 20px;
+}
+
+#right {
+	float: right;
+	width: 220px;
+}
+</style>
 <body>
- 
+<div id="container">  
 
 <!--=== Header ===-->
-<div class="header" style="margin-top:20px;">               
+<div class="header" style="padding-top:20px;">               
     <div class="container"> 
         <!-- Logo -->       
         <div class="logo">                                             
@@ -70,8 +120,8 @@
 </div><!--/header -->      
 <!--=== End Header ===-->
 <!--=== Slider ===-->
-<div class="fullwidthbanner-container">
-    <div class="fullwidthabnner">
+<div class="fullwidthbanner-container" id="page" >
+    <div class="fullwidthabnner" >
         <ul>
         	<!-- THE FIRST SLIDE -->
             <li data-transition="flyin" data-slotamount="1" data-masterspeed="300" data-thumb="assets/img/sliders/revolution/thumbs/thumb4.jpg">
@@ -213,9 +263,11 @@
 <!--=== End Slider ===-->
 
 <!--=== Copyright ===-->
+<div id="footer" >
 <include file="./Home/Tpl/PublicTpl/copyright.html"/>
+</div>
 <!--=== End Copyright ===-->
-
+</div>
 <include file="./Home/Tpl/PublicTpl/js.html"/>
 <script type="text/javascript">
     jQuery(document).ready(function() {

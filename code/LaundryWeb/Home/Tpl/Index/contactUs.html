@@ -19,6 +19,7 @@ html,body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	
 }
 
 #container {
@@ -26,6 +27,7 @@ html,body {
 	height: auto !important;
 	height: 100%; /*IE6不识别min-height*/
 	position: relative;
+	
 }
 
 #header {
@@ -63,10 +65,10 @@ html,body {
 }
 </style>
 <body >
- 
+<div id="container"> 
 
 <!--=== Header ===-->
-<div class="header" style="margin-top:20px;" id="header">               
+<div class="header"  id="header" style="padding-top:20px;">               
     <div class="container"> 
         <!-- Logo -->       
         <div class="logo">                                             
@@ -112,8 +114,8 @@ html,body {
     </div><!-- /container -->               
 </div><!--/header -->      
 <!--=== End Header ===-->
-<div id="container">
-<div class="container" style="min-height: 100% !important;" id="page">		
+
+<div class="container"  id="page">		
 	<div class="row-fluid">
 		<div class="span8">
             <div class="headline"><h3>快客在哪儿？</h3></div>
@@ -145,7 +147,7 @@ html,body {
     
 </div>
 <!--=== Copyright ===-->
-<div id="footer">
+<div id="footer" >
 <include file="./Home/Tpl/PublicTpl/copyright.html"/>
 </div>
 </div>
