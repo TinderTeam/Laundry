@@ -13,6 +13,9 @@
 .icon-task_go{
 	background:url('icons/task_go.png') no-repeat center center;
 }
+.icon-process{
+	background:url('icons/process.png') no-repeat center center;
+}
 .icon-user{
 	background:url('icons/user.png') no-repeat center center;
 }

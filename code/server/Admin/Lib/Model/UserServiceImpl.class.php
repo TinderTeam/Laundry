@@ -13,7 +13,10 @@ class UserServiceImpl implements MispUserService
 		$customer['user_id'] = $user['user_id'];
 		$customer['user_name'] = $user['user_name'];
 		$customer['phone'] = $user['user_name'];
+		$customer['score'] = 0;
+		$customer['customer_sex'] = "男";
 		$customer['addr'] = $customerInfo['addr'];
+		$customer['birthday'] = $user['reg_date'];
 		$customer['company_id'] = $user['company_id'];
 		FuegoLog::getLog()->LogInfo("customer info is ".json_encode($customer));
 		try

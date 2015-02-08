@@ -56,7 +56,8 @@ abstract class EasyUITableAction extends BaseAction
     public function LoadPage()
     {
         $db =  $this->GetModel();
-        $this->LoadPageTable($db,$this->GetTableCondition(),$db->getPk());
+        $order[$db->getPk()] = 'desc';
+        $this->LoadPageTable($db,$this->GetTableCondition(),$order);
     }
     
     public  function LoadAll()

@@ -36,7 +36,8 @@
     </fieldset>
 	<div id="toolbar" style="padding:5px;height:auto">
 		<a class="easyui-linkbutton" iconCls="icon-detail" onclick="onDetailInfo()">订单详情</a>
-		<a class="easyui-linkbutton" iconCls="icon-task_go" onclick="onUpdateOrder()">更新状态</a>
+		<a class="easyui-linkbutton" iconCls="icon-process" onclick="onUpdateOrder('Operate')">处理订单</a>
+		<a class="easyui-linkbutton" iconCls="icon-task_go" onclick="onUpdateOrder('Complete')">完成订单</a>
 		<a class="easyui-linkbutton" iconCls="icon-remove" onclick="onDelete()">删除</a>
 	</div>
 	<div class="easyui-layout"data-options="fit:true">
@@ -132,29 +133,47 @@ function onDetailInfo(){
 	}	
 }
 //更新订单状态
-function onUpdateOrder(){
+function onUpdateOrder(type){
 	var rows = $('#orderGrid').datagrid('getChecked');
-	var ids = [];
-    for (var i = 0 ; i < rows.length; i++) {
- 	 	if((rows[i].order_status != "已下单")&&(rows[i].order_status != "付款成功"))
-		 {
-			 fuegoAlert("所选订单状态无法进行此操作，请确认后重新选择");
-			 return;
-		 }
-        ids.push(rows[i].order_id);
-    }
-    var json = objToJson(ids);
 	if(rows.length < 1)
 	{
 		fuegoAlert("请至少选择一条记录");
 	}
 	else
 	{
-		$.messager.confirm('确认提示', '确认更新订单状态？', function (r) {
+		var ids = [];
+		var confirm;
+		if(type == "Operate")
+		{
+			for (var i = 0 ; i < rows.length; i++) {
+		 	 	if((rows[i].order_status != "已下单")&&(rows[i].order_status != "付款成功"))
+				 {
+					 fuegoAlert("请选择状态为已下单、付款成功的订单进行处理操作");
+					 return;
+				 }
+		        ids.push(rows[i].order_id);
+		    }
+			confirm = "确认将此订单更新为处理中？";
+		}
+		else if(type == "Complete")
+		{
+			for (var i = 0 ; i < rows.length; i++) {
+		 	 	if(rows[i].order_status != "处理中")
+				 {
+					 fuegoAlert("请选择状态处理中的订单，进行完成操作");
+					 return;
+				 }
+		        ids.push(rows[i].order_id);
+		    }
+			confirm = "确认将此订单更新为已完成？";
+		} 
+	    var json = objToJson(ids);
+	    
+		$.messager.confirm('确认提示', confirm, function (r) {
 			if(r){
 				$.ajax({
 					type:"post",
-					url:"__APP__/OrderManage/UpdateOrder",
+					url:"__APP__/OrderManage/UpdateOrder?type="+type,
 					data:json,
 					dataType:"json",
 					success:function(rsp){
@@ -172,9 +191,9 @@ function onUpdateOrder(){
 				});
 			}
 		});
-		
 	}	
 }
+//删除订单
 function onDelete(){
 	var rows = $('#orderGrid').datagrid('getChecked');
 	var row = $('#orderGrid').datagrid('getSelected');

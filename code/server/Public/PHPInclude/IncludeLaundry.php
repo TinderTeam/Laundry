@@ -4,6 +4,7 @@ require 'IncludeMisp.php';
 import("MISP.Action.EasyUITableAction");
 import("MISP.Action.BaseAction");
 //Include Admin Constant
+import("Admin.Constant.ADEnum");
 import("Admin.Constant.CustomerStatusEnum");
 import("Admin.Constant.ProductEnum");
 import("Admin.Constant.OrderEnum");

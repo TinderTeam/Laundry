@@ -178,15 +178,24 @@ class OrderManageAction extends EasyUITableAction
 		$this->ReturnJson($data);
 	}
 	//更新订单状态
-	public function UpdateOrder()
+	public function UpdateOrder($type)
 	{
 		$req = $this->GetReqObj();
 		$orderIDList = $req->obj;
 		$this->LogInfo("Update order status, order list is ".$orderIDList);
+		$status = null;
+		if("Operate"==$type)
+		{
+			$status = OrderEnum::OnOperating;
+		}
+		elseif("Complete"==$type)
+		{
+			$status = OrderEnum::OrderComplete;
+		}
 		$orderDao = $this->GetModel();
 		try
 		{
-			$result = MispCommonService::ModifyField($orderDao, $orderIDList, 'order_status', OrderEnum::OrderComplete);
+			$result = MispCommonService::ModifyField($orderDao, $orderIDList, 'order_status', $status);
 		}
 		catch(FuegoException $e)
 		{
