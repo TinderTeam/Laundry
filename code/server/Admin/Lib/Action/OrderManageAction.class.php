@@ -24,6 +24,8 @@ class OrderManageAction extends EasyUITableAction
 			$searchFilter['user_id'] = $this->GetReqObj()->user_id;
 			$searchFilter['order_status']  = array('neq',OrderEnum::OrderAbolish);
 			$this->LogInfo("ClientType is ".$clientType.",SearchFilter is ".json_encode($searchFilter));
+			$order['order_code'] = 'desc';
+			$this->LoadPageTable($this->GetModel(),$searchFilter,$order);
 		}
 		else
 		{
@@ -52,6 +54,10 @@ class OrderManageAction extends EasyUITableAction
 				$condition['_logic'] = "AND";
 				$searchFilter['_complex']=$condition;
 			}
+			if("" != $req->status_sort_id)
+			{
+				$searchFilter['status_sort_id'] = $req->status_sort_id;
+			}
 			if(CompanyEnum::GROUP_COMPANY == $_SESSION['user']['company_id'])
 			{
 				//显示所有订单
@@ -63,10 +69,12 @@ class OrderManageAction extends EasyUITableAction
 				$searchFilter['company_id'] = $_SESSION['user']['company_id'];
 			}
 			$this->LogInfo("ClientType is WEB,SearchFilter is ".json_encode($searchFilter));
-			
+			$order['status_sort_id'] = 'asc';
+			$order['order_code'] = 'desc';
+			$orderViewDao = LaundryDaoContext::ViewOrder();
+			$this->LoadPageTable($orderViewDao,$searchFilter,$order);
 		}
-		$order['order_code'] = 'desc';
-		$this->LoadPageTable($this->GetModel(),$searchFilter,$order);
+		
 	}
 	//加载订单详情中的产品列表
 	public function LoadOrderDetailPage()
@@ -264,5 +272,27 @@ class OrderManageAction extends EasyUITableAction
 			return;
 		}
 		parent::Delete();
+	}
+	//加载订单状态类型列表
+	public function getOrderStatusList()
+	{
+		$this->LogInfo("Load order status list.");
+		$orderStatusDao = LaundryDaoContext::OrderStatus();
+		//$condition['parent_id']= ROOTTYPE;
+		$orderStatusList = $orderStatusDao->select();
+		//$this->LogInfo(json_encode($parentTypeList));
+		$comboxDefault = array('status_sort_id'=>'','order_status'=>'请选择...');
+		$comboxStatusList = array();
+		array_push($comboxStatusList, $comboxDefault);
+		foreach($orderStatusList as $orderStatus)
+		{
+			$combox['status_sort_id'] = $orderStatus['status_sort_id'];
+			$combox['order_status'] = $orderStatus['order_status'];
+			//$combox['parent_name'] = $productType['type_name'];
+			array_push($comboxStatusList,$combox);	
+		}
+		$this->LogInfo("The order status list is ".json_encode($comboxStatusList));
+		echo json_encode($comboxStatusList);
+		exit;
 	}
 }

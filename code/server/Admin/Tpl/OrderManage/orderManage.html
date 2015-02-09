@@ -19,6 +19,12 @@
 		    			<td style="width:170px;">
 		    				<input name="user_name" class="easyui-textbox" type="text" data-options="validType:{length:[0,20]}"/>
 		   				</td>
+		   				<td style="width:60px;">订单状态:</td>
+		    			<td style="width:170px;">
+		    				<input class="easyui-combobox" name="status_sort_id" style="width:80%"
+							   data-options="url: '__APP__/OrderManage/getOrderStatusList',method: 'get',
+								valueField:'status_sort_id',textField:'order_status',panelHeight:'auto',editable:false">
+		   				</td>
 		   				<td style="width:60px;">下单时间:</td>
 		    			<td style="width:80px;">
 		    				<input name="start_time" style="width:100px" class="easyui-datebox" type="text"/>
@@ -47,8 +53,9 @@
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
-				<th hidden="true" data-options="field:'order_id',width:200">订单ID</th>
+				<th hidden="true" data-options="field:'order_id',width:80">订单ID</th>
 				<th hidden="true" data-options="field:'price_type',width:80,formatter:formatPrice" >价格类型</th>
+				<th data-options="field:'read_status',width:40,align:'center',formatter:formatReadStatus">已读</th>
 				<th data-options="field:'order_code',width:160">订单编号</th>
 				<!--<th data-options="field:'order_name',width:100">订单名称</th>-->
 				<th data-options="field:'user_name',width:120">会员账号</th>
@@ -74,6 +81,16 @@ function onSearch(){
 function formatPrice(val,row){
 	if (val == "面议"){
 		return row.total_price = "面议";
+	}
+}
+var formatReadStatus = function (val,row) {
+	if((row.order_status == "已下单")||(row.order_status == "付款成功"))
+	{
+		return val = '<img src="__PUBLIC__/Fuego/img/close.png" alt="正常" title="正常" />';
+	}
+	else if((row.order_status == "处理中")||(row.order_status == "已完成"))
+	{
+		return val = '<img src="__PUBLIC__/Fuego/img/open.png" alt="正常" title="正常" />';
 	}
 }
 //查看订单详情
