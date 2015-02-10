@@ -7,16 +7,17 @@
 //
 
 #import "FEOrderInfo.h"
+#import "FEDataCache.h"
 
 @implementation FEOrderInfo
 -(id)init{
     self = [super init];
     if (self) {
-        _delivery_addr = @"";
-        _take_addr = @"";
+        _delivery_addr = [FEDataCache sharedInstance].customer.addr;
+        _take_addr = [FEDataCache sharedInstance].customer.addr;
         _delivery_time = @"";
         _take_time = @"";
-        _contact_name = @"";
+        _contact_name = [FEDataCache sharedInstance].customer.customer_name;
         _phone = @"";
         _pay_option = @"在线支付";
         _order_note = @"";

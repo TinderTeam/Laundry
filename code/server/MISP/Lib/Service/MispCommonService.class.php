@@ -45,9 +45,8 @@ class MispCommonService
 	{
 		$errorCode = MispErrorCode::SUCCESS;
 		$map[$model->getPk()]=array('in',$IDList);
-		FuegoLog::getLog()->LogErr("ididid".$model->getPk());
 		$result = $model->where($map)->setField($field,$value);
-		if(false == $result)
+		if(false === $result)
 		{
 			FuegoLog::getLog()->LogErr("modify field data failed.the table is ".$model->getTableName());
 			$errorCode = MispErrorCode::DB_MODIFY_ERROR;
@@ -58,7 +57,7 @@ class MispCommonService
 	{
 		$errorCode = MispErrorCode::SUCCESS;
 		$result = $model->where($condition)->delete();
-		if(false == $result)
+		if(false === $result)
 		{
 			FuegoLog::getLog()->LogErr("delete data failed.the table is ".$model->getTableName());
 			$errorCode = MispErrorCode::DB_DELETE_ERROR;

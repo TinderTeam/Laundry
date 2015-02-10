@@ -60,7 +60,7 @@
         [titleView addSubview:slabel];
         
         self.navigationItem.titleView = titleView;
-        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"首页") image:[UIImage imageNamed:@"tab_icon_home_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_home_pressed"]];
+        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"首页") image:[[UIImage imageNamed:@"tab_icon_home_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage imageNamed:@"tab_icon_home_pressed"]];
         self.tabBarItem = tabitem;
         
         self.categoryList = [FEDataCache sharedInstance].cateGoryList;

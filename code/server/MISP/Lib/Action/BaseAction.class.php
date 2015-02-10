@@ -26,11 +26,17 @@ class BaseAction extends Action
 	 	$loginURL = "Index/Login";
 	 	$logoutURL = "Index/Logout";
 	 	$redirectURL = "Index/redirectPage";
+	 	$ADManageURL = "ADManage";
 	 	
 	 	$reqURL = $_SERVER["REQUEST_URI"];
 	 	if((ClientTypeEnum::WEB == $this->GetReqType())||(""== $this->GetReqType()))
 	 	{
 	 		$this->LogInfo("Session validator...".$this->GetReqType());
+	 		if(strpos($reqURL, $ADManageURL))
+	 		{
+	 			$this->LogInfo("APP WEB View dispaly.");
+				return;
+	 		}
 	 		if(strpos($reqURL, $redirectURL)||strpos($reqURL, $indexURL)||strpos($reqURL, $loginURL)||strpos($reqURL, $logoutURL))
 	 		{
 	 			$this->LogInfo("Session validator login Page");

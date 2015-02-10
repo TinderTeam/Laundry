@@ -19,6 +19,12 @@
 		    			<td style="width:170px;">
 		    				<input name="user_name" class="easyui-textbox" type="text" data-options="validType:{length:[0,20]}"/>
 		   				</td>
+		   				<td style="width:60px;">订单状态:</td>
+		    			<td style="width:170px;">
+		    				<input class="easyui-combobox" name="status_sort_id" style="width:80%"
+							   data-options="url: '__APP__/OrderManage/getOrderStatusList',method: 'get',
+								valueField:'status_sort_id',textField:'order_status',panelHeight:'auto',editable:false">
+		   				</td>
 		   				<td style="width:60px;">下单时间:</td>
 		    			<td style="width:80px;">
 		    				<input name="start_time" style="width:100px" class="easyui-datebox" type="text"/>
@@ -36,7 +42,8 @@
     </fieldset>
 	<div id="toolbar" style="padding:5px;height:auto">
 		<a class="easyui-linkbutton" iconCls="icon-detail" onclick="onDetailInfo()">订单详情</a>
-		<a class="easyui-linkbutton" iconCls="icon-task_go" onclick="onUpdateOrder()">更新状态</a>
+		<a class="easyui-linkbutton" iconCls="icon-process" onclick="onUpdateOrder('Operate')">处理订单</a>
+		<a class="easyui-linkbutton" iconCls="icon-task_go" onclick="onUpdateOrder('Complete')">完成订单</a>
 		<a class="easyui-linkbutton" iconCls="icon-remove" onclick="onDelete()">删除</a>
 	</div>
 	<div class="easyui-layout"data-options="fit:true">
@@ -46,8 +53,9 @@
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
-				<th hidden="true" data-options="field:'order_id',width:200">订单ID</th>
+				<th hidden="true" data-options="field:'order_id',width:80">订单ID</th>
 				<th hidden="true" data-options="field:'price_type',width:80,formatter:formatPrice" >价格类型</th>
+				<th data-options="field:'read_status',width:40,align:'center',formatter:formatReadStatus">已读</th>
 				<th data-options="field:'order_code',width:160">订单编号</th>
 				<!--<th data-options="field:'order_name',width:100">订单名称</th>-->
 				<th data-options="field:'user_name',width:120">会员账号</th>
@@ -73,6 +81,16 @@ function onSearch(){
 function formatPrice(val,row){
 	if (val == "面议"){
 		return row.total_price = "面议";
+	}
+}
+var formatReadStatus = function (val,row) {
+	if((row.order_status == "已下单")||(row.order_status == "付款成功"))
+	{
+		return val = '<img src="__PUBLIC__/Fuego/img/close.png" alt="正常" title="正常" />';
+	}
+	else if((row.order_status == "处理中")||(row.order_status == "已完成"))
+	{
+		return val = '<img src="__PUBLIC__/Fuego/img/open.png" alt="正常" title="正常" />';
 	}
 }
 //查看订单详情
@@ -132,29 +150,47 @@ function onDetailInfo(){
 	}	
 }
 //更新订单状态
-function onUpdateOrder(){
+function onUpdateOrder(type){
 	var rows = $('#orderGrid').datagrid('getChecked');
-	var ids = [];
-    for (var i = 0 ; i < rows.length; i++) {
- 	 	if((rows[i].order_status != "已下单")&&(rows[i].order_status != "付款成功"))
-		 {
-			 fuegoAlert("所选订单状态无法进行此操作，请确认后重新选择");
-			 return;
-		 }
-        ids.push(rows[i].order_id);
-    }
-    var json = objToJson(ids);
 	if(rows.length < 1)
 	{
 		fuegoAlert("请至少选择一条记录");
 	}
 	else
 	{
-		$.messager.confirm('确认提示', '确认更新订单状态？', function (r) {
+		var ids = [];
+		var confirm;
+		if(type == "Operate")
+		{
+			for (var i = 0 ; i < rows.length; i++) {
+		 	 	if((rows[i].order_status != "已下单")&&(rows[i].order_status != "付款成功"))
+				 {
+					 fuegoAlert("请选择状态为已下单、付款成功的订单进行处理操作");
+					 return;
+				 }
+		        ids.push(rows[i].order_id);
+		    }
+			confirm = "确认将此订单更新为处理中？";
+		}
+		else if(type == "Complete")
+		{
+			for (var i = 0 ; i < rows.length; i++) {
+		 	 	if(rows[i].order_status != "处理中")
+				 {
+					 fuegoAlert("请选择状态处理中的订单，进行完成操作");
+					 return;
+				 }
+		        ids.push(rows[i].order_id);
+		    }
+			confirm = "确认将此订单更新为已完成？";
+		} 
+	    var json = objToJson(ids);
+	    
+		$.messager.confirm('确认提示', confirm, function (r) {
 			if(r){
 				$.ajax({
 					type:"post",
-					url:"__APP__/OrderManage/UpdateOrder",
+					url:"__APP__/OrderManage/UpdateOrder?type="+type,
 					data:json,
 					dataType:"json",
 					success:function(rsp){
@@ -172,9 +208,9 @@ function onUpdateOrder(){
 				});
 			}
 		});
-		
 	}	
 }
+//删除订单
 function onDelete(){
 	var rows = $('#orderGrid').datagrid('getChecked');
 	var row = $('#orderGrid').datagrid('getSelected');

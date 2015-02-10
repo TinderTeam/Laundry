@@ -28,6 +28,7 @@
 #import "GAAlertObj.h"
 #import "FEBasketVC.h"
 #import "FEProfileVC.h"
+#import "FEDataCache.h"
 
 #define __KEY_PAY_NAME @"name"
 #define __KEY_PAY_TYPE @"type"
@@ -99,7 +100,7 @@
 -(void)refreshUI{
     [self.tableView reloadData];
     if ([self.orderType isEqualToString:@"直接下单"]) {
-        self.totalValueLabel.text = [NSString stringWithFormat:@"总量:0,共计:面议"];
+        self.totalValueLabel.text = [NSString stringWithFormat:@"数量:0,总价:面议"];
         self.oinfo.pay_option = @"送衣付款";
         _canSelectPayType = NO;
         return;
@@ -107,13 +108,13 @@
     NSArray *products = [FEDataCache sharedInstance].selectProducts;
     NSArray *noPrice = [products filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.price_type == %@",@"面议"]];
     if (noPrice.count) {
-        self.totalValueLabel.text = [NSString stringWithFormat:@"总量:%ld,共计:面议",(long)self.totalNumber];
+        self.totalValueLabel.text = [NSString stringWithFormat:@"数量:%ld,总价:面议",(long)self.totalNumber];
         
         self.oinfo.pay_option = @"送衣付款";
         
         _canSelectPayType = NO;
     }else{
-        self.totalValueLabel.text = [NSString stringWithFormat:@"总量:%ld,共计:%.2f",(long)self.totalNumber,self.totalPrice];
+        self.totalValueLabel.text = [NSString stringWithFormat:@"数量:%ld,总价:%.2f",(long)self.totalNumber,self.totalPrice];
         if (![self.oinfo.pay_option isEqualToString:@"送衣付款"]) {
             self.oinfo.pay_option = @"在线支付";
         }

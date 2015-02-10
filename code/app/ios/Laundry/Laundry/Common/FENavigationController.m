@@ -17,7 +17,7 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.navigationBar.translucent = YES;
+        self.navigationBar.translucent = NO;
         self.navigationBar.barTintColor = kThemeColor;
         self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],NSFontAttributeName: [UIFont appFontWithSize:19.0]};
         self.navigationBar.tintColor = [UIColor whiteColor];

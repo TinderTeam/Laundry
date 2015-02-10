@@ -20,7 +20,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tabBar.backgroundImage = [[UIImage imageFromColor:kThemeColor] imageScaledToSize:CGSizeMake(self.view.bounds.size.width, 49)];
-    self.tabBar.tintColor = kColor(246, 171, 0, 1.0);
+    [self.tabBar setTranslucent:NO];
+    self.tabBar.tintColor = kColor(246, 172, 0, 1.0);
+//    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName :[UIFont appFontWithSize:12],NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName :[UIFont appFontWithSize:12],NSForegroundColorAttributeName :kColor(246, 172, 0, 1.0)} forState:UIControlStateSelected];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -27,6 +27,10 @@ class LaundryDaoContext
 	{
 		return M('order_detail',NULL,LaundryDaoContext::LAUNDRYDB);
 	}
+	static function OrderStatus()
+	{
+		return M('order_status',NULL,LaundryDaoContext::LAUNDRYDB);
+	}
 	static function advertisement()
 	{
 		return M('advertisement',NULL,LaundryDaoContext::LAUNDRYDB);
@@ -42,6 +46,10 @@ class LaundryDaoContext
 	static function ViewCustomer()
 	{
 		return M('view_customer',NULL,LaundryDaoContext::LAUNDRYDB);
+	}
+	static function ViewOrder()
+	{
+		return M('view_order',NULL,LaundryDaoContext::LAUNDRYDB);
 	}
 }
 

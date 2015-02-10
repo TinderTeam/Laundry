@@ -49,14 +49,14 @@
     NSArray *orderInfo = @[@{@"订单号":self.order.order_code},@{@"订单状态":self.order.order_status},@{@"订单时间":self.order.create_time}];
     
     NSArray *orderArray = @[@{@"取衣地址":self.order.take_addr?self.order.take_addr:@""},@{@"送回地址":self.order.delivery_addr?self.order.delivery_addr:@""},@{@"联系人":self.order.contact_name?self.order.contact_name:@""},@{@"联系电话":self.order.phone?self.order.phone:@""}];
-    _pngDic = @{@"取衣地址":@"icon_addr_home",@"送回地址":@"icon_addr_out",@"联系人":@"icon_contact_name",@"联系电话":@"icon_contact_phone",@"订单号":@"icon_order_num",@"订单状态":@"icon_order_status",@"订单时间":@"icon_order_time",@"总价":@"icon_order_sum",@"付款方式":@"icon_pay_way",@"备注":@"icon_customer_note"};
+    _pngDic = @{@"取衣地址":@"icon_addr_home",@"送回地址":@"icon_addr_out",@"联系人":@"icon_contact_name",@"联系电话":@"icon_contact_phone",@"订单号":@"icon_order_num",@"订单状态":@"icon_order_status",@"订单时间":@"icon_order_time",@"总价":@"icon_order_sum",@"付款方式":@"icon_pay_way",@"您的要求":@"icon_customer_note"};
     NSString *price ;
     if ([self.order.price_type isEqualToString:@"面议"]) {
         price = @"面议";
     }else{
         price = [NSString stringWithFormat:@"%.2f",self.order.total_price.floatValue];
     }
-    NSArray *orderPrice = @[@{@"总价":price},@{@"付款方式":self.order.pay_option?self.order.pay_option:@""},@{@"备注":self.order.order_note?self.order.order_note:@""}];
+    NSArray *orderPrice = @[@{@"总价":price},@{@"付款方式":self.order.pay_option?self.order.pay_option:@""},@{@"您的要求":self.order.order_note?self.order.order_note:@""}];
     
     _orderDetail = [[NSMutableArray alloc] init];
     [_orderDetail addObject:orderInfo];

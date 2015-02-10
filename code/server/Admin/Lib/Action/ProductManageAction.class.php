@@ -128,7 +128,7 @@ class ProductManageAction extends EasyUITableAction
 		//设置文件上传名(按照时间)
 		//$upload->saveRule = "time";
 		if (!$upload->upload()){
-			if(MispErrorCode::UPLOAD_IMG_FAILED == $upload->getErrorMsg())
+			if(ProductEnum::NO_IMG == $upload->getErrorMsg())
 			{
 				//图片未更新
 				$this->LogInfo("No image update.");
