@@ -8,11 +8,7 @@
 */ 
 package cn.fuego.common.util.format;
 
-import java.io.IOException;
-
-import org.apache.http.entity.StringEntity;
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import cn.fuego.common.log.FuegoLog;
@@ -28,6 +24,7 @@ public class JsonConvert
 {
 	private static final FuegoLog log = FuegoLog.getLog(DataTypeConvert.class);
 
+	private static final boolean  isIgnore = true;
 	public static String ObjectToJson(Object object)
 	{
 		ObjectMapper mapper = new ObjectMapper();
@@ -45,8 +42,15 @@ public class JsonConvert
 	
 	public static Object jsonToObject(String json,Class clazz)
 	{
-		ObjectMapper mapper = new ObjectMapper();
-		 
+		ObjectMapper mapper = null;
+		if(isIgnore)
+		{
+			mapper = new ObjectMapper().configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		}
+		else
+		{
+			mapper = new ObjectMapper();
+		}
 		Object	rspObj = null;
 		try
 		{

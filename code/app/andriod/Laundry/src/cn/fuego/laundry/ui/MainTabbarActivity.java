@@ -164,6 +164,8 @@ public class MainTabbarActivity extends FragmentActivity
             {  
             case AlertDialog.BUTTON_POSITIVE:// "确认"按钮退出程序  
                 finish();  
+                int nPid = android.os.Process.myPid();  
+                android.os.Process.killProcess(nPid);  
                 break;  
             case AlertDialog.BUTTON_NEGATIVE:// "取消"第二个按钮取消对话框  
                 break;  

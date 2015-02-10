@@ -28,5 +28,12 @@ public class HtmlUtil
 		}
 		return pics;
 	}
+	
+	public static String removeImg(String str)
+	{
+		String strPattern = "<img.+?/>|<img.+?</img>";
+ 
+		return str.replaceAll(strPattern, "");
+	}
 
 }

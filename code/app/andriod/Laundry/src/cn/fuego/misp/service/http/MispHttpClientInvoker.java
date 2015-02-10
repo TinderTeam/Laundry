@@ -26,6 +26,7 @@ import org.jboss.resteasy.specimpl.UriBuilderImpl;
 import org.jboss.resteasy.util.IsHttpMethod;
 
 import cn.fuego.common.log.FuegoLog;
+import cn.fuego.common.util.format.JsonConvert;
 import cn.fuego.misp.constant.MISPErrorMessageConst;
 
 /**
@@ -93,9 +94,10 @@ public class MispHttpClientInvoker extends Thread
 			
 			log.info("the response is " + content);
 			
-			ObjectMapper mapper = new ObjectMapper();
+			rspObj = JsonConvert.jsonToObject(content, method.getReturnType());
+			//ObjectMapper mapper = new ObjectMapper();
 			
-			rspObj = mapper.readValue(content,method.getReturnType());
+			//rspObj = mapper.readValue(content,method.getReturnType());
 			msg.getMessage().obj = rspObj;
 			
 			 
@@ -160,13 +162,13 @@ public class MispHttpClientInvoker extends Thread
 		}
 		else if(POST_METHOD.equals(httpMethods.iterator().next()))
 		{
-			ObjectMapper mapper = new ObjectMapper();
+		 
 			
 			ByteArrayEntity se = null;
 			try
 			{
 				//se = new StringEntity(mapper.writeValueAsString(args));
-				String json = mapper.writeValueAsString(args);
+				String json = JsonConvert.ObjectToJson(args);
 				log.info("the request is " + json);
 				
 				 se = new ByteArrayEntity(json.getBytes()); 
