@@ -10,5 +10,6 @@
 #import <ZBUtilities/UIViewController+HUD.h>
 
 @interface FEViewController : UIViewController
-
+-(void)loadBackItem;
+-(void)backPress:(id)sender;
 @end

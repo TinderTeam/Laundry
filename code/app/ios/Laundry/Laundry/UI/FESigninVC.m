@@ -25,16 +25,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = kString(@"登录");
+    self.title = kString(@"用户登录");
+    [self loadBackItem];
 }
+
+-(void)backPress:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)backPress:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
+
+//- (IBAction)backPress:(id)sender {
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 
 - (IBAction)signinAction:(id)sender {

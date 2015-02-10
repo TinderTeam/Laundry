@@ -169,7 +169,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"toWebViewSegue"]) {
         FEWebVC *vc = segue.destinationViewController;
-        vc.title = @"加入快客";
+        vc.title = @"加入我们";
         vc.urlString = kJoinURL;
     }else if ([sender isKindOfClass:[UICollectionViewCell class]]) {
         FESelectCategoryVC *vc = segue.destinationViewController;
@@ -228,7 +228,7 @@
     if (collectionView == self.adImageCollectionView) {
         return CGSizeMake(collectionView.bounds.size.width, collectionView.bounds.size.height);
     }
-    return CGSizeMake(70, 60);
+    return CGSizeMake(70, 50);
     
 }
 

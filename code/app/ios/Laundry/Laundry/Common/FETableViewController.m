@@ -25,6 +25,21 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void)loadBackItem{
+    UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:@"nav_back_normal"];
+    [bt setTitle:kString(@"返回") forState:UIControlStateNormal];
+    [bt setBackgroundImage:image forState:UIControlStateNormal];
+    bt.frame = CGRectMake(0, 0, 80, 44);
+    [bt addTarget:self action:@selector(backPress:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:bt];
+    self.navigationItem.leftBarButtonItem = item;
+}
+
+-(void)backPress:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

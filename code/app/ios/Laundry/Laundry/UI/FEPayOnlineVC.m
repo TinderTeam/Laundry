@@ -27,25 +27,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"在线支付";
     [self.payButton setBackgroundImage:[UIImage imageFromColor:kThemeGrayColor] forState:UIControlStateNormal];
     [self.payButton setTitleColor:kThemeColor forState:UIControlStateNormal];
     self.titleLabel.text = @"洗衣";
     self.descLabel.text = @"洗衣在线支付";
     self.priceLabel.text = [NSString stringWithFormat:@"%@",self.order.total_price];
+    [self loadBackItem];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)back:(id)sender {
+
+-(void)backPress:(id)sender{
     if (self.isFromOrder) {
         [self.navigationController popViewControllerAnimated:YES];
     }else{
         [self toOrder];
     }
-    
 }
+//- (IBAction)back:(id)sender {
+//    if (self.isFromOrder) {
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }else{
+//        [self toOrder];
+//    }
+//    
+//}
 
 - (IBAction)payOnline:(id)sender {
     __weak typeof(self) weakself = self;

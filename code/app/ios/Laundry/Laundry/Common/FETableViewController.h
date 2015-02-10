@@ -10,5 +10,6 @@
 #import <ZBUtilities/UIViewController+HUD.h>
 
 @interface FETableViewController : UITableViewController
-
+-(void)loadBackItem;
+-(void)backPress:(id)sender;
 @end
