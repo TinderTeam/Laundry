@@ -157,6 +157,7 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.oinfo.dictionary];
     FEOrder *order = [[FEOrder alloc] initWithDictionary:dic];
     order.user_id = user.user_id;
+    order.user_name = user.user_name;
     if ([self.orderType isEqualToString:@"直接下单"]) {
 //        order.total_price = @(self.totalPrice);
 //        order.total_count = @(self.totalNumber);
