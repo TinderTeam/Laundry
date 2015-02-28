@@ -164,7 +164,7 @@
         order.price_type = @"面议";
         isDorder = YES;
     }else{
-        order.total_price = @(self.totalPrice);
+        order.total_price = [NSString stringWithFormat:@"%.2f",self.totalPrice];
         order.total_count = @(self.totalNumber);
         if (_canSelectPayType) {
             order.price_type = @"固定";

@@ -27,7 +27,7 @@
 @property (nonatomic, strong) NSString *order_note;
 
 @property (nonatomic, strong) NSString *price_type;
-@property (nonatomic, strong) NSNumber *total_price; //必填
+@property (nonatomic, strong) NSString *total_price; //必填
 @property (nonatomic, strong) NSNumber *total_count; //必填
 
 @property (nonatomic, strong) NSString *delivery_addr;
