@@ -4,9 +4,4 @@
 class AppDownloadAction extends Action 
 {
 
-	public function kuaikexidi_IOS()
-	{
-		
-	}
-
 }
