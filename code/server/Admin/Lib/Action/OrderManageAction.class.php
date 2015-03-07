@@ -166,7 +166,7 @@ class OrderManageAction extends EasyUITableAction
 		$CompanyCondition['company_id'] = $req->app_id;
 		$Email = $adminDao->where($CompanyCondition)->getField('email');
 		$this->LogInfo("admin email is ".$Email);
-		if (false == SendMail($Email,OrderEnum::EMAIL_TITLE,"会员：".$orderData['user_name']." 已成功提交订单，订单号为：".$orderData['order_code']."。请及时处理！"))
+		if (false == SendMail($Email,OrderEnum::EMAIL_TITLE,"会员：".$orderData['user_name']." 已成功提交订单，会员姓名：".$orderData['contact_name']."。订单号为：".$orderData['order_code']."。取衣地址：".$orderData['take_addr']."。请及时处理！"))
 		{
 			$this->LogErr("Order has create,But send mail failed.");
 		}
