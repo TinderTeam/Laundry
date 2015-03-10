@@ -8,7 +8,7 @@
 
 #import "FEWebVC.h"
 
-@interface FEWebVC ()
+@interface FEWebVC ()<UIWebViewDelegate>
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @end
@@ -18,7 +18,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]]];
+//    NSString *encodedString=[self.urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *weburl = [NSURL URLWithString:self.urlString];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:weburl]];
+
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
 }
 
 - (void)didReceiveMemoryWarning {

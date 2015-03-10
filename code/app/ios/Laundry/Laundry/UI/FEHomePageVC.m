@@ -83,7 +83,7 @@
     // Do any additional setup after loading the view.
     [self initUI];
     [self request];
-    [self autoScroll];
+//    [self autoScroll];
 }
 
 -(void)request{
@@ -117,6 +117,7 @@
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         weakself.pageIndicate.numberOfPages = weakself.adList.count;
         [weakself.adImageCollectionView reloadData];
+        [weakself autoScroll];
     });
 
 }
@@ -169,8 +170,8 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"toWebViewSegue"]) {
         FEWebVC *vc = segue.destinationViewController;
-        vc.title = @"加入我们";
-        vc.urlString = kJoinURL;
+        vc.title = @"服务范围";
+        vc.urlString = kServicePartURL;
     }else if ([sender isKindOfClass:[UICollectionViewCell class]]) {
         FESelectCategoryVC *vc = segue.destinationViewController;
         NSIndexPath *indexPath = [self.functionCollectionView indexPathForCell:sender];
@@ -185,7 +186,8 @@
 #pragma mark - UICollectionDataSource
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == self.adImageCollectionView) {
-        FEAD *ad = self.adList[indexPath.row];
+        
+        FEAD *ad = self.adList.count?self.adList[indexPath.row]:nil;
         UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"adImageItemCell" forIndexPath:indexPath];
         UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
         [imageView sd_setImageWithURL:[NSURL URLWithString:kImageURL(ad.ad_img)] placeholderImage:[UIImage imageNamed:@"loading_large_image"]];
@@ -205,7 +207,10 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (collectionView == self.adImageCollectionView) {
-        return self.adList.count;
+        if (self.adList.count) {
+            return self.adList.count;
+        }
+        return 1;
     }else if(collectionView == self.functionCollectionView){
         return self.categoryList.count;
     }

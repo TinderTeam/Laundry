@@ -215,9 +215,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8W-qF-FSg">
+                            <webView contentMode="scaleToFill" suppressesIncrementalRendering="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c8W-qF-FSg">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Vca-pb-3Ks" id="thk-9a-3Yw"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -639,6 +642,39 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="XTy-Ui-CAi">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XTy-Ui-CAi" id="xFx-cS-w5O">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="point_3" translatesAutoresizingMaskIntoConstraints="NO" id="msX-wE-zh1">
+                                                    <rect key="frame" x="148" y="5" width="305" height="33"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="305" id="ETM-5C-G0y"/>
+                                                        <constraint firstAttribute="height" constant="33" id="IJ9-76-deR"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务范围" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtV-o8-zJX">
+                                                    <rect key="frame" x="166" y="11" width="68" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="LtV-o8-zJX" secondAttribute="centerY" id="9VG-Ea-nP5"/>
+                                                <constraint firstAttribute="centerX" secondItem="LtV-o8-zJX" secondAttribute="centerX" constant="100" id="b92-7h-wel"/>
+                                                <constraint firstAttribute="centerY" secondItem="msX-wE-zh1" secondAttribute="centerY" id="e8N-bA-E9P"/>
+                                                <constraint firstAttribute="centerX" secondItem="msX-wE-zh1" secondAttribute="centerX" id="kti-wi-tb8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="Vca-pb-3Ks" kind="show" identifier="serviceRegionSegue" id="Sri-AY-Tdf"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="TUL-nx-0O2">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -3209,8 +3245,8 @@
         <image name="user_do_task_normal" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oH6-al-HVd"/>
         <segue reference="zDU-fa-yqm"/>
         <segue reference="fjA-oX-uMy"/>
+        <segue reference="vSk-ko-rUt"/>
     </inferredMetricsTieBreakers>
 </document>
