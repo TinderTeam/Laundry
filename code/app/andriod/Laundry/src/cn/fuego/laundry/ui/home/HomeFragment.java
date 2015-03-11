@@ -279,8 +279,9 @@ public class HomeFragment extends BaseFragment implements OnClickListener
 		else
 		{
 			ImageDisplayInfo imageInfo = new ImageDisplayInfo();
-			imageInfo.setTilteName("加入我们");
-			imageInfo.setUrl(MemoryCache.getWebContextUrl()+MoreFragment.baseUrl+"joinUS.html");
+			imageInfo.setTilteName("服务范围");
+			imageInfo.setUrl(MemoryCache.getWebContextUrl()+MoreFragment.baseUrl+"area.html");
+			//MispImageActivity.jump(this.getActivity(), imageInfo);
 			MispWebViewActivity.jump(this.getActivity(), imageInfo);
   
 		}

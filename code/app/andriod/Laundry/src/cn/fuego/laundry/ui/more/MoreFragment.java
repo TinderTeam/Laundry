@@ -39,6 +39,7 @@ public class MoreFragment extends MispInfoListFragment
 	private static String PROTOCOL="洗涤协议";
 	private static String ATTENTION="注意事项";
 	private static String HELP="新手指引";
+	private static String AREA="服务范围";
 	
 	public static String baseUrl = "/Laundry.php/ADManage/";
 
@@ -69,6 +70,7 @@ public class MoreFragment extends MispInfoListFragment
 		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, JOIN_US ,MemoryCache.getWebContextUrl()+baseUrl+"joinUS.html"));
  		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, ATTENTION ,MemoryCache.getWebContextUrl()+baseUrl+"attention.html"));
 		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, HELP ,MemoryCache.getWebContextUrl()+baseUrl+"help.html"));
+		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, AREA ,MemoryCache.getWebContextUrl()+baseUrl+"area.html"));
 
 		metaList.add(new CommonItemMeta(CommonItemMeta.BUTTON_TO_EDIT_ITEM, UPDATE_VERSION,null));
  
@@ -157,6 +159,22 @@ public class MoreFragment extends MispInfoListFragment
 		}
 	}
 	
+	private void loadLocalArea()
+	{
+		ImageDisplayInfo displayInfo = new ImageDisplayInfo();
+		displayInfo.setTilteName(HELP);
+ 	 
+ 	   	List<String> imageList = new ArrayList<String>();
+	   	imageList.add(String.valueOf(R.drawable.help_1));
+	   	imageList.add(String.valueOf(R.drawable.help_2));
+	   	imageList.add(String.valueOf(R.drawable.help_3));
+	   	imageList.add(String.valueOf(R.drawable.help_4));
+	   	imageList.add(String.valueOf(R.drawable.help_5));
+	   	
+		displayInfo.setImageList(imageList);
+		MispImageActivity.jump(MoreFragment.this.getActivity(), displayInfo);
+	}
+	
 	private void loadLocalHelp()
 	{
 		ImageDisplayInfo displayInfo = new ImageDisplayInfo();
@@ -172,6 +190,7 @@ public class MoreFragment extends MispInfoListFragment
 		displayInfo.setImageList(imageList);
 		MispImageActivity.jump(MoreFragment.this.getActivity(), displayInfo);
 	}
+	
 	private void loadHelp()
 	{
 		

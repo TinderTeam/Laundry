@@ -18,10 +18,9 @@ public class MemoryCache
  	private static String versionNname;
 	private static int versionCode;
 
-	//private static String serverIp = "192.168.0.102";//"120.24.217.173";
+	//private static String serverIp = "192.168.0.100";//"120.24.217.173";
     //private static String serverPort= "7000";
 
-	
 	
 	public static String getVersionNname()
 	{
