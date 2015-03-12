@@ -19,6 +19,7 @@
 #import "GAAlertObj.h"
 #import "FEBasketVC.h"
 #import "FEWebVC.h"
+#import "UIImage+Resize.h"
 
 //#define __KEY_TITLE @"title"
 //#define __KEY_PNG   @"png"
@@ -58,6 +59,7 @@
         slabel.textColor = [UIColor whiteColor];
         slabel.text = @"www.kkxd.com.cn";
         [titleView addSubview:slabel];
+//        [[UIImage imageNamed:@"tab_icon_home_normal"] imageScaledToSize:CGSizeMake(80, 25)]
         
         self.navigationItem.titleView = titleView;
         UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"首页") image:[[UIImage imageNamed:@"tab_icon_home_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage imageNamed:@"tab_icon_home_pressed"]];

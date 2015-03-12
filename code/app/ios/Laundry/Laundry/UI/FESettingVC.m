@@ -14,6 +14,7 @@
 #import "FEUpdateVC.h"
 #import "FEWebVC.h"
 #import "FELaundryLandingPage.h"
+#import "UIImage+Resize.h"
 
 @interface FESettingVC ()
 @property (nonatomic, strong) NSString *version;

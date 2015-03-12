@@ -12,6 +12,7 @@
 #import "FECustomSegue.h"
 #import "FEUser.h"
 #import "FEDataCache.h"
+#import "UIImage+Resize.h"
 
 @interface FEProfileVC ()
 @property (strong, nonatomic) IBOutlet UIView *headerView;

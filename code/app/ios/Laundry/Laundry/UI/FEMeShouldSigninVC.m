@@ -7,6 +7,7 @@
 //
 
 #import "FEMeShouldSigninVC.h"
+#import "UIImage+Resize.h"
 
 @interface FEMeShouldSigninVC ()
 
@@ -18,7 +19,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.title = kString(@"个人中心");
-        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"个人中心") image:[UIImage imageNamed:@"tab_icon_user_normal"] selectedImage:[UIImage imageNamed:@"tab_icon_user_pressed"]];
+        UITabBarItem *tabitem = [[UITabBarItem alloc] initWithTitle:kString(@"个人中心") image:[[UIImage imageNamed:@"tab_icon_user_normal"] imageScaledToHeight:25] selectedImage:[[UIImage imageNamed:@"tab_icon_user_pressed"] imageScaledToHeight:20]];
         self.tabBarItem = tabitem;
     }
     return self;

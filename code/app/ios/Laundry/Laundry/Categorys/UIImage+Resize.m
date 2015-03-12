@@ -21,4 +21,14 @@
     return newImage;
 }
 
+-(UIImage *)imageScaledToHeight:(CGFloat)height{
+    CGFloat width = (self.size.width / self.size.height) * height;
+    return [self imageScaledToSize:CGSizeMake(width, height)];
+}
+
+-(UIImage *)imageScaledToWidth:(CGFloat)width{
+    CGFloat height = (self.size.height / self.size.width) * width;
+    return [self imageScaledToSize:CGSizeMake(width, height)];
+}
+
 @end

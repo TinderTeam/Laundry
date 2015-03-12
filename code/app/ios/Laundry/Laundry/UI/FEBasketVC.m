@@ -14,6 +14,7 @@
 #import "FEHomePageVC.h"
 #import "UIImage+LogN.h"
 #import "FEOrderSubmitVC.h"
+#import "UIImage+Resize.h"
 
 
 @interface FEBasketVC ()<UITextFieldDelegate,FEPickerViewDelegate>
