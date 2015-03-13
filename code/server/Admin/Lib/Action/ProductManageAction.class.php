@@ -116,6 +116,10 @@ class ProductManageAction extends EasyUITableAction
 	public function Modify()
 	{
 		$this->LogInfo("Modify product...");
+		//获取产品原来图片的名称，用于更新图片后删除原来图片
+		$productDao = $this->GetModel();
+		$IDCondition['product_id']=$_POST['product_id'];
+		$product_img = $productDao->where($IDCondition)->getField('img');
 		//导入图片上传类
 		import("ORG.Net.UploadFile");
 		//实例化上传类
@@ -147,8 +151,14 @@ class ProductManageAction extends EasyUITableAction
 			$this->LogInfo("Image update success.");
 			//上传成功，获取上传信息
 			$info = $upload->getUploadFileInfo();
+			//更新图片后删除原有的图片
+			$img = './Public/Fuego/Uploads/'.$product_img;
+			if (file_exists ( $img )&& is_writable($img)) {
+				$this->LogInfo( $product_img." is to be delete.");
+				unlink ( $img );
+				$this->LogInfo( $product_img." delete success.");
+			}
 		}
-		$productDao = $this->GetModel();
 		$data['product_id']=$_POST['product_id'];
 		$data['product_name'] = $_POST['product_name'];
 		$data['price_type'] = $_POST['price_type'];
@@ -170,7 +180,27 @@ class ProductManageAction extends EasyUITableAction
 		}
 		return $this->ReturnJson();
 	}
-
+	/* (non-PHPdoc)
+	 * @see EasyUITableAction::Delete()
+	 */
+	public function Delete()
+	{
+		$objID = $this->GetCommonData();
+		$this->LogInfo("Delete product, product_id is ".$objID);
+		//获取产品原来图片的名称，用于更新图片后删除原来图片
+		$productDao = $this->GetModel();
+		$IDCondition['product_id']=$objID;
+		$product_img = $productDao->where($IDCondition)->getField('img');
+		//先删除产品对应的图片
+		$img = './Public/Fuego/Uploads/'.$product_img;
+		if (file_exists ( $img )&& is_writable($img)) {
+			$this->LogInfo( $product_img." is to be delete.");
+			unlink ( $img );
+			$this->LogInfo( $product_img." delete success.");
+		}
+		parent::Delete();
+	}
+	
 	//加载产品类型列表
 	public function getProductTypeList()
 	{
