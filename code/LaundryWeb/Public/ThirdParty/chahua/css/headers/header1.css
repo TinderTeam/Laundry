@@ -125,7 +125,7 @@
 .header {
 	z-index:999;
 	position:relative;
-	border-bottom:solid 2px #eee;
+	border-bottom:solid 2px #007cb4;
 }
 
 .header .container {
@@ -134,16 +134,16 @@
 
 .logo {
 	position:absolute;
-	top:-5px;
+	top:2px;
 	left:0;
 }
 
 /*Menu*/
-.navbar, 
-.navbar-inner, 
+.navbar,
+.navbar-inner,
 .nav,
 .navbar-inverse {
-	background:#fff;
+	background:transparent;
 	filter:none;
 	border:none;
 	padding:0;
@@ -171,17 +171,18 @@
 .navbar .nav > li > a {
 	display:block;
 	font-size:18px;
-	font-weight:500;
-	color: #687074;
+	font-weight: bolder;
+	color: #ffffff;
 	text-shadow:none;
 	padding:9px 20px;
 	text-transform:uppercase;
-	border-bottom:solid 2px #eee;
+	border-bottom:solid 2px #007cb4;
 	font-family:'Open Sans', sans-serif;
     -webkit-transition:all 0.4s ease-in-out;
     -moz-transition:all 0.4s ease-in-out;
     -o-transition:all 0.4s ease-in-out;
     transition:all 0.4s ease-in-out;
+	background:#007cb4;
 }
 
 .collapse.in ul { 
@@ -196,7 +197,7 @@
 
 .collapse.in li a:hover,
 .collapse.in li a.dropdown-toggle { 
-	border-bottom:solid 1px #72c02c !important;
+	border-bottom:solid 1px #00b3e6 !important;
 	background:none;
 }
 
@@ -216,25 +217,29 @@
 
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  	color:#72c02c;
-	border-bottom:solid 2px #72c02c;
+  	color:#ffffff;	
+	background:#00b3e6;
+	font-weight: bolder;
+	border-bottom:solid 2px #00b3e6;
 }
 
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:focus {
-  	color:#72c02c;	
+  	color:#ffffff;	
   	text-decoration:none;
-	border-bottom:solid 2px #72c02c;
-  	background:none;	
+	border-bottom:solid 2px #00b3e6;
+  	background:#00b3e6;
+	font-weight: bolder;	
   	-webkit-box-shadow:none;
        -moz-box-shadow:none;
           	box-shadow:none;
 }
 
 .navbar .nav > .active > a:hover {	
-  	color:#72c02c;	
-	background:none;		
-	border-bottom:solid 2px #72c02c;
+  	color:#ffffff;	
+	background:#00b3e6;
+	font-weight: bolder;		
+	border-bottom:solid 2px #00b3e6;
   	-webkit-box-shadow:none;
        -moz-box-shadow:none;
           	box-shadow:none;

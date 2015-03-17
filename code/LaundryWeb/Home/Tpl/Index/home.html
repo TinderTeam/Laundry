@@ -11,16 +11,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />  
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>	
-
-<include file="./Home/Tpl/PublicTpl/css.html"/>
-<link href="__PUBLIC__/ThirdParty/didi/css/bootcss/css/bootstrap.css" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+	<!--=== 视频插件引用 ===-->
+	<link href="__PUBLIC__/ThirdParty/video/video-js.css" rel="stylesheet" type="text/css">
+  	<script src="__PUBLIC__/ThirdParty/video/video.js"></script>
+  	<script>
+    	videojs.options.flash.swf = "__PUBLIC__/ThirdParty/video/video-js.swf";
+  	</script> 	
+	<include file="./Home/Tpl/PublicTpl/css.html"/>
+	<link href="__PUBLIC__/ThirdParty/didi/css/bootcss/css/bootstrap.css" rel="stylesheet">
 <style>
 html,body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	
 }
 
 #container {
@@ -28,7 +32,6 @@ html,body {
 	height: auto !important;
 	height: 100%; /*IE6不识别min-height*/
 	position: relative;
-	
 }
 
 #header {
@@ -65,9 +68,11 @@ html,body {
 	width: 220px;
 }
 </style>
-<body >
+<body>
+<div id="container">  
+
 <!--=== Header ===-->
-<div class="header"  id="header" style="background:#007cb4">               
+<div class="header" style="background:#007cb4">               
     <div class="container"> 
         <!-- Logo -->       
         <div class="logo">                                             
@@ -76,16 +81,15 @@ html,body {
                                     
         <!-- Menu -->       
         <div class="navbar">                                
-            <div class="navbar-inner"> 
+            <div class="navbar-inner">                                  
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a><!-- /nav-collapse -->                                  
-                                                                 
                 <div class="nav-collapse collapse">                                     
                     <ul class="nav top-2">
-                        <li >
+                        <li class="active">
                             <a href="__URL__/home.html" >首页</a>                      
                         </li>
                         <li >
@@ -100,72 +104,83 @@ html,body {
 						<li >
                             <a href="__URL__/APPDownload.html" >APP下载</a>                      
                         </li>
-						<li class="active">
+						<li >
                             <a href="__URL__/contactUs.html" >联系我们</a>                      
                         </li>						 
                     </ul>
+
                 </div><!-- /nav-collapse -->                                
             </div><!-- /navbar-inner -->
         </div><!-- /navbar -->                          
     </div><!-- /container -->               
 </div><!--/header -->      
 <!--=== End Header ===-->
-	<div>
-		<img class="item" src="__PUBLIC__/Fuego/img/about/banner01.jpg"/>
+<!--=== Slider ===-->
+<div id="page">
+<div class="fullwidthbanner-container">
+    <div class="fullwidthabnner" >
+        <ul>
+        	<!-- THE FIRST SLIDE -->
+            <li data-transition="flyin" data-slotamount="1" data-masterspeed="300" data-thumb="assets/img/sliders/revolution/thumbs/thumb4.jpg">
+                
+                <!-- THE MAIN IMAGE IN THE FOURTH SLIDE -->                                
+                <img src="__PUBLIC__/Fuego/img/index/banner01.jpg" />
+
+                <div class="caption lfb boxshadow" data-x="-70" data-y="40" data-speed="900" data-start="500" data-easing="easeOutBack">
+                     <video id="example_video_1" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="none" width="692" height="390"
+						  poster="__PUBLIC__/Fuego/img/index/video_pic.png"
+						  data-setup="{}">
+						<source src="__PUBLIC__/Fuego/img/index/hw_u_396095.mp4" type='video/mp4'></source>
+					  </video>  
+                </div>
+            </li>  
+        </ul>
+    </div>
+</div>
+	<div style="margin-top:30px;">
+		<img class="item" src="__PUBLIC__/Fuego/img/index/banner02.jpg"/>
 	</div>
-	<!--=== part 1 ===-->
-	<div class="container" style="margin-top:30px;">
+	<div class="container" style="margin-top:10px;">
 		<div class="col-md-1">
 		</div>
-		<div class="col-md-5">
-			<img class="item" src="__PUBLIC__/Fuego/img/about/addr.jpg"/>
+		<div class="col-md-10">
+		<hr style="height:1px;border:none;border-top:1px solid #555555;margin-top:0px;margin-bottom:0px;"/>
 		</div>
-		<div class="col-md-2" align="right" style="padding-left:0px;padding-right:0px;">
-			<p style="font-size:1.2em;width:100px;text-align:center;margin-top:40px;margin-bottom:0px;color:#ffffff;background:#0074b1">联系地址</p>
-			<p style="font-size:1.2em;width:100px;text-align:center;margin-top:40px;margin-bottom:0px;color:#ffffff;background:#0074b1">联系邮箱</p>
-			<p style="font-size:1.2em;width:100px;text-align:center;margin-top:10px;margin-bottom:0px;color:#ffffff;background:#0074b1">联系电话</p>
-			<p style="font-size:1.2em;width:100px;text-align:center;margin-top:10px;margin-bottom:0px;color:#ffffff;background:#0074b1">联系手机</p>
-			<p style="font-size:1.2em;width:100px;text-align:center;margin-top:10px;margin-bottom:0px;color:#ffffff;background:#0074b1">联系人</p>
-		</div>
-		<div class="col-md-2" style="padding-left:10px;padding-right:0px;">
-			<p style="font-size:1.2em;text-decoration:underline;margin-top:40px;margin-bottom:0px;color:#444444">贵州省兴义市瑞金大道3号兴义商城4-1706</p>
-			<p style="font-size:1.2em;text-decoration:underline;margin-top:10px;margin-bottom:0px;color:#444444">996825888@qq.com</p>
-			<p style="font-size:1.2em;text-decoration:underline;margin-top:10px;margin-bottom:0px;color:#444444">0859-6825888</p>
-			<p style="font-size:1.2em;text-decoration:underline;margin-top:10px;margin-bottom:0px;color:#444444">18108595666</p>
-			<p style="font-size:1.2em;text-decoration:underline;margin-top:10px;margin-bottom:0px;color:#444444">郭经理</p>
-		</div>
-		<div class="col-md-2">
-		</div>
-	</div>
-	<!--=== part 2 ===-->
-	<div class="container" style="margin-top:0px;">
 		<div class="col-md-1">
 		</div>
-		<div class="col-md-6">
-			<div  class="col-md-3">
-				<p style="font-size:1.8em;margin-top:10px;margin-bottom:0px;color:#444444">工作时间</p>
-			</div>
-			<div class="col-md-7" align="left" style="padding-left:0px;padding-right:0px;">
-				<hr style="height:1px;border:none;border-top:1px solid #555555;margin-top:30px;margin-bottom:0px;"/>
-			</div>
-		</div>
-		<div class="col-md-6" style="padding-left:10px;padding-right:0px;">
-		</div>
 	</div>
-	<!--=== part 3 ===-->
-	<div class="container" style="margin-bottom:30px;">
+	<div class="container" style="margin-top:10px;">
 		<div class="col-md-1">
 		</div>
-		<div class="col-md-5">
-			<p style="font-size:1.2em;width:400px;text-align:center;margin-top:0px;margin-bottom:10px;color:#ffffff;background:#0074b1">周一 ~ 周五：上午：9:00 ~ 晚上：8:00</p>
-			<p style="font-size:1.2em;width:400px;text-align:center;margin-top:0px;margin-bottom:0px;color:#ffffff;background:#0074b1">周六 ~ 周日：上午：9:00 ~ 晚上：5:00</p>
+		<div class="col-md-10">
+			<img class="item" src="__PUBLIC__/Fuego/img/index/banner03.jpg"/>
 		</div>
-		<div class="col-md-6" style="padding-left:10px;padding-right:0px;">
+		<div class="col-md-1">
 		</div>
 	</div>
+	<div class="container" style="margin-top:10px;margin-bottom:20px">
+		<div class="col-md-1">
+		</div>
+		<div class="col-md-10">
+		<hr style="height:1px;border:none;border-top:1px solid #555555;margin-top:0px;margin-bottom:0px;"/>
+		</div>
+		<div class="col-md-1">
+		</div>
+	</div>
+</div>
+<div id="footer" >
 <!--=== Copyright ===-->
 <include file="./Home/Tpl/PublicTpl/copyright.html"/>
 <!--=== End Copyright ===-->
+</div>
 <include file="./Home/Tpl/PublicTpl/js.html"/>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+      	App.init();
+        App.initSliders();
+        Index.initRevolutionSlider();        
+    });
+</script>
+
 </body>
-</html>	
+</html>
