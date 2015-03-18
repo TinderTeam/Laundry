@@ -135,7 +135,7 @@
 .logo {
 	position:absolute;
 	top:2px;
-	left:0;
+	left:10%;
 }
 
 /*Menu*/
@@ -167,6 +167,7 @@
 .navbar .nav > li { 
 	display:block; 
 	position:relative;
+	right:30%;
 }
 .navbar .nav > li > a {
 	display:block;
