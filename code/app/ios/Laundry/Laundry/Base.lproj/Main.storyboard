@@ -689,7 +689,7 @@
                                                         <constraint firstAttribute="width" constant="305" id="oNv-6S-lGt"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本更新" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2J1-6n-BYA">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本信息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2J1-6n-BYA">
                                                     <rect key="frame" x="166" y="11" width="68" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -742,31 +742,19 @@
                                     <constraint firstAttribute="height" constant="200" id="uMm-lX-ihz"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4f-L4-QpQ">
-                                <rect key="frame" x="215" y="299" width="130" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="Hhg-e6-bFL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2G-3O-9ct">
-                                <rect key="frame" x="215" y="325" width="130" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="oEC-cR-L6B"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4f-L4-QpQ">
+                                <rect key="frame" x="281" y="299" width="38" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOn-QP-pL2" customClass="FEButton">
-                                <rect key="frame" x="180" y="366" width="240" height="40"/>
+                                <rect key="frame" x="180" y="337" width="240" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="OUh-wC-G0n"/>
-                                    <constraint firstAttribute="width" constant="240" id="tbK-G1-xuh"/>
+                                    <constraint firstAttribute="height" constant="40" id="YBS-Ze-V6K"/>
+                                    <constraint firstAttribute="width" constant="240" id="zrt-V1-iVM"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="更新">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -774,7 +762,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快客公司，版权所有" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G6-Mg-Iaw">
-                                <rect key="frame" x="242" y="436" width="117" height="16"/>
+                                <rect key="frame" x="242" y="407" width="117" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -782,22 +770,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qOn-QP-pL2" firstAttribute="top" secondItem="v2G-3O-9ct" secondAttribute="bottom" constant="20" id="2RQ-y8-uVd"/>
                             <constraint firstAttribute="centerX" secondItem="p7d-B0-e33" secondAttribute="centerX" id="5JY-C7-AZ7"/>
-                            <constraint firstAttribute="centerX" secondItem="qOn-QP-pL2" secondAttribute="centerX" id="A2M-S1-blm"/>
-                            <constraint firstAttribute="centerX" secondItem="3G6-Mg-Iaw" secondAttribute="centerX" id="LGl-tX-rO3"/>
-                            <constraint firstAttribute="centerX" secondItem="d4f-L4-QpQ" secondAttribute="centerX" constant="20" id="N7J-Lj-IyC"/>
-                            <constraint firstAttribute="centerX" secondItem="v2G-3O-9ct" secondAttribute="centerX" constant="20" id="avW-8R-b3b"/>
-                            <constraint firstItem="v2G-3O-9ct" firstAttribute="top" secondItem="d4f-L4-QpQ" secondAttribute="bottom" constant="5" id="lIB-vi-Yk1"/>
-                            <constraint firstItem="d4f-L4-QpQ" firstAttribute="top" secondItem="p7d-B0-e33" secondAttribute="bottom" constant="5" id="lcZ-AU-455"/>
+                            <constraint firstAttribute="centerX" secondItem="3G6-Mg-Iaw" secondAttribute="centerX" id="G1x-tu-MT0"/>
+                            <constraint firstItem="3G6-Mg-Iaw" firstAttribute="top" secondItem="qOn-QP-pL2" secondAttribute="bottom" constant="30" id="TcQ-ZG-KVi"/>
+                            <constraint firstAttribute="centerX" secondItem="qOn-QP-pL2" secondAttribute="centerX" id="Xla-9z-jDb"/>
+                            <constraint firstAttribute="centerX" secondItem="d4f-L4-QpQ" secondAttribute="centerX" id="ldS-z0-gpA"/>
                             <constraint firstItem="p7d-B0-e33" firstAttribute="top" secondItem="sRw-qY-Sem" secondAttribute="bottom" constant="30" id="oSl-sc-WfJ"/>
-                            <constraint firstItem="3G6-Mg-Iaw" firstAttribute="top" secondItem="qOn-QP-pL2" secondAttribute="bottom" constant="30" id="qj6-0C-de0"/>
+                            <constraint firstItem="d4f-L4-QpQ" firstAttribute="top" secondItem="p7d-B0-e33" secondAttribute="bottom" constant="5" id="ySi-7E-kO8"/>
+                            <constraint firstItem="qOn-QP-pL2" firstAttribute="top" secondItem="d4f-L4-QpQ" secondAttribute="bottom" constant="20" id="z9Z-M8-UaC"/>
                         </constraints>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="cversion" destination="d4f-L4-QpQ" id="oKe-kq-NQD"/>
-                        <outlet property="lversion" destination="v2G-3O-9ct" id="2sr-u8-uad"/>
                         <outlet property="updateButton" destination="qOn-QP-pL2" id="heT-wp-k9C"/>
                     </connections>
                 </viewController>

@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface FECheckUpdate : NSObject
+@property (nonatomic, strong) NSString *lastVersion;
+//@property (nonatomic, strong) NSString *buildVersion;
+@property (nonatomic, strong) NSString *versionURLString;
 +(FECheckUpdate *)sharedInstance;
 
--(void)chechUpdate:(void (^)(NSError *error,id response))complete;
+-(void)chechUpdate:(void (^)(NSError *error,NSString *version,NSString *versionURL))complete;
 
 @end
