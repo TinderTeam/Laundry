@@ -33,13 +33,12 @@
     
 //    self.lversion.text = [NSString stringWithFormat:@"最新版本:%@",self.versionLast];
     NSString *lastVersion = [FECheckUpdate sharedInstance].lastVersion;
+    self.cversion.text = [NSString stringWithFormat:@"当前版本:%@",kAppBuildVersion];
     if ([self isNewForLastVersion:lastVersion]) {
-        self.cversion.text = [NSString stringWithFormat:@"当前版本:%@",kAppBuildVersion];
         _canUpdate = YES;
     }else{
-        self.cversion.text = [NSString stringWithFormat:@"当前版本:%@",kAppBuildVersion];
-        self.updateButton.enabled = NO;
-        
+        self.updateButton.hidden = YES;
+//        self.updateButton.enabled = NO;
     }
 }
 

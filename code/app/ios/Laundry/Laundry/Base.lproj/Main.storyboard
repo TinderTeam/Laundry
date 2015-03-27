@@ -762,7 +762,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快客公司，版权所有" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G6-Mg-Iaw">
-                                <rect key="frame" x="242" y="407" width="117" height="16"/>
+                                <rect key="frame" x="242" y="564" width="117" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -771,10 +771,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="p7d-B0-e33" secondAttribute="centerX" id="5JY-C7-AZ7"/>
-                            <constraint firstAttribute="centerX" secondItem="3G6-Mg-Iaw" secondAttribute="centerX" id="G1x-tu-MT0"/>
-                            <constraint firstItem="3G6-Mg-Iaw" firstAttribute="top" secondItem="qOn-QP-pL2" secondAttribute="bottom" constant="30" id="TcQ-ZG-KVi"/>
+                            <constraint firstItem="6ow-mY-ig3" firstAttribute="top" secondItem="3G6-Mg-Iaw" secondAttribute="bottom" constant="20" id="FPo-pe-n95"/>
                             <constraint firstAttribute="centerX" secondItem="qOn-QP-pL2" secondAttribute="centerX" id="Xla-9z-jDb"/>
                             <constraint firstAttribute="centerX" secondItem="d4f-L4-QpQ" secondAttribute="centerX" id="ldS-z0-gpA"/>
+                            <constraint firstAttribute="centerX" secondItem="3G6-Mg-Iaw" secondAttribute="centerX" id="o3a-eo-n2x"/>
                             <constraint firstItem="p7d-B0-e33" firstAttribute="top" secondItem="sRw-qY-Sem" secondAttribute="bottom" constant="30" id="oSl-sc-WfJ"/>
                             <constraint firstItem="d4f-L4-QpQ" firstAttribute="top" secondItem="p7d-B0-e33" secondAttribute="bottom" constant="5" id="ySi-7E-kO8"/>
                             <constraint firstItem="qOn-QP-pL2" firstAttribute="top" secondItem="d4f-L4-QpQ" secondAttribute="bottom" constant="20" id="z9Z-M8-UaC"/>
