@@ -8,6 +8,7 @@
 
 #ifndef Laundry_FELaundryDefine_h
 #define Laundry_FELaundryDefine_h
+#import "THud.h"
 
 #define kString(_S)                            NSLocalizedString(_S, @"")
 
@@ -30,10 +31,11 @@
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
-
-#define kAlert(_M,_C)  {GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{ \
-\
-}];\
-[GAAlertObj showAlertWithTitle:@"提示" message:_M actions:@[action] inViewController:_C];}
+//[[THud sharedInstance] disPlayMessage:_M]
+#define kAlert(_M,_C) [[THud sharedInstance] disPlayMessage:_M];
+//{GAAlertAction *action = [GAAlertAction actionWithTitle:@"确定" action:^{ \
+//\
+//}];\
+//[GAAlertObj showAlertWithTitle:@"提示" message:_M actions:@[action] inViewController:_C];}
 
 #endif

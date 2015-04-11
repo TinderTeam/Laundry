@@ -8,6 +8,7 @@
 
 
 #import "FELaundryWebService.h"
+#import "FELaundryDefine.h"
 
 @implementation FELaundryWebService
 
@@ -45,6 +46,7 @@
 }
 
 -(void)showerror:(NSError *)error{
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"EShoping" message:[NSString stringWithFormat:@"%@",error.localizedDescription] delegate:nil cancelButtonTitle:kString(@"OK") otherButtonTitles:nil];
     [alert show];
 }
@@ -53,8 +55,9 @@
     
     if (response.errorCode.integerValue != 0) {
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:[self getErrorCode:response.errorCode.stringValue] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:[self getErrorCode:response.errorCode.stringValue] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        kAlert([self getErrorCode:response.errorCode.stringValue], nil);
+//        [alert show];
     }
 }
 

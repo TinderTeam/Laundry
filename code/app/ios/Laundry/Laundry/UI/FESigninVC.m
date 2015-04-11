@@ -46,12 +46,16 @@
 
 
 - (IBAction)signinAction:(id)sender {
+    [self.passwordTextfield resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
     if (self.phoneTextField.text.length && self.passwordTextfield.text.length) {
         FEUser *user = [[FEUser alloc] init];
         user.user_name = self.phoneTextField.text;
         user.password = self.passwordTextfield.text;
         __weak typeof(self) weakself = self;
+        [weakself displayHUD:@"正在登录..."];
         [[FELaundryWebService sharedInstance] request:[[FESigninRequest alloc] initWithUser:user] responseClass:[FESigninResponse class] response:^(NSError *error, id response) {
+            [weakself hideHUD:YES];
             FESigninResponse *rsp = response;
             if (!error && rsp.errorCode.integerValue == 0) {
                 [FEDataCache sharedInstance].user = rsp.user;
@@ -68,6 +72,7 @@
                         kUserDefaultsSetObjectForKey(rsp.obj.dictionary, kCustomerKey);
                         kUserDefaultsSync;
                     }
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserDidLogin object:nil];
                 }];
             }
         }];

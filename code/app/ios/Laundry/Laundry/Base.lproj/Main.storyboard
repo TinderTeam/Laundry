@@ -20,6 +20,7 @@
                         <segue destination="LPZ-IX-7bq" kind="relationship" relationship="viewControllers" id="guS-0j-SF3"/>
                         <segue destination="0cS-rA-7qQ" kind="relationship" relationship="viewControllers" id="cek-4S-YSZ"/>
                         <segue destination="438-TR-hjS" kind="relationship" relationship="viewControllers" id="87r-e5-KlQ"/>
+                        <segue destination="iXJ-X0-J2d" kind="presentation" identifier="toSigninSegue" id="f0l-eU-kd0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXK-ti-a7W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2956,7 +2957,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="31c-2J-MYo" id="Nnr-dV-1pr">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="真是姓名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-Uw-V7P">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="真实姓名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-Uw-V7P">
                                                     <rect key="frame" x="5" y="0.0" width="80" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="1d6-JF-Lzf"/>
@@ -3230,7 +3231,7 @@
         <image name="user_do_task_normal" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zDU-fa-yqm"/>
+        <segue reference="f0l-eU-kd0"/>
         <segue reference="fjA-oX-uMy"/>
         <segue reference="vSk-ko-rUt"/>
     </inferredMetricsTieBreakers>

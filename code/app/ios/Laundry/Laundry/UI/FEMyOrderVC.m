@@ -15,6 +15,8 @@
 #import "FEOrderDetailVC.h"
 #import "FEOrderDeleteRequest.h"
 #import "FEOrderOperationResponse.h"
+#import "FEDataCache.h"
+#import "FEProfileVC.h"
 
 @interface FEMyOrderVC ()<FEOrderDetailDelegate>
 @property (nonatomic, strong) NSMutableArray *orderList;
@@ -45,8 +47,31 @@
         if (!error && rsp.errorCode.integerValue == 0) {
             [weakself.orderList addObjectsFromArray:rsp.obj];
             [weakself.tableView reloadData];
+        }else if(rsp.errorCode.integerValue == 10){
+            kUserDefaultsRemoveForKey(kLoginUserKey);
+            kUserDefaultsRemoveForKey(kCustomerKey);
+            kUserDefaultsSync;
+            [FEDataCache sharedInstance].user = nil;
+            [FEDataCache sharedInstance].customer = nil;
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [weakself toLogin];
+                [weakself.tabBarController performSegueWithIdentifier:@"toSigninSegue" sender:nil];
+                [weakself.navigationController popViewControllerAnimated:NO];
+            });
+            
+            
         }
     }];
+}
+
+-(void)toLogin{
+    UIViewController *controller = [[[self.tabBarController viewControllers] objectAtIndex:2] topViewController];
+    if ([controller isKindOfClass:[FEProfileVC class]]) {
+        //        [self.tabBarController setSelectedIndex:2];
+        FEProfileVC *vc = (FEProfileVC *)controller;
+        [vc signin];
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
