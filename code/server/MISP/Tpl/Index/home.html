@@ -39,27 +39,38 @@
 		</div>
 	</div>
 	<div data-options="region:'center'">
-	<div id="tt" class="easyui-tabs"  data-options="fit:true">
+	<div id="pageContent" class="easyui-tabs"  data-options="fit:true">
 	</div>
 	</div>
-<script type="text/javascript" >  
+<script type="text/javascript" > 
+//点击菜单按钮，打开Tab页面
 $('#menuTree').tree({
-		onClick: function(node){  
-			    if ($('#tt').tabs('exists', node.text))
-			    {    
-			        $('#tt').tabs('select', node.text);    
-			    } 
-			    else 
-			    {    
-			        var content = '<iframe scrolling="auto" frameborder="0"  src="__ROOT__/'+node.attributes.url+'" style="width:100%;height:99%;"></iframe>';
-			        $('#tt').tabs('add',{    
-			            title:node.text,    
-			            content:content,    
-			            closable:true    
-			        });    
-			    }    
-		//$('#tt').tabs('add',{title:node.text,href:"__APP__/UserManage/saveData.html",closable:true,width:1000,height:1000,});
-	} 
+    //点击菜单事件
+    onClick: function (node) {
+        var tabContent = null;
+	    if ($('#pageContent').tabs('exists', node.text)){       //如果已经打开过这个页面    
+		    $('#pageContent').tabs('select', node.text);        //选择改tab页面
+		    // 更新选择的面板内容
+		    var tab = $('#pageContent').tabs('getSelected');    // 获取选择的面板
+		    var tabContent = '<iframe scrolling="auto" frameborder="0"  src="__ROOT__/'+node.attributes.url+'" style="width:100%;height:99%;"></iframe>';
+		    $('#pageContent').tabs('update', {
+		        tab: tab,
+		        options: {
+		            title: node.text,
+		            content: tabContent,
+		            closable:true 
+		        }
+		    });
+	    } 
+	    else {
+	        tabContent = '<iframe scrolling="auto" frameborder="0"  src="__ROOT__/'+node.attributes.url+'" style="width:100%;height:99%;"></iframe>';
+		    $('#pageContent').tabs('add', {
+			    title:node.text,    
+			    content: tabContent,
+			    closable:true    
+		    });    
+	    }
+    } 
 });
 function pwdModify(){
 	
