@@ -69,7 +69,7 @@ class OrderManageAction extends EasyUITableAction
 				$searchFilter['company_id'] = $_SESSION['user']['company_id'];
 			}
 			$this->LogInfo("ClientType is WEB,SearchFilter is ".json_encode($searchFilter));
-			$order['status_sort_id'] = 'asc';
+			//$order['status_sort_id'] = 'asc';
 			$order['order_code'] = 'desc';
 			$orderViewDao = LaundryDaoContext::ViewOrder();
 			$this->LoadPageTable($orderViewDao,$searchFilter,$order);
@@ -164,11 +164,14 @@ class OrderManageAction extends EasyUITableAction
 		//发出订单邮件通知
 		$adminDao = LaundryDaoContext::administrators();
 		$CompanyCondition['company_id'] = $req->app_id;
-		$Email = $adminDao->where($CompanyCondition)->getField('email');
-		$this->LogInfo("admin email is ".$Email);
-		if (false == SendMail($Email,OrderEnum::EMAIL_TITLE,"会员：".$orderData['user_name']." 已成功提交订单，会员姓名：".$orderData['contact_name']."。订单号为：".$orderData['order_code']."。取衣地址：".$orderData['take_addr']."。请及时处理！"))
+		$EmailList = $adminDao->where($CompanyCondition)->getField('email',true);
+		foreach($EmailList as $Email)
 		{
-			$this->LogErr("Order has create,But send mail failed.");
+			$this->LogInfo("admin email is ".$Email);
+			if (false == SendMail($Email,OrderEnum::EMAIL_TITLE,"会员：".$orderData['user_name']." 已成功提交订单，会员姓名：".$orderData['contact_name']."。订单号为：".$orderData['order_code']."。取衣地址：".$orderData['take_addr']."。请及时处理！"))
+			{
+				$this->LogErr("Order has create,But send mail failed.");
+			}
 		}
 		//获取订单信息返回
 		$orderCondition['order_code'] = $orderData['order_code'];

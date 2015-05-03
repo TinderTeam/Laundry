@@ -84,11 +84,11 @@ function formatPrice(val,row){
 	}
 }
 var formatReadStatus = function (val,row) {
-	if((row.order_status == "已下单")||(row.order_status == "付款成功"))
+	if((row.order_status == "已下单")||(row.order_status == "付款成功")||(row.order_status == "待付款"))
 	{
 		return val = '<img src="__PUBLIC__/Fuego/img/close.png" alt="正常" title="正常" />';
 	}
-	else if((row.order_status == "处理中")||(row.order_status == "已完成"))
+	else
 	{
 		return val = '<img src="__PUBLIC__/Fuego/img/open.png" alt="正常" title="正常" />';
 	}
